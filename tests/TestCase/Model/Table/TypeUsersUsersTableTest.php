@@ -11,8 +11,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\TypeUsersUsersTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for TypeUsersUsersTable
@@ -111,5 +113,35 @@ class TypeUsersUsersTableTest extends TestCase
         $result = $type->getUserId();
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->TypeUsersUsers->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+	/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->TypeUsersUsers->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
     }
 }

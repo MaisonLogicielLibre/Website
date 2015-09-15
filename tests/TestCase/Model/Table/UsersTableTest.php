@@ -12,8 +12,10 @@ namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\UsersTable;
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for UsersTable
@@ -350,5 +352,89 @@ class UsersTableTest extends TestCase
         $result = $user->editUsername($expected);
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test editpassword
+     * @return void
+     */
+	public function testSetPassword()
+    {
+        $id = 1;
+		$pass = 'allo';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editPassword('allo');
+		$check = (new DefaultPasswordHasher)->check($pass, $result);
+
+        $this->assertTrue($check);
+    }
+	
+	/**
+     * Test hasRoleName
+     * @return void
+     */
+	public function testHasRoleNameTrue()
+    {
+        $id = 1;
+		$perm = [
+			1 => 'student'
+		];
+
+        $user = $this->Users->get($id);
+		
+		
+        $result = $user->hasRoleName($perm);
+
+        $this->assertTrue($result);
+    }
+	
+		/**
+     * Test hasRoleName
+     * @return void
+     */
+	public function testHasRoleNameFalse()
+    {
+        $id = 1;
+		$perm = [
+			1 => 'blarg'
+		];
+
+        $user = $this->Users->get($id);
+
+        $result = $user->hasRoleName($perm);
+
+        $this->assertFalse($result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->Users->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+	/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->Users->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
     }
 }

@@ -11,8 +11,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\ProjectsUsersMissionsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for ProjectsUsersMissionsTable
@@ -114,5 +116,35 @@ class ProjectsUsersMissionsTableTest extends TestCase
         $result = $pro->getMissionId();
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->ProjectsUsersMissions->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+		/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->ProjectsUsersMissions->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
     }
 }

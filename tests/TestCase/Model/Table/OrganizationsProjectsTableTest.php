@@ -12,8 +12,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\OrganizationsProjectsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for OrganizationsProjectsTable
@@ -107,5 +109,35 @@ class OrganizationsProjectsTableTest extends TestCase
         $result = $pro->getOrganization();
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->OrganizationsProjects->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+	/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->OrganizationsProjects->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
     }
 }

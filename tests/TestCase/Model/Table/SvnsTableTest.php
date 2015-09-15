@@ -13,6 +13,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\SvnsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for SvnsTable
@@ -116,5 +117,20 @@ class SvnsTableTest extends TestCase
         $result = $svn->editName($expected);
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->Svns->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
     }
 }

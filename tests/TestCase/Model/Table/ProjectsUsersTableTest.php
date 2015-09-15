@@ -11,8 +11,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\ProjectsUsersTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for ProjectsUsersTable
@@ -275,4 +277,35 @@ class ProjectsUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->ProjectsUsers->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+	/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->ProjectsUsers->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
+    }
 }
+

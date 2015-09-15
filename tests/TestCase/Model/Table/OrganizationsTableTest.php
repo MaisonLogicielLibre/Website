@@ -14,6 +14,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\OrganizationsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for OrganizationsTable
@@ -192,5 +193,20 @@ class OrganizationsTableTest extends TestCase
         $result = $org->editDescription($expected);
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->Organizations->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
     }
 }
