@@ -1,0 +1,111 @@
+<?php
+/**
+ * Tests for OrganizationsProjectsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
+ 
+namespace App\Test\TestCase\Model\Table;
+
+use App\Model\Table\OrganizationsProjectsTable;
+use Cake\ORM\TableRegistry;
+use Cake\TestSuite\TestCase;
+
+/**
+ * Tests for OrganizationsProjectsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
+class OrganizationsProjectsTableTest extends TestCase
+{
+
+    /**
+     * Fixtures
+     *
+     * @var array
+     */
+    public $fixtures = [
+        'app.organizations_projects',
+        'app.projects'
+    ];
+
+    /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('OrganizationsProjects') ? [] : ['className' => 'App\Model\Table\OrganizationsProjectsTable'];
+        $this->OrganizationsProjects = TableRegistry::get('OrganizationsProjects', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->OrganizationsProjects);
+
+        parent::tearDown();
+    }
+
+    /**
+     * Test getId
+     * @return void
+     */
+    public function testGetId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $pro = $this->OrganizationsProjects->get($id);
+
+        $result = $pro->getId();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test getProjectId
+     * @return void
+     */
+    public function testGetProjectId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $pro = $this->OrganizationsProjects->get($id);
+
+        $result = $pro->getProjectId();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test getOrganization
+     * @return void
+     */
+    public function testGetOrganization()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $pro = $this->OrganizationsProjects->get($id);
+
+        $result = $pro->getOrganization();
+
+        $this->assertEquals($expected, $result);
+    }
+}

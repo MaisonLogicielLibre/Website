@@ -1,0 +1,24 @@
+language: php
+ 
+php:
+  - 5.5
+
+before_script:
+  - rm -rf app.php
+  - mv ./config/app_travis.php ./config/app.php
+  - sh -c "mysql -e 'CREATE DATABASE cakephp_test;'"
+  - composer self-update
+  - composer install --no-interaction --prefer-source
+  - mkdir -p build/logs
+
+  - phpenv rehash
+  - set +H
+  - cp phpunit.xml.dist phpunit.xml
+
+script:
+  - phpunit --coverage-clover build/logs/clover.xml -v
+  - php vendor/bin/coveralls -c .coveralls.yml -v
+  - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0 --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src/Model ./src/Controller ./tests/TestCase"
+  - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0 --extensions=php ./src/Model ./src/Controller ./tests/TestCase"
+
+
