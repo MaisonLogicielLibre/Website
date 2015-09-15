@@ -12,8 +12,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for CommentsTable
@@ -190,4 +192,34 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->Missions->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+	/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->Missions->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
+    }	
 }

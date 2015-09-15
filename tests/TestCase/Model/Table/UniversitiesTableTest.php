@@ -13,6 +13,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\UniversitiesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for UniversitiesTable
@@ -137,5 +138,20 @@ class UniversitiesTableTest extends TestCase
         $result = $uni->editWebsite($expected);
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->Universities->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
     }
 }

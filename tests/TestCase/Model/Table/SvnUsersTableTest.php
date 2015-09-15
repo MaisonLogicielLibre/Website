@@ -12,8 +12,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\SvnUsersTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for SvnUsersTable
@@ -137,5 +139,35 @@ class SvnUsersTableTest extends TestCase
         $result = $svn->getUserId();
 
         $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test validation
+     * @return void
+     */
+	public function testValidation()
+    {
+        $validator = new Validator();
+		
+		$expected = $validator;
+		
+		$result = $this->SvnUsers->validationDefault($validator);
+		
+		$this->assertEquals($validator, $result);
+    }
+	
+		/**
+     * Test buildRules
+     * @return void
+     */
+	public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+		
+		$expected = $rule;
+		
+		$result = $this->SvnUsers->buildRules($rule);
+		
+		$this->assertEquals($expected, $result);
     }
 }
