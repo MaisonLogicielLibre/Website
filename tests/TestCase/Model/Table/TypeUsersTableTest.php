@@ -77,7 +77,7 @@ class TypeUsersTableTest extends TestCase
     public function testGetName()
     {
         $id = 1;
-        $expected = 'student';
+        $expected = 'Student';
 
         $type = $this->TypeUsers->get($id);
 
@@ -93,7 +93,7 @@ class TypeUsersTableTest extends TestCase
     public function testSetName()
     {
         $id = 1;
-        $expected = 'admin';
+        $expected = 'Administrator';
 
         $type = $this->TypeUsers->get($id);
 
