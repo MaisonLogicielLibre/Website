@@ -37,7 +37,15 @@ class TypeUsersFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'student'
+            'name' => 'Student'
+        ],
+		[
+            'id' => 2,
+            'name' => 'Mentor'
+        ],
+		[
+            'id' => 3,
+            'name' => 'Administrator'
         ],
     ];
 }

@@ -379,7 +379,7 @@ class UsersTableTest extends TestCase
     {
         $id = 1;
 		$perm = [
-			1 => 'student'
+			1 => 'Student'
 		];
 
         $user = $this->Users->get($id);
