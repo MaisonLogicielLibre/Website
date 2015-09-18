@@ -37,6 +37,14 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+    public $helpers = [
+        'Less.Less', // required for parsing less files
+        'BootstrapUI.Form',
+        'BootstrapUI.Html',
+        'BootstrapUI.Flash',
+        'BootstrapUI.Paginator'
+    ];
+
     /**
      * Initialization hook method.
      *
