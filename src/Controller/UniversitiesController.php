@@ -23,6 +23,31 @@ use App\Controller\AppController;
  */
 class UniversitiesController extends AppController
 {
+	private $_permissions = [
+        'index' => ['Student', 'Mentor', 'Administrator'],
+        'add' => ['Administrator'],
+        'submit' => ['Student', 'Mentor', 'Administrator'],
+        'edit' => ['Administrator'],
+        'view' => ['Student', 'Mentor', 'Administrator'],
+        'view_admin' => ['Administrator'],
+		'delete' => ['Administrator']
+    ];
+
+    /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->loadModel("Users")->findById($user['id'])->first();
+
+        if (isset($this->_permissions[$this->request->action])) {
+            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+                return true;
+            }
+        }
+    }
 
     /**
      * Index method
