@@ -16,6 +16,10 @@ body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+#container {
+    padding: 0 0 30px 0;
+}
+
 .text-vertical-center {
     display: table-cell;
     text-align: center;

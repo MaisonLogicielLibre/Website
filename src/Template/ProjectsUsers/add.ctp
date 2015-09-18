@@ -1,19 +1,20 @@
-<div class="actions columns large-2 medium-3">
+<div class="actions columns col-lg-2 col-md-3">
     <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
+    <ul class="nav nav-stacked nav-pills">
+        <li class="active disabled"><?= $this->Html->link(__('New Projects User'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Projects Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Missions'), ['controller' => 'Missions', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Mission'), ['controller' => 'Missions', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Missions'), ['controller' => 'Missions', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Mission'), ['controller' => 'Missions', 'action' => 'add']) ?> </li>
     </ul>
 </div>
-<div class="projectsUsers form large-10 medium-9 columns">
-    <?= $this->Form->create($projectsUser) ?>
+<div class="projectsUsers form col-lg-10 col-md-9 columns">
+    <?= $this->Form->create($projectsUser); ?>
     <fieldset>
         <legend><?= __('Add Projects User') ?></legend>
         <?php
@@ -27,6 +28,6 @@
             echo $this->Form->input('missions._ids', ['options' => $missions]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
     <?= $this->Form->end() ?>
 </div>
