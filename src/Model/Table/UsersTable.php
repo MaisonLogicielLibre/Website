@@ -49,70 +49,69 @@ class UsersTable extends Table
         $this->belongsTo(
             'Universities',
             [
-            'foreignKey' => 'universitie_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'universitie_id',
+                'joinType' => 'INNER'
             ]
         );
         $this->hasMany(
             'Comments',
             [
-            'foreignKey' => 'user_id'
+                'foreignKey' => 'user_id'
             ]
         );
         $this->belongsToMany(
             'Projects',
             [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'project_id',
-            'joinTable' => 'projects_users'
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'project_id',
+                'joinTable' => 'projects_users'
             ]
         );
         $this->belongsToMany(
             'TypeUsers',
             [
-            'joinTable' => 'type_users_users'
+                'joinTable' => 'type_users_users'
             ]
         );
     }
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     *
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator)
     {
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+
         $validator
-            ->requirePresence('firstName', 'create')
-            ->notEmpty('firstName');
+            ->allowEmpty('firstName');
+
         $validator
-            ->requirePresence('lastName', 'create')
-            ->notEmpty('lastName');
+            ->allowEmpty('lastName');
+
         $validator
             ->allowEmpty('biography');
+
         $validator
             ->allowEmpty('portfolio');
+
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
             ->notEmpty('email');
+
         $validator
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
+            ->allowEmpty('phone');
+
         $validator
             ->add('gender', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('gender', 'create')
-            ->notEmpty('gender');
+            ->allowEmpty('gender');
+
         $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
+
         $validator
             ->requirePresence('username', 'create')
             ->notEmpty('username');
+
         return $validator;
     }
     /**
