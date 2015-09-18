@@ -35,8 +35,17 @@ class OrganizationsTableTest extends TestCase
      */
     public $fixtures = [
         'app.organizations',
+    'app.organizations_Projects',
+    'app.projects_users_missions',
+    'app.users',
+        'app.type_users',
+    'app.svn_users',
+    'app.svns',
+        'app.universities',
+        'app.comments',
         'app.projects',
-        'app.organizations_projects'
+        'app.projects_users',
+    'app.missions'
     ];
 
     /**
@@ -194,19 +203,19 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->Organizations->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->Organizations->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
 }

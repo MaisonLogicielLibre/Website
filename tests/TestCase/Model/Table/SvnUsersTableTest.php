@@ -35,18 +35,18 @@ class SvnUsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.svn_users',
-        'app.svns',
-        'app.users',
+        'app.organizations',
+    'app.organizations_Projects',
+    'app.projects_users_missions',
+    'app.users',
         'app.type_users',
+    'app.svn_users',
+    'app.svns',
         'app.universities',
         'app.comments',
-        'app.projects_users',
         'app.projects',
-        'app.missions',
-        'app.projects_users_missions',
-        'app.organizations',
-        'app.organizations_projects'
+        'app.projects_users',
+    'app.missions'
     ];
 
     /**
@@ -140,34 +140,34 @@ class SvnUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->SvnUsers->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->SvnUsers->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
-	
-		/**
+    
+    /**
      * Test buildRules
      * @return void
      */
-	public function testBuildRules()
+    public function testBuildRules()
     {
         $rule = new RulesChecker();
-		
-		$expected = $rule;
-		
-		$result = $this->SvnUsers->buildRules($rule);
-		
-		$this->assertEquals($expected, $result);
+        
+        $expected = $rule;
+        
+        $result = $this->SvnUsers->buildRules($rule);
+        
+        $this->assertEquals($expected, $result);
     }
 }
