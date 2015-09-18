@@ -34,6 +34,7 @@ class ProjectsUsersMissionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+	'app.type_users_users',
         'app.organizations',
     'app.organizations_Projects',
     'app.projects_users_missions',

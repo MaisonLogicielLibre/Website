@@ -34,6 +34,7 @@ class TypeUsersUsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+	'app.type_users_users',
         'app.organizations',
     'app.organizations_Projects',
     'app.projects_users_missions',
@@ -95,7 +96,7 @@ class TypeUsersUsersTableTest extends TestCase
     public function testGetTypeUserId()
     {
         $id = 1;
-        $expected = 3;
+        $expected = 1;
 
         $type = $this->TypeUsersUsers->get($id);
 
@@ -111,7 +112,7 @@ class TypeUsersUsersTableTest extends TestCase
     public function testGetUserId()
     {
         $id = 1;
-        $expected = 2;
+        $expected = 1;
 
         $type = $this->TypeUsersUsers->get($id);
 
