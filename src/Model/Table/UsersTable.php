@@ -74,6 +74,14 @@ class UsersTable extends Table
             ]
         );
     }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     *
+     * @return \Cake\Validation\Validator
+     */
     public function validationDefault(Validator $validator)
     {
         $validator
@@ -95,7 +103,8 @@ class UsersTable extends Table
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
-            ->notEmpty('email');
+            ->notEmpty('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->allowEmpty('phone');
@@ -105,8 +114,17 @@ class UsersTable extends Table
             ->allowEmpty('gender');
 
         $validator
+            ->add('confirm_password', 'custom', [
+                'rule' => function($value, $context) {
+                    if ($value !== $context['data']['password']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The passwords are not equal'])
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password')
+            ->notEmpty('confirm_password');
 
         $validator
             ->requirePresence('username', 'create')
