@@ -105,14 +105,18 @@ class UsersTable extends Table
             ->requirePresence('email', 'create')
             ->notEmpty('email')
             ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
-            ->add('confirm_email', 'custom', [
-            'rule' => function($value, $context) {
-                if ($value !== $context['data']['email']) {
-                    return false;
-                }
-                return true;
-            },
-            'message' => 'The email are not equal'])
+            ->add(
+                'confirm_email',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
+                    if ($value !== $context['data']['email']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The email are not equal']
+            )
             ->requirePresence('confirm_email', 'create')
             ->notEmpty('confirm_email');
 
@@ -124,14 +128,18 @@ class UsersTable extends Table
             ->allowEmpty('gender');
 
         $validator
-            ->add('confirm_password', 'custom', [
-                'rule' => function($value, $context) {
+            ->add(
+                'confirm_password',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
                     if ($value !== $context['data']['password']) {
                         return false;
                     }
                     return true;
                 },
-                'message' => 'The passwords are not equal'])
+                'message' => 'The passwords are not equal']
+            )
             ->requirePresence('password', 'create')
             ->notEmpty('password')
             ->notEmpty('confirm_password');
