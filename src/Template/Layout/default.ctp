@@ -111,5 +111,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Html->script('jquery-2.1.4.min'); ?>
 <!-- Bootstrap Core JavaScript -->
 <?= $this->Html->script('bootstrap.min'); ?>
+<!-- Google Analytics -->
+<?= $this->Html->script('googleAnalytics'); ?>
 </body>
 </html>
