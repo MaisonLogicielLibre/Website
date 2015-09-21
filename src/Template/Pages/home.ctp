@@ -7,6 +7,24 @@
 <section id="about" class="about">
 <div class="row">
     <div class="col-xl-12 text-center">
+        <div style="margin:20px; margin-top:5px">
+            <div class="quotetitle">
+                <b style="font-size : 20px;">Bâtissez avec nous le futur de la maison</b><br>
+                <input type="button" value="Participer au sondage" style="font-size: 16px; padding: 5px 10px 5px 10px; font-weight: bold;border: none;background-color: black; color: white;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Participer au sondage'; }" />
+            </div>
+            <br>
+            <div class="quotecontent">
+                <div style="display: none;">
+                    <iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-xl-12 text-center">
         <h2>Notre Mission</h2>
 
         <p class="lead">Cette initiative est née d’une rencontre entre le directeur de l’ÉTS et le directeur du centre
