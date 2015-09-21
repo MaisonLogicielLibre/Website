@@ -48,5 +48,13 @@ class ProjectsFixture extends TestFixture
             'accepted' => 1,
             'archived' => 1
         ],
+		[
+            'id' => 2,
+            'name' => 'projet2',
+            'link' => 'www.website.com',
+            'description' => 'bla bla',
+            'accepted' => 1,
+            'archived' => 0
+        ]
     ];
 }

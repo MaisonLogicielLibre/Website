@@ -35,11 +35,19 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Users',
+	'app.type_users_users',
+        'app.organizations',
+    'app.organizations_Projects',
+    'app.projects_users_missions',
+    'app.users',
+        'app.type_users',
+    'app.svn_users',
+    'app.svns',
         'app.universities',
         'app.comments',
-        'app.type_Users',
-        'app.type_Users_Users'
+        'app.projects',
+        'app.projects_users',
+    'app.missions'
     ];
 
     /**
@@ -353,53 +361,53 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test editpassword
      * @return void
      */
-	public function testSetPassword()
+    public function testSetPassword()
     {
         $id = 1;
-		$pass = 'allo';
+        $pass = 'allo';
 
         $user = $this->Users->get($id);
 
         $result = $user->editPassword('allo');
-		$check = (new DefaultPasswordHasher)->check($pass, $result);
+        $check = (new DefaultPasswordHasher)->check($pass, $result);
 
         $this->assertTrue($check);
     }
-	
-	/**
+    
+    /**
      * Test hasRoleName
      * @return void
      */
-	public function testHasRoleNameTrue()
+    public function testHasRoleNameTrue()
     {
-        $id = 1;
-		$perm = [
-			1 => 'Student'
-		];
+        $id = 2;
+        $perm = [
+        1 => 'Administrator'
+        ];
 
         $user = $this->Users->get($id);
-		
-		
+        
+        
         $result = $user->hasRoleName($perm);
 
         $this->assertTrue($result);
     }
-	
-		/**
+    
+    /**
      * Test hasRoleName
      * @return void
      */
-	public function testHasRoleNameFalse()
+    public function testHasRoleNameFalse()
     {
         $id = 1;
-		$perm = [
-			1 => 'blarg'
-		];
+        $perm = [
+        1 => 'blarg'
+        ];
 
         $user = $this->Users->get($id);
 
@@ -407,34 +415,34 @@ class UsersTableTest extends TestCase
 
         $this->assertFalse($result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->Users->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->Users->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
-	
-	/**
+    
+    /**
      * Test buildRules
      * @return void
      */
-	public function testBuildRules()
+    public function testBuildRules()
     {
         $rule = new RulesChecker();
-		
-		$expected = $rule;
-		
-		$result = $this->Users->buildRules($rule);
-		
-		$this->assertEquals($expected, $result);
+        
+        $expected = $rule;
+        
+        $result = $this->Users->buildRules($rule);
+        
+        $this->assertEquals($expected, $result);
     }
 }

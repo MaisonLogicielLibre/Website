@@ -34,13 +34,19 @@ class TypeUsersUsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.type_users_users',
+	'app.type_users_users',
+        'app.organizations',
+    'app.organizations_Projects',
+    'app.projects_users_missions',
+    'app.users',
         'app.type_users',
-        'app.users',
+    'app.svn_users',
+    'app.svns',
         'app.universities',
         'app.comments',
         'app.projects',
-        'app.projects_users'
+        'app.projects_users',
+    'app.missions'
     ];
 
     /**
@@ -114,34 +120,34 @@ class TypeUsersUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->TypeUsersUsers->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->TypeUsersUsers->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
-	
-	/**
+    
+    /**
      * Test buildRules
      * @return void
      */
-	public function testBuildRules()
+    public function testBuildRules()
     {
         $rule = new RulesChecker();
-		
-		$expected = $rule;
-		
-		$result = $this->TypeUsersUsers->buildRules($rule);
-		
-		$this->assertEquals($expected, $result);
+        
+        $expected = $rule;
+        
+        $result = $this->TypeUsersUsers->buildRules($rule);
+        
+        $this->assertEquals($expected, $result);
     }
 }
