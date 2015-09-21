@@ -18,7 +18,8 @@ before_script:
 script:
   - phpunit --coverage-clover build/logs/clover.xml -v
   - php vendor/bin/coveralls -c .coveralls.yml -v
-  - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0 --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src/Model ./src/Controller ./tests/TestCase"
-  - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0 --extensions=php ./src/Model ./src/Controller ./tests/TestCase"
+  - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0"
+  - sh -c "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src/Model ./src/Controller ./tests/TestCase"
+  - sh -c "vendor/bin/phpcs -p --extensions=php ./src/Model ./src/Controller ./tests/TestCase"
 
 
