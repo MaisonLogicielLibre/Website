@@ -16,20 +16,14 @@
 <div class="users form col-lg-10 col-md-9 columns">
     <?= $this->Form->create($user); ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?php
-        echo $this->Form->input('firstName');
-        echo $this->Form->input('lastName');
-        echo $this->Form->input('biography');
-        echo $this->Form->input('portfolio');
-        echo $this->Form->input('email');
-        echo $this->Form->input('phone');
-        echo $this->Form->input('gender');
-        echo $this->Form->input('password');
-        echo $this->Form->input('username');
-        echo $this->Form->input('universitie_id', ['options' => $universities]);
-        ?>
+        <legend><?= __('S\'enregistrer') ?></legend>
+        <?= $this->Form->input('username', ['label' => 'Choisisez votre nom d\'utilisateur', 'placeholder' => 'Nom d\'utilisateur']); ?>
+        <?= $this->Form->input('password', ['label' => 'Créez un mot de passe', 'placeholder' => 'Mot de passe']); ?>
+        <?= $this->Form->input('confirm_password', ['type' => 'password', 'label' => 'Confirmez votre mot de passe', 'placeholder' => 'Mot de passe']); ?>
+        <?= $this->Form->input('email', ['label' => 'Votre adresse e-mail actuelle', 'placeholder' => 'E-mail']); ?>
+        <?= $this->Form->input('confirm_email', ['label' => 'Confirmez votre e-mail', 'placeholder' => 'E-mail']); ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
     <?= $this->Form->end() ?>
 </div>
+
