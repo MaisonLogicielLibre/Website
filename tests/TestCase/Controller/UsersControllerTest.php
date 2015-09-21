@@ -33,19 +33,19 @@ class UsersControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-	'app.type_users_users',
+        'app.type_users_users',
         'app.organizations',
-    'app.organizations_Projects',
-    'app.projects_users_missions',
-    'app.users',
+        'app.organizations_Projects',
+        'app.projects_users_missions',
+        'app.users',
         'app.type_users',
-    'app.svn_users',
-    'app.svns',
+        'app.svn_users',
+        'app.svns',
         'app.universities',
         'app.comments',
         'app.projects',
         'app.projects_users',
-    'app.missions'
+        'app.missions'
     ];
 
     /**
@@ -56,11 +56,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testIndexOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/users/index');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test index - No Authentification
      *
@@ -71,7 +71,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/index');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test login - Ok
      *
@@ -81,13 +81,13 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('This test has not been implemented yet.');
         $data = [
-        'username' => 'admin',
-        'password' => 'admin',
+            'username' => 'admin',
+            'password' => 'admin',
         ];
         $this->post('/users/login');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view/2']);
     }
-    
+
     /**
      * Test login - Fail
      *
@@ -110,7 +110,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/logout');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - Ok
      *
@@ -119,11 +119,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testViewOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/users/view/2');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - No Authentification
      *
@@ -134,7 +134,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/view/2');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test add - Ok
      *
@@ -143,24 +143,26 @@ class UsersControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [
-        'username' => 'mradd',
-        'password' => 'allo',
-        'firstName' => 'joe',
-        'lastName' => 'test',
-        'biography' => 'bla',
-        'portfolio' => 'www.bla.com',
-        'email' => 'bla@bla.com',
-        'phone' => '555-555-5555',
-        'gender' => 1,
-        'university' => 1,
+            'username' => 'mradd',
+            'password' => 'allo',
+            'confirm_password' => 'allo',
+            'firstName' => 'joe',
+            'lastName' => 'test',
+            'biography' => 'bla',
+            'portfolio' => 'www.bla.com',
+            'email' => 'bla@bla.com',
+            'confirm_email' => 'bla@bla.com',
+            'phone' => '555-555-5555',
+            'gender' => 1,
+            'university' => 1,
         ];
         $this->post('/users/add', $data);
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'index']);
     }
-    
+
     /**
      * Test add - Fail
      *
@@ -169,13 +171,13 @@ class UsersControllerTest extends IntegrationTestCase
     public function testAddFail()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
         $this->post('/users/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Permission
      *
@@ -184,13 +186,13 @@ class UsersControllerTest extends IntegrationTestCase
     public function testAddNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/users/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Authentification
      *
@@ -203,7 +205,7 @@ class UsersControllerTest extends IntegrationTestCase
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test register - Ok
      *
@@ -212,23 +214,18 @@ class UsersControllerTest extends IntegrationTestCase
     public function testRegisterOk()
     {
         $data = [
-        'username' => 'mrregister',
-        'password' => 'allo',
-        'firstName' => 'joe',
-        'lastName' => 'test',
-        'biography' => 'bla',
-        'portfolio' => 'www.bla.com',
-        'email' => 'bla@bla.com',
-        'phone' => '555-555-5555',
-        'gender' => 1,
-        'university' => 1,
+            'username' => 'mrregister',
+            'password' => 'allo',
+            'confirm_password' => 'allo',
+            'email' => 'bla@bla.com',
+            'confirm_email' => 'bla@bla.com',
         ];
         $this->post('/users/register', $data);
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
-    
+
+
     /**
      * Test register - Fail
      *
@@ -237,13 +234,13 @@ class UsersControllerTest extends IntegrationTestCase
     public function testRegisterFail()
     {
         $data = [
-        'password' => 'allo'
+            'password' => 'allo'
         ];
         $this->post('/users/register', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
 
     /**
      * Test edit - Ok
@@ -253,15 +250,15 @@ class UsersControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [
-            
+
         ];
         $this->get('/users/edit/1');
         $this->post('/users/edit/2', $data);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'index']);
     }
-    
+
     /**
      * Test edit - No Permission
      *
@@ -270,12 +267,12 @@ class UsersControllerTest extends IntegrationTestCase
     public function testEditNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/users/edit/2', $data);
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit - No Authentification
      *
@@ -296,11 +293,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testDeleteOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/users/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'index']);
     }
-       
+
     /**
      * Test delete - No Permission
      *
@@ -309,11 +306,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testDeleteNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/users/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Authentification
      *
