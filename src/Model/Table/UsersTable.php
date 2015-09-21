@@ -49,31 +49,32 @@ class UsersTable extends Table
         $this->belongsTo(
             'Universities',
             [
-            'foreignKey' => 'universitie_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'universitie_id',
+                'joinType' => 'INNER'
             ]
         );
         $this->hasMany(
             'Comments',
             [
-            'foreignKey' => 'user_id'
+                'foreignKey' => 'user_id'
             ]
         );
         $this->belongsToMany(
             'Projects',
             [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'project_id',
-            'joinTable' => 'projects_users'
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'project_id',
+                'joinTable' => 'projects_users'
             ]
         );
         $this->belongsToMany(
             'TypeUsers',
             [
-            'joinTable' => 'type_users_users'
+                'joinTable' => 'type_users_users'
             ]
         );
     }
+
     /**
      * Default validation rules.
      *
@@ -86,33 +87,67 @@ class UsersTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+
         $validator
-            ->requirePresence('firstName', 'create')
-            ->notEmpty('firstName');
+            ->allowEmpty('firstName');
+
         $validator
-            ->requirePresence('lastName', 'create')
-            ->notEmpty('lastName');
+            ->allowEmpty('lastName');
+
         $validator
             ->allowEmpty('biography');
+
         $validator
             ->allowEmpty('portfolio');
+
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
-            ->notEmpty('email');
+            ->notEmpty('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
+            ->add(
+                'confirm_email',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
+                    if ($value !== $context['data']['email']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The email are not equal']
+            )
+            ->requirePresence('confirm_email', 'create')
+            ->notEmpty('confirm_email');
+
         $validator
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
+            ->allowEmpty('phone');
+
         $validator
             ->add('gender', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('gender', 'create')
-            ->notEmpty('gender');
+            ->allowEmpty('gender');
+
         $validator
+            ->add(
+                'confirm_password',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
+                    if ($value !== $context['data']['password']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The passwords are not equal']
+            )
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password')
+            ->notEmpty('confirm_password');
+
         $validator
             ->requirePresence('username', 'create')
             ->notEmpty('username');
+
         return $validator;
     }
     /**

@@ -35,7 +35,7 @@ class UsersController extends AppController
         'edit' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'view_admin' => ['Administrator'],
-		'delete' => ['Administrator']
+        'delete' => ['Administrator']
     ];
 
     /**
@@ -171,7 +171,7 @@ class UsersController extends AppController
     public function register()
     {
         $user = $this->Users->newEntity();
-		
+        
         $typeUser = $this->Users->TypeUsers->findByName('Student')->first();
         $user->type_users = [$typeUser];
 
@@ -212,7 +212,7 @@ class UsersController extends AppController
             [
                 'contain' => ['Projects']
             ]
-        );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        );
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
