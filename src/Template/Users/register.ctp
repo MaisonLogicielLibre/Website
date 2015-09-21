@@ -17,12 +17,11 @@
     <?= $this->Form->create($user); ?>
     <fieldset>
         <legend><?= __('S\'enregistrer') ?></legend>
-        <?php
-        echo $this->Form->input('username', ['label' => 'Choisisez votre nom d\'utilisateur', 'placeholder' => 'Nom d\'utilisateur']);
-        echo $this->Form->input('password', ['label' => 'Créez un mot de passe', 'placeholder' => 'Mot de passe']);
-        echo $this->Form->input('confirm_password', ['type' => 'password', 'label' => 'Confirmez votre mot de passe', 'placeholder' => '']);
-        echo $this->Form->input('email', ['label' => 'Votre adresse e-mail actuelle', 'placeholder' => 'E-mail']);
-        ?>
+        <?= $this->Form->input('username', ['label' => 'Choisisez votre nom d\'utilisateur', 'placeholder' => 'Nom d\'utilisateur']); ?>
+        <?= $this->Form->input('password', ['label' => 'Créez un mot de passe', 'placeholder' => 'Mot de passe']); ?>
+        <?= $this->Form->input('confirm_password', ['type' => 'password', 'label' => 'Confirmez votre mot de passe', 'placeholder' => 'Mot de passe']); ?>
+        <?= $this->Form->input('email', ['label' => 'Votre adresse e-mail actuelle', 'placeholder' => 'E-mail']); ?>
+        <?= $this->Form->input('confirm_email', ['label' => 'Confirmez votre e-mail', 'placeholder' => 'E-mail']); ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
     <?= $this->Form->end() ?>
