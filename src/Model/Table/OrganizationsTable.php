@@ -72,8 +72,7 @@ class OrganizationsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('website', 'create')
-            ->notEmpty('website');
+            ->allowEmpty('website');
 
         $validator
             ->allowEmpty('logo');

@@ -16,7 +16,6 @@
             echo $this->Form->input('website');
             echo $this->Form->input('logo');
             echo $this->Form->input('description');
-            echo $this->Form->input('projects._ids', ['options' => $projects]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
