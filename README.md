@@ -11,7 +11,7 @@ Ce site est destiné à la communauté étudiante, il permet l'intégration et l
 
 Les fonctionnalités à venir sont reportées essentiellement dans le [*bugtraker*](https://github.com/MaisonLogicielLibre/TableauDeBord/issues).
 
-Vous pouvez suivre l'avancé du projet sur notre [dashboard](https://waffle.io/MaisonLogicielLibre/Site) héberger sur Waffle.io.
+Vous pouvez suivre l'avancé du projet sur notre [dashboard](https://waffle.io/MaisonLogicielLibre/Website) héberger sur Waffle.io.
 
 # Prototype
 
