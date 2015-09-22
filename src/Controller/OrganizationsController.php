@@ -56,6 +56,11 @@ class OrganizationsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'finder' => [
+                'show' => true
+            ]
+        ];
         $this->set('organizations', $this->paginate($this->Organizations));
         $this->set('_serialize', ['organizations']);
     }
@@ -84,6 +89,34 @@ class OrganizationsController extends AppController
     public function add()
     {
         $organization = $this->Organizations->newEntity();
+
+        $organization->editIsValidated(true);
+        $organization->editIsRejected(false);
+
+        if ($this->request->is('post')) {
+            $organization = $this->Organizations->patchEntity($organization, $this->request->data);
+            if ($this->Organizations->save($organization)) {
+                $this->Flash->success(__('The organization has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The organization could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('organization'));
+        $this->set('_serialize', ['organization']);
+    }
+
+    /**
+     * Submit method
+     * @return redirect
+     */
+    public function submit()
+    {
+        $organization = $this->Organizations->newEntity();
+
+        $organization->editIsValidated(false);
+        $organization->editIsRejected(false);
+
         if ($this->request->is('post')) {
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
