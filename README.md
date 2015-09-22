@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/MaisonLogicielLibre/Website.svg?branch=develop)](https://travis-ci.org/MaisonLogicielLibre/Website)
 [![Stories in Ready](https://badge.waffle.io/MaisonLogicielLibre/Website.png?label=ready&title=Ready)](https://waffle.io/MaisonLogicielLibre/Website)
 [![Licence GPL](http://img.shields.io/badge/license-GPL-green.svg)](http://www.gnu.org/licenses/quick-guide-gplv3.fr.html)
 [![Coverage Status](https://coveralls.io/repos/MaisonLogicielLibre/Website/badge.svg?branch=develop&service=github)](https://coveralls.io/github/MaisonLogicielLibre/Website?branch=develop)
