@@ -158,6 +158,69 @@ class OrganizationsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test submit - Ok
+     *
+     * @return void
+     */
+    public function testSubmitOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [
+            'name' => 'MLL',
+            'website' => 'www.website.com',
+            'logo' => '/img/logo.jpg',
+            'description' => 'Awesome'
+        ];
+        $this->post('/organizations/submit', $data);
+
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+    }
+
+    /**
+     * Test submit - Fail
+     *
+     * @return void
+     */
+    public function testSubmitFail()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [];
+        $this->post('/organizations/submit', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test submit - No Permission
+     *
+     * @return void
+     */
+    public function testSubmitNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+        $this->post('/organizations/submit', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test submit - No Authentification
+     *
+     * @return void
+     */
+    public function testSubmitNoAuth()
+    {
+        $data = [];
+        $this->post('/organizations/submit', $data);
+
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
      * Test edit - Ok
      *
      * @return void

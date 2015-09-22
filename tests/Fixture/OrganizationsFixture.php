@@ -22,6 +22,8 @@ class OrganizationsFixture extends TestFixture
         'website' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'logo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'description' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'isValidated' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'isRejected' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -43,7 +45,9 @@ class OrganizationsFixture extends TestFixture
             'name' => 'MLL',
             'website' => 'www.website.com',
             'logo' => '/img/logo.jpg',
-            'description' => 'Awesome'
+            'description' => 'Awesome',
+            'isValidated' => 1,
+            'isRejected' => 0
         ],
     ];
 }
