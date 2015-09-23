@@ -32,17 +32,17 @@ class UniversitiesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
     'app.type_users_users',
-        'app.organizations',
+    'app.organizations',
     'app.organizations_Projects',
-    'app.projects_users_missions',
     'app.users',
-        'app.type_users',
+    'app.type_users',
     'app.svn_users',
     'app.svns',
-        'app.universities',
-        'app.comments',
-        'app.projects',
-        'app.projects_users',
+    'app.universities',
+    'app.comments',
+    'app.projects',
+    'app.projects_contributors',
+    'app.projects_mentors',
     'app.missions'
     ];
 

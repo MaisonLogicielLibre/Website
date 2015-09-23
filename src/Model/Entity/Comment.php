@@ -46,15 +46,7 @@ class Comment extends Entity
     {
         return $this->_properties['id'];
     }
-    
-    /**
-     * Get the projects_user_id
-     * @return int projects_user_id
-     */
-    public function getProjectsUserId()
-    {
-        return $this->_properties['projects_user_id'];
-    }
+
 
     /**
      * Get the text

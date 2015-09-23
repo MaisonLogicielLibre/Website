@@ -34,7 +34,6 @@ class CommentsControllerTest extends IntegrationTestCase
         'app.type_users_users',
         'app.organizations',
         'app.organizations_Projects',
-        'app.projects_users_missions',
         'app.users',
         'app.type_users',
         'app.svn_users',
@@ -42,7 +41,8 @@ class CommentsControllerTest extends IntegrationTestCase
         'app.universities',
         'app.comments',
         'app.projects',
-        'app.projects_users',
+        'app.projects_contributors',
+        'app.projects_mentors',
         'app.missions'
     ];
 
@@ -104,7 +104,6 @@ class CommentsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $data = [
-            'projects_user_id' => 1,
             'text' => 'Du texte',
             'user_id' => 1
         ];

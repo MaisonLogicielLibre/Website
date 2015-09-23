@@ -46,13 +46,6 @@ class CommentsTable extends Table
         $this->primaryKey('id');
 
         $this->belongsTo(
-            'ProjectsUsers',
-            [
-                'foreignKey' => 'projects_user_id',
-                'joinType' => 'INNER'
-            ]
-        );
-        $this->belongsTo(
             'Users',
             [
                 'foreignKey' => 'user_id',
@@ -91,7 +84,6 @@ class CommentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['projects_user_id'], 'ProjectsUsers'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
