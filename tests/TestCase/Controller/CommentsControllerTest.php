@@ -104,7 +104,6 @@ class CommentsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $data = [
-            'projects_user_id' => 1,
             'text' => 'Du texte',
             'user_id' => 1
         ];

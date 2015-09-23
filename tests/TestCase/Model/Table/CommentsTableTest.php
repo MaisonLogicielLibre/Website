@@ -88,22 +88,6 @@ class CommentsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-
-    /**
-     * Test getProjectsUserId
-     * @return void
-     */
-    public function testGetProjectsUserId()
-    {
-        $id = 1;
-        $expected = 1;
-
-        $comment = $this->Comments->get($id);
-
-        $result = $comment->getProjectsUserId();
-
-        $this->assertEquals($expected, $result);
-    }
     
     /**
      * Test getText
