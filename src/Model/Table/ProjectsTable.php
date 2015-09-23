@@ -99,21 +99,16 @@ class ProjectsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('link', 'create')
-            ->notEmpty('link');
+            ->allowEmpty('link');
 
         $validator
             ->requirePresence('description', 'create')
             ->notEmpty('description');
 
         $validator
-            ->add('accepted', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('accepted', 'create')
             ->notEmpty('accepted');
 
         $validator
-            ->add('archived', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('archived', 'create')
             ->notEmpty('archived');
 
         return $validator;

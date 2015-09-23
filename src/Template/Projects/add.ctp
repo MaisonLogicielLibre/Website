@@ -19,9 +19,6 @@
             echo $this->Form->input('name');
             echo $this->Form->input('link');
             echo $this->Form->input('description');
-            echo $this->Form->input('accepted');
-            echo $this->Form->input('archived');
-            echo $this->Form->input('users._ids', ['options' => $users]);
             echo $this->Form->input('organizations._ids', ['options' => $organizations]);
         ?>
     </fieldset>
