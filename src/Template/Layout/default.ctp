@@ -106,12 +106,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </div>
 </footer>
-<?=$this->fetch('scriptBottom'); ?>
 <!-- jQuery -->
 <?= $this->Html->script('jquery-2.1.4.min'); ?>
 <!-- Bootstrap Core JavaScript -->
 <?= $this->Html->script('bootstrap.min'); ?>
 <!-- Google Analytics -->
 <?= $this->Html->script('googleAnalytics'); ?>
+
+<!-- WARNING :  Do not move this line before a manual import of script! -->
+<?=$this->fetch('scriptBottom'); ?>
 </body>
 </html>
