@@ -64,7 +64,16 @@ class UsersTable extends Table
             [
                 'foreignKey' => 'user_id',
                 'targetForeignKey' => 'project_id',
-                'joinTable' => 'projects_users'
+                'joinTable' => 'projects_contributors'
+            ]
+        );
+        $this->belongsToMany(
+            'ProjectsMentored',
+            [
+                'className' => 'Projects',
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'project_id',
+                'joinTable' => 'projects_mentors'
             ]
         );
         $this->belongsToMany(

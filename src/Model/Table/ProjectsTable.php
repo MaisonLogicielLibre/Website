@@ -47,13 +47,6 @@ class ProjectsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsTo(
-            'Users',
-            [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
-            ]
-        );
         $this->hasMany(
             'Missions',
             [
@@ -69,11 +62,21 @@ class ProjectsTable extends Table
             ]
         );
         $this->belongsToMany(
-            'Users',
+            'Contributors',
             [
+            'className' => 'Users',
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'user_id',
-            'joinTable' => 'projects_users'
+            'joinTable' => 'projects_contributors'
+            ]
+        );
+        $this->belongsToMany(
+            'Mentors',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'project_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'projects_mentors'
             ]
         );
     }
@@ -114,19 +117,5 @@ class ProjectsTable extends Table
             ->notEmpty('archived');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     *
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        return $rules;
     }
 }
