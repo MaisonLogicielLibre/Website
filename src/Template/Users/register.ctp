@@ -16,12 +16,12 @@
 <div class="users form col-lg-10 col-md-9 columns">
     <?= $this->Form->create($user); ?>
     <fieldset>
-        <legend><?= __('S\'enregistrer') ?></legend>
-        <?= $this->Form->input('username', ['label' => 'Choisisez votre nom d\'utilisateur', 'placeholder' => 'Nom d\'utilisateur']); ?>
-        <?= $this->Form->input('password', ['label' => 'Créez un mot de passe', 'placeholder' => 'Mot de passe']); ?>
-        <?= $this->Form->input('confirm_password', ['type' => 'password', 'label' => 'Confirmez votre mot de passe', 'placeholder' => 'Mot de passe']); ?>
-        <?= $this->Form->input('email', ['label' => 'Votre adresse e-mail actuelle', 'placeholder' => 'E-mail']); ?>
-        <?= $this->Form->input('confirm_email', ['label' => 'Confirmez votre e-mail', 'placeholder' => 'E-mail']); ?>
+        <legend><?= __('Register') ?></legend>
+        <?= $this->Form->input('username', ['label' => __('Choose your username'), 'placeholder' => __('Username') ]); ?>
+        <?= $this->Form->input('password', ['label' => __('Choose a password'), 'placeholder' => __('Password') ]); ?>
+        <?= $this->Form->input('confirm_password', ['type' => 'password', 'label' => __('Confirm password'), 'placeholder' => __('Password') ]); ?>
+        <?= $this->Form->input('email', ['label' => __('Email adress'), 'placeholder' => __('Email') ]); ?>
+        <?= $this->Form->input('confirm_email', ['label' => __('Confirm email adress'), 'placeholder' => __('Email') ]); ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
     <?= $this->Form->end() ?>

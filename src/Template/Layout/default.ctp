@@ -98,10 +98,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div class="container">
         <div class="row">
             <div class="text-center">
-                <h4><strong>La Maison du Logiciel Libre</strong></h4>
-                400 Rue Montfort<br>Montréal, QC, H3C 4J9
+                <h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
+                400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
                 <br><i class="fa fa-phone-square"></i> (514) 396-8552
-                <br>Copyright &copy; La Maison du Logiciel Libre 2015</p>
+                <br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
             </div>
         </div>
     </div>
