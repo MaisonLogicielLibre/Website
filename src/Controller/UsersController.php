@@ -32,7 +32,7 @@ class UsersController extends AppController
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
         'submit' => ['Student', 'Mentor', 'Administrator'],
-        'edit' => ['Administrator'],
+        'edit' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'view_admin' => ['Administrator'],
         'delete' => ['Administrator']
@@ -215,27 +215,30 @@ class UsersController extends AppController
                 'contain' => ['Projects']
             ]
         );
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
 
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
 
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(
-                    __(
-                        'The user could not be saved. Please,
-                 try again.'
-                    )
-                );
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
             }
+            $universities = $this->Users->Universities->find('list', ['limit' => 200]);
+            $this->set(compact('user', 'universities', 'you'));
+            $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'edit', $user->id]);
         }
-        $typeUsers = $this->Users->TypeUsers->find('list', ['limit' => 200]);
-        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-        $projects = $this->Users->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'typeUsers', 'universities', 'projects'));
-        $this->set('_serialize', ['user']);
     }
 
     /**
