@@ -107,7 +107,20 @@ class UsersTable extends Table
             ->allowEmpty('biography');
 
         $validator
-            ->allowEmpty('portfolio');
+            ->allowEmpty('portfolio')
+            ->add(
+                'portfolio',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
 
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
@@ -130,7 +143,20 @@ class UsersTable extends Table
             ->notEmpty('confirm_email');
 
         $validator
-            ->allowEmpty('phone');
+            ->allowEmpty('phone')
+            ->add(
+                'phone',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^([0-9]{1}(\.|\s|-)?){10}$/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not a valid number.')
+                ]
+            );
 
         $validator
             ->add('gender', 'valid', ['rule' => 'boolean'])
