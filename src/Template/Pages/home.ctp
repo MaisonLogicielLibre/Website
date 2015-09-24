@@ -1,7 +1,5 @@
 <div id="top" class="header">
     <div class="text-vertical-center">
-        <h1><?php echo __('Maison du Logiciel Libre') ?> </h1>
-        <br>
     </div>
 </div>
 <section id="about" class="about">
@@ -59,6 +57,28 @@
 			build a portfolio with their open source achievements ; (iv) obtain
 			recognitions from their university.') ?>
         </p>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <h2><?php echo __('Value Proposition') ?></h2>
+
+        <p class="lead">
+			<?php echo __('Match Interns with Industry and Academic funded open source projects') ?> <br>
+			<?php echo __('Match Capstone students with Industry and Academic sponsored open source projects') ?> <br>			
+			<?php echo __('Support for graduate students working on  open source projects') ?> <br>         
+			<?php echo __('Project mentorship (each submitted project must have a mentor)') ?> <br>
+			<?php echo __('Teaching assistant (TAs) access') ?> <br>
+			<?php echo __('Additional mentor access from ML2 staff') ?> <br>
+			<?php echo __('Networking with ML2 members: students from 7 universities, open source community, mentors, and industry') ?> <br>
+			<?php echo __('Promotion of projects and students on the ML2 website') ?> <br>
+			<?php echo __('CV Portfolio  testimonial plugin (testimonials from TAs & mentors)') ?> <br>
+			<?php echo __('CV Portfolio  open source code summary plugin (key performance indicators on open source repo contributions)') ?> <br>
+			<?php echo __('Access to ML2 academic and industry conferences and seminars') ?> <br>
+			<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>   
+		</p>
     </div>
 </div>
 </section>
