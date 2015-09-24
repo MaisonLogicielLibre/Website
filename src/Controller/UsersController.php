@@ -97,8 +97,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(
                 __(
-                    "Nom d'utilisateur ou mot de passe incorrect,
-             essayez à nouveau."
+                    "Username or password incorrect, try again."
                 )
             );
         }
