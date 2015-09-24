@@ -50,7 +50,7 @@ class UsersTable extends Table
             'Universities',
             [
                 'foreignKey' => 'universitie_id',
-                'joinType' => 'INNER'
+                'joinType' => 'LEFT'
             ]
         );
         $this->hasMany(
