@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-24 10:11-0400\n"
-"PO-Revision-Date: 2015-09-24 10:21-0400\n"
+"POT-Creation-Date: 2015-09-24 11:06-0400\n"
+"PO-Revision-Date: 2015-09-24 11:07-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -17,179 +17,179 @@ msgstr ""
 
 #: Controller/CommentsController.php:90;117
 msgid "The comment has been saved."
-msgstr ""
+msgstr "Le commentaire a été enregistré."
 
 #: Controller/CommentsController.php:93;120
 msgid "The comment could not be saved. Please, try again."
-msgstr ""
+msgstr "Le commentaire n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/CommentsController.php:137
 msgid "The comment has been deleted."
-msgstr ""
+msgstr "Le commentaire a été supprimé."
 
 #: Controller/CommentsController.php:139
 msgid "The comment could not be deleted. Please, try again."
-msgstr ""
+msgstr "Le commentaire n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/MissionsController.php:90;116
 msgid "The mission has been saved."
-msgstr ""
+msgstr "La mission a été enregistrée."
 
 #: Controller/MissionsController.php:93;119
 msgid "The mission could not be saved. Please, try again."
-msgstr ""
+msgstr "La mission n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/MissionsController.php:136
 msgid "The mission has been deleted."
-msgstr ""
+msgstr "La mission a été supprimée."
 
 #: Controller/MissionsController.php:138
 msgid "The mission could not be deleted. Please, try again."
-msgstr ""
+msgstr "La mission n'a pas pu être supprimée. Veuillez réessayer."
 
 #: Controller/OrganizationsController.php:99;123;149
 msgid "The organization has been saved."
-msgstr ""
+msgstr "L'organisation a été enregistrée."
 
 #: Controller/OrganizationsController.php:102;126;152
 msgid "The organization could not be saved. Please, try again."
-msgstr ""
+msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/OrganizationsController.php:169
 msgid "The organization has been deleted."
-msgstr ""
+msgstr "L'organisation a été supprimée."
 
 #: Controller/OrganizationsController.php:171
 msgid "The organization could not be deleted. Please, try again."
-msgstr ""
+msgstr "L'organisation n'a pas pu être supprimée. Veuillez réessayer."
 
 #: Controller/OrganizationsProjectsController.php:90;116
 msgid "The organizations project has been saved."
-msgstr ""
+msgstr "Le projet des organisations a été enregistré."
 
 #: Controller/OrganizationsProjectsController.php:93;119
 msgid "The organizations project could not be saved. Please, try again."
 msgstr ""
+"Le projet des organisations n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/OrganizationsProjectsController.php:136
 msgid "The organizations project has been deleted."
-msgstr ""
+msgstr "Le projet des organisations a été supprimé."
 
 #: Controller/OrganizationsProjectsController.php:138
 msgid "The organizations project could not be deleted. Please, try again."
 msgstr ""
+"Le projet des organisations n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/ProjectsController.php:94;122
 msgid "The project has been saved."
-msgstr ""
+msgstr "Le projet a été enregistré."
 
 #: Controller/ProjectsController.php:97;125
 msgid "The project could not be saved. Please, try again."
-msgstr ""
+msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/ProjectsController.php:142
 msgid "The project has been deleted."
-msgstr ""
+msgstr "Le projet a été supprimé."
 
 #: Controller/ProjectsController.php:144
 msgid "The project could not be deleted. Please, try again."
-msgstr ""
+msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/SvnUsersController.php:90;116
 msgid "The svn user has been saved."
-msgstr ""
+msgstr "Le compte svn a été enregistré."
 
 #: Controller/SvnUsersController.php:93;119
 msgid "The svn user could not be saved. Please, try again."
-msgstr ""
+msgstr "Le compte svn n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/SvnUsersController.php:136
 msgid "The svn user has been deleted."
-msgstr ""
+msgstr "Le compte svn a été supprimé."
 
 #: Controller/SvnUsersController.php:138
 msgid "The svn user could not be deleted. Please, try again."
-msgstr ""
+msgstr "Le compte svn n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/SvnsController.php:90;116
 msgid "The svn has been saved."
-msgstr ""
+msgstr "Le svn a été enregistré."
 
 #: Controller/SvnsController.php:93;119
 msgid "The svn could not be saved. Please, try again."
-msgstr ""
+msgstr "Le svn n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/SvnsController.php:136
 msgid "The svn has been deleted."
-msgstr ""
+msgstr "Le svn a été supprimé."
 
 #: Controller/SvnsController.php:138
 msgid "The svn could not be deleted. Please, try again."
-msgstr ""
+msgstr "Le svn n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/TypeUsersController.php:90;116
 msgid "The type user has been saved."
-msgstr ""
+msgstr "Le rôle a étéenregistré."
 
 #: Controller/TypeUsersController.php:93;119
 msgid "The type user could not be saved. Please, try again."
-msgstr ""
+msgstr "Le rôle n'a pas pu être enregistré. Veuillez réessayer."
 
 #: Controller/TypeUsersController.php:136
 msgid "The type user has been deleted."
-msgstr ""
+msgstr "Le rôle a été supprimé."
 
 #: Controller/TypeUsersController.php:138
 msgid "The type user could not be deleted. Please, try again."
-msgstr ""
+msgstr "Le rôle n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Controller/UniversitiesController.php:90;116
 msgid "The university has been saved."
-msgstr ""
+msgstr "L'université à été enregistrée."
 
 #: Controller/UniversitiesController.php:93;119
 msgid "The university could not be saved. Please, try again."
-msgstr ""
+msgstr "L'université n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/UniversitiesController.php:136
 msgid "The university has been deleted."
-msgstr ""
+msgstr "L'université a été supprimée."
 
 #: Controller/UniversitiesController.php:138
 msgid "The university could not be deleted. Please, try again."
-msgstr ""
+msgstr "L'université n'a pas pu être supprimée. Veuillez réessayer."
 
 #: Controller/UsersController.php:99
-msgid ""
-"Nom d'utilisateur ou mot de passe incorrect,\n"
-"             essayez à nouveau."
-msgstr ""
+msgid "Username or password incorrect, try again."
+msgstr "Nom d'utilisateur ou mot de passe inccorect, veuillez réessayer."
 
-#: Controller/UsersController.php:148;184;221
+#: Controller/UsersController.php:147;183;220
 msgid "The user has been saved."
-msgstr ""
+msgstr "Le compte a été enregistré."
 
-#: Controller/UsersController.php:152
+#: Controller/UsersController.php:151
 msgid ""
 "The user could not be saved. Please,\n"
 "                try again."
-msgstr ""
+msgstr "Le compte n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:188;225
+#: Controller/UsersController.php:187;224
 msgid ""
 "The user could not be saved. Please,\n"
 "                 try again."
-msgstr ""
+msgstr "Le compte n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:253
+#: Controller/UsersController.php:252
 msgid "The user has been deleted."
-msgstr ""
+msgstr "Le compte a été supprimé."
 
-#: Controller/UsersController.php:256
+#: Controller/UsersController.php:255
 msgid ""
 "The user could not be deleted. Please,\n"
 "             try again."
-msgstr ""
+msgstr "Le compte n'a pas pu être supprimé. Veuillez réessayer."
 
 #: Template/Comments/add.ctp:2 Template/Comments/edit.ctp:2
 #: Template/Comments/index.ctp:2;20 Template/Comments/view.ctp:2
@@ -408,7 +408,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: Template/Layout/default.ctp:101;104 Template/Pages/home.ctp:3
+#: Template/Layout/default.ctp:101;104
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
@@ -625,23 +625,23 @@ msgstr ""
 msgid "Organization"
 msgstr ""
 
-#: Template/Pages/home.ctp:12
+#: Template/Pages/home.ctp:10
 msgid "Build ML2 future"
 msgstr "Bâtissez le futur de la maison"
 
-#: Template/Pages/home.ctp:13
+#: Template/Pages/home.ctp:11
 msgid "Complete survey"
 msgstr "Participer au sondage"
 
-#: Template/Pages/home.ctp:18
+#: Template/Pages/home.ctp:16
 msgid "Loading..."
 msgstr "Chargement en cours"
 
-#: Template/Pages/home.ctp:28
+#: Template/Pages/home.ctp:26
 msgid "Our Mission"
 msgstr "Notre mission"
 
-#: Template/Pages/home.ctp:31
+#: Template/Pages/home.ctp:29
 msgid ""
 "This initiative is born from a meeting between the ÉTS director and Google\n"
 "\t\t\tMontreal director. Seeing the difficulty that students have to hone "
@@ -660,7 +660,7 @@ msgstr ""
 "réalisations, ils ont eu l’idée de créer la Maison du Logiciel Libre ou tout "
 "simplement ML²"
 
-#: Template/Pages/home.ctp:38
+#: Template/Pages/home.ctp:36
 msgid ""
 "The foremost mission of ML2 is to offer a place of meeting and sharing in\n"
 "\t\t\tMontreal allowing the students to participate in open source software\n"
@@ -682,7 +682,7 @@ msgstr ""
 "ayant eu des\n"
 " expériences académiques et professionnelles très variés."
 
-#: Template/Pages/home.ctp:47
+#: Template/Pages/home.ctp:45
 msgid ""
 "The mission of ML2 is an educational mission. Multiple activities will be\n"
 "\t\t\teventually offered : free development, graduation projects, "
@@ -707,7 +707,7 @@ msgstr ""
 "formation des\n"
 "étudiants. L’organisation de séminaires pourra compléter ce volet éducatif."
 
-#: Template/Pages/home.ctp:56
+#: Template/Pages/home.ctp:54
 msgid ""
 "By participating in ML2 activities, the students will be able to (i)\n"
 "\t\t\tdiscover the open source software world with its codes and objectives; "
@@ -727,16 +727,16 @@ msgstr ""
 "reconnaissances de\n"
 "leurs acquis de leur université."
 
-#: Template/Pages/home.ctp:68
+#: Template/Pages/home.ctp:66
 msgid "Value Proposition"
 msgstr "Proposition de Valeur"
 
-#: Template/Pages/home.ctp:71
+#: Template/Pages/home.ctp:69
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr ""
 "Jumeler les stagiares avec des projets open source académiques et industriels"
 
-#: Template/Pages/home.ctp:72
+#: Template/Pages/home.ctp:70
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
@@ -744,25 +744,25 @@ msgstr ""
 "Jumeler les projets de fin d'étude avec des projets open source académiques "
 "et industriels"
 
-#: Template/Pages/home.ctp:73
+#: Template/Pages/home.ctp:71
 msgid "Support for graduate students working on  open source projects"
 msgstr ""
 "Du support pour les étudiants diplômés travailalnt sur des projets open "
 "source"
 
-#: Template/Pages/home.ctp:74
+#: Template/Pages/home.ctp:72
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr "Mentorat de projet (chaque projet doit avoir un mentor)"
 
-#: Template/Pages/home.ctp:75
+#: Template/Pages/home.ctp:73
 msgid "Teaching assistant (TAs) access"
 msgstr "Accès à des professeurs"
 
-#: Template/Pages/home.ctp:76
+#: Template/Pages/home.ctp:74
 msgid "Additional mentor access from ML2 staff"
 msgstr "Accès aux mentors du ML²"
 
-#: Template/Pages/home.ctp:77
+#: Template/Pages/home.ctp:75
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
@@ -770,27 +770,27 @@ msgstr ""
 "Accès au réseau du ML² : étudiants de 7 universités, communauté open source, "
 "mentors et l'industrie"
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:76
 msgid "Promotion of projects and students on the ML2 website"
 msgstr "Promotion des projets et des étudiants sur le site web du ML²"
 
-#: Template/Pages/home.ctp:79
+#: Template/Pages/home.ctp:77
 msgid "CV Portfolio  testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 "Des commentaires des professeurs et des mentors pouvant complémenter un CV/"
 "Portoflio"
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:78
 msgid ""
 "CV Portfolio  open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
 msgstr "Le code source des projets pouvant complémenter un CV/Portoflio"
 
-#: Template/Pages/home.ctp:81
+#: Template/Pages/home.ctp:79
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr "Accès aux séminaires et aux conférences du ML²"
 
-#: Template/Pages/home.ctp:82
+#: Template/Pages/home.ctp:80
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "Accès 24/7 au local du ML² (RC du pavilion A de l'ÉTS)"
 
