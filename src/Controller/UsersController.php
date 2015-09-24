@@ -237,7 +237,7 @@ class UsersController extends AppController
             $this->set(compact('user', 'universities', 'you'));
             $this->set('_serialize', ['user']);
         } else {
-            return $this->redirect(['action' => 'edit', $user->id]);
+            return $this->redirect(['action' => 'edit', $this->request->session()->read('Auth.User.id')]);
         }
     }
 

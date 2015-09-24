@@ -151,7 +151,7 @@ class UsersControllerTest extends IntegrationTestCase
             'firstName' => 'joe',
             'lastName' => 'test',
             'biography' => 'bla',
-            'portfolio' => 'www.bla.com',
+            'portfolio' => 'http://bla.com',
             'email' => 'bla@bla.com',
             'confirm_email' => 'bla@bla.com',
             'phone' => '555-555-5555',
@@ -256,7 +256,7 @@ class UsersControllerTest extends IntegrationTestCase
         ];
         $this->get('/users/edit/1');
         $this->post('/users/edit/2', $data);
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'index']);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 2]);
     }
 
     /**
