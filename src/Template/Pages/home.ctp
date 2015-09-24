@@ -61,4 +61,26 @@
         </p>
     </div>
 </div>
+
+<hr>
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <h2><?php echo __('Value Proposition') ?></h2>
+
+        <p class="lead">
+			<?php echo __('Match Interns with Industry and Academic funded open source projects') ?>
+			<?php echo __('Match Capstone students with Industry and Academic sponsored open source projects') ?>			
+			<?php echo __('Support for graduate students working on  open source projects') ?>          
+			<?php echo __('Project mentorship (each submitted project must have a mentor)') ?>
+			<?php echo __('Teaching assistant (TAs) access') ?>
+			<?php echo __('Additional mentor access from ML2 staff') ?>
+			<?php echo __('Networking with ML2 members: students from 7 universities, open source community, mentors, and industry') ?>
+			<?php echo __('Promotion of projects and students on the ML2 website') ?>
+			<?php echo __('CV Portfolio  testimonial plugin (testimonials from TAs & mentors)') ?>
+			<?php echo __('CV Portfolio  open source code summary plugin (key performance indicators on open source repo contributions)') ?>
+			<?php echo __('Access to ML2 academic and industry conferences and seminars') ?>
+			<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>   
+		</p>
+    </div>
+</div>
 </section>
