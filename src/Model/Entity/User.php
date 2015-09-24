@@ -69,9 +69,9 @@ class User extends Entity
     }
 
     /**
-    * Get the full name
-    * @return string fullName
-    */
+     * Get the full name
+     * @return string fullName
+     */
     public function getName()
     {
         if (empty($this->_properties['firstName']) || empty($this->_properties['lastName'])) {
@@ -145,9 +145,9 @@ class User extends Entity
     }
 
     /**
-    * Get the university
-    * @return object university
-    */
+     * Get the university
+     * @return object university
+     */
     public function getUniversity()
     {
         return $this->_properties['university'];

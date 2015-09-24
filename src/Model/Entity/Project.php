@@ -72,7 +72,7 @@ class Project extends Entity
     {
         return $this->_properties['description'];
     }
-    
+
     /**
      * Get if the project is accepted
      * @return int accepted
