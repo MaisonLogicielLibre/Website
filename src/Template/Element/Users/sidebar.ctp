@@ -20,13 +20,7 @@
                 <li>
                     <hr/>
                 </li>
-                <li><a href="#">
-                                    <span class="fa-stack">
-                                        <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-pencil fa-stack-1x"
-                                           style="color:<?= ($this->request->action == 'editPassword') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> Change email</a></li>
-                <li class="<?= ($this->request->action == 'email') ? 'active disabled' : ''; ?>">
+                <li class="<?= ($this->request->action == 'edit') ? 'active disabled' : ''; ?>">
                     <a href=<?= $this->Url->build(
                         [
                             "controller" => "Users",
@@ -37,6 +31,12 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
+                                    </span> Change email</a></li>
+                <li><a href="#">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-pencil fa-stack-1x"
+                                           style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> Change password</a></li>
                 <!-- Modify phone link/form -->
                 <li>
