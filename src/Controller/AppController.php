@@ -18,6 +18,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -34,6 +35,7 @@ use Cake\Event\Event;
  * @link     http://cakephp.org CakePHP(tm) Project
  * @since    0.2.9
  */
+
 class AppController extends Controller
 {
 
@@ -69,12 +71,32 @@ class AppController extends Controller
     }
     
     /**
+     * Check for browser language and set website language to it
+     *
+     * @return void
+     */
+    protected function checkBrowserLanguage()
+    {
+        $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+         
+        //available languages
+        if ($browserLanguage == 'en') {
+            I18n::locale('en_US');
+        } elseif ($browserLanguage == 'fr') {
+            I18n::locale('fr_CA');
+        } else {
+            I18n::locale('en_US');
+        }
+    }
+    
+    /**
      * Filter preparation
      * @param Event $event event
      * @return void
      */
     public function beforeFilter(Event $event)
     {
+        $this->checkBrowserLanguage();
         $this->Auth->allow(['display']);
     }
 }

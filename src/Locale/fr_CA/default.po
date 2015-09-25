@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-09-25 10:41-0400\n"
-"PO-Revision-Date: 2015-09-25 10:57-0400\n"
+"PO-Revision-Date: 2015-09-25 14:12-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -775,26 +775,23 @@ msgstr "Proposition de Valeur"
 
 #: Template/Pages/home.ctp:69
 msgid "Match Interns with Industry and Academic funded open source projects"
-msgstr ""
-"Jumeler les stagiares avec des projets open source académiques et industriels"
+msgstr "Jumeler des stagiaires à des projets logiciel libre"
 
 #: Template/Pages/home.ctp:70
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
-msgstr ""
-"Jumeler les projets de fin d'étude avec des projets open source académiques "
-"et industriels"
+msgstr "Jumeler des projets de fin d’étude à des projets logiciel libre"
 
 #: Template/Pages/home.ctp:71
 msgid "Support for graduate students working on  open source projects"
 msgstr ""
-"Du support pour les étudiants diplômés travailalnt sur des projets open "
-"source"
+"Offrir du support aux étudiants gradués travaillant sur des projets logiciel "
+"libre"
 
 #: Template/Pages/home.ctp:72
 msgid "Project mentorship (each submitted project must have a mentor)"
-msgstr "Mentorat de projet (chaque projet doit avoir un mentor)"
+msgstr "Mentorat de projet (chaque projet aura un mentor)"
 
 #: Template/Pages/home.ctp:73
 msgid "Teaching assistant (TAs) access"
@@ -802,39 +799,38 @@ msgstr "Accès à des professeurs"
 
 #: Template/Pages/home.ctp:74
 msgid "Additional mentor access from ML2 staff"
-msgstr "Accès aux mentors du ML²"
+msgstr "Accès aux mentors de ML²"
 
 #: Template/Pages/home.ctp:75
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
 msgstr ""
-"Accès au réseau du ML² : étudiants de 7 universités, communauté open source, "
-"mentors et l'industrie"
+"Accès au réseau de ML² : étudiants de 7 universités, la communauté du "
+"logiciel libre, mentors et industriels"
 
 #: Template/Pages/home.ctp:76
 msgid "Promotion of projects and students on the ML2 website"
-msgstr "Promotion des projets et des étudiants sur le site web du ML²"
+msgstr "Promouvoir les projets et les étudiants sur le site web de ML²"
 
 #: Template/Pages/home.ctp:77
 msgid "CV Portfolio  testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
-"Des commentaires des professeurs et des mentors pouvant complémenter un CV/"
-"Portoflio"
+"Accès aux commentaires des mentors et des professeurs pour les CV/portfolio "
 
 #: Template/Pages/home.ctp:78
 msgid ""
 "CV Portfolio  open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
-msgstr "Le code source des projets pouvant complémenter un CV/Portoflio"
+msgstr "Accès aux codes sources des projets pour les CV/portfolio "
 
 #: Template/Pages/home.ctp:79
 msgid "Access to ML2 academic and industry conferences and seminars"
-msgstr "Accès aux séminaires et aux conférences du ML²"
+msgstr "Accès aux conférences et séminaires de ML²"
 
 #: Template/Pages/home.ctp:80
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
-msgstr "Accès 24/7 au local du ML² (RC du pavilion A de l'ÉTS)"
+msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
 
 #: Template/Pages/partner.ctp:3
 msgid "Industry"
