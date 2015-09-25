@@ -250,7 +250,8 @@ class UsersController extends AppController
      * @return redirect
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function email($id = null) {
+    public function email($id = null)
+    {
         $user = $this->Users->get($id);
 
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;

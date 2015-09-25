@@ -2,12 +2,12 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <img src="<?= 'http://www.gravatar.com/avatar/' . md5($user->getEmail()) . '?s=512' ?>"
+            <img src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=512' ?>"
                  alt="avatar"
                  class="img-responsive center-block"/>
             <br/>
             <ul class="nav nav-pills nav-stacked">
-                <?php if($user->getPortfolio() != null): ?>
+                <?php if(!empty($user) && $user->getPortfolio() != null): ?>
                     <li><a href="<?= $user->getPortfolio() ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
@@ -20,7 +20,7 @@
                 <li>
                     <hr/>
                 </li>
-                <li class="<?= ($this->request->action == 'edit') ? 'active disabled' : ''; ?>">
+                <li class="<?= ($this->request->action == 'email') ? 'active disabled' : ''; ?>">
                     <a href=<?= $this->Url->build(
                         [
                             "controller" => "Users",
@@ -65,12 +65,12 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <img src="<?= 'http://www.gravatar.com/avatar/' . md5($user->getEmail()) . '?s=512' ?>"
+            <img src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=512' ?>"
                  alt="avatar"
                  class="img-responsive center-block"/>
             <br/>
             <ul class="nav nav-pills nav-stacked">
-                <?php if($user->getPortfolio() != null): ?>
+                <?php if(!empty($user) && $user->getPortfolio() != null): ?>
                     <li><a href="<?= $user->getPortfolio() ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>

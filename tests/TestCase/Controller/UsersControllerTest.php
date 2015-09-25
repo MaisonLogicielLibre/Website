@@ -243,6 +243,51 @@ class UsersControllerTest extends IntegrationTestCase
 
 
     /**
+     * Test email - Ok
+     *
+     * @return void
+     */
+    public function testEmailOk()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = [
+            'old_password' => 'toto',
+            'email' => 'blabla@bla.com',
+            'confirm_email' => 'blabla@bla.com',
+        ];
+        $this->get('/users/email/3');
+        $this->post('/users/email/3', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 3]);
+    }
+
+    /**
+     * Test email - No Permission
+     *
+     * @return void
+     */
+    public function testEmailNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+        $this->post('/users/email/2', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test email - No Authentification
+     *
+     * @return void
+     */
+    public function testEmailNoAuth()
+    {
+        $data = [];
+        $this->post('/users/email/2', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
      * Test edit - Ok
      *
      * @return void
@@ -250,9 +295,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 2]);
-
         $data = [
-
         ];
         $this->get('/users/edit/1');
         $this->post('/users/edit/2', $data);
