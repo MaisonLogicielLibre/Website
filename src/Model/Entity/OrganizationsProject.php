@@ -61,6 +61,6 @@ class OrganizationsProject extends Entity
      */
     public function getOrganization()
     {
-        return $this->_properties['organization'];
+        return $this->_properties['organization_id'];
     }
 }
