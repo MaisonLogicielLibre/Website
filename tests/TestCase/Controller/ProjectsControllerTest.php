@@ -44,7 +44,6 @@ class ProjectsControllerTest extends IntegrationTestCase
     'app.projects_contributors',
     'app.projects_mentors',
     'app.missions'
-
     ];
 
     /**
@@ -106,7 +105,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         
         $data = [
             'name' => 'projet1',
-            'link' => 'www.website.com',
+            'link' => 'http://website.com',
             'description' => 'bla bla',
             'accepted' => 1,
             'archived' => 1
@@ -172,7 +171,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         
         $this->get('/projects/edit/1');
         $this->post('/projects/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
        
     /**

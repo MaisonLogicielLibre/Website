@@ -99,7 +99,20 @@ class ProjectsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->allowEmpty('link');
+            ->allowEmpty('link')
+            ->add(
+                'link',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
 
         $validator
             ->requirePresence('description', 'create')
