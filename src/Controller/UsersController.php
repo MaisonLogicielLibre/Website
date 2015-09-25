@@ -153,7 +153,7 @@ class UsersController extends AppController
             } else {
                 $this->Flash->error(
                     __(
-                        'The user could not be saved. Please,
+                        'The new email could not be saved. Please,
                 try again.'
                     )
                 );
@@ -256,7 +256,21 @@ class UsersController extends AppController
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
 
         if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
 
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
         }

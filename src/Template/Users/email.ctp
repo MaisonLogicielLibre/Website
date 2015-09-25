@@ -11,10 +11,10 @@
             <?= $this->Form->create($user); ?>
             <fieldset>
                 <legend><?= __('Change Email') ?></legend>
-                <?= $this->Form->input('email', ['label' => __('Enter your new email'), 'placeholder' => __('Email'), 'value' => '' ]); ?>
+                <?= $this->Form->input('email', ['label' => __('Enter your new email'), 'placeholder' => __('Email')]); ?>
                 <?= $this->Form->input('confirm_email', ['label' => __('Confirm your new email'), 'placeholder' => __('Email') ]); ?>
                 </br />
-                <?= $this->Form->input('old_password', ['label' => __('Confirm your password to confirm the change'), 'placeholder' => __('Password') ]); ?>
+                <?= $this->Form->input('old_password', ['type' => 'password', 'label' => __('Confirm your password to confirm the change'), 'placeholder' => __('Password') ]); ?>
             </fieldset>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
             <?= $this->Form->button(__('Cancel'), [
