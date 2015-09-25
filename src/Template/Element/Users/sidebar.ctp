@@ -12,7 +12,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> Portfolio</a></li>
+                            </span> <?= echo __('Portfolio') ?></a></li>
                 <?php endif; ?>
                 <!-- BitBucket and GitHub links -->
             </ul>
@@ -31,7 +31,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> Change email</a></li>
+                                    </span> <?= echo __('Change email') ?></a></li>
                 <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
                     <a href=<?= $this->Url->build(
                         [
@@ -43,7 +43,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> Change password</a></li>
+                                    </span> echo __('Change password') ?></a></li>
                 <!-- Modify phone link/form -->
                 <li>
                     <hr/>
@@ -59,7 +59,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> Edit profile</a>
+                                    </span> echo __('Edit profile') ?></a>
                 </li>
             </ul>
         </div>
@@ -81,7 +81,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> Portfolio</a></li>
+                            </span> <?= echo __('Portfolio') ?></a></li>
                 <?php endif; ?>
                 <!-- BitBucket and GitHub links -->
             </ul>

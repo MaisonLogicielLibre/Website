@@ -8,7 +8,7 @@
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                        </span> Website of the project
+                        </span> <?= __('Website of the project') ?>
                         </a>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> Edit the project
+                            </span> <?= __('Edit the project') ?>
                         </a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                        </span> Website of the project
+                        </span> <?= __('Website of the project') ?>
                     </a>
                 </li>
             </ul>
