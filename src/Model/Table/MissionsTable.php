@@ -52,14 +52,6 @@ class MissionsTable extends Table
             'joinType' => 'INNER'
             ]
         );
-        $this->belongsToMany(
-            'ProjectsUsers',
-            [
-            'foreignKey' => 'mission_id',
-            'targetForeignKey' => 'projects_user_id',
-            'joinTable' => 'projects_users_missions'
-            ]
-        );
     }
 
     /**

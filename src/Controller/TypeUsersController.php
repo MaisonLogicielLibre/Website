@@ -23,7 +23,27 @@ use App\Controller\AppController;
  */
 class TypeUsersController extends AppController
 {
-
+    private $_permissions = [
+        'index' => ['Administrator'],
+        'add' => ['Administrator'],
+        'edit' => ['Administrator'],
+        'view' => ['Administrator'],
+        'delete' => ['Administrator']
+    ];
+    /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->loadModel("Users")->findById($user['id'])->first();
+        if (isset($this->_permissions[$this->request->action])) {
+            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+                return true;
+            }
+        }
+    }
     /**
      * Index method
      *
@@ -34,7 +54,6 @@ class TypeUsersController extends AppController
         $this->set('typeUsers', $this->paginate($this->TypeUsers));
         $this->set('_serialize', ['typeUsers']);
     }
-
     /**
      * View method
      * @param string $id id
@@ -45,13 +64,12 @@ class TypeUsersController extends AppController
         $typeUser = $this->TypeUsers->get(
             $id,
             [
-            'contain' => []
+                'contain' => []
             ]
         );
         $this->set('typeUser', $typeUser);
         $this->set('_serialize', ['typeUser']);
     }
-
     /**
      * Add method
      * @return redirect
@@ -71,7 +89,6 @@ class TypeUsersController extends AppController
         $this->set(compact('typeUser'));
         $this->set('_serialize', ['typeUser']);
     }
-
     /**
      * Edit method
      * @param string $id id
@@ -82,7 +99,7 @@ class TypeUsersController extends AppController
         $typeUser = $this->TypeUsers->get(
             $id,
             [
-            'contain' => []
+                'contain' => []
             ]
         );
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -97,7 +114,6 @@ class TypeUsersController extends AppController
         $this->set(compact('typeUser'));
         $this->set('_serialize', ['typeUser']);
     }
-
     /**
      * Delete method
      * @param string $id id

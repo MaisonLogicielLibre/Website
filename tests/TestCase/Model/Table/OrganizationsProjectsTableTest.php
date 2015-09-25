@@ -35,8 +35,19 @@ class OrganizationsProjectsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.organizations_projects',
-        'app.projects'
+    'app.type_users_users',
+    'app.organizations',
+    'app.organizations_Projects',
+    'app.users',
+    'app.type_users',
+    'app.svn_users',
+    'app.svns',
+    'app.universities',
+    'app.comments',
+    'app.projects',
+    'app.projects_contributors',
+    'app.projects_mentors',
+    'app.missions'
     ];
 
     /**
@@ -110,34 +121,34 @@ class OrganizationsProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->OrganizationsProjects->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->OrganizationsProjects->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
-	
-	/**
+    
+    /**
      * Test buildRules
      * @return void
      */
-	public function testBuildRules()
+    public function testBuildRules()
     {
         $rule = new RulesChecker();
-		
-		$expected = $rule;
-		
-		$result = $this->OrganizationsProjects->buildRules($rule);
-		
-		$this->assertEquals($expected, $result);
+        
+        $expected = $rule;
+        
+        $result = $this->OrganizationsProjects->buildRules($rule);
+        
+        $this->assertEquals($expected, $result);
     }
 }

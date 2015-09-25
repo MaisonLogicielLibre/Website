@@ -23,6 +23,30 @@ use App\Controller\AppController;
  */
 class ProjectsController extends AppController
 {
+    private $_permissions = [
+        'index' => ['Student', 'Mentor', 'Administrator'],
+        'add' => ['Administrator'],
+        'submit' => ['Administrator'],
+        'edit' => ['Administrator'],
+        'view' => ['Student', 'Mentor', 'Administrator'],
+        'delete' => ['Administrator']
+    ];
+
+    /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->loadModel("Users")->findById($user['id'])->first();
+
+        if (isset($this->_permissions[$this->request->action])) {
+            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+                return true;
+            }
+        }
+    }
 
     /**
      * Index method
@@ -31,6 +55,11 @@ class ProjectsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'finder' => [
+                'show' => true
+            ]
+        ];
         $this->set('projects', $this->paginate($this->Projects));
         $this->set('_serialize', ['projects']);
     }
@@ -45,10 +74,11 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
-        $this->set('project', $project);
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $this->set(compact('project', 'user'));
         $this->set('_serialize', ['project']);
     }
 
@@ -59,6 +89,10 @@ class ProjectsController extends AppController
     public function add()
     {
         $project = $this->Projects->newEntity();
+
+        $project->editAccepted(true);
+        $project->editArchived(false);
+
         if ($this->request->is('post')) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -68,7 +102,9 @@ class ProjectsController extends AppController
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('project'));
+
+        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
 
@@ -82,19 +118,20 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Organizations']
             ]
         );
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('project'));
+        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
 

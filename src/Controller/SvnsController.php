@@ -23,6 +23,30 @@ use App\Controller\AppController;
  */
 class SvnsController extends AppController
 {
+    private $_permissions = [
+        'index' => ['Administrator'],
+        'add' => ['Administrator'],
+        'submit' => ['Administrator'],
+        'edit' => ['Administrator'],
+        'view' => ['Administrator'],
+        'delete' => ['Administrator']
+    ];
+
+    /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->loadModel("Users")->findById($user['id'])->first();
+
+        if (isset($this->_permissions[$this->request->action])) {
+            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+                return true;
+            }
+        }
+    }
 
     /**
      * Index method

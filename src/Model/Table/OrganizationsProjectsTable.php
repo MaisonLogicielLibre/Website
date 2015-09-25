@@ -51,6 +51,14 @@ class OrganizationsProjectsTable extends Table
             'joinType' => 'INNER'
             ]
         );
+
+        $this->belongsTo(
+            'Organizations',
+            [
+                'foreignKey' => 'organization_id',
+                'joinType' => 'INNER'
+            ]
+        );
     }
 
     /**

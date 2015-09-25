@@ -125,4 +125,26 @@ class Organization extends Entity
         $this->set('description', $description);
         return $description;
     }
+
+    /**
+     * Set if the organization is validated
+     * @param bool $isValidated isValidated
+     * @return boolean isValidated
+     */
+    public function editIsValidated($isValidated)
+    {
+        $this->set('isValidated', $isValidated);
+        return $isValidated;
+    }
+
+    /**
+     * Set if the organization is rejected during validation
+     * @param bool $isRejected isRejected
+     * @return boolean isRejected
+     */
+    public function editIsRejected($isRejected)
+    {
+        $this->set('isRejected', $isRejected);
+        return $isRejected;
+    }
 }

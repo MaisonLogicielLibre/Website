@@ -1,42 +1,41 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Type Users'), ['controller' => 'TypeUsers', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Type User'), ['controller' => 'TypeUsers', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Universities'), ['controller' => 'Universities', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New University'), ['controller' => 'Universities', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="users form large-10 medium-9 columns">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
+<div class="row">
+    <div class="users form col-lg-12 col-md-12 columns">
         <?php
-            echo $this->Form->input('firstName');
-            echo $this->Form->input('lastName');
-            echo $this->Form->input('biography');
-            echo $this->Form->input('portfolio');
-            echo $this->Form->input('email');
-            echo $this->Form->input('phone');
-            echo $this->Form->input('gender');
-            echo $this->Form->input('password');
-            echo $this->Form->input('username');
-            echo $this->Form->input('type_user_id', ['options' => $typeUsers]);
-            echo $this->Form->input('universitie_id', ['options' => $universities]);
-            echo $this->Form->input('projects._ids', ['options' => $projects]);
+        $this->element('Users/sidebar');
+        if ($you)
+            echo $this->fetch('sidebarYou');
+        else
+            echo $this->fetch('sidebar');
         ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <?= $this->Form->create($user); ?>
+            <fieldset>
+                <legend><?= __('Edit User') ?></legend>
+                <?php
+                echo $this->Form->input('firstName');
+                echo $this->Form->input('lastName');
+                echo $this->Form->input('biography');
+                echo $this->Form->input('portfolio', ['type' => 'text']);
+                echo $this->Form->input('phone');
+                ?>
+                <div class="form-group">
+                    <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
+                    <?= $this->Form->select('gender', [0 => __('Female'), 1 => __('Male')], ['class' => 'form-control']); ?>
+                </div>
+                <?= $this->Form->input('universitie_id', ['options' => $universities]); ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+            <?= $this->Form->button(__('Cancel'), [
+                'type' => 'button',
+                'class' => 'btn btn-default',
+                'onclick' => 'location.href=\'' . $this->url->build([
+                        'controller' => 'Users',
+                        'action' => 'view',
+                        $user->id
+                    ]) . '\''
+            ]); ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
 </div>

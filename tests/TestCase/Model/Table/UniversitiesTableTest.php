@@ -33,7 +33,19 @@ class UniversitiesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.universities'
+    'app.type_users_users',
+    'app.organizations',
+    'app.organizations_Projects',
+    'app.users',
+    'app.type_users',
+    'app.svn_users',
+    'app.svns',
+    'app.universities',
+    'app.comments',
+    'app.projects',
+    'app.projects_contributors',
+    'app.projects_mentors',
+    'app.missions'
     ];
 
     /**
@@ -139,19 +151,19 @@ class UniversitiesTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test validation
      * @return void
      */
-	public function testValidation()
+    public function testValidation()
     {
         $validator = new Validator();
-		
-		$expected = $validator;
-		
-		$result = $this->Universities->validationDefault($validator);
-		
-		$this->assertEquals($validator, $result);
+        
+        $expected = $validator;
+        
+        $result = $this->Universities->validationDefault($validator);
+        
+        $this->assertEquals($validator, $result);
     }
 }

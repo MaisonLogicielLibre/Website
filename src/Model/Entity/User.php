@@ -67,7 +67,20 @@ class User extends Entity
     {
         return $this->_properties['lastName'];
     }
-    
+
+    /**
+     * Get the full name
+     * @return string fullName
+     */
+    public function getName()
+    {
+        if (empty($this->_properties['firstName']) || empty($this->_properties['lastName'])) {
+            return null;
+        } else {
+            return $this->_properties['firstName'] . ' ' . $this->_properties['lastName'];
+        }
+    }
+
     /**
      * Get the biography
      * @return string biography
@@ -130,7 +143,16 @@ class User extends Entity
     {
         return $this->_properties['username'];
     }
-    
+
+    /**
+     * Get the university
+     * @return object university
+     */
+    public function getUniversity()
+    {
+        return $this->_properties['university'];
+    }
+
     /**
      * Set the first name
      * @param  string $firstName firstName

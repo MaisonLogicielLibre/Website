@@ -31,10 +31,11 @@ class UsersController extends AppController
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
-        'edit' => ['Administrator'],
+        'edit' => ['Student', 'Mentor', 'Administrator'],
+        'email' => ['Student', 'Mentor', 'Administrator'],
+        'password' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
-        'view_admin' => ['Administrator']
+        'delete' => ['Administrator']
     ];
 
     /**
@@ -73,9 +74,6 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['TypeUsers', 'Universities']
-        ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
@@ -96,8 +94,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(
                 __(
-                    "Nom d'utilisateur ou mot de passe incorrect,
-             essayez à nouveau."
+                    "Username or password incorrect, try again."
                 )
             );
         }
@@ -129,7 +126,10 @@ class UsersController extends AppController
                 'contain' => ['TypeUsers', 'Universities', 'Projects', 'Comments']
             ]
         );
-        $this->set('user', $user);
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        $this->set(compact('user', 'you'));
         $this->set('_serialize', ['user']);
     }
 
@@ -149,7 +149,7 @@ class UsersController extends AppController
             } else {
                 $this->Flash->error(
                     __(
-                        'The user could not be saved. Please,
+                        'The new email could not be saved. Please,
                 try again.'
                     )
                 );
@@ -170,7 +170,7 @@ class UsersController extends AppController
     public function register()
     {
         $user = $this->Users->newEntity();
-
+        
         $typeUser = $this->Users->TypeUsers->findByName('Student')->first();
         $user->type_users = [$typeUser];
 
@@ -212,25 +212,100 @@ class UsersController extends AppController
                 'contain' => ['Projects']
             ]
         );
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(
-                    __(
-                        'The user could not be saved. Please,
-                 try again.'
-                    )
-                );
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
             }
+            $universities = $this->Users->Universities->find('list', ['limit' => 200]);
+            $this->set(compact('user', 'universities', 'you'));
+            $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'edit', $this->request->session()->read('Auth.User.id')]);
         }
-        $typeUsers = $this->Users->TypeUsers->find('list', ['limit' => 200]);
-        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-        $projects = $this->Users->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'typeUsers', 'universities', 'projects'));
-        $this->set('_serialize', ['user']);
+    }
+
+    /**
+     * Change email method
+     *
+     * @param string|null $id User id.
+     *
+     * @return redirect
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function email($id = null)
+    {
+        $user = $this->Users->get($id);
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
+        }
+    }
+
+    /**
+     * Change password method
+     *
+     * @param string|null $id User id.
+     *
+     * @return redirect
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function password($id = null)
+    {
+        $user = $this->Users->get($id);
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The password could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
+        }
     }
 
     /**
@@ -245,6 +320,7 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
+
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {

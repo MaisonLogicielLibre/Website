@@ -12,6 +12,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -49,31 +50,41 @@ class UsersTable extends Table
         $this->belongsTo(
             'Universities',
             [
-            'foreignKey' => 'universitie_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'universitie_id',
+                'joinType' => 'LEFT'
             ]
         );
         $this->hasMany(
             'Comments',
             [
-            'foreignKey' => 'user_id'
+                'foreignKey' => 'user_id'
             ]
         );
         $this->belongsToMany(
             'Projects',
             [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'project_id',
-            'joinTable' => 'projects_users'
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'project_id',
+                'joinTable' => 'projects_contributors'
+            ]
+        );
+        $this->belongsToMany(
+            'ProjectsMentored',
+            [
+                'className' => 'Projects',
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'project_id',
+                'joinTable' => 'projects_mentors'
             ]
         );
         $this->belongsToMany(
             'TypeUsers',
             [
-            'joinTable' => 'type_users_users'
+                'joinTable' => 'type_users_users'
             ]
         );
     }
+
     /**
      * Default validation rules.
      *
@@ -86,32 +97,113 @@ class UsersTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+
         $validator
-            ->requirePresence('firstName', 'create')
-            ->notEmpty('firstName');
+            ->allowEmpty('firstName');
+
         $validator
-            ->requirePresence('lastName', 'create')
-            ->notEmpty('lastName');
+            ->allowEmpty('lastName');
+
         $validator
             ->allowEmpty('biography');
+
         $validator
-            ->allowEmpty('portfolio');
+            ->allowEmpty('portfolio')
+            ->add(
+                'portfolio',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
+
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
-            ->notEmpty('email');
+            ->notEmpty('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
+            ->add(
+                'confirm_email',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
+                    if ($value !== $context['data']['email']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The email are not equal']
+            )
+            ->requirePresence('confirm_email', 'create')
+            ->notEmpty('confirm_email');
+
         $validator
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
+            ->allowEmpty('phone')
+            ->add(
+                'phone',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^([0-9]{1}(\.|\s|-)?){10}$/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not a valid number.')
+                ]
+            );
+
         $validator
-            ->add('gender', 'valid', ['rule' => 'numeric'])
+            ->add('gender', 'valid', ['rule' => 'boolean'])
             ->allowEmpty('gender');
+
         $validator
+            ->add(
+                'confirm_password',
+                'custom',
+                [
+                'rule' => function ($value, $context) {
+                    if ($value !== $context['data']['password']) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => 'The passwords are not equal']
+            )
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password')
+            ->notEmpty('confirm_password');
+
         $validator
             ->requirePresence('username', 'create')
             ->notEmpty('username');
+
+        $validator
+            ->add(
+                'old_password',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                        $query = $this->find()
+                            ->where(
+                                [
+                                    'id' => $context['data']['id']
+                                    ]
+                            )
+                            ->first();
+                        $data = $query->toArray();
+
+                        return (new DefaultPasswordHasher)->check($value, $data['password']);
+                    },
+                    'message' => __(' Old password isn\'t valid')]
+            );
+
         return $validator;
     }
     /**

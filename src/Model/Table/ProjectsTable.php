@@ -47,13 +47,6 @@ class ProjectsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsTo(
-            'Users',
-            [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
-            ]
-        );
         $this->hasMany(
             'Missions',
             [
@@ -69,11 +62,21 @@ class ProjectsTable extends Table
             ]
         );
         $this->belongsToMany(
-            'Users',
+            'Contributors',
             [
+            'className' => 'Users',
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'user_id',
-            'joinTable' => 'projects_users'
+            'joinTable' => 'projects_contributors'
+            ]
+        );
+        $this->belongsToMany(
+            'Mentors',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'project_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'projects_mentors'
             ]
         );
     }
@@ -96,37 +99,48 @@ class ProjectsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('link', 'create')
-            ->notEmpty('link');
+            ->allowEmpty('link')
+            ->add(
+                'link',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
 
         $validator
             ->requirePresence('description', 'create')
             ->notEmpty('description');
 
         $validator
-            ->add('accepted', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('accepted', 'create')
             ->notEmpty('accepted');
 
         $validator
-            ->add('archived', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('archived', 'create')
             ->notEmpty('archived');
 
         return $validator;
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     *
-     * @return \Cake\ORM\RulesChecker
+     * Return projects who are Accepted and not Archived
+     * @param Query $query   query
+     * @param array $options options
+     * @return Query query
      */
-    public function buildRules(RulesChecker $rules)
+    public function findShow(Query $query, array $options)
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        return $rules;
+        $query->where(
+            [
+                'Projects.Accepted' => true,
+                'Projects.Archived' => false
+            ]
+        );
+        return $query;
     }
 }

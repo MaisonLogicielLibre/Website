@@ -72,8 +72,20 @@ class OrganizationsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('website', 'create')
-            ->notEmpty('website');
+            ->allowEmpty('website')
+            ->add(
+                'website',
+                'custom',
+                [
+                'rule' => function ($value) {
+                    if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
 
         $validator
             ->allowEmpty('logo');
@@ -81,6 +93,28 @@ class OrganizationsTable extends Table
         $validator
             ->allowEmpty('description');
 
+        $validator
+            ->notEmpty('isValidated');
+
+        $validator
+            ->notEmpty('isRejected');
         return $validator;
+    }
+
+    /**
+     * Return organizations who are validated and not rejected
+     * @param Query $query   query
+     * @param array $options options
+     * @return Query query
+     */
+    public function findShow(Query $query, array $options)
+    {
+        $query->where(
+            [
+            'Organizations.isValidated' => true,
+            'Organizations.isRejected' => false
+            ]
+        );
+        return $query;
     }
 }

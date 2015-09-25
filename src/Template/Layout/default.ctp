@@ -55,26 +55,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><?= $this->Html->link('home', ['controller' => 'Pages', 'action' => 'home']);?></li>
+                <li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><?= $this->Html->link('login', ['controller' => 'Users', 'action' => 'login']);?></li>
-
+                <li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
+				<li><?= $this->Html->link(__('Partners'), ['controller' => 'Pages', 'action' => 'partner']);?></li>
+				<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
+				<?php if($this->request->session()->read('Auth.User.username')) {?>
+					<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
+					<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
+				<?php } else { ?>
+					<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']);?></li>
+					<li><?= $this->Html->link(__('Register'), ['controller' => 'Users', 'action' => 'register']);?></li>
+				<?php } ?>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -91,25 +84,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </div>
             </div>
             <!-- Footer -->
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><strong>La Maison du Logiciel Libre</strong></h4>
-                            400 Rue Montfort<br>Montréal, QC, H3C 4J9
-                            <br><i class="fa fa-phone-square"></i> (514) 396-8552
-                            <br>Copyright &copy; La Maison du Logiciel Libre 2015</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 </div>
-<?=$this->fetch('scriptBottom'); ?>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
+                400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
+                <br><i class="fa fa-phone-square"></i> (514) 396-8552
+                <br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
+            </div>
+        </div>
+    </div>
+</footer>
 <!-- jQuery -->
 <?= $this->Html->script('jquery-2.1.4.min'); ?>
 <!-- Bootstrap Core JavaScript -->
 <?= $this->Html->script('bootstrap.min'); ?>
+<!-- Google Analytics -->
+<?= $this->Html->script('googleAnalytics'); ?>
+
+<!-- WARNING :  Do not move this line before a manual import of script! -->
+<?=$this->fetch('scriptBottom'); ?>
 </body>
 </html>

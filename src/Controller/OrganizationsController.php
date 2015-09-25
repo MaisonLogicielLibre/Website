@@ -23,6 +23,30 @@ use App\Controller\AppController;
  */
 class OrganizationsController extends AppController
 {
+    private $_permissions = [
+        'index' => ['Student', 'Mentor', 'Administrator'],
+        'add' => ['Administrator'],
+        'submit' => ['Administrator'],
+        'edit' => ['Administrator'],
+        'view' => ['Student', 'Mentor', 'Administrator'],
+        'delete' => ['Administrator']
+    ];
+
+    /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->loadModel("Users")->findById($user['id'])->first();
+
+        if (isset($this->_permissions[$this->request->action])) {
+            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+                return true;
+            }
+        }
+    }
 
     /**
      * Index method
@@ -31,6 +55,11 @@ class OrganizationsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'finder' => [
+                'show' => true
+            ]
+        ];
         $this->set('organizations', $this->paginate($this->Organizations));
         $this->set('_serialize', ['organizations']);
     }
@@ -45,10 +74,11 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Projects']
             ]
         );
-        $this->set('organization', $organization);
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $this->set(compact('organization', 'user'));
         $this->set('_serialize', ['organization']);
     }
 
@@ -59,6 +89,34 @@ class OrganizationsController extends AppController
     public function add()
     {
         $organization = $this->Organizations->newEntity();
+
+        $organization->editIsValidated(true);
+        $organization->editIsRejected(false);
+
+        if ($this->request->is('post')) {
+            $organization = $this->Organizations->patchEntity($organization, $this->request->data);
+            if ($this->Organizations->save($organization)) {
+                $this->Flash->success(__('The organization has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The organization could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('organization'));
+        $this->set('_serialize', ['organization']);
+    }
+
+    /**
+     * Submit method
+     * @return redirect
+     */
+    public function submit()
+    {
+        $organization = $this->Organizations->newEntity();
+
+        $organization->editIsValidated(false);
+        $organization->editIsRejected(false);
+
         if ($this->request->is('post')) {
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
@@ -89,7 +147,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
             }
