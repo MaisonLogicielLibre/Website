@@ -74,9 +74,9 @@ class OrganizationsTable extends Table
         $validator
             ->allowEmpty('website')
             ->add(
-            'website',
-            'custom',
-            [
+                'website',
+                'custom',
+                [
                 'rule' => function ($value) {
                     if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                         return false;
@@ -84,8 +84,8 @@ class OrganizationsTable extends Table
                     return true;
                 },
                 'message' => __('Is not an url (Ex : http://website.ca).')
-            ]
-          );
+                ]
+            );
 
         $validator
             ->allowEmpty('logo');

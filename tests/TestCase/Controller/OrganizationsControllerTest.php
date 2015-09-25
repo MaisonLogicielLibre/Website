@@ -105,7 +105,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         
         $data = [
             'name' => 'MLL',
-            'website' => 'www.website.com',
+            'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
         ];
@@ -168,7 +168,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
 
         $data = [
             'name' => 'MLL',
-            'website' => 'www.website.com',
+            'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
         ];
@@ -233,7 +233,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         
         $this->get('/organizations/edit/1');
         $this->post('/organizations/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
        
     /**
