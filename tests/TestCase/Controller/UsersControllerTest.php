@@ -241,7 +241,51 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
     }
 
+    /**
+     * Test password - Ok
+     *
+     * @return void
+     */
+    public function testPasswordOk()
+    {
+        $this->session(['Auth.User.id' => 3]);
 
+        $data = [
+            'old_password' => 'toto',
+            'password' => 'allo',
+            'password_email' => 'allo',
+        ];
+        $this->get('/users/password/3');
+        $this->post('/users/password/3', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 3]);
+    }
+
+    /**
+     * Test password - No Permission
+     *
+     * @return void
+     */
+    public function testPasswordNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+        $this->post('/users/password/2', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test Password - No Authentification
+     *
+     * @return void
+     */
+    public function testPasswordNoAuth()
+    {
+        $data = [];
+        $this->post('/users/password/2', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
     /**
      * Test email - Ok
      *
