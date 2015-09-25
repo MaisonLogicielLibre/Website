@@ -72,7 +72,20 @@ class OrganizationsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->allowEmpty('website');
+            ->allowEmpty('website')
+            ->add(
+                'website',
+                'custom',
+                [
+                'rule' => function ($value) {
+                    if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                        return false;
+                    }
+                    return true;
+                },
+                'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
 
         $validator
             ->allowEmpty('logo');
