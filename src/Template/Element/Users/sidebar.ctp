@@ -12,7 +12,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> <?= echo __('Portfolio') ?></a></li>
+                            </span> <?= __('Portfolio') ?></a></li>
                 <?php endif; ?>
                 <!-- BitBucket and GitHub links -->
             </ul>
@@ -31,7 +31,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> <?= echo __('Change email') ?></a></li>
+                                    </span> <?= __('Change email') ?></a></li>
                 <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
                     <a href=<?= $this->Url->build(
                         [
@@ -43,7 +43,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> echo __('Change password') ?></a></li>
+                                    </span> <?= __('Change password') ?></a></li>
                 <!-- Modify phone link/form -->
                 <li>
                     <hr/>
@@ -81,7 +81,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> <?= echo __('Portfolio') ?></a></li>
+                            </span> <?= __('Portfolio') ?></a></li>
                 <?php endif; ?>
                 <!-- BitBucket and GitHub links -->
             </ul>
