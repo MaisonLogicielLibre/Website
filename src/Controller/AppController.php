@@ -69,23 +69,25 @@ class AppController extends Controller
             ]
         );
     }
-	
-	protected function _checkBrowserLanguage(){
-		//checking the 1st favorite language of the user's browser 
-		$browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-		 
-		//available languages
-		switch ($browserLanguage){
-			case "en":
-				I18n::locale('en_US');
-				break;
-			case "fr":
-				I18n::locale('fr_CA');
-				break;
-			default:
-				I18n::locale('en_US');;
-		}
-	 }
+    
+    /**
+     * Check for browser language and set website language to it
+     *
+     * @return void
+     */
+    protected function checkBrowserLanguage()
+    {
+        $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+         
+        //available languages
+        if ($browserLanguage == 'en') {
+            I18n::locale('en_US');
+        } elseif ($browserLanguage == 'fr') {
+            I18n::locale('fr_CA');
+        } else {
+            I18n::locale('en_US');
+        }
+    }
     
     /**
      * Filter preparation
@@ -94,7 +96,7 @@ class AppController extends Controller
      */
     public function beforeFilter(Event $event)
     {
-		$this->_checkBrowserLanguage();
+        $this->checkBrowserLanguage();
         $this->Auth->allow(['display']);
     }
 }
