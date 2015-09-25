@@ -12,6 +12,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -182,6 +183,26 @@ class UsersTable extends Table
         $validator
             ->requirePresence('username', 'create')
             ->notEmpty('username');
+
+        $validator
+            ->add(
+                'old_password',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                        $query = $this->find()
+                            ->where(
+                                [
+                                    'id' => $context['data']['id']
+                                    ]
+                            )
+                            ->first();
+                        $data = $query->toArray();
+
+                        return (new DefaultPasswordHasher)->check($value, $data['password']);
+                    },
+                    'message' => __(' Old password isn\'t valid')]
+            );
 
         return $validator;
     }

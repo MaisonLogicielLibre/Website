@@ -33,6 +33,7 @@ class UsersController extends AppController
         'add' => ['Administrator'],
         'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Student', 'Mentor', 'Administrator'],
+        'email' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'view_admin' => ['Administrator'],
         'delete' => ['Administrator']
@@ -152,7 +153,7 @@ class UsersController extends AppController
             } else {
                 $this->Flash->error(
                     __(
-                        'The user could not be saved. Please,
+                        'The new email could not be saved. Please,
                 try again.'
                     )
                 );
@@ -240,6 +241,42 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'edit', $this->request->session()->read('Auth.User.id')]);
         }
     }
+
+    /**
+     * Change email method
+     *
+     * @param string|null $id User id.
+     *
+     * @return redirect
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function email($id = null)
+    {
+        $user = $this->Users->get($id);
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
+        }
+    }
+
 
     /**
      * Delete method

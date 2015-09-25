@@ -70,5 +70,18 @@ class UsersFixture extends TestFixture
             'username' => 'admin',
             'universitie_id' => 1
         ],
+        [
+            'id' => 3,
+            'firstName' => 'Simon',
+            'lastName' => 'Begin',
+            'biography' => 'Une petite bio.',
+            'portfolio' => 'http://monportfolio.com',
+            'email' => 'email@gmail.com',
+            'phone' => '(514) 777-7777',
+            'gender' => 1,
+            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
+            'username' => 'admin2',
+            'universitie_id' => 1
+        ]
     ];
 }

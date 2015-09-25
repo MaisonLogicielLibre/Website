@@ -2,12 +2,12 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <img src="<?= 'http://www.gravatar.com/avatar/' . md5($user->getEmail()) . '?s=512' ?>"
+            <img src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=512' ?>"
                  alt="avatar"
                  class="img-responsive center-block"/>
             <br/>
             <ul class="nav nav-pills nav-stacked">
-                <?php if($user->getPortfolio() != null): ?>
+                <?php if(!empty($user) && $user->getPortfolio() != null): ?>
                     <li><a href="<?= $user->getPortfolio() ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
@@ -20,17 +20,23 @@
                 <li>
                     <hr/>
                 </li>
-                <li><a href="#">
+                <li class="<?= ($this->request->action == 'email') ? 'active disabled' : ''; ?>">
+                    <a href=<?= $this->Url->build(
+                        [
+                            "controller" => "Users",
+                            "action" => "email",
+                            $user->id
+                        ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
-                                           style="color:<?= ($this->request->action == 'editPassword') ? '#337ab7' : '#fff'; ?>"></i>
+                                           style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> Change email</a></li>
                 <li><a href="#">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
-                                           style="color:<?= ($this->request->action == 'editEmail') ? '#337ab7' : '#fff'; ?>"></i>
+                                           style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> Change password</a></li>
                 <!-- Modify phone link/form -->
                 <li>
@@ -59,12 +65,12 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <img src="<?= 'http://www.gravatar.com/avatar/' . md5($user->getEmail()) . '?s=512' ?>"
+            <img src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=512' ?>"
                  alt="avatar"
                  class="img-responsive center-block"/>
             <br/>
             <ul class="nav nav-pills nav-stacked">
-                <?php if($user->getPortfolio() != null): ?>
+                <?php if(!empty($user) && $user->getPortfolio() != null): ?>
                     <li><a href="<?= $user->getPortfolio() ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
