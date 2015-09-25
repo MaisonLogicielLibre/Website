@@ -32,7 +32,13 @@
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> Change email</a></li>
-                <li><a href="#">
+                <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
+                    <a href=<?= $this->Url->build(
+                        [
+                            "controller" => "Users",
+                            "action" => "password",
+                            $user->id
+                        ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"

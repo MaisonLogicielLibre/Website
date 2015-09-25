@@ -34,6 +34,7 @@ class UsersController extends AppController
         'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Student', 'Mentor', 'Administrator'],
         'email' => ['Student', 'Mentor', 'Administrator'],
+        'password' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'view_admin' => ['Administrator'],
         'delete' => ['Administrator']
@@ -277,6 +278,40 @@ class UsersController extends AppController
         }
     }
 
+    /**
+     * Change password method
+     *
+     * @param string|null $id User id.
+     *
+     * @return redirect
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function password($id = null)
+    {
+        $user = $this->Users->get($id);
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+
+        if ($you) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'view', $user->id]);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The password could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
+        }
+    }
 
     /**
      * Delete method
