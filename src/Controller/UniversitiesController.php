@@ -24,13 +24,11 @@ use App\Controller\AppController;
 class UniversitiesController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
+        'index' => ['Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'view_admin' => ['Administrator'],
-    'delete' => ['Administrator']
+        'view' => ['Administrator'],
+        'delete' => ['Administrator']
     ];
 
     /**

@@ -91,7 +91,7 @@ class CommentsControllerTest extends IntegrationTestCase
     public function testViewNoAuth()
     {
         $this->get('/comments/view/1');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseSuccess();
     }
 
     /**
@@ -109,7 +109,7 @@ class CommentsControllerTest extends IntegrationTestCase
         ];
         $this->post('/comments/add', $data);
 
-        $this->assertRedirect(['controller' => 'Comments', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
@@ -168,7 +168,7 @@ class CommentsControllerTest extends IntegrationTestCase
         
         $this->get('/comments/edit/1');
         $this->post('/comments/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Comments', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
        
     /**
@@ -207,7 +207,7 @@ class CommentsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $this->post('/comments/delete/1');
-        $this->assertRedirect(['controller' => 'Comments', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
