@@ -62,7 +62,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				<li><?= $this->Html->link(__('Partners'), ['controller' => 'Pages', 'action' => 'partner']);?></li>
 				<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
 				<?php if($this->request->session()->read('Auth.User.username')) {?>
-					<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view']);?></li>
+					<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
 					<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
 				<?php } else { ?>
 					<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']);?></li>
