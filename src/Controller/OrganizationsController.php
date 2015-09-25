@@ -75,10 +75,11 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Projects']
             ]
         );
-        $this->set('organization', $organization);
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $this->set(compact('organization', 'user'));
         $this->set('_serialize', ['organization']);
     }
 
@@ -147,7 +148,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
             }
