@@ -75,10 +75,11 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
-        $this->set('project', $project);
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $this->set(compact('project', 'user'));
         $this->set('_serialize', ['project']);
     }
 
@@ -118,19 +119,20 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => []
+            'contain' => ['Organizations']
             ]
         );
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('project'));
+        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
 
