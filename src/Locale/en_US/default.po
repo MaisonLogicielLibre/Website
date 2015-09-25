@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-24 11:07-0400\n"
-"PO-Revision-Date: 2015-09-24 11:07-0400\n"
+"POT-Creation-Date: 2015-09-25 10:57-0400\n"
+"PO-Revision-Date: 2015-09-25 10:57-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -406,15 +406,47 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: Template/Layout/default.ctp:101;104
+#: Template/Layout/default.ctp:58
+msgid "Home"
+msgstr ""
+
+#: Template/Layout/default.ctp:61
+msgid "Projects"
+msgstr ""
+
+#: Template/Layout/default.ctp:62
+msgid "Partners"
+msgstr ""
+
+#: Template/Layout/default.ctp:63
+msgid "Contact us"
+msgstr ""
+
+#: Template/Layout/default.ctp:65
+msgid "Profile"
+msgstr ""
+
+#: Template/Layout/default.ctp:66
+msgid "Logout"
+msgstr ""
+
+#: Template/Layout/default.ctp:68
+msgid "Login"
+msgstr ""
+
+#: Template/Layout/default.ctp:69 Template/Users/register.ctp:19
+msgid "Register"
+msgstr ""
+
+#: Template/Layout/default.ctp:94;97
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:102
+#: Template/Layout/default.ctp:95
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:102
+#: Template/Layout/default.ctp:95
 msgid "Montreal"
 msgstr ""
 
@@ -623,6 +655,16 @@ msgstr ""
 msgid "Organization"
 msgstr ""
 
+#: Template/Pages/contact.ctp:6 Template/Projects/view.ctp:99
+#: Template/Users/view.ctp:30
+msgid "Phone"
+msgstr ""
+
+#: Template/Pages/contact.ctp:7 Template/Projects/view.ctp:98
+#: Template/Users/register.ctp:23;24 Template/Users/view.ctp:28
+msgid "Email"
+msgstr ""
+
 #: Template/Pages/home.ctp:10
 msgid "Build ML2 future"
 msgstr "Build ML² future"
@@ -762,6 +804,14 @@ msgstr "Access to ML² academic and industry conferences and seminars"
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "24/7 access to ML² location on the RC of ETS Pavilion A"
 
+#: Template/Pages/partner.ctp:3
+msgid "Industry"
+msgstr ""
+
+#: Template/Pages/partner.ctp:22
+msgid "Academic"
+msgstr ""
+
 #: Template/Projects/add.ctp:17
 msgid "Add Project"
 msgstr ""
@@ -796,15 +846,6 @@ msgstr ""
 
 #: Template/Projects/view.ctp:97 Template/Users/view.ctp:72
 msgid "Portfolio"
-msgstr ""
-
-#: Template/Projects/view.ctp:98 Template/Users/register.ctp:23;24
-#: Template/Users/view.ctp:28
-msgid "Email"
-msgstr ""
-
-#: Template/Projects/view.ctp:99 Template/Users/view.ctp:30
-msgid "Phone"
 msgstr ""
 
 #: Template/Projects/view.ctp:100 Template/Users/view.ctp:52
@@ -997,10 +1038,6 @@ msgstr ""
 
 #: Template/Users/login.ctp:9
 msgid "Connect"
-msgstr ""
-
-#: Template/Users/register.ctp:19
-msgid "Register"
 msgstr ""
 
 #: Template/Users/register.ctp:20
