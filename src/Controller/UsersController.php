@@ -31,12 +31,10 @@ class UsersController extends AppController
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Student', 'Mentor', 'Administrator'],
         'email' => ['Student', 'Mentor', 'Administrator'],
         'password' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
-        'view_admin' => ['Administrator'],
         'delete' => ['Administrator']
     ];
 

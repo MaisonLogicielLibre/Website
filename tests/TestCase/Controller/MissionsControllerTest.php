@@ -91,7 +91,7 @@ class MissionsControllerTest extends IntegrationTestCase
     public function testViewNoAuth()
     {
         $this->get('/missions/view/1');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseSuccess();
     }
 
     /**
@@ -111,7 +111,7 @@ class MissionsControllerTest extends IntegrationTestCase
         ];
         $this->post('/missions/add', $data);
 
-        $this->assertRedirect(['controller' => 'Missions', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
@@ -170,7 +170,7 @@ class MissionsControllerTest extends IntegrationTestCase
         
         $this->get('/missions/edit/1');
         $this->post('/missions/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Missions', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
        
     /**
@@ -209,7 +209,7 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $this->post('/missions/delete/1');
-        $this->assertRedirect(['controller' => 'Missions', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**

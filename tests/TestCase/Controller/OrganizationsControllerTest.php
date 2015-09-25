@@ -174,7 +174,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         ];
         $this->post('/organizations/submit', $data);
 
-        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
 
     /**

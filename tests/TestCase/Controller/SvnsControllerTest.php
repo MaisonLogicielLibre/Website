@@ -108,7 +108,7 @@ class SvnsControllerTest extends IntegrationTestCase
         ];
         $this->post('/svns/add', $data);
 
-        $this->assertRedirect(['controller' => 'Svns', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
@@ -167,7 +167,7 @@ class SvnsControllerTest extends IntegrationTestCase
         
         $this->get('/svns/edit/1');
         $this->post('/svns/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Svns', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
        
     /**
@@ -206,7 +206,7 @@ class SvnsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $this->post('/svns/delete/1');
-        $this->assertRedirect(['controller' => 'Svns', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**

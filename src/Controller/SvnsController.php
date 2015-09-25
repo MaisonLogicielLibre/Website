@@ -24,13 +24,12 @@ use App\Controller\AppController;
 class SvnsController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
+        'index' => ['Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
+        'submit' => ['Administrator'],
         'edit' => ['Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'view_admin' => ['Administrator'],
-    'delete' => ['Administrator']
+        'view' => ['Administrator'],
+        'delete' => ['Administrator']
     ];
 
     /**

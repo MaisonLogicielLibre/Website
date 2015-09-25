@@ -26,11 +26,10 @@ class ProjectsController extends AppController
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
+        'submit' => ['Administrator'],
         'edit' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
-        'view_admin' => ['Administrator'],
-    'delete' => ['Administrator']
+        'delete' => ['Administrator']
     ];
 
     /**
