@@ -50,7 +50,7 @@ class Application extends Entity
      * Get the presentation
      * @return string presentation
      */
-    public function getDescription()
+    public function getPresentation()
     {
         return $this->_properties['presentation'];
     }
@@ -128,14 +128,14 @@ class Application extends Entity
     }
 
     /**
-     * Set the description
-     * @param string $description description
-     * @return string description
+     * Set the presentation
+     * @param string $presentation presentation
+     * @return string presentation
      */
-    public function editDescription($description)
+    public function editPresentation($presentation)
     {
-        $this->set('description', $description);
-        return $description;
+        $this->set('presentation', $presentation);
+        return $presentation;
     }
 
     /**
