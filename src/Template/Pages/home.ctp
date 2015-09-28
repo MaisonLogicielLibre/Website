@@ -22,7 +22,7 @@
 <hr>
 
 <div class="home-text">
-	<h2><?php echo __('Our Mission') ?></h2>
+	<h2><b><?php echo __('Our Mission') ?></b></h2>
 
 	<p class="lead">
 		<?php echo __('This initiative is born from a meeting between the ÉTS director and Google
@@ -60,7 +60,7 @@
 
 
 <div class="home-text">
-	<h2><?php echo __('Value proposition for industry:') ?></h2>
+	<h2><b><?php echo __('Value proposition for industry:') ?></b></h2>
 
 	<p class="lead">
 		<?php echo __('Access to potential new hires in our logicel libre developer community') ?> <br>
@@ -69,7 +69,7 @@
 		<?php echo __('Create Goodwill in the University and open source communities') ?> <br>
 	</p>
 	<br>
-	<h2><?php echo __('Value proposition for universities and students:') ?></h2>
+	<h2><b><?php echo __('Value proposition for universities and students:') ?></b></h2>
 
 	<p class="lead">
 		<?php echo __('Match Interns with Industry and Academic funded open source projects') ?> <br>
