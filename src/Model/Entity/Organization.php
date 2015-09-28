@@ -129,7 +129,7 @@ class Organization extends Entity
     /**
      * Set if the organization is validated
      * @param bool $isValidated isValidated
-     * @return boolean isValidated
+     * @return bool isValidated
      */
     public function editIsValidated($isValidated)
     {
@@ -140,7 +140,7 @@ class Organization extends Entity
     /**
      * Set if the organization is rejected during validation
      * @param bool $isRejected isRejected
-     * @return boolean isRejected
+     * @return bool isRejected
      */
     public function editIsRejected($isRejected)
     {
