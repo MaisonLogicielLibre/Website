@@ -27,7 +27,7 @@ class OrganizationsController extends AppController
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Administrator'],
+        'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator']
