@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-25 16:44-0400\n"
-"PO-Revision-Date: 2015-09-25 17:05-0400\n"
+"POT-Creation-Date: 2015-09-28 09:22-0400\n"
+"PO-Revision-Date: 2015-09-28 09:27-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -15,189 +15,155 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: Controller/CommentsController.php:90;117
+#: Controller/CommentsController.php:89;116
 msgid "The comment has been saved."
 msgstr "Le commentaire a été enregistré."
 
-#: Controller/CommentsController.php:93;120
+#: Controller/CommentsController.php:92;119
 msgid "The comment could not be saved. Please, try again."
 msgstr "Le commentaire n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/CommentsController.php:137
+#: Controller/CommentsController.php:136
 msgid "The comment has been deleted."
 msgstr "Le commentaire a été supprimé."
 
-#: Controller/CommentsController.php:139
+#: Controller/CommentsController.php:138
 msgid "The comment could not be deleted. Please, try again."
 msgstr "Le commentaire n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/MissionsController.php:90;116
+#: Controller/MissionsController.php:89;115
 msgid "The mission has been saved."
 msgstr "La mission a été enregistrée."
 
-#: Controller/MissionsController.php:93;119
+#: Controller/MissionsController.php:92;118
 msgid "The mission could not be saved. Please, try again."
 msgstr "La mission n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/MissionsController.php:136
+#: Controller/MissionsController.php:135
 msgid "The mission has been deleted."
 msgstr "La mission a été supprimée."
 
-#: Controller/MissionsController.php:138
+#: Controller/MissionsController.php:137
 msgid "The mission could not be deleted. Please, try again."
 msgstr "La mission n'a pas pu être supprimée. Veuillez réessayer."
 
-#: Controller/OrganizationsController.php:100;124;150
+#: Controller/OrganizationsController.php:99;123;149
 msgid "The organization has been saved."
 msgstr "L'organisation a été enregistrée."
 
-#: Controller/OrganizationsController.php:103;127;153
+#: Controller/OrganizationsController.php:102;126;152
 msgid "The organization could not be saved. Please, try again."
 msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/OrganizationsController.php:170
+#: Controller/OrganizationsController.php:169
 msgid "The organization has been deleted."
 msgstr "L'organisation a été supprimée."
 
-#: Controller/OrganizationsController.php:172
+#: Controller/OrganizationsController.php:171
 msgid "The organization could not be deleted. Please, try again."
 msgstr "L'organisation n'a pas pu être supprimée. Veuillez réessayer."
 
-#: Controller/OrganizationsProjectsController.php:90;116
-msgid "The organizations project has been saved."
-msgstr "Le projet des organisations a été enregistré."
-
-#: Controller/OrganizationsProjectsController.php:93;119
-msgid "The organizations project could not be saved. Please, try again."
-msgstr ""
-"Le projet des organisations n'a pas pu être enregistré. Veuillez réessayer."
-
-#: Controller/OrganizationsProjectsController.php:136
-msgid "The organizations project has been deleted."
-msgstr "Le projet des organisations a été supprimé."
-
-#: Controller/OrganizationsProjectsController.php:138
-msgid "The organizations project could not be deleted. Please, try again."
-msgstr ""
-"Le projet des organisations n'a pas pu être supprimé. Veuillez réessayer."
-
-#: Controller/ProjectsController.php:100;128
+#: Controller/ProjectsController.php:99;127
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:103;131
+#: Controller/ProjectsController.php:102;130
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:149
+#: Controller/ProjectsController.php:148
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:151
+#: Controller/ProjectsController.php:150
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/SvnUsersController.php:90;116
-msgid "The svn user has been saved."
-msgstr "L'utilisateur svn a été enregistré."
-
-#: Controller/SvnUsersController.php:93;119
-msgid "The svn user could not be saved. Please, try again."
-msgstr "L'utilisateur svn n'a pas pu être enregistré. Veuillez réessayer."
-
-#: Controller/SvnUsersController.php:136
-msgid "The svn user has been deleted."
-msgstr "L'utilisateur svn a été supprimé."
-
-#: Controller/SvnUsersController.php:138
-msgid "The svn user could not be deleted. Please, try again."
-msgstr "L'utilisateur svn n'a pas pu être supprimé. Veuillez réessayer."
-
-#: Controller/SvnsController.php:90;116
+#: Controller/SvnsController.php:89;115
 msgid "The svn has been saved."
 msgstr "Le svn a été enregistré."
 
-#: Controller/SvnsController.php:93;119
+#: Controller/SvnsController.php:92;118
 msgid "The svn could not be saved. Please, try again."
 msgstr "Le svn n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/SvnsController.php:136
+#: Controller/SvnsController.php:135
 msgid "The svn has been deleted."
 msgstr "Le svn a été supprimé."
 
-#: Controller/SvnsController.php:138
+#: Controller/SvnsController.php:137
 msgid "The svn could not be deleted. Please, try again."
 msgstr "Le svn n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/TypeUsersController.php:90;116
+#: Controller/TypeUsersController.php:83;108
 msgid "The type user has been saved."
 msgstr "Le rôle a étéenregistré."
 
-#: Controller/TypeUsersController.php:93;119
+#: Controller/TypeUsersController.php:86;111
 msgid "The type user could not be saved. Please, try again."
 msgstr "Le rôle n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/TypeUsersController.php:136
+#: Controller/TypeUsersController.php:127
 msgid "The type user has been deleted."
 msgstr "Le rôle a été supprimé."
 
-#: Controller/TypeUsersController.php:138
+#: Controller/TypeUsersController.php:129
 msgid "The type user could not be deleted. Please, try again."
 msgstr "Le rôle n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/UniversitiesController.php:90;116
+#: Controller/UniversitiesController.php:88;114
 msgid "The university has been saved."
 msgstr "L'université à été enregistrée."
 
-#: Controller/UniversitiesController.php:93;119
+#: Controller/UniversitiesController.php:91;117
 msgid "The university could not be saved. Please, try again."
 msgstr "L'université n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/UniversitiesController.php:136
+#: Controller/UniversitiesController.php:134
 msgid "The university has been deleted."
 msgstr "L'université a été supprimée."
 
-#: Controller/UniversitiesController.php:138
+#: Controller/UniversitiesController.php:136
 msgid "The university could not be deleted. Please, try again."
 msgstr "L'université n'a pas pu être supprimée. Veuillez réessayer."
 
-#: Controller/UsersController.php:98
+#: Controller/UsersController.php:96
 msgid "Username or password incorrect, try again."
 msgstr "Nom d'utilisateur ou mot de passe inccorect, veuillez réessayer."
 
-#: Controller/UsersController.php:149;185;224;262;297
+#: Controller/UsersController.php:147;183;222;260;295
 msgid "The user has been saved."
 msgstr "L'utilisateur a été enregistré."
 
-#: Controller/UsersController.php:153
+#: Controller/UsersController.php:151
 msgid ""
 "The new email could not be saved. Please,\n"
 "                try again."
 msgstr "Le courriel n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:189
+#: Controller/UsersController.php:187
 msgid ""
 "The user could not be saved. Please,\n"
 "                 try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:228;266
+#: Controller/UsersController.php:226;264
 msgid ""
 "The user could not be saved. Please,\n"
 "                     try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:301
+#: Controller/UsersController.php:299
 msgid ""
 "The password could not be saved. Please,\n"
 "                     try again."
 msgstr "Le mot de passe n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:327
+#: Controller/UsersController.php:325
 msgid "The user has been deleted."
 msgstr "L'utilisateur a été supprimé."
 
-#: Controller/UsersController.php:330
+#: Controller/UsersController.php:328
 msgid ""
 "The user could not be deleted. Please,\n"
 "             try again."
@@ -421,6 +387,10 @@ msgstr "Portfolio"
 #: Template/Element/Users/sidebar.ctp:34
 msgid "Change email"
 msgstr "Modifier le courriel"
+
+#: Template/Element/Users/sidebar.ctp:46
+msgid "Change password"
+msgstr ""
 
 #: Template/Layout/default.ctp:58
 msgid "Home"
@@ -735,38 +705,69 @@ msgstr ""
 "leurs acquis de leur université."
 
 #: Template/Pages/home.ctp:66
-msgid "Value Proposition"
-msgstr "Proposition de Valeur"
+msgid "Value proposition for industry:"
+msgstr "Proposition de valeur pour l'industrie :"
 
 #: Template/Pages/home.ctp:69
+msgid "Access to potential new hires in our logicel libre developer community"
+msgstr ""
+"Accès à des recrues potentielles au sein de notre communauté de développeur "
+"du logiciel libre"
+
+#: Template/Pages/home.ctp:70
+msgid ""
+"Develop new open source features faster and cheaper in your products and "
+"dependencies"
+msgstr ""
+"Augmenter la vitesse de développement tout en réduisant les coûts des "
+"fonctionnalités"
+
+#: Template/Pages/home.ctp:71
+msgid ""
+"Promote your company and create networks across the software engineering and "
+"computer science departments of 7 universities"
+msgstr ""
+"Promouvoir votre entreprise tout en créant un réseau au sein de 7 universités"
+
+#: Template/Pages/home.ctp:72
+msgid "Create Goodwill in the University and open source communities"
+msgstr ""
+"Augmenter la réputation de votre entreprise au sein des universités et de la "
+"communauté du logiciel libre"
+
+#: Template/Pages/home.ctp:75
+msgid "Value proposition for universities and students:"
+msgstr "Proposition de valeur pour l'académie:"
+
+#: Template/Pages/home.ctp:78
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr "Jumeler des stagiaires à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:70
+#: Template/Pages/home.ctp:79
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
 msgstr "Jumeler des projets de fin d’étude à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:71
-msgid "Support for graduate students working on  open source projects"
+#: Template/Pages/home.ctp:80
+msgid "Support for graduate students working on open source projects"
 msgstr ""
 "Offrir du support aux étudiants gradués travaillant sur des projets logiciel "
 "libre"
 
-#: Template/Pages/home.ctp:72
+#: Template/Pages/home.ctp:81
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr "Mentorat de projet (chaque projet aura un mentor)"
 
-#: Template/Pages/home.ctp:73
+#: Template/Pages/home.ctp:82
 msgid "Teaching assistant (TAs) access"
 msgstr "Accès à des professeurs"
 
-#: Template/Pages/home.ctp:74
+#: Template/Pages/home.ctp:83
 msgid "Additional mentor access from ML2 staff"
 msgstr "Accès aux mentors de ML²"
 
-#: Template/Pages/home.ctp:75
+#: Template/Pages/home.ctp:84
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
@@ -774,26 +775,26 @@ msgstr ""
 "Accès au réseau de ML² : étudiants de 7 universités, la communauté du "
 "logiciel libre, mentors et industriels"
 
-#: Template/Pages/home.ctp:76
+#: Template/Pages/home.ctp:85
 msgid "Promotion of projects and students on the ML2 website"
 msgstr "Promouvoir les projets et les étudiants sur le site web de ML²"
 
-#: Template/Pages/home.ctp:77
-msgid "CV Portfolio  testimonial plugin (testimonials from TAs & mentors)"
+#: Template/Pages/home.ctp:86
+msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 "Accès aux commentaires des mentors et des professeurs pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:87
 msgid ""
-"CV Portfolio  open source code summary plugin (key performance indicators on "
+"CV Portfolio open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
 msgstr "Accès aux codes sources des projets pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:79
+#: Template/Pages/home.ctp:88
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr "Accès aux conférences et séminaires de ML²"
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:89
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
 
@@ -1069,6 +1070,51 @@ msgstr "Entrez votre adresse courriel"
 #: Template/Users/register.ctp:9
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
+
+#~ msgid "The organizations project has been saved."
+#~ msgstr "Le projet des organisations a été enregistré."
+
+#~ msgid "The organizations project could not be saved. Please, try again."
+#~ msgstr ""
+#~ "Le projet des organisations n'a pas pu être enregistré. Veuillez "
+#~ "réessayer."
+
+#~ msgid "The organizations project has been deleted."
+#~ msgstr "Le projet des organisations a été supprimé."
+
+#~ msgid "The organizations project could not be deleted. Please, try again."
+#~ msgstr ""
+#~ "Le projet des organisations n'a pas pu être supprimé. Veuillez réessayer."
+
+#~ msgid "The svn user has been saved."
+#~ msgstr "L'utilisateur svn a été enregistré."
+
+#~ msgid "The svn user could not be saved. Please, try again."
+#~ msgstr "L'utilisateur svn n'a pas pu être enregistré. Veuillez réessayer."
+
+#~ msgid "The svn user has been deleted."
+#~ msgstr "L'utilisateur svn a été supprimé."
+
+#~ msgid "The svn user could not be deleted. Please, try again."
+#~ msgstr "L'utilisateur svn n'a pas pu être supprimé. Veuillez réessayer."
+
+#~ msgid "Value Proposition"
+#~ msgstr "Proposition de Valeur"
+
+#~ msgid "Support for graduate students working on  open source projects"
+#~ msgstr ""
+#~ "Offrir du support aux étudiants gradués travaillant sur des projets "
+#~ "logiciel libre"
+
+#~ msgid "CV Portfolio  testimonial plugin (testimonials from TAs & mentors)"
+#~ msgstr ""
+#~ "Accès aux commentaires des mentors et des professeurs pour les CV/"
+#~ "portfolio "
+
+#~ msgid ""
+#~ "CV Portfolio  open source code summary plugin (key performance indicators "
+#~ "on open source repo contributions)"
+#~ msgstr "Accès aux codes sources des projets pour les CV/portfolio "
 
 #~ msgid ""
 #~ "The user could not be saved. Please,\n"
