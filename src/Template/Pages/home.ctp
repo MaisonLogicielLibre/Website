@@ -1,4 +1,4 @@
-<div id="top" class="header">
+<div id="top" class="header img-responsive">
     <div class="text-vertical-center">
     </div>
 </div>
