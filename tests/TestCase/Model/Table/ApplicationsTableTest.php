@@ -1,9 +1,12 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ApplicationsTable;
+use App\Model\Table\CommentsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
+use Cake\I18n\Time;
 
 /**
  * App\Model\Table\ApplicationsTable Test Case
@@ -57,32 +60,272 @@ class ApplicationsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
+    * Test getId
+    * @return void
+    */
+    public function testGetId()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getId();
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
-     * Test validationDefault method
-     *
+     * Test getPresentation
      * @return void
      */
-    public function testValidationDefault()
+    public function testGetPresentation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $id = 1;
+        $expected = 'Du texte';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getPresentation();
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
-     * Test buildRules method
-     *
+     * Test getStartDate
+     * @return void
+     */
+    public function testGetStartDate()
+    {
+        $id = 1;
+        $expected = new Time('2015-09-28');
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getStartDate();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getEndDate
+     * @return void
+     */
+    public function testGetEndDate()
+    {
+        $id = 1;
+        $expected = new Time('2015-09-28');
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getEndDate();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getWeeklyHours
+     * @return void
+     */
+    public function testGetWeeklyHours()
+    {
+        $id = 1;
+        $expected = '15';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getWeeklyHours();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getIsAccepted
+     * @return void
+     */
+    public function testGetIsAccepted()
+    {
+        $id = 1;
+        $expected = false;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getIsAccepted();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getIsArchived
+     * @return void
+     */
+    public function testGetIsArchived()
+    {
+        $id = 1;
+        $expected = false;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getIsArchived();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getProjectId
+     * @return void
+     */
+    public function testGetProjectId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getProjectId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getUserId
+     * @return void
+     */
+    public function testGetUserId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getUserId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getTypeApplicationId
+     * @return void
+     */
+    public function testGetTypeApplicationId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getTypeApplicationId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editPresentation
+     * @return void
+     */
+    public function testEditPresentation()
+    {
+        $id = 1;
+        $expected = 'stuff';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editPresentation($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editAccepted
+     * @return void
+     */
+    public function testEditAccepted()
+    {
+        $id = 1;
+        $expected = true;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editAccepted($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editArchived
+     * @return void
+     */
+    public function testEditArchived()
+    {
+        $id = 1;
+        $expected = true;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editArchived($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editUserId
+     * @return void
+     */
+    public function testEditUserId()
+    {
+        $id = 1;
+        $expected = 3;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editUserId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editProjectId
+     * @return void
+     */
+    public function testEditProjectId()
+    {
+        $id = 1;
+        $expected = 3;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editProjectId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test validation
+     * @return void
+     */
+    public function testValidation()
+    {
+        $validator = new Validator();
+
+        $expected = $validator;
+
+        $result = $this->Applications->validationDefault($validator);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test buildRules
      * @return void
      */
     public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->Applications->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 }

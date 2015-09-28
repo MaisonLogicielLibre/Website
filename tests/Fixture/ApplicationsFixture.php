@@ -47,13 +47,13 @@ class ApplicationsFixture extends TestFixture
             'id' => 1,
             'project_id' => 1,
             'user_id' => 1,
-            'presentation' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'presentation' => 'Du texte',
             'type_application_id' => 1,
-            'weeklyHours' => 1,
+            'weeklyHours' => 15,
             'startDate' => '2015-09-28',
             'endDate' => '2015-09-28',
-            'accepted' => 1,
-            'archived' => 1
+            'accepted' => 0,
+            'archived' => 0
         ],
     ];
 }
