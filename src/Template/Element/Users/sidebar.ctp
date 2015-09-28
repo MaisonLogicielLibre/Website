@@ -59,7 +59,7 @@
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
-                                    </span> echo __('Edit profile') ?></a>
+                                    </span> <?= __('Edit profile') ?></a>
                 </li>
             </ul>
         </div>

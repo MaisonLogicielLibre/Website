@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-28 09:22-0400\n"
-"PO-Revision-Date: 2015-09-28 09:27-0400\n"
+"POT-Creation-Date: 2015-09-28 10:33-0400\n"
+"PO-Revision-Date: 2015-09-28 10:35-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -380,7 +380,7 @@ msgstr "Site web du projet"
 msgid "Edit the project"
 msgstr "Modifier le projet"
 
-#: Template/Element/Users/sidebar.ctp:15;84
+#: Template/Element/Users/sidebar.ctp:15;84 Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -390,7 +390,11 @@ msgstr "Modifier le courriel"
 
 #: Template/Element/Users/sidebar.ctp:46
 msgid "Change password"
-msgstr ""
+msgstr "Modifier le mot de passe"
+
+#: Template/Element/Users/sidebar.ctp:62
+msgid "Edit profile"
+msgstr "Modifier le profil"
 
 #: Template/Layout/default.ctp:58
 msgid "Home"
@@ -593,7 +597,7 @@ msgstr "Supprimer le projet des organisations"
 msgid "Organization"
 msgstr "Organisation"
 
-#: Template/Pages/contact.ctp:6
+#: Template/Pages/contact.ctp:6 Template/Users/edit.ctp:20
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
@@ -985,6 +989,18 @@ msgstr "Ajouter un utilisateur"
 msgid "Edit User"
 msgstr "Modifier l'utilisateur"
 
+#: Template/Users/edit.ctp:16
+msgid "First name"
+msgstr "Prénom"
+
+#: Template/Users/edit.ctp:17
+msgid "Last name"
+msgstr "Nom"
+
+#: Template/Users/edit.ctp:18
+msgid "Biography"
+msgstr "Biographie"
+
 #: Template/Users/edit.ctp:23
 msgid "Gender"
 msgstr "Sexe"
@@ -996,6 +1012,10 @@ msgstr "Femme"
 #: Template/Users/edit.ctp:24
 msgid "Male"
 msgstr "Homme"
+
+#: Template/Users/edit.ctp:26
+msgid "University"
+msgstr "Université"
 
 #: Template/Users/edit.ctp:29 Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
@@ -1016,7 +1036,7 @@ msgstr "Confirmer votre nouveau courriel"
 
 #: Template/Users/email.ctp:17
 msgid "Confirm your password to confirm the change"
-msgstr "Confirmer le mot de passe pour confirmer le changement"
+msgstr "Confirmer votre mot de passe "
 
 #: Template/Users/email.ctp:17 Template/Users/password.ctp:14;15;17
 #: Template/Users/register.ctp:6;7
@@ -1045,7 +1065,7 @@ msgstr "Confirmer le nouveau mot de passe"
 
 #: Template/Users/password.ctp:17
 msgid "Confirm your current password to confirm the change"
-msgstr "Confirmer votre mot de passe actuel pour confirmer la modification"
+msgstr "Confirmer votre mot de passe actuel"
 
 #: Template/Users/register.ctp:5
 msgid "Choose your username"
@@ -1126,9 +1146,6 @@ msgstr "Confirmez votre adresse courriel"
 
 #~ msgid "LastName"
 #~ msgstr "Nom"
-
-#~ msgid "Biography"
-#~ msgstr "Biographie"
 
 #~ msgid "Yes"
 #~ msgstr "Oui"

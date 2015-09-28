@@ -13,17 +13,17 @@
             <fieldset>
                 <legend><?= __('Edit User') ?></legend>
                 <?php
-                echo $this->Form->input('firstName');
-                echo $this->Form->input('lastName');
-                echo $this->Form->input('biography');
-                echo $this->Form->input('portfolio', ['type' => 'text']);
-                echo $this->Form->input('phone');
+                echo $this->Form->input('firstName', ['label' => __('First name')]);
+                echo $this->Form->input('lastName', ['label' => __('Last name')]);
+                echo $this->Form->input('biography', ['label' => __('Biography')]);
+                echo $this->Form->input('portfolio', ['type' => 'text'], ['label' => __('Portfolio')]);
+                echo $this->Form->input('phone', ['label' => __('Phone')]);
                 ?>
                 <div class="form-group">
                     <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
                     <?= $this->Form->select('gender', [0 => __('Female'), 1 => __('Male')], ['class' => 'form-control']); ?>
                 </div>
-                <?= $this->Form->input('universitie_id', ['options' => $universities]); ?>
+                <?= $this->Form->input('universitie_id', ['label' => __('University')], ['options' => $universities]); ?>
             </fieldset>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
             <?= $this->Form->button(__('Cancel'), [
