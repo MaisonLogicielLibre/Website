@@ -17,7 +17,8 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
-		"mll/apisvn": "1.0-alpha"
+		"mll/apisvn": "1.0-alpha",
+        "fheider/cakephp-datatables": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",

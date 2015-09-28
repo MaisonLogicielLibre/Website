@@ -70,13 +70,31 @@ class OrganizationsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'finder' => [
-                'show' => true
-            ]
-        ];
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if($user->hasRoleName(['Administrator'])) {
+            $this->adminIndex();
+        } else {
+            $this->paginate = [
+                'finder' => [
+                    'show' => true
+                ]
+            ];
+            $this->set('organizations', $this->paginate($this->Organizations));
+            $this->set('_serialize', ['organizations']);
+        }
+    }
+
+    /**
+     * Admin index method
+     *
+     * @return void
+     */
+    public function adminIndex() {
+
         $this->set('organizations', $this->paginate($this->Organizations));
         $this->set('_serialize', ['organizations']);
+        $this->render('adminIndex');
     }
 
     /**
