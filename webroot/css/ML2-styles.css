@@ -262,14 +262,10 @@ footer {
 	float:left;
 }
 
-.industry{
+.logos{
 	margin-left: 10%;
 }
 
-.academic {
-	margin-left: 10%;
-    clear:both;
-}
 
 /* contact page */
 
@@ -291,13 +287,8 @@ footer {
 		float: left;
 	}
 	
-	.industry{
+	.logos{
 		margin-left: 0%;
-	}
-
-	.academic {
-		margin-left: 0%;
-		clear:both;
 	}
 }
 
@@ -308,11 +299,7 @@ footer {
 		margin: 15% 5%;
 	}
 	
-	.industry{
-		margin-left: 0%;
-	}
-
-	.academic {
+	.logos{
 		margin-left: 0%;
 	}
 }
