@@ -257,8 +257,8 @@ footer {
 
 .partner {
     height: 200px;
-	width: 500px;
-	margin: 50px;
+	width: 28%;
+	margin: 2%;
 	float:left;
 }
 
@@ -281,4 +281,38 @@ footer {
 
 .contact{
 	text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+	.partner {
+		height: 200px;
+		width: 46%;
+		margin: 2%;
+		float: left;
+	}
+	
+	.industry{
+		margin-left: 0%;
+	}
+
+	.academic {
+		margin-left: 0%;
+		clear:both;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.partner {
+		height: 15%;
+		width: 100%;
+		margin: 15% 5%;
+	}
+	
+	.industry{
+		margin-left: 0%;
+	}
+
+	.academic {
+		margin-left: 0%;
+	}
 }
