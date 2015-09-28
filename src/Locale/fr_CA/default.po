@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-28 10:33-0400\n"
-"PO-Revision-Date: 2015-09-28 10:35-0400\n"
+"POT-Creation-Date: 2015-09-28 15:54-0400\n"
+"PO-Revision-Date: 2015-09-28 16:01-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -404,39 +404,51 @@ msgstr "Accueil"
 msgid "Projects"
 msgstr "Projets"
 
-#: Template/Layout/default.ctp:62
+#: Template/Layout/default.ctp:63
 msgid "Partners"
 msgstr "Partenaires"
 
-#: Template/Layout/default.ctp:63
+#: Template/Layout/default.ctp:65 Template/Pages/partner.ctp:3
+msgid "Industry"
+msgstr "Industriel"
+
+#: Template/Layout/default.ctp:66 Template/Pages/partner.ctp:23
+msgid "Academic"
+msgstr "Académique"
+
+#: Template/Layout/default.ctp:67
+msgid "Associations"
+msgstr "Association"
+
+#: Template/Layout/default.ctp:70
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: Template/Layout/default.ctp:65
+#: Template/Layout/default.ctp:72
 msgid "Profile"
 msgstr "Profil"
 
-#: Template/Layout/default.ctp:66
+#: Template/Layout/default.ctp:73
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: Template/Layout/default.ctp:68
+#: Template/Layout/default.ctp:75
 msgid "Login"
 msgstr "Connexion"
 
-#: Template/Layout/default.ctp:69 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:76 Template/Users/register.ctp:4
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: Template/Layout/default.ctp:94;97
+#: Template/Layout/default.ctp:101;104
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:102
 msgid "Montfort street"
 msgstr "Rue Montfort"
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:102
 msgid "Montreal"
 msgstr "Montréal"
 
@@ -801,14 +813,6 @@ msgstr "Accès aux conférences et séminaires de ML²"
 #: Template/Pages/home.ctp:89
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
-
-#: Template/Pages/partner.ctp:3
-msgid "Industry"
-msgstr "Industriel"
-
-#: Template/Pages/partner.ctp:22
-msgid "Academic"
-msgstr "Académique"
 
 #: Template/Projects/add.ctp:17
 msgid "Add Project"
