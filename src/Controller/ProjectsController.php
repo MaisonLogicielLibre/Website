@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Projects controller
@@ -29,7 +30,8 @@ class ProjectsController extends AppController
         'submit' => ['Administrator'],
         'edit' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Administrator']
+        'delete' => ['Administrator'],
+        'apply' => ['Student', 'Administrator', 'Mentor']
     ];
 
     /**
@@ -150,5 +152,41 @@ class ProjectsController extends AppController
             $this->Flash->error(__('The project could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Apply method
+     * @return redirect
+     */
+    public function apply($id = null)
+    {
+        $project = $this->Projects->get(
+            $id,
+            [
+                'contain' => []
+            ]
+        );
+        $application = TableRegistry::get('Applications')->newEntity();
+
+        $application->editAccepted(false);
+        $application->editArchived(false);
+        $application->editUserId($this->request->session()->read('Auth.User.id'));
+        $application->editProjectId($project->id);
+
+        if ($this->request->is('post')) {
+            $application = TableRegistry::get('Applications')->patchEntity($application, $this->request->data);
+            debug($application);
+            debug(TableRegistry::get('Applications')->save($application));
+            if (TableRegistry::get('Applications')->save($application)) {
+                $this->Flash->success(__('The application has been saved.'));
+                return $this->redirect(['action' => 'view', $application->project->id]);
+            } else {
+                $this->Flash->error(__('The application could not be saved. Please, try again.'));
+            }
+        }
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $typeApplications = $this->Projects->Applications->TypeApplications->find('list', ['limit' => 200]);
+        $this->set(compact('application', 'project', 'user', 'typeApplications'));
+        $this->set('_serialize', ['application']);
     }
 }

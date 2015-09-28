@@ -1,27 +1,36 @@
-<div class="actions columns col-lg-2 col-md-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="nav nav-stacked nav-pills">
-        <li class="active disabled"><?= $this->Html->link(__('New Project'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Missions'), ['controller' => 'Missions', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Mission'), ['controller' => 'Missions', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Organizations'), ['controller' => 'Organizations', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Organization'), ['controller' => 'Organizations', 'action' => 'add']) ?> </li>
-    </ul>
-</div>
-<div class="projects form col-lg-10 col-md-9 columns">
-    <?= $this->Form->create($project); ?>
-    <fieldset>
-        <legend><?= __('Add Project') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('link');
-            echo $this->Form->input('description');
-            echo $this->Form->input('organizations._ids', ['options' => $organizations]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
-    <?= $this->Form->end() ?>
+<div class="users form col-lg-12 col-md-12 columns">
+    <?php
+    $this->element('Projects/sidebar');
+    if($user->hasRoleName(['Administrator'])):
+        echo $this->fetch('sidebarAdministrator');
+    else:
+        echo $this->fetch('sidebar');
+    endif;
+    ?>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <?= $this->Form->create($application); ?>
+            <fieldset>
+                <legend><?= __('Apply on this project') ?></legend>
+                <?php
+                    echo $this->Form->input('presentation', ['type' => 'textarea']);
+                    echo $this->Form->input('type_application_id', ['options' => $typeApplications, 'type' => 'select']);
+                    echo $this->Form->input('weeklyHours', ['min' => '0']);
+                    echo $this->Form->input('startDate');
+                    echo $this->Form->input('endDate');
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+            <?= $this->Form->button(__('Cancel'), [
+                'type' => 'button',
+                'class' => 'btn btn-default',
+                'onclick' => 'location.href=\'' . $this->url->build([
+                        'controller' => 'Projects',
+                        'action' => 'view',
+                        $project->id
+                    ]) . '\''
+            ]); ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
 </div>
