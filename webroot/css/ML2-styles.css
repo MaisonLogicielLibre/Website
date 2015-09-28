@@ -279,6 +279,17 @@ footer {
 	text-align: center;
 }
 
+.home-text{
+	width:40%;
+	margin:5%;
+	float:left;
+	text-align:center;
+}
+
+.clear{
+	clear:both;
+}
+
 @media screen and (max-width: 1000px) {
 	.partner {
 		height: 200px;
@@ -289,6 +300,12 @@ footer {
 	
 	.logos{
 		margin-left: 0%;
+	}
+	
+	.home-text{
+	width:90%;
+	margin:5%;
+	text-align:center;
 	}
 }
 
