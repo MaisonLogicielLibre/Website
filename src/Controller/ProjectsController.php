@@ -139,7 +139,7 @@ class ProjectsController extends AppController
 
     /**
      * Delete method
-     * @param string $id id
+     * @param int $id id
      * @return redirect
      */
     public function delete($id = null)
@@ -156,6 +156,7 @@ class ProjectsController extends AppController
 
     /**
      * Apply method
+     * @param int $id id
      * @return redirect
      */
     public function apply($id = null)

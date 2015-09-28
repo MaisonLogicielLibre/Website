@@ -1,12 +1,30 @@
 <?php
+/**
+ * Tests for TypeApplicationTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\TypeApplicationsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
- * App\Model\Table\TypeApplicationsTable Test Case
+ * Tests for TypeApplicationTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class TypeApplicationsTableTest extends TestCase
 {
@@ -33,7 +51,7 @@ class TypeApplicationsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -45,7 +63,7 @@ class TypeApplicationsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */
@@ -57,22 +75,32 @@ class TypeApplicationsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
+     * Test validation
      * @return void
      */
-    public function testInitialize()
+    public function testValidation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+
+        $expected = $validator;
+
+        $result = $this->TypeApplications->validationDefault($validator);
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
-     * Test validationDefault method
-     *
+     * Test buildRules
      * @return void
      */
-    public function testValidationDefault()
+    public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->TypeApplications->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 }

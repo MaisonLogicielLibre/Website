@@ -1,15 +1,31 @@
 <?php
+/**
+ * Tests for ApplicationTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\CommentsTable;
+use Cake\I18n\Time;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
-use Cake\I18n\Time;
 
 /**
- * App\Model\Table\ApplicationsTable Test Case
+ * Tests for ApplicationTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class ApplicationsTableTest extends TestCase
 {
@@ -36,7 +52,7 @@ class ApplicationsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -48,7 +64,7 @@ class ApplicationsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */
@@ -60,9 +76,9 @@ class ApplicationsTableTest extends TestCase
     }
 
     /**
-    * Test getId
-    * @return void
-    */
+     * Test getId
+     * @return void
+     */
     public function testGetId()
     {
         $id = 1;

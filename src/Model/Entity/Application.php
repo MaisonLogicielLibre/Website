@@ -1,24 +1,26 @@
 <?php
+/**
+ * Entity of ApplicationTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Application Entity.
+ * Entity of ApplicationTable
  *
- * @property int $id
- * @property int $project_id
- * @property \App\Model\Entity\Project $project
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property string $presentation
- * @property int $type_application_id
- * @property \App\Model\Entity\TypeApplication $type_application
- * @property int $weeklyHours
- * @property \Cake\I18n\Time $startDate
- * @property \Cake\I18n\Time $endDate
- * @property bool $accepted
- * @property bool $archived
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class Application extends Entity
 {
@@ -32,7 +34,7 @@ class Application extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
