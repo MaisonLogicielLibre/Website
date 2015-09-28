@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-28 13:20+0000\n"
+"POT-Creation-Date: 2015-09-28 14:33+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -473,6 +473,7 @@ msgid "Edit the project"
 msgstr ""
 
 #: Template/Element/Users/sidebar.ctp:15;84
+#: Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr ""
 
@@ -482,6 +483,10 @@ msgstr ""
 
 #: Template/Element/Users/sidebar.ctp:46
 msgid "Change password"
+msgstr ""
+
+#: Template/Element/Users/sidebar.ctp:62
+msgid "Edit profile"
 msgstr ""
 
 #: Template/Layout/default.ctp:58
@@ -712,6 +717,7 @@ msgid "Organization"
 msgstr ""
 
 #: Template/Pages/contact.ctp:6
+#: Template/Users/edit.ctp:20
 msgid "Phone"
 msgstr ""
 
@@ -1051,6 +1057,18 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
+#: Template/Users/edit.ctp:16
+msgid "First name"
+msgstr ""
+
+#: Template/Users/edit.ctp:17
+msgid "Last name"
+msgstr ""
+
+#: Template/Users/edit.ctp:18
+msgid "Biography"
+msgstr ""
+
 #: Template/Users/edit.ctp:23
 msgid "Gender"
 msgstr ""
@@ -1061,6 +1079,10 @@ msgstr ""
 
 #: Template/Users/edit.ctp:24
 msgid "Male"
+msgstr ""
+
+#: Template/Users/edit.ctp:26
+msgid "University"
 msgstr ""
 
 #: Template/Users/edit.ctp:29
