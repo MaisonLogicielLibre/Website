@@ -63,21 +63,30 @@
 <hr>
 <div class="row">
     <div class="col-xl-12 text-center">
-        <h2><?php echo __('Value Proposition') ?></h2>
+        <h2><?php echo __('Value proposition for industry:') ?></h2>
+
+        <p class="lead">
+			<?php echo __('Access to potential new hires in our logicel libre developer community') ?> <br>
+			<?php echo __('Develop new open source features faster and cheaper in your products and dependencies') ?> <br>			
+			<?php echo __('Promote your company and create networks across the software engineering and computer science departments of 7 universities') ?> <br>         
+			<?php echo __('Create Goodwill in the University and open source communities') ?> <br>
+		</p>
+		
+		<h2><?php echo __('Value proposition for universities and students:') ?></h2>
 
         <p class="lead">
 			<?php echo __('Match Interns with Industry and Academic funded open source projects') ?> <br>
 			<?php echo __('Match Capstone students with Industry and Academic sponsored open source projects') ?> <br>			
-			<?php echo __('Support for graduate students working on  open source projects') ?> <br>         
+			<?php echo __('Support for graduate students working on open source projects') ?> <br>         
 			<?php echo __('Project mentorship (each submitted project must have a mentor)') ?> <br>
 			<?php echo __('Teaching assistant (TAs) access') ?> <br>
 			<?php echo __('Additional mentor access from ML2 staff') ?> <br>
 			<?php echo __('Networking with ML2 members: students from 7 universities, open source community, mentors, and industry') ?> <br>
 			<?php echo __('Promotion of projects and students on the ML2 website') ?> <br>
-			<?php echo __('CV Portfolio  testimonial plugin (testimonials from TAs & mentors)') ?> <br>
-			<?php echo __('CV Portfolio  open source code summary plugin (key performance indicators on open source repo contributions)') ?> <br>
+			<?php echo __('CV Portfolio testimonial plugin (testimonials from TAs & mentors)') ?> <br>
+			<?php echo __('CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)') ?> <br>
 			<?php echo __('Access to ML2 academic and industry conferences and seminars') ?> <br>
-			<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>   
+			<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>
 		</p>
     </div>
 </div>
