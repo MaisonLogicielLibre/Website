@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-28 10:33-0400\n"
-"PO-Revision-Date: 2015-09-28 10:39-0400\n"
+"POT-Creation-Date: 2015-09-28 15:53-0400\n"
+"PO-Revision-Date: 2015-09-28 16:01-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -404,39 +404,51 @@ msgstr ""
 msgid "Projects"
 msgstr ""
 
-#: Template/Layout/default.ctp:62
+#: Template/Layout/default.ctp:63
 msgid "Partners"
 msgstr ""
 
-#: Template/Layout/default.ctp:63
+#: Template/Layout/default.ctp:65 Template/Pages/partner.ctp:3
+msgid "Industry"
+msgstr ""
+
+#: Template/Layout/default.ctp:66 Template/Pages/partner.ctp:23
+msgid "Academic"
+msgstr ""
+
+#: Template/Layout/default.ctp:67
+msgid "Associations"
+msgstr "Association"
+
+#: Template/Layout/default.ctp:70
 msgid "Contact us"
 msgstr ""
 
-#: Template/Layout/default.ctp:65
+#: Template/Layout/default.ctp:72
 msgid "Profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:66
+#: Template/Layout/default.ctp:73
 msgid "Logout"
 msgstr ""
 
-#: Template/Layout/default.ctp:68
+#: Template/Layout/default.ctp:75
 msgid "Login"
 msgstr ""
 
-#: Template/Layout/default.ctp:69 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:76 Template/Users/register.ctp:4
 msgid "Register"
 msgstr ""
 
-#: Template/Layout/default.ctp:94;97
+#: Template/Layout/default.ctp:101;104
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:102
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:102
 msgid "Montreal"
 msgstr ""
 
@@ -768,14 +780,6 @@ msgstr "Access to ML² academic and industry conferences and seminars"
 #: Template/Pages/home.ctp:89
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "24/7 access to ML² location on the RC of ETS Pavilion A"
-
-#: Template/Pages/partner.ctp:3
-msgid "Industry"
-msgstr ""
-
-#: Template/Pages/partner.ctp:22
-msgid "Academic"
-msgstr ""
 
 #: Template/Projects/add.ctp:17
 msgid "Add Project"

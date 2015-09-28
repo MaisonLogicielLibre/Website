@@ -59,7 +59,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
-				<li><?= $this->Html->link(__('Partners'), ['controller' => 'Pages', 'action' => 'partner']);?></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><?= $this->Html->link(__('Industry'), ['controller' => 'Pages', 'action' => 'industry']);?></li>
+						<li><?= $this->Html->link(__('Academic'), ['controller' => 'Pages', 'action' => 'academic']);?></li>
+						<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>                     
+					</ul>
+				</li>
 				<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
 				<?php if($this->request->session()->read('Auth.User.username')) {?>
 					<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
