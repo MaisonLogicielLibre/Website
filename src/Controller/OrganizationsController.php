@@ -64,6 +64,18 @@ class OrganizationsController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+
+    /**
      * Index method
      *
      * @return void
@@ -92,8 +104,14 @@ class OrganizationsController extends AppController
      */
     public function adminIndex() {
 
-        $this->set('organizations', $this->paginate($this->Organizations));
-        $this->set('_serialize', ['organizations']);
+        $data = $this->DataTables->find('organizations', [
+            'contain' => []
+        ]);
+
+        $this->set([
+            'data' => $data,
+            '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+        ]);
         $this->render('adminIndex');
     }
 
