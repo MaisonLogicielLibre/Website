@@ -26,6 +26,7 @@ class OrganizationsController extends AppController
 {
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
+        'editStatus' => ['Administrator'],
         'add' => ['Administrator'],
         'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
@@ -205,6 +206,27 @@ class OrganizationsController extends AppController
         }
         $this->set(compact('organization'));
         $this->set('_serialize', ['organization']);
+    }
+
+    public function editStatus()
+    {
+        if ($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $data = $this->request->data;
+            $organization = $this->Organizations->get(intval($data['id']));
+            if ($data['state'] == '3') {
+                $organization->editIsRejected($data['stateValue']);
+            } else if ($data['state'] == '2') {
+                $organization->editIsValidated($data['stateValue']);
+            } else {
+                echo json_encode(['error', __('Cannot perform the change.')]);
+            }
+            echo json_encode(['success', __('Your change has been saved')]);
+            $this->Organizations->save($organization);
+        } else {
+            $this->Flash->error(__('Not an AJAX Query', true));
+            $this->redirect(array('action' => 'index'));
+        }
     }
 
     /**

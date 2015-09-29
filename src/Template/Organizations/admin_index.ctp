@@ -13,6 +13,7 @@ echo $this->fetch('actionSidebar');
             <table id="organizations" class="table table-striped table-bordered table-hover dataTable">
                 <thead>
                 <tr>
+                    <th></th>
                     <th><?= __('Name'); ?></th>
                     <th><?= __('Website'); ?></th>
                     <th><?= __('Approved'); ?></th>
@@ -20,21 +21,10 @@ echo $this->fetch('actionSidebar');
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($data as $i => $item): ?>
-                    <tr>
-                        <td><?= $item->getName() ?></td>
-                        <td><?= $item->getWebsite() ?></td>
-                        <td><input type="checkbox" value="<?php echo $item->getIsValidated() ?>"
-                                   name="<?php echo 'cb-' . $i . '-validated'; ?>" <?= ($item->getIsValidated() ? 'checked' : '') ?> />
-                        </td>
-                        <td><input type="checkbox" value="<?php echo $item->getIsRejected() ?>"
-                                   name="<?php echo 'cb-' . $i . '-rejected'; ?>" <?= ($item->getIsRejected() ? 'checked' : '') ?> />
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 <tr class="table-search info">
+                    <td></td>
                     <td><input type="text" placeholder="Search ..." class="form-control input-sm input-block-level"/>
                     </td>
                     <td><input type="text" placeholder="Search ..." class="form-control input-sm input-block-level"/>
@@ -81,6 +71,12 @@ echo $this->fetch('actionSidebar');
         "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
         'columns' => [
             [
+                'name' => 'organizations.id',
+                'data' => 'name',
+                'searchable' => false,
+                'visible' => false
+            ],
+            [
                 'name' => 'organizations.name',
                 'data' => 'name',
                 "searchable" => true
@@ -103,6 +99,7 @@ echo $this->fetch('actionSidebar');
         ],
         'lengthMenu' => ''
     ])->draw('.dataTable');
+    echo 'var ajaxUrl="'. $this->Url->Build(['action' => 'editStatus']) .'"';
     $this->Html->scriptEnd();
     ?>
     <?= $this->Html->script('organizations/index.js', ['block' => 'scriptBottom']); ?>
