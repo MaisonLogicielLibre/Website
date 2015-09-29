@@ -244,14 +244,18 @@ hr.small {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+.wrapper{
+	min-height: 100%;
+	margin-bottom: -50px;
+}
+
 footer {
     padding: 10px 0px;
     color: #FFF;
     background-color:black;
 	clear: both;
-    position: relative;
     width:100%;
-    bottom:0px;
 }
 .setHeight {
     min-height: 400px !important;
