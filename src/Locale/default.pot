@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-29 16:02+0000\n"
+"POT-Creation-Date: 2015-09-29 19:42+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -13,6 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AppController.php:59
+msgid "ML2"
+msgstr ""
 
 #: Controller/CommentsController.php:89;116
 msgid "The comment has been saved."
@@ -489,65 +493,65 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:58
+#: Template/Layout/default.ctp:59
 msgid "Home"
 msgstr ""
 
-#: Template/Layout/default.ctp:61
+#: Template/Layout/default.ctp:62
 msgid "Contest"
 msgstr ""
 
-#: Template/Layout/default.ctp:62
+#: Template/Layout/default.ctp:63
 #: Template/Organizations/view.ctp:25
 msgid "Projects"
 msgstr ""
 
-#: Template/Layout/default.ctp:64
+#: Template/Layout/default.ctp:65
 msgid "Partners"
 msgstr ""
 
-#: Template/Layout/default.ctp:66
+#: Template/Layout/default.ctp:67
 msgid "Industry"
 msgstr ""
 
-#: Template/Layout/default.ctp:67
+#: Template/Layout/default.ctp:68
 msgid "Academic"
 msgstr ""
 
-#: Template/Layout/default.ctp:68
+#: Template/Layout/default.ctp:69
 msgid "Associations"
 msgstr ""
 
-#: Template/Layout/default.ctp:71
+#: Template/Layout/default.ctp:72
 msgid "Contact us"
 msgstr ""
 
-#: Template/Layout/default.ctp:73
+#: Template/Layout/default.ctp:74
 msgid "Profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:74
+#: Template/Layout/default.ctp:75
 msgid "Logout"
 msgstr ""
 
-#: Template/Layout/default.ctp:76
+#: Template/Layout/default.ctp:77
 msgid "Login"
 msgstr ""
 
-#: Template/Layout/default.ctp:77
+#: Template/Layout/default.ctp:78
 #: Template/Users/register.ctp:4
 msgid "Register"
 msgstr ""
 
-#: Template/Layout/default.ctp:102;105
+#: Template/Layout/default.ctp:104;107
 msgid "Maison du Logiciel Libre"
 msgstr ""
 
-#: Template/Layout/default.ctp:103
+#: Template/Layout/default.ctp:105
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:103
+#: Template/Layout/default.ctp:105
 msgid "Montreal"
 msgstr ""
 
@@ -803,99 +807,99 @@ msgstr ""
 msgid "Complete survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:27
+#: Template/Pages/home.ctp:28;30
 msgid "Loading..."
 msgstr ""
 
-#: Template/Pages/home.ctp:36
+#: Template/Pages/home.ctp:39
 msgid "Our Mission"
 msgstr ""
 
-#: Template/Pages/home.ctp:39
+#: Template/Pages/home.ctp:42
 msgid "This initiative is born from a meeting between the ÉTS director and Google\n\t\tMontreal director. Seeing the difficulty that students have to hone their\n\t\thabilities to develop complex software and show the end product (code) to\n\t\trecruiters, they decided to establish the Maison du Logiciel Libre (ML2)"
 msgstr ""
 
-#: Template/Pages/home.ctp:46
+#: Template/Pages/home.ctp:49
 msgid "The foremost mission of ML2 is to offer a place of meeting and sharing in\n\t\tMontreal allowing the students to participate in open source software\n\t\tprojects. This initiative try to reach students across of Montreal\n\t\tuniversities and to include the largest possible community, thus allowing\n\t\tthe students to meet participants from multiple horizons with varied\n\t\tacademic and professional experiences."
 msgstr ""
 
-#: Template/Pages/home.ctp:55
+#: Template/Pages/home.ctp:58
 msgid "The mission of ML2 is an educational mission. Multiple activities will be\n\t\teventually offered : free development, graduation projects, internships,\n\t\tmastering projects, … All of these activities will gravitate around open\n\t\tsource projects. These projects will be proposed by : students, teachers ,\n\t\tuniversities or organisations wanting to invest in students formation.\n\t\tSeminars will complete this educational component."
 msgstr ""
 
-#: Template/Pages/home.ctp:64
+#: Template/Pages/home.ctp:67
 msgid "By participating in ML2 activities, the students will be able to (i)\n\t\tdiscover the open source software world with its codes and objectives; (ii)\n\t\thone their habilities to analyse, design and develop complex tasks ; (iii)\n\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n\t\trecognitions from their university."
 msgstr ""
 
-#: Template/Pages/home.ctp:74
+#: Template/Pages/home.ctp:77
 msgid "Value proposition for industry:"
 msgstr ""
 
-#: Template/Pages/home.ctp:77
+#: Template/Pages/home.ctp:80
 msgid "Access to potential new hires in our logicel libre developer community"
 msgstr ""
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:81
 msgid "Develop new open source features faster and cheaper in your products and dependencies"
 msgstr ""
 
-#: Template/Pages/home.ctp:79
+#: Template/Pages/home.ctp:82
 msgid "Promote your company and create networks across the software engineering and computer science departments of 7 universities"
 msgstr ""
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:83
 msgid "Create Goodwill in the University and open source communities"
 msgstr ""
 
-#: Template/Pages/home.ctp:83
+#: Template/Pages/home.ctp:86
 msgid "Value proposition for universities and students:"
 msgstr ""
 
-#: Template/Pages/home.ctp:86
+#: Template/Pages/home.ctp:89
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:87
+#: Template/Pages/home.ctp:90
 msgid "Match Capstone students with Industry and Academic sponsored open source projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:88
+#: Template/Pages/home.ctp:91
 msgid "Support for graduate students working on open source projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:89
+#: Template/Pages/home.ctp:92
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr ""
 
-#: Template/Pages/home.ctp:90
+#: Template/Pages/home.ctp:93
 msgid "Teaching assistant (TAs) access"
 msgstr ""
 
-#: Template/Pages/home.ctp:91
+#: Template/Pages/home.ctp:94
 msgid "Additional mentor access from ML2 staff"
 msgstr ""
 
-#: Template/Pages/home.ctp:92
+#: Template/Pages/home.ctp:95
 msgid "Networking with ML2 members: students from 7 universities, open source community, mentors, and industry"
 msgstr ""
 
-#: Template/Pages/home.ctp:93
+#: Template/Pages/home.ctp:96
 msgid "Promotion of projects and students on the ML2 website"
 msgstr ""
 
-#: Template/Pages/home.ctp:94
+#: Template/Pages/home.ctp:97
 msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 
-#: Template/Pages/home.ctp:95
+#: Template/Pages/home.ctp:98
 msgid "CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)"
 msgstr ""
 
-#: Template/Pages/home.ctp:96
+#: Template/Pages/home.ctp:99
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr ""
 
-#: Template/Pages/home.ctp:97
+#: Template/Pages/home.ctp:100
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr ""
 
