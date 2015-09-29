@@ -56,6 +56,7 @@ class AppController extends Controller
      */
     public function initialize()
     {
+        $this->set('title', __('ML2'));
         $this->loadComponent('Flash');
         $this->loadComponent(
             'Auth',
