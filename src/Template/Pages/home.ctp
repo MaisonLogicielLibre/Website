@@ -24,14 +24,17 @@
             <br>
             <div class="quotecontent">
                 <div style="display: none;">
-                    <iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
-                </div>
+					<?php if (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == "fr") {?>
+						<iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
+					<?php } else { ?>
+						<iframe src="https://docs.google.com/forms/d/1776VuKQwbZvC-WHBL-5imu5ZMrQnb8o3t9x7qGz6SWI/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
+					<?php }  ?>
+				</div>
             </div>
         </div>
     </div>
 </div>
 <hr>
-
 <div class="home-text">
 	<h2><b><?php echo __('Our Mission') ?></b></h2>
 
