@@ -48,6 +48,19 @@
                         </span> <?= __('Website of the project') ?>
                     </a>
                 </li>
+                <li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Projects',
+                            'action' => 'apply',
+                            $project->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Apply on the project') ?>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

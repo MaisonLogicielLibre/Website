@@ -60,6 +60,12 @@ class UsersTable extends Table
                 'foreignKey' => 'user_id'
             ]
         );
+        $this->hasMany(
+            'Applications',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
         $this->belongsToMany(
             'Projects',
             [
