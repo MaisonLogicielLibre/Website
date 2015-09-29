@@ -248,6 +248,10 @@ footer {
     padding: 10px 0px;
     color: #FFF;
     background-color:black;
+	clear: both;
+    position: relative;
+    width:100%;
+    bottom:0px;
 }
 .setHeight {
     min-height: 400px !important;
@@ -290,6 +294,17 @@ footer {
 	clear:both;
 }
 
+/* contest page */
+
+.contest{
+	margin: 0 auto;
+    width: 30%;
+}
+
+.img-contest{
+	margin-left: 20%;
+}
+
 @media screen and (max-width: 1000px) {
 	.partner {
 		height: 200px;
@@ -303,9 +318,14 @@ footer {
 	}
 	
 	.home-text{
-	width:90%;
-	margin:5%;
-	text-align:center;
+		width:90%;
+		margin:5%;
+		text-align:center;
+	}
+	
+	.contest{
+		margin: 0 auto;
+		width: 60%;
 	}
 }
 
@@ -318,5 +338,10 @@ footer {
 	
 	.logos{
 		margin-left: 0%;
+	}
+	
+	.contest{
+		margin: 0 auto;
+		width: 100%;
 	}
 }
