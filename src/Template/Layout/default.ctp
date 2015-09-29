@@ -58,6 +58,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+				<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
                 <li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>

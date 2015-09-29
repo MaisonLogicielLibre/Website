@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-28 15:53-0400\n"
-"PO-Revision-Date: 2015-09-28 16:01-0400\n"
+"POT-Creation-Date: 2015-09-29 12:33-0400\n"
+"PO-Revision-Date: 2015-09-29 12:35-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -400,55 +400,59 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: Template/Layout/default.ctp:61 Template/Organizations/view.ctp:25
+#: Template/Layout/default.ctp:61
+msgid "Contest"
+msgstr ""
+
+#: Template/Layout/default.ctp:62 Template/Organizations/view.ctp:25
 msgid "Projects"
 msgstr ""
 
-#: Template/Layout/default.ctp:63
+#: Template/Layout/default.ctp:64
 msgid "Partners"
 msgstr ""
 
-#: Template/Layout/default.ctp:65 Template/Pages/partner.ctp:3
+#: Template/Layout/default.ctp:66
 msgid "Industry"
 msgstr ""
 
-#: Template/Layout/default.ctp:66 Template/Pages/partner.ctp:23
+#: Template/Layout/default.ctp:67
 msgid "Academic"
 msgstr ""
 
-#: Template/Layout/default.ctp:67
+#: Template/Layout/default.ctp:68
 msgid "Associations"
 msgstr "Association"
 
-#: Template/Layout/default.ctp:70
+#: Template/Layout/default.ctp:71
 msgid "Contact us"
 msgstr ""
 
-#: Template/Layout/default.ctp:72
+#: Template/Layout/default.ctp:73
 msgid "Profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:73
+#: Template/Layout/default.ctp:74
 msgid "Logout"
 msgstr ""
 
-#: Template/Layout/default.ctp:75
+#: Template/Layout/default.ctp:76
 msgid "Login"
 msgstr ""
 
-#: Template/Layout/default.ctp:76 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:77 Template/Users/register.ctp:4
 msgid "Register"
 msgstr ""
 
-#: Template/Layout/default.ctp:101;104
+#: Template/Layout/default.ctp:102;105
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:102
+#: Template/Layout/default.ctp:103
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:102
+#: Template/Layout/default.ctp:103
 msgid "Montreal"
 msgstr ""
 
@@ -618,140 +622,203 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: Template/Pages/home.ctp:10
+#: Template/Pages/contest.ctp:7
+msgid "The logo must : "
+msgstr ""
+
+#: Template/Pages/contest.ctp:9
+msgid "Place the organisation name as a central part of the design"
+msgstr ""
+
+#: Template/Pages/contest.ctp:10
+msgid "Represent a place of conviviality and exchange"
+msgstr ""
+
+#: Template/Pages/contest.ctp:11
+msgid "Represent the open source software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:12
+msgid "Do not leave aside free software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:13
+msgid "Do not give the impression that we are only about free software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:15
+msgid "Reminder : "
+msgstr ""
+
+#: Template/Pages/contest.ctp:17
+msgid "The design must be original"
+msgstr ""
+
+#: Template/Pages/contest.ctp:18
+msgid "You must have the rights to use the image(s) used"
+msgstr ""
+
+#: Template/Pages/contest.ctp:19
+msgid "You grant the rights of your logo to Maison du Logiciel Libre"
+msgstr ""
+
+#: Template/Pages/contest.ctp:22
+msgid "The winner will be credited on the website and receive an ML2 shirt"
+msgstr "The winner will be credited on the website and receive an ML² shirt"
+
+#: Template/Pages/contest.ctp:23
+msgid "Send your design at : "
+msgstr ""
+
+#: Template/Pages/home.ctp:11
+msgid "ML2 need a new logo!"
+msgstr "ML² need a new logo!"
+
+#: Template/Pages/home.ctp:21
 msgid "Build ML2 future"
 msgstr "Build ML² future"
 
-#: Template/Pages/home.ctp:11
+#: Template/Pages/home.ctp:22
 msgid "Complete survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:16
+#: Template/Pages/home.ctp:27
 msgid "Loading..."
 msgstr ""
 
-#: Template/Pages/home.ctp:26
+#: Template/Pages/home.ctp:36
 msgid "Our Mission"
 msgstr ""
 
-#: Template/Pages/home.ctp:29
+#: Template/Pages/home.ctp:39
 msgid ""
 "This initiative is born from a meeting between the ÉTS director and Google\n"
-"\t\t\tMontreal director. Seeing the difficulty that students have to hone "
+"\t\tMontreal director. Seeing the difficulty that students have to hone "
 "their\n"
-"\t\t\thabilities to develop complex software and show the end product (code) "
+"\t\thabilities to develop complex software and show the end product (code) "
 "to\n"
-"\t\t\trecruiters, they decided to establish the Maison du Logiciel Libre "
-"(ML2)"
+"\t\trecruiters, they decided to establish the Maison du Logiciel Libre (ML2)"
 msgstr ""
-"ML² will improve University students’ software development skills and hiring "
-"potential through practical experience on free and open-source software "
-"projects."
+"This initiative is born from a meeting between the ÉTS director and Google\n"
+"\t\tMontreal director. Seeing the difficulty that students have to hone "
+"their\n"
+"\t\thabilities to develop complex software and show the end product (code) "
+"to\n"
+"\t\trecruiters, they decided to establish the Maison du Logiciel Libre (ML²)"
 
-#: Template/Pages/home.ctp:36
+#: Template/Pages/home.ctp:46
 msgid ""
 "The foremost mission of ML2 is to offer a place of meeting and sharing in\n"
-"\t\t\tMontreal allowing the students to participate in open source software\n"
-"\t\t\tprojects. This initiative try to reach students across of Montreal\n"
-"\t\t\tuniversities and to include the largest possible community, thus "
+"\t\tMontreal allowing the students to participate in open source software\n"
+"\t\tprojects. This initiative try to reach students across of Montreal\n"
+"\t\tuniversities and to include the largest possible community, thus "
 "allowing\n"
-"\t\t\tthe students to meet participants from multiple horizons with varied\n"
-"\t\t\tacademic and professional experiences."
+"\t\tthe students to meet participants from multiple horizons with varied\n"
+"\t\tacademic and professional experiences."
 msgstr ""
-"ML² primary mission is educational. Students will improve their skills by "
-"developing complex software under mentorship and coaching of professors, "
-"mentors, teaching assistants, and fellow students who demonstrate coding "
-"prowess. This inclusive initiative seeks to blend students from the widest "
-"possible University community; enabling students from varied backgrounds, "
-"academic standing, and professional experience to mix and collaborate under "
-"expert guidance."
+"The foremost mission of ML² is to offer a place of meeting and sharing in\n"
+"\t\tMontreal allowing the students to participate in open source software\n"
+"\t\tprojects. This initiative try to reach students across of Montreal\n"
+"\t\tuniversities and to include the largest possible community, thus "
+"allowing\n"
+"\t\tthe students to meet participants from multiple horizons with varied\n"
+"\t\tacademic and professional experiences."
 
-#: Template/Pages/home.ctp:45
+#: Template/Pages/home.ctp:55
 msgid ""
 "The mission of ML2 is an educational mission. Multiple activities will be\n"
-"\t\t\teventually offered : free development, graduation projects, "
+"\t\teventually offered : free development, graduation projects, "
 "internships,\n"
-"\t\t\tmastering projects, … All of these activities will gravitate around "
+"\t\tmastering projects, … All of these activities will gravitate around "
 "open\n"
-"\t\t\tsource projects. These projects will be proposed by : students, "
+"\t\tsource projects. These projects will be proposed by : students, "
 "teachers ,\n"
-"\t\t\tuniversities or organisations wanting to invest in students "
-"formation.\n"
-"\t\t\tSeminars will complete this educational component."
+"\t\tuniversities or organisations wanting to invest in students formation.\n"
+"\t\tSeminars will complete this educational component."
 msgstr ""
-"Online project contribution metrics and mentor testimonials will provide "
-"unbiased assessment of a student’s hiring potential."
+"The mission of ML² is an educational mission. Multiple activities will be\n"
+"\t\teventually offered : free development, graduation projects, "
+"internships,\n"
+"\t\tmastering projects, … All of these activities will gravitate around "
+"open\n"
+"\t\tsource projects. These projects will be proposed by : students, "
+"teachers ,\n"
+"\t\tuniversities or organisations wanting to invest in students formation.\n"
+"\t\tSeminars will complete this educational component."
 
-#: Template/Pages/home.ctp:54
+#: Template/Pages/home.ctp:64
 msgid ""
 "By participating in ML2 activities, the students will be able to (i)\n"
-"\t\t\tdiscover the open source software world with its codes and objectives; "
+"\t\tdiscover the open source software world with its codes and objectives; "
 "(ii)\n"
-"\t\t\thone their habilities to analyse, design and develop complex tasks ; "
+"\t\thone their habilities to analyse, design and develop complex tasks ; "
 "(iii)\n"
-"\t\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n"
-"\t\t\trecognitions from their university."
+"\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n"
+"\t\trecognitions from their university."
 msgstr ""
-"ML² will host sponsored projects from industry, academia and government. The "
-"ML² operating model will be based on elements of Google’s summer-of-code "
-"Project-Mentor model. Seminars will complete the educational component. "
-"Meetups will enhance networking."
+"By participating in ML² activities, the students will be able to (i)\n"
+"\t\tdiscover the open source software world with its codes and objectives; "
+"(ii)\n"
+"\t\thone their habilities to analyse, design and develop complex tasks ; "
+"(iii)\n"
+"\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n"
+"\t\trecognitions from their university."
 
-#: Template/Pages/home.ctp:66
+#: Template/Pages/home.ctp:74
 msgid "Value proposition for industry:"
 msgstr ""
 
-#: Template/Pages/home.ctp:69
+#: Template/Pages/home.ctp:77
 msgid "Access to potential new hires in our logicel libre developer community"
 msgstr ""
 
-#: Template/Pages/home.ctp:70
+#: Template/Pages/home.ctp:78
 msgid ""
 "Develop new open source features faster and cheaper in your products and "
 "dependencies"
 msgstr ""
 
-#: Template/Pages/home.ctp:71
+#: Template/Pages/home.ctp:79
 msgid ""
 "Promote your company and create networks across the software engineering and "
 "computer science departments of 7 universities"
 msgstr ""
 
-#: Template/Pages/home.ctp:72
+#: Template/Pages/home.ctp:80
 msgid "Create Goodwill in the University and open source communities"
 msgstr ""
 
-#: Template/Pages/home.ctp:75
+#: Template/Pages/home.ctp:83
 msgid "Value proposition for universities and students:"
 msgstr ""
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:86
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:79
+#: Template/Pages/home.ctp:87
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:88
 msgid "Support for graduate students working on open source projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:81
+#: Template/Pages/home.ctp:89
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr ""
 
-#: Template/Pages/home.ctp:82
+#: Template/Pages/home.ctp:90
 msgid "Teaching assistant (TAs) access"
 msgstr ""
 
-#: Template/Pages/home.ctp:83
+#: Template/Pages/home.ctp:91
 msgid "Additional mentor access from ML2 staff"
 msgstr "Additional mentor access from ML² staff"
 
-#: Template/Pages/home.ctp:84
+#: Template/Pages/home.ctp:92
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
@@ -759,25 +826,25 @@ msgstr ""
 "Networking with ML² members: students from 7 universities, open source "
 "community, mentors, and industry"
 
-#: Template/Pages/home.ctp:85
+#: Template/Pages/home.ctp:93
 msgid "Promotion of projects and students on the ML2 website"
 msgstr "Promotion of projects and students on the ML² website"
 
-#: Template/Pages/home.ctp:86
+#: Template/Pages/home.ctp:94
 msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 
-#: Template/Pages/home.ctp:87
+#: Template/Pages/home.ctp:95
 msgid ""
 "CV Portfolio open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
 msgstr ""
 
-#: Template/Pages/home.ctp:88
+#: Template/Pages/home.ctp:96
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr "Access to ML² academic and industry conferences and seminars"
 
-#: Template/Pages/home.ctp:89
+#: Template/Pages/home.ctp:97
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "24/7 access to ML² location on the RC of ETS Pavilion A"
 
@@ -1061,3 +1128,68 @@ msgstr "Choose an email adress"
 #: Template/Users/register.ctp:9
 msgid "Confirm email adress"
 msgstr ""
+
+#~ msgid ""
+#~ "This initiative is born from a meeting between the ÉTS director and "
+#~ "Google\n"
+#~ "\t\t\tMontreal director. Seeing the difficulty that students have to hone "
+#~ "their\n"
+#~ "\t\t\thabilities to develop complex software and show the end product "
+#~ "(code) to\n"
+#~ "\t\t\trecruiters, they decided to establish the Maison du Logiciel Libre "
+#~ "(ML2)"
+#~ msgstr ""
+#~ "ML² will improve University students’ software development skills and "
+#~ "hiring potential through practical experience on free and open-source "
+#~ "software projects."
+
+#~ msgid ""
+#~ "The foremost mission of ML2 is to offer a place of meeting and sharing "
+#~ "in\n"
+#~ "\t\t\tMontreal allowing the students to participate in open source "
+#~ "software\n"
+#~ "\t\t\tprojects. This initiative try to reach students across of Montreal\n"
+#~ "\t\t\tuniversities and to include the largest possible community, thus "
+#~ "allowing\n"
+#~ "\t\t\tthe students to meet participants from multiple horizons with "
+#~ "varied\n"
+#~ "\t\t\tacademic and professional experiences."
+#~ msgstr ""
+#~ "ML² primary mission is educational. Students will improve their skills by "
+#~ "developing complex software under mentorship and coaching of professors, "
+#~ "mentors, teaching assistants, and fellow students who demonstrate coding "
+#~ "prowess. This inclusive initiative seeks to blend students from the "
+#~ "widest possible University community; enabling students from varied "
+#~ "backgrounds, academic standing, and professional experience to mix and "
+#~ "collaborate under expert guidance."
+
+#~ msgid ""
+#~ "The mission of ML2 is an educational mission. Multiple activities will "
+#~ "be\n"
+#~ "\t\t\teventually offered : free development, graduation projects, "
+#~ "internships,\n"
+#~ "\t\t\tmastering projects, … All of these activities will gravitate around "
+#~ "open\n"
+#~ "\t\t\tsource projects. These projects will be proposed by : students, "
+#~ "teachers ,\n"
+#~ "\t\t\tuniversities or organisations wanting to invest in students "
+#~ "formation.\n"
+#~ "\t\t\tSeminars will complete this educational component."
+#~ msgstr ""
+#~ "Online project contribution metrics and mentor testimonials will provide "
+#~ "unbiased assessment of a student’s hiring potential."
+
+#~ msgid ""
+#~ "By participating in ML2 activities, the students will be able to (i)\n"
+#~ "\t\t\tdiscover the open source software world with its codes and "
+#~ "objectives; (ii)\n"
+#~ "\t\t\thone their habilities to analyse, design and develop complex "
+#~ "tasks ; (iii)\n"
+#~ "\t\t\tbuild a portfolio with their open source achievements ; (iv) "
+#~ "obtain\n"
+#~ "\t\t\trecognitions from their university."
+#~ msgstr ""
+#~ "ML² will host sponsored projects from industry, academia and government. "
+#~ "The ML² operating model will be based on elements of Google’s summer-of-"
+#~ "code Project-Mentor model. Seminars will complete the educational "
+#~ "component. Meetups will enhance networking."

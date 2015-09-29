@@ -3,6 +3,17 @@
     </div>
 </div>
 <section id="about" class="about">
+<hr>
+<div class="row">
+    <div class="col-xl-12 text-center">
+        <div style="margin:20px; margin-top:5px">
+            <div>
+                <b style="font-size : 20px;"><?= $this->Html->link(__('ML2 need a new logo!'), ['controller' => 'Pages', 'action' => 'contest']);?></b><br>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
 <div class="row">
     <div class="col-xl-12 text-center">
         <div style="margin:20px; margin-top:5px">
