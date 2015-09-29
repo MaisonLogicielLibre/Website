@@ -40,72 +40,74 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">ML2</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-				<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
-                <li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><?= $this->Html->link(__('Industry'), ['controller' => 'Pages', 'action' => 'industry']);?></li>
-						<li><?= $this->Html->link(__('Academic'), ['controller' => 'Pages', 'action' => 'academic']);?></li>
-						<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>                     
-					</ul>
-				</li>
-				<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
-				<?php if($this->request->session()->read('Auth.User.username')) {?>
-					<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
-					<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
-				<?php } else { ?>
-					<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']);?></li>
-					<li><?= $this->Html->link(__('Register'), ['controller' => 'Users', 'action' => 'register']);?></li>
-				<?php } ?>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
-<div id="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div id="content">
-                <?= $this->Flash->render() ?>
+<div class="wrapper">
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+						aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">ML2</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
+					<li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('Industry'), ['controller' => 'Pages', 'action' => 'industry']);?></li>
+							<li><?= $this->Html->link(__('Academic'), ['controller' => 'Pages', 'action' => 'academic']);?></li>
+							<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>                     
+						</ul>
+					</li>
+					<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
+					<?php if($this->request->session()->read('Auth.User.username')) {?>
+						<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
+						<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
+					<?php } else { ?>
+						<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']);?></li>
+						<li><?= $this->Html->link(__('Register'), ['controller' => 'Users', 'action' => 'register']);?></li>
+					<?php } ?>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<div id="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="content">
+					<?= $this->Flash->render() ?>
 
-                <div class="row setHeight">
-                    <?= $this->fetch('content') ?>
-                </div>
-            </div>
-            <!-- Footer -->
-        </div>
-    </div>
+					<div class="row setHeight">
+						<?= $this->fetch('content') ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<!-- Footer -->
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="text-center">
-                <h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
-                400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
-                <br><i class="fa fa-phone-square"></i> (514) 396-8552
-                <br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="text-center">
+				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
+				400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
+				<br><i class="fa fa-phone-square"></i> (514) 396-8552
+				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
+			</div>
+		</div>
+	</div>
 </footer>
 <!-- jQuery -->
 <?= $this->Html->script('jquery-2.1.4.min'); ?>
