@@ -178,7 +178,7 @@ class ProjectsController extends AppController
             $application = TableRegistry::get('Applications')->patchEntity($application, $this->request->data);
             if (TableRegistry::get('Applications')->save($application)) {
                 $this->Flash->success(__('The application has been saved.'));
-                return $this->redirect(['action' => 'view', $application->project->id]);
+                return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The application could not be saved. Please, try again.'));
             }
