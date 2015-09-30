@@ -1,6 +1,5 @@
-<div id="top" class="header img-responsive">
-    <div class="text-vertical-center">
-    </div>
+<div id="top" class="header">
+    <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'width' => '100%', 'height' => 'auto', 'class' => 'img-responsive banner']) ?>
 </div>
 <section id="about" class="about">
 <hr>
