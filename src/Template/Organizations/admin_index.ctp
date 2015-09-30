@@ -1,7 +1,7 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
 <?php
-$this->element('Organizations/actionSidebar');
+$this->element('Organizations/actionAdminSidebar');
 echo $this->fetch('actionSidebar');
 ?>
 <div class="organizations index col-lg-9 col-md-9 col-sm-9 col-xs-12 columns">
