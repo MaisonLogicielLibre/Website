@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-09-25 20:44+0000\n"
+"POT-Creation-Date: 2015-09-29 19:42+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,179 +14,151 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/CommentsController.php:90;117
+#: Controller/AppController.php:59
+msgid "ML2"
+msgstr ""
+
+#: Controller/CommentsController.php:89;116
 msgid "The comment has been saved."
 msgstr ""
 
-#: Controller/CommentsController.php:93;120
+#: Controller/CommentsController.php:92;119
 msgid "The comment could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/CommentsController.php:137
+#: Controller/CommentsController.php:136
 msgid "The comment has been deleted."
 msgstr ""
 
-#: Controller/CommentsController.php:139
+#: Controller/CommentsController.php:138
 msgid "The comment could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:90;116
+#: Controller/MissionsController.php:89;115
 msgid "The mission has been saved."
 msgstr ""
 
-#: Controller/MissionsController.php:93;119
+#: Controller/MissionsController.php:92;118
 msgid "The mission could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:136
+#: Controller/MissionsController.php:135
 msgid "The mission has been deleted."
 msgstr ""
 
-#: Controller/MissionsController.php:138
+#: Controller/MissionsController.php:137
 msgid "The mission could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/OrganizationsController.php:100;124;150
+#: Controller/OrganizationsController.php:99;123;149
 msgid "The organization has been saved."
 msgstr ""
 
-#: Controller/OrganizationsController.php:103;127;153
+#: Controller/OrganizationsController.php:102;126;152
 msgid "The organization could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/OrganizationsController.php:170
+#: Controller/OrganizationsController.php:169
 msgid "The organization has been deleted."
 msgstr ""
 
-#: Controller/OrganizationsController.php:172
+#: Controller/OrganizationsController.php:171
 msgid "The organization could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/OrganizationsProjectsController.php:90;116
-msgid "The organizations project has been saved."
-msgstr ""
-
-#: Controller/OrganizationsProjectsController.php:93;119
-msgid "The organizations project could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/OrganizationsProjectsController.php:136
-msgid "The organizations project has been deleted."
-msgstr ""
-
-#: Controller/OrganizationsProjectsController.php:138
-msgid "The organizations project could not be deleted. Please, try again."
-msgstr ""
-
-#: Controller/ProjectsController.php:100;128
+#: Controller/ProjectsController.php:99;127
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:103;131
+#: Controller/ProjectsController.php:102;130
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:149
+#: Controller/ProjectsController.php:148
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:151
+#: Controller/ProjectsController.php:150
 msgid "The project could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/SvnUsersController.php:90;116
-msgid "The svn user has been saved."
-msgstr ""
-
-#: Controller/SvnUsersController.php:93;119
-msgid "The svn user could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/SvnUsersController.php:136
-msgid "The svn user has been deleted."
-msgstr ""
-
-#: Controller/SvnUsersController.php:138
-msgid "The svn user could not be deleted. Please, try again."
-msgstr ""
-
-#: Controller/SvnsController.php:90;116
+#: Controller/SvnsController.php:89;115
 msgid "The svn has been saved."
 msgstr ""
 
-#: Controller/SvnsController.php:93;119
+#: Controller/SvnsController.php:92;118
 msgid "The svn could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/SvnsController.php:136
+#: Controller/SvnsController.php:135
 msgid "The svn has been deleted."
 msgstr ""
 
-#: Controller/SvnsController.php:138
+#: Controller/SvnsController.php:137
 msgid "The svn could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/TypeUsersController.php:90;116
+#: Controller/TypeUsersController.php:83;108
 msgid "The type user has been saved."
 msgstr ""
 
-#: Controller/TypeUsersController.php:93;119
+#: Controller/TypeUsersController.php:86;111
 msgid "The type user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/TypeUsersController.php:136
+#: Controller/TypeUsersController.php:127
 msgid "The type user has been deleted."
 msgstr ""
 
-#: Controller/TypeUsersController.php:138
+#: Controller/TypeUsersController.php:129
 msgid "The type user could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UniversitiesController.php:90;116
+#: Controller/UniversitiesController.php:88;114
 msgid "The university has been saved."
 msgstr ""
 
-#: Controller/UniversitiesController.php:93;119
+#: Controller/UniversitiesController.php:91;117
 msgid "The university could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/UniversitiesController.php:136
+#: Controller/UniversitiesController.php:134
 msgid "The university has been deleted."
 msgstr ""
 
-#: Controller/UniversitiesController.php:138
+#: Controller/UniversitiesController.php:136
 msgid "The university could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:98
+#: Controller/UsersController.php:96
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:149;185;224;262;297
+#: Controller/UsersController.php:147;183;222;260;295
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:153
+#: Controller/UsersController.php:151
 msgid "The new email could not be saved. Please,\n                try again."
 msgstr ""
 
-#: Controller/UsersController.php:189
+#: Controller/UsersController.php:187
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
-#: Controller/UsersController.php:228;266
+#: Controller/UsersController.php:226;264
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:301
+#: Controller/UsersController.php:299
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:327
+#: Controller/UsersController.php:325
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:330
+#: Controller/UsersController.php:328
 msgid "The user could not be deleted. Please,\n             try again."
 msgstr ""
 
@@ -505,6 +477,7 @@ msgid "Edit the project"
 msgstr ""
 
 #: Template/Element/Users/sidebar.ctp:15;84
+#: Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr ""
 
@@ -512,49 +485,73 @@ msgstr ""
 msgid "Change email"
 msgstr ""
 
-#: Template/Layout/default.ctp:58
+#: Template/Element/Users/sidebar.ctp:46
+msgid "Change password"
+msgstr ""
+
+#: Template/Element/Users/sidebar.ctp:62
+msgid "Edit profile"
+msgstr ""
+
+#: Template/Layout/default.ctp:59
 msgid "Home"
 msgstr ""
 
-#: Template/Layout/default.ctp:61
+#: Template/Layout/default.ctp:62
+msgid "Contest"
+msgstr ""
+
+#: Template/Layout/default.ctp:63
 #: Template/Organizations/view.ctp:25
 msgid "Projects"
 msgstr ""
 
-#: Template/Layout/default.ctp:62
+#: Template/Layout/default.ctp:65
 msgid "Partners"
 msgstr ""
 
-#: Template/Layout/default.ctp:63
-msgid "Contact us"
-msgstr ""
-
-#: Template/Layout/default.ctp:65
-msgid "Profile"
-msgstr ""
-
-#: Template/Layout/default.ctp:66
-msgid "Logout"
+#: Template/Layout/default.ctp:67
+msgid "Industry"
 msgstr ""
 
 #: Template/Layout/default.ctp:68
-msgid "Login"
+msgid "Academic"
 msgstr ""
 
 #: Template/Layout/default.ctp:69
+msgid "Associations"
+msgstr ""
+
+#: Template/Layout/default.ctp:72
+msgid "Contact us"
+msgstr ""
+
+#: Template/Layout/default.ctp:74
+msgid "Profile"
+msgstr ""
+
+#: Template/Layout/default.ctp:75
+msgid "Logout"
+msgstr ""
+
+#: Template/Layout/default.ctp:77
+msgid "Login"
+msgstr ""
+
+#: Template/Layout/default.ctp:78
 #: Template/Users/register.ctp:4
 msgid "Register"
 msgstr ""
 
-#: Template/Layout/default.ctp:94;97
+#: Template/Layout/default.ctp:104;107
 msgid "Maison du Logiciel Libre"
 msgstr ""
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:105
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:105
 msgid "Montreal"
 msgstr ""
 
@@ -740,6 +737,7 @@ msgid "Organization"
 msgstr ""
 
 #: Template/Pages/contact.ctp:6
+#: Template/Users/edit.ctp:20
 msgid "Phone"
 msgstr ""
 
@@ -749,96 +747,160 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: Template/Pages/home.ctp:10
-msgid "Build ML2 future"
+#: Template/Pages/contest.ctp:7
+msgid "The logo must : "
+msgstr ""
+
+#: Template/Pages/contest.ctp:9
+msgid "Place the organisation name as a central part of the design"
+msgstr ""
+
+#: Template/Pages/contest.ctp:10
+msgid "Represent a place of conviviality and exchange"
+msgstr ""
+
+#: Template/Pages/contest.ctp:11
+msgid "Represent the open source software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:12
+msgid "Do not leave aside free software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:13
+msgid "Do not give the impression that we are only about free software"
+msgstr ""
+
+#: Template/Pages/contest.ctp:15
+msgid "Reminder : "
+msgstr ""
+
+#: Template/Pages/contest.ctp:17
+msgid "The design must be original"
+msgstr ""
+
+#: Template/Pages/contest.ctp:18
+msgid "You must have the rights to use the image(s) used"
+msgstr ""
+
+#: Template/Pages/contest.ctp:19
+msgid "You grant the rights of your logo to Maison du Logiciel Libre"
+msgstr ""
+
+#: Template/Pages/contest.ctp:22
+msgid "The winner will be credited on the website and receive an ML2 shirt"
+msgstr ""
+
+#: Template/Pages/contest.ctp:23
+msgid "Send your design at : "
 msgstr ""
 
 #: Template/Pages/home.ctp:11
+msgid "ML2 need a new logo!"
+msgstr ""
+
+#: Template/Pages/home.ctp:21
+msgid "Build ML2 future"
+msgstr ""
+
+#: Template/Pages/home.ctp:22
 msgid "Complete survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:16
+#: Template/Pages/home.ctp:28;30
 msgid "Loading..."
 msgstr ""
 
-#: Template/Pages/home.ctp:26
+#: Template/Pages/home.ctp:39
 msgid "Our Mission"
 msgstr ""
 
-#: Template/Pages/home.ctp:29
-msgid "This initiative is born from a meeting between the ÉTS director and Google\n\t\t\tMontreal director. Seeing the difficulty that students have to hone their\n\t\t\thabilities to develop complex software and show the end product (code) to\n\t\t\trecruiters, they decided to establish the Maison du Logiciel Libre (ML2)"
+#: Template/Pages/home.ctp:42
+msgid "This initiative is born from a meeting between the ÉTS director and Google\n\t\tMontreal director. Seeing the difficulty that students have to hone their\n\t\thabilities to develop complex software and show the end product (code) to\n\t\trecruiters, they decided to establish the Maison du Logiciel Libre (ML2)"
 msgstr ""
 
-#: Template/Pages/home.ctp:36
-msgid "The foremost mission of ML2 is to offer a place of meeting and sharing in\n\t\t\tMontreal allowing the students to participate in open source software\n\t\t\tprojects. This initiative try to reach students across of Montreal\n\t\t\tuniversities and to include the largest possible community, thus allowing\n\t\t\tthe students to meet participants from multiple horizons with varied\n\t\t\tacademic and professional experiences."
+#: Template/Pages/home.ctp:49
+msgid "The foremost mission of ML2 is to offer a place of meeting and sharing in\n\t\tMontreal allowing the students to participate in open source software\n\t\tprojects. This initiative try to reach students across of Montreal\n\t\tuniversities and to include the largest possible community, thus allowing\n\t\tthe students to meet participants from multiple horizons with varied\n\t\tacademic and professional experiences."
 msgstr ""
 
-#: Template/Pages/home.ctp:45
-msgid "The mission of ML2 is an educational mission. Multiple activities will be\n\t\t\teventually offered : free development, graduation projects, internships,\n\t\t\tmastering projects, … All of these activities will gravitate around open\n\t\t\tsource projects. These projects will be proposed by : students, teachers ,\n\t\t\tuniversities or organisations wanting to invest in students formation.\n\t\t\tSeminars will complete this educational component."
+#: Template/Pages/home.ctp:58
+msgid "The mission of ML2 is an educational mission. Multiple activities will be\n\t\teventually offered : free development, graduation projects, internships,\n\t\tmastering projects, … All of these activities will gravitate around open\n\t\tsource projects. These projects will be proposed by : students, teachers ,\n\t\tuniversities or organisations wanting to invest in students formation.\n\t\tSeminars will complete this educational component."
 msgstr ""
 
-#: Template/Pages/home.ctp:54
-msgid "By participating in ML2 activities, the students will be able to (i)\n\t\t\tdiscover the open source software world with its codes and objectives; (ii)\n\t\t\thone their habilities to analyse, design and develop complex tasks ; (iii)\n\t\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n\t\t\trecognitions from their university."
-msgstr ""
-
-#: Template/Pages/home.ctp:66
-msgid "Value Proposition"
-msgstr ""
-
-#: Template/Pages/home.ctp:69
-msgid "Match Interns with Industry and Academic funded open source projects"
-msgstr ""
-
-#: Template/Pages/home.ctp:70
-msgid "Match Capstone students with Industry and Academic sponsored open source projects"
-msgstr ""
-
-#: Template/Pages/home.ctp:71
-msgid "Support for graduate students working on  open source projects"
-msgstr ""
-
-#: Template/Pages/home.ctp:72
-msgid "Project mentorship (each submitted project must have a mentor)"
-msgstr ""
-
-#: Template/Pages/home.ctp:73
-msgid "Teaching assistant (TAs) access"
-msgstr ""
-
-#: Template/Pages/home.ctp:74
-msgid "Additional mentor access from ML2 staff"
-msgstr ""
-
-#: Template/Pages/home.ctp:75
-msgid "Networking with ML2 members: students from 7 universities, open source community, mentors, and industry"
-msgstr ""
-
-#: Template/Pages/home.ctp:76
-msgid "Promotion of projects and students on the ML2 website"
+#: Template/Pages/home.ctp:67
+msgid "By participating in ML2 activities, the students will be able to (i)\n\t\tdiscover the open source software world with its codes and objectives; (ii)\n\t\thone their habilities to analyse, design and develop complex tasks ; (iii)\n\t\tbuild a portfolio with their open source achievements ; (iv) obtain\n\t\trecognitions from their university."
 msgstr ""
 
 #: Template/Pages/home.ctp:77
-msgid "CV Portfolio  testimonial plugin (testimonials from TAs & mentors)"
-msgstr ""
-
-#: Template/Pages/home.ctp:78
-msgid "CV Portfolio  open source code summary plugin (key performance indicators on open source repo contributions)"
-msgstr ""
-
-#: Template/Pages/home.ctp:79
-msgid "Access to ML2 academic and industry conferences and seminars"
+msgid "Value proposition for industry:"
 msgstr ""
 
 #: Template/Pages/home.ctp:80
+msgid "Access to potential new hires in our logicel libre developer community"
+msgstr ""
+
+#: Template/Pages/home.ctp:81
+msgid "Develop new open source features faster and cheaper in your products and dependencies"
+msgstr ""
+
+#: Template/Pages/home.ctp:82
+msgid "Promote your company and create networks across the software engineering and computer science departments of 7 universities"
+msgstr ""
+
+#: Template/Pages/home.ctp:83
+msgid "Create Goodwill in the University and open source communities"
+msgstr ""
+
+#: Template/Pages/home.ctp:86
+msgid "Value proposition for universities and students:"
+msgstr ""
+
+#: Template/Pages/home.ctp:89
+msgid "Match Interns with Industry and Academic funded open source projects"
+msgstr ""
+
+#: Template/Pages/home.ctp:90
+msgid "Match Capstone students with Industry and Academic sponsored open source projects"
+msgstr ""
+
+#: Template/Pages/home.ctp:91
+msgid "Support for graduate students working on open source projects"
+msgstr ""
+
+#: Template/Pages/home.ctp:92
+msgid "Project mentorship (each submitted project must have a mentor)"
+msgstr ""
+
+#: Template/Pages/home.ctp:93
+msgid "Teaching assistant (TAs) access"
+msgstr ""
+
+#: Template/Pages/home.ctp:94
+msgid "Additional mentor access from ML2 staff"
+msgstr ""
+
+#: Template/Pages/home.ctp:95
+msgid "Networking with ML2 members: students from 7 universities, open source community, mentors, and industry"
+msgstr ""
+
+#: Template/Pages/home.ctp:96
+msgid "Promotion of projects and students on the ML2 website"
+msgstr ""
+
+#: Template/Pages/home.ctp:97
+msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
+msgstr ""
+
+#: Template/Pages/home.ctp:98
+msgid "CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)"
+msgstr ""
+
+#: Template/Pages/home.ctp:99
+msgid "Access to ML2 academic and industry conferences and seminars"
+msgstr ""
+
+#: Template/Pages/home.ctp:100
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
-msgstr ""
-
-#: Template/Pages/partner.ctp:3
-msgid "Industry"
-msgstr ""
-
-#: Template/Pages/partner.ctp:22
-msgid "Academic"
 msgstr ""
 
 #: Template/Projects/add.ctp:17
@@ -1059,6 +1121,18 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
+#: Template/Users/edit.ctp:16
+msgid "First name"
+msgstr ""
+
+#: Template/Users/edit.ctp:17
+msgid "Last name"
+msgstr ""
+
+#: Template/Users/edit.ctp:18
+msgid "Biography"
+msgstr ""
+
 #: Template/Users/edit.ctp:23
 msgid "Gender"
 msgstr ""
@@ -1069,6 +1143,10 @@ msgstr ""
 
 #: Template/Users/edit.ctp:24
 msgid "Male"
+msgstr ""
+
+#: Template/Users/edit.ctp:26
+msgid "University"
 msgstr ""
 
 #: Template/Users/edit.ctp:29
