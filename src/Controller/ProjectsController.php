@@ -11,8 +11,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\ORM\TableRegistry;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Projects controller
@@ -94,10 +94,9 @@ class ProjectsController extends AppController
             ]
         );
 
-        if(null != $this->request->session()->read('Auth.User.id')){
+        if (null != $this->request->session()->read('Auth.User.id')) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
-        }
-        else{
+        } else {
             $user = null;
         }
 

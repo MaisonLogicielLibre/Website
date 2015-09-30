@@ -67,7 +67,7 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testIndexNoAuth()
     {
         $this->get('/projects/index');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**
@@ -91,7 +91,7 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testViewNoAuth()
     {
         $this->get('/projects/view/1');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**

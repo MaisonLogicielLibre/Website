@@ -58,7 +58,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/index');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test index - No Authentification
      *
@@ -67,7 +67,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testIndexNoAuth()
     {
         $this->get('/organizations/index');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**
@@ -91,7 +91,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testViewNoAuth()
     {
         $this->get('/organizations/view/1');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**
