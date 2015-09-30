@@ -229,7 +229,8 @@ class OrganizationsController extends AppController
             if ($data['state'] == '3') {
                 $organization->editIsRejected($data['stateValue']);
             } else if ($data['state'] == '2') {
-                $organization->editIsValidated($data['stateValue']);
+                if (!$organization->getIsValidated())
+                    $organization->editIsValidated($data['stateValue']);
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
             }

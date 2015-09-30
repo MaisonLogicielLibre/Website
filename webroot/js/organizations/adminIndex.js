@@ -1,5 +1,6 @@
 $(document).ready(function () {
     drawTable();
+    table.fnFilter(['0', 3]);
     // When the table draw the columns
     table.fnSettings().aoRowCallback.push({
         "fn": function (nRow, aData, iDisplayIndex) {
@@ -26,7 +27,8 @@ $(document).ready(function () {
             $('td:eq(2)', nRow).html($('<input />', {
                     type: 'checkbox',
                     value: aData['isValidated'],
-                    name: 'cb-' + iDisplayIndex + '-validated'
+                    name: 'cb-' + iDisplayIndex + '-validated',
+                    disabled: aData['isValidated']
                 })
                     .prop('checked', aData['isValidated'])
             );
@@ -35,7 +37,8 @@ $(document).ready(function () {
                 'offText': 'No'
             })
                 .on('switchChange.bootstrapSwitch', function (e, state) {
-                    sendNewState(this, state)
+                    sendNewState(this, state);
+                    $(this).bootstrapSwitch('toggleDisabled')
                 });
         }
     });
