@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -41,13 +42,27 @@ class ProjectsController extends AppController
      */
     public function isAuthorized($user)
     {
-        $user = $this->loadModel("Users")->findById($user['id'])->first();
+        $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
             if ($user->hasRoleName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
+    }
+
+    /**
+     * Filter preparation
+     *
+     * @param Event $event event
+     *
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->loadModel("Users");
+        $this->Auth->allow(['index', 'view']);
     }
 
     /**
@@ -76,10 +91,16 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => ['Contributors', 'Mentors', 'Organizations']
+                'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
-        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if (null != $this->request->session()->read('Auth.User.id')) {
+            $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        } else {
+            $user = null;
+        }
+
         $this->set(compact('project', 'user'));
         $this->set('_serialize', ['project']);
     }

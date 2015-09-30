@@ -69,7 +69,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testIndexNoAuth()
     {
         $this->get('/users/index');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**
@@ -132,7 +132,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testViewNoAuth()
     {
         $this->get('/users/view/2');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertResponseOk();
     }
 
     /**
