@@ -79,27 +79,28 @@ echo $this->fetch('actionSidebar');
             [
                 'name' => 'organizations.name',
                 'data' => 'name',
-                "searchable" => true
+                'searchable' => true
             ],
             [
                 'name' => 'organizations.website',
                 'data' => 'website',
-                "searchable" => true
+                'searchable' => true
             ],
             [
                 'name' => 'organizations.isValidated',
                 'data' => 'isValidated',
-                "searchable" => true
+                'searchable' => true,
             ],
             [
                 'name' => 'organizations.isRejected',
                 'data' => 'isRejected',
-                "searchable" => true
+                'searchable' => true
             ]
         ],
         'lengthMenu' => ''
     ])->draw('.dataTable');
-    echo 'var ajaxUrl="'. $this->Url->Build(['action' => 'editStatus']) .'"';
+    echo 'var ajaxUrl="' . $this->Url->Build(['action' => 'editStatus']) . '";';
+    echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
     $this->Html->scriptEnd();
     ?>
     <?= $this->Html->script('organizations/index.js', ['block' => 'scriptBottom']); ?>
