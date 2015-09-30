@@ -88,13 +88,19 @@ class OrganizationsController extends AppController
         if($user->hasRoleName(['Administrator'])) {
             $this->adminIndex();
         } else {
-            $this->paginate = [
-                'finder' => [
-                    'show' => true
-                ]
-            ];
-            $this->set('organizations', $this->paginate($this->Organizations));
-            $this->set('_serialize', ['organizations']);
+            $data = $this->DataTables
+                ->find('organizations')
+                ->where(
+                    [
+                        'isValidated' => true,
+                        'isRejected' => false
+                    ]
+                );
+
+            $this->set([
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]);
         }
     }
 
