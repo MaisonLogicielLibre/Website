@@ -87,7 +87,7 @@ class OrganizationsController extends AppController
     {
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        if($user->hasRoleName(['Administrator'])) {
+        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
             $this->adminIndex();
         } else {
             $data = $this->DataTables
@@ -99,10 +99,12 @@ class OrganizationsController extends AppController
                     ]
                 );
 
-            $this->set([
+            $this->set(
+                [
                 'data' => $data,
                 '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-            ]);
+                ]
+            );
         }
     }
 
@@ -111,16 +113,21 @@ class OrganizationsController extends AppController
      *
      * @return void
      */
-    public function adminIndex() {
-
-        $data = $this->DataTables->find('organizations', [
+    public function adminIndex()
+    {
+        $data = $this->DataTables->find(
+            'organizations',
+            [
             'contain' => []
-        ]);
+            ]
+        );
 
-        $this->set([
+        $this->set(
+            [
             'data' => $data,
             '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-        ]);
+            ]
+        );
         $this->render('adminIndex');
     }
 
@@ -218,7 +225,7 @@ class OrganizationsController extends AppController
 
     /**
      * Edit state method
-     * @return redirect
+     * @return void
      */
     public function editStatus()
     {
@@ -228,9 +235,10 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->get(intval($data['id']));
             if ($data['state'] == '3') {
                 $organization->editIsRejected($data['stateValue']);
-            } else if ($data['state'] == '2') {
-                if (!$organization->getIsValidated())
+            } elseif ($data['state'] == '2') {
+                if (!$organization->getIsValidated()) {
                     $organization->editIsValidated($data['stateValue']);
+                }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
             }
@@ -238,7 +246,7 @@ class OrganizationsController extends AppController
             $this->Organizations->save($organization);
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(['action' => 'index']);
         }
     }
 
@@ -247,13 +255,14 @@ class OrganizationsController extends AppController
      * @param string $id id
      * @return redirect
      */
-    public function editValidated($id) {
+    public function editValidated($id)
+    {
         $this->autoRender = false;
         $organization = $this->Organizations->get($id);
         $organization->editIsValidated(1);
         if ($this->Organizations->save($organization)) {
             $this->Flash->success(__('The organization has been approved.'));
-            return $this->redirect(array('action' => 'view', $id));
+            return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }
@@ -264,13 +273,14 @@ class OrganizationsController extends AppController
      * @param string $id id
      * @return redirect
      */
-    public function editRejected($id) {
+    public function editRejected($id)
+    {
         $this->autoRender = false;
         $organization = $this->Organizations->get($id);
         $organization->editIsRejected(!($organization->getIsRejected()));
         if ($this->Organizations->save($organization)) {
             $this->Flash->success(__('The organization has been saved.'));
-            return $this->redirect(array('action' => 'view', $id));
+            return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }

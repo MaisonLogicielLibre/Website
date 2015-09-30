@@ -83,29 +83,31 @@ class Organization extends Entity
     }
 
     /**
-     * Get the boolean isValidated
-     * @return boolean isValidated
+     * Get the bool isValidated
+     * @return bool isValidated
      */
     public function getIsValidated()
     {
         $data = $this->_properties['isValidated'];
-        if ($data)
+        if ($data) {
             return 1;
-        else
+        } else {
             return 0;
+        }
     }
 
     /**
-     * Get the boolean isRejected
-     * @return boolean isRejected
+     * Get the bool isRejected
+     * @return bool isRejected
      */
     public function getIsRejected()
     {
         $data = $this->_properties['isRejected'];
-        if ($data)
+        if ($data) {
             return 1;
-        else
+        } else {
             return 0;
+        }
     }
     
     /**

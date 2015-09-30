@@ -140,6 +140,38 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test getIsValidated
+     * @return void
+     */
+    public function testGetIsValidated()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->getIsValidated();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getIsRejected
+     * @return void
+     */
+    public function testGetIsRejected()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->getIsRejected();
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test editName
@@ -201,6 +233,38 @@ class OrganizationsTableTest extends TestCase
         $org = $this->Organizations->get($id);
 
         $result = $org->editDescription($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editIsValidated
+     * @return void
+     */
+    public function testSetIsValidated()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->editIsValidated($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editIsRejected
+     * @return void
+     */
+    public function testSetIsRejected()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->editIsRejected($expected);
 
         $this->assertEquals($expected, $result);
     }
