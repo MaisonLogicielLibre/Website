@@ -30,7 +30,7 @@ class OrganizationsController extends AppController
         'add' => ['Administrator'],
         'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
-        'editApproved' => ['Administrator'],
+        'editValidated' => ['Administrator'],
         'editRejected' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator']
@@ -246,12 +246,12 @@ class OrganizationsController extends AppController
      * @param string $id id
      * @return redirect
      */
-    public function editApproved($id) {
+    public function editValidated($id) {
         $this->autoRender = false;
         $organization = $this->Organizations->get($id);
-        $organization->editIsValidated(!($organization->getIsValidated()));
+        $organization->editIsValidated(1);
         if ($this->Organizations->save($organization)) {
-            $this->Flash->success(__('The organization has been saved.'));
+            $this->Flash->success(__('The organization has been approved.'));
             return $this->redirect(array('action' => 'view', $id));
         } else {
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
