@@ -103,4 +103,4 @@ echo $this->fetch('actionSidebar');
     echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
     $this->Html->scriptEnd();
     ?>
-    <?= $this->Html->script('organizations/index.js', ['block' => 'scriptBottom']); ?>
+    <?= $this->Html->script('organizations/adminIndex.js', ['block' => 'scriptBottom']); ?>
