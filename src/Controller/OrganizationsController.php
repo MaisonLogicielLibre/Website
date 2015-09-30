@@ -30,6 +30,8 @@ class OrganizationsController extends AppController
         'add' => ['Administrator'],
         'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
+        'editApproved' => ['Administrator'],
+        'editRejected' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator']
     ];
@@ -214,6 +216,10 @@ class OrganizationsController extends AppController
         $this->set('_serialize', ['organization']);
     }
 
+    /**
+     * Edit state method
+     * @return redirect
+     */
     public function editStatus()
     {
         if ($this->request->is('ajax')) {
@@ -232,6 +238,40 @@ class OrganizationsController extends AppController
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
             $this->redirect(array('action' => 'index'));
+        }
+    }
+
+    /**
+     * Edit approved method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editApproved($id) {
+        $this->autoRender = false;
+        $organization = $this->Organizations->get($id);
+        $organization->editIsValidated(!($organization->getIsValidated()));
+        if ($this->Organizations->save($organization)) {
+            $this->Flash->success(__('The organization has been saved.'));
+            return $this->redirect(array('action' => 'view', $id));
+        } else {
+            $this->Flash->error(__('The organization could not be saved. Please, try again.'));
+        }
+    }
+
+    /**
+     * Edit rejected method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editRejected($id) {
+        $this->autoRender = false;
+        $organization = $this->Organizations->get($id);
+        $organization->editIsRejected(!($organization->getIsRejected()));
+        if ($this->Organizations->save($organization)) {
+            $this->Flash->success(__('The organization has been saved.'));
+            return $this->redirect(array('action' => 'view', $id));
+        } else {
+            $this->Flash->error(__('The organization could not be saved. Please, try again.'));
         }
     }
 
