@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Organizations controller
@@ -39,13 +40,27 @@ class OrganizationsController extends AppController
      */
     public function isAuthorized($user)
     {
-        $user = $this->loadModel("Users")->findById($user['id'])->first();
+        $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
             if ($user->hasRoleName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
+    }
+
+    /**
+     * Filter preparation
+     *
+     * @param Event $event event
+     *
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->loadModel("Users");
+        $this->Auth->allow(['index', 'view']);
     }
 
     /**
