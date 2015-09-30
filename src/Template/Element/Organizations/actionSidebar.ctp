@@ -23,7 +23,7 @@
                             ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-list fa-stack-1x"
+                                        <i class="fa fa-plus fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'add') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Add an organization') ?></a>
                     </li>
@@ -57,7 +57,7 @@
                         ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-list fa-stack-1x"
+                                        <i class="fa fa-plus fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'submit') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Submit an organization') ?></a>
                 </li>

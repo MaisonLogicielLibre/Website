@@ -1,6 +1,6 @@
 $(document).ready(function () {
     drawTable();
-    table.fnFilter(['0', 3]);
+    table.fnFilter('0', 4);
     // When the table draw the columns
     table.fnSettings().aoRowCallback.push({
         "fn": function (nRow, aData, iDisplayIndex) {

@@ -39,7 +39,7 @@ echo $this->fetch('actionAdminSidebar');
                     <td>
                         <select class="form-control">
                             <option value="">-----</option>
-                            <option value="0"><?= __('Not rejected'); ?></option>
+                            <option value="0" selected><?= __('Not rejected'); ?></option>
                             <option value="1"><?= __('Rejected'); ?></option>
                         </select>
                     </td>
@@ -48,7 +48,7 @@ echo $this->fetch('actionAdminSidebar');
             </table>
         </div>
     </div>
-
+</div>
     <!-- Add DataTables scripts -->
     <?= $this->Html->script(
         [

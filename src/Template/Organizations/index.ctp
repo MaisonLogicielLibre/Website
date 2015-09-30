@@ -29,6 +29,7 @@ echo $this->fetch('actionSidebar');
             </table>
         </div>
     </div>
+</div>
 <!-- Add DataTables scripts -->
 <?= $this->Html->script(
     [
