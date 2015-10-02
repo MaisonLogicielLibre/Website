@@ -8,7 +8,11 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/MaisonLogicielLibre/API_SVN"
-		}
+		},
+        {
+            "type": "vcs",
+            "url": "https://github.com/simon-begin/cakephp-datatables"
+        }
 	],
     "require": {
         "php": ">=5.4.16",
@@ -18,7 +22,7 @@
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
 		"mll/apisvn": "1.0-alpha",
-        "fheider/cakephp-datatables": "dev-master"
+        "simon-begin/cakephp-datatables": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",
