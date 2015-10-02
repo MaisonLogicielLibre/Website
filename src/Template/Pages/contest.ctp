@@ -9,8 +9,6 @@
 			<li><?= __('Place the organisation name as a central part of the design') ?></li>
 			<li><?= __('Represent a place of conviviality and exchange') ?></li>
 			<li><?= __('Represent the open source software') ?></li>
-			<li><?= __('Do not leave aside free software') ?></li>
-			<li><?= __('Do not give the impression that we are only about free software') ?></li>
 		</ul>
 		<h3> <?= __('Reminder : ') ?></h3>
 		<ul>
