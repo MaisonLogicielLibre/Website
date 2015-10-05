@@ -17,13 +17,21 @@
     <div class="col-xl-12 text-center">
         <div style="margin:20px; margin-top:5px">
             <div class="quotetitle">
-                <b style="font-size : 20px;"> <?php echo __('Build ML2 future') ?> </b><br>
-                <input type="button" value="<?php echo __('Complete survey') ?>" style="font-size: 16px; padding: 5px 10px 5px 10px; font-weight: bold;border: none;background-color: black; color: white;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Participer au sondage'; }" />
+                <b style="font-size : 20px;"> <?= $this->Html->link(__('Register today!'), ['controller' => 'Users', 'action' => 'register']);?> </b><br>
+				<p> <?= __('Join us at ML² in building the future of Free Software and Open Source code.') ?></p> <br><br>
+				<p> <?= __('We need feedback!') ?> </p>
+                <input type="button" value="<?php echo __('Take the ML² student survey') ?>" style="font-size: 16px; padding: 5px 10px 5px 10px; font-weight: bold;border: none;background-color: black; color: white;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Participer au sondage'; }" />
             </div>
             <br>
             <div class="quotecontent">
                 <div style="display: none;">
-					<?php if (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == "fr") {?>
+					<?php if(!empty($_GET['lang'])) {
+							$lang = $_GET['lang'];
+						  } else {
+							$lang = 'fr_CA';
+						  }
+						  
+						  if ($lang == "fr_CA") {?>
 						<iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
 					<?php } else { ?>
 						<iframe src="https://docs.google.com/forms/d/1776VuKQwbZvC-WHBL-5imu5ZMrQnb8o3t9x7qGz6SWI/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>

@@ -38,7 +38,6 @@ use Cake\I18n\I18n;
 
 class AppController extends Controller
 {
-
     public $helpers = [
         'Less.Less', // required for parsing less files
         'BootstrapUI.Form',
@@ -76,18 +75,16 @@ class AppController extends Controller
      *
      * @return void
      */
-    protected function checkBrowserLanguage()
+    protected function checkLanguage()
     {
-        $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-         
-        //available languages
-        if ($browserLanguage == 'en') {
-            I18n::locale('en_US');
-        } elseif ($browserLanguage == 'fr') {
-            I18n::locale('fr_CA');
-        } else {
-            I18n::locale('en_US');
-        }
+        if (!empty($_GET['lang'])){
+			$this->request->session()->write('lang', $_GET['lang']);
+			I18n::locale($_GET['lang']);
+		}
+		else{
+			$lang = $this->request->session()->read('lang');
+			I18n::locale($lang);
+		}	
     }
     
     /**
@@ -97,7 +94,7 @@ class AppController extends Controller
      */
     public function beforeFilter(Event $event)
     {
-        $this->checkBrowserLanguage();
+        $this->checkLanguage();
         $this->Auth->allow(['display']);
     }
 }
