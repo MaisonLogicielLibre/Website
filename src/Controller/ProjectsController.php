@@ -30,6 +30,7 @@ class ProjectsController extends AppController
         'add' => ['Administrator'],
         'submit' => ['Administrator'],
         'edit' => ['Administrator'],
+        'editState' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator'],
         'apply' => ['Student', 'Administrator', 'Mentor']
@@ -66,19 +67,56 @@ class ProjectsController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->paginate = [
-            'finder' => [
-                'show' => true
+        $orgs = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('orgs'));
+
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
+            $this->adminIndex();
+        } else {
+
+        }
+    }
+
+    /**
+     * Admin index method
+     *
+     * @return void
+     */
+    public function adminIndex()
+    {
+        $data = $this->DataTables->find(
+            'Projects',
+            [
+                'contain' => ['Organizations']
             ]
-        ];
-        $this->set('projects', $this->paginate($this->Projects));
-        $this->set('_serialize', ['projects']);
+        );
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
+        $this->render('adminIndex');
     }
 
     /**
@@ -156,6 +194,33 @@ class ProjectsController extends AppController
         $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
         $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
+    }
+
+    /**
+     * Edit state method
+     * @return void
+     */
+    public function editState()
+    {
+        if($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $data = $this->request->data;
+            $projects = $this->Projects->get(intval($data['id']));
+            if ($data['state'] == '4') { // Archived
+                $projects->editArchived($data['stateValue']);
+            } elseif ($data['state'] == '3') { // Approved
+                if (!$projects->isAccepted()) {
+                    $projects->editAccepted($data['stateValue']);
+                }
+            } else {
+                echo json_encode(['error', __('Cannot perform the change.')]);
+            }
+            echo json_encode(['success', __('Your change has been saved')]);
+            $this->Projects->save($projects);
+        } else {
+            $this->Flash->error(__('Not an AJAX Query', true));
+            $this->redirect(['action' => 'index']);
+        }
     }
 
     /**
