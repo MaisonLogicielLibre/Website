@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-02 15:02-0400\n"
-"PO-Revision-Date: 2015-10-02 15:03-0400\n"
+"POT-Creation-Date: 2015-10-05 16:49-0400\n"
+"PO-Revision-Date: 2015-10-05 16:58-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: Controller/AppController.php:59 Template/Layout/default.ctp:59
+#: Controller/AppController.php:58 Template/Layout/default.ctp:59
 msgid "ML2"
 msgstr "ML²"
 
@@ -67,29 +67,21 @@ msgstr "L'organisation a été supprimée."
 msgid "The organization could not be deleted. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:122;150
+#: Controller/ProjectsController.php:121;149
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:125;153
+#: Controller/ProjectsController.php:124;152
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:171
+#: Controller/ProjectsController.php:170
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:173
+#: Controller/ProjectsController.php:172
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
-
-#: Controller/ProjectsController.php:201
-msgid "The application has been saved."
-msgstr "La candidature a été enregistrée."
-
-#: Controller/ProjectsController.php:204
-msgid "The application could not be saved. Please, try again."
-msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/SvnsController.php:89;115
 msgid "The svn has been saved."
@@ -181,16 +173,16 @@ msgid ""
 "             try again."
 msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:119
-#: Model/Table/UsersTable.php:128
+#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:113
+#: Model/Table/UsersTable.php:122
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr "Le lien web n'est pas valide (Ex : http://website.ca)"
 
-#: Model/Table/UsersTable.php:164
+#: Model/Table/UsersTable.php:158
 msgid "Is not a valid number."
 msgstr "Le numéro de téléphone n'est pas valide."
 
-#: Model/Table/UsersTable.php:210
+#: Model/Table/UsersTable.php:204
 msgid " Old password isn't valid"
 msgstr "L'ancien mot de passe n'est pas valide."
 
@@ -393,10 +385,6 @@ msgstr "Site web du projet"
 msgid "Edit the project"
 msgstr "Modifier le projet"
 
-#: Template/Element/Projects/sidebar.ctp:80
-msgid "Apply on the project"
-msgstr "Candidater sur le projet"
-
 #: Template/Element/Users/sidebar.ctp:15;84 Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -430,58 +418,67 @@ msgid "EN"
 msgstr ""
 
 #: Template/Layout/default.ctp:70
+msgid "Become a sponsor"
+msgstr "Devenir un sponsor"
+
+#: Template/Layout/default.ctp:71
+msgid "Submit a project"
+msgstr "Soumettre un projet"
+
+#: Template/Layout/default.ctp:72
 msgid "Contest"
 msgstr "Concours"
 
-#: Template/Layout/default.ctp:71 Template/Organizations/view.ctp:27
+#: Template/Layout/default.ctp:73 Template/Organizations/view.ctp:27
 msgid "Projects"
 msgstr "Projets"
 
-#: Template/Layout/default.ctp:73
+#: Template/Layout/default.ctp:75
 msgid "Partners"
 msgstr "Partenaires"
 
-#: Template/Layout/default.ctp:75
+#: Template/Layout/default.ctp:77
 msgid "Industry"
 msgstr "Industriel"
 
-#: Template/Layout/default.ctp:76
+#: Template/Layout/default.ctp:78
 msgid "Academic"
 msgstr "Académique"
 
-#: Template/Layout/default.ctp:77
+#: Template/Layout/default.ctp:79
 msgid "Associations"
 msgstr "Association"
 
-#: Template/Layout/default.ctp:80
+#: Template/Layout/default.ctp:82 Template/Pages/sponsor.ctp:23
+#: Template/Pages/submit.ctp:38
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: Template/Layout/default.ctp:82
+#: Template/Layout/default.ctp:84
 msgid "Profile"
 msgstr "Profil"
 
-#: Template/Layout/default.ctp:83
+#: Template/Layout/default.ctp:85
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: Template/Layout/default.ctp:85
+#: Template/Layout/default.ctp:87
 msgid "Login"
 msgstr "Connexion"
 
-#: Template/Layout/default.ctp:86 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:88 Template/Users/register.ctp:4
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: Template/Layout/default.ctp:112;115
+#: Template/Layout/default.ctp:114;117
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:113
+#: Template/Layout/default.ctp:115
 msgid "Montfort street"
 msgstr "Rue Montfort"
 
-#: Template/Layout/default.ctp:113
+#: Template/Layout/default.ctp:115
 msgid "Montreal"
 msgstr "Montréal"
 
@@ -529,7 +526,7 @@ msgstr "Modifier une mission"
 
 #: Template/Missions/view.ctp:5
 msgid "Delete Mission"
-msgstr "Supprime ruen mission"
+msgstr "Supprimer une mission"
 
 #: Template/Missions/view.ctp:20 Template/OrganizationsProjects/view.ctp:20
 msgid "Project"
@@ -673,40 +670,32 @@ msgstr ""
 "Le logo doit représenter à la fois le logiciel libre et les initiatives open "
 "source"
 
-#: Template/Pages/contest.ctp:12
-msgid "Do not leave aside free software"
-msgstr "Ne pas laisser de coté le logiciel libre"
-
 #: Template/Pages/contest.ctp:13
-msgid "Do not give the impression that we are only about free software"
-msgstr "Ne pas laisser croire que nous ne faisons que du logiciel libre"
-
-#: Template/Pages/contest.ctp:15
 msgid "Reminder : "
 msgstr "Rappel :"
 
-#: Template/Pages/contest.ctp:17
+#: Template/Pages/contest.ctp:15
 msgid "The design must be original"
 msgstr "La conception doit être original"
 
-#: Template/Pages/contest.ctp:18
+#: Template/Pages/contest.ctp:16
 msgid "You must have the rights to use the image(s) used"
 msgstr ""
 "Vous devez avoir les droits pour utiliser les images intégrées dans votre "
 "conception"
 
-#: Template/Pages/contest.ctp:19
+#: Template/Pages/contest.ctp:17
 msgid "You grant the rights of your logo to Maison du Logiciel Libre"
 msgstr ""
 "Vous accordez tous les droits sur votre conception de logo à la Maison du "
 "Logiciel Libre"
 
-#: Template/Pages/contest.ctp:22
+#: Template/Pages/contest.ctp:20
 msgid "The winner will be credited on the website and receive an ML2 shirt"
 msgstr ""
 "Le gagnant sera accrédité sur notre site web et recevera un chandail de ML²"
 
-#: Template/Pages/contest.ctp:23
+#: Template/Pages/contest.ctp:21
 msgid "Send your design at : "
 msgstr "Envoyer votre conception à :"
 
@@ -733,15 +722,15 @@ msgstr "Nous avons besoin de vos commentaires!"
 msgid "Take the ML² student survey"
 msgstr "Remplissez le formulaire étudiant ML²"
 
-#: Template/Pages/home.ctp:29;31
+#: Template/Pages/home.ctp:35;37
 msgid "Loading..."
 msgstr "Chargement en cours"
 
-#: Template/Pages/home.ctp:40
+#: Template/Pages/home.ctp:46
 msgid "Our Mission"
 msgstr "Notre mission"
 
-#: Template/Pages/home.ctp:43
+#: Template/Pages/home.ctp:49
 msgid ""
 "This initiative is born from a meeting between the ÉTS director and Google\n"
 "\t\tMontreal director. Seeing the difficulty that students have to hone "
@@ -759,7 +748,7 @@ msgstr ""
 "réalisations, ils ont eu l’idée de créer la Maison du Logiciel Libre ou tout "
 "simplement ML²."
 
-#: Template/Pages/home.ctp:50
+#: Template/Pages/home.ctp:56
 msgid ""
 "The foremost mission of ML2 is to offer a place of meeting and sharing in\n"
 "\t\tMontreal allowing the students to participate in open source software\n"
@@ -777,7 +766,7 @@ msgstr ""
 "de côtoyer des participants provenant d’horizons différents et ayant eu des "
 "expériences académiques et professionnelles très variés."
 
-#: Template/Pages/home.ctp:59
+#: Template/Pages/home.ctp:65
 msgid ""
 "The mission of ML2 is an educational mission. Multiple activities will be\n"
 "\t\teventually offered : free development, graduation projects, "
@@ -797,7 +786,7 @@ msgstr ""
 "être en lien avec des entreprises voulant s’investir dans la formation des "
 "étudiants. L’organisation de séminaires pourra compléter ce volet éducatif."
 
-#: Template/Pages/home.ctp:68
+#: Template/Pages/home.ctp:74
 msgid ""
 "By participating in ML2 activities, the students will be able to (i)\n"
 "\t\tdiscover the open source software world with its codes and objectives; "
@@ -814,17 +803,18 @@ msgstr ""
 "en logiciels libres ; (iv) obtenir éventuellement des reconnaissances de "
 "leurs acquis de leur université."
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:84
 msgid "Value proposition for industry:"
 msgstr "Proposition de valeur pour l'industrie :"
 
-#: Template/Pages/home.ctp:81
+#: Template/Pages/home.ctp:87
 msgid "Access to potential new hires in our logicel libre developer community"
 msgstr ""
 "Accès à des recrues potentielles au sein de notre communauté de développeur "
 "du logiciel libre"
 
-#: Template/Pages/home.ctp:82
+#: Template/Pages/home.ctp:88 Template/Pages/sponsor.ctp:8
+#: Template/Pages/submit.ctp:8
 msgid ""
 "Develop new open source features faster and cheaper in your products and "
 "dependencies"
@@ -832,52 +822,54 @@ msgstr ""
 "Augmenter la vitesse de développement tout en réduisant les coûts des "
 "fonctionnalités"
 
-#: Template/Pages/home.ctp:83
+#: Template/Pages/home.ctp:89 Template/Pages/sponsor.ctp:9
+#: Template/Pages/submit.ctp:9
 msgid ""
 "Promote your company and create networks across the software engineering and "
 "computer science departments of 7 universities"
 msgstr ""
 "Promouvoir votre entreprise tout en créant un réseau au sein de 7 universités"
 
-#: Template/Pages/home.ctp:84
+#: Template/Pages/home.ctp:90 Template/Pages/sponsor.ctp:10
+#: Template/Pages/submit.ctp:10
 msgid "Create Goodwill in the University and open source communities"
 msgstr ""
 "Augmenter la réputation de votre entreprise au sein des universités et de la "
 "communauté du logiciel libre"
 
-#: Template/Pages/home.ctp:87
+#: Template/Pages/home.ctp:93
 msgid "Value proposition for universities and students:"
 msgstr "Proposition de valeur pour l'académie:"
 
-#: Template/Pages/home.ctp:90
+#: Template/Pages/home.ctp:96
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr "Jumeler des stagiaires à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:91
+#: Template/Pages/home.ctp:97
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
 msgstr "Jumeler des projets de fin d’étude à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:92
+#: Template/Pages/home.ctp:98
 msgid "Support for graduate students working on open source projects"
 msgstr ""
 "Offrir du support aux étudiants gradués travaillant sur des projets logiciel "
 "libre"
 
-#: Template/Pages/home.ctp:93
+#: Template/Pages/home.ctp:99
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr "Mentorat de projet (chaque projet aura un mentor)"
 
-#: Template/Pages/home.ctp:94
+#: Template/Pages/home.ctp:100
 msgid "Teaching assistant (TAs) access"
 msgstr "Accès à des professeurs"
 
-#: Template/Pages/home.ctp:95
+#: Template/Pages/home.ctp:101
 msgid "Additional mentor access from ML2 staff"
 msgstr "Accès aux mentors de ML²"
 
-#: Template/Pages/home.ctp:96
+#: Template/Pages/home.ctp:102
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
@@ -885,28 +877,145 @@ msgstr ""
 "Accès au réseau de ML² : étudiants de 7 universités, la communauté du "
 "logiciel libre, mentors et industriels"
 
-#: Template/Pages/home.ctp:97
+#: Template/Pages/home.ctp:103
 msgid "Promotion of projects and students on the ML2 website"
 msgstr "Promouvoir les projets et les étudiants sur le site web de ML²"
 
-#: Template/Pages/home.ctp:98
+#: Template/Pages/home.ctp:104
 msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 "Accès aux commentaires des mentors et des professeurs pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:99
+#: Template/Pages/home.ctp:105
 msgid ""
 "CV Portfolio open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
 msgstr "Accès aux codes sources des projets pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:100
+#: Template/Pages/home.ctp:106
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr "Accès aux conférences et séminaires de ML²"
 
-#: Template/Pages/home.ctp:101
+#: Template/Pages/home.ctp:107
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
+
+#: Template/Pages/sponsor.ctp:2
+msgid "Become a sponsor at  Maison du Logiciel Libre!"
+msgstr "Devenez un sponsor de la Maison du Logiciel Libre!"
+
+#: Template/Pages/sponsor.ctp:4 Template/Pages/submit.ctp:4
+msgid "Benefits :"
+msgstr "Avantages :"
+
+#: Template/Pages/sponsor.ctp:7 Template/Pages/submit.ctp:7
+msgid ""
+"Gain access to potential new hires in our logicel libre developer community  "
+"spanning  7 Quebec Universities including : École de Technologie Supérieure "
+"(ETS), UQÀM, McGill, Polytechnique, Université de Montréal, Concordia and "
+"Université de Sherbrooke"
+msgstr ""
+"Accès à des recrues potentielles au sein de notre réseau universitaire :  "
+"École de Technologie Supérieure (ÉTS), UQÀM, McGill, Polytechnique, "
+"Université de Montréal, Concordia et Université de Sherbrooke"
+
+#: Template/Pages/sponsor.ctp:14
+msgid ""
+"Sponsors are displayed prominently on our website and on a large display "
+"screen on the main floor of École de Technologie Supérieure (ETS). "
+"Additional branding opportunities are available at ETS  and across our "
+"university network of UQÀM, McGill, Polytechnique,  Université de Montréal, "
+"Concordia, and Université de Sherbrooke"
+msgstr ""
+"Les sponsors sont affichés en évidence sur notre site web et sur un écran "
+"géant dans le hall principal  de l’École de Technologie Supérieure (ÉTS). Il "
+"est possible de promouvoir votre image à l’ÉTS  et à travers notre réseau "
+"universitaire."
+
+#: Template/Pages/sponsor.ctp:17
+msgid "How does a company become a sponsor?"
+msgstr "Comment devenir un sponsor?"
+
+#: Template/Pages/sponsor.ctp:19
+msgid ""
+"Send an email describing your organization and why you would like to join ML²"
+msgstr ""
+"Envoyez un courriel décrivant votre organisation et pourquoi vous voulez "
+"vous joindre à ML²"
+
+#: Template/Pages/submit.ctp:2
+msgid "Submit a project to  Maison du Logiciel Libre!"
+msgstr "Soumettre un projet à la Maison du Logiciel Libre!"
+
+#: Template/Pages/submit.ctp:14
+msgid "How does a company submit a project?"
+msgstr "Comment soumettre un projet?"
+
+#: Template/Pages/submit.ctp:17
+msgid "Describe your organization"
+msgstr "Décrivez votre organisation"
+
+#: Template/Pages/submit.ctp:18
+msgid "Main contact email & phone for student applications"
+msgstr ""
+"Fournissez une adresse courriel et un numéro de téléphone pour les "
+"candidatures des étudiants"
+
+#: Template/Pages/submit.ctp:19
+msgid "Describe your open source project(s)"
+msgstr "Décrivez vos projets open source"
+
+#: Template/Pages/submit.ctp:21
+msgid ""
+"Introduce contributors to your project's needs and provide inspiration to "
+"would-be student applicants."
+msgstr ""
+"Introduisez les besoin de votre projet aux contributeurs et aux étudiants"
+
+#: Template/Pages/submit.ctp:22
+msgid "Each project must have a mentor."
+msgstr "Chaque projet doit avoir un mentor"
+
+#: Template/Pages/submit.ctp:24
+msgid "What Free Software / open source license(s) does your project use?"
+msgstr "Quels licenses libres/open source votre projet utilise-t-il?"
+
+#: Template/Pages/submit.ctp:25
+msgid "What type of student(s) are you looking for?"
+msgstr "Quels types d'étudiant récherchez-vous?"
+
+#: Template/Pages/submit.ctp:27
+msgid "Full-time 4-month intern student"
+msgstr "Stagiaire temps plein (4 mois)"
+
+#: Template/Pages/submit.ctp:28
+msgid "Capstone student (150 hours per semester)"
+msgstr "Projet de fin d'étude (150 heures par session)"
+
+#: Template/Pages/submit.ctp:29
+msgid ""
+"Graduate student (1 to 2 year projects for Masters and Doctorate students)"
+msgstr ""
+"Étudiant gradué (Projets de 1-2 ans pour les étudiants en maîtrise et "
+"doctorat)"
+
+#: Template/Pages/submit.ctp:31
+msgid "What are the student requirements to work on the project?"
+msgstr "Quel est le niveau technique requis pour candidater sur votre projet?"
+
+#: Template/Pages/submit.ctp:33
+msgid ""
+" e.g. \"must know Python\" or \"easier project good for a student with more "
+"limited experience with C++.\""
+msgstr "exemple : \"une base en Python\" ou \"expérience limitée en C++\""
+
+#: Template/Pages/submit.ctp:35
+msgid ""
+"What steps will you take to encourage students to interact with your "
+"project's community before, during and after the program?"
+msgstr ""
+"Qu’allez-vous faire pour encourager l’étudiant à intérargir avec la "
+"communauté de votre projet?"
 
 #: Template/Projects/add.ctp:17
 msgid "Add Project"
@@ -914,7 +1023,7 @@ msgstr "Ajouter projet"
 
 #: Template/Projects/apply.ctp:14
 msgid "Apply on this project"
-msgstr ""
+msgstr "Candidater sur ce projet"
 
 #: Template/Projects/apply.ctp:24 Template/Users/edit.ctp:29
 #: Template/Users/email.ctp:20 Template/Users/password.ctp:20
@@ -1192,6 +1301,21 @@ msgstr "Entrez votre adresse courriel"
 #: Template/Users/register.ctp:9
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
+
+#~ msgid "The application has been saved."
+#~ msgstr "La candidature a été enregistrée."
+
+#~ msgid "The application could not be saved. Please, try again."
+#~ msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
+
+#~ msgid "Apply on the project"
+#~ msgstr "Candidater sur le projet"
+
+#~ msgid "Do not leave aside free software"
+#~ msgstr "Ne pas laisser de coté le logiciel libre"
+
+#~ msgid "Do not give the impression that we are only about free software"
+#~ msgstr "Ne pas laisser croire que nous ne faisons que du logiciel libre"
 
 #~ msgid "Build ML2 future"
 #~ msgstr "Bâtissez le futur de la maison"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-05 20:24+0000\n"
+"POT-Creation-Date: 2015-10-05 20:45+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -545,7 +545,7 @@ msgid "Associations"
 msgstr ""
 
 #: Template/Layout/default.ctp:82
-#: Template/Pages/sponsor.ctp:19
+#: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 msgid "Contact us"
 msgstr ""
@@ -948,11 +948,15 @@ msgid "Gain access to potential new hires in our logicel libre developer communi
 msgstr ""
 
 #: Template/Pages/sponsor.ctp:14
+msgid "Sponsors are displayed prominently on our website and on a large display screen on the main floor of École de Technologie Supérieure (ETS). Additional branding opportunities are available at ETS  and across our university network of UQÀM, McGill, Polytechnique,  Université de Montréal, Concordia, and Université de Sherbrooke"
+msgstr ""
+
+#: Template/Pages/sponsor.ctp:17
 msgid "How does a company become a sponsor?"
 msgstr ""
 
-#: Template/Pages/sponsor.ctp:16
-msgid "Sponsors are displayed prominently on our website and on a large display screen on the main floor of École de Technologie Supérieure (ETS). Additional branding opportunities are available at ETS  and across our university network of UQÀM, McGill, Polytechnique,  Université de Montréal, Concordia, and Université de Sherbrooke"
+#: Template/Pages/sponsor.ctp:19
+msgid "Send an email describing your organization and why you would like to join ML²"
 msgstr ""
 
 #: Template/Pages/submit.ctp:2
