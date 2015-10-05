@@ -1,6 +1,9 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
-<!-- Sidebar -->
+<?php
+$this->element('Projects/actionSidebar');
+echo $this->fetch('actionAdminSidebar');
+?>
 <div class="projects index col-lg-9 col-md-9 col-sm-9 col-xs-12 columns">
     <div class="panel panel-primary">
         <div class="panel-heading">
