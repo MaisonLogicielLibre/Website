@@ -77,14 +77,13 @@ class AppController extends Controller
      */
     protected function checkLanguage()
     {
-        if (!empty($_GET['lang'])){
-			$this->request->session()->write('lang', $_GET['lang']);
-			I18n::locale($_GET['lang']);
-		}
-		else{
-			$lang = $this->request->session()->read('lang');
-			I18n::locale($lang);
-		}	
+        if (!empty($_GET['lang'])) {
+            $this->request->session()->write('lang', $_GET['lang']);
+            I18n::locale($_GET['lang']);
+        } else {
+            $lang = $this->request->session()->read('lang');
+            I18n::locale($lang);
+        }
     }
     
     /**
