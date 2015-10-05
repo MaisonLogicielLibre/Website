@@ -67,6 +67,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>
+					<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>
 					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
 					<li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
 					<li class="dropdown">
@@ -111,7 +113,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div class="text-center">
 				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
 				400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
-				<br><i class="fa fa-phone-square"></i> (514) 396-8552
+				<br><i class="fa fa-phone-square"></i> (514) 781-9312
 				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
 			</div>
 		</div>

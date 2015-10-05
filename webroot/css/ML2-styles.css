@@ -307,6 +307,13 @@ footer {
 	margin-left: 20%;
 }
 
+/* temp */
+
+.temp-text{
+	margin: 0 auto;
+	width: 60%;
+}
+
 @media screen and (max-width: 1000px) {
 	.partner {
 		height: 200px;
@@ -329,6 +336,13 @@ footer {
 		margin: 0 auto;
 		width: 60%;
 	}
+	
+	/* temp */
+
+	.temp-text{
+		margin: 0 auto;
+		width: 80%;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -343,6 +357,13 @@ footer {
 	}
 	
 	.contest{
+		margin: 0 auto;
+		width: 100%;
+	}
+	
+	/* temp */
+
+	.temp-text{
 		margin: 0 auto;
 		width: 100%;
 	}
