@@ -31,6 +31,8 @@ class ProjectsController extends AppController
         'submit' => ['Administrator'],
         'edit' => ['Administrator'],
         'editState' => ['Administrator'],
+        'editAccepted' => ['Administrator'],
+        'editArchived' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator'],
         'apply' => ['Student', 'Administrator', 'Mentor']
@@ -138,6 +140,8 @@ class ProjectsController extends AppController
         $this->render('adminIndex');
     }
 
+
+
     /**
      * View method
      * @param string $id id
@@ -239,6 +243,44 @@ class ProjectsController extends AppController
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
             $this->redirect(['action' => 'index']);
+        }
+    }
+
+    /**
+     * Edit accepted method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editAccepted($id)
+    {
+        $this->autoRender = false;
+        $project = $this->Projects->get($id);
+        $project->editAccepted(1);
+        if ($this->Projects->save($project)) {
+            $this->Flash->success(__('The project has been accepted.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The project could not be saved. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
+    }
+
+    /**
+     * Edit archived method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editArchived($id)
+    {
+        $this->autoRender = false;
+        $project = $this->Projects->get($id);
+        $project->editArchived(!($project->isArchived()));
+        if ($this->Projects->save($project)) {
+            $this->Flash->success(__('The project has been saved.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The project could not be saved. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
         }
     }
 
