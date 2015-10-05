@@ -102,10 +102,10 @@ class ProjectsController extends AppController
                     ]
                 )
                 ->where(
-                  [
+                    [
                       'accepted' => true,
                       'archived' => false
-                  ]
+                    ]
                 );
 
             $this->set(
@@ -225,7 +225,7 @@ class ProjectsController extends AppController
      */
     public function editState()
     {
-        if($this->request->is('ajax')) {
+        if ($this->request->is('ajax')) {
             $this->autoRender = false;
             $data = $this->request->data;
             $projects = $this->Projects->get(intval($data['id']));

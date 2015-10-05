@@ -5,7 +5,6 @@ use Cake\TestSuite\Fixture\TestFixture;
 
 /**
  * ProjectsFixture
- *
  */
 class ProjectsFixture extends TestFixture
 {
@@ -53,6 +52,14 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 1,
+            'archived' => 0
+        ],
+        [
+            'id' => 3,
+            'name' => 'projet3',
+            'link' => 'www.website.com',
+            'description' => 'bla bla',
+            'accepted' => 0,
             'archived' => 0
         ]
     ];
