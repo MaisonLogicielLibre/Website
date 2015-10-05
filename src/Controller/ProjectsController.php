@@ -92,7 +92,26 @@ class ProjectsController extends AppController
         if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
             $this->adminIndex();
         } else {
+            $data = $this->DataTables
+                ->find(
+                    'Projects',
+                    [
+                        'contain' => ['Organizations'],
+                    ]
+                )
+                ->where(
+                  [
+                      'accepted' => true,
+                      'archived' => false
+                  ]
+                );
 
+            $this->set(
+                [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                ]
+            );
         }
     }
 
