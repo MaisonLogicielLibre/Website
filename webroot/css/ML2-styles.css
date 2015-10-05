@@ -157,14 +157,12 @@ hr.small {
 .header {
     display: table;
     position: relative;
-    width: 100%;
-    height: 400px;
-    color: lightblue;
-    background: url(../img/banner.png) no-repeat center center scroll;
-    -webkit-background-size: auto 400px;
-    -moz-background-size: auto 400px;
-    background-size: auto 400px;
-    -o-background-size: auto 400px;
+    min-width: 100%;
+}
+
+.banner {
+	display: block;
+	margin: 0 auto;
 }
 
 /* About */
@@ -244,10 +242,18 @@ hr.small {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+.wrapper{
+	min-height: 100%;
+	margin-bottom: -50px;
+}
+
 footer {
     padding: 10px 0px;
     color: #FFF;
     background-color:black;
+	clear: both;
+    width:100%;
 }
 .setHeight {
     min-height: 400px !important;
@@ -257,19 +263,15 @@ footer {
 
 .partner {
     height: 200px;
-	width: 500px;
-	margin: 50px;
+	width: 28%;
+	margin: 2%;
 	float:left;
 }
 
-.industry{
+.logos{
 	margin-left: 10%;
 }
 
-.academic {
-	margin-left: 10%;
-    clear:both;
-}
 
 /* contact page */
 
@@ -281,4 +283,88 @@ footer {
 
 .contact{
 	text-align: center;
+}
+
+.home-text{
+	width:40%;
+	margin:5%;
+	float:left;
+	text-align:center;
+}
+
+.clear{
+	clear:both;
+}
+
+/* contest page */
+
+.contest{
+	margin: 0 auto;
+    width: 30%;
+}
+
+.img-contest{
+	margin-left: 20%;
+}
+
+/* temp */
+
+.temp-text{
+	margin: 0 auto;
+	width: 60%;
+}
+
+@media screen and (max-width: 1000px) {
+	.partner {
+		height: 200px;
+		width: 46%;
+		margin: 2%;
+		float: left;
+	}
+	
+	.logos{
+		margin-left: 0%;
+	}
+	
+	.home-text{
+		width:90%;
+		margin:5%;
+		text-align:center;
+	}
+	
+	.contest{
+		margin: 0 auto;
+		width: 60%;
+	}
+	
+	/* temp */
+
+	.temp-text{
+		margin: 0 auto;
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.partner {
+		height: 15%;
+		width: 100%;
+		margin: 15% 5%;
+	}
+	
+	.logos{
+		margin-left: 0%;
+	}
+	
+	.contest{
+		margin: 0 auto;
+		width: 100%;
+	}
+	
+	/* temp */
+
+	.temp-text{
+		margin: 0 auto;
+		width: 100%;
+	}
 }
