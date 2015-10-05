@@ -12,8 +12,9 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+ 
 $cakeDescription = 'CakePHP: the rapid development php framework';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,11 +53,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">ML2</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<li class="active"><?= $this->Html->link(__('ML2'), ['controller' => 'Pages', 'action' => 'home']);?></li>
 					<li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('FR'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'fr_CA']);?></li>
+							<li><?= $this->Html->link(__('EN'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'en_US']);?></li>                    
+						</ul>
+					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>

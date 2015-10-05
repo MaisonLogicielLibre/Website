@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-01 10:14-0400\n"
-"PO-Revision-Date: 2015-10-01 10:31-0400\n"
+"POT-Creation-Date: 2015-10-02 15:04-0400\n"
+"PO-Revision-Date: 2015-10-02 15:04-0400\n"
 "Last-Translator: \n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: Controller/AppController.php:59
+#: Controller/AppController.php:59 Template/Layout/default.ctp:59
 msgid "ML2"
 msgstr "ML²"
 
@@ -67,20 +67,28 @@ msgstr ""
 msgid "The organization could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:121;149
+#: Controller/ProjectsController.php:122;150
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:124;152
+#: Controller/ProjectsController.php:125;153
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:170
+#: Controller/ProjectsController.php:171
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:172
+#: Controller/ProjectsController.php:173
 msgid "The project could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProjectsController.php:201
+msgid "The application has been saved."
+msgstr ""
+
+#: Controller/ProjectsController.php:204
+msgid "The application could not be saved. Please, try again."
 msgstr ""
 
 #: Controller/SvnsController.php:89;115
@@ -173,16 +181,16 @@ msgid ""
 "             try again."
 msgstr ""
 
-#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:113
-#: Model/Table/UsersTable.php:122
+#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:119
+#: Model/Table/UsersTable.php:128
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr ""
 
-#: Model/Table/UsersTable.php:158
+#: Model/Table/UsersTable.php:164
 msgid "Is not a valid number."
 msgstr ""
 
-#: Model/Table/UsersTable.php:204
+#: Model/Table/UsersTable.php:210
 msgid " Old password isn't valid"
 msgstr ""
 
@@ -385,6 +393,10 @@ msgstr ""
 msgid "Edit the project"
 msgstr ""
 
+#: Template/Element/Projects/sidebar.ctp:80
+msgid "Apply on the project"
+msgstr ""
+
 #: Template/Element/Users/sidebar.ctp:15;84 Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr ""
@@ -401,63 +413,75 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:59
+#: Template/Layout/default.ctp:60
 msgid "Home"
 msgstr ""
 
 #: Template/Layout/default.ctp:62
-msgid "Contest"
+msgid "Language"
 msgstr ""
 
-#: Template/Layout/default.ctp:63 Template/Organizations/view.ctp:27
-msgid "Projects"
+#: Template/Layout/default.ctp:64
+msgid "FR"
 msgstr ""
 
 #: Template/Layout/default.ctp:65
+msgid "EN"
+msgstr ""
+
+#: Template/Layout/default.ctp:70
+msgid "Contest"
+msgstr ""
+
+#: Template/Layout/default.ctp:71 Template/Organizations/view.ctp:27
+msgid "Projects"
+msgstr ""
+
+#: Template/Layout/default.ctp:73
 msgid "Partners"
 msgstr ""
 
-#: Template/Layout/default.ctp:67
+#: Template/Layout/default.ctp:75
 msgid "Industry"
 msgstr ""
 
-#: Template/Layout/default.ctp:68
+#: Template/Layout/default.ctp:76
 msgid "Academic"
 msgstr ""
 
-#: Template/Layout/default.ctp:69
+#: Template/Layout/default.ctp:77
 msgid "Associations"
 msgstr ""
 
-#: Template/Layout/default.ctp:72
+#: Template/Layout/default.ctp:80
 msgid "Contact us"
 msgstr ""
 
-#: Template/Layout/default.ctp:74
+#: Template/Layout/default.ctp:82
 msgid "Profile"
 msgstr ""
 
-#: Template/Layout/default.ctp:75
+#: Template/Layout/default.ctp:83
 msgid "Logout"
 msgstr ""
 
-#: Template/Layout/default.ctp:77
+#: Template/Layout/default.ctp:85
 msgid "Login"
 msgstr ""
 
-#: Template/Layout/default.ctp:78 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:86 Template/Users/register.ctp:4
 msgid "Register"
 msgstr ""
 
-#: Template/Layout/default.ctp:104;107
+#: Template/Layout/default.ctp:112;115
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:105
+#: Template/Layout/default.ctp:113
 msgid "Montfort street"
 msgstr ""
 
-#: Template/Layout/default.ctp:105
+#: Template/Layout/default.ctp:113
 msgid "Montreal"
 msgstr ""
 
@@ -647,30 +671,38 @@ msgstr ""
 msgid "Represent the open source software"
 msgstr "Represent both the free software and  open source initiatives."
 
+#: Template/Pages/contest.ctp:12
+msgid "Do not leave aside free software"
+msgstr ""
+
 #: Template/Pages/contest.ctp:13
-msgid "Reminder : "
+msgid "Do not give the impression that we are only about free software"
 msgstr ""
 
 #: Template/Pages/contest.ctp:15
+msgid "Reminder : "
+msgstr ""
+
+#: Template/Pages/contest.ctp:17
 msgid "The design must be original"
 msgstr ""
 
-#: Template/Pages/contest.ctp:16
+#: Template/Pages/contest.ctp:18
 msgid "You must have the rights to use the image(s) used"
 msgstr ""
 "You must have the rights to use any copied image(s) embedded in your design."
 
-#: Template/Pages/contest.ctp:17
+#: Template/Pages/contest.ctp:19
 msgid "You grant the rights of your logo to Maison du Logiciel Libre"
 msgstr "You grant all rights to your logo design to Maison du Logiciel Libre"
 
-#: Template/Pages/contest.ctp:20
+#: Template/Pages/contest.ctp:22
 msgid "The winner will be credited on the website and receive an ML2 shirt"
 msgstr ""
 "The winner will be accredited for their design  on our website and receive "
 "an ML² shirt"
 
-#: Template/Pages/contest.ctp:21
+#: Template/Pages/contest.ctp:23
 msgid "Send your design at : "
 msgstr "Send your design to : "
 
