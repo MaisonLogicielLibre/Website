@@ -332,6 +332,19 @@ class UsersControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test edit - Test Get
+     *
+     * @return void
+     */
+    public function testEditGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->get('/users/edit/1');
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
      * Test edit - Ok
      *
      * @return void

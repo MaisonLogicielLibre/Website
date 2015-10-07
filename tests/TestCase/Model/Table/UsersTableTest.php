@@ -105,6 +105,22 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test getNameNUll
+     * @return void
+     */
+    public function testGetNameNull()
+    {
+        $id = 3;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getName();
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test getLastName
@@ -187,10 +203,10 @@ class UsersTableTest extends TestCase
     }
     
     /**
-     * Test getGender
+     * Test getGender for true
      * @return void
      */
-    public function testGetGender()
+    public function testGetGenderTrue()
     {
         $id = 1;
         $expected = true;
@@ -201,7 +217,39 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getGender for false
+     * @return void
+     */
+    public function testGetGenderFalse()
+    {
+        $id = 2;
+        $expected = false;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGender();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getGender for null
+     * @return void
+     */
+    public function testGetGenderNull()
+    {
+        $id = 3;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGender();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPassword
      * @return void
@@ -342,6 +390,22 @@ class UsersTableTest extends TestCase
         $user = $this->Users->get($id);
 
         $result = $user->editGender($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editGender
+     * @return void
+     */
+    public function testSetGenderNull()
+    {
+        $id = 1;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editGender("null");
 
         $this->assertEquals($expected, $result);
     }

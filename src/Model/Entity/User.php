@@ -125,9 +125,7 @@ class User extends Entity
     {
         $data = $this->_properties['gender'];
 
-        if (null === $data) {
-            return null;
-        } elseif ($data === false || $data === 0) {
+        if ($data === false || $data === 0) {
             return 0;
         } elseif ($data === true || $data === 1) {
             return 1;
