@@ -91,11 +91,14 @@ class OrganizationsController extends AppController
             $this->adminIndex();
         } else {
             $data = $this->DataTables
-                ->find('organizations')
-                ->where(
+                ->find(
+                    'organizations',
                     [
-                        'isValidated' => true,
-                        'isRejected' => false
+                    'conditions' =>
+                        [
+                           'isValidated' => true,
+                            'isRejected' => false
+                        ]
                     ]
                 );
 
