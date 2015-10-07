@@ -90,7 +90,7 @@ class UsersController extends AppController
             if ($user) {
                 $this->Auth->setUser($user);
 
-                return $this->redirect(['action' => 'view', $user['id']]);
+                return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
             }
             $this->Flash->error(
                 __(
