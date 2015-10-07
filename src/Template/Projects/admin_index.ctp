@@ -1,7 +1,8 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
+<?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
 <?php
 $this->element('Projects/actionSidebar');
-echo $this->fetch('actionSidebar');
+echo $this->fetch('actionAdminSidebar');
 ?>
 <div class="projects index col-lg-9 col-md-9 col-sm-9 col-xs-12 columns">
     <div class="panel panel-primary">
@@ -16,6 +17,8 @@ echo $this->fetch('actionSidebar');
                     <th><?= __('Name'); ?></th>
                     <th><?= __('Website'); ?></th>
                     <th><?= __('Organizations'); ?></th>
+                    <th><?= __('Approved'); ?></th>
+                    <th><?= __('Archived'); ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,18 +26,30 @@ echo $this->fetch('actionSidebar');
                 <tfoot>
                 <tr class="table-search info">
                     <td></td>
-                    <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                               class="form-control input-sm input-block-level"/></td>
-                    <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                               class="form-control input-sm input-block-level"/></td>
+                    <td><input type="text" placeholder="<?= __('Search ...'); ?>" class="form-control input-sm input-block-level" /></td>
+                    <td><input type="text" placeholder="<?= __('Search ...'); ?>" class="form-control input-sm input-block-level" /></td>
                     <td>
                         <select class="form-control">
                             <option value="">-----</option>
                             <?php
-                            foreach ($orgs as $org) {
+                            foreach($orgs as $org) {
                                 echo '<option value="' . $org . '">' . $org . '</option>';
                             }
                             ?>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control">
+                            <option value="">-----</option>
+                            <option value="0"><?= __('No'); ?></option>
+                            <option value="1"><?= __('Yes'); ?></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control">
+                            <option value="">-----</option>
+                            <option value="0" selected><?= __('No'); ?></option>
+                            <option value="1"><?= __('Yes'); ?></option>
                         </select>
                     </td>
                 </tr>
@@ -49,6 +64,7 @@ echo $this->fetch('actionSidebar');
         'datatables/jquery.dataTables.min',
         'datatables/dataTables.bootstrap.min',
         'DataTables.cakephp.dataTables',
+        'bootstrap/bootstrap-switch.min'
     ],
     ['block' => 'scriptBottom']);
 ?>
@@ -82,12 +98,23 @@ echo $this->DataTables->init([
             'name' => 'Organizations.name',
             'data' => 'organizations',
             'searchable' => true
+        ],
+        [
+            'name' => 'Projects.accepted',
+            'data' => 'accepted',
+            'searchable' => true,
+        ],
+        [
+            'name' => 'Projects.archived',
+            'data' => 'archived',
+            'searchable' => true
         ]
     ],
     'lengthMenu' => ''
 ])->draw('.dataTable');
+echo 'var ajaxUrl="' . $this->Url->Build(['action' => 'editState']) . '";';
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
 echo 'var projectUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 $this->Html->scriptEnd();
 ?>
-<?= $this->Html->script('projects/index.js', ['block' => 'scriptBottom']); ?>
+<?= $this->Html->script('projects/adminIndex.js', ['block' => 'scriptBottom']); ?>

@@ -132,21 +132,4 @@ class ProjectsTable extends Table
 
         return $validator;
     }
-
-    /**
-     * Return projects who are Accepted and not Archived
-     * @param Query $query   query
-     * @param array $options options
-     * @return Query query
-     */
-    public function findShow(Query $query, array $options)
-    {
-        $query->where(
-            [
-                'Projects.Accepted' => true,
-                'Projects.Archived' => false
-            ]
-        );
-        return $query;
-    }
 }

@@ -30,6 +30,9 @@ class ProjectsController extends AppController
         'add' => ['Administrator'],
         'submit' => ['Administrator'],
         'edit' => ['Administrator'],
+        'editState' => ['Administrator'],
+        'editAccepted' => ['Administrator'],
+        'editArchived' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator'],
         'apply' => ['Student', 'Administrator', 'Mentor']
@@ -66,20 +69,77 @@ class ProjectsController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->paginate = [
-            'finder' => [
-                'show' => true
-            ]
-        ];
-        $this->set('projects', $this->paginate($this->Projects));
-        $this->set('_serialize', ['projects']);
+        $orgs = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('orgs'));
+
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
+            $this->adminIndex();
+        } else {
+            $data = $this->DataTables
+                ->find(
+                    'Projects',
+                    [
+                        'contain' => ['Organizations'],
+                        'conditions' =>
+                            [
+                                'accepted' => true,
+                                'archived' => false
+                            ]
+                    ]
+                );
+
+            $this->set(
+                [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                ]
+            );
+        }
     }
+
+    /**
+     * Admin index method
+     *
+     * @return void
+     */
+    public function adminIndex()
+    {
+        $data = $this->DataTables->find(
+            'Projects',
+            [
+                'contain' => ['Organizations']
+            ]
+        );
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
+        $this->render('adminIndex');
+    }
+
+
 
     /**
      * View method
@@ -156,6 +216,71 @@ class ProjectsController extends AppController
         $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
         $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
+    }
+
+    /**
+     * Edit state method
+     * @return void
+     */
+    public function editState()
+    {
+        if ($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $data = $this->request->data;
+            $projects = $this->Projects->get(intval($data['id']));
+            if ($data['state'] == '4') { // Archived
+                $projects->editArchived($data['stateValue']);
+            } elseif ($data['state'] == '3') { // Approved
+                if (!$projects->isAccepted()) {
+                    $projects->editAccepted($data['stateValue']);
+                }
+            } else {
+                echo json_encode(['error', __('Cannot perform the change.')]);
+            }
+            echo json_encode(['success', __('Your change has been saved')]);
+            $this->Projects->save($projects);
+        } else {
+            $this->Flash->error(__('Not an AJAX Query', true));
+            $this->redirect(['action' => 'index']);
+        }
+    }
+
+    /**
+     * Edit accepted method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editAccepted($id)
+    {
+        $this->autoRender = false;
+        $project = $this->Projects->get($id);
+        $project->editAccepted(1);
+        if ($this->Projects->save($project)) {
+            $this->Flash->success(__('The project has been accepted.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The project could not be saved. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
+    }
+
+    /**
+     * Edit archived method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editArchived($id)
+    {
+        $this->autoRender = false;
+        $project = $this->Projects->get($id);
+        $project->editArchived(!($project->isArchived()));
+        if ($this->Projects->save($project)) {
+            $this->Flash->success(__('The project has been saved.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The project could not be saved. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
     }
 
     /**

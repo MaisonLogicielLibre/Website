@@ -11,6 +11,7 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ProjectsController;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -235,5 +236,178 @@ class ProjectsControllerTest extends IntegrationTestCase
     {
         $this->post('/projects/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test accept a project - No Permission
+     *
+     * @return void
+     */
+    public function testAcceptedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/projects/editAccepted/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test accept a project - No Authentification
+     *
+     * @return void
+     */
+    public function testAcceptNoAuth()
+    {
+        $this->post('/projects/editAccepted/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test accept a project - Ok
+     *
+     * @return void
+     */
+    public function testAcceptOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/projects/editAccepted/1');
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test archived a project - No Permission
+     *
+     * @return void
+     */
+    public function testArchivedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/projects/editArchived/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test archived a project - No Authentification
+     *
+     * @return void
+     */
+    public function testArchivedNoAuth()
+    {
+        $this->post('/projects/editArchived/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived a project - Ok
+     *
+     * @return void
+     */
+    public function testArchivedOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/projects/editArchived/1');
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test edit state on a project - No Permission
+     *
+     * @return void
+     */
+    public function testStateNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/projects/editState/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit state on a project - No Authentification
+     *
+     * @return void
+     */
+    public function testStateNoAuth()
+    {
+        $this->post('/projects/editState/3');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test edit state on a project - Not AJAX
+     *
+     * @return void
+     */
+    public function testStateNotAjax()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $expected = true;
+
+        $data = [
+            'id' => 3,
+            'state' => 3, // Approved
+            'stateValue' => $expected
+        ];
+
+        $this->post('/projects/editState/3', $data);
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+    }
+
+    /**
+     * Test edit state archived on a project - Ok
+     *
+     * @return void
+     */
+    public function testStateAcceptOk()
+    {
+        $expected = true;
+
+        $data = [
+            'id' => 3,
+            'state' => 3, // Approved
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/projects/editState/3', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $projects = TableRegistry::get('Projects');
+
+        $q = $projects->findById(3)->first();
+        $this->assertEquals($expected, $q->isAccepted());
+    }
+
+    /**
+     * Test edit state accepted on a project - Ok
+     *
+     * @return void
+     */
+    public function testStateArchivedOk()
+    {
+        $expected = true;
+
+        $data = [
+            'id' => 3,
+            'state' => 4, // Archived
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/projects/editState/3', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $projects = TableRegistry::get('Projects');
+
+        $q = $projects->findById(3)->first();
+        $this->assertEquals($expected, $q->isArchived());
     }
 }
