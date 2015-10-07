@@ -61,8 +61,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<?= var_dump($this->request->Session()->read('controllerRef')); ?>
-							<?= var_dump($this->request->Session()->read('actionRef')); ?>
 							<li><?= $this->Html->link(__('FR'), ['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']);?></li>
 							<li><?= $this->Html->link(__('EN'), ['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'en_US']);?></li>                    
 						</ul>
