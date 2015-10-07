@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-05 20:45+0000\n"
+"POT-Creation-Date: 2015-10-07 17:37+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -67,20 +67,28 @@ msgstr ""
 msgid "The organization could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:121;149
+#: Controller/ProjectsController.php:122;150
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:124;152
+#: Controller/ProjectsController.php:125;153
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:170
+#: Controller/ProjectsController.php:171
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:172
+#: Controller/ProjectsController.php:173
 msgid "The project could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProjectsController.php:201
+msgid "The application has been saved."
+msgstr ""
+
+#: Controller/ProjectsController.php:204
+msgid "The application could not be saved. Please, try again."
 msgstr ""
 
 #: Controller/SvnsController.php:89;115
@@ -155,25 +163,25 @@ msgstr ""
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:325
+#: Controller/UsersController.php:332
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:328
-msgid "The user could not be deleted. Please,\n             try again."
+#: Controller/UsersController.php:335
+msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
 #: Model/Table/OrganizationsTable.php:86
-#: Model/Table/ProjectsTable.php:113
-#: Model/Table/UsersTable.php:122
+#: Model/Table/ProjectsTable.php:119
+#: Model/Table/UsersTable.php:128
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr ""
 
-#: Model/Table/UsersTable.php:158
+#: Model/Table/UsersTable.php:164
 msgid "Is not a valid number."
 msgstr ""
 
-#: Model/Table/UsersTable.php:204
+#: Model/Table/UsersTable.php:210
 msgid " Old password isn't valid"
 msgstr ""
 
@@ -478,7 +486,11 @@ msgstr ""
 msgid "Edit the project"
 msgstr ""
 
-#: Template/Element/Users/sidebar.ctp:15;84
+#: Template/Element/Projects/sidebar.ctp:80
+msgid "Apply on the project"
+msgstr ""
+
+#: Template/Element/Users/sidebar.ctp:15;100
 #: Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr ""
@@ -493,6 +505,10 @@ msgstr ""
 
 #: Template/Element/Users/sidebar.ctp:62
 msgid "Edit profile"
+msgstr ""
+
+#: Template/Element/Users/sidebar.ctp:78
+msgid "Delete profile"
 msgstr ""
 
 #: Template/Layout/default.ctp:60
@@ -1028,6 +1044,7 @@ msgid "Apply on this project"
 msgstr ""
 
 #: Template/Projects/apply.ctp:24
+#: Template/Users/delete.ctp:26
 #: Template/Users/edit.ctp:29
 #: Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
@@ -1242,6 +1259,42 @@ msgstr ""
 
 #: Template/Users/add.ctp:19
 msgid "Add User"
+msgstr ""
+
+#: Template/Users/delete.ctp:14
+msgid "Delete your account"
+msgstr ""
+
+#: Template/Users/delete.ctp:15
+msgid "You are about to unsubscribe from \"Maison du Logiciel Libre\". Here are the implications of this action who can not be undone:"
+msgstr ""
+
+#: Template/Users/delete.ctp:18
+msgid "All your participation will be anonymized."
+msgstr ""
+
+#: Template/Users/delete.ctp:19
+msgid "Your email address"
+msgstr ""
+
+#: Template/Users/delete.ctp:19
+msgid "will be deleted from the system"
+msgstr ""
+
+#: Template/Users/delete.ctp:20
+msgid "Your username"
+msgstr ""
+
+#: Template/Users/delete.ctp:20
+msgid "will be released and used by another member"
+msgstr ""
+
+#: Template/Users/delete.ctp:23
+msgid "If you wish to continue your unsubscribe, click the button \"Unsubscribe\" below. Otherwise it is not yet too late ..."
+msgstr ""
+
+#: Template/Users/delete.ctp:25
+msgid "Unsubscribe"
 msgstr ""
 
 #: Template/Users/edit.ctp:14
