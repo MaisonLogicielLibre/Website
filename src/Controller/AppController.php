@@ -91,12 +91,36 @@ class AppController extends Controller
     }
     
     /**
+     * Keep last viewed paged
+     *
+     * @return void
+     */
+    protected function updateReferer()
+    {
+        if ($this->request->action != "login") {
+            $action = "";
+            $this->request->Session()->write('controllerRef', $this->request->controller);
+            
+            if ($this->request->action != "display") {
+                $action = $this->request->action . "/";
+            }
+                                    
+            if (count($this->request->pass)) {
+                $action = $action . $this->request->pass[0];
+            }
+            
+            $this->request->Session()->write('actionRef', $action);
+        }
+    }
+    
+    /**
      * Filter preparation
      * @param Event $event event
      * @return void
      */
     public function beforeFilter(Event $event)
     {
+        $this->updateReferer();
         $this->checkLanguage();
         $this->Auth->allow(['display']);
     }
