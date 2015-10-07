@@ -85,26 +85,28 @@ class AppController extends Controller
             I18n::locale($lang);
         }
     }
-	
-	/**
+    
+    /**
      * Keep last viewed paged
      *
      * @return void
      */
-	protected function updateReferer()
+    protected function updateReferer()
     {
-        if($this->request->action != "login"){
-			$action = "";
-			$this->request->Session()->write('controllerRef',$this->request->controller);
-			
-			if($this->request->action != "display")
-				$action = $this->request->action ."/";
-									
-			if (count($this->request->pass))
-				$action = $action . $this->request->pass[0];
-			
-			$this->request->Session()->write('actionRef',$action);
-		}
+        if ($this->request->action != "login") {
+            $action = "";
+            $this->request->Session()->write('controllerRef', $this->request->controller);
+            
+            if ($this->request->action != "display") {
+                $action = $this->request->action . "/";
+            }
+                                    
+            if (count($this->request->pass)) {
+                $action = $action . $this->request->pass[0];
+            }
+            
+            $this->request->Session()->write('actionRef', $action);
+        }
     }
     
     /**
@@ -114,8 +116,7 @@ class AppController extends Controller
      */
     public function beforeFilter(Event $event)
     {
-
-		$this->updateReferer();
+        $this->updateReferer();
         $this->checkLanguage();
         $this->Auth->allow(['display']);
     }
