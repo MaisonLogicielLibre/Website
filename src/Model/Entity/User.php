@@ -123,7 +123,17 @@ class User extends Entity
      */
     public function getGender()
     {
-        return $this->_properties['gender'];
+        $data = $this->_properties['gender'];
+
+        if (null === $data) {
+            return null;
+        } elseif ($data === false || $data === 0) {
+            return 0;
+        } elseif ($data === true || $data === 1) {
+            return 1;
+        } else {
+            return null;
+        }
     }
     
     /**
@@ -226,6 +236,9 @@ class User extends Entity
      */
     public function editGender($gender)
     {
+        if ($gender == "null") {
+            $gender = null;
+        }
         $this->set('gender', $gender);
         return $gender;
     }

@@ -193,11 +193,11 @@ class UsersTableTest extends TestCase
     public function testGetGender()
     {
         $id = 1;
-        $expected = 1;
+        $expected = true;
         
         $user = $this->Users->get($id);
         
-        $result = $user->getGender($expected);
+        $result = $user->getGender();
         
         $this->assertEquals($expected, $result);
     }
