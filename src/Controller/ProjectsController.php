@@ -99,12 +99,11 @@ class ProjectsController extends AppController
                     'Projects',
                     [
                         'contain' => ['Organizations'],
-                    ]
-                )
-                ->where(
-                    [
-                      'accepted' => true,
-                      'archived' => false
+                        'conditions' =>
+                            [
+                                'accepted' => true,
+                                'archived' => false
+                            ]
                     ]
                 );
 
