@@ -61,6 +61,22 @@
                                            style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Edit profile') ?></a>
                 </li>
+                <li>
+                    <hr/>
+                </li>
+                <li class="<?= ($this->request->action == 'delete') ? 'active disabled' : ''; ?>">
+                    <a href=<?= $this->Url->build(
+                        [
+                            "controller" => "Users",
+                            "action" => "delete",
+                            $user->id
+                        ]); ?>>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-pencil fa-stack-1x"
+                                           style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
+                                    </span> <?= __('Delete profile') ?></a>
+                </li>
             </ul>
         </div>
     </div>
