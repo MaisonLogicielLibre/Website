@@ -61,8 +61,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><?= $this->Html->link(__('FR'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'fr_CA']);?></li>
-							<li><?= $this->Html->link(__('EN'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'en_US']);?></li>                    
+							<li><?= $this->Html->link(__('FR'), ['controller' => $this->request->controller, 'action' => $this->request->pass[0], 'lang' => 'fr_CA']);?></li>
+							<li><?= $this->Html->link(__('EN'), ['controller' => $this->request->controller, 'action' => $this->request->pass[0], 'lang' => 'en_US']);?></li>                    
 						</ul>
 					</li>				
 				</ul>
