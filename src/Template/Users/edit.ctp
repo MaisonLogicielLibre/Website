@@ -23,7 +23,16 @@
                     <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
                     <?= $this->Form->select('gender', [0 => __('Female'), 1 => __('Male')], ['class' => 'form-control']); ?>
                 </div>
-                <?= $this->Form->input('universitie_id', ['label' => __('University')], ['options' => $universities]); ?>
+                <?php
+                    $options[0] = __('Not specified');
+                    foreach($universities as $i => $university) {
+                        $options[$i] = $university;
+                    }
+                ?>
+                <div class="form-group">
+                    <?= $this->Form->label('universitie_id', __('University'), ['class' => 'control-label']); ?>
+                    <?= $this->Form->select('universitie_id', $options, ['class' => 'form-control']); ?>
+                </div>
             </fieldset>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
             <?= $this->Form->button(__('Cancel'), [
