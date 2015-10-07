@@ -12,8 +12,9 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+ 
 $cakeDescription = 'CakePHP: the rapid development php framework';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,13 +53,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">ML2</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<li class="active"><?= $this->Html->link(__('ML2'), ['controller' => 'Pages', 'action' => 'home']);?></li>
 					<li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('FR'), ['controller' => $this->request->controller, 'action' => $this->request->pass[0], 'lang' => 'fr_CA']);?></li>
+							<li><?= $this->Html->link(__('EN'), ['controller' => $this->request->controller, 'action' => $this->request->pass[0], 'lang' => 'en_US']);?></li>                    
+						</ul>
+					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>
+					<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>
 					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
 					<li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
 					<li class="dropdown">
@@ -103,7 +113,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div class="text-center">
 				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
 				400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
-				<br><i class="fa fa-phone-square"></i> (514) 396-8552
+				<br><i class="fa fa-phone-square"></i> (514) 781-9312
 				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
 			</div>
 		</div>
