@@ -377,12 +377,39 @@ class UsersControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testDeleteOk()
+    public function testDeleteOkForYou()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->get('/users/delete/1');
+        $this->post('/users/delete/1');
+        $this->assertRedirect('/');
+    }
+
+    /**
+     * Test delete - Ok
+     *
+     * @return void
+     */
+    public function testDeleteOkForAdministrator()
     {
         $this->session(['Auth.User.id' => 2]);
-
+        $this->get('/users/delete/1');
         $this->post('/users/delete/1');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'index']);
+        $this->assertRedirect('/');
+    }
+
+    /**
+     * Test delete - Ok
+     *
+     * @return void
+     */
+    public function testDeleteOkForOther()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->get('/users/delete/2');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'delete', 1]);
+        $this->post('/users/delete/2');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'delete', 1]);
     }
 
     /**

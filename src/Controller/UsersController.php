@@ -326,7 +326,7 @@ class UsersController extends AppController
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
         $administrator = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasRoleName(['Administrator']);
 
-        if ($you or $administrator) {
+        if ($you || $administrator) {
             if ($this->request->is(['post'])) {
                 if ($this->Users->delete($user)) {
                     $this->Flash->success(__('The user has been deleted.'));
