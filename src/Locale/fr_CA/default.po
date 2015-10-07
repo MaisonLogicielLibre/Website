@@ -4,16 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-05 16:49-0400\n"
-"PO-Revision-Date: 2015-10-05 16:58-0400\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-10-07 17:37+0000\n"
+"PO-Revision-Date: 2015-10-07 13:38-0500\n"
+"Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: Controller/AppController.php:58 Template/Layout/default.ctp:59
 msgid "ML2"
@@ -67,21 +67,29 @@ msgstr "L'organisation a été supprimée."
 msgid "The organization could not be deleted. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:121;149
+#: Controller/ProjectsController.php:122;150
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:124;152
+#: Controller/ProjectsController.php:125;153
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:170
+#: Controller/ProjectsController.php:171
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:172
+#: Controller/ProjectsController.php:173
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
+
+#: Controller/ProjectsController.php:201
+msgid "The application has been saved."
+msgstr "La candidature a été enregistrée."
+
+#: Controller/ProjectsController.php:204
+msgid "The application could not be saved. Please, try again."
+msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/SvnsController.php:89;115
 msgid "The svn has been saved."
@@ -163,26 +171,26 @@ msgid ""
 "                     try again."
 msgstr "Le mot de passe n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:325
+#: Controller/UsersController.php:332
 msgid "The user has been deleted."
 msgstr "L'utilisateur a été supprimé."
 
-#: Controller/UsersController.php:328
+#: Controller/UsersController.php:335
 msgid ""
 "The user could not be deleted. Please,\n"
-"             try again."
+"                     try again."
 msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:113
-#: Model/Table/UsersTable.php:122
+#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:119
+#: Model/Table/UsersTable.php:128
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr "Le lien web n'est pas valide (Ex : http://website.ca)"
 
-#: Model/Table/UsersTable.php:158
+#: Model/Table/UsersTable.php:164
 msgid "Is not a valid number."
 msgstr "Le numéro de téléphone n'est pas valide."
 
-#: Model/Table/UsersTable.php:204
+#: Model/Table/UsersTable.php:210
 msgid " Old password isn't valid"
 msgstr "L'ancien mot de passe n'est pas valide."
 
@@ -191,7 +199,8 @@ msgstr "L'ancien mot de passe n'est pas valide."
 #: Template/Missions/add.ctp:2 Template/Missions/edit.ctp:2
 #: Template/Missions/index.ctp:2;21 Template/Missions/view.ctp:2;64
 #: Template/Organizations/add.ctp:2 Template/Organizations/edit.ctp:2
-#: Template/Organizations/submit.ctp:2 Template/OrganizationsProjects/add.ctp:2
+#: Template/Organizations/submit.ctp:2
+#: Template/OrganizationsProjects/add.ctp:2
 #: Template/OrganizationsProjects/edit.ctp:2
 #: Template/OrganizationsProjects/index.ctp:2;20
 #: Template/OrganizationsProjects/view.ctp:2 Template/Projects/add.ctp:2
@@ -385,7 +394,11 @@ msgstr "Site web du projet"
 msgid "Edit the project"
 msgstr "Modifier le projet"
 
-#: Template/Element/Users/sidebar.ctp:15;84 Template/Users/edit.ctp:19
+#: Template/Element/Projects/sidebar.ctp:80
+msgid "Apply on the project"
+msgstr "Candidater sur le projet"
+
+#: Template/Element/Users/sidebar.ctp:15;100 Template/Users/edit.ctp:19
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -400,6 +413,10 @@ msgstr "Modifier le mot de passe"
 #: Template/Element/Users/sidebar.ctp:62
 msgid "Edit profile"
 msgstr "Modifier le profil"
+
+#: Template/Element/Users/sidebar.ctp:78
+msgid "Delete profile"
+msgstr "Supprimer le profil"
 
 #: Template/Layout/default.ctp:60
 msgid "Home"
@@ -497,7 +514,8 @@ msgstr "Liste des missions"
 #: Template/Missions/add.ctp:6 Template/Missions/edit.ctp:13
 #: Template/Missions/index.ctp:6 Template/Missions/view.ctp:8
 #: Template/Organizations/add.ctp:6 Template/Organizations/edit.ctp:13
-#: Template/Organizations/submit.ctp:6 Template/OrganizationsProjects/add.ctp:6
+#: Template/Organizations/submit.ctp:6
+#: Template/OrganizationsProjects/add.ctp:6
 #: Template/OrganizationsProjects/edit.ctp:13
 #: Template/OrganizationsProjects/index.ctp:6
 #: Template/OrganizationsProjects/view.ctp:8 Template/Projects/add.ctp:5
@@ -508,7 +526,8 @@ msgstr "Liste de sprojets"
 #: Template/Missions/add.ctp:7 Template/Missions/edit.ctp:14
 #: Template/Missions/index.ctp:7 Template/Missions/view.ctp:9
 #: Template/Organizations/add.ctp:7 Template/Organizations/edit.ctp:14
-#: Template/Organizations/submit.ctp:7 Template/OrganizationsProjects/add.ctp:7
+#: Template/Organizations/submit.ctp:7
+#: Template/OrganizationsProjects/add.ctp:7
 #: Template/OrganizationsProjects/edit.ctp:14
 #: Template/OrganizationsProjects/index.ctp:7
 #: Template/OrganizationsProjects/view.ctp:9 Template/Projects/add.ctp:4
@@ -577,7 +596,8 @@ msgid "Is Mentor"
 msgstr "Est mentor"
 
 #: Template/Organizations/add.ctp:4 Template/Organizations/edit.ctp:11
-#: Template/Organizations/submit.ctp:4 Template/OrganizationsProjects/add.ctp:9
+#: Template/Organizations/submit.ctp:4
+#: Template/OrganizationsProjects/add.ctp:9
 #: Template/OrganizationsProjects/edit.ctp:16
 #: Template/OrganizationsProjects/index.ctp:9
 #: Template/OrganizationsProjects/view.ctp:11 Template/Projects/add.ctp:11
@@ -585,7 +605,8 @@ msgid "New Organization"
 msgstr "Nouvelle organisation"
 
 #: Template/Organizations/add.ctp:5 Template/Organizations/edit.ctp:12
-#: Template/Organizations/submit.ctp:5 Template/OrganizationsProjects/add.ctp:8
+#: Template/Organizations/submit.ctp:5
+#: Template/OrganizationsProjects/add.ctp:8
 #: Template/OrganizationsProjects/edit.ctp:15
 #: Template/OrganizationsProjects/index.ctp:8
 #: Template/OrganizationsProjects/view.ctp:10 Template/Projects/add.ctp:10
@@ -1025,8 +1046,9 @@ msgstr "Ajouter projet"
 msgid "Apply on this project"
 msgstr "Candidater sur ce projet"
 
-#: Template/Projects/apply.ctp:24 Template/Users/edit.ctp:29
-#: Template/Users/email.ctp:20 Template/Users/password.ctp:20
+#: Template/Projects/apply.ctp:24 Template/Users/delete.ctp:26
+#: Template/Users/edit.ctp:29 Template/Users/email.ctp:20
+#: Template/Users/password.ctp:20
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1201,6 +1223,50 @@ msgstr "Supprimer l'université"
 msgid "Add User"
 msgstr "Ajouter un utilisateur"
 
+#: Template/Users/delete.ctp:14
+msgid "Delete your account"
+msgstr "Supprimer votre compte"
+
+#: Template/Users/delete.ctp:15
+msgid ""
+"You are about to unsubscribe from \"Maison du Logiciel Libre\". Here are the "
+"implications of this action who can not be undone:"
+msgstr ""
+"Vous êtes sur le point de vous désinscrire de \"Maison du Logiciel Libre\". "
+"Voici ce qu'implique cette action qui ne peut être annulée : "
+
+#: Template/Users/delete.ctp:18
+msgid "All your participation will be anonymized."
+msgstr "Toutes vos participations seront anonymisées"
+
+#: Template/Users/delete.ctp:19
+msgid "Your email address"
+msgstr "Votre adresse courriel"
+
+#: Template/Users/delete.ctp:19
+msgid "will be deleted from the system"
+msgstr "sera effacée du système"
+
+#: Template/Users/delete.ctp:20
+msgid "Your username"
+msgstr "Votre nom d'utilisateur"
+
+#: Template/Users/delete.ctp:20
+msgid "will be released and used by another member"
+msgstr "sera libéré et utilisable par un autre membre "
+
+#: Template/Users/delete.ctp:23
+msgid ""
+"If you wish to continue your unsubscribe, click the button \"Unsubscribe\" "
+"below. Otherwise it is not yet too late ..."
+msgstr ""
+"Si vous souhaitez poursuivre votre désinscription, cliquez sur le bouton "
+"\"Désinscription\" ci-dessous. Sinon il n'est pas encore trop tard ... "
+
+#: Template/Users/delete.ctp:25
+msgid "Unsubscribe"
+msgstr "Désinscription "
+
 #: Template/Users/edit.ctp:14
 msgid "Edit User"
 msgstr "Modifier l'utilisateur"
@@ -1302,14 +1368,10 @@ msgstr "Entrez votre adresse courriel"
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
 
-#~ msgid "The application has been saved."
-#~ msgstr "La candidature a été enregistrée."
-
-#~ msgid "The application could not be saved. Please, try again."
-#~ msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
-
-#~ msgid "Apply on the project"
-#~ msgstr "Candidater sur le projet"
+#~ msgid ""
+#~ "The user could not be deleted. Please,\n"
+#~ "             try again."
+#~ msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
 #~ msgid "Do not leave aside free software"
 #~ msgstr "Ne pas laisser de coté le logiciel libre"

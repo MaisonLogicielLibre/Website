@@ -35,7 +35,7 @@ class UsersController extends AppController
         'email' => ['Student', 'Mentor', 'Administrator'],
         'password' => ['Student', 'Mentor', 'Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Administrator']
+        'delete' => ['Student', 'Mentor', 'Administrator']
     ];
 
     /**
@@ -318,19 +318,32 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['get', 'post', 'delete']);
         $user = $this->Users->get($id);
 
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+
+
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $administrator = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasRoleName(['Administrator']);
+
+        if ($you || $administrator) {
+            if ($this->request->is(['post'])) {
+                if ($this->Users->delete($user)) {
+                    $this->Flash->success(__('The user has been deleted.'));
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be deleted. Please,
+                     try again.'
+                        )
+                    );
+                }
+                return $this->redirect($this->Auth->logout());
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
         } else {
-            $this->Flash->error(
-                __(
-                    'The user could not be deleted. Please,
-             try again.'
-                )
-            );
+            return $this->redirect(['action' => 'delete', $this->request->session()->read('Auth.User.id')]);
         }
-        return $this->redirect(['action' => 'index']);
     }
 }
