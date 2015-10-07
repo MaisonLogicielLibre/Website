@@ -100,21 +100,4 @@ class OrganizationsTable extends Table
             ->notEmpty('isRejected');
         return $validator;
     }
-
-    /**
-     * Return organizations who are validated and not rejected
-     * @param Query $query   query
-     * @param array $options options
-     * @return Query query
-     */
-    public function findShow(Query $query, array $options)
-    {
-        $query->where(
-            [
-            'Organizations.isValidated' => true,
-            'Organizations.isRejected' => false
-            ]
-        );
-        return $query;
-    }
 }

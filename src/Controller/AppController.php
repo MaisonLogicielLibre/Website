@@ -43,7 +43,10 @@ class AppController extends Controller
         'BootstrapUI.Form',
         'BootstrapUI.Html',
         'BootstrapUI.Flash',
-        'BootstrapUI.Paginator'
+        'BootstrapUI.Paginator',
+        'DataTables' => [
+            'className' => 'DataTables.DataTables'
+        ]
     ];
 
     /**
@@ -68,6 +71,7 @@ class AppController extends Controller
             ]
             ]
         );
+        $this->loadComponent('DataTables.DataTables');
     }
     
     /**

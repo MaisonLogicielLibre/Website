@@ -81,6 +81,34 @@ class Organization extends Entity
     {
         return $this->_properties['description'];
     }
+
+    /**
+     * Get the bool isValidated
+     * @return bool isValidated
+     */
+    public function getIsValidated()
+    {
+        $data = $this->_properties['isValidated'];
+        if ($data) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Get the bool isRejected
+     * @return bool isRejected
+     */
+    public function getIsRejected()
+    {
+        $data = $this->_properties['isRejected'];
+        if ($data) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
     
     /**
      * Set the name

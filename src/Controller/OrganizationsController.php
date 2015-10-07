@@ -26,9 +26,12 @@ class OrganizationsController extends AppController
 {
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
+        'editStatus' => ['Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Administrator'],
+        'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
+        'editValidated' => ['Administrator'],
+        'editRejected' => ['Administrator'],
         'view' => ['Student', 'Mentor', 'Administrator'],
         'delete' => ['Administrator']
     ];
@@ -64,19 +67,71 @@ class OrganizationsController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->paginate = [
-            'finder' => [
-                'show' => true
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
+            $this->adminIndex();
+        } else {
+            $data = $this->DataTables
+                ->find(
+                    'organizations',
+                    [
+                    'conditions' =>
+                        [
+                           'isValidated' => true,
+                            'isRejected' => false
+                        ]
+                    ]
+                );
+
+            $this->set(
+                [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                ]
+            );
+        }
+    }
+
+    /**
+     * Admin index method
+     *
+     * @return void
+     */
+    public function adminIndex()
+    {
+        $data = $this->DataTables->find(
+            'organizations',
+            [
+            'contain' => []
             ]
-        ];
-        $this->set('organizations', $this->paginate($this->Organizations));
-        $this->set('_serialize', ['organizations']);
+        );
+
+        $this->set(
+            [
+            'data' => $data,
+            '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
+        $this->render('adminIndex');
     }
 
     /**
@@ -169,6 +224,69 @@ class OrganizationsController extends AppController
         }
         $this->set(compact('organization'));
         $this->set('_serialize', ['organization']);
+    }
+
+    /**
+     * Edit state method
+     * @return void
+     */
+    public function editStatus()
+    {
+        if ($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $data = $this->request->data;
+            $organization = $this->Organizations->get(intval($data['id']));
+            if ($data['state'] == '3') {
+                $organization->editIsRejected($data['stateValue']);
+            } elseif ($data['state'] == '2') {
+                if (!$organization->getIsValidated()) {
+                    $organization->editIsValidated($data['stateValue']);
+                }
+            } else {
+                echo json_encode(['error', __('Cannot perform the change.')]);
+            }
+            echo json_encode(['success', __('Your change has been saved')]);
+            $this->Organizations->save($organization);
+        } else {
+            $this->Flash->error(__('Not an AJAX Query', true));
+            $this->redirect(['action' => 'index']);
+        }
+    }
+
+    /**
+     * Edit approved method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editValidated($id)
+    {
+        $this->autoRender = false;
+        $organization = $this->Organizations->get($id);
+        $organization->editIsValidated(1);
+        if ($this->Organizations->save($organization)) {
+            $this->Flash->success(__('The organization has been approved.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The organization could not be saved. Please, try again.'));
+        }
+    }
+
+    /**
+     * Edit rejected method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editRejected($id)
+    {
+        $this->autoRender = false;
+        $organization = $this->Organizations->get($id);
+        $organization->editIsRejected(!($organization->getIsRejected()));
+        if ($this->Organizations->save($organization)) {
+            $this->Flash->success(__('The organization has been saved.'));
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The organization could not be saved. Please, try again.'));
+        }
     }
 
     /**
