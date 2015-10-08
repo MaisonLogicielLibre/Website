@@ -54,9 +54,9 @@ class AppControllerTest extends IntegrationTestCase
      */
     public function testLangSet()
     {
-        $expected = "en_US";
+        $expected = "fr_CA";
         
-        $this->get('/pages/home?lang=en_US');
+        $this->get('/pages/home?lang=fr_CA');
         $actual = I18n::locale();
         
         $this->assertEquals($expected, $actual);
