@@ -68,14 +68,31 @@ class UsersController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->set('users', $this->paginate($this->Users));
-        $this->set('_serialize', ['users']);
+        $data = $this->DataTables->find('users');
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
