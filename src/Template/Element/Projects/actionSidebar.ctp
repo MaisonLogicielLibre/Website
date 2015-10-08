@@ -49,6 +49,19 @@
                                            style="color:<?= ($this->request->action == 'index') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('List of projects') ?></a>
                 </li>
+				<li class="<?= ($this->request->action == 'submit') ? 'active disabled' : ''; ?>">
+                    <a href=<?= $this->Url->build(
+                        [
+                            "controller" => "Projects",
+                            "action" => "submit"
+                        ]); ?>>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-plus fa-stack-1x"
+                                           style="color:<?= ($this->request->action == 'submit') ? '#337ab7' : '#fff'; ?>"></i>
+                                    </span> <?= __('Submit a project') ?></a>
+                </li>
+            </ul>
             </ul>
         </div>
     </div>

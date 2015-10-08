@@ -14,7 +14,7 @@ echo $this->fetch('actionSidebar');
                 <tr>
                     <th></th>
                     <th><?= __('Name'); ?></th>
-                    <th><?= __('Website'); ?></th>
+                    <th><?= __('Link'); ?></th>
                     <th><?= __('Organizations'); ?></th>
                 </tr>
                 </thead>

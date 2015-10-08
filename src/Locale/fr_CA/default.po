@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-07 19:52+0000\n"
-"PO-Revision-Date: 2015-10-07 16:07-0500\n"
+"POT-Creation-Date: 2015-10-08 10:33-0400\n"
+"PO-Revision-Date: 2015-10-08 10:33-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
@@ -60,17 +60,17 @@ msgid "The organization could not be saved. Please, try again."
 msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/OrganizationsController.php:246
-#: Controller/ProjectsController.php:238
+#: Controller/ProjectsController.php:262
 msgid "Cannot perform the change."
 msgstr "Le changement n'a pas pu être effectué"
 
 #: Controller/OrganizationsController.php:248
-#: Controller/ProjectsController.php:240
+#: Controller/ProjectsController.php:264
 msgid "Your change has been saved"
 msgstr "Le changement a été enregistré."
 
 #: Controller/OrganizationsController.php:251
-#: Controller/ProjectsController.php:243
+#: Controller/ProjectsController.php:267
 msgid "Not an AJAX Query"
 msgstr "Ceci n'est pas une requête AJAX"
 
@@ -86,31 +86,31 @@ msgstr "L'organisation a été supprimée."
 msgid "The organization could not be deleted. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:182;210;278
+#: Controller/ProjectsController.php:133;206;234;302
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:185;213;262;281
+#: Controller/ProjectsController.php:136;209;237;286;305
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:259
+#: Controller/ProjectsController.php:283
 msgid "The project has been accepted."
 msgstr "Le projet a été accepté."
 
-#: Controller/ProjectsController.php:296
+#: Controller/ProjectsController.php:320
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:298
+#: Controller/ProjectsController.php:322
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:326
+#: Controller/ProjectsController.php:350
 msgid "The application has been saved."
 msgstr "La candidature a été enregistrée."
 
-#: Controller/ProjectsController.php:329
+#: Controller/ProjectsController.php:353
 msgid "The application could not be saved. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
@@ -222,7 +222,6 @@ msgstr "L'ancien mot de passe n'est pas valide."
 #: Template/Missions/add.ctp:2 Template/Missions/edit.ctp:2
 #: Template/Missions/index.ctp:2;21 Template/Missions/view.ctp:2;64
 #: Template/Organizations/add.ctp:2 Template/Organizations/edit.ctp:2
-#: Template/Organizations/submit.ctp:2
 #: Template/OrganizationsProjects/add.ctp:2
 #: Template/OrganizationsProjects/edit.ctp:2
 #: Template/OrganizationsProjects/index.ctp:2;20
@@ -295,18 +294,18 @@ msgstr "Ajoute run commentaire"
 #: Template/Comments/add.ctp:22 Template/Comments/edit.ctp:29
 #: Template/Missions/add.ctp:24 Template/Missions/edit.ctp:31
 #: Template/Organizations/add.ctp:21 Template/Organizations/edit.ctp:28
-#: Template/Organizations/submit.ctp:21
+#: Template/Organizations/submit.ctp:12
 #: Template/OrganizationsProjects/add.ctp:21
 #: Template/OrganizationsProjects/edit.ctp:28 Template/Projects/add.ctp:25
 #: Template/Projects/apply.ctp:23 Template/Projects/edit.ctp:12
-#: Template/SvnUsers/add.ctp:22 Template/SvnUsers/edit.ctp:29
-#: Template/Svns/add.ctp:18 Template/Svns/edit.ctp:25
-#: Template/TypeUsers/add.ctp:16 Template/TypeUsers/edit.ctp:23
-#: Template/TypeUsersUsers/add.ctp:21 Template/TypeUsersUsers/edit.ctp:28
-#: Template/Universities/add.ctp:17 Template/Universities/edit.ctp:24
-#: Template/Users/add.ctp:35 Template/Users/edit.ctp:28
-#: Template/Users/email.ctp:19 Template/Users/password.ctp:19
-#: Template/Users/register.ctp:11
+#: Template/Projects/submit.ctp:11 Template/SvnUsers/add.ctp:22
+#: Template/SvnUsers/edit.ctp:29 Template/Svns/add.ctp:18
+#: Template/Svns/edit.ctp:25 Template/TypeUsers/add.ctp:16
+#: Template/TypeUsers/edit.ctp:23 Template/TypeUsersUsers/add.ctp:21
+#: Template/TypeUsersUsers/edit.ctp:28 Template/Universities/add.ctp:17
+#: Template/Universities/edit.ctp:24 Template/Users/add.ctp:35
+#: Template/Users/edit.ctp:37 Template/Users/email.ctp:19
+#: Template/Users/password.ctp:19 Template/Users/register.ctp:11
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -400,18 +399,17 @@ msgid "Text"
 msgstr "Texte"
 
 #: Template/Element/Organizations/actionSidebar.ctp:16;50
-#: Template/Organizations/admin_index.ctp:10
-#: Template/Organizations/index.ctp:9
+#: Template/Organizations/admin_index.ctp:10 Template/Organizations/index.ctp:9
 msgid "List of organizations"
 msgstr "Liste des organisations"
 
 #: Template/Element/Organizations/actionSidebar.ctp:28
 msgid "Add an organization"
-msgstr "Ajouter organisation"
+msgstr "Ajouter une organisation"
 
 #: Template/Element/Organizations/actionSidebar.ctp:62
 msgid "Submit an organization"
-msgstr "Soumettre organisation"
+msgstr "Soumettre une organisation"
 
 #: Template/Element/Organizations/sidebar.ctp:12;73;92
 msgid "Website of the organization"
@@ -423,11 +421,11 @@ msgstr "Modifier l'organisation"
 
 #: Template/Element/Organizations/sidebar.ctp:40;54
 msgid "Approve the organization"
-msgstr "Modifier organisation"
+msgstr "Accepter l'organisation"
 
 #: Template/Element/Organizations/sidebar.ctp:54
 msgid "Reject the organization"
-msgstr "Rejeté organisation"
+msgstr "Rejeté l'organisation"
 
 #: Template/Element/Projects/actionSidebar.ctp:16;50
 #: Template/Projects/admin_index.ctp:10 Template/Projects/index.ctp:9
@@ -436,7 +434,12 @@ msgstr "Liste des projets"
 
 #: Template/Element/Projects/actionSidebar.ctp:28
 msgid "Add an projects"
-msgstr "Ajouter projet"
+msgstr "Ajouter un projet"
+
+#: Template/Element/Projects/actionSidebar.ctp:62
+#: Template/Layout/default.ctp:71
+msgid "Submit a project"
+msgstr "Soumettre un projet"
 
 #: Template/Element/Projects/sidebar.ctp:11;74;93
 msgid "Website of the project"
@@ -448,7 +451,7 @@ msgstr "Modifier le projet"
 
 #: Template/Element/Projects/sidebar.ctp:41
 msgid "Accept the project"
-msgstr "Modifier projet"
+msgstr "Accepter le projet"
 
 #: Template/Element/Projects/sidebar.ctp:55
 msgid "Restore the project"
@@ -490,76 +493,72 @@ msgstr "Accueil"
 msgid "Language"
 msgstr "Langage"
 
-#: Template/Layout/default.ctp:66
+#: Template/Layout/default.ctp:64
 msgid "FR"
 msgstr ""
 
-#: Template/Layout/default.ctp:67
+#: Template/Layout/default.ctp:65
 msgid "EN"
 msgstr ""
 
-#: Template/Layout/default.ctp:72
+#: Template/Layout/default.ctp:70
 msgid "Become a sponsor"
 msgstr "Devenir un sponsor"
 
-#: Template/Layout/default.ctp:73
-msgid "Submit a project"
-msgstr "Soumettre un projet"
-
-#: Template/Layout/default.ctp:74
+#: Template/Layout/default.ctp:72
 msgid "Contest"
 msgstr "Concours"
 
-#: Template/Layout/default.ctp:75 Template/Organizations/view.ctp:27
+#: Template/Layout/default.ctp:73 Template/Organizations/view.ctp:27
 msgid "Projects"
 msgstr "Projets"
 
-#: Template/Layout/default.ctp:77
+#: Template/Layout/default.ctp:75
 msgid "Partners"
 msgstr "Partenaires"
 
-#: Template/Layout/default.ctp:79
+#: Template/Layout/default.ctp:77
 msgid "Industry"
 msgstr "Industriel"
 
-#: Template/Layout/default.ctp:80
+#: Template/Layout/default.ctp:78
 msgid "Academic"
 msgstr "Académique"
 
-#: Template/Layout/default.ctp:81
+#: Template/Layout/default.ctp:79
 msgid "Associations"
 msgstr "Association"
 
-#: Template/Layout/default.ctp:84 Template/Pages/sponsor.ctp:23
+#: Template/Layout/default.ctp:82 Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: Template/Layout/default.ctp:86
+#: Template/Layout/default.ctp:84
 msgid "Profile"
 msgstr "Profil"
 
-#: Template/Layout/default.ctp:87
+#: Template/Layout/default.ctp:85
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: Template/Layout/default.ctp:89
+#: Template/Layout/default.ctp:87
 msgid "Login"
 msgstr "Connexion"
 
-#: Template/Layout/default.ctp:90 Template/Users/register.ctp:4
+#: Template/Layout/default.ctp:88 Template/Users/register.ctp:4
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: Template/Layout/default.ctp:116;119
+#: Template/Layout/default.ctp:114;117
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:117
+#: Template/Layout/default.ctp:115
 msgid "Montfort street"
 msgstr "Rue Montfort"
 
-#: Template/Layout/default.ctp:117
+#: Template/Layout/default.ctp:115
 msgid "Montreal"
 msgstr "Montréal"
 
@@ -578,7 +577,6 @@ msgstr "Liste des missions"
 #: Template/Missions/add.ctp:6 Template/Missions/edit.ctp:13
 #: Template/Missions/index.ctp:6 Template/Missions/view.ctp:8
 #: Template/Organizations/add.ctp:6 Template/Organizations/edit.ctp:13
-#: Template/Organizations/submit.ctp:6
 #: Template/OrganizationsProjects/add.ctp:6
 #: Template/OrganizationsProjects/edit.ctp:13
 #: Template/OrganizationsProjects/index.ctp:6
@@ -667,7 +665,6 @@ msgid "New Organization"
 msgstr "Nouvelle organisation"
 
 #: Template/Organizations/add.ctp:5 Template/Organizations/edit.ctp:12
-#: Template/Organizations/submit.ctp:4
 #: Template/OrganizationsProjects/add.ctp:8
 #: Template/OrganizationsProjects/edit.ctp:15
 #: Template/OrganizationsProjects/index.ctp:8
@@ -688,7 +685,7 @@ msgstr "Nom"
 
 #: Template/Organizations/admin_index.ctp:18
 #: Template/Organizations/index.ctp:16 Template/Projects/admin_index.ctp:18
-#: Template/Projects/index.ctp:17 Template/Universities/view.ctp:34
+#: Template/Universities/view.ctp:34
 msgid "Website"
 msgstr "Site web"
 
@@ -713,15 +710,7 @@ msgstr "Non rejeté"
 msgid "Edit Organization"
 msgstr "Modifier l'organisation"
 
-#: Template/Organizations/submit.ctp:5
-msgid "Submit organization"
-msgstr "Soumettre organisation"
-
-#: Template/Organizations/submit.ctp:7
-msgid "Submit project"
-msgstr "Soumettre projet"
-
-#: Template/Organizations/submit.ctp:13
+#: Template/Organizations/submit.ctp:4
 msgid "Submit Organization"
 msgstr "Soummettre l'organisation"
 
@@ -1164,7 +1153,7 @@ msgid "Apply on this project"
 msgstr "Candidater sur ce projet"
 
 #: Template/Projects/apply.ctp:24 Template/Users/delete.ctp:26
-#: Template/Users/edit.ctp:29 Template/Users/email.ctp:20
+#: Template/Users/edit.ctp:38 Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
 msgid "Cancel"
 msgstr "Annuler"
@@ -1172,6 +1161,14 @@ msgstr "Annuler"
 #: Template/Projects/edit.ctp:4
 msgid "Edit Project"
 msgstr "Modifier projet"
+
+#: Template/Projects/index.ctp:17
+msgid "Link"
+msgstr "Site web"
+
+#: Template/Projects/submit.ctp:4
+msgid "Submit Project"
+msgstr "Soumettre un projet"
 
 #: Template/Projects/view.ctp:27
 msgid "Contributors"
@@ -1403,7 +1400,11 @@ msgstr "Femme"
 msgid "Male"
 msgstr "Homme"
 
-#: Template/Users/edit.ctp:26
+#: Template/Users/edit.ctp:27
+msgid "Not specified"
+msgstr "Non spécifié"
+
+#: Template/Users/edit.ctp:33
 msgid "University"
 msgstr "Université"
 
@@ -1475,6 +1476,12 @@ msgstr "Entrez votre adresse courriel"
 #: Template/Users/register.ctp:9
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
+
+#~ msgid "Submit organization"
+#~ msgstr "Soumettre organisation"
+
+#~ msgid "Submit project"
+#~ msgstr "Soumettre projet"
 
 #~ msgid ""
 #~ "The user could not be deleted. Please,\n"
