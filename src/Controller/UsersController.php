@@ -89,8 +89,12 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-
-                return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
+                
+                if ($this->request->Session()->read('actionRef') != 'register/') {
+                    return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
+                } else {
+                    return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
+                }
             }
             $this->Flash->error(
                 __(
