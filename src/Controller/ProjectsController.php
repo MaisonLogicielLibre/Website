@@ -28,7 +28,7 @@ class ProjectsController extends AppController
     private $_permissions = [
         'index' => ['Student', 'Mentor', 'Administrator'],
         'add' => ['Administrator'],
-        'submit' => ['Administrator'],
+        'submit' => ['Student', 'Mentor', 'Administrator'],
         'edit' => ['Administrator'],
         'editState' => ['Administrator'],
         'editAccepted' => ['Administrator'],
@@ -115,7 +115,31 @@ class ProjectsController extends AppController
             );
         }
     }
+	
+	/**
+     * Submit method
+     * @return redirect
+     */
+    public function submit()
+    {
+        $project = $this->Projects->newEntity();
 
+        $project->editIsValidated(false);
+        $project->editIsRejected(false);
+
+        if ($this->request->is('post')) {
+            $project = $this->Projects->patchEntity($project, $this->request->data);
+            if ($this->Projects->save($project)) {
+                $this->Flash->success(__('The project has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The project could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('project'));
+        $this->set('_serialize', ['project']);
+    }
+	
     /**
      * Admin index method
      *
