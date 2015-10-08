@@ -65,7 +65,7 @@ class UsersFixture extends TestFixture
             'portfolio' => 'http://monportfolio.com',
             'email' => 'email@gmail.com',
             'phone' => '(514) 777-7777',
-            'gender' => 1,
+            'gender' => 0,
             'password' => '$2y$10$fTukyN1X3G7nwp3Ea72p/eAuTdqjD6Xhft4tW8d/3pR46UBkCVKzO',
             'username' => 'admin',
             'universitie_id' => 1
@@ -73,12 +73,12 @@ class UsersFixture extends TestFixture
         [
             'id' => 3,
             'firstName' => 'Simon',
-            'lastName' => 'Begin',
+            'lastName' => '',
             'biography' => 'Une petite bio.',
             'portfolio' => 'http://monportfolio.com',
             'email' => 'email@gmail.com',
             'phone' => '(514) 777-7777',
-            'gender' => 1,
+            'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin2',
             'universitie_id' => 1
