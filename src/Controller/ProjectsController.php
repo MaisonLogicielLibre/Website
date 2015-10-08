@@ -124,8 +124,8 @@ class ProjectsController extends AppController
     {
         $project = $this->Projects->newEntity();
 
-        $project->editIsValidated(false);
-        $project->editIsRejected(false);
+        $project->editAccepted(false);
+        $project->editArchived(false);
 
         if ($this->request->is('post')) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
@@ -136,7 +136,9 @@ class ProjectsController extends AppController
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('project'));
+        
+        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
     

@@ -6,6 +6,7 @@
             echo $this->Form->input('name');
             echo $this->Form->input('link');
             echo $this->Form->input('description');
+			echo $this->Form->input('organizations._ids', ['options' => $organizations]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>

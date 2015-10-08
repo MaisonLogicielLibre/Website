@@ -38,28 +38,6 @@ class Project extends Entity
     ];
     
     /**
-     * Set if the organization is validated
-     * @param bool $isValidated isValidated
-     * @return bool isValidated
-     */
-    public function editIsValidated($isValidated)
-    {
-        $this->set('isValidated', $isValidated);
-        return $isValidated;
-    }
-    
-    /**
-     * Set if the organization is rejected during validation
-     * @param bool $isRejected isRejected
-     * @return bool isRejected
-     */
-    public function editIsRejected($isRejected)
-    {
-        $this->set('isRejected', $isRejected);
-        return $isRejected;
-    }
-    
-    /**
      * Get the id
      * @return int id
      */
