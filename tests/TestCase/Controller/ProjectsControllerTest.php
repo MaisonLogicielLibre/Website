@@ -410,4 +410,57 @@ class ProjectsControllerTest extends IntegrationTestCase
         $q = $projects->findById(3)->first();
         $this->assertEquals($expected, $q->isArchived());
     }
+    
+    /**
+     * Test submit project - OK
+     *
+     * @return void
+     */
+    public function testSubmitProjectOk()
+    {
+        $data = [
+            'name' => 'test2',
+            'link' => 'http://website.com',
+            'description' => 'bla bla',
+            'accepted' => 0,
+            'archived' => 0
+        ];
+        
+        $this->session(['Auth.User.id' => 2]);
+        
+        $this->post('/projects/submit', $data);
+
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+    }
+    
+    /**
+     * Test submit project - Fail
+     *
+     * @return void
+     */
+    public function testSubmitProjectFail()
+    {
+        $data = [
+            'name' => 'test3',
+            'link' => '',
+            'description' => ''
+        ];
+        
+        $this->session(['Auth.User.id' => 2]);
+        
+        $this->post('/projects/submit', $data);
+
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test submit project - No authentification
+     *
+     * @return void
+     */
+    public function testSubmitProjectNoAuth()
+    {
+        $this->post('/projects/submit');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
 }

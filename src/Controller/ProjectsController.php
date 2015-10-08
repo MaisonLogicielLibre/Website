@@ -115,8 +115,8 @@ class ProjectsController extends AppController
             );
         }
     }
-	
-	/**
+    
+    /**
      * Submit method
      * @return redirect
      */
@@ -139,7 +139,7 @@ class ProjectsController extends AppController
         $this->set(compact('project'));
         $this->set('_serialize', ['project']);
     }
-	
+    
     /**
      * Admin index method
      *

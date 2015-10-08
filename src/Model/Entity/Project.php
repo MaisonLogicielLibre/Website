@@ -36,8 +36,8 @@ class Project extends Entity
         '*' => true,
         'id' => false,
     ];
-	
-	/**
+    
+    /**
      * Set if the organization is validated
      * @param bool $isValidated isValidated
      * @return bool isValidated
@@ -47,8 +47,8 @@ class Project extends Entity
         $this->set('isValidated', $isValidated);
         return $isValidated;
     }
-	
-	/**
+    
+    /**
      * Set if the organization is rejected during validation
      * @param bool $isRejected isRejected
      * @return bool isRejected
