@@ -10,6 +10,13 @@ $(document).ready(function () {
                     text: aData['name']
                 })
             );
+            $('td:eq(1)', nRow).html(
+                $('<a/>', {
+                    href: aData['website'],
+                    text: aData['website'],
+                    target: '_blank'
+                })
+            );
             $('td:eq(3)', nRow).html($('<input />', {
                     type: 'checkbox',
                     value: aData['isRejected'],
