@@ -25,9 +25,9 @@ echo $this->fetch('actionAdminSidebar');
                 <tfoot>
                 <tr class="table-search info">
                     <td></td>
-                    <td><input type="text" placeholder="Search ..." class="form-control input-sm input-block-level"/>
+                    <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
                     </td>
-                    <td><input type="text" placeholder="Search ..." class="form-control input-sm input-block-level"/>
+                    <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
                     </td>
                     <td>
                         <select class="form-control">

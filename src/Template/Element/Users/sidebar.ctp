@@ -29,7 +29,7 @@
                         ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-pencil fa-stack-1x"
+                                        <i class="fa fa-envelope fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Change email') ?></a></li>
                 <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
@@ -41,7 +41,7 @@
                         ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-pencil fa-stack-1x"
+                                        <i class="fa fa-lock fa-stack-1x"
                                            style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Change password') ?></a></li>
                 <!-- Modify phone link/form -->
@@ -73,8 +73,8 @@
                         ]); ?>>
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-pencil fa-stack-1x"
-                                           style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
+                                        <i class="fa fa-trash fa-stack-1x"
+                                           style="color:<?= ($this->request->action == 'delete') ? '#337ab7' : '#fff'; ?>"></i>
                                     </span> <?= __('Delete profile') ?></a>
                 </li>
             </ul>
