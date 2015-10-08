@@ -148,7 +148,7 @@ class OrganizationsTableTest extends TestCase
     public function testGetIsValidated()
     {
         $id = 1;
-        $expected = 1;
+        $expected = 0;
 
         $org = $this->Organizations->get($id);
 

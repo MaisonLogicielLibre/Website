@@ -46,7 +46,7 @@ class OrganizationsFixture extends TestFixture
             'website' => 'www.website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome',
-            'isValidated' => 1,
+            'isValidated' => 0,
             'isRejected' => 0
         ],
     ];
