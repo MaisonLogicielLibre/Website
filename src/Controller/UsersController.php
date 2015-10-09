@@ -293,6 +293,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'email', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
@@ -328,6 +330,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'password', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
