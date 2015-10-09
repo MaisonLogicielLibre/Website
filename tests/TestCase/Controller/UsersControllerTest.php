@@ -71,6 +71,26 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/index');
         $this->assertResponseOk();
     }
+    
+    /**
+     * Test login - From Register
+     *
+     * @return void
+     */
+    public function testLoginFromRegister()
+    {
+        $this->markTestIncomplete('This test has not been implemented yet.');
+        $this->session(['actionRef' => 'register/']);
+        
+        $data = [
+            'username' => 'admin2',
+            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
+        ];
+        
+        $this->post('/users/login', $data);
+        
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view/3']);
+    }
 
     /**
      * Test login - Ok
@@ -80,12 +100,17 @@ class UsersControllerTest extends IntegrationTestCase
     public function testLoginOk()
     {
         $this->markTestIncomplete('This test has not been implemented yet.');
+        $this->session(['controllerRef' => 'Pages']);
+        $this->session(['actionRef' => 'home']);
+        
         $data = [
-            'username' => 'admin',
-            'password' => 'admin',
+            'username' => 'admin2',
+            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
         ];
-        $this->post('/users/login');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'view/2']);
+        
+        $this->post('/users/login', $data);
+        
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
 
     /**
