@@ -67,10 +67,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>
-					<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>
 					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
-					<li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Organizations') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('List of organizations'), ['controller' => 'Organizations', 'action' => 'index']);?></li>
+							<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>                  
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Projects') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
+							<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>                   
+						</ul>
+					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
