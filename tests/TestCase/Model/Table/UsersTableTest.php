@@ -509,4 +509,32 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test fail validation
+     * @return void
+     */
+    public function testValidationFail()
+    {
+        $id = 1;
+        $user = $this->Users->get($id);
+
+        $data = [
+                'portfolio' => 'www.github.com',
+                'email' => 'test@email.com',
+                'confirm_email' => 'test2@email.com',
+                'phone' => '111111111111',
+                'password' => 'allo',
+                'confirm_password' => 'allo2'
+            ];
+
+            $this->Users->patchEntity($user, $data);
+            $result = $this->Users->save($user);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+            $this->assertFalse($result);
+    }
 }

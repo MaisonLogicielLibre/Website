@@ -278,4 +278,23 @@ class ProjectsTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test validation Link Rules
+     * @return void
+     */
+    public function testValidationWebsite()
+    {
+        $id = 1;
+        $project = $this->Projects->get($id);
+
+        $this->Projects->patchEntity($project, ['link' => 'www.website.com']);
+        $result = $this->Projects->save($project);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+        $this->assertFalse($result);
+    }
 }

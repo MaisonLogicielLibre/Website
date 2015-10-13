@@ -148,7 +148,7 @@ class OrganizationsTableTest extends TestCase
     public function testGetIsValidated()
     {
         $id = 1;
-        $expected = 1;
+        $expected = 0;
 
         $org = $this->Organizations->get($id);
 
@@ -196,7 +196,7 @@ class OrganizationsTableTest extends TestCase
     public function testSetWebsite()
     {
         $id = 1;
-        $expected = 'www.ml2.com';
+        $expected = 'www.website.com';
 
         $org = $this->Organizations->get($id);
 
@@ -282,5 +282,24 @@ class OrganizationsTableTest extends TestCase
         $result = $this->Organizations->validationDefault($validator);
         
         $this->assertEquals($validator, $result);
+    }
+
+    /**
+     * Test validation Website Rules
+     * @return void
+     */
+    public function testValidationWebsite()
+    {
+        $id = 1;
+        $org = $this->Organizations->get($id);
+
+        $this->Organizations->patchEntity($org, ['website' => 'www.website.com']);
+        $result = $this->Organizations->save($org);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+        $this->assertFalse($result);
     }
 }
