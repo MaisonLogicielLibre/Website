@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-10-08 10:33-0400\n"
-"PO-Revision-Date: 2015-10-08 10:33-0400\n"
+"PO-Revision-Date: 2015-10-14 09:30-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -503,7 +503,7 @@ msgstr ""
 
 #: Template/Layout/default.ctp:70
 msgid "Become a sponsor"
-msgstr "Devenir un sponsor"
+msgstr "Devenir un commanditaire"
 
 #: Template/Layout/default.ctp:72
 msgid "Contest"
@@ -782,7 +782,7 @@ msgstr "Rappel :"
 
 #: Template/Pages/contest.ctp:15
 msgid "The design must be original"
-msgstr "La conception doit être original"
+msgstr "La conception doit être originale"
 
 #: Template/Pages/contest.ctp:16
 msgid "You must have the rights to use the image(s) used"
@@ -803,7 +803,7 @@ msgstr ""
 
 #: Template/Pages/contest.ctp:21
 msgid "Send your design at : "
-msgstr "Envoyer votre conception à :"
+msgstr "Envoyez votre conception à :"
 
 #: Template/Pages/home.ctp:10
 msgid "ML2 need a new logo!"
@@ -886,8 +886,8 @@ msgid ""
 msgstr ""
 "La mission de ML² est donc une mission éducative. Diverses activités seront "
 "éventuellement possibles : activités libres de développement, projets de fin "
-"d’études, stages, projets de maîtrise, … Toutes ces activités graviteront au "
-"tour de projets de logiciel libre. Ces derniers pourront être proposés par "
+"d’études, stages, projets de maîtrise, … Toutes ces activités graviteront "
+"autour de projets de logiciel libre. Ces derniers pourront être proposés par "
 "les divers intervenants (étudiants, professeurs ou universités) ou encore "
 "être en lien avec des entreprises voulant s’investir dans la formation des "
 "étudiants. L’organisation de séminaires pourra compléter ce volet éducatif."
@@ -1008,7 +1008,7 @@ msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
 
 #: Template/Pages/sponsor.ctp:2
 msgid "Become a sponsor at  Maison du Logiciel Libre!"
-msgstr "Devenez un sponsor de la Maison du Logiciel Libre!"
+msgstr "Devenez un commanditaire de la Maison du Logiciel Libre!"
 
 #: Template/Pages/sponsor.ctp:4 Template/Pages/submit.ctp:4
 msgid "Benefits :"
@@ -1033,14 +1033,14 @@ msgid ""
 "university network of UQÀM, McGill, Polytechnique,  Université de Montréal, "
 "Concordia, and Université de Sherbrooke"
 msgstr ""
-"Les sponsors sont affichés en évidence sur notre site web et sur un écran "
-"géant dans le hall principal  de l’École de Technologie Supérieure (ÉTS). Il "
-"est possible de promouvoir votre image à l’ÉTS  et à travers notre réseau "
-"universitaire."
+"Les commanditaires sont affichés en évidence sur notre site web et sur un "
+"écran géant dans le hall principal  de l’École de Technologie Supérieure "
+"(ÉTS). Il est possible de promouvoir votre image à l’ÉTS  et à travers notre "
+"réseau universitaire."
 
 #: Template/Pages/sponsor.ctp:17
 msgid "How does a company become a sponsor?"
-msgstr "Comment devenir un sponsor?"
+msgstr "Comment devenir un commanditaire?"
 
 #: Template/Pages/sponsor.ctp:19
 msgid ""
@@ -1084,11 +1084,11 @@ msgstr "Chaque projet doit avoir un mentor"
 
 #: Template/Pages/submit.ctp:24
 msgid "What Free Software / open source license(s) does your project use?"
-msgstr "Quels licenses libres/open source votre projet utilise-t-il?"
+msgstr "Quelles licenses libres/open source votre projet utilise-t-il?"
 
 #: Template/Pages/submit.ctp:25
 msgid "What type of student(s) are you looking for?"
-msgstr "Quels types d'étudiant récherchez-vous?"
+msgstr "Quels types d'étudiant recherchez-vous?"
 
 #: Template/Pages/submit.ctp:27
 msgid "Full-time 4-month intern student"
