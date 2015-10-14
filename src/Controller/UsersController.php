@@ -212,7 +212,9 @@ class UsersController extends AppController
                 );
             }
         }
-        $this->set(compact('user'));
+        
+        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'universities'));
         $this->set('_serialize', ['user']);
     }
 
