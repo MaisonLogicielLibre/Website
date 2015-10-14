@@ -299,6 +299,20 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
     }
 
+
+    /**
+     * Test password - Not post
+     *
+     * @return void
+     */
+    public function testPasswordNotPost()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/users/password/1');
+        $this->assertResponseSuccess();
+    }
+
     /**
      * Test Password - No Authentification
      *
@@ -341,6 +355,19 @@ class UsersControllerTest extends IntegrationTestCase
 
         $data = [];
         $this->post('/users/email/2', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test email - Not post
+     *
+     * @return void
+     */
+    public function testEmailNotPost()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/users/email/1');
         $this->assertResponseSuccess();
     }
 
