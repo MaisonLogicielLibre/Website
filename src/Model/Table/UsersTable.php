@@ -133,7 +133,15 @@ class UsersTable extends Table
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
             ->notEmpty('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
+            ->add(
+                'email',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This email is already taken.')
+                ]
+            )
             ->add(
                 'confirm_email',
                 'custom',

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-08 14:33+0000\n"
+"POT-Creation-Date: 2015-10-14 15:36+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -60,17 +60,17 @@ msgid "The organization could not be saved. Please, try again."
 msgstr ""
 
 #: Controller/OrganizationsController.php:246
-#: Controller/ProjectsController.php:262
+#: Controller/ProjectsController.php:264
 msgid "Cannot perform the change."
 msgstr ""
 
 #: Controller/OrganizationsController.php:248
-#: Controller/ProjectsController.php:264
+#: Controller/ProjectsController.php:266
 msgid "Your change has been saved"
 msgstr ""
 
 #: Controller/OrganizationsController.php:251
-#: Controller/ProjectsController.php:267
+#: Controller/ProjectsController.php:269
 msgid "Not an AJAX Query"
 msgstr ""
 
@@ -86,31 +86,31 @@ msgstr ""
 msgid "The organization could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:133;206;234;302
+#: Controller/ProjectsController.php:133;208;236;304
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:136;209;237;286;305
+#: Controller/ProjectsController.php:136;211;239;288;307
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:283
+#: Controller/ProjectsController.php:285
 msgid "The project has been accepted."
 msgstr ""
 
-#: Controller/ProjectsController.php:320
+#: Controller/ProjectsController.php:322
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:322
+#: Controller/ProjectsController.php:324
 msgid "The project could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:350
+#: Controller/ProjectsController.php:352
 msgid "The application has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:353
+#: Controller/ProjectsController.php:355
 msgid "The application could not be saved. Please, try again."
 msgstr ""
 
@@ -162,35 +162,35 @@ msgstr ""
 msgid "The university could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:96
+#: Controller/UsersController.php:117
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:147;183;222;260;295
+#: Controller/UsersController.php:168;204;245;283;318
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:151
+#: Controller/UsersController.php:172
 msgid "The new email could not be saved. Please,\n                try again."
 msgstr ""
 
-#: Controller/UsersController.php:187
+#: Controller/UsersController.php:208
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
-#: Controller/UsersController.php:226;264
+#: Controller/UsersController.php:249;287
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:299
+#: Controller/UsersController.php:322
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:332
+#: Controller/UsersController.php:355
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:335
+#: Controller/UsersController.php:358
 msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
@@ -200,11 +200,15 @@ msgstr ""
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr ""
 
-#: Model/Table/UsersTable.php:164
+#: Model/Table/UsersTable.php:142
+msgid "This email is already taken."
+msgstr ""
+
+#: Model/Table/UsersTable.php:172
 msgid "Is not a valid number."
 msgstr ""
 
-#: Model/Table/UsersTable.php:210
+#: Model/Table/UsersTable.php:218
 msgid " Old password isn't valid"
 msgstr ""
 
@@ -336,7 +340,7 @@ msgstr ""
 #: Template/Projects/add.ctp:25
 #: Template/Projects/apply.ctp:23
 #: Template/Projects/edit.ctp:12
-#: Template/Projects/submit.ctp:11
+#: Template/Projects/submit.ctp:12
 #: Template/SvnUsers/add.ctp:22
 #: Template/SvnUsers/edit.ctp:29
 #: Template/Svns/add.ctp:18
@@ -348,7 +352,7 @@ msgstr ""
 #: Template/Universities/add.ctp:17
 #: Template/Universities/edit.ctp:24
 #: Template/Users/add.ctp:35
-#: Template/Users/edit.ctp:37
+#: Template/Users/edit.ctp:41
 #: Template/Users/email.ctp:19
 #: Template/Users/password.ctp:19
 #: Template/Users/register.ctp:11
@@ -444,7 +448,6 @@ msgstr ""
 #: Template/TypeUsers/index.ctp:36
 #: Template/TypeUsersUsers/index.ctp:46
 #: Template/Universities/index.ctp:36
-#: Template/Users/index.ctp:35
 msgid "previous"
 msgstr ""
 
@@ -456,7 +459,6 @@ msgstr ""
 #: Template/TypeUsers/index.ctp:38
 #: Template/TypeUsersUsers/index.ctp:48
 #: Template/Universities/index.ctp:38
-#: Template/Users/index.ctp:37
 msgid "next"
 msgstr ""
 
@@ -818,6 +820,14 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
+#: Template/Organizations/admin_index.ctp:28;30
+#: Template/Organizations/index.ctp:23;25
+#: Template/Projects/admin_index.ctp:29;30
+#: Template/Projects/index.ctp:26;28
+#: Template/Users/index.ctp:20;22;24
+msgid "Search ..."
+msgstr ""
+
 #: Template/Organizations/admin_index.ctp:35
 msgid "Not approved"
 msgstr ""
@@ -1138,11 +1148,6 @@ msgstr ""
 msgid "Archived"
 msgstr ""
 
-#: Template/Projects/admin_index.ctp:29;30
-#: Template/Projects/index.ctp:26;28
-msgid "Search ..."
-msgstr ""
-
 #: Template/Projects/admin_index.ctp:44;51
 msgid "No"
 msgstr ""
@@ -1157,7 +1162,7 @@ msgstr ""
 
 #: Template/Projects/apply.ctp:24
 #: Template/Users/delete.ctp:26
-#: Template/Users/edit.ctp:38
+#: Template/Users/edit.ctp:42
 #: Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
 msgid "Cancel"
@@ -1412,10 +1417,12 @@ msgid "Edit User"
 msgstr ""
 
 #: Template/Users/edit.ctp:16
+#: Template/Users/index.ctp:12
 msgid "First name"
 msgstr ""
 
 #: Template/Users/edit.ctp:17
+#: Template/Users/index.ctp:13
 msgid "Last name"
 msgstr ""
 
@@ -1427,19 +1434,19 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: Template/Users/edit.ctp:24
-msgid "Female"
-msgstr ""
-
-#: Template/Users/edit.ctp:24
-msgid "Male"
-msgstr ""
-
-#: Template/Users/edit.ctp:27
+#: Template/Users/edit.ctp:25;31
 msgid "Not specified"
 msgstr ""
 
-#: Template/Users/edit.ctp:33
+#: Template/Users/edit.ctp:26
+msgid "Female"
+msgstr ""
+
+#: Template/Users/edit.ctp:27
+msgid "Male"
+msgstr ""
+
+#: Template/Users/edit.ctp:37
 msgid "University"
 msgstr ""
 
@@ -1463,6 +1470,11 @@ msgstr ""
 #: Template/Users/password.ctp:14;15;17
 #: Template/Users/register.ctp:6;7
 msgid "Password"
+msgstr ""
+
+#: Template/Users/index.ctp:11
+#: Template/Users/register.ctp:5
+msgid "Username"
 msgstr ""
 
 #: Template/Users/login.ctp:5
@@ -1491,10 +1503,6 @@ msgstr ""
 
 #: Template/Users/register.ctp:5
 msgid "Choose your username"
-msgstr ""
-
-#: Template/Users/register.ctp:5
-msgid "Username"
 msgstr ""
 
 #: Template/Users/register.ctp:6

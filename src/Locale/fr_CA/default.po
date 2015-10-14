@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-08 10:33-0400\n"
-"PO-Revision-Date: 2015-10-08 10:33-0400\n"
+"POT-Creation-Date: 2015-10-14 11:37-0400\n"
+"PO-Revision-Date: 2015-10-14 11:38-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -60,17 +60,17 @@ msgid "The organization could not be saved. Please, try again."
 msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/OrganizationsController.php:246
-#: Controller/ProjectsController.php:262
+#: Controller/ProjectsController.php:264
 msgid "Cannot perform the change."
 msgstr "Le changement n'a pas pu être effectué"
 
 #: Controller/OrganizationsController.php:248
-#: Controller/ProjectsController.php:264
+#: Controller/ProjectsController.php:266
 msgid "Your change has been saved"
 msgstr "Le changement a été enregistré."
 
 #: Controller/OrganizationsController.php:251
-#: Controller/ProjectsController.php:267
+#: Controller/ProjectsController.php:269
 msgid "Not an AJAX Query"
 msgstr "Ceci n'est pas une requête AJAX"
 
@@ -86,31 +86,31 @@ msgstr "L'organisation a été supprimée."
 msgid "The organization could not be deleted. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:133;206;234;302
+#: Controller/ProjectsController.php:133;208;236;304
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:136;209;237;286;305
+#: Controller/ProjectsController.php:136;211;239;288;307
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:283
+#: Controller/ProjectsController.php:285
 msgid "The project has been accepted."
 msgstr "Le projet a été accepté."
 
-#: Controller/ProjectsController.php:320
+#: Controller/ProjectsController.php:322
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:322
+#: Controller/ProjectsController.php:324
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:350
+#: Controller/ProjectsController.php:352
 msgid "The application has been saved."
 msgstr "La candidature a été enregistrée."
 
-#: Controller/ProjectsController.php:353
+#: Controller/ProjectsController.php:355
 msgid "The application could not be saved. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
@@ -162,43 +162,43 @@ msgstr "L'université a été supprimée."
 msgid "The university could not be deleted. Please, try again."
 msgstr "L'université n'a pas pu être supprimée. Veuillez réessayer."
 
-#: Controller/UsersController.php:96
+#: Controller/UsersController.php:117
 msgid "Username or password incorrect, try again."
 msgstr "Nom d'utilisateur ou mot de passe inccorect, veuillez réessayer."
 
-#: Controller/UsersController.php:147;183;222;260;295
+#: Controller/UsersController.php:168;204;245;283;318
 msgid "The user has been saved."
 msgstr "L'utilisateur a été enregistré."
 
-#: Controller/UsersController.php:151
+#: Controller/UsersController.php:172
 msgid ""
 "The new email could not be saved. Please,\n"
 "                try again."
 msgstr "Le courriel n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:187
+#: Controller/UsersController.php:208
 msgid ""
 "The user could not be saved. Please,\n"
 "                 try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:226;264
+#: Controller/UsersController.php:249;287
 msgid ""
 "The user could not be saved. Please,\n"
 "                     try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:299
+#: Controller/UsersController.php:322
 msgid ""
 "The password could not be saved. Please,\n"
 "                     try again."
 msgstr "Le mot de passe n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:332
+#: Controller/UsersController.php:355
 msgid "The user has been deleted."
 msgstr "L'utilisateur a été supprimé."
 
-#: Controller/UsersController.php:335
+#: Controller/UsersController.php:358
 msgid ""
 "The user could not be deleted. Please,\n"
 "                     try again."
@@ -209,11 +209,15 @@ msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr "Le lien web n'est pas valide (Ex : http://website.ca)"
 
-#: Model/Table/UsersTable.php:164
+#: Model/Table/UsersTable.php:142
+msgid "This email is already taken."
+msgstr "Ce courriel est déja utilisé."
+
+#: Model/Table/UsersTable.php:172
 msgid "Is not a valid number."
 msgstr "Le numéro de téléphone n'est pas valide."
 
-#: Model/Table/UsersTable.php:210
+#: Model/Table/UsersTable.php:218
 msgid " Old password isn't valid"
 msgstr "L'ancien mot de passe n'est pas valide."
 
@@ -298,13 +302,13 @@ msgstr "Ajoute run commentaire"
 #: Template/OrganizationsProjects/add.ctp:21
 #: Template/OrganizationsProjects/edit.ctp:28 Template/Projects/add.ctp:25
 #: Template/Projects/apply.ctp:23 Template/Projects/edit.ctp:12
-#: Template/Projects/submit.ctp:11 Template/SvnUsers/add.ctp:22
+#: Template/Projects/submit.ctp:12 Template/SvnUsers/add.ctp:22
 #: Template/SvnUsers/edit.ctp:29 Template/Svns/add.ctp:18
 #: Template/Svns/edit.ctp:25 Template/TypeUsers/add.ctp:16
 #: Template/TypeUsers/edit.ctp:23 Template/TypeUsersUsers/add.ctp:21
 #: Template/TypeUsersUsers/edit.ctp:28 Template/Universities/add.ctp:17
 #: Template/Universities/edit.ctp:24 Template/Users/add.ctp:35
-#: Template/Users/edit.ctp:37 Template/Users/email.ctp:19
+#: Template/Users/edit.ctp:41 Template/Users/email.ctp:19
 #: Template/Users/password.ctp:19 Template/Users/register.ctp:11
 msgid "Submit"
 msgstr "Soumettre"
@@ -362,7 +366,6 @@ msgstr "Modifier"
 #: Template/OrganizationsProjects/index.ctp:44 Template/SvnUsers/index.ctp:48
 #: Template/Svns/index.ctp:38 Template/TypeUsers/index.ctp:36
 #: Template/TypeUsersUsers/index.ctp:46 Template/Universities/index.ctp:36
-#: Template/Users/index.ctp:35
 msgid "previous"
 msgstr "précédent"
 
@@ -370,7 +373,6 @@ msgstr "précédent"
 #: Template/OrganizationsProjects/index.ctp:46 Template/SvnUsers/index.ctp:50
 #: Template/Svns/index.ctp:40 Template/TypeUsers/index.ctp:38
 #: Template/TypeUsersUsers/index.ctp:48 Template/Universities/index.ctp:38
-#: Template/Users/index.ctp:37
 msgid "next"
 msgstr "suivant"
 
@@ -697,6 +699,13 @@ msgstr "Approuvé"
 #: Template/Organizations/admin_index.ctp:20;43
 msgid "Rejected"
 msgstr "Rejeté"
+
+#: Template/Organizations/admin_index.ctp:28;30
+#: Template/Organizations/index.ctp:23;25
+#: Template/Projects/admin_index.ctp:29;30 Template/Projects/index.ctp:26;28
+#: Template/Users/index.ctp:20;22;24
+msgid "Search ..."
+msgstr "Rechercher ..."
 
 #: Template/Organizations/admin_index.ctp:35
 msgid "Not approved"
@@ -1136,10 +1145,6 @@ msgstr "Organisations"
 msgid "Archived"
 msgstr "Archivé"
 
-#: Template/Projects/admin_index.ctp:29;30 Template/Projects/index.ctp:26;28
-msgid "Search ..."
-msgstr "Rechercher ..."
-
 #: Template/Projects/admin_index.ctp:44;51
 msgid "No"
 msgstr "Non"
@@ -1153,7 +1158,7 @@ msgid "Apply on this project"
 msgstr "Candidater sur ce projet"
 
 #: Template/Projects/apply.ctp:24 Template/Users/delete.ctp:26
-#: Template/Users/edit.ctp:38 Template/Users/email.ctp:20
+#: Template/Users/edit.ctp:42 Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
 msgid "Cancel"
 msgstr "Annuler"
@@ -1376,11 +1381,11 @@ msgstr "Désinscription "
 msgid "Edit User"
 msgstr "Modifier l'utilisateur"
 
-#: Template/Users/edit.ctp:16
+#: Template/Users/edit.ctp:16 Template/Users/index.ctp:12
 msgid "First name"
 msgstr "Prénom"
 
-#: Template/Users/edit.ctp:17
+#: Template/Users/edit.ctp:17 Template/Users/index.ctp:13
 msgid "Last name"
 msgstr "Nom"
 
@@ -1392,19 +1397,19 @@ msgstr "Biographie"
 msgid "Gender"
 msgstr "Sexe"
 
-#: Template/Users/edit.ctp:24
-msgid "Female"
-msgstr "Femme"
-
-#: Template/Users/edit.ctp:24
-msgid "Male"
-msgstr "Homme"
-
-#: Template/Users/edit.ctp:27
+#: Template/Users/edit.ctp:25;31
 msgid "Not specified"
 msgstr "Non spécifié"
 
-#: Template/Users/edit.ctp:33
+#: Template/Users/edit.ctp:26
+msgid "Female"
+msgstr "Femme"
+
+#: Template/Users/edit.ctp:27
+msgid "Male"
+msgstr "Homme"
+
+#: Template/Users/edit.ctp:37
 msgid "University"
 msgstr "Université"
 
@@ -1428,6 +1433,10 @@ msgstr "Confirmer votre mot de passe "
 #: Template/Users/register.ctp:6;7
 msgid "Password"
 msgstr "Mot de passe"
+
+#: Template/Users/index.ctp:11 Template/Users/register.ctp:5
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
 #: Template/Users/login.ctp:5
 msgid "Enter your username and password"
@@ -1456,10 +1465,6 @@ msgstr "Confirmer votre mot de passe actuel"
 #: Template/Users/register.ctp:5
 msgid "Choose your username"
 msgstr "Entrez votre nom d'utilisateur"
-
-#: Template/Users/register.ctp:5
-msgid "Username"
-msgstr "Nom d'utilisateur"
 
 #: Template/Users/register.ctp:6
 msgid "Choose a password"
