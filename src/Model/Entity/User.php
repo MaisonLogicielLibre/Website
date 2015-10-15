@@ -162,6 +162,24 @@ class User extends Entity
     }
 
     /**
+     * Get isAvailableMentoring
+     * @return bool isAvailableMentoring
+     */
+    public function isAvailableMentoring()
+    {
+        return $this->_properties['isAvailableMentoring'];
+    }
+
+    /**
+     * Get isStudent
+     * @return bool isStudent
+     */
+    public function isStudent()
+    {
+        return $this->_properties['isStudent'];
+    }
+
+    /**
      * Set the first name
      * @param  string $firstName firstName
      * @return string firstName
@@ -262,6 +280,28 @@ class User extends Entity
     {
         $this->set('username', $username);
         return $username;
+    }
+
+    /**
+     * Set isAvailableMentoring
+     * @param bool $isAvailableMentoring isAvailableMentoring
+     * @return bool isAvailableMentoring
+     */
+    public function editisAvailableMentoring($isAvailableMentoring)
+    {
+        $this->set('isAvailableMentoring', $isAvailableMentoring);
+        return $isAvailableMentoring;
+    }
+
+    /**
+     * Set isStudent
+     * @param bool $isStudent isStudent
+     * @return bool isStudent
+     */
+    public function editIsStudent($isStudent)
+    {
+        $this->set('isStudent', $isStudent);
+        return $isStudent;
     }
 
     /**
