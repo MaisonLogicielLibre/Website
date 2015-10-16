@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-14 11:37-0400\n"
-"PO-Revision-Date: 2015-10-14 11:38-0400\n"
+"POT-Creation-Date: 2015-10-15 14:05-0400\n"
+"PO-Revision-Date: 2015-10-15 14:05-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
@@ -308,7 +308,7 @@ msgstr "Ajoute run commentaire"
 #: Template/TypeUsers/edit.ctp:23 Template/TypeUsersUsers/add.ctp:21
 #: Template/TypeUsersUsers/edit.ctp:28 Template/Universities/add.ctp:17
 #: Template/Universities/edit.ctp:24 Template/Users/add.ctp:35
-#: Template/Users/edit.ctp:41 Template/Users/email.ctp:19
+#: Template/Users/edit.ctp:64 Template/Users/email.ctp:19
 #: Template/Users/password.ctp:19 Template/Users/register.ctp:11
 msgid "Submit"
 msgstr "Soumettre"
@@ -401,7 +401,8 @@ msgid "Text"
 msgstr "Texte"
 
 #: Template/Element/Organizations/actionSidebar.ctp:16;50
-#: Template/Organizations/admin_index.ctp:10 Template/Organizations/index.ctp:9
+#: Template/Organizations/admin_index.ctp:10
+#: Template/Organizations/index.ctp:9
 msgid "List of organizations"
 msgstr "Liste des organisations"
 
@@ -467,7 +468,7 @@ msgstr "Archiver le projet"
 msgid "Apply on the project"
 msgstr "Candidater sur le projet"
 
-#: Template/Element/Users/sidebar.ctp:15;100 Template/Users/edit.ctp:19
+#: Template/Element/Users/sidebar.ctp:15;100 Template/Users/edit.ctp:51
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -754,7 +755,7 @@ msgstr "Supprimer le projet des organisations"
 msgid "Organization"
 msgstr "Organisation"
 
-#: Template/Pages/contact.ctp:6 Template/Users/edit.ctp:20
+#: Template/Pages/contact.ctp:6 Template/Users/edit.ctp:52
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
@@ -1158,7 +1159,7 @@ msgid "Apply on this project"
 msgstr "Candidater sur ce projet"
 
 #: Template/Projects/apply.ctp:24 Template/Users/delete.ctp:26
-#: Template/Users/edit.ctp:42 Template/Users/email.ctp:20
+#: Template/Users/edit.ctp:65 Template/Users/email.ctp:20
 #: Template/Users/password.ctp:20
 msgid "Cancel"
 msgstr "Annuler"
@@ -1381,37 +1382,49 @@ msgstr "Désinscription "
 msgid "Edit User"
 msgstr "Modifier l'utilisateur"
 
-#: Template/Users/edit.ctp:16 Template/Users/index.ctp:12
+#: Template/Users/edit.ctp:17 Template/Users/index.ctp:12
 msgid "First name"
 msgstr "Prénom"
 
-#: Template/Users/edit.ctp:17 Template/Users/index.ctp:13
+#: Template/Users/edit.ctp:18 Template/Users/index.ctp:13
 msgid "Last name"
 msgstr "Nom"
 
-#: Template/Users/edit.ctp:18
-msgid "Biography"
-msgstr "Biographie"
-
-#: Template/Users/edit.ctp:23
-msgid "Gender"
-msgstr "Sexe"
-
-#: Template/Users/edit.ctp:25;31
+#: Template/Users/edit.ctp:20;58
 msgid "Not specified"
 msgstr "Non spécifié"
 
 #: Template/Users/edit.ctp:26
+msgid "University"
+msgstr "Université"
+
+#: Template/Users/edit.ctp:33
+msgid "Status"
+msgstr "Status"
+
+#: Template/Users/edit.ctp:37
+msgid "Are you a student?"
+msgstr "Êtes-vous un étudiant"
+
+#: Template/Users/edit.ctp:41
+msgid "Would you like to be a mentor?"
+msgstr "Devenir mentor ?"
+
+#: Template/Users/edit.ctp:50
+msgid "Biography"
+msgstr "Biographie"
+
+#: Template/Users/edit.ctp:55
+msgid "Gender"
+msgstr "Sexe"
+
+#: Template/Users/edit.ctp:60
 msgid "Female"
 msgstr "Femme"
 
-#: Template/Users/edit.ctp:27
+#: Template/Users/edit.ctp:61
 msgid "Male"
 msgstr "Homme"
-
-#: Template/Users/edit.ctp:37
-msgid "University"
-msgstr "Université"
 
 #: Template/Users/email.ctp:13
 msgid "Change Email"

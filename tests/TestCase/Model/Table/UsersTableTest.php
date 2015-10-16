@@ -283,6 +283,38 @@ class UsersTableTest extends TestCase
     }
 
     /**
+     * Test IsAvailableMentoring
+     * @return void
+     */
+    public function testIsAvailableMentoring()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->isAvailableMentoring();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test IsStudent
+     * @return void
+     */
+    public function testIsStudent()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->isStudent();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test editFirstName
      * @return void
      */
@@ -441,6 +473,38 @@ class UsersTableTest extends TestCase
         $check = (new DefaultPasswordHasher)->check($pass, $result);
 
         $this->assertTrue($check);
+    }
+
+    /**
+     * Test editIsAvailableMentoring
+     * @return void
+     */
+    public function testSetIsAvailableMentoring()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editIsAvailableMentoring($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editIsStudent
+     * @return void
+     */
+    public function testSetIsStudent()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editIsStudent($expected);
+
+        $this->assertEquals($expected, $result);
     }
     
     /**

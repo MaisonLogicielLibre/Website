@@ -218,6 +218,12 @@ class UsersTable extends Table
                     'message' => __(' Old password isn\'t valid')]
             );
 
+        $validator
+            ->add('isAvailableMentoring', 'valid', ['rule' => 'boolean']);
+
+        $validator
+            ->add('isStudent', 'valid', ['rule' => 'boolean']);
+
         return $validator;
     }
     /**
