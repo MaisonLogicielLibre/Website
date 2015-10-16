@@ -61,7 +61,7 @@ class MissionsController extends AppController
     {
         parent::beforeFilter($event);
         $this->loadModel("Users");
-        $this->Auth->allow(['index', 'view']);
+        $this->Auth->allow(['view']);
     }
 
     /**

@@ -23,7 +23,6 @@ use Cake\ORM\Entity;
  */
 class Project extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      * Note that '*' is set to true, which allows all unspecified fields to be
@@ -71,6 +70,15 @@ class Project extends Entity
     public function getDescription()
     {
         return $this->_properties['description'];
+    }
+
+    /**
+     * Get the mentors
+     * @return array mentors
+     */
+    public function getMentors()
+    {
+        return $this->_properties['mentors'];
     }
 
     /**
