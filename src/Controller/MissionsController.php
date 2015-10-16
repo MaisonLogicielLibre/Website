@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Missions controller
@@ -23,6 +24,7 @@ use App\Controller\AppController;
  */
 class MissionsController extends AppController
 {
+
     private $_permissions = [
         'index' => ['list_missions_all'],
         'add' => ['add_mission'],
@@ -39,7 +41,7 @@ class MissionsController extends AppController
      */
     public function isAuthorized($user)
     {
-        $user = $this->loadModel("Users")->findById($user['id'])->first();
+        $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
             if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
@@ -49,66 +51,107 @@ class MissionsController extends AppController
     }
 
     /**
+     * Filter preparation
+     *
+     * @param Event $event event
+     *
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->loadModel("Users");
+        $this->Auth->allow(['index', 'view']);
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Projects']
+        ];
         $this->set('missions', $this->paginate($this->Missions));
         $this->set('_serialize', ['missions']);
     }
-    
+
     /**
      * View method
-     * @param string $id id
+     *
+     * @param string|null $id Mission id.
      * @return void
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $mission = $this->Missions->get(
-            $id,
-            [
-            'contain' => []
-            ]
-        );
+        $mission = $this->Missions->get($id, [
+            'contain' => ['Projects', 'MissionLevels', 'TypeMissions']
+        ]);
         $this->set('mission', $mission);
         $this->set('_serialize', ['mission']);
     }
 
     /**
      * Add method
-     * @return redirect
+     *
+     * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($project_id = null)
     {
-        $mission = $this->Missions->newEntity();
-        if ($this->request->is('post')) {
-            $mission = $this->Missions->patchEntity($mission, $this->request->data);
-            if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
-                return $this->redirect(['action' => 'index']);
+        if (!is_null($project_id)) {
+            $user_id = $this->request->session()->read('Auth.User.id');
+
+            // Get the project object
+            $this->loadModel('Projects');
+            $project = $this->Projects->get($project_id, [
+                'contain' => ['Mentors']
+            ]);
+
+            // Check if your a mentor on this project
+            if (in_array($user_id, array_map(function($u) {return $u->getId();}, $project->getMentors()))) {
+
+                $mission = $this->Missions->newEntity();
+                if ($this->request->is('post')) {
+                    $mission = $this->Missions->patchEntity($mission, $this->request->data);
+
+                    $mission->editProjectId($project_id);
+                    $mission->editMentorId($user_id);
+
+                    if ($this->Missions->save($mission)) {
+                        $this->Flash->success(__('The mission has been saved.'));
+                        return $this->redirect(['action' => 'index']);
+                    } else {
+                        $this->Flash->error(__('The mission could not be saved. Please, try again.'));
+                    }
+                }
+                $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
+                $missionLevels = $this->Missions->MissionLevels->find('list', ['limit' => 200]);
+                $typeMissions = $this->Missions->TypeMissions->find('list', ['limit' => 200]);
+                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions'));
+                $this->set('_serialize', ['mission']);
             } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
+                return $this->redirect(['controller' => 'projects', 'action' => 'index']);
             }
+        } else {
+            return $this->redirect(['controller' => 'projects', 'action' => 'index']);
         }
-        $this->set(compact('mission'));
-        $this->set('_serialize', ['mission']);
     }
 
     /**
      * Edit method
-     * @param string $id id
-     * @return redirect
+     *
+     * @param string|null $id Mission id.
+     * @return void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $mission = $this->Missions->get(
-            $id,
-            [
-            'contain' => []
-            ]
-        );
+        $mission = $this->Missions->get($id, [
+            'contain' => ['MissionLevels', 'TypeMissions']
+        ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $mission = $this->Missions->patchEntity($mission, $this->request->data);
             if ($this->Missions->save($mission)) {
@@ -118,14 +161,19 @@ class MissionsController extends AppController
                 $this->Flash->error(__('The mission could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('mission'));
+        $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
+        $missionLevels = $this->Missions->MissionLevels->find('list', ['limit' => 200]);
+        $typeMissions = $this->Missions->TypeMissions->find('list', ['limit' => 200]);
+        $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions'));
         $this->set('_serialize', ['mission']);
     }
 
     /**
      * Delete method
-     * @param string $id id
-     * @return redirect
+     *
+     * @param string|null $id Mission id.
+     * @return void Redirects to index.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
     {

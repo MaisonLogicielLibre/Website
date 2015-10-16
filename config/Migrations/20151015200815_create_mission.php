@@ -36,7 +36,7 @@ class CreateMission extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('InternNbr', 'integer', [
+        $table->addColumn('internNbr', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,

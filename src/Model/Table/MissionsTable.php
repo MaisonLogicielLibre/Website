@@ -84,6 +84,11 @@ class MissionsTable extends Table
             ->requirePresence('competence', 'create')
             ->notEmpty('competence');
 
+        $validator
+            ->add('internNbr', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('internNbr', 'create')
+            ->notEmpty('internNbr');
+
         return $validator;
     }
 

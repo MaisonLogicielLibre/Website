@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\MissionsTable;
+use App\Model\Table\MissionsMissionLevelsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MissionsTable Test Case
+ * App\Model\Table\MissionsMissionLevelsTable Test Case
  */
-class MissionsTableTest extends TestCase
+class MissionsMissionLevelsTableTest extends TestCase
 {
 
     /**
@@ -17,6 +17,8 @@ class MissionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.missions_mission_levels',
+        'app.mission_levels',
         'app.missions',
         'app.projects',
         'app.applications',
@@ -32,7 +34,9 @@ class MissionsTableTest extends TestCase
         'app.type_users',
         'app.type_users_users',
         'app.mentors',
-        'app.type_applications'
+        'app.type_applications',
+        'app.type_missions',
+        'app.missions_type_missions'
     ];
 
     /**
@@ -43,8 +47,8 @@ class MissionsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Missions') ? [] : ['className' => 'App\Model\Table\MissionsTable'];
-        $this->Missions = TableRegistry::get('Missions', $config);
+        $config = TableRegistry::exists('MissionsMissionLevels') ? [] : ['className' => 'App\Model\Table\MissionsMissionLevelsTable'];
+        $this->MissionsMissionLevels = TableRegistry::get('MissionsMissionLevels', $config);
     }
 
     /**
@@ -54,7 +58,7 @@ class MissionsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Missions);
+        unset($this->MissionsMissionLevels);
 
         parent::tearDown();
     }

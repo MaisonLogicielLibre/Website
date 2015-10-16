@@ -1,46 +1,49 @@
-<div class="actions columns col-lg-2 col-md-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="nav nav-stacked nav-pills">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Mission'), ['action' => 'add']) ?></li>
-        <li class="active disabled"><?= $this->Html->link(__('List Missions'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects Users'), ['controller' => 'ProjectsUsers', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Projects User'), ['controller' => 'ProjectsUsers', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Mission Levels'), ['controller' => 'MissionLevels', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Mission Level'), ['controller' => 'MissionLevels', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Type Missions'), ['controller' => 'TypeMissions', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Type Mission'), ['controller' => 'TypeMissions', 'action' => 'add']) ?></li>
     </ul>
-</div>
-<div class="missions index col-lg-10 col-md-9 columns">
-    <div class="table-responsive">
-        <table class="table table-striped">
+</nav>
+<div class="missions index large-9 medium-8 columns content">
+    <h3><?= __('Missions') ?></h3>
+    <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('project_id') ?></th>
-                <th><?= $this->Paginator->sort('role') ?></th>
-                <th><?= $this->Paginator->sort('active') ?></th>
+                <th><?= $this->Paginator->sort('session') ?></th>
+                <th><?= $this->Paginator->sort('length') ?></th>
+                <th><?= $this->Paginator->sort('mentor_id') ?></th>
+                <th><?= $this->Paginator->sort('type_mission') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($missions as $mission): ?>
+            <?php foreach ($missions as $mission): ?>
             <tr>
                 <td><?= $this->Number->format($mission->id) ?></td>
-                <td>
-                    <?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?>
-                </td>
-            <td><?= h($mission->role) ?></td>
-                    <td><?= $this->Number->format($mission->active) ?></td>
-                    <td class="actions">
-                    <?= $this->Html->link('<span class="glyphicon glyphicon-zoom-in"></span><span class="sr-only">' . __('View') . '</span>', ['action' => 'view', $mission->id], ['escape' => false, 'class' => 'btn btn-xs btn-default', 'title' => __('View')]) ?>
-                    <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span><span class="sr-only">' . __('Edit') . '</span>', ['action' => 'edit', $mission->id], ['escape' => false, 'class' => 'btn btn-xs btn-default', 'title' => __('Edit')]) ?>
-                    <?= $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span><span class="sr-only">' . __('Delete') . '</span>', ['action' => 'delete', $mission->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mission->id), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Delete')]) ?>
+                <td><?= $this->Number->format($mission->session) ?></td>
+                <td><?= $this->Number->format($mission->length) ?></td>
+                <td><?= $this->Number->format($mission->mentor_id) ?></td>
+                <td><?= $this->Number->format($mission->type_mission) ?></td>
+                <td><?= h($mission->created) ?></td>
+                <td><?= h($mission->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $mission->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mission->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $mission->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mission->id)]) ?>
                 </td>
             </tr>
-
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </tbody>
-        </table>
-    </div>
+    </table>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
