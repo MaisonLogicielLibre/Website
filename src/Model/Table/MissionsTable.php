@@ -1,13 +1,4 @@
 <?php
-/**
- * Missions Model
- *
- * @category Table
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
- */
 namespace App\Model\Table;
 
 use App\Model\Entity\Mission;
@@ -19,13 +10,10 @@ use Cake\Validation\Validator;
 /**
  * Missions Model
  *
- * @category Table
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
  * @property \Cake\ORM\Association\BelongsTo $Projects
- * @property \Cake\ORM\Association\BelongsToMany $ProjectsUsers
+ * @property \Cake\ORM\Association\BelongsTo $Mentors
+ * @property \Cake\ORM\Association\BelongsToMany $MissionLevels
+ * @property \Cake\ORM\Association\BelongsToMany $TypeMissions
  */
 class MissionsTable extends Table
 {
@@ -34,7 +22,6 @@ class MissionsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
-     *
      * @return void
      */
     public function initialize(array $config)
@@ -45,20 +32,32 @@ class MissionsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo(
-            'Projects',
-            [
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
-            ]
-        );
+        ]);
+        $this->belongsTo('Mentors', [
+            'foreignKey' => 'mentor_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsToMany('MissionLevels', [
+            'foreignKey' => 'mission_id',
+            'targetForeignKey' => 'mission_level_id',
+            'joinTable' => 'missions_mission_levels'
+        ]);
+        $this->belongsToMany('TypeMissions', [
+            'foreignKey' => 'mission_id',
+            'targetForeignKey' => 'type_mission_id',
+            'joinTable' => 'missions_type_missions'
+        ]);
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
-     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -68,17 +67,22 @@ class MissionsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->add('session', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('session', 'create')
+            ->notEmpty('session');
 
         $validator
-            ->requirePresence('mission', 'create')
-            ->notEmpty('mission');
+            ->add('length', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('length', 'create')
+            ->notEmpty('length');
 
         $validator
-            ->add('active', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('active', 'create')
-            ->notEmpty('active');
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
+
+        $validator
+            ->requirePresence('competence', 'create')
+            ->notEmpty('competence');
 
         return $validator;
     }
@@ -88,12 +92,12 @@ class MissionsTable extends Table
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
+        $rules->add($rules->existsIn(['mentor_id'], 'Mentors'));
         return $rules;
     }
 }

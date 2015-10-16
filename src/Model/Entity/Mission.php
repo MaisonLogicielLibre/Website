@@ -1,118 +1,76 @@
 <?php
-/**
- * Entity of CommentsTable
- *
- * @category Entity
- * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Site
- */
- 
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Entity of CommentsTable
+ * Mission Entity.
  *
- * @category Entity
- * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Site
+ * @property int $id
+ * @property int $session
+ * @property int $length
+ * @property string $description
+ * @property string $competence
+ * @property int $mentor_id
+ * @property int $type_mission
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
+ * @property \App\Model\Entity\Project $project
  */
 class Mission extends Entity
 {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
-     * Note that '*' is set to true, which allows all unspecified fields to be
-     * mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove), and explicitly make individual fields accessible as needed.
+     *
+     * Note that when '*' is set to true, this allows all unspecified fields to
+     * be mass assigned. For security purposes, it is advised to set '*' to false
+     * (or remove it), and explicitly make individual fields accessible as needed.
      *
      * @var array
      */
-    protected $accessible = [
+    protected $_accessible = [
         '*' => true,
         'id' => false,
     ];
-    
-    /**
-     * Get the id
-     * @return int id
-     */
-    public function getId()
-    {
-        return $this->_properties['id'];
-    }
-    
+
     /**
      * Get the project_id
-     * @return int project_id
+     * @return int id
      */
     public function getProjectId()
     {
         return $this->_properties['project_id'];
     }
-    
+
     /**
-     * Get the role
-     * @return string role
+     * Get the mentor_id
+     * @return int id
      */
-    public function getRole()
+    public function getMentorId()
     {
-        return $this->_properties['role'];
+        return $this->_properties['mentor_id'];
     }
-    
+
     /**
-     * Get the mission
-     * @return string mission
+     * Set the project_id
+     * @param integer $project_id project_id
+     * @return integer project_id
      */
-    public function getMission()
+    public function editProjectId($project_id)
     {
-        return $this->_properties['mission'];
+        $this->set('project_id', $project_id);
+        return $project_id;
     }
-    
+
     /**
-     * Get if the mission is active
-     * @return int active
+     * Set the mentor_id
+     * @param integer $mentor_id mentor_id
+     * @return integer mentor_id
      */
-    public function isActive()
+    public function editMentorId($mentor_id)
     {
-        return $this->_properties['active'];
-    }
-    
-    /**
-     * Set the role
-     * @param  string $role role
-     * @return string role
-     */
-    public function editRole($role)
-    {
-        $this->set('role', $role);
-        return $role;
-    }
-    
-    /**
-     * Set the mission
-     * @param  string $mission mission
-     * @return string mission
-     */
-    public function editMission($mission)
-    {
-        $this->set('mission', $mission);
-        return $mission;
-    }
-    
-    /**
-     * Set if the mission is active
-     * @param  int $active active
-     * @return int active
-     */
-    public function editActive($active)
-    {
-        $this->set('active', $active);
-        return $active;
+        $this->set('mentor_id', $mentor_id);
+        return $mentor_id;
     }
 }
