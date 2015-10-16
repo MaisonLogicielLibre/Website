@@ -29,13 +29,11 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
-        'add' => ['Administrator'],
-        'edit' => ['Student', 'Mentor', 'Administrator'],
-        'email' => ['Student', 'Mentor', 'Administrator'],
-        'password' => ['Student', 'Mentor', 'Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Student', 'Mentor', 'Administrator']
+        'add' => [],
+        'edit' => ['edit_user', 'edit_users'],
+        'email' => ['edit_user', 'edit_users'],
+        'password' => ['edit_user', 'edit_users'],
+        'delete' => ['delete_user', 'delete_users']
     ];
 
     /**
@@ -46,9 +44,8 @@ class UsersController extends AppController
     public function isAuthorized($user)
     {
         $user = $this->Users->findById($user['id'])->first();
-
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
@@ -147,9 +144,7 @@ class UsersController extends AppController
                 'contain' => ['TypeUsers', 'Universities', 'Projects', 'Comments']
             ]
         );
-
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
-
         $this->set(compact('user', 'you'));
         $this->set('_serialize', ['user']);
     }
@@ -192,7 +187,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         
-        $typeUser = $this->Users->TypeUsers->findByName('Student')->first();
+        $typeUser = $this->Users->TypeUsers->findByName('User')->first();
         $user->type_users = [$typeUser];
 
         if ($this->request->is('post')) {
@@ -232,9 +227,11 @@ class UsersController extends AppController
                 'contain' => ['Projects']
             ]
         );
-        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
 
-        if ($you) {
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
+
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
@@ -274,8 +271,9 @@ class UsersController extends AppController
         $user = $this->Users->get($id);
 
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
-        if ($you) {
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
@@ -293,6 +291,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'email', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
@@ -309,8 +309,9 @@ class UsersController extends AppController
         $user = $this->Users->get($id);
 
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
-        if ($you) {
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
@@ -328,6 +329,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'password', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
@@ -344,12 +347,10 @@ class UsersController extends AppController
         $this->request->allowMethod(['get', 'post', 'delete']);
         $user = $this->Users->get($id);
 
-
-
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
-        $administrator = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasRoleName(['Administrator']);
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
-        if ($you || $administrator) {
+        if ($you || $hasPermission) {
             if ($this->request->is(['post'])) {
                 if ($this->Users->delete($user)) {
                     $this->Flash->success(__('The user has been deleted.'));

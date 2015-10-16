@@ -26,16 +26,14 @@ use Cake\ORM\TableRegistry;
 class ProjectsController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
-        'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
-        'edit' => ['Administrator'],
-        'editState' => ['Administrator'],
-        'editAccepted' => ['Administrator'],
-        'editArchived' => ['Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Administrator'],
-        'apply' => ['Student', 'Administrator', 'Mentor']
+        'add' => ['add_project'],
+        'submit' => ['submit_project'],
+        'edit' => ['edit_project', 'edit_projects'],
+        'editState' => ['edit_project', 'edit_projects'],
+        'editAccepted' => ['edit_project', 'edit_projects'],
+        'editArchived' => ['edit_project', 'edit_projects'],
+        'delete' => ['delete_project', 'delete_projects'],
+        'apply' => ['add_application']
     ];
 
     /**
@@ -48,7 +46,7 @@ class ProjectsController extends AppController
         $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
@@ -91,7 +89,7 @@ class ProjectsController extends AppController
 
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
+        if (!is_null($user) && $user->hasPermissionName(['list_projects_all'])) {
             $this->adminIndex();
         } else {
             $data = $this->DataTables
