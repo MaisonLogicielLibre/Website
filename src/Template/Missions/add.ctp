@@ -18,9 +18,9 @@
         $lengthOptions =
             [
                 0 => __('Not specified'),
-                1 => __('1 session'),
-                2 => __('2 sessions'),
-                3 => __('3 sessions')
+                1 => __('1 term'),
+                2 => __('2 term'),
+                3 => __('3 term')
             ];
         echo $this->Form->input('length', ['options' => $lengthOptions, 'type' => 'select']);
             echo $this->Form->input('mission_levels._ids', ['options' => $missionLevels, 'multiple' => 'checkbox']);
