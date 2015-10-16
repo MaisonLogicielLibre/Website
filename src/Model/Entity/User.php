@@ -322,4 +322,98 @@ class User extends Entity
         }
         return false;
     }
+
+    /**
+     * Check if the user has the permission specified
+     * @param array $permission permissions required to open the page
+     * @return bool
+     */
+    public function hasPermissionName($permission)
+    {
+        $permissions = $this->getPermissions();
+        foreach ($permissions as $perm) {
+            if (in_array($perm->name, $permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get permissions of user
+     * @return array
+     */
+    public function getPermissions()
+    {
+        $roles = TableRegistry::get('TypeUsersUsers');
+        $listRolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
+        $permissions = TableRegistry::get('PermissionsTypeUsers');
+        $listPermissions = [];
+        foreach ($listRolesUser as $role) {
+            $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->type_user->id])->contain(['Permissions'])->toArray();
+            foreach ($rolePermissions as $permission) {
+                $listPermissions[] = $permission->permission;
+            }
+        }
+        return $listPermissions;
+    }
+
+    /**
+     * Get roles of user
+     * @return array
+     */
+    public function getRoles()
+    {
+        // Role fix
+        $roles = TableRegistry::get('TypeUsersUsers');
+        $rolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
+
+        $listRolesUser = [];
+
+        foreach ($rolesUser as $role) {
+            $listRolesUser[] = $role->typeUser;
+        }
+
+        // Role dynamic
+        $roles = TableRegistry::get('TypeUsers');
+
+        if (!empty($this->getProjectsMentored())) {
+            $listRolesUser[] = $roles->findByName('Dyn_mentor')->first();
+        }
+
+        return $listRolesUser;
+    }
+
+    /**
+     * Get projects where user is mentor
+     * @return array
+     */
+    public function getProjectsMentored()
+    {
+        $projects = TableRegistry::get('ProjectsMentors');
+        $projects = $projects->find('all')->where(['user_id' => $this->getId()])->contain(['Projects'])->toArray();
+
+        $listProject = [];
+        foreach ($projects as $project) {
+            $listProject[] = $project->project;
+        }
+
+        return $listProject;
+    }
+
+    /**
+     * Get if the user is mentor on the project in argument
+     * @param Project $projectId projectID
+     * @return array
+     */
+    public function isMentorOf($projectId)
+    {
+        $listProject = $this->getProjectsMentored();
+        foreach ($listProject as $project) {
+            if ($project->id == $projectId) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

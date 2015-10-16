@@ -25,15 +25,13 @@ use Cake\Event\Event;
 class OrganizationsController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
-        'editStatus' => ['Administrator'],
-        'add' => ['Administrator'],
-        'submit' => ['Student', 'Mentor', 'Administrator'],
-        'edit' => ['Administrator'],
-        'editValidated' => ['Administrator'],
-        'editRejected' => ['Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Administrator']
+        'editStatus' => ['edit_organizations', 'edit_organization'],
+        'add' => ['add_organization'],
+        'submit' => ['submit_organization'],
+        'edit' => ['edit_organizations', 'edit_organization'],
+        'editValidated' => ['edit_organizations', 'edit_organization'],
+        'editRejected' => ['edit_organizations', 'edit_organization'],
+        'delete' => ['delete_organizations', 'delete_organization']
     ];
 
     /**
@@ -46,7 +44,7 @@ class OrganizationsController extends AppController
         $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
@@ -87,7 +85,7 @@ class OrganizationsController extends AppController
     {
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        if (!is_null($user) && $user->hasRoleName(['Administrator'])) {
+        if (!is_null($user) && $user->hasPermissionName(['list_organizations_all'])) {
             $this->adminIndex();
         } else {
             $data = $this->DataTables

@@ -24,12 +24,12 @@ use App\Controller\AppController;
 class MissionsController extends AppController
 {
     private $_permissions = [
-        'index' => ['Administrator'],
-        'add' => ['Administrator'],
-        'submit' => ['Administrator'],
-        'edit' => ['Administrator'],
-        'view' => ['Administrator'],
-        'delete' => ['Administrator']
+        'index' => ['list_missions_all'],
+        'add' => ['add_mission'],
+        'submit' => ['submit_mission'],
+        'edit' => ['edit_mission', 'edit_missions'],
+        'view' => ['view_mission', 'view_missions'],
+        'delete' => ['delete_mission', 'delete_missions']
     ];
 
     /**
@@ -42,7 +42,7 @@ class MissionsController extends AppController
         $user = $this->loadModel("Users")->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }

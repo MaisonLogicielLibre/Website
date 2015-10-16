@@ -1,45 +1,45 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?php
-$this->element('Projects/actionSidebar');
-echo $this->fetch('actionSidebar');
-?>
-<div class="projects index col-lg-9 col-md-9 col-sm-9 col-xs-12 columns">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?= __('List of projects'); ?></h3>
-        </div>
-        <div class="table-responsive">
-            <table id="projects" class="table table-striped table-bordered table-hover dataTable">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th><?= __('Name'); ?></th>
-                    <th><?= __('Link'); ?></th>
-                    <th><?= __('Organizations'); ?></th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                <tr class="table-search info">
-                    <td></td>
-                    <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                               class="form-control input-sm input-block-level"/></td>
-                    <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                               class="form-control input-sm input-block-level"/></td>
-                    <td>
-                        <select class="form-control">
-                            <option value="">-----</option>
-                            <?php
-                            foreach ($orgs as $org) {
-                                echo '<option value="' . $org . '">' . $org . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
+<div class="users form col-lg-12 col-md-12 columns">
+    <?= $this->cell('Sidebar::projectAction'); ?>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= __('List of projects'); ?></h3>
+            </div>
+            <div class="table-responsive">
+                <table id="projects" class="table table-striped table-bordered table-hover dataTable">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><?= __('Name'); ?></th>
+                        <th><?= __('Link'); ?></th>
+                        <th><?= __('Organizations'); ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                    <tr class="table-search info">
+                        <td></td>
+                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                   class="form-control input-sm input-block-level"/></td>
+                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                   class="form-control input-sm input-block-level"/></td>
+                        <td>
+                            <select class="form-control">
+                                <option value="">-----</option>
+                                <?php
+                                foreach ($orgs as $org) {
+                                    echo '<option value="' . $org . '">' . $org . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
 </div>

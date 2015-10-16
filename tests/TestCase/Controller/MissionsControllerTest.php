@@ -43,7 +43,9 @@ class MissionsControllerTest extends IntegrationTestCase
     'app.projects',
     'app.projects_contributors',
     'app.projects_mentors',
-    'app.missions'
+    'app.missions',
+    'app.permissions',
+    'app.permissions_type_users'
     ];
 
     /**

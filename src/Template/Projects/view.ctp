@@ -1,14 +1,5 @@
 <div class="users form col-lg-12 col-md-12 columns">
-    <?php
-    $this->element('Projects/sidebar');
-    if(!$user):
-        echo $this->fetch('sidebar');
-    elseif($user->hasRoleName(['Administrator'])):
-        echo $this->fetch('sidebarAdministrator');
-    elseif($user->hasRoleName(['Student'])):
-        echo $this->fetch('sidebarStudent');
-    endif;
-    ?>
+    <?= $this->cell('Sidebar::project', [$project->id]); ?>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                 <h2>
