@@ -1,31 +1,31 @@
 <?php
 /**
- * TypeUsers Model
+ * Permissions Model
  *
  * @category Table
  * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 namespace App\Model\Table;
 
-use App\Model\Entity\TypeUser;
+use App\Model\Entity\Permission;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * TypeUsers Model
+ * Permissions Model
  *
  * @category Table
  * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
-class TypeUsersTable extends Table
+class PermissionsTable extends Table
 {
 
     /**
@@ -39,15 +39,15 @@ class TypeUsersTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('type_users');
+        $this->table('permissions');
         $this->displayField('name');
         $this->primaryKey('id');
 
         $this->belongsToMany(
-            'Permissions',
+            'TypeUsers',
             [
-            'foreignKey' => 'type_user_id',
-            'targetForeignKey' => 'permission_id',
+            'foreignKey' => 'permission_id',
+            'targetForeignKey' => 'type_user_id',
             'joinTable' => 'permissions_type_users'
             ]
         );
