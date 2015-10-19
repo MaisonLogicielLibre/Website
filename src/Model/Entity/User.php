@@ -345,12 +345,11 @@ class User extends Entity
      */
     public function getPermissions()
     {
-        $roles = TableRegistry::get('TypeUsersUsers');
-        $listRolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
+        $roles = $this->getRoles();
         $permissions = TableRegistry::get('PermissionsTypeUsers');
         $listPermissions = [];
-        foreach ($listRolesUser as $role) {
-            $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->type_user->id])->contain(['Permissions'])->toArray();
+        foreach ($roles as $role) {
+            $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->id])->contain(['Permissions'])->toArray();
             foreach ($rolePermissions as $permission) {
                 $listPermissions[] = $permission->permission;
             }
@@ -369,18 +368,14 @@ class User extends Entity
         $rolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
 
         $listRolesUser = [];
-
         foreach ($rolesUser as $role) {
-            $listRolesUser[] = $role->typeUser;
+            $listRolesUser[] = $role->type_user;
         }
-
         // Role dynamic
         $roles = TableRegistry::get('TypeUsers');
-
         if (!empty($this->getProjectsMentored())) {
             $listRolesUser[] = $roles->findByName('Dyn_mentor')->first();
         }
-
         return $listRolesUser;
     }
 
