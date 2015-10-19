@@ -181,6 +181,11 @@ class ProjectsController extends AppController
             ]
         );
 
+        $data = $this->DataTables
+            ->find(
+                'Missions'
+            );
+
         if (null != $this->request->session()->read('Auth.User.id')) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
         } else {
@@ -189,6 +194,12 @@ class ProjectsController extends AppController
 
         $this->set(compact('project', 'user'));
         $this->set('_serialize', ['project']);
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
