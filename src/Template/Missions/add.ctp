@@ -6,6 +6,7 @@
     <fieldset>
         <legend><?= __('Add Mission') ?></legend>
         <?php
+            echo $this->Form->input('name', ['label' => 'Position title']);
             echo $this->Form->input('description');
             echo $this->Form->input('competence');
             echo $this->Form->input('type_missions._ids', ['options' => $typeMissions, 'multiple' => 'checkbox']);

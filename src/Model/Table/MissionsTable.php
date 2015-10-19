@@ -29,7 +29,7 @@ class MissionsTable extends Table
         parent::initialize($config);
 
         $this->table('missions');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -62,6 +62,10 @@ class MissionsTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        $validator
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
