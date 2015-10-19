@@ -38,7 +38,7 @@ class MissionsTable extends Table
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Mentors', [
+        $this->belongsTo('Users', [
             'foreignKey' => 'mentor_id',
             'joinType' => 'INNER'
         ]);
@@ -106,7 +106,7 @@ class MissionsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
-        $rules->add($rules->existsIn(['mentor_id'], 'Mentors'));
+        $rules->add($rules->existsIn(['mentor_id'], 'Users'));
         return $rules;
     }
 }

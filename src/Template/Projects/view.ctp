@@ -74,6 +74,7 @@
                     <tr>
                         <th></th>
                         <th><?= __('Name'); ?></th>
+                        <th><?= __('Mentor'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,6 +82,8 @@
                     <tfoot>
                     <tr class="table-search info">
                         <td></td>
+                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                   class="form-control input-sm input-block-level"/></td>
                         <td><input type="text" placeholder="<?= __('Search ...'); ?>"
                                    class="form-control input-sm input-block-level"/></td>
                     </tr>
@@ -117,6 +120,11 @@ echo $this->DataTables->init([
         [
             'name' => 'Missions.name',
             'data' => 'name',
+            'searchable' => true
+        ],
+        [
+            'name' => 'User',
+            'data' => 'user',
             'searchable' => true
         ],
     ],
