@@ -29,6 +29,15 @@
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+    <?= $this->Form->button(__('Cancel'), [
+        'type' => 'button',
+        'class' => 'btn btn-default',
+        'onclick' => 'location.href=\'' . $this->url->build([
+                'controller' => 'Projects',
+                'action' => 'view',
+                $projectId
+            ]) . '\''
+    ]); ?>
     <?= $this->Form->end() ?>
 </div>
 <?= $this->Html->script('missions/add.js', ['block' => 'scriptBottom']); ?>
