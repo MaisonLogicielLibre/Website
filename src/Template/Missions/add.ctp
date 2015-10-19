@@ -1,5 +1,7 @@
-<?php// TODO SIDEBAR ?>
-<div class="missions form col-lg-10 col-md-9 columns">
+<div class="missions col-lg-12 col-md-12 columns">
+    <?= $this->cell('Sidebar::project', [$projectId]); ?>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <?= $this->Form->create($mission); ?>
     <fieldset>
         <legend><?= __('Add Mission') ?></legend>

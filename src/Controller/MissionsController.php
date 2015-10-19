@@ -99,30 +99,29 @@ class MissionsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add($project_id = null)
+    public function add($projectId = null)
     {
-        if (!is_null($project_id)) {
-            $user_id = $this->request->session()->read('Auth.User.id');
-
+        if (!is_null($projectId)) {
+            $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
             // Get the project object
             $this->loadModel('Projects');
-            $project = $this->Projects->get($project_id, [
+            $project = $this->Projects->get($projectId, [
                 'contain' => ['Mentors']
             ]);
 
             // Check if your a mentor on this project
-            if (in_array($user_id, array_map(function($u) {return $u->getId();}, $project->getMentors()))) {
+            if ($user->isMentorOf($projectId)) {
 
                 $mission = $this->Missions->newEntity();
                 if ($this->request->is('post')) {
                     $mission = $this->Missions->patchEntity($mission, $this->request->data);
 
-                    $mission->editProjectId($project_id);
-                    $mission->editMentorId($user_id);
+                    $mission->editProjectId($projectId);
+                    $mission->editMentorId($user->getId());
 
                     if ($this->Missions->save($mission)) {
                         $this->Flash->success(__('The mission has been saved.'));
-                        return $this->redirect(['action' => 'index']);
+                        return $this->redirect(['controller' => 'Projects', 'action' => 'view', $projectId]);
                     } else {
                         $this->Flash->error(__('The mission could not be saved. Please, try again.'));
                     }
@@ -130,7 +129,7 @@ class MissionsController extends AppController
                 $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
                 $missionLevels = $this->Missions->MissionLevels->find('list', ['limit' => 200]);
                 $typeMissions = $this->Missions->TypeMissions->find('list', ['limit' => 200]);
-                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions'));
+                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions', 'projectId'));
                 $this->set('_serialize', ['mission']);
             } else {
                 return $this->redirect(['controller' => 'projects', 'action' => 'index']);
