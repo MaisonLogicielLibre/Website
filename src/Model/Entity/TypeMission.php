@@ -26,4 +26,13 @@ class TypeMission extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    /**
+     * Get the name
+     * @return string name
+     */
+    public function getName()
+    {
+        return $this->_properties['name'];
+    }
 }

@@ -82,6 +82,15 @@ class Project extends Entity
     }
 
     /**
+     * Get the organizations
+     * @return array organizations
+     */
+    public function getOrganizations()
+    {
+        return $this->_properties['organizations'];
+    }
+
+    /**
      * Get if the project is accepted
      * @return int accepted
      */

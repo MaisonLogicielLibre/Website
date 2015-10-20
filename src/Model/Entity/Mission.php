@@ -53,6 +53,120 @@ class Mission extends Entity
     }
 
     /**
+     * Get the name
+     * @return string name
+     */
+    public function getName()
+    {
+        return $this->_properties['name'];
+    }
+
+    /**
+     * Get the project
+     * @return object project
+     */
+    public function getProject()
+    {
+        return $this->_properties['project'];
+    }
+
+    /**
+     * Get the description
+     * @return string description
+     */
+    public function getDescription()
+    {
+        return $this->_properties['description'];
+    }
+
+    /**
+     * Get the competence
+     * @return string competence
+     */
+    public function getCompetence()
+    {
+        return $this->_properties['competence'];
+    }
+
+    /**
+     * Get the internNbr
+     * @return int internNbr
+     */
+    public function getInternNbr()
+    {
+        return $this->_properties['internNbr'];
+    }
+
+    /**
+     * Get the session
+     * @return string session
+     */
+    public function getSession()
+    {
+        switch ($this->_properties['session']) {
+            case 1:
+                return __('Winter');
+                break;
+            case 2:
+                return __('Summer');
+                break;
+            case 3:
+                return __('Fall');
+                break;
+            default:
+                return __('Not specified');
+        }
+    }
+
+    /**
+     * Get the length
+     * @return string length
+     */
+    public function getLength()
+    {
+        switch ($this->_properties['length']) {
+            case 1:
+                return __('1 term');
+                break;
+            case 2:
+                return __('2 terms');
+                break;
+            case 3:
+                return __('3 terms');
+                break;
+            default:
+                return __('Not specified');
+        }
+    }
+
+    /**
+     * Get the mission_levels
+     * @return array mission_levels
+     */
+    public function getLevels()
+    {
+        return $this->_properties['mission_levels'];
+    }
+
+    /**
+     * Get the type_missions
+     * @return array type_misssions
+     */
+    public function getType()
+    {
+        return $this->_properties['type_missions'];
+    }
+
+    /**
+     * Get the mentor
+     * @return object user
+     */
+    public function getMentor()
+    {
+        return $this->_properties['user'];
+    }
+
+    /**
      * Set the project_id
      * @param integer $project_id project_id
      * @return integer project_id

@@ -26,4 +26,13 @@ class MissionLevel extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    /**
+     * Get level name
+     * @return string name
+     */
+    public function getName()
+    {
+        return $this->_properties['name'];
+    }
 }
