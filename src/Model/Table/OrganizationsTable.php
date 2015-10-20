@@ -70,7 +70,7 @@ class OrganizationsTable extends Table
         $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name')
-			->add(
+            ->add(
                 'name',
                 'unique',
                 [
