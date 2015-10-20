@@ -69,7 +69,16 @@ class OrganizationsTable extends Table
 
         $validator
             ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->notEmpty('name')
+			->add(
+                'name',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This name is already taken.')
+                ]
+            );
 
         $validator
             ->allowEmpty('website')
