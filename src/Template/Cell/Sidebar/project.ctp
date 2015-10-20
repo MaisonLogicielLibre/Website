@@ -3,12 +3,11 @@
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
 
-
                 <!--
                 GENERAL
                 -->
 
-                <li class="<?= ($this->request->action == 'view') ? 'active disabled' : ''; ?>">
+                <li class="<?= ($this->request->action == 'view') && ($this->request->controller == 'Projects') ? 'active disabled' : ''; ?>">
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Projects',
@@ -17,7 +16,7 @@
                         ]) ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'view') ? '#337ab7' : '#fff'; ?>"></i>
+                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'view')  && ($this->request->controller == 'Projects') ? '#337ab7' : '#fff'; ?>"></i>
                             </span> <?= __('Project\'s page') ?>
                     </a>
                 </li>
