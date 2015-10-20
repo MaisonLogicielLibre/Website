@@ -46,7 +46,6 @@ class ProjectsMentorsTableTest extends TestCase
         'app.permissions',
         'app.permissions_type_users',
         'app.type_users_users',
-        'app.type_applications'
     ];
 
     /**

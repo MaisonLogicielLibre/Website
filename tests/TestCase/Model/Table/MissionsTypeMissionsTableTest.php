@@ -4,6 +4,8 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\MissionsTypeMissionsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
+use Cake\ORM\RulesChecker;
 
 /**
  * App\Model\Table\MissionsTypeMissionsTable Test Case
@@ -17,26 +19,11 @@ class MissionsTypeMissionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.missions_type_missions',
         'app.type_missions',
         'app.missions',
-        'app.projects',
-        'app.applications',
-        'app.users',
-        'app.universities',
-        'app.comments',
-        'app.projects_contributors',
-        'app.projects_mentored',
-        'app.organizations',
-        'app.organizations_projects',
-        'app.contributors',
-        'app.projects_mentors',
-        'app.type_users',
-        'app.type_users_users',
-        'app.mentors',
-        'app.type_applications',
         'app.mission_levels',
-        'app.missions_mission_levels'
+        'app.missions_mission_levels',
+        'app.missions_type_missions'
     ];
 
     /**
@@ -64,32 +51,30 @@ class MissionsTypeMissionsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
+     * Test validation
      * @return void
      */
-    public function testInitialize()
+    public function testValidation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+
+        $result = $this->MissionsTypeMissions->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 
     /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
+     * Test buildRules
      * @return void
      */
     public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->MissionsTypeMissions->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 }

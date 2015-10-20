@@ -1,26 +1,11 @@
 <?php
-/**
- * Tests for MissionsController
- *
- * @category Test
- * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
- */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\MissionsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * Tests for MissionsController
- *
- * @category Test
- * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * App\Controller\MissionsController Test Case
  */
 class MissionsControllerTest extends IntegrationTestCase
 {
@@ -31,46 +16,25 @@ class MissionsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-    'app.type_users_users',
-    'app.organizations',
-    'app.organizations_Projects',
-    'app.users',
-    'app.type_users',
-    'app.svn_users',
-    'app.svns',
-    'app.universities',
-    'app.comments',
-    'app.projects',
-    'app.projects_contributors',
-    'app.projects_mentors',
-    'app.missions',
-    'app.permissions',
-    'app.permissions_type_users'
+        'app.missions',
+        'app.projects',
+        'app.applications',
+        'app.users',
+        'app.universities',
+        'app.comments',
+        'app.projects_contributors',
+        'app.organizations',
+        'app.organizations_projects',
+        'app.projects_mentors',
+        'app.type_users',
+        'app.permissions',
+        'app.permissions_type_users',
+        'app.type_users_users',
+        'app.mission_levels',
+        'app.missions_mission_levels',
+        'app.type_missions',
+        'app.missions_type_missions'
     ];
-
-    /**
-     * Test index - Ok
-     *
-     * @return void
-     */
-    public function testIndexOk()
-    {
-        $this->session(['Auth.User.id' => 2]);
-        
-        $this->get('/missions/index');
-        $this->assertResponseSuccess();
-    }
-    
-    /**
-     * Test index - No Authentification
-     *
-     * @return void
-     */
-    public function testIndexNoAuth()
-    {
-        $this->get('/missions/index');
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
-    }
 
     /**
      * Test view - Ok
@@ -79,19 +43,8 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testViewOk()
     {
-        $this->session(['Auth.User.id' => 2]);
-        
-        $this->get('/missions/view/1');
-        $this->assertResponseSuccess();
-    }
-    
-    /**
-     * Test view - No Authentification
-     *
-     * @return void
-     */
-    public function testViewNoAuth()
-    {
+        $this->session(['Auth.User.id' => 1]);
+
         $this->get('/missions/view/1');
         $this->assertResponseSuccess();
     }
@@ -104,18 +57,25 @@ class MissionsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
-        $data = [
-            'project_id' => 1,
-            'role' => 'Dev',
-            'mission' => 'Do stuff',
-            'active' => 1
-        ];
-        $this->post('/missions/add', $data);
 
-        $this->assertResponseSuccess();
+        $data = [
+            'id' => 3,
+            'name' => 'Dev',
+            'session' => 3,
+            'length' => 3,
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'competence' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'internNbr' => 1,
+            'project_id' => 1,
+            'mentor_id' => 1,
+            'created' => '2015-10-20 15:10:06',
+            'modified' => '2015-10-20 15:10:06'
+        ];
+        $this->post('/missions/add/1', $data);
+
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test add - Fail
      *
@@ -124,13 +84,13 @@ class MissionsControllerTest extends IntegrationTestCase
     public function testAddFail()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
-        $this->post('/missions/add', $data);
+        $this->post('/missions/add/1', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Permission
      *
@@ -138,14 +98,29 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testAddNoPerm()
     {
-        $this->session(['Auth.User.id' => 1]);
-        
-        $data = [];
-        $this->post('/missions/add', $data);
+        $this->session(['Auth.User.id' => 3]);
 
-        $this->assertResponseSuccess();
+        $data = [];
+        $this->post('/missions/add/1', $data);
+
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
     }
-    
+    /**
+     * Test add - Ok
+     *
+     * @return void
+     */
+    public function testAddNoProject()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [];
+        $this->post('/missions/add/', $data);
+
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+    }
+
+
     /**
      * Test add - No Authentification
      *
@@ -154,87 +129,8 @@ class MissionsControllerTest extends IntegrationTestCase
     public function testAddNoAuth()
     {
         $data = [];
-        $this->post('/missions/add', $data);
+        $this->post('/missions/add/1', $data);
 
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
-    }
-
-    /**
-     * Test edit - Ok
-     *
-     * @return void
-     */
-    public function testEditOk()
-    {
-        $this->session(['Auth.User.id' => 2]);
-        
-        $data = [];
-        
-        $this->get('/missions/edit/1');
-        $this->post('/missions/edit/1', $data);
-        $this->assertResponseSuccess();
-    }
-       
-    /**
-     * Test edit - No Permission
-     *
-     * @return void
-     */
-    public function testEditNoPerm()
-    {
-        $this->session(['Auth.User.id' => 1]);
-        
-        $data = [];
-        $this->post('/missions/edit/1', $data);
-        $this->assertResponseSuccess();
-    }
-    
-    /**
-     * Test edit - No Authentification
-     *
-     * @return void
-     */
-    public function testEditNoAuth()
-    {
-        $data = [];
-        $this->post('/missions/edit/1', $data);
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
-    }
-
-    /**
-     * Test delete - Ok
-     *
-     * @return void
-     */
-    public function testDeleteOk()
-    {
-        $this->session(['Auth.User.id' => 2]);
-        
-        $this->post('/missions/delete/1');
-        $this->assertResponseSuccess();
-    }
-    
-    /**
-     * Test delete - No Permission
-     *
-     * @return void
-     */
-    public function testDeleteNoPerm()
-    {
-        $this->session(['Auth.User.id' => 1]);
-        
-        $this->post('/missions/delete/1');
-        $this->assertResponseSuccess();
-    }
-    
-    /**
-     * Test delete - No Authentification
-     *
-     * @return void
-     */
-    public function testDeleteNoAuth()
-    {
-        $this->post('/missions/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 }

@@ -37,7 +37,7 @@ class TypeMissionsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'Lorem ipsum dolor sit amet'
+            'name' => 'Intern'
         ],
     ];
 }

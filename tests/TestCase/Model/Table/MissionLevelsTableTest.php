@@ -4,6 +4,8 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\MissionLevelsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
+use Cake\ORM\RulesChecker;
 
 /**
  * App\Model\Table\MissionLevelsTable Test Case
@@ -25,15 +27,11 @@ class MissionLevelsTableTest extends TestCase
         'app.universities',
         'app.comments',
         'app.projects_contributors',
-        'app.projects_mentored',
         'app.organizations',
         'app.organizations_projects',
-        'app.contributors',
         'app.projects_mentors',
         'app.type_users',
         'app.type_users_users',
-        'app.mentors',
-        'app.type_applications',
         'app.missions_mission_levels',
         'app.type_missions',
         'app.missions_type_missions'
@@ -64,22 +62,46 @@ class MissionLevelsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
+     * Test getName
      * @return void
      */
-    public function testInitialize()
+    public function testGetName()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $id = 1;
+        $expected = '1';
+
+        $level = $this->MissionLevels->get($id);
+
+        $result = $level->getName();
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
-     * Test validationDefault method
-     *
+     * Test validation
      * @return void
      */
-    public function testValidationDefault()
+    public function testValidation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+
+        $result = $this->MissionLevels->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
+    }
+
+    /**
+     * Test buildRules
+     * @return void
+     */
+    public function testBuildRules()
+    {
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->MissionLevels->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 }

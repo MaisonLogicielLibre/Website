@@ -48,7 +48,6 @@ class ApplicationsTableTest extends TestCase
         'app.projects_mentors',
         'app.type_users',
         'app.type_users_users',
-        'app.type_applications'
     ];
 
     /**

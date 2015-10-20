@@ -65,20 +65,6 @@ class MissionsController extends AppController
     }
 
     /**
-     * Index method
-     *
-     * @return void
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Projects']
-        ];
-        $this->set('missions', $this->paginate($this->Missions));
-        $this->set('_serialize', ['missions']);
-    }
-
-    /**
      * View method
      *
      * @param string|null $id Mission id.
@@ -144,52 +130,5 @@ class MissionsController extends AppController
         } else {
             return $this->redirect(['controller' => 'projects', 'action' => 'index']);
         }
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Mission id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $mission = $this->Missions->get($id, [
-            'contain' => ['MissionLevels', 'TypeMissions']
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $mission = $this->Missions->patchEntity($mission, $this->request->data);
-            if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
-            }
-        }
-        $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
-        $missionLevels = $this->Missions->MissionLevels->find('list', ['limit' => 200]);
-        $typeMissions = $this->Missions->TypeMissions->find('list', ['limit' => 200]);
-        $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions'));
-        $this->set('_serialize', ['mission']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Mission id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $mission = $this->Missions->get($id);
-        if ($this->Missions->delete($mission)) {
-            $this->Flash->success(__('The mission has been deleted.'));
-        } else {
-            $this->Flash->error(__('The mission could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(['action' => 'index']);
     }
 }
