@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-20 14:42+0000\n"
+"POT-Creation-Date: 2015-10-20 15:18+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -243,8 +243,6 @@ msgid "Submit an organization"
 msgstr ""
 
 #: Template/Cell/Sidebar/project.ctp:17
-#: Template/Projects/add.ctp:10
-#: Template/Projects/submit.ctp:10
 msgid "Website of the project"
 msgstr ""
 
@@ -442,7 +440,7 @@ msgstr ""
 #: Template/Users/edit.ctp:59
 #: Template/Users/email.ctp:14
 #: Template/Users/password.ctp:15
-#: Template/Users/register.ctp:11
+#: Template/Users/register.ctp:13
 msgid "Submit"
 msgstr ""
 
@@ -863,7 +861,7 @@ msgstr ""
 
 #: Template/Pages/contact.ctp:7
 #: Template/Users/email.ctp:9;10
-#: Template/Users/register.ctp:8;9
+#: Template/Users/register.ctp:10;11
 msgid "Email"
 msgstr ""
 
@@ -1117,21 +1115,6 @@ msgstr ""
 
 #: Template/Projects/add.ctp:7
 msgid "Add Project"
-msgstr ""
-
-#: Template/Projects/add.ctp:9
-#: Template/Projects/submit.ctp:9
-msgid "Name of the project"
-msgstr ""
-
-#: Template/Projects/add.ctp:11
-#: Template/Projects/submit.ctp:11
-msgid "Description of the project"
-msgstr ""
-
-#: Template/Projects/add.ctp:12
-#: Template/Projects/submit.ctp:12
-msgid "Select organizations associated with the project. Leave blank if no organizations"
 msgstr ""
 
 #: Template/Projects/admin_index.ctp:18
@@ -1476,7 +1459,7 @@ msgstr ""
 
 #: Template/Users/email.ctp:12
 #: Template/Users/password.ctp:10;11;13
-#: Template/Users/register.ctp:6;7
+#: Template/Users/register.ctp:8;9
 msgid "Password"
 msgstr ""
 
@@ -1514,18 +1497,34 @@ msgid "Choose your username"
 msgstr ""
 
 #: Template/Users/register.ctp:6
-msgid "Choose a password"
+msgid "Enter your firstname"
+msgstr ""
+
+#: Template/Users/register.ctp:6
+msgid "Firstname"
 msgstr ""
 
 #: Template/Users/register.ctp:7
-msgid "Confirm password"
+msgid "Enter your lastname"
+msgstr ""
+
+#: Template/Users/register.ctp:7
+msgid "Lastname"
 msgstr ""
 
 #: Template/Users/register.ctp:8
-msgid "Email adress"
+msgid "Choose a password"
 msgstr ""
 
 #: Template/Users/register.ctp:9
+msgid "Confirm password"
+msgstr ""
+
+#: Template/Users/register.ctp:10
+msgid "Email adress"
+msgstr ""
+
+#: Template/Users/register.ctp:11
 msgid "Confirm email adress"
 msgstr ""
 

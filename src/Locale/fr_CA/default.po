@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-20 14:42+0000\n"
-"PO-Revision-Date: 2015-10-20 10:46-0500\n"
+"POT-Creation-Date: 2015-10-20 15:18+0000\n"
+"PO-Revision-Date: 2015-10-20 11:19-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -250,8 +250,7 @@ msgstr "Ajouter une organisation"
 msgid "Submit an organization"
 msgstr "Soumettre une organisation"
 
-#: Template/Cell/Sidebar/project.ctp:17 Template/Projects/add.ctp:10
-#: Template/Projects/submit.ctp:10
+#: Template/Cell/Sidebar/project.ctp:17
 msgid "Website of the project"
 msgstr "Site web du projet"
 
@@ -393,7 +392,7 @@ msgstr "Ajoute run commentaire"
 #: Template/TypeUsersUsers/edit.ctp:28 Template/Universities/add.ctp:17
 #: Template/Universities/edit.ctp:24 Template/Users/add.ctp:35
 #: Template/Users/edit.ctp:59 Template/Users/email.ctp:14
-#: Template/Users/password.ctp:15 Template/Users/register.ctp:11
+#: Template/Users/password.ctp:15 Template/Users/register.ctp:13
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -747,7 +746,7 @@ msgid "Phone"
 msgstr "Numéro de téléphone"
 
 #: Template/Pages/contact.ctp:7 Template/Users/email.ctp:9;10
-#: Template/Users/register.ctp:8;9
+#: Template/Users/register.ctp:10;11
 msgid "Email"
 msgstr "Courriel"
 
@@ -1124,22 +1123,6 @@ msgstr ""
 msgid "Add Project"
 msgstr "Ajouter projet"
 
-#: Template/Projects/add.ctp:9 Template/Projects/submit.ctp:9
-msgid "Name of the project"
-msgstr "Nom du projet"
-
-#: Template/Projects/add.ctp:11 Template/Projects/submit.ctp:11
-msgid "Description of the project"
-msgstr "Description du projet"
-
-#: Template/Projects/add.ctp:12 Template/Projects/submit.ctp:12
-msgid ""
-"Select organizations associated with the project. Leave blank if no "
-"organizations"
-msgstr ""
-"Sélectionnez les organisations associées au projet. Laissez vide s'il n'y a "
-"pas d'organisation associée."
-
 #: Template/Projects/admin_index.ctp:18 Template/Projects/index.ctp:17
 #: Template/Projects/view.ctp:50
 msgid "Organizations"
@@ -1446,7 +1429,7 @@ msgid "Confirm your password to confirm the change"
 msgstr "Confirmer votre mot de passe "
 
 #: Template/Users/email.ctp:12 Template/Users/password.ctp:10;11;13
-#: Template/Users/register.ctp:6;7
+#: Template/Users/register.ctp:8;9
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -1483,18 +1466,34 @@ msgid "Choose your username"
 msgstr "Entrez votre nom d'utilisateur"
 
 #: Template/Users/register.ctp:6
+msgid "Enter your firstname"
+msgstr "Entrez votre prénom"
+
+#: Template/Users/register.ctp:6
+msgid "Firstname"
+msgstr "Prénom"
+
+#: Template/Users/register.ctp:7
+msgid "Enter your lastname"
+msgstr "Entrez votre nom"
+
+#: Template/Users/register.ctp:7
+msgid "Lastname"
+msgstr "Nom"
+
+#: Template/Users/register.ctp:8
 msgid "Choose a password"
 msgstr "Entrez votre mot de passe"
 
-#: Template/Users/register.ctp:7
+#: Template/Users/register.ctp:9
 msgid "Confirm password"
 msgstr "Confirmez votre mot de passe"
 
-#: Template/Users/register.ctp:8
+#: Template/Users/register.ctp:10
 msgid "Email adress"
 msgstr "Entrez votre adresse courriel"
 
-#: Template/Users/register.ctp:9
+#: Template/Users/register.ctp:11
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
 
