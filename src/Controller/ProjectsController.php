@@ -196,11 +196,10 @@ class ProjectsController extends AppController
         }
 
         $this->set(compact('project', 'user'));
-        $this->set('_serialize', ['project']);
         $this->set(
             [
                 'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data', 'project'])
             ]
         );
     }

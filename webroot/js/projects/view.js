@@ -3,7 +3,6 @@ $(document).ready(function () {
     // When the table draw the columns
     table.fnSettings().aoRowCallback.push({
         "fn": function (nRow, aData, iDisplayIndex) {
-            console.log(aData);
             // Create Mission link
             $('td:eq(0)', nRow).html(
                 $('<a/>', {
