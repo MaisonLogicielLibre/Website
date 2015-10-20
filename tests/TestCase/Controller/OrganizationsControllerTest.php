@@ -107,7 +107,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $data = [
-            'name' => 'MLL',
+            'name' => 'testOrg',
             'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
@@ -170,7 +170,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
 
         $data = [
-            'name' => 'MLL',
+            'name' => 'testOrgSubmit',
             'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
