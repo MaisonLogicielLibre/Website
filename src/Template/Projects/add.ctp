@@ -6,10 +6,10 @@
         <fieldset>
             <legend><?= __('Add Project') ?></legend>
             <?php
-                echo $this->Form->input('name');
-                echo $this->Form->input('link');
-                echo $this->Form->input('description');
-                echo $this->Form->input('organizations._ids', ['options' => $organizations]);
+            echo $this->Form->input('name', ['label' => __('Name of the project')]);
+            echo $this->Form->input('link', ['label' => __('Website of the project')]);
+            echo $this->Form->input('description', ['label' => __('Description of the project')]);
+            echo $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]);
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
