@@ -88,9 +88,16 @@ class MissionsController extends AppController
     public function view($id = null)
     {
         $mission = $this->Missions->get($id, [
-            'contain' => ['Projects', 'MissionLevels', 'TypeMissions']
+            'contain' => [
+                'Projects' => ['Organizations'],
+                'MissionLevels',
+                'TypeMissions',
+                'Users'
+            ]
         ]);
-        $this->set('mission', $mission);
+
+        $projectId = $mission->getProjectId();
+        $this->set(compact('mission', 'projectId'));
         $this->set('_serialize', ['mission']);
     }
 

@@ -1,108 +1,77 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Mission'), ['action' => 'edit', $mission->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Mission'), ['action' => 'delete', $mission->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mission->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Missions'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Mission'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Mission Levels'), ['controller' => 'MissionLevels', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Mission Level'), ['controller' => 'MissionLevels', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Type Missions'), ['controller' => 'TypeMissions', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Type Mission'), ['controller' => 'TypeMissions', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="missions view large-9 medium-8 columns content">
-    <h3><?= h($mission->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($mission->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Session') ?></th>
-            <td><?= $this->Number->format($mission->session) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Length') ?></th>
-            <td><?= $this->Number->format($mission->length) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Mentor Id') ?></th>
-            <td><?= $this->Number->format($mission->mentor_id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Type Mission') ?></th>
-            <td><?= $this->Number->format($mission->type_mission) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($mission->created) ?></tr>
-        </tr>
-        <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($mission->modified) ?></tr>
-        </tr>
-    </table>
+<?= $this->cell('Sidebar::project', [$projectId]); ?>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <div class="row">
-        <h4><?= __('Description') ?></h4>
-        <?= $this->Text->autoParagraph(h($mission->description)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Competence') ?></h4>
-        <?= $this->Text->autoParagraph(h($mission->competence)); ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Mission Levels') ?></h4>
-        <?php if (!empty($mission->mission_levels)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Level') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($mission->mission_levels as $missionLevels): ?>
-            <tr>
-                <td><?= h($missionLevels->id) ?></td>
-                <td><?= h($missionLevels->level) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'MissionLevels', 'action' => 'view', $missionLevels->id]) ?>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="clearfix">
+                <h2 class="pull-left">
+                    <?= $mission->getName() ?>
+                </h2>
+                <a href="#"><h2 class="btn btn-danger pull-right">Candidater!</h2></a>
+            </div>
+                <div class="bs-callout bs-callout-warning">
+                <h4><?= __('Description'); ?></h4>
+                <p><?= $mission->getDescription(); ?></p>
+            </div>
 
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'MissionLevels', 'action' => 'edit', $missionLevels->id]) ?>
-
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'MissionLevels', 'action' => 'delete', $missionLevels->id], ['confirm' => __('Are you sure you want to delete # {0}?', $missionLevels->id)]) ?>
-
-                </td>
-            </tr>
+            </p>
+            <div class="bs-callout bs-callout-primary">
+                <h4><?= __('Skills'); ?></h4>
+                <p><?= $mission->getCompetence(); ?></p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= __('Information on the mission'); ?></h3>
+                </div>
+                <table class="table table-striped table-responsive">
+                    <tr>
+                        <td><strong><?= __('Term:'); ?></strong></td>
+                        <td><?= $mission->getSession(); ?></td>
+                    </tr>
+                    <tr>
+                        <td><strong><?= __('Length:'); ?></strong></td>
+                        <td><?= $mission->getLength(); ?></td>
+                    </tr>
+                    <tr>
+                        <td><strong><?= __('Places available:'); ?></strong></td>
+                        <td><?= $mission->getInternNbr(); ?></td>
+                    </tr>
+                    <tr>
+                        <td><strong><?= __('School year:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return __($v->getName());}, $mission->getLevels())) ?></td>
+                    </tr>
+                    <tr>
+                        <td><strong><?= __('Looking for:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return __($v->getName());}, $mission->getType())) ?></td>
+                    </tr>
+                    <tr>
+                        <td><strong><?= __('Mentor:'); ?></strong></td>
+                        <td><a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a></td>
+                    </tr>
+                </table>
+            </div>
+            <?php foreach($mission->getProject()->getOrganizations() as $org): ?>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= __('Company information'); ?></h3>
+                </div>
+                <table class="table table-bordered table-responsive">
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Compagny:'); ?></strong></td>
+                        <td style="border-left:none"><?= $org->getName(); ?></td>
+                    </tr>
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Website:'); ?></strong></td>
+                        <td style="border-left:none;"><a href="<?= $org->getWebsite(); ?>"><?= $org->getWebsite() ?></a></td>
+                    </tr>
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Full company details'); ?></strong></td>
+                        <td style="border-left:none;"><a href="<?= $this->Url->Build(['controller' => 'Organizations', 'action' => 'view', $org->getId()]); ?>"><?= __('See'); ?></a></td>
+                    </tr>
+                </table>
+            </div>
             <?php endforeach; ?>
-        </table>
-    <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Type Missions') ?></h4>
-        <?php if (!empty($mission->type_missions)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($mission->type_missions as $typeMissions): ?>
-            <tr>
-                <td><?= h($typeMissions->id) ?></td>
-                <td><?= h($typeMissions->name) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'TypeMissions', 'action' => 'view', $typeMissions->id]) ?>
-
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'TypeMissions', 'action' => 'edit', $typeMissions->id]) ?>
-
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'TypeMissions', 'action' => 'delete', $typeMissions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $typeMissions->id)]) ?>
-
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php endif; ?>
+        </div>
     </div>
 </div>
