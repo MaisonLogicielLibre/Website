@@ -82,7 +82,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $data = $this->DataTables->find('users');
+        $data = $this->DataTables->find('users', ['fields' => ['id', 'username', 'firstName', 'lastName']]);
 
         $this->set(
             [
