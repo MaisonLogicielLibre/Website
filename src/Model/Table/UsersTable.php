@@ -105,10 +105,10 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('firstName');
+            ->notEmpty('firstName');
 
         $validator
-            ->allowEmpty('lastName');
+            ->notEmpty('lastName');
 
         $validator
             ->allowEmpty('biography');
