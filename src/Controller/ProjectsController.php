@@ -124,6 +124,8 @@ class ProjectsController extends AppController
 
         $project->editAccepted(false);
         $project->editArchived(false);
+        $mentor = $this->Projects->Mentors->findById($this->request->session()->read('Auth.User.id'))->first();
+        $project->mentors = [$mentor];
 
         if ($this->request->is('post')) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
@@ -199,6 +201,8 @@ class ProjectsController extends AppController
 
         $project->editAccepted(true);
         $project->editArchived(false);
+        $mentor = $this->Projects->Mentors->findById($this->request->session()->read('Auth.User.id'))->first();
+        $project->mentors = [$mentor];
 
         if ($this->request->is('post')) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
