@@ -68,12 +68,43 @@ class MissionsControllerTest extends IntegrationTestCase
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
+            'type_missions_.ids' => 1,
+            'mission_levels_.ids' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06'
         ];
         $this->post('/missions/add/1', $data);
 
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test add - Ok
+     *
+     * @return void
+     */
+    public function testAddFailValidation()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [
+            'id' => 3,
+            'name' => 'Dev',
+            'session' => 3,
+            'length' => 3,
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'competence' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'internNbr' => 1,
+            'project_id' => 1,
+            'mentor_id' => 1,
+            'type_missions_.ids' => '',
+            'mission_levels_.ids' => '',
+            'created' => '2015-10-20 15:10:06',
+            'modified' => '2015-10-20 15:10:06'
+        ];
+        $this->post('/missions/add/1', $data);
+
+        $this->assertResponseSuccess();
     }
 
     /**

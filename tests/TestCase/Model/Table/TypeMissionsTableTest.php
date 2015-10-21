@@ -69,10 +69,58 @@ class TypeMissionsTableTest extends TestCase
      * Test getName
      * @return void
      */
-    public function testGetName()
+    public function testGetName1()
     {
         $id = 1;
-        $expected = 'Intern';
+        $expected = __('Intern');
+
+        $type = $this->TypeMissions->get($id);
+
+        $result = $type->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getName
+     * @return void
+     */
+    public function testGetName2()
+    {
+        $id = 2;
+        $expected = __('Volunteer');
+
+        $type = $this->TypeMissions->get($id);
+
+        $result = $type->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getName
+     * @return void
+     */
+    public function testGetName3()
+    {
+        $id = 3;
+        $expected = __('Master');
+
+        $type = $this->TypeMissions->get($id);
+
+        $result = $type->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getName
+     * @return void
+     */
+    public function testGetName4()
+    {
+        $id = 4;
+        $expected = __('Capstone');
 
         $type = $this->TypeMissions->get($id);
 

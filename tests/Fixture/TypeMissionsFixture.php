@@ -39,5 +39,17 @@ class TypeMissionsFixture extends TestFixture
             'id' => 1,
             'name' => 'Intern'
         ],
+        [
+            'id' => 2,
+            'name' => 'Volunteer'
+        ],
+        [
+            'id' => 3,
+            'name' => 'Master'
+        ],
+        [
+            'id' => 4,
+            'name' => 'Capstone'
+        ],
     ];
 }
