@@ -1,14 +1,25 @@
 <?php
+/**
+ * Entity of MissionLevelsTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * MissionLevel Entity.
+ * Entity of MissionLevelsTable
  *
- * @property int $id
- * @property string $name
- * @property \App\Model\Entity\Mission[] $missions
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class MissionLevel extends Entity
 {
@@ -22,7 +33,7 @@ class MissionLevel extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -33,9 +44,10 @@ class MissionLevel extends Entity
      */
     public function getName()
     {
-        if ($this->_properties['name'] == 'Master')
+        if ($this->_properties['name'] == 'Master') {
             return __('Master');
-        else
+        } else {
             return $this->_properties['name'];
+        }
     }
 }

@@ -1,16 +1,25 @@
 <?php
+/**
+ * Entity of MissionsMissionLevelTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * MissionsMissionLevel Entity.
+ * Entity of MissionsMissionLevelTable
  *
- * @property int $id
- * @property int $mission_level_id
- * @property \App\Model\Entity\MissionLevel $mission_level
- * @property int $mission_id
- * @property \App\Model\Entity\Mission $mission
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class MissionsMissionLevel extends Entity
 {
@@ -24,7 +33,7 @@ class MissionsMissionLevel extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

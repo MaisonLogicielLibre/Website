@@ -1,21 +1,25 @@
 <?php
+/**
+ * Entity of MissionTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Mission Entity.
+ * Entity of MissionTable
  *
- * @property int $id
- * @property int $session
- * @property int $length
- * @property string $description
- * @property string $competence
- * @property int $mentor_id
- * @property int $type_mission
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property \App\Model\Entity\Project $project
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class Mission extends Entity
 {
@@ -29,7 +33,7 @@ class Mission extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -103,19 +107,21 @@ class Mission extends Entity
      */
     public function getSession()
     {
+        // @codingStandardsIgnoreStart
         switch ($this->_properties['session']) {
             case 1:
                 return __('Winter');
-                break;
+            break;
             case 2:
                 return __('Summer');
-                break;
+            break;
             case 3:
                 return __('Fall');
-                break;
+            break;
             default:
                 return __('Not specified');
         }
+        // @codingStandardsIgnoreEnd
     }
 
     /**
@@ -124,6 +130,7 @@ class Mission extends Entity
      */
     public function getLength()
     {
+        // @codingStandardsIgnoreStart
         switch ($this->_properties['length']) {
             case 1:
                 return __('1 term');
@@ -137,6 +144,7 @@ class Mission extends Entity
             default:
                 return __('Not specified');
         }
+        // @codingStandardsIgnoreEnd
     }
 
     /**
@@ -167,24 +175,24 @@ class Mission extends Entity
     }
 
     /**
-     * Set the project_id
-     * @param integer $project_id project_id
-     * @return integer project_id
+     * Set the projectId
+     * @param int $projectId projectId
+     * @return int projectId
      */
-    public function editProjectId($project_id)
+    public function editProjectId($projectId)
     {
-        $this->set('project_id', $project_id);
-        return $project_id;
+        $this->set('project_id', $projectId);
+        return $projectId;
     }
 
     /**
-     * Set the mentor_id
-     * @param integer $mentor_id mentor_id
-     * @return integer mentor_id
+     * Set the mentorId
+     * @param int $mentorId mentorId
+     * @return int mentorId
      */
-    public function editMentorId($mentor_id)
+    public function editMentorId($mentorId)
     {
-        $this->set('mentor_id', $mentor_id);
-        return $mentor_id;
+        $this->set('mentor_id', $mentorId);
+        return $mentorId;
     }
 }

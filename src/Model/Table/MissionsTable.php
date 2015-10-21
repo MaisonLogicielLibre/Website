@@ -1,4 +1,13 @@
 <?php
+/**
+ * Missions Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\Mission;
@@ -10,10 +19,11 @@ use Cake\Validation\Validator;
 /**
  * Missions Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Projects
- * @property \Cake\ORM\Association\BelongsTo $Mentors
- * @property \Cake\ORM\Association\BelongsToMany $MissionLevels
- * @property \Cake\ORM\Association\BelongsToMany $TypeMissions
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class MissionsTable extends Table
 {
@@ -22,6 +32,7 @@ class MissionsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -34,30 +45,43 @@ class MissionsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Projects', [
+        $this->belongsTo(
+            'Projects',
+            [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Users', [
+            ]
+        );
+        $this->belongsTo(
+            'Users',
+            [
             'foreignKey' => 'mentor_id',
             'joinType' => 'INNER'
-        ]);
-        $this->belongsToMany('MissionLevels', [
+            ]
+        );
+        $this->belongsToMany(
+            'MissionLevels',
+            [
             'foreignKey' => 'mission_id',
             'targetForeignKey' => 'mission_level_id',
             'joinTable' => 'missions_mission_levels'
-        ]);
-        $this->belongsToMany('TypeMissions', [
+            ]
+        );
+        $this->belongsToMany(
+            'TypeMissions',
+            [
             'foreignKey' => 'mission_id',
             'targetForeignKey' => 'type_mission_id',
             'joinTable' => 'missions_type_missions'
-        ]);
+            ]
+        );
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -130,6 +154,7 @@ class MissionsTable extends Table
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)

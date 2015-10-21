@@ -11,10 +11,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\TypeMissionsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
-use Cake\ORM\RulesChecker;
 
 /**
  * Tests for TypeMissionsTable
@@ -42,7 +42,7 @@ class TypeMissionsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -54,7 +54,7 @@ class TypeMissionsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */

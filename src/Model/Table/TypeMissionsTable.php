@@ -1,4 +1,13 @@
 <?php
+/**
+ * TypeMissions Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\TypeMission;
@@ -10,7 +19,11 @@ use Cake\Validation\Validator;
 /**
  * TypeMissions Model
  *
- * @property \Cake\ORM\Association\BelongsToMany $Missions
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class TypeMissionsTable extends Table
 {
@@ -19,6 +32,7 @@ class TypeMissionsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -29,17 +43,21 @@ class TypeMissionsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsToMany('Missions', [
+        $this->belongsToMany(
+            'Missions',
+            [
             'foreignKey' => 'type_mission_id',
             'targetForeignKey' => 'mission_id',
             'joinTable' => 'missions_type_missions'
-        ]);
+            ]
+        );
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

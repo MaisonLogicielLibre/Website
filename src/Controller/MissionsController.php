@@ -68,19 +68,23 @@ class MissionsController extends AppController
      * View method
      *
      * @param string|null $id Mission id.
+     *
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $mission = $this->Missions->get($id, [
+        $mission = $this->Missions->get(
+            $id,
+            [
             'contain' => [
                 'Projects' => ['Organizations'],
                 'MissionLevels',
                 'TypeMissions',
                 'Users'
             ]
-        ]);
+            ]
+        );
 
         $projectId = $mission->getProjectId();
         $this->set(compact('mission', 'projectId'));
@@ -90,6 +94,8 @@ class MissionsController extends AppController
     /**
      * Add method
      *
+     * @param int $projectId Project id.
+     *
      * @return void Redirects on successful add, renders view otherwise.
      */
     public function add($projectId = null)
@@ -98,13 +104,15 @@ class MissionsController extends AppController
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
             // Get the project object
             $this->loadModel('Projects');
-            $project = $this->Projects->get($projectId, [
+            $project = $this->Projects->get(
+                $projectId,
+                [
                 'contain' => ['Mentors']
-            ]);
+                ]
+            );
 
             // Check if your a mentor on this project
             if ($user->isMentorOf($projectId)) {
-
                 $mission = $this->Missions->newEntity();
                 if ($this->request->is('post')) {
                     $mission = $this->Missions->patchEntity($mission, $this->request->data);

@@ -1,14 +1,25 @@
 <?php
+/**
+ * Entity of TypeMissionsTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * TypeMission Entity.
+ * Entity of TypeMissionsTable
  *
- * @property int $id
- * @property string $name
- * @property \App\Model\Entity\Mission[] $missions
+ * @category Entity
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class TypeMission extends Entity
 {
@@ -22,7 +33,7 @@ class TypeMission extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -33,8 +44,8 @@ class TypeMission extends Entity
      */
     public function getName()
     {
-        switch ($this->_properties['name'])
-        {
+        // @codingStandardsIgnoreStart
+        switch ($this->_properties['name']) {
             case 'Intern':
                 return __('Intern');
                 break;
@@ -48,5 +59,6 @@ class TypeMission extends Entity
                 return __('Capstone');
                 break;
         }
+        // @codingStandardsIgnoreEnd
     }
 }

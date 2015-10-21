@@ -1,14 +1,29 @@
 <?php
+/**
+ * Tests for MissionsMissionLevelsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsMissionLevelsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
-use Cake\ORM\RulesChecker;
 
 /**
- * App\Model\Table\MissionsMissionLevelsTable Test Case
+ * Tests for MissionsMissionLevelsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class MissionsMissionLevelsTableTest extends TestCase
 {
@@ -38,7 +53,7 @@ class MissionsMissionLevelsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -50,7 +65,7 @@ class MissionsMissionLevelsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */
@@ -88,5 +103,4 @@ class MissionsMissionLevelsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-
 }

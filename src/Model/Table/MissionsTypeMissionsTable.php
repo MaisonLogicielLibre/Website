@@ -1,4 +1,13 @@
 <?php
+/**
+ * MissionsTypeMissions Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\MissionsTypeMission;
@@ -10,8 +19,11 @@ use Cake\Validation\Validator;
 /**
  * MissionsTypeMissions Model
  *
- * @property \Cake\ORM\Association\BelongsTo $TypeMissions
- * @property \Cake\ORM\Association\BelongsTo $Missions
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class MissionsTypeMissionsTable extends Table
 {
@@ -20,6 +32,7 @@ class MissionsTypeMissionsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -30,20 +43,27 @@ class MissionsTypeMissionsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('TypeMissions', [
+        $this->belongsTo(
+            'TypeMissions',
+            [
             'foreignKey' => 'type_mission_id',
             'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Missions', [
+            ]
+        );
+        $this->belongsTo(
+            'Missions',
+            [
             'foreignKey' => 'mission_id',
             'joinType' => 'INNER'
-        ]);
+            ]
+        );
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -60,6 +80,7 @@ class MissionsTypeMissionsTable extends Table
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)

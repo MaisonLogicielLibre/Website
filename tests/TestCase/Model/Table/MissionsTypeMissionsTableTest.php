@@ -1,14 +1,29 @@
 <?php
+/**
+ * Tests for MissionsTypeMissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTypeMissionsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
-use Cake\ORM\RulesChecker;
 
 /**
- * App\Model\Table\MissionsTypeMissionsTable Test Case
+ * Tests for MissionsTypeMissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
  */
 class MissionsTypeMissionsTableTest extends TestCase
 {
@@ -27,7 +42,7 @@ class MissionsTypeMissionsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -39,7 +54,7 @@ class MissionsTypeMissionsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */

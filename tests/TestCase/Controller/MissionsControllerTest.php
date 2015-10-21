@@ -1,11 +1,26 @@
 <?php
+/**
+ * Tests for MissionsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\MissionsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\MissionsController Test Case
+ * Tests for MissionsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
  */
 class MissionsControllerTest extends IntegrationTestCase
 {
