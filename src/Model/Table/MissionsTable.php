@@ -113,7 +113,17 @@ class MissionsTable extends Table
             ->notEmpty('competence');
 
         $validator
-            ->add('internNbr', 'valid', ['rule' => 'numeric'])
+            ->add('internNbr',
+                [
+                    'valid' => [
+                        'rule' => 'numeric',
+                        'message' => __('The value must be a number')
+                    ],
+                    'range' => [
+                        'rule' => ['range', 1, 100],
+                        "message" => __('Please enter a number between 1 and 100')
+                    ]
+                ])
             ->requirePresence('internNbr', 'create')
             ->notEmpty('internNbr');
 
