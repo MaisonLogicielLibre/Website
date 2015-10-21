@@ -25,8 +25,54 @@
                 <!--
                 EDITION
                 -->
-
+				<?php
+                    if ($user->isOwnerOf($object->id)):
+                ?>
+                <li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'addMember',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Edit members') ?>
+                    </a>
+                </li>
+				<li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'addOwner',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Edit owners') ?>
+                    </a>
+                </li>
                 <?php
+                    endif;
+					if ($user->isMemberOf($object->id)):
+				?>
+				<li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'quit',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-remove fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Quit the organization') ?>
+                    </a>
+                </li>
+				<?php
+					endif;
                     if ($user->hasPermissionName(['edit_organizations'])):
                 ?>
                 <li>

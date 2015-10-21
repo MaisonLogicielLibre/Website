@@ -27,5 +27,33 @@
                 </div>
             </div>
         <?php endif; ?>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title"><?= __('Members') ?></h3>
+				</div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th><?= __('Name') ?></th>
+							<th><?= __('Owner') ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $added = [] ?>
+						<?php foreach($members as $member ): ?>
+							<tr>
+								<td><?= $this->html->link('(' . $member->getUsername() . ') ' . $member->getname(), ['controller' => 'Users', 'action' => 'view', $member->getId()]) ?></td>
+								<?php if($member->isOwnerOf($organization->id)) { ?>
+										<td class="col-md-1 text-center"><i class="fa fa-check ico-green"></i></td> 
+									  <?php } else { ?>
+										<td class="col-md-1 text-center"><i class="fa fa-remove ico-red"></i></td> 
+									  <?php } ?>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
     </div>
 </div>
