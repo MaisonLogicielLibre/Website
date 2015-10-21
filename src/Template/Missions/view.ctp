@@ -6,7 +6,7 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-                <a href="#"><h2 class="btn btn-danger pull-right">Candidater!</h2></a>
+                <a href="#"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
             </div>
                 <div class="bs-callout bs-callout-warning">
                 <h4><?= __('Description'); ?></h4>
@@ -26,27 +26,27 @@
                 </div>
                 <table class="table table-striped table-responsive">
                     <tr>
-                        <td><strong><?= __('Term:'); ?></strong></td>
+                        <td style="white-space:pre"><strong><?= __('Term:'); ?></strong></td>
                         <td><?= $mission->getSession(); ?></td>
                     </tr>
                     <tr>
-                        <td><strong><?= __('Length:'); ?></strong></td>
+                        <td style="white-space:pre"><strong><?= __('Length:'); ?></strong></td>
                         <td><?= $mission->getLength(); ?></td>
                     </tr>
                     <tr>
-                        <td><strong><?= __('Places available:'); ?></strong></td>
+                        <td style="white-space:pre"><strong><?= __('Places available:'); ?></strong></td>
                         <td><?= $mission->getInternNbr(); ?></td>
                     </tr>
                     <tr>
-                        <td><strong><?= __('School year:'); ?></strong></td>
-                        <td><?= implode(', ', array_map(function($v) {return __($v->getName());}, $mission->getLevels())) ?></td>
+                        <td style="white-space:pre"><strong><?= __('School year:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return $v->getName();}, $mission->getLevels())) ?></td>
                     </tr>
                     <tr>
-                        <td><strong><?= __('Looking for:'); ?></strong></td>
-                        <td><?= implode(', ', array_map(function($v) {return __($v->getName());}, $mission->getType())) ?></td>
+                        <td style="white-space:pre"><strong><?= __('Looking for:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return $v->getName();}, $mission->getType())) ?></td>
                     </tr>
                     <tr>
-                        <td><strong><?= __('Mentor:'); ?></strong></td>
+                        <td style="white-space:pre"><strong><?= __('Mentor:'); ?></strong></td>
                         <td><a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a></td>
                     </tr>
                 </table>
@@ -58,7 +58,7 @@
                 </div>
                 <table class="table table-bordered table-responsive">
                     <tr>
-                        <td style="border-right:none;"><strong><?= __('Compagny:'); ?></strong></td>
+                        <td style="border-right:none;"><strong><?= __('Company:'); ?></strong></td>
                         <td style="border-left:none"><?= $org->getName(); ?></td>
                     </tr>
                     <tr>

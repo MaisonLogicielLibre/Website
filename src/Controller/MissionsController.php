@@ -111,7 +111,6 @@ class MissionsController extends AppController
 
                     $mission->editProjectId($projectId);
                     $mission->editMentorId($user->getId());
-
                     if ($this->Missions->save($mission)) {
                         $this->Flash->success(__('The mission has been saved.'));
                         return $this->redirect(['controller' => 'Projects', 'action' => 'view', $projectId]);
@@ -120,8 +119,8 @@ class MissionsController extends AppController
                     }
                 }
                 $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
-                $missionLevels = $this->Missions->MissionLevels->find('list', ['limit' => 200]);
-                $typeMissions = $this->Missions->TypeMissions->find('list', ['limit' => 200]);
+                $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
+                $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
                 $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions', 'projectId'));
                 $this->set('_serialize', ['mission']);
             } else {

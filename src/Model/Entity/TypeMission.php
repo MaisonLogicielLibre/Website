@@ -33,6 +33,20 @@ class TypeMission extends Entity
      */
     public function getName()
     {
-        return $this->_properties['name'];
+        switch ($this->_properties['name'])
+        {
+            case 'Intern':
+                return __('Intern');
+                break;
+            case 'Volunteer':
+                return __('Volunteer');
+                break;
+            case 'Master':
+                return __('Master');
+                break;
+            case 'Capstone':
+                return __('Capstone');
+                break;
+        }
     }
 }

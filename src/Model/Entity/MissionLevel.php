@@ -33,6 +33,9 @@ class MissionLevel extends Entity
      */
     public function getName()
     {
-        return $this->_properties['name'];
+        if ($this->_properties['name'] == 'Master')
+            return __('Master');
+        else
+            return $this->_properties['name'];
     }
 }
