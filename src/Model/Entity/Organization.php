@@ -82,21 +82,21 @@ class Organization extends Entity
     {
         return $this->_properties['description'];
     }
-	
-	/**
+    
+    /**
      * Get the owners
      * @return array owners
      */
-	public function getOwners()
+    public function getOwners()
     {
         return $this->_properties['owners'];
     }
-	
-	/**
+    
+    /**
      * Get the members
      * @return array members
      */
-	public function getMembers()
+    public function getMembers()
     {
         return $this->_properties['members'];
     }
@@ -194,10 +194,10 @@ class Organization extends Entity
         $this->set('isRejected', $isRejected);
         return $isRejected;
     }
-	
-	/**
+    
+    /**
      * Set the owners
-     * @param array $owners
+     * @param array $owners owners
      * @return array $owners
      */
     public function editOwners($owners)
@@ -205,10 +205,10 @@ class Organization extends Entity
         $this->set('owners', $owners);
         return $owners;
     }
-	
-	/**
+    
+    /**
      * Set the members
-     * @param array $members
+     * @param array $members members
      * @return array $members
      */
     public function editMembers($members)
