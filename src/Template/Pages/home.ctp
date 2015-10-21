@@ -1,113 +1,64 @@
-<div id="top" class="header">
-    <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'width' => '100%', 'height' => 'auto', 'class' => 'img-responsive banner']) ?>
-</div>
-<section id="about" class="about">
-<hr>
-<div class="row">
-    <div class="col-xl-12 text-center">
-        <div style="margin:20px; margin-top:5px">
-            <div>
-                <b style="font-size : 20px;"><?= $this->Html->link(__('ML2 need a new logo!'), ['controller' => 'Pages', 'action' => 'contest']);?></b><br>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col-xl-12 text-center">
-        <div style="margin:20px; margin-top:5px">
-            <div class="quotetitle">
-                <b style="font-size : 20px;"> <?= $this->Html->link(__('Register today!'), ['controller' => 'Users', 'action' => 'register']);?> </b><br>
-				<p> <?= __('Join us at ML² in building the future of Free Software and Open Source code.') ?></p> <br><br>
-				<p> <?= __('We need feedback!') ?> </p>
-                <input type="button" value="<?php echo __('Take the ML² student survey') ?>" style="font-size: 16px; padding: 5px 10px 5px 10px; font-weight: bold;border: none;background-color: black; color: white;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Participer au sondage'; }" />
-            </div>
-            <br>
-            <div class="quotecontent">
-                <div style="display: none;">
-					<?php if(!empty($_GET['lang'])) {
-							$lang = $_GET['lang'];
-						  } else {
-							$lang = 'fr_CA';
-						  }
-						  
-						  if ($lang == "fr_CA") {?>
-						<iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
-					<?php } else { ?>
-						<iframe src="https://docs.google.com/forms/d/1776VuKQwbZvC-WHBL-5imu5ZMrQnb8o3t9x7qGz6SWI/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
-					<?php }  ?>
-				</div>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="home-text">
-	<h2><b><?php echo __('Our Mission') ?></b></h2>
+<br><br>
 
-	<p class="lead">
-		<?php echo __('This initiative is born from a meeting between the ÉTS director and Google
-		Montreal director. Seeing the difficulty that students have to hone their
-		habilities to develop complex software and show the end product (code) to
-		recruiters, they decided to establish the Maison du Logiciel Libre (ML2)') ?>
-	</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5 col-sm-6">
+			<div class="clearfix"></div>
+			<h2 class="section-heading"><?=__("Join the community");?> :<br><?=__("Sign up");?></h2>
+			<h4 class="text-justify"><?=__("Join MLL to join a community established in 7 universities of Montreal to share with industries in the world of free software and / or open-source.");?></h4>
+			<a class="btn btn-success" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']);?>"><?=__("Register");?></a>
+			<a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']);?>"><?=__("View projects");?></a>
+		</div>
+		<div class="col-lg-6 col-lg-offset-1 col-sm-6">
+			<?= $this->Html->image('banner.png', ['alt' => 'ML2', 'class' => 'img-responsive']) ?>
+		</div>
+	</div>
+</div><br><br>
+<!-- /.container -->
 
-	<p class="lead">
-		<?php echo __('The foremost mission of ML2 is to offer a place of meeting and sharing in
-		Montreal allowing the students to participate in open source software
-		projects. This initiative try to reach students across of Montreal
-		universities and to include the largest possible community, thus allowing
-		the students to meet participants from multiple horizons with varied
-		academic and professional experiences.') ?>
-	</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+			<hr class="section-heading-spacer">
+			<div class="clearfix"></div>
+			<h2 class="section-heading"><?=__("Hire for your projects");?></h2>
+			<h4 class="text-justify"><?=__("Whether you are an industrial or academic representative, just submit your project to the community and meet our students looking for a project.");?></h4>
+			<a class="btn btn-success" href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'submit']);?>"><?= __('Submit a project');?></a>
+			<a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'submit']);?>"><?=__('Create an organization');?></a>
+		</div>
+		<div class="col-lg-4 col-sm-pull-6  col-sm-6">
+			<?= $this->Html->image('bitbucket_github.png', ['alt' => 'ML2', 'class' => 'img-responsive']) ?>
+		</div>
+	</div>
+</div><br><br>
+<!-- /.container -->
 
-	<p class="lead">
-		<?php echo __('The mission of ML2 is an educational mission. Multiple activities will be
-		eventually offered : free development, graduation projects, internships,
-		mastering projects, … All of these activities will gravitate around open
-		source projects. These projects will be proposed by : students, teachers ,
-		universities or organisations wanting to invest in students formation.
-		Seminars will complete this educational component.') ?>
-	</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5 col-sm-6">
+			<hr class="section-heading-spacer">
+			<div class="clearfix"></div>
+			<h2 class="section-heading"><?= __("Discover MLL and help us to evolve");?></h2>
+			<h4 class="text-justify"><?= __("Discover MLL and it's mission, but do not forget that we primarily need you to evolve!");?> </h4>
+			<a class="btn btn-info" href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contest']);?>"><?= __('Logo contest');?></a>
+		</div>
+		<div class="col-lg-5 col-lg-offset-2 col-sm-6">
+			<br>
+			<?= $this->Html->image('logohere.png', ['alt' => 'ML2', 'class' => 'img-responsive']) ?>
+		</div>
+	</div>
+</div><br><br>
 
-	<p class="lead">
-		<?php echo __('By participating in ML2 activities, the students will be able to (i)
-		discover the open source software world with its codes and objectives; (ii)
-		hone their habilities to analyse, design and develop complex tasks ; (iii)
-		build a portfolio with their open source achievements ; (iv) obtain
-		recognitions from their university.') ?>
-	</p>
-</div>
-
-
-<div class="home-text">
-	<h2><b><?php echo __('Value proposition for industry:') ?></b></h2>
-
-	<p class="lead">
-		<?php echo __('Access to potential new hires in our logicel libre developer community') ?> <br>
-		<?php echo __('Develop new open source features faster and cheaper in your products and dependencies') ?> <br>			
-		<?php echo __('Promote your company and create networks across the software engineering and computer science departments of 7 universities') ?> <br>         
-		<?php echo __('Create Goodwill in the University and open source communities') ?> <br>
-	</p>
-	<br>
-	<h2><b><?php echo __('Value proposition for universities and students:') ?></b></h2>
-
-	<p class="lead">
-		<?php echo __('Match Interns with Industry and Academic funded open source projects') ?> <br>
-		<?php echo __('Match Capstone students with Industry and Academic sponsored open source projects') ?> <br>			
-		<?php echo __('Support for graduate students working on open source projects') ?> <br>         
-		<?php echo __('Project mentorship (each submitted project must have a mentor)') ?> <br>
-		<?php echo __('Teaching assistant (TAs) access') ?> <br>
-		<?php echo __('Additional mentor access from ML2 staff') ?> <br>
-		<?php echo __('Networking with ML2 members: students from 7 universities, open source community, mentors, and industry') ?> <br>
-		<?php echo __('Promotion of projects and students on the ML2 website') ?> <br>
-		<?php echo __('CV Portfolio testimonial plugin (testimonials from TAs & mentors)') ?> <br>
-		<?php echo __('CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)') ?> <br>
-		<?php echo __('Access to ML2 academic and industry conferences and seminars') ?> <br>
-		<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>
-	</p>
-</div>
-<div class="clear">
-</div>
-
-</section>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+			<hr class="section-heading-spacer">
+			<div class="clearfix"></div>
+			<h2 class="section-heading"><?=__("Participate in meetups");?></h2>
+			<h4 class="text-justify"><?=__("Meet the community and improve your knowledge in our meetups at the École de Technologie Supérieure.");?></h4>
+		</div>
+		<div class="col-lg-4 col-sm-pull-6  col-sm-6">
+		</div>
+	</div>
+</div><br><br>
+<!-- /.container -->
