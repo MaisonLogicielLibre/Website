@@ -196,7 +196,16 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
-            ->notEmpty('username');
+            ->notEmpty('username')
+            ->add(
+                'username',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This username is already taken.')
+                 ]
+            );
 
         $validator
             ->add(
