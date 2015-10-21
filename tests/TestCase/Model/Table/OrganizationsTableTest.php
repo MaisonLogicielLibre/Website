@@ -37,6 +37,8 @@ class OrganizationsTableTest extends TestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Owners',
+    'app.organizations_Members',
     'app.users',
     'app.type_users',
     'app.svn_users',

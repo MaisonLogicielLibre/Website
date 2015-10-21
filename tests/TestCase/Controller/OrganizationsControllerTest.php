@@ -35,6 +35,8 @@ class OrganizationsControllerTest extends IntegrationTestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Members',
+    'app.organizations_Owners',
     'app.users',
     'app.type_users',
     'app.svn_users',
@@ -386,6 +388,173 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 1]);
 
         $this->post('/organizations/editStatus/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test addOwner - Get
+     *
+     * @return void
+     */
+    public function testAddOwnerGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/addOwner/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test addOwner - OK
+     *
+     * @return void
+     */
+    public function testAddOwnerOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $data = ['users' => [2]];
+
+        $this->post('/organizations/addOwner/1', $data);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test addOwner - No Authentification
+     *
+     * @return void
+     */
+    public function testAddOwnerNoAuth()
+    {
+        $this->get('/organizations/addOwner/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test addOwner - No Permission
+     *
+     * @return void
+     */
+    public function testAddOwnerNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/addOwner/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test addMember - Get
+     *
+     * @return void
+     */
+    public function testAddMemberGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/addMember/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test addMember - OK
+     *
+     * @return void
+     */
+    public function testAddMemberOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $data = ['users' => [2]];
+
+        $this->post('/organizations/addMember/1', $data);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test addMember - No Authentification
+     *
+     * @return void
+     */
+    public function testAddMemberNoAuth()
+    {
+        $this->get('/organizations/addMember/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test addMember - No Permission
+     *
+     * @return void
+     */
+    public function testAddMemberNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/addMember/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test quit - Get
+     *
+     * @return void
+     */
+    public function testQuitGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/quit/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test quit - OK
+     *
+     * @return void
+     */
+    public function testQuitOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/quit/1');
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test quit - Single
+     *
+     * @return void
+     */
+    public function testQuitSingle()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/quit/2');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test quit - No Authentification
+     *
+     * @return void
+     */
+    public function testQuitNoAuth()
+    {
+        $this->get('/organizations/quit/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test quit - No Permission
+     *
+     * @return void
+     */
+    public function testQuitNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/quit/1');
         $this->assertResponseSuccess();
     }
 
