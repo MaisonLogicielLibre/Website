@@ -113,7 +113,8 @@ class MissionsTable extends Table
             ->notEmpty('competence');
 
         $validator
-            ->add('internNbr',
+            ->add(
+                'internNbr',
                 [
                     'valid' => [
                         'rule' => 'numeric',
@@ -123,15 +124,16 @@ class MissionsTable extends Table
                         'rule' => ['range', 1, 100],
                         "message" => __('Please enter a number between 1 and 100')
                     ]
-                ])
+                ]
+            )
             ->requirePresence('internNbr', 'create')
             ->notEmpty('internNbr');
 
-        $validator
-            ->add(
-                'type_missions',
-                'custom',
-                [
+                $validator
+                ->add(
+                    'type_missions',
+                    'custom',
+                    [
                     'rule' => function ($value, $context) {
                         if (empty($context['data']['type_missions']['_ids'])) {
                             return false;
@@ -139,13 +141,13 @@ class MissionsTable extends Table
                         return true;
                     },
                     'message' => __('You must select at least one item.')]
-            );
+                );
 
-        $validator
-            ->add(
-                'mission_levels',
-                'custom',
-                [
+                $validator
+                ->add(
+                    'mission_levels',
+                    'custom',
+                    [
                     'rule' => function ($value, $context) {
                         if (empty($context['data']['mission_levels']['_ids'])) {
                             return false;
@@ -153,10 +155,10 @@ class MissionsTable extends Table
                         return true;
                     },
                     'message' => __('You must select at least one item.')]
-            );
+                );
 
 
-        return $validator;
+                return $validator;
     }
 
     /**
