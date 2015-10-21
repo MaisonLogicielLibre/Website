@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * TypeUsersFixture
+ * OrganizationsMembersFixture
  *
  */
-class TypeUsersFixture extends TestFixture
+class OrganizationsMembersFixture extends TestFixture
 {
 
     /**
@@ -18,7 +18,8 @@ class TypeUsersFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'organization_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -37,31 +38,8 @@ class TypeUsersFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'User'
+            'organization_id' => 1,
+            'user_id' => 1
         ],
-		[
-            'id' => 2,
-            'name' => 'Executive'
-        ],
-		[
-            'id' => 3,
-            'name' => 'Administrator'
-        ],
-        [
-            'id' => 4,
-            'name' => 'Dyn_mentor'
-        ],
-        [
-            'id' => 5,
-            'name' => 'Dyn_OrganizationOwner'
-        ],
-		[
-            'id' => 6,
-            'name' => 'Executive'
-        ],
-		[
-            'id' => 7,
-            'name' => 'Dyn_OrganizationMember'
-        ]
     ];
 }
