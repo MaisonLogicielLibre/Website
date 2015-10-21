@@ -93,6 +93,35 @@ class MissionsTable extends Table
             ->requirePresence('internNbr', 'create')
             ->notEmpty('internNbr');
 
+        $validator
+            ->add(
+                'type_missions',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                        if (empty($context['data']['type_missions']['_ids'])) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('You must select at least one item.')]
+            );
+
+        $validator
+            ->add(
+                'mission_levels',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                        if (empty($context['data']['mission_levels']['_ids'])) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('You must select at least one item.')]
+            );
+
+
         return $validator;
     }
 
