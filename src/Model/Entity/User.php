@@ -345,15 +345,19 @@ class User extends Entity
      */
     public function getPermissions()
     {
-        $roles = $this->getRoles();
+        $roles = TableRegistry::get('TypeUsersUsers');
         $permissions = TableRegistry::get('PermissionsTypeUsers');
+        
+        $listRolesUser = $this->getRoles();
+    
         $listPermissions = [];
-        foreach ($roles as $role) {
+        foreach ($listRolesUser as $role) {
             $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->id])->contain(['Permissions'])->toArray();
             foreach ($rolePermissions as $permission) {
                 $listPermissions[] = $permission->permission;
             }
         }
+    
         return $listPermissions;
     }
 
@@ -368,14 +372,28 @@ class User extends Entity
         $rolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
 
         $listRolesUser = [];
+    
         foreach ($rolesUser as $role) {
             $listRolesUser[] = $role->type_user;
         }
+        
+            
+
         // Role dynamic
         $roles = TableRegistry::get('TypeUsers');
+
         if (!empty($this->getProjectsMentored())) {
             $listRolesUser[] = $roles->findByName('Dyn_mentor')->first();
         }
+        
+        if (!empty($this->getOrganizationsOwned())) {
+            $listRolesUser[] = $roles->findByName('Dyn_OrganizationOwner')->first();
+        }
+        
+        if (!empty($this->getOrganizationsJoined())) {
+            $listRolesUser[] = $roles->findByName('Dyn_OrganizationMember')->first();
+        }
+        
         return $listRolesUser;
     }
 
@@ -395,6 +413,40 @@ class User extends Entity
 
         return $listProject;
     }
+    
+    /**
+     * Get organizations where user is owner
+     * @return array
+     */
+    public function getOrganizationsOwned()
+    {
+        $organizations = TableRegistry::get('OrganizationsOwners');
+        $organizations = $organizations->find('all')->where(['user_id' => $this->getId()])->contain(['Organizations'])->toArray();
+        
+        $listOrganization = [];
+        foreach ($organizations as $organization) {
+            $listOrganization[] = $organization->organization;
+        }
+        
+        return $listOrganization;
+    }
+    
+    /**
+     * Get organizations where user is member
+     * @return array
+     */
+    public function getOrganizationsJoined()
+    {
+        $organizations = TableRegistry::get('OrganizationsMembers');
+        $organizations = $organizations->find('all')->where(['user_id' => $this->getId()])->contain(['Organizations'])->toArray();
+
+        $listOrganization = [];
+        foreach ($organizations as $organization) {
+            $listOrganization[] = $organization->organization;
+        }
+
+        return $listOrganization;
+    }
 
     /**
      * Get if the user is mentor on the project in argument
@@ -406,6 +458,38 @@ class User extends Entity
         $listProject = $this->getProjectsMentored();
         foreach ($listProject as $project) {
             if ($project->id == $projectId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Get if the user is owner of the organization in argument
+     * @param Project $orgId orgID
+     * @return array
+     */
+    public function isOwnerOf($orgId)
+    {
+        $listOrg = $this->getOrganizationsOwned();
+        foreach ($listOrg as $org) {
+            if ($org->id == $orgId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Get if the user is member of the organization in argument
+     * @param Project $orgId orgID
+     * @return array
+     */
+    public function isMemberOf($orgId)
+    {
+        $listOrg = $this->getOrganizationsJoined();
+        foreach ($listOrg as $org) {
+            if ($org->id == $orgId) {
                 return true;
             }
         }

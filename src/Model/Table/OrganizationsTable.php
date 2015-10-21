@@ -52,6 +52,24 @@ class OrganizationsTable extends Table
             'joinTable' => 'organizations_projects'
             ]
         );
+        $this->belongsToMany(
+            'Owners',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'organization_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'organizations_owners'
+            ]
+        );
+        $this->belongsToMany(
+            'Members',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'organization_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'organizations_members'
+            ]
+        );
     }
 
     /**
