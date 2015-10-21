@@ -57,7 +57,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><?= $this->Html->link(__('ML2'), ['controller' => 'Pages', 'action' => 'home']);?></li>
-					<li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -67,7 +66,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Organizations') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -90,7 +88,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>                     
 						</ul>
 					</li>
-					<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
 					<?php if($this->request->session()->read('Auth.User.username')) {?>
 						<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
 						<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
@@ -123,8 +120,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="row">
 			<div class="text-center">
 				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
-				400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
-				<br><i class="fa fa-phone-square"></i> (514) 781-9312
+				<p><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?>
 				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
 			</div>
 		</div>
