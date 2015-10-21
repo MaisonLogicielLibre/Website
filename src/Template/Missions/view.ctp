@@ -1,87 +1,77 @@
-<div class="actions columns col-lg-2 col-md-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="nav nav-stacked nav-pills">
-        <li><?= $this->Html->link(__('Edit Mission'), ['action' => 'edit', $mission->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Mission'), ['action' => 'delete', $mission->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mission->id), 'class' => 'btn-danger']) ?> </li>
-        <li><?= $this->Html->link(__('List Missions'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Mission'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects Users'), ['controller' => 'ProjectsUsers', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Projects User'), ['controller' => 'ProjectsUsers', 'action' => 'add']) ?> </li>
-    </ul>
-</div>
-<div class="missions view col-lg-10 col-md-9 columns">
-    <h2><?= h($mission->id) ?></h2>
+<?= $this->cell('Sidebar::project', [$projectId]); ?>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <div class="row">
-        <div class="col-lg-5 columns strings">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h6 class="subheader"><?= __('Project') ?></h6>
-                    <p><?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?></p>
-                    <h6 class="subheader"><?= __('Role') ?></h6>
-                    <p><?= h($mission->role) ?></p>
-                </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="clearfix">
+                <h2 class="pull-left">
+                    <?= $mission->getName() ?>
+                </h2>
+                <a href="#"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+            </div>
+                <div class="bs-callout bs-callout-warning">
+                <h4><?= __('Description'); ?></h4>
+                <p><?= $mission->getDescription(); ?></p>
+            </div>
+
+            </p>
+            <div class="bs-callout bs-callout-primary">
+                <h4><?= __('Skills'); ?></h4>
+                <p><?= $mission->getCompetence(); ?></p>
             </div>
         </div>
-        <div class="col-lg-2 columns numbers end">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h6 class="subheader"><?= __('Id') ?></h6>
-                    <p><?= $this->Number->format($mission->id) ?></p>
-                    <h6 class="subheader"><?= __('Active') ?></h6>
-                    <p><?= $this->Number->format($mission->active) ?></p>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= __('Information on the mission'); ?></h3>
                 </div>
+                <table class="table table-striped table-responsive">
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('Term:'); ?></strong></td>
+                        <td><?= $mission->getSession(); ?></td>
+                    </tr>
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('Length:'); ?></strong></td>
+                        <td><?= $mission->getLength(); ?></td>
+                    </tr>
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('Places available:'); ?></strong></td>
+                        <td><?= $mission->getInternNbr(); ?></td>
+                    </tr>
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('School year:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return $v->getName();}, $mission->getLevels())) ?></td>
+                    </tr>
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('Looking for:'); ?></strong></td>
+                        <td><?= implode(', ', array_map(function($v) {return $v->getName();}, $mission->getType())) ?></td>
+                    </tr>
+                    <tr>
+                        <td style="white-space:pre"><strong><?= __('Mentor:'); ?></strong></td>
+                        <td><a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a></td>
+                    </tr>
+                </table>
             </div>
-        </div>
-    </div>
-    <div class="row texts">
-        <div class="columns col-lg-9">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h6 class="subheader"><?= __('Mission') ?></h6>
-                    <?= $this->Text->autoParagraph(h($mission->mission)); ?>
+            <?php foreach($mission->getProject()->getOrganizations() as $org): ?>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= __('Company information'); ?></h3>
                 </div>
+                <table class="table table-bordered table-responsive">
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Company:'); ?></strong></td>
+                        <td style="border-left:none"><?= $org->getName(); ?></td>
+                    </tr>
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Website:'); ?></strong></td>
+                        <td style="border-left:none;"><a href="<?= $org->getWebsite(); ?>"><?= $org->getWebsite() ?></a></td>
+                    </tr>
+                    <tr>
+                        <td style="border-right:none;"><strong><?= __('Full company details'); ?></strong></td>
+                        <td style="border-left:none;"><a href="<?= $this->Url->Build(['controller' => 'Organizations', 'action' => 'view', $org->getId()]); ?>"><?= __('See'); ?></a></td>
+                    </tr>
+                </table>
             </div>
-        </div>
-    </div>
-</div>
-<div class="related row">
-    <div class="column col-lg-12">
-    <h4 class="subheader"><?= __('Related ProjectsUsers') ?></h4>
-    <?php if (!empty($mission->projects_users)): ?>
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Project Id') ?></th>
-                <th><?= __('Cv') ?></th>
-                <th><?= __('Description') ?></th>
-                <th><?= __('Presentation') ?></th>
-                <th><?= __('Accepted') ?></th>
-                <th><?= __('Is Mentor') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($mission->projects_users as $projectsUsers): ?>
-            <tr>
-                <td><?= h($projectsUsers->id) ?></td>
-                <td><?= h($projectsUsers->user_id) ?></td>
-                <td><?= h($projectsUsers->project_id) ?></td>
-                <td><?= h($projectsUsers->cv) ?></td>
-                <td><?= h($projectsUsers->description) ?></td>
-                <td><?= h($projectsUsers->presentation) ?></td>
-                <td><?= h($projectsUsers->accepted) ?></td>
-                <td><?= h($projectsUsers->is_mentor) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link('<span class="glyphicon glyphicon-zoom-in"></span><span class="sr-only">' . __('View') . '</span>', ['controller' => 'ProjectsUsers', 'action' => 'view', $projectsUsers->id], ['escape' => false, 'class' => 'btn btn-xs btn-default', 'title' => __('View')]) ?>
-                    <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span><span class="sr-only">' . __('Edit') . '</span>', ['controller' => 'ProjectsUsers', 'action' => 'edit', $projectsUsers->id], ['escape' => false, 'class' => 'btn btn-xs btn-default', 'title' => __('Edit')]) ?>
-                    <?= $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span><span class="sr-only">' . __('Delete') . '</span>', ['controller' => 'ProjectsUsers', 'action' => 'delete', $projectsUsers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $projectsUsers->id), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Delete')]) ?>
-                </td>
-            </tr>
             <?php endforeach; ?>
-        </table>
-    </div>
-    <?php endif; ?>
+        </div>
     </div>
 </div>

@@ -1,32 +1,31 @@
 <?php
 /**
- * TypeApplication Model
+ * MissionLevels Model
  *
  * @category Table
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-
 namespace App\Model\Table;
 
-use App\Model\Entity\TypeApplication;
+use App\Model\Entity\MissionLevel;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Entity of TypeApplicationTable
+ * MissionLevels Model
  *
- * @category Entity
+ * @category Table
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-class TypeApplicationsTable extends Table
+class MissionLevelsTable extends Table
 {
 
     /**
@@ -40,18 +39,20 @@ class TypeApplicationsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('type_applications');
+        $this->table('mission_levels');
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->hasMany(
-            'Applications',
+        $this->belongsToMany(
+            'Missions',
             [
-                'foreignKey' => 'type_application_id'
+            'foreignKey' => 'mission_level_id',
+            'targetForeignKey' => 'mission_id',
+            'joinTable' => 'missions_mission_levels'
             ]
         );
     }
-
+    
     /**
      * Default validation rules.
      *

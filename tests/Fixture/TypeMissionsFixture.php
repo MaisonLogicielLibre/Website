@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * ProjectsMentorsFixture
+ * TypeMissionsFixture
  *
  */
-class ProjectsMentorsFixture extends TestFixture
+class TypeMissionsFixture extends TestFixture
 {
 
     /**
@@ -18,8 +18,7 @@ class ProjectsMentorsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'project_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -38,18 +37,19 @@ class ProjectsMentorsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'project_id' => 1,
-            'user_id' => 1
+            'name' => 'Intern'
         ],
         [
             'id' => 2,
-            'project_id' => 1,
-            'user_id' => 2
+            'name' => 'Volunteer'
         ],
         [
             'id' => 3,
-            'project_id' => 2,
-            'user_id' => 3
+            'name' => 'Master'
+        ],
+        [
+            'id' => 4,
+            'name' => 'Capstone'
         ],
     ];
 }

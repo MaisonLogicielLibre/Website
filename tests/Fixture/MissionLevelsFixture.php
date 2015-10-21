@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * TypeApplicationsFixture
+ * MissionLevelsFixture
  *
  */
-class TypeApplicationsFixture extends TestFixture
+class MissionLevelsFixture extends TestFixture
 {
 
     /**
@@ -37,7 +37,7 @@ class TypeApplicationsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'Lorem ipsum dolor sit amet'
+            'name' => '1'
         ],
     ];
 }

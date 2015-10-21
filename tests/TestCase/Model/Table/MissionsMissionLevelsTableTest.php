@@ -1,32 +1,31 @@
 <?php
 /**
- * Tests for TypeApplicationTable
+ * Tests for MissionsMissionLevelsTable
  *
  * @category Test
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\TypeApplicationsTable;
+use App\Model\Table\MissionsMissionLevelsTable;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
- * Tests for TypeApplicationTable
+ * Tests for MissionsMissionLevelsTable
  *
  * @category Test
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-class TypeApplicationsTableTest extends TestCase
+class MissionsMissionLevelsTableTest extends TestCase
 {
 
     /**
@@ -35,19 +34,22 @@ class TypeApplicationsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.type_applications',
-        'app.applications',
-        'app.projects',
+        'app.mission_levels',
         'app.missions',
-        'app.organizations',
-        'app.organizations_projects',
+        'app.projects',
+        'app.applications',
+        'app.users',
         'app.universities',
         'app.comments',
-        'app.users',
         'app.projects_contributors',
+        'app.organizations',
+        'app.organizations_projects',
         'app.projects_mentors',
         'app.type_users',
-        'app.type_users_users'
+        'app.type_users_users',
+        'app.missions_mission_levels',
+        'app.type_missions',
+        'app.missions_type_missions'
     ];
 
     /**
@@ -58,8 +60,8 @@ class TypeApplicationsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('TypeApplications') ? [] : ['className' => 'App\Model\Table\TypeApplicationsTable'];
-        $this->TypeApplications = TableRegistry::get('TypeApplications', $config);
+        $config = TableRegistry::exists('MissionsMissionLevels') ? [] : ['className' => 'App\Model\Table\MissionsMissionLevelsTable'];
+        $this->MissionsMissionLevels = TableRegistry::get('MissionsMissionLevels', $config);
     }
 
     /**
@@ -69,7 +71,7 @@ class TypeApplicationsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->TypeApplications);
+        unset($this->MissionsMissionLevels);
 
         parent::tearDown();
     }
@@ -82,11 +84,9 @@ class TypeApplicationsTableTest extends TestCase
     {
         $validator = new Validator();
 
-        $expected = $validator;
+        $result = $this->MissionsMissionLevels->validationDefault($validator);
 
-        $result = $this->TypeApplications->validationDefault($validator);
-
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($validator, $result);
     }
 
     /**
@@ -99,7 +99,7 @@ class TypeApplicationsTableTest extends TestCase
 
         $expected = $rule;
 
-        $result = $this->TypeApplications->buildRules($rule);
+        $result = $this->MissionsMissionLevels->buildRules($rule);
 
         $this->assertEquals($expected, $result);
     }
