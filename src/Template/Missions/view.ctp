@@ -6,7 +6,7 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-                <a href="#"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
             </div>
                 <div class="bs-callout bs-callout-warning">
                 <h4><?= __('Description'); ?></h4>
