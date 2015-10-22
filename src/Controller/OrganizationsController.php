@@ -165,7 +165,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
             }
@@ -189,7 +189,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
             }

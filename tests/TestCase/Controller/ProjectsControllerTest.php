@@ -115,7 +115,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         ];
         $this->post('/projects/add', $data);
 
-        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
@@ -432,7 +432,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         
         $this->post('/projects/submit', $data);
 
-        $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
