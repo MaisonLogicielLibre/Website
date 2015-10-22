@@ -185,6 +185,7 @@ class ProjectsController extends AppController
             'Missions',
             [
                 'contain' => ['Users'],
+                'conditions' => ['project_id' => $id],
                 'fields' => ['Missions.id', 'Missions.name', 'Users.firstName', 'Users.lastName']
             ]
         );
