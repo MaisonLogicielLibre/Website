@@ -7,7 +7,7 @@
             <legend><?= __('Submit Organization') ?></legend>
             <?php
                 echo $this->Form->input('name');
-                echo $this->Form->input('website');
+                echo $this->Form->input('website', ['placeholder' => __("http(s)://website.com")]);
                 echo $this->Form->input('logo');
                 echo $this->Form->input('description');
             ?>

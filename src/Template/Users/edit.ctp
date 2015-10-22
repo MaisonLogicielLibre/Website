@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <?= $this->Form->input('biography', ['label' => __('Biography')]); ?>
-                    <?= $this->Form->input('portfolio', ['type' => 'text'], ['label' => __('Portfolio')]); ?>
+                    <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
                     <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
 
                     <div class="form-group">
