@@ -131,7 +131,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
@@ -222,7 +222,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }

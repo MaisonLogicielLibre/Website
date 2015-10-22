@@ -112,9 +112,10 @@ class OrganizationsControllerTest extends IntegrationTestCase
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
         ];
+
         $this->post('/organizations/add', $data);
 
-        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
