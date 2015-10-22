@@ -58,8 +58,7 @@ INSERT INTO `permissions` (`id`, `name`) VALUES
 (31, 'list_projects'),
 (32, 'list_projects_all'),
 (33, 'list_organizations'),
-(34, 'list_organizations_all'),
-(35, 'quit_organization');
+(34, 'list_organizations_all');
 
 --
 -- Contenu de la table `permissions_type_users`
@@ -114,9 +113,7 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 (46, 3, 32),
 (47, 3, 33),
 (48, 3, 34),
-(49, 5, 5),
-(51, 5, 35),
-(52, 7, 35);
+(49, 5, 5);
 
 --
 -- Contenu de la table `type_users`
