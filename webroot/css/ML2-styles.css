@@ -434,3 +434,6 @@ footer {
     color: #5bc0de;
 }
 
+.label-as-badge {
+    border-radius: 1em;
+}

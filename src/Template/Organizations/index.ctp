@@ -51,12 +51,12 @@ echo $this->DataTables->init([
     "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
     'columns' => [
         [
-            'name' => 'organizations.name',
+            'name' => 'Organizations.name',
             'data' => 'name',
             'searchable' => true
         ],
         [
-            'name' => 'organizations.website',
+            'name' => 'Organizations.website',
             'data' => 'website',
             'searchable' => true
         ],
@@ -64,6 +64,7 @@ echo $this->DataTables->init([
     'lengthMenu' => ''
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
+echo 'var validationTxt="' . __('Pending Validation') . '";';
 $this->Html->scriptEnd(); ?>
 <?= $this->Html->script('organizations/index.js', ['block' => 'scriptBottom']); ?>
 

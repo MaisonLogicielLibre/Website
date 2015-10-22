@@ -96,21 +96,42 @@ class ProjectsController extends AppController
                 ->find(
                     'Projects',
                     [
-                        'contain' => ['Organizations'],
-                        'conditions' =>
-                            [
-                                'accepted' => true,
-                                'archived' => false
+                        'contain' => [
+                            'Organizations' => [
+                                'fields' => [
+                                    'id', 'name', 'OrganizationsProjects.project_id'
+                                ]
                             ]
+                        ],
+                        'fields' => [
+                            'id', 'name', 'link', 'accepted'
+                        ],
                     ]
+                )->join(
+                    [
+                    'table' => 'projects_mentors',
+                    'alias' => 'm',
+                    'type' => 'LEFT',
+                    'conditions' => 'm.project_id = Projects.id'
+                    ]
+                )->where(
+                    [
+                        'archived' => 0,
+                        'accepted' => 1,
+                        ]
+                )->orWhere(
+                    [
+                        'archived' => 0,
+                        'm.user_id' => (!is_null($user) ? $user->getId() : '')
+                        ]
                 );
 
-            $this->set(
-                [
+                $this->set(
+                    [
                     'data' => $data,
                     '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                ]
-            );
+                    ]
+                );
         }
     }
     
@@ -164,8 +185,6 @@ class ProjectsController extends AppController
         );
         $this->render('adminIndex');
     }
-
-
 
     /**
      * View method

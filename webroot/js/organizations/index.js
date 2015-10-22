@@ -7,7 +7,12 @@ $(document).ready(function () {
                 $('<a />', {
                     href: orgUrl + '/' + aData['id'],
                     text: aData['name']
-                })
+                })[0].outerHTML
+                + (!aData['isValidated'] ? ' ' +
+                $('<span/>', {
+                    class: 'label label-warning label-as-badge',
+                    text: validationTxt
+                })[0].outerHTML : '')
             );
             $('td:eq(1)', nRow).html(
                 $('<a/>', {

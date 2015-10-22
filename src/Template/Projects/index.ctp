@@ -88,6 +88,7 @@ echo $this->DataTables->init([
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
 echo 'var projectUrl="' . $this->Url->Build(['action' => 'view']) . '";';
+echo 'var validationTxt="' . __('Pending Validation') . '";';
 $this->Html->scriptEnd();
 ?>
 <?= $this->Html->script('projects/index.js', ['block' => 'scriptBottom']); ?>

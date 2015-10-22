@@ -92,22 +92,42 @@ class OrganizationsController extends AppController
         } else {
             $data = $this->DataTables
                 ->find(
-                    'organizations',
+                    'Organizations',
                     [
-                    'conditions' =>
+                    'fields' =>
                         [
-                           'isValidated' => true,
-                            'isRejected' => false
+                            'id',
+                            'name',
+                            'website',
+                            'isValidated',
+                            'isRejected'
                         ]
                     ]
+                )->join(
+                    [
+                    'table' => 'organizations_owners',
+                    'alias' => 'o',
+                    'type' => 'LEFT',
+                    'conditions' => 'o.organization_id = Organizations.id'
+                    ]
+                )->where(
+                    [
+                        'isRejected' => 0,
+                        'isValidated' => 1,
+                        ]
+                )->orWhere(
+                    [
+                        'isRejected' => 0,
+                        'o.user_id' => (!is_null($user) ? $user->getId() : '')
+                        ]
                 );
 
-            $this->set(
-                [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                ]
-            );
+                $this->set(
+                    [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                    ]
+                );
         }
     }
 
