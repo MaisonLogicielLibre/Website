@@ -103,25 +103,31 @@ class OrganizationsController extends AppController
                             'isRejected'
                         ]
                     ]
-                )->join([
+                )->join(
+                    [
                     'table' => 'organizations_owners',
                     'alias' => 'o',
                     'type' => 'LEFT',
                     'conditions' => 'o.organization_id = Organizations.id'
-                ])->where([
-                    'isRejected' => 0,
-                    'isValidated' => 1,
-                ])->orWhere([
-                    'isRejected' => 0,
-                    'o.user_id' => (!is_null($user) ? $user->getId() : '')
-                ]);
+                    ]
+                )->where(
+                    [
+                        'isRejected' => 0,
+                        'isValidated' => 1,
+                        ]
+                )->orWhere(
+                    [
+                        'isRejected' => 0,
+                        'o.user_id' => (!is_null($user) ? $user->getId() : '')
+                        ]
+                );
 
-            $this->set(
-                [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                ]
-            );
+                $this->set(
+                    [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                    ]
+                );
         }
     }
 
