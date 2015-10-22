@@ -11,6 +11,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Entity of OrganizationsTable
@@ -80,6 +81,24 @@ class Organization extends Entity
     public function getDescription()
     {
         return $this->_properties['description'];
+    }
+    
+    /**
+     * Get the owners
+     * @return array owners
+     */
+    public function getOwners()
+    {
+        return $this->_properties['owners'];
+    }
+    
+    /**
+     * Get the members
+     * @return array members
+     */
+    public function getMembers()
+    {
+        return $this->_properties['members'];
     }
 
     /**
@@ -174,5 +193,113 @@ class Organization extends Entity
     {
         $this->set('isRejected', $isRejected);
         return $isRejected;
+    }
+    
+    /**
+     * Set the owners
+     * @param array $owners owners
+     * @return array $owners
+     */
+    public function editOwners($owners)
+    {
+        $this->set('owners', $owners);
+        return $owners;
+    }
+    
+    /**
+     * Set the members
+     * @param array $members members
+     * @return array $members
+     */
+    public function editMembers($members)
+    {
+        $this->set('members', $members);
+        return $members;
+    }
+    
+    /**
+     * Remove a member
+     * @param int $usersId usersId
+     * @return null
+     */
+    public function removeMembers($usersId)
+    {
+        $members = $this->getMembers();
+        $nbMembers = count($members);
+        
+        foreach ($usersId as $id) {
+            for ($i = 0; $i < $nbMembers; $i++) {
+                if ($members[$i]->getId() == $id) {
+                    unset($members[$i]);
+                }
+            }
+        }
+        
+        
+        $this->editMembers($members);
+    }
+    
+    /**
+     * Remove owners
+     * @param array $usersId usersId
+     * @return null
+     */
+    public function removeOwners($usersId)
+    {
+        $owners = $this->getOwners();
+        $nbOwners = count($owners);
+        
+        foreach ($usersId as $id) {
+            for ($i = 0; $i < $nbOwners; $i++) {
+                if ($owners[$i]->getId() == $id) {
+                    unset($owners[$i]);
+                }
+            }
+        }
+        
+        $this->editOwners($owners);
+    }
+    
+    /**
+     * Add Owners
+     * @param array $usersId usersId
+     * @return null
+     */
+    public function modifyOwners($usersId)
+    {
+        $usersSelected = [];
+        $members = $this->getMembers();
+        $users = TableRegistry::get('Users');
+        
+        foreach ($usersId as $id) {
+            $user = $users->get($id);
+            array_push($usersSelected, $user);
+            array_push($members, $user);
+        }
+       
+        $this->editOwners($usersSelected);
+
+        $members = array_unique($members);
+        
+        $this->editMembers($members);
+    }
+    
+    /**
+     * Add Members
+     * @param array $usersId usersId
+     * @return null
+     */
+    public function modifyMembers($usersId)
+    {
+        $usersSelected = [];
+        $members = $this->getMembers();
+        $users = TableRegistry::get('Users');
+
+        foreach ($usersId as $id) {
+            $user = $users->get($id);
+            array_push($usersSelected, $user);
+        }
+        
+        $this->editMembers($usersSelected);
     }
 }

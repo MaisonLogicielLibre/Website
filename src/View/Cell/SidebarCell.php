@@ -97,9 +97,19 @@ class SidebarCell extends Cell
         $this->loadModel('Users');
         $this->loadModel('Organizations');
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+		
+		$isOwner = false;
+        if ($user){
+            $isOwner = $user->isOwnerOf($organizationId);
+        }
 
+		$isMember = false;
+        if ($user){
+            $isMember = $user->isMemberOf($organizationId);
+        }
+		
         $object = $this->Organizations->findById($organizationId)->first();
 
-        $this->set(compact('user', 'object'));
+        $this->set(compact('user', 'object', 'isMember', 'isOwner'));
     }
 }

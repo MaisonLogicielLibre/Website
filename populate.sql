@@ -67,7 +67,7 @@ INSERT INTO `permissions` (`id`, `name`) VALUES
 INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VALUES
 (1, 3, 1),
 (2, 3, 2),
-(3, 3, 3),
+(3, 1, 3),
 (4, 3, 4),
 (5, 3, 5),
 (6, 3, 6),
@@ -112,7 +112,8 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 (45, 3, 31),
 (46, 3, 32),
 (47, 3, 33),
-(48, 3, 34);
+(48, 3, 34),
+(49, 5, 5);
 
 --
 -- Contenu de la table `type_users`
@@ -123,7 +124,8 @@ INSERT INTO `type_users` (`id`, `name`) VALUES
 (3, 'Administrator'),
 (4, 'Dyn_mentor'),
 (5, 'Dyn_OrganizationOwner'),
-(6, 'Executive');
+(6, 'Executive'),
+(7, 'Dyn_OrganizationMember');
 
 --
 -- Contenu de la table `universities`

@@ -85,6 +85,14 @@ hr.small {
     transition: all 0.4s ease 0s;
 }
 
+.ico-green{
+	color:green;
+}
+
+.ico-red{
+	color:red;
+}
+
 .sidebar-nav {
     position: absolute;
     top: 0;

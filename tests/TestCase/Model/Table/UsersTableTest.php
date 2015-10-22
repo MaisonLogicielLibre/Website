@@ -38,6 +38,8 @@ class UsersTableTest extends TestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Members',
+    'app.organizations_Owners',
     'app.users',
     'app.type_users',
     'app.svn_users',
@@ -600,5 +602,73 @@ class UsersTableTest extends TestCase
         }
 
             $this->assertFalse($result);
+    }
+    
+    /**
+     * Test isOwner - True
+     * @return void
+     */
+    public function testIsOwnerTrue()
+    {
+        $userId = 1;
+        $orgId = 1;
+        $expected = true;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isOwnerOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isOwner - False
+     * @return void
+     */
+    public function testIsOwnerFalse()
+    {
+        $userId = 2;
+        $orgId = 1;
+        $expected = false;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isOwnerOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isMember - True
+     * @return void
+     */
+    public function testIsMemberTrue()
+    {
+        $userId = 1;
+        $orgId = 1;
+        $expected = true;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isMemberOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isMember - False
+     * @return void
+     */
+    public function testIsMemberFalse()
+    {
+        $userId = 2;
+        $orgId = 1;
+        $expected = false;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isMemberOf($orgId);
+        
+        $this->assertEquals($expected, $result);
     }
 }

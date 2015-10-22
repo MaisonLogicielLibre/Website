@@ -25,11 +25,36 @@
                 <!--
                 EDITION
                 -->
-
-                <?php
-                    if ($user->hasPermissionName(['edit_organizations'])):
+				<?php
+                    if (($isOwner && $user->hasPermissionName(['edit_organization'])) || $user->hasPermissionName(['edit_organizations'])):
                 ?>
                 <li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'addMember',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Edit members') ?>
+                    </a>
+                </li>
+				<li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'addOwner',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Edit owners') ?>
+                    </a>
+                </li>
+				<li>
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Organizations',
@@ -40,6 +65,23 @@
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
                         </span> <?= __('Edit the organization') ?>
+                    </a>
+                </li>
+                <?php
+                    endif;
+					if ($isMember):
+				?>
+				<li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'quit',
+                            $object->id
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-remove fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Quit the organization') ?>
                     </a>
                 </li>
                 <?php
@@ -61,7 +103,7 @@
                 </li>
                 <?php
                     endif;
-                    if ($user->hasPermissionName(['edit_organizations'])):
+                    if ($user->hasPermissionName(['edit_organizations'] )):
                 ?>
                 <li>
                     <a href=<?= $this->Url->build(
