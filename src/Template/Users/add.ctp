@@ -21,7 +21,7 @@
             echo $this->Form->input('firstName');
             echo $this->Form->input('lastName');
             echo $this->Form->input('biography');
-            echo $this->Form->input('portfolio');
+            echo $this->Form->input('portfolio', ['placeholder' => __("http(s)://website.com")]);
             echo $this->Form->input('email');
             echo $this->Form->input('phone');
             echo $this->Form->input('gender');

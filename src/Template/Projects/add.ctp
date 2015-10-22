@@ -7,7 +7,7 @@
             <legend><?= __('Add Project') ?></legend>
             <?php
             echo $this->Form->input('name', ['label' => __('Name of the project')]);
-            echo $this->Form->input('link', ['label' => __('Website of the project')]);
+            echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
             echo $this->Form->input('description', ['label' => __('Description of the project')]);
             echo $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]);
             ?>

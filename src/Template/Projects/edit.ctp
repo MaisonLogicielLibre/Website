@@ -7,7 +7,7 @@
             <legend><?= __('Edit Project') ?></legend>
             <?php
                 echo $this->Form->input('name');
-                echo $this->Form->input('link');
+                echo $this->Form->input('link', ['placeholder' => __("http(s)://website.com")]);
                 echo $this->Form->input('description');
                 echo $this->Form->input('organizations._ids', ['options' => $organizations]);
             ?>
