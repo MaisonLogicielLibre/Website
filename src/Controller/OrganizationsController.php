@@ -92,13 +92,8 @@ class OrganizationsController extends AppController
         } else {
             $data = $this->DataTables
                 ->find(
-                    'organizations',
+                    'Organizations',
                     [
-                    'conditions' =>
-                        [
-                           'isValidated' => true,
-                            'isRejected' => false
-                        ],
                     'fields' =>
                         [
                             'id',
@@ -108,7 +103,18 @@ class OrganizationsController extends AppController
                             'isRejected'
                         ]
                     ]
-                );
+                )->join([
+                    'table' => 'organizations_owners',
+                    'alias' => 'o',
+                    'type' => 'LEFT',
+                    'conditions' => 'o.organization_id = Organizations.id'
+                ])->where([
+                    'isRejected' => 0,
+                    'isValidated' => 1,
+                ])->orWhere([
+                    'isRejected' => 0,
+                    'o.user_id' => (!is_null($user) ? $user->getId() : '')
+                ]);
 
             $this->set(
                 [
