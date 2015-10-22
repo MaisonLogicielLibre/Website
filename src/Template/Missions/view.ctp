@@ -6,7 +6,7 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-                <a href="#"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
             </div>
                 <div class="bs-callout bs-callout-warning">
                 <h4><?= __('Description'); ?></h4>
@@ -61,10 +61,12 @@
                         <td style="border-right:none;"><strong><?= __('Company:'); ?></strong></td>
                         <td style="border-left:none"><?= $org->getName(); ?></td>
                     </tr>
+                    <?php if (!empty($org->getWebsite())) : ?>
                     <tr>
                         <td style="border-right:none;"><strong><?= __('Website:'); ?></strong></td>
                         <td style="border-left:none;"><a href="<?= $org->getWebsite(); ?>"><?= $org->getWebsite() ?></a></td>
                     </tr>
+                    <?php endif; ?>
                     <tr>
                         <td style="border-right:none;"><strong><?= __('Full company details'); ?></strong></td>
                         <td style="border-left:none;"><a href="<?= $this->Url->Build(['controller' => 'Organizations', 'action' => 'view', $org->getId()]); ?>"><?= __('See'); ?></a></td>

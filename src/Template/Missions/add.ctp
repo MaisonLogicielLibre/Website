@@ -35,7 +35,7 @@
                 $levelsOptions[$level->id] = $level->getName();
             }
             echo $this->Form->input('mission_levels._ids', ['label' => __('School year'),  'options' => $levelsOptions, 'multiple' => 'checkbox']);
-            echo $this->Form->input('internNbr', ['label' => __('Places available')]);
+            echo $this->Form->input('internNbr', ['label' => __('Places available'), 'min' => 1, 'max' => 100]);
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
