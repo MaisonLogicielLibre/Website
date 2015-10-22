@@ -98,6 +98,14 @@ class OrganizationsController extends AppController
                         [
                            'isValidated' => true,
                             'isRejected' => false
+                        ],
+                    'fields' =>
+                        [
+                            'id',
+                            'name',
+                            'website',
+                            'isValidated',
+                            'isRejected'
                         ]
                     ]
                 );
