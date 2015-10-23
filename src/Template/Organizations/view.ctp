@@ -20,7 +20,25 @@
                     <table class="table table-striped">
                         <?php foreach($organization->projects as $project ): ?>
                             <tr>
-                                <td><?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?></td>
+                                <td>
+                                    <?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
+                                    <!-- Badge pending-->
+                                    <?php
+                                        if (!$project->isAccepted()):
+                                    ?>
+                                        <span class="label label-warning label-as-badge"><?= __('Pending Validation'); ?></span>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <!-- Badge Archived-->
+                                    <?php
+                                    if ($project->isArchived()):
+                                        ?>
+                                        <span class="label label-danger label-as-badge"><?= __('Archived'); ?></span>
+                                        <?php
+                                    endif;
+                                    ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
