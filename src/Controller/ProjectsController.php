@@ -137,7 +137,20 @@ class ProjectsController extends AppController
             }
         }
         
-        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $organizations = $this->Projects->Organizations->find('list')
+            ->join(
+                [
+                    'table' => 'organizations_members',
+                    'alias' => 'm',
+                    'type' => 'LEFT',
+                    'conditions' => 'm.organization_id = Organizations.id'
+                ]
+            )->where(
+                [
+                    'm.user_id' => $mentor->getId()
+                ]
+            );
+
         $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
