@@ -3,6 +3,7 @@
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <?= $this->Form->create($organization); ?>
+        <div class="alert alert-info" role="alert"><?= __("After submit the organization, you will be redirect on the organization's page to create some projects."); ?></div>
         <fieldset>
             <legend><?= __('Submit Organization') ?></legend>
             <?php
