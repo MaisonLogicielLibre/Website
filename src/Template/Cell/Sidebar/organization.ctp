@@ -69,6 +69,38 @@
                 </li>
                 <?php
                     endif;
+                    if ((($isMember || $isOwner) && $user->hasPermissionName(['add_project'])) || $user->hasPermissionName(['add_projects'])):
+                ?>
+                <li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Projects',
+                            'action' => 'add'
+                        ]) ?>">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-plus fa-stack-1x" style="color:#fff;"></i>
+                        </span> <?= __('Add project') ?>
+                    </a>
+                </li>
+                <?php
+                    endif;
+                    if ((($isMember || $isOwner) && $user->hasPermissionName(['submit_project'])) || $user->hasPermissionName(['submit_projects'])):
+                ?>
+                <li>
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Projects',
+                            'action' => 'submit'
+                        ]) ?>">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-plus fa-stack-1x" style="color:#fff;"></i>
+                            </span> <?= __('Submit project') ?>
+                    </a>
+                </li>
+                <?php
+                    endif;
 					if ($isMember):
 				?>
 				<li>
