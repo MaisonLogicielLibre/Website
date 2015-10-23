@@ -9,8 +9,17 @@
                 echo $this->Form->input('name', ['label' => __('Name of the project')]);
                 echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
                 echo $this->Form->input('description', ['label' => __('Description of the project')]);
-                echo $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]);
-            ?>
+
+            if (empty($organizations->toArray())) : ?>
+                <p>
+                    <?= $this->Html->link(__('You\'re not part of an organization. Add yours now!'), ['controller' => 'Organizations', 'action' => 'submit']); ?>
+                </p>
+           <?php else : ?>
+                <?= $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]); ?>
+                <p>
+                    <?= __('Or you can add a new organizations ') . $this->Html->link(__('here.'), ['controller' => 'Organizations', 'action' => 'submit']) ?>
+                </p>
+            <?php endif; ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
         <?= $this->Form->end() ?>
