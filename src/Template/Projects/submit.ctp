@@ -5,6 +5,7 @@
         <?= $this->Form->create($project); ?>
         <fieldset>
             <legend><?= __('Submit Project') ?></legend>
+            <div class="alert alert-info" role="alert"><?= __("After submit the project, you will be redirect on the project's page to create some missions."); ?></div>
             <?php
                 echo $this->Form->input('name', ['label' => __('Name of the project')]);
                 echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
