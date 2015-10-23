@@ -70,7 +70,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Projects') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><?= $this->Html->link(__('List of organizations'), ['controller' => 'Organizations', 'action' => 'index']);?></li>
-							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>     							
+							<li><?= $this->Html->link(__('Submit an organization'), ['controller' => 'Organizations', 'action' => 'submit']);?></li>
+							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li> 
+							<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Projects', 'action' => 'submit']);?></li>
 						</ul>
 					</li>
 					<li class="dropdown">
