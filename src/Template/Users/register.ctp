@@ -16,7 +16,7 @@
             </div>
             <?= $this->Form->label('confirm_password', __('Confirm password'), ['class' => 'col-sm-2 control-label']);?>
             <div class="col-sm-10">
-                <?= $this->Form->input('confirm_password', ['label' => false, 'placeholder' => __('Password'), 'autocomplete' => 'off' ]); ?>
+                <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Password'), 'autocomplete' => 'off' ]); ?>
             </div>
         </div>
         <br/>
