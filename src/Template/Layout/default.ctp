@@ -103,17 +103,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div id="container">
+	<div id="container-fluid">
 		<div class="row">
-			<div class="col-xs-12">
-				<div id="content">
-					<?= $this->Flash->render() ?>
-					<div class="row setHeight">
-						<?= $this->fetch('content') ?>
-					</div>
-				</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<?= $this->Flash->render() ?>
 			</div>
 		</div>
+		<?= $this->fetch('content') ?>
 	</div>
 </div>
 <!-- Footer -->

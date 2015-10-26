@@ -1,14 +1,13 @@
 <?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
-<div class="row">
-    <div class="users form col-lg-12 col-md-12 columns">
-
+    <div class="row">
         <?= $this->cell('Sidebar::user', [$user->id]); ?>
 
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <?= $this->Form->create($user); ?>
         <fieldset>
             <legend><?= __('Edit User') ?></legend>
-            <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="row-fluid">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 no-padding">
                     <?= $this->Form->input('firstName', ['label' => __('First name')]); ?>
                     <?= $this->Form->input('lastName', ['label' => __('Last name')]); ?>
                     <?php
@@ -23,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" style="padding-right:0;">
                         <div class="panel-heading">
                             <h3 class="panel-title"><?= __('Status'); ?></h3>
                         </div>
@@ -40,8 +39,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row-fluid">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
                     <?= $this->Form->input('biography', ['label' => __('Biography')]); ?>
                     <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
                     <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
