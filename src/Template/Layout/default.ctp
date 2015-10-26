@@ -67,17 +67,20 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Organizations') ?><span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Projects') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><?= $this->Html->link(__('List of organizations'), ['controller' => 'Organizations', 'action' => 'index']);?></li>
-							<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>                  
+							<li><?= $this->Html->link(__('Submit an organization'), ['controller' => 'Organizations', 'action' => 'submit']);?></li>
+							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li> 
+							<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Projects', 'action' => 'submit']);?></li>
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Projects') ?><span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Activities') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
-							<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>                   
+							<li><?= $this->Html->link(__('Meetup'), ['controller' => 'Pages', 'action' => 'meetup']);?></li>
+							<li><?= $this->Html->link(__('Survey'), ['controller' => 'Pages', 'action' => 'survey']);?></li>
+							<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>     							
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -119,6 +122,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="row">
 			<div class="text-center">
 				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
+				<p><?= $this->Html->link(__('About us'), ['controller' => 'Pages', 'action' => 'mission']);?></li></p>
 				<p><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?>
 				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
 			</div>
