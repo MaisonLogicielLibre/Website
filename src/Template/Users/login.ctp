@@ -1,5 +1,4 @@
-<div class="users form">
-<?= $this->Flash->render('auth') ?>
+<div class="users index col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
 <?= $this->Form->create() ?>
     <fieldset>
         <legend><?= __("Enter your username and password") ?></legend>

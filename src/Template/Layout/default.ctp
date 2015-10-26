@@ -105,7 +105,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div class="col-xs-12">
 				<div id="content">
 					<?= $this->Flash->render() ?>
-
 					<div class="row setHeight">
 						<?= $this->fetch('content') ?>
 					</div>

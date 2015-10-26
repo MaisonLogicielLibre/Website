@@ -63,12 +63,14 @@ class AppController extends Controller
         $this->loadComponent(
             'Auth',
             [
+            'flash' => ['element' => 'error'],
             'authorize' => 'Controller',
             'logoutRedirect' => [
                 'controller' => 'Pages',
                 'action' => 'display',
                 'home'
-            ]
+            ],
+                'authError' => __('You must be logged in to access this page.'),
             ]
         );
         $this->loadComponent('DataTables.DataTables');
