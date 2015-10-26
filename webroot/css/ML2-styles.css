@@ -360,12 +360,13 @@ footer {
 	width: 60%;
 }
 
-/* Element */
-
 .mll-table {
 	min-width: 110px;
 }
 
+.no-padding {
+    padding:0;
+}
 
 @media screen and (max-width: 1000px) {
 	.partner {

@@ -1,4 +1,4 @@
-<div class="missions col-lg-12 col-md-12 columns">
+<div class="row">
     <?= $this->cell('Sidebar::project', [$projectId]); ?>
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">

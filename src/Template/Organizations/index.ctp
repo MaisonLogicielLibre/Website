@@ -1,12 +1,12 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<div class="users form col-lg-12 col-md-12 columns">
+<div class="row">
     <?= $this->cell('Sidebar::organizationAction'); ?>
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><?= __('List of organizations'); ?></h3>
-            </div>
+            </div>s
             <div class="table-responsive">
                 <table id="organizations" class="table table-striped table-bordered table-hover dataTable">
                     <thead>
