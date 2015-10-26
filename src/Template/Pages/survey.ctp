@@ -3,7 +3,7 @@
         <div style="margin:20px; margin-top:5px">
             <div class="quotetitle">
                 <b style="font-size : 20px;"> <?= $this->Html->link(__('Register today!'), ['controller' => 'Users', 'action' => 'register']);?> </b><br>
-				<p> <?= __('Join us at ML² in building the future of Free Software and Open Source code.') ?></p>
+				<p> <?= __('Join us at ML2 in building the future of Free Software and Open Source code.') ?></p>
 				<p> <?= __('We need feedback!') ?> </p>
             </div>
             <br>

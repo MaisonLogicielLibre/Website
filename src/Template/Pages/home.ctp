@@ -76,9 +76,9 @@
             <h4><?= __("Are you new to Free Software and Open Source?"); ?></h4>
             <ul>
                 <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>"><?= __("Register") ?></a>
+                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>"><?= __("Register2") ?></a>
                 <?= __("and learn from our teaching assistants and Collaborate with students."); ?></h4></li>
-                <li>Visit our <a
+                <li> <?= __("Visit our") ?> <a
                         href="http://wiki.maisonlogiciellibre.org"><?= __("Wiki") ?></a>
                 <?= __("to learn about open source coding practices"); ?>
                 </li> 
