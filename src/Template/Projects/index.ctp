@@ -1,7 +1,6 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<div class="users form col-lg-12 col-md-12 columns">
+<div class="row">
     <?= $this->cell('Sidebar::projectAction'); ?>
-
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
