@@ -4,7 +4,7 @@
 	<tr>
 		<th style="min-width: 110px"<?= __("Date"); ?></th>
 		<th><?= __("Info"); ?></th>
-		<th><?= __("Link"); ?></th>
+		<th><?= __("Link2"); ?></th>
 	</tr>
 	</thead>
 	<tbody>
