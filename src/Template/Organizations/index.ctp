@@ -6,7 +6,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><?= __('List of organizations'); ?></h3>
-            </div>s
+            </div>
             <div class="table-responsive">
                 <table id="organizations" class="table table-striped table-bordered table-hover dataTable">
                     <thead>
