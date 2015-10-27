@@ -42,6 +42,15 @@ class TypeUsersTable extends Table
         $this->table('type_users');
         $this->displayField('name');
         $this->primaryKey('id');
+
+        $this->belongsToMany(
+            'Permissions',
+            [
+            'foreignKey' => 'type_user_id',
+            'targetForeignKey' => 'permission_id',
+            'joinTable' => 'permissions_type_users'
+            ]
+        );
     }
 
     /**

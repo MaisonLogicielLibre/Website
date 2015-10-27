@@ -37,6 +37,8 @@ class OrganizationsTableTest extends TestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Owners',
+    'app.organizations_Members',
     'app.users',
     'app.type_users',
     'app.svn_users',
@@ -140,6 +142,38 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test getIsValidated
+     * @return void
+     */
+    public function testGetIsValidated()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->getIsValidated();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getIsRejected
+     * @return void
+     */
+    public function testGetIsRejected()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->getIsRejected();
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test editName
@@ -164,7 +198,7 @@ class OrganizationsTableTest extends TestCase
     public function testSetWebsite()
     {
         $id = 1;
-        $expected = 'www.ml2.com';
+        $expected = 'www.website.com';
 
         $org = $this->Organizations->get($id);
 
@@ -204,6 +238,38 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test editIsValidated
+     * @return void
+     */
+    public function testSetIsValidated()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->editIsValidated($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editIsRejected
+     * @return void
+     */
+    public function testSetIsRejected()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->editIsRejected($expected);
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test validation
@@ -218,5 +284,24 @@ class OrganizationsTableTest extends TestCase
         $result = $this->Organizations->validationDefault($validator);
         
         $this->assertEquals($validator, $result);
+    }
+
+    /**
+     * Test validation Website Rules
+     * @return void
+     */
+    public function testValidationWebsite()
+    {
+        $id = 1;
+        $org = $this->Organizations->get($id);
+
+        $this->Organizations->patchEntity($org, ['website' => 'www.website.com']);
+        $result = $this->Organizations->save($org);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+        $this->assertFalse($result);
     }
 }

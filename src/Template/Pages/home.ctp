@@ -1,113 +1,116 @@
-<div id="top" class="header">
-    <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'width' => '100%', 'height' => 'auto', 'class' => 'img-responsive banner']) ?>
-</div>
-<section id="about" class="about">
-<hr>
-<div class="row">
-    <div class="col-xl-12 text-center">
-        <div style="margin:20px; margin-top:5px">
-            <div>
-                <b style="font-size : 20px;"><?= $this->Html->link(__('ML2 need a new logo!'), ['controller' => 'Pages', 'action' => 'contest']);?></b><br>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1><?= __("Welcome to Maison Logiciel Libre (ML2)");?></h1>
+
+            <h3><?= __("Our mission is to improve university students software development skills and hiring potential through
+                practical experience on free and open source software projects");?></h3>
         </div>
     </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col-xl-12 text-center">
-        <div style="margin:20px; margin-top:5px">
-            <div class="quotetitle">
-                <b style="font-size : 20px;"> <?= $this->Html->link(__('Register today!'), ['controller' => 'Users', 'action' => 'register']);?> </b><br>
-				<p> <?= __('Join us at ML² in building the future of Free Software and Open Source code.') ?></p> <br><br>
-				<p> <?= __('We need feedback!') ?> </p>
-                <input type="button" value="<?php echo __('Take the ML² student survey') ?>" style="font-size: 16px; padding: 5px 10px 5px 10px; font-weight: bold;border: none;background-color: black; color: white;" onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = '';        this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Participer au sondage'; }" />
-            </div>
+    <div class="row home-row">
+        <div class="col-sm-6" align="center">
+            <h4>
+                <b><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>"><?= __("Register") ?></a></b>
+                <?= __("to join our growing community of "); ?>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'academic']); ?>"><?= __("university professors and students") ?></a> <?= __(","); ?>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'industry']); ?>"><?= __("industry partners") ?></a> <?= __("and"); ?>
+				<a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'aso']); ?>"><?= __("associations") ?></a> <?= __("in Quebec."); ?>
+            </h4>
+        </div>
+        <div class="col-sm-6" align="center">
+            <h4>
+                <a class="btn btn-primary"
+                   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'mission']); ?>"> 
+				   <i class="fa fa-arrow-right"></i> </a> <?= __("Discover the benefits of joining ML2") ?>
+            </h4>
+        </div>
+    </div>
+    <div class="row home-row">
+        <div class="col-sm-6 ml2_box_height" align="center">
+           <hr>
+            <h2 class="section-heading"><?= __("Our university Network"); ?></h2>
+            <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'class' => 'img-responsive'], array('max-height' => '350px')) ?>
             <br>
-            <div class="quotecontent">
-                <div style="display: none;">
-					<?php if(!empty($_GET['lang'])) {
-							$lang = $_GET['lang'];
-						  } else {
-							$lang = 'fr_CA';
-						  }
-						  
-						  if ($lang == "fr_CA") {?>
-						<iframe src="https://docs.google.com/forms/d/1V6JFtvjS7u8s_P_4pCd4ErTvmLoNGPeCLy4hg3M0sz8/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
-					<?php } else { ?>
-						<iframe src="https://docs.google.com/forms/d/1776VuKQwbZvC-WHBL-5imu5ZMrQnb8o3t9x7qGz6SWI/viewform?embedded=true" width="760" height="4050" frameborder="0" marginheight="0" marginwidth="0"><?php echo __('Loading...') ?></iframe>
-					<?php }  ?>
-				</div>
+            <div class="bottom_align">
+                <a class="btn btn-primary"
+                   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Join our network'); ?></a>
+            </div>
+        </div>
+        <div class="col-sm-6 ml2_box_height home-block" align="center">
+            <hr>
+            <h2 class="section-heading"><?= __("Our generous sponsors"); ?></h2>
+            <div>
+                <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
+            </div>
+            <div>
+                <a href="https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
+            </div>
+            <?= __("Get visibility and access to over") ?> <b> <?= __("5000 software engineering and computer science students.") ?> </b> 
+			<?= __("Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners.") ?>
+            <div class="bottom_align">
+                <a class="btn btn-primary"
+                   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Become a sponsor '); ?></a>
+                <br>
             </div>
         </div>
     </div>
+    <div class="row home-row">
+        <div class="col-sm-6">
+            <hr>
+            <h2 class="section-heading"><i class="fa fa-graduation-cap"></i><?= __("Are you a university student?"); ?></h2>
+            <h4><?= __("Take our survey and help us serve you better"); ?> <i class="fa fa-arrow-right"></i></h4>
+			<div align=center>
+				<a class="btn btn-primary pretty_mobile_button" 
+				href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'survey']); ?>"><?= __("Take the survey") ?></a>
+			</div>
+            <h4><?= __("Apply to work on an open source project"); ?> <i class="fa fa-arrow-right"></i></h4>
+
+            <div align="center">
+                <a class="btn btn-primary pretty_mobile_button"
+                   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>"><?= __("Intern projects"); ?></a>
+                <a class="btn btn-primary pretty_mobile_button"
+                   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>"><?= __("Graduate projects"); ?></a>
+                <a class="btn btn-primary pretty_mobile_button"
+                   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>"><?= __("Capstone projects"); ?></a>
+            </div>
+            <h4><?= __("Are you new to Free Software and Open Source?"); ?></h4>
+            <ul>
+                <li>
+                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>"><?= __("Register2") ?></a>
+                <?= __("and learn from our teaching assistants and Collaborate with students."); ?></h4></li>
+                <li> <?= __("Visit our") ?> <a
+                        href="http://wiki.maisonlogiciellibre.org"><?= __("Wiki") ?></a>
+                <?= __("to learn about open source coding practices"); ?>
+                </li> 
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <hr>
+            <h2 class="section-heading"><i
+                    class="fa fa-hand-o-right "></i> <?= __("Hire interns, graduates, and capstone."); ?></h2>
+            <ul>
+                <li><b><?= __("Industry and Government: "); ?></b><?= __("Develop open source features in your products, tools and
+                    dependencies. Promote your company in our open source community"); ?>
+                </li>
+				<br>
+                <li><b><?= __("University professors: "); ?></b><?= __("Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and
+                    dev-ops infrastructure."); ?>
+                </li>
+            </ul>
+            <div align="center">
+                <a class="btn btn-primary"
+                   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'submit']); ?>"><?= __('Submit a project'); ?></a>
+            </div>
+        </div>
+    </div>
+    <div class="row home-row">
+        <div class="col-sm-6">
+			<hr>
+            <?php echo $this->element('News/news-table'); ?>
+        </div>
+		<div class="col-sm-6">
+			<hr>
+			<?php echo $this->element('Meetup/meetup-table'); ?>
+		</div>
+    </div>
 </div>
-<hr>
-<div class="home-text">
-	<h2><b><?php echo __('Our Mission') ?></b></h2>
-
-	<p class="lead">
-		<?php echo __('This initiative is born from a meeting between the ÉTS director and Google
-		Montreal director. Seeing the difficulty that students have to hone their
-		habilities to develop complex software and show the end product (code) to
-		recruiters, they decided to establish the Maison du Logiciel Libre (ML2)') ?>
-	</p>
-
-	<p class="lead">
-		<?php echo __('The foremost mission of ML2 is to offer a place of meeting and sharing in
-		Montreal allowing the students to participate in open source software
-		projects. This initiative try to reach students across of Montreal
-		universities and to include the largest possible community, thus allowing
-		the students to meet participants from multiple horizons with varied
-		academic and professional experiences.') ?>
-	</p>
-
-	<p class="lead">
-		<?php echo __('The mission of ML2 is an educational mission. Multiple activities will be
-		eventually offered : free development, graduation projects, internships,
-		mastering projects, … All of these activities will gravitate around open
-		source projects. These projects will be proposed by : students, teachers ,
-		universities or organisations wanting to invest in students formation.
-		Seminars will complete this educational component.') ?>
-	</p>
-
-	<p class="lead">
-		<?php echo __('By participating in ML2 activities, the students will be able to (i)
-		discover the open source software world with its codes and objectives; (ii)
-		hone their habilities to analyse, design and develop complex tasks ; (iii)
-		build a portfolio with their open source achievements ; (iv) obtain
-		recognitions from their university.') ?>
-	</p>
-</div>
-
-
-<div class="home-text">
-	<h2><b><?php echo __('Value proposition for industry:') ?></b></h2>
-
-	<p class="lead">
-		<?php echo __('Access to potential new hires in our logicel libre developer community') ?> <br>
-		<?php echo __('Develop new open source features faster and cheaper in your products and dependencies') ?> <br>			
-		<?php echo __('Promote your company and create networks across the software engineering and computer science departments of 7 universities') ?> <br>         
-		<?php echo __('Create Goodwill in the University and open source communities') ?> <br>
-	</p>
-	<br>
-	<h2><b><?php echo __('Value proposition for universities and students:') ?></b></h2>
-
-	<p class="lead">
-		<?php echo __('Match Interns with Industry and Academic funded open source projects') ?> <br>
-		<?php echo __('Match Capstone students with Industry and Academic sponsored open source projects') ?> <br>			
-		<?php echo __('Support for graduate students working on open source projects') ?> <br>         
-		<?php echo __('Project mentorship (each submitted project must have a mentor)') ?> <br>
-		<?php echo __('Teaching assistant (TAs) access') ?> <br>
-		<?php echo __('Additional mentor access from ML2 staff') ?> <br>
-		<?php echo __('Networking with ML2 members: students from 7 universities, open source community, mentors, and industry') ?> <br>
-		<?php echo __('Promotion of projects and students on the ML2 website') ?> <br>
-		<?php echo __('CV Portfolio testimonial plugin (testimonials from TAs & mentors)') ?> <br>
-		<?php echo __('CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)') ?> <br>
-		<?php echo __('Access to ML2 academic and industry conferences and seminars') ?> <br>
-		<?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?>
-	</p>
-</div>
-<div class="clear">
-</div>
-
-</section>

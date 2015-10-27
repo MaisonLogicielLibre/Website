@@ -11,6 +11,7 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\OrganizationsController;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -34,6 +35,8 @@ class OrganizationsControllerTest extends IntegrationTestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Members',
+    'app.organizations_Owners',
     'app.users',
     'app.type_users',
     'app.svn_users',
@@ -43,7 +46,9 @@ class OrganizationsControllerTest extends IntegrationTestCase
     'app.projects',
     'app.projects_contributors',
     'app.projects_mentors',
-    'app.missions'
+    'app.missions',
+    'app.permissions',
+    'app.permissions_type_users'
     ];
 
     /**
@@ -104,14 +109,15 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         
         $data = [
-            'name' => 'MLL',
+            'name' => 'testOrg',
             'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
         ];
+
         $this->post('/organizations/add', $data);
 
-        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+        $this->assertResponseSuccess();
     }
     
     /**
@@ -167,7 +173,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
 
         $data = [
-            'name' => 'MLL',
+            'name' => 'testOrgSubmit',
             'website' => 'http://website.com',
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome'
@@ -269,7 +275,6 @@ class OrganizationsControllerTest extends IntegrationTestCase
      */
     public function testDeleteOk()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
         $this->session(['Auth.User.id' => 2]);
         
         $this->post('/organizations/delete/1');
@@ -298,5 +303,345 @@ class OrganizationsControllerTest extends IntegrationTestCase
     {
         $this->post('/organizations/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test to validate an organization - No Permission
+     *
+     * @return void
+     */
+    public function testValidatedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/editValidated/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test to validate an organization - No Authentification
+     *
+     * @return void
+     */
+    public function testtValidatedNoAuth()
+    {
+        $this->post('/organizations/editValidated/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test to validate an organization - Ok
+     *
+     * @return void
+     */
+    public function testtValidatedOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/organizations/editValidated/1');
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test to reject an organization - No Permission
+     *
+     * @return void
+     */
+    public function testRejectedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/editRejected/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test archived an organization - No Authentification
+     *
+     * @return void
+     */
+    public function testRejectedNoAuth()
+    {
+        $this->post('/organizations/editRejected/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived an organization - Ok
+     *
+     * @return void
+     */
+    public function testRejectedOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/organizations/editRejected/1');
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test edit state on an organization - No Permission
+     *
+     * @return void
+     */
+    public function testStatusNoPerm()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/editStatus/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test addOwner - Get
+     *
+     * @return void
+     */
+    public function testAddOwnerGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/addOwner/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test addOwner - OK
+     *
+     * @return void
+     */
+    public function testAddOwnerOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $data = ['users' => [2]];
+
+        $this->post('/organizations/addOwner/1', $data);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test addOwner - No Authentification
+     *
+     * @return void
+     */
+    public function testAddOwnerNoAuth()
+    {
+        $this->get('/organizations/addOwner/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test addOwner - No Permission
+     *
+     * @return void
+     */
+    public function testAddOwnerNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/addOwner/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test addMember - Get
+     *
+     * @return void
+     */
+    public function testAddMemberGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/addMember/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test addMember - OK
+     *
+     * @return void
+     */
+    public function testAddMemberOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $data = ['users' => [2]];
+
+        $this->post('/organizations/addMember/1', $data);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test addMember - No Authentification
+     *
+     * @return void
+     */
+    public function testAddMemberNoAuth()
+    {
+        $this->get('/organizations/addMember/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test addMember - No Permission
+     *
+     * @return void
+     */
+    public function testAddMemberNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/addMember/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test quit - Get
+     *
+     * @return void
+     */
+    public function testQuitGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/quit/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test quit - OK
+     *
+     * @return void
+     */
+    public function testQuitOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/quit/1');
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
+    }
+    
+    /**
+     * Test quit - Single
+     *
+     * @return void
+     */
+    public function testQuitSingle()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/organizations/quit/2');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test quit - No Authentification
+     *
+     * @return void
+     */
+    public function testQuitNoAuth()
+    {
+        $this->get('/organizations/quit/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test quit - No Permission
+     *
+     * @return void
+     */
+    public function testQuitNoPerm()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/organizations/quit/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit state on an organization  - No Authentification
+     *
+     * @return void
+     */
+    public function testStatusNoAuth()
+    {
+        $this->post('/organizations/editStatus/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test edit status approved on an organization - Not AJAX
+     *
+     * @return void
+     */
+    public function testStatusNotAjax()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $expected = true;
+
+        $data = [
+            'id' => 1,
+            'state' => 2, // Approved
+            'stateValue' => $expected
+        ];
+
+        $this->post('/organizations/editStatus/1', $data);
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
+    }
+
+    /**
+     * Test edit status approved on an organization - Ok
+     *
+     * @return void
+     */
+    public function testStatusAcceptOk()
+    {
+        $expected = true;
+
+        $data = [
+            'id' => 1,
+            'state' => 2, // Approved
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/organizations/editStatus/1', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $organizations = TableRegistry::get('Organizations');
+
+        $q = $organizations->findById(1)->first();
+        $this->assertEquals($expected, $q->getIsValidated());
+    }
+
+    /**
+     * Test edit state accepted on an organization - Ok
+     *
+     * @return void
+     */
+    public function testStatusRejectedOk()
+    {
+        $expected = true;
+
+        $data = [
+            'id' => 1,
+            'state' => 3, // Rejected
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/organizations/editStatus/1', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $organizations = TableRegistry::get('Organizations');
+
+        $q = $organizations->findById(1)->first();
+        $this->assertEquals($expected, $q->getIsRejected());
     }
 }

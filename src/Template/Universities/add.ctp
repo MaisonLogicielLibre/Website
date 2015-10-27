@@ -11,7 +11,7 @@
         <legend><?= __('Add University') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('website');
+            echo $this->Form->input('website', ['placeholder' => __("http(s)://website.com")]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>

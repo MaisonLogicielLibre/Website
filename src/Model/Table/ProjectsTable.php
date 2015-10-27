@@ -53,6 +53,12 @@ class ProjectsTable extends Table
             'foreignKey' => 'project_id'
             ]
         );
+        $this->hasMany(
+            'Applications',
+            [
+                'foreignKey' => 'application_id'
+            ]
+        );
         $this->belongsToMany(
             'Organizations',
             [
@@ -125,22 +131,5 @@ class ProjectsTable extends Table
             ->notEmpty('archived');
 
         return $validator;
-    }
-
-    /**
-     * Return projects who are Accepted and not Archived
-     * @param Query $query   query
-     * @param array $options options
-     * @return Query query
-     */
-    public function findShow(Query $query, array $options)
-    {
-        $query->where(
-            [
-                'Projects.Accepted' => true,
-                'Projects.Archived' => false
-            ]
-        );
-        return $query;
     }
 }

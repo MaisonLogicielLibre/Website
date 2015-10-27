@@ -1,27 +1,19 @@
-<div class="actions columns col-lg-2 col-md-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="nav nav-stacked nav-pills">
-        <li class="active disabled"><?= $this->Html->link(__('New Project'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Missions'), ['controller' => 'Missions', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Mission'), ['controller' => 'Missions', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Organizations'), ['controller' => 'Organizations', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Organization'), ['controller' => 'Organizations', 'action' => 'add']) ?> </li>
-    </ul>
-</div>
-<div class="projects form col-lg-10 col-md-9 columns">
-    <?= $this->Form->create($project); ?>
-    <fieldset>
-        <legend><?= __('Add Project') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('link');
-            echo $this->Form->input('description');
-            echo $this->Form->input('organizations._ids', ['options' => $organizations]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
-    <?= $this->Form->end() ?>
+<div class="row">
+    <?= $this->cell('Sidebar::projectAction'); ?>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <?= $this->Form->create($project); ?>
+        <fieldset>
+            <legend><?= __('Add Project') ?></legend>
+            <div class="alert alert-info" role="alert"><?= __("After the project has been created, you will be redirect on the project's page to create some missions."); ?></div>
+            <?php
+            echo $this->Form->input('name', ['label' => __('Name of the project')]);
+            echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
+            echo $this->Form->input('description', ['label' => __('Description of the project')]);
+            echo $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]);
+            ?>
+        </fieldset>
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+        <?= $this->Form->end() ?>
+    </div>
 </div>

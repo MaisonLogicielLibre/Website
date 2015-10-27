@@ -29,13 +29,11 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
     private $_permissions = [
-        'index' => ['Student', 'Mentor', 'Administrator'],
-        'add' => ['Administrator'],
-        'edit' => ['Student', 'Mentor', 'Administrator'],
-        'email' => ['Student', 'Mentor', 'Administrator'],
-        'password' => ['Student', 'Mentor', 'Administrator'],
-        'view' => ['Student', 'Mentor', 'Administrator'],
-        'delete' => ['Administrator']
+        'add' => [],
+        'edit' => ['edit_user', 'edit_users'],
+        'email' => ['edit_user', 'edit_users'],
+        'password' => ['edit_user', 'edit_users'],
+        'delete' => ['delete_user', 'delete_users']
     ];
 
     /**
@@ -46,9 +44,8 @@ class UsersController extends AppController
     public function isAuthorized($user)
     {
         $user = $this->Users->findById($user['id'])->first();
-
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
@@ -68,14 +65,31 @@ class UsersController extends AppController
     }
 
     /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->set('users', $this->paginate($this->Users));
-        $this->set('_serialize', ['users']);
+        $data = $this->DataTables->find('users', ['fields' => ['id', 'username', 'firstName', 'lastName']]);
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
@@ -89,8 +103,12 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-
-                return $this->redirect(['action' => 'view', $user['id']]);
+                
+                if ($this->request->Session()->read('actionRef') != 'register/') {
+                    return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
+                } else {
+                    return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
+                }
             }
             $this->Flash->error(
                 __(
@@ -126,9 +144,7 @@ class UsersController extends AppController
                 'contain' => ['TypeUsers', 'Universities', 'Projects', 'Comments']
             ]
         );
-
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
-
         $this->set(compact('user', 'you'));
         $this->set('_serialize', ['user']);
     }
@@ -171,7 +187,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         
-        $typeUser = $this->Users->TypeUsers->findByName('Student')->first();
+        $typeUser = $this->Users->TypeUsers->findByName('User')->first();
         $user->type_users = [$typeUser];
 
         if ($this->request->is('post')) {
@@ -191,6 +207,7 @@ class UsersController extends AppController
                 );
             }
         }
+        
         $universities = $this->Users->Universities->find('list', ['limit' => 200]);
         $this->set(compact('user', 'universities'));
         $this->set('_serialize', ['user']);
@@ -212,11 +229,16 @@ class UsersController extends AppController
                 'contain' => ['Projects']
             ]
         );
-        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
 
-        if ($you) {
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
+
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
+
+                // Force to put null on gender if its not specified
+                $user->editGender($this->request->data['gender']);
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
@@ -251,8 +273,9 @@ class UsersController extends AppController
         $user = $this->Users->get($id);
 
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
-        if ($you) {
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
@@ -270,6 +293,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'email', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
@@ -286,10 +311,11 @@ class UsersController extends AppController
         $user = $this->Users->get($id);
 
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
-        if ($you) {
+        if ($you || $hasPermission) {
             if ($this->request->is(['patch', 'post', 'put'])) {
-                $user = $this->Users->patchEntity($user, $this->request->data);
+                $user->password = $user->editPassword($this->request->data['password']);
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
@@ -305,6 +331,8 @@ class UsersController extends AppController
             }
             $this->set(compact('user', 'you'));
             $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'password', $this->request->session()->read('Auth.User.id')]);
         }
     }
 
@@ -318,19 +346,30 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['get', 'post', 'delete']);
         $user = $this->Users->get($id);
 
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
+        $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
+
+        if ($you || $hasPermission) {
+            if ($this->request->is(['post'])) {
+                if ($this->Users->delete($user)) {
+                    $this->Flash->success(__('The user has been deleted.'));
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be deleted. Please,
+                     try again.'
+                        )
+                    );
+                }
+                return $this->redirect($this->Auth->logout());
+            }
+            $this->set(compact('user', 'you'));
+            $this->set('_serialize', ['user']);
         } else {
-            $this->Flash->error(
-                __(
-                    'The user could not be deleted. Please,
-             try again.'
-                )
-            );
+            return $this->redirect(['action' => 'delete', $this->request->session()->read('Auth.User.id')]);
         }
-        return $this->redirect(['action' => 'index']);
     }
 }

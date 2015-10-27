@@ -123,7 +123,15 @@ class User extends Entity
      */
     public function getGender()
     {
-        return $this->_properties['gender'];
+        $data = $this->_properties['gender'];
+
+        if ($data === false || $data === 0) {
+            return 0;
+        } elseif ($data === true || $data === 1) {
+            return 1;
+        } else {
+            return null;
+        }
     }
     
     /**
@@ -151,6 +159,24 @@ class User extends Entity
     public function getUniversity()
     {
         return $this->_properties['university'];
+    }
+
+    /**
+     * Get isAvailableMentoring
+     * @return bool isAvailableMentoring
+     */
+    public function isAvailableMentoring()
+    {
+        return $this->_properties['isAvailableMentoring'];
+    }
+
+    /**
+     * Get isStudent
+     * @return bool isStudent
+     */
+    public function isStudent()
+    {
+        return $this->_properties['isStudent'];
     }
 
     /**
@@ -226,6 +252,9 @@ class User extends Entity
      */
     public function editGender($gender)
     {
+        if ($gender == "null") {
+            $gender = null;
+        }
         $this->set('gender', $gender);
         return $gender;
     }
@@ -254,6 +283,28 @@ class User extends Entity
     }
 
     /**
+     * Set isAvailableMentoring
+     * @param bool $isAvailableMentoring isAvailableMentoring
+     * @return bool isAvailableMentoring
+     */
+    public function editisAvailableMentoring($isAvailableMentoring)
+    {
+        $this->set('isAvailableMentoring', $isAvailableMentoring);
+        return $isAvailableMentoring;
+    }
+
+    /**
+     * Set isStudent
+     * @param bool $isStudent isStudent
+     * @return bool isStudent
+     */
+    public function editIsStudent($isStudent)
+    {
+        $this->set('isStudent', $isStudent);
+        return $isStudent;
+    }
+
+    /**
      * Check if the user has the role specified
      * @param string $permission the permission required to open the page
      * @return bool
@@ -266,6 +317,179 @@ class User extends Entity
 
         foreach ($roles as $role) {
             if (in_array($role->type_user->name, $permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if the user has the permission specified
+     * @param array $permission permissions required to open the page
+     * @return bool
+     */
+    public function hasPermissionName($permission)
+    {
+        $permissions = $this->getPermissions();
+        foreach ($permissions as $perm) {
+            if (in_array($perm->name, $permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get permissions of user
+     * @return array
+     */
+    public function getPermissions()
+    {
+        $roles = TableRegistry::get('TypeUsersUsers');
+        $permissions = TableRegistry::get('PermissionsTypeUsers');
+        
+        $listRolesUser = $this->getRoles();
+    
+        $listPermissions = [];
+        foreach ($listRolesUser as $role) {
+            $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->id])->contain(['Permissions'])->toArray();
+            foreach ($rolePermissions as $permission) {
+                $listPermissions[] = $permission->permission;
+            }
+        }
+    
+        return $listPermissions;
+    }
+
+    /**
+     * Get roles of user
+     * @return array
+     */
+    public function getRoles()
+    {
+        // Role fix
+        $roles = TableRegistry::get('TypeUsersUsers');
+        $rolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
+
+        $listRolesUser = [];
+    
+        foreach ($rolesUser as $role) {
+            $listRolesUser[] = $role->type_user;
+        }
+        
+            
+
+        // Role dynamic
+        $roles = TableRegistry::get('TypeUsers');
+
+        if (!empty($this->getProjectsMentored())) {
+            $listRolesUser[] = $roles->findByName('Dyn_mentor')->first();
+        }
+        
+        if (!empty($this->getOrganizationsOwned())) {
+            $listRolesUser[] = $roles->findByName('Dyn_OrganizationOwner')->first();
+        }
+        
+        if (!empty($this->getOrganizationsJoined())) {
+            $listRolesUser[] = $roles->findByName('Dyn_OrganizationMember')->first();
+        }
+        
+        return $listRolesUser;
+    }
+
+    /**
+     * Get projects where user is mentor
+     * @return array
+     */
+    public function getProjectsMentored()
+    {
+        $projects = TableRegistry::get('ProjectsMentors');
+        $projects = $projects->find('all')->where(['user_id' => $this->getId()])->contain(['Projects'])->toArray();
+
+        $listProject = [];
+        foreach ($projects as $project) {
+            $listProject[] = $project->project;
+        }
+
+        return $listProject;
+    }
+    
+    /**
+     * Get organizations where user is owner
+     * @return array
+     */
+    public function getOrganizationsOwned()
+    {
+        $organizations = TableRegistry::get('OrganizationsOwners');
+        $organizations = $organizations->find('all')->where(['user_id' => $this->getId()])->contain(['Organizations'])->toArray();
+        
+        $listOrganization = [];
+        foreach ($organizations as $organization) {
+            $listOrganization[] = $organization->organization;
+        }
+        
+        return $listOrganization;
+    }
+    
+    /**
+     * Get organizations where user is member
+     * @return array
+     */
+    public function getOrganizationsJoined()
+    {
+        $organizations = TableRegistry::get('OrganizationsMembers');
+        $organizations = $organizations->find('all')->where(['user_id' => $this->getId()])->contain(['Organizations'])->toArray();
+
+        $listOrganization = [];
+        foreach ($organizations as $organization) {
+            $listOrganization[] = $organization->organization;
+        }
+
+        return $listOrganization;
+    }
+
+    /**
+     * Get if the user is mentor on the project in argument
+     * @param Project $projectId projectID
+     * @return array
+     */
+    public function isMentorOf($projectId)
+    {
+        $listProject = $this->getProjectsMentored();
+        foreach ($listProject as $project) {
+            if ($project->id == $projectId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Get if the user is owner of the organization in argument
+     * @param Project $orgId orgID
+     * @return array
+     */
+    public function isOwnerOf($orgId)
+    {
+        $listOrg = $this->getOrganizationsOwned();
+        foreach ($listOrg as $org) {
+            if ($org->id == $orgId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Get if the user is member of the organization in argument
+     * @param Project $orgId orgID
+     * @return array
+     */
+    public function isMemberOf($orgId)
+    {
+        $listOrg = $this->getOrganizationsJoined();
+        foreach ($listOrg as $org) {
+            if ($org->id == $orgId) {
                 return true;
             }
         }

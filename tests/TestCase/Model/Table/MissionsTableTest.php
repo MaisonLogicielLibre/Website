@@ -4,11 +4,10 @@
  *
  * @category Test
  * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
- 
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTable;
@@ -18,11 +17,11 @@ use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
- * Tests for CommentsTable
+ * Tests for MissionsTable
  *
  * @category Test
  * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
@@ -35,19 +34,24 @@ class MissionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-    'app.type_users_users',
-    'app.organizations',
-    'app.organizations_Projects',
-    'app.users',
-    'app.type_users',
-    'app.svn_users',
-    'app.svns',
-    'app.universities',
-    'app.comments',
-    'app.projects',
-    'app.projects_contributors',
-    'app.projects_mentors',
-    'app.missions'
+        'app.missions',
+        'app.projects',
+        'app.applications',
+        'app.users',
+        'app.universities',
+        'app.comments',
+        'app.projects_contributors',
+        'app.organizations',
+        'app.organizations_projects',
+        'app.projects_mentors',
+        'app.type_users',
+        'app.permissions',
+        'app.permissions_type_users',
+        'app.type_users_users',
+        'app.mission_levels',
+        'app.missions_mission_levels',
+        'app.type_missions',
+        'app.missions_type_missions'
     ];
 
     /**
@@ -60,6 +64,14 @@ class MissionsTableTest extends TestCase
         parent::setUp();
         $config = TableRegistry::exists('Missions') ? [] : ['className' => 'App\Model\Table\MissionsTable'];
         $this->Missions = TableRegistry::get('Missions', $config);
+        $config = TableRegistry::exists('Projects') ? [] : ['className' => 'App\Model\Table\ProjectsTable'];
+        $this->Projects = TableRegistry::get('Projects', $config);
+        $config = TableRegistry::exists('MissionLevels') ? [] : ['className' => 'App\Model\Table\MissionLevelsTable'];
+        $this->Levels = TableRegistry::get('MissionLevels', $config);
+        $config = TableRegistry::exists('TypeMissions') ? [] : ['className' => 'App\Model\Table\TypeMissionsTable'];
+        $this->Type = TableRegistry::get('TypeMissions', $config);
+        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
+        $this->Users = TableRegistry::get('Users', $config);
     }
 
     /**
@@ -73,23 +85,23 @@ class MissionsTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
-     * Test getId
+     * Test getName
      * @return void
      */
-    public function testGetId()
+    public function testGetName()
     {
         $id = 1;
-        $expected = 1;
+        $expected = 'Dev';
 
         $mission = $this->Missions->get($id);
 
-        $result = $mission->getId();
+        $result = $mission->getName();
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getProjectId
      * @return void
@@ -105,103 +117,299 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
-     * Test getRole
+     * Test getMentorId
      * @return void
      */
-    public function testGetRole()
-    {
-        $id = 1;
-        $expected = 'Dev';
-
-        $mission = $this->Missions->get($id);
-
-        $result = $mission->getRole();
-
-        $this->assertEquals($expected, $result);
-    }
-    
-    /**
-     * Test getMission
-     * @return void
-     */
-    public function testGetMission()
-    {
-        $id = 1;
-        $expected = 'Do stuff';
-
-        $mission = $this->Missions->get($id);
-
-        $result = $mission->getMission();
-
-        $this->assertEquals($expected, $result);
-    }
-    
-    /**
-     * Test isActive
-     * @return void
-     */
-    public function testIsActive()
+    public function testGetMentorId()
     {
         $id = 1;
         $expected = 1;
 
         $mission = $this->Missions->get($id);
 
-        $result = $mission->isActive();
+        $result = $mission->getMentorId();
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
-     * Test editRole
+     * Test getProject
      * @return void
      */
-    public function testSetRole()
+    public function testGetProject()
     {
         $id = 1;
-        $expected = 'Test';
+
+        $expected = $this->Projects->get(1);
+
+        $mission = $this->Missions->get($id, ['contain' => 'Projects']);
+
+        $result = $mission->getProject();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getDescription
+     * @return void
+     */
+    public function testGetDescription()
+    {
+        $id = 1;
+        $expected = 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.';
 
         $mission = $this->Missions->get($id);
 
-        $result = $mission->editRole($expected);
+        $result = $mission->getDescription();
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
-     * Test editMission
+     * Test getCompetence
      * @return void
      */
-    public function testSetMission()
+    public function testGetCompetence()
     {
         $id = 1;
-        $expected = 'Do more stuff';
+        $expected = 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.';
 
         $mission = $this->Missions->get($id);
 
-        $result = $mission->editMission($expected);
+        $result = $mission->getCompetence();
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
-     * Test editActive
+     * Test getInternNbr
      * @return void
      */
-    public function testSetActive()
+    public function testGetInternNbr()
     {
         $id = 1;
-        $expected = 0;
+        $expected = 1;
 
         $mission = $this->Missions->get($id);
 
-        $result = $mission->editActive($expected);
+        $result = $mission->getInternNbr();
 
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getSession1
+     * @return void
+     */
+    public function testGetSession1()
+    {
+        $id = 1;
+        $expected = __('Winter');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getSession();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getSession2
+     * @return void
+     */
+    public function testGetSession2()
+    {
+        $id = 2;
+        $expected = __('Summer');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getSession();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getSession3
+     * @return void
+     */
+    public function testGetSession3()
+    {
+        $id = 3;
+        $expected = __('Fall');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getSession();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getSession4
+     * @return void
+     */
+    public function testGetSession4()
+    {
+        $id = 4;
+        $expected = __('Not specified');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getSession();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLength1
+     * @return void
+     */
+    public function testGetLength1()
+    {
+        $id = 1;
+        $expected = __('1 term');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getLength();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLength2
+     * @return void
+     */
+    public function testGetLength2()
+    {
+        $id = 2;
+        $expected = __('2 terms');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getLength();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLength3
+     * @return void
+     */
+    public function testGetLength3()
+    {
+        $id = 3;
+        $expected = __('3 terms');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getLength();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLength4
+     * @return void
+     */
+    public function testGetLength4()
+    {
+        $id = 4;
+        $expected = __('Not specified');
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getLength();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLevels
+     * @return void
+     */
+    public function testGetLevels()
+    {
+        $id = 1;
+
+        $expected = $this->Levels->get(1)->getName();
+
+        $mission = $this->Missions->get($id, ['contain' => 'MissionLevels']);
+
+        $result = $mission->getLevels()[0]->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getType
+     * @return void
+     */
+    public function testGetType()
+    {
+        $id = 1;
+
+        $expected = $this->Type->get(1)->getName();
+
+        $mission = $this->Missions->get($id, ['contain' => 'TypeMissions']);
+
+        $result = $mission->getType()[0]->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getMentor
+     * @return object user
+     */
+    public function testGetMentor()
+    {
+        $id = 1;
+
+        $expected = $this->Users->get(1)->getId();
+
+        $mission = $this->Missions->get($id, ['contain' => 'Users']);
+
+        $result = $mission->getMentor()->getId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test setProjectId
+     * @return void
+     */
+    public function testSetProjectId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Missions->get($id);
+
+        $result = $user->editProjectId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test setMentorId
+     * @return void
+     */
+    public function testSetMentorId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Missions->get($id);
+
+        $result = $user->editMentorId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test validation
      * @return void
@@ -209,14 +417,14 @@ class MissionsTableTest extends TestCase
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Missions->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
      * @return void
@@ -224,11 +432,11 @@ class MissionsTableTest extends TestCase
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->Missions->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

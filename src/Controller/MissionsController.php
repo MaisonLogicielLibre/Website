@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Missions controller
@@ -23,13 +24,14 @@ use App\Controller\AppController;
  */
 class MissionsController extends AppController
 {
+
     private $_permissions = [
-        'index' => ['Administrator'],
-        'add' => ['Administrator'],
-        'submit' => ['Administrator'],
-        'edit' => ['Administrator'],
-        'view' => ['Administrator'],
-        'delete' => ['Administrator']
+        'index' => ['list_missions_all'],
+        'add' => ['add_mission'],
+        'submit' => ['submit_mission'],
+        'edit' => ['edit_mission', 'edit_missions'],
+        'view' => ['view_mission', 'view_missions'],
+        'delete' => ['delete_mission', 'delete_missions']
     ];
 
     /**
@@ -39,103 +41,101 @@ class MissionsController extends AppController
      */
     public function isAuthorized($user)
     {
-        $user = $this->loadModel("Users")->findById($user['id'])->first();
+        $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
-            if ($user->hasRoleName($this->_permissions[$this->request->action])) {
+            if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
             }
         }
     }
 
     /**
-     * Index method
+     * Filter preparation
+     *
+     * @param Event $event event
      *
      * @return void
      */
-    public function index()
+    public function beforeFilter(Event $event)
     {
-        $this->set('missions', $this->paginate($this->Missions));
-        $this->set('_serialize', ['missions']);
+        parent::beforeFilter($event);
+        $this->loadModel("Users");
+        $this->Auth->allow(['view']);
     }
-    
+
     /**
      * View method
-     * @param string $id id
+     *
+     * @param string|null $id Mission id.
+     *
      * @return void
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
     {
         $mission = $this->Missions->get(
             $id,
             [
-            'contain' => []
+            'contain' => [
+                'Projects' => ['Organizations'],
+                'MissionLevels',
+                'TypeMissions',
+                'Users'
+            ]
             ]
         );
-        $this->set('mission', $mission);
+
+        $projectId = $mission->getProjectId();
+        $this->set(compact('mission', 'projectId'));
         $this->set('_serialize', ['mission']);
     }
 
     /**
      * Add method
-     * @return redirect
+     *
+     * @param int $projectId Project id.
+     *
+     * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($projectId = null)
     {
-        $mission = $this->Missions->newEntity();
-        if ($this->request->is('post')) {
-            $mission = $this->Missions->patchEntity($mission, $this->request->data);
-            if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('mission'));
-        $this->set('_serialize', ['mission']);
-    }
+        if (!is_null($projectId)) {
+            $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+            // Get the project object
+            $this->loadModel('Projects');
+            $project = $this->Projects->get(
+                $projectId,
+                [
+                'contain' => ['Mentors']
+                ]
+            );
 
-    /**
-     * Edit method
-     * @param string $id id
-     * @return redirect
-     */
-    public function edit($id = null)
-    {
-        $mission = $this->Missions->get(
-            $id,
-            [
-            'contain' => []
-            ]
-        );
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $mission = $this->Missions->patchEntity($mission, $this->request->data);
-            if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('mission'));
-        $this->set('_serialize', ['mission']);
-    }
+            // Check if your a mentor on this project
+            if ($user->isMentorOf($projectId)) {
+                $mission = $this->Missions->newEntity();
+                if ($this->request->is('post')) {
+                    $mission = $this->Missions->patchEntity($mission, $this->request->data);
 
-    /**
-     * Delete method
-     * @param string $id id
-     * @return redirect
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $mission = $this->Missions->get($id);
-        if ($this->Missions->delete($mission)) {
-            $this->Flash->success(__('The mission has been deleted.'));
+                    $mission->editProjectId($projectId);
+                    $mission->editMentorId($user->getId());
+                    if ($this->Missions->save($mission)) {
+                        $this->Flash->success(__('The mission has been saved.'));
+                        return $this->redirect(['controller' => 'Projects', 'action' => 'view', $projectId]);
+                    } else {
+                        $this->Flash->error(__('The mission could not be saved. Please, try again.'));
+                    }
+                }
+                $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
+                $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
+                $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
+                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions', 'projectId'));
+                $this->set('_serialize', ['mission']);
+            } else {
+                return $this->redirect(['controller' => 'projects', 'action' => 'index']);
+            }
         } else {
-            $this->Flash->error(__('The mission could not be deleted. Please, try again.'));
+            return $this->redirect(['controller' => 'projects', 'action' => 'index']);
         }
-        return $this->redirect(['action' => 'index']);
     }
 }

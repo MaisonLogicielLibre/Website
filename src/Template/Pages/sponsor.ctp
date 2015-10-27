@@ -16,7 +16,7 @@
 	
 	<h2> <?= __('How does a company become a sponsor?') ?> </h2>
 	
-	<p> <?= __('Send an email describing your organization and why you would like to join ML²') ?>
+	<p> <?= __('Send an email describing your organization and why you would like to join ML2') ?>
 	
 	
 	

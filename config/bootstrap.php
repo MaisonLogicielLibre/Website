@@ -97,7 +97,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * Set the default locale. This controls how dates, number and currency is
  * formatted and sets the default language to use for translations.
  */
-ini_set('intl.default_locale', 'en_US');
+ini_set('intl.default_locale', 'fr_CA');
 
 /**
  * Register application error and exception handlers.
@@ -182,6 +182,7 @@ Request::addDetector('tablet', function ($request) {
 
 Plugin::load('Migrations');
 Plugin::load('Bootstrap', ['bootstrap' => true]);
+Plugin::load('DataTables', ['bootstrap' => false, 'routes' => false]);
 
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system

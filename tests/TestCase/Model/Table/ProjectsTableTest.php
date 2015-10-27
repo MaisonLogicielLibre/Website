@@ -59,6 +59,10 @@ class ProjectsTableTest extends TestCase
         parent::setUp();
         $config = TableRegistry::exists('Projects') ? [] : ['className' => 'App\Model\Table\ProjectsTable'];
         $this->Projects = TableRegistry::get('Projects', $config);
+        $config = TableRegistry::exists('Organizations') ? [] : ['className' => 'App\Model\Table\OrganizationsTable'];
+        $this->Organizations = TableRegistry::get('Organizations', $config);
+        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
+        $this->Users = TableRegistry::get('Users', $config);
     }
 
     /**
@@ -165,6 +169,40 @@ class ProjectsTableTest extends TestCase
         $project = $this->Projects->get($id);
 
         $result = $project->isArchived();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getMentors
+     * @return void
+     */
+    public function testGetMentors()
+    {
+        $id = 1;
+
+        $expected = $this->Users->get(1)->getId();
+
+        $projects = $this->Projects->get($id, ['contain' => 'Mentors']);
+
+        $result = $projects->getMentors()[0]->getId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getMentors
+     * @return void
+     */
+    public function testGetOrganizations()
+    {
+        $id = 1;
+
+        $expected = $this->Users->get(1)->getId();
+
+        $org = $this->Projects->get($id, ['contain' => 'Organizations']);
+
+        $result = $org->getOrganizations()[0]->getId();
 
         $this->assertEquals($expected, $result);
     }
@@ -277,5 +315,24 @@ class ProjectsTableTest extends TestCase
         $result = $this->Projects->buildRules($rule);
         
         $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test validation Link Rules
+     * @return void
+     */
+    public function testValidationWebsite()
+    {
+        $id = 1;
+        $project = $this->Projects->get($id);
+
+        $this->Projects->patchEntity($project, ['link' => 'www.website.com']);
+        $result = $this->Projects->save($project);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+        $this->assertFalse($result);
     }
 }

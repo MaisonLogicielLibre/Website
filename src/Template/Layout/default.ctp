@@ -57,20 +57,32 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><?= $this->Html->link(__('ML2'), ['controller' => 'Pages', 'action' => 'home']);?></li>
-					<li class="active"><?= $this->Html->link(__('Home'), ['controller' => 'Pages', 'action' => 'home']);?></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Language') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><?= $this->Html->link(__('FR'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'fr_CA']);?></li>
-							<li><?= $this->Html->link(__('EN'), ['controller' => 'Pages', 'action' => 'home', 'lang' => 'en_US']);?></li>                    
+							<li><?= $this->Html->link(__('FR'), ['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']);?></li>
+							<li><?= $this->Html->link(__('EN'), ['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'en_US']);?></li>                    
 						</ul>
 					</li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><?= $this->Html->link(__('Become a sponsor'), ['controller' => 'Pages', 'action' => 'sponsor']);?></li>
-					<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Pages', 'action' => 'submit']);?></li>
-					<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>
-					<li><?= $this->Html->link(__('Projects'), ['controller' => 'Projects', 'action' => 'index']);?></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Projects') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('List of organizations'), ['controller' => 'Organizations', 'action' => 'index']);?></li>
+							<li><?= $this->Html->link(__('Submit an organization'), ['controller' => 'Organizations', 'action' => 'submit']);?></li>
+							<li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']);?></li> 
+							<li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Projects', 'action' => 'submit']);?></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Activities') ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('Meetup'), ['controller' => 'Pages', 'action' => 'meetup']);?></li>
+							<li><?= $this->Html->link(__('Survey'), ['controller' => 'Pages', 'action' => 'survey']);?></li>
+							<li><?= $this->Html->link(__('Contest'), ['controller' => 'Pages', 'action' => 'contest']);?></li>     							
+						</ul>
+					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= __('Partners') ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -79,7 +91,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>                     
 						</ul>
 					</li>
-					<li><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?></li>
 					<?php if($this->request->session()->read('Auth.User.username')) {?>
 						<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
 						<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
@@ -92,18 +103,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div id="container">
+	<div id="container-fluid">
 		<div class="row">
-			<div class="col-xs-12">
-				<div id="content">
-					<?= $this->Flash->render() ?>
-
-					<div class="row setHeight">
-						<?= $this->fetch('content') ?>
-					</div>
-				</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<?= $this->Flash->render() ?>
 			</div>
 		</div>
+		<?= $this->fetch('content') ?>
 	</div>
 </div>
 <!-- Footer -->
@@ -112,8 +118,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="row">
 			<div class="text-center">
 				<h4><strong><?php echo __('Maison du Logiciel Libre') ?></strong></h4>
-				400 <?php echo __('Montfort street') ?><br><?php echo __('Montreal') ?>, QC, H3C 4J9
-				<br><i class="fa fa-phone-square"></i> (514) 781-9312
+				<p><?= $this->Html->link(__('About us'), ['controller' => 'Pages', 'action' => 'mission']);?></li></p>
+				<p><?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']);?>
 				<br>Copyright &copy; <?php echo __('Maison du Logiciel Libre') ?> 2015</p>
 			</div>
 		</div>

@@ -24,8 +24,6 @@ use Cake\Validation\Validator;
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/site_mll
- * @property \Cake\ORM\Association\BelongsTo $Projects
- * @property \Cake\ORM\Association\BelongsToMany $ProjectsUsers
  */
 class MissionsTable extends Table
 {
@@ -42,14 +40,39 @@ class MissionsTable extends Table
         parent::initialize($config);
 
         $this->table('missions');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo(
             'Projects',
             [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
+            ]
+        );
+        $this->belongsTo(
+            'Users',
+            [
+            'foreignKey' => 'mentor_id',
+            'joinType' => 'INNER'
+            ]
+        );
+        $this->belongsToMany(
+            'MissionLevels',
+            [
+            'foreignKey' => 'mission_id',
+            'targetForeignKey' => 'mission_level_id',
+            'joinTable' => 'missions_mission_levels'
+            ]
+        );
+        $this->belongsToMany(
+            'TypeMissions',
+            [
+            'foreignKey' => 'mission_id',
+            'targetForeignKey' => 'type_mission_id',
+            'joinTable' => 'missions_type_missions'
             ]
         );
     }
@@ -64,23 +87,78 @@ class MissionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->add('session', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('session', 'create')
+            ->notEmpty('session');
 
         $validator
-            ->requirePresence('mission', 'create')
-            ->notEmpty('mission');
+            ->add('length', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('length', 'create')
+            ->notEmpty('length');
 
         $validator
-            ->add('active', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('active', 'create')
-            ->notEmpty('active');
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
 
-        return $validator;
+        $validator
+            ->requirePresence('competence', 'create')
+            ->notEmpty('competence');
+
+        $validator
+            ->add(
+                'internNbr',
+                [
+                    'valid' => [
+                        'rule' => 'numeric',
+                        'message' => __('The value must be a number')
+                    ],
+                    'range' => [
+                        'rule' => ['range', 1, 100],
+                        "message" => __('Please enter a number between 1 and 100')
+                    ]
+                ]
+            )
+            ->requirePresence('internNbr', 'create')
+            ->notEmpty('internNbr');
+
+                $validator
+                ->add(
+                    'type_missions',
+                    'custom',
+                    [
+                    'rule' => function ($value, $context) {
+                        if (empty($context['data']['type_missions']['_ids'])) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('You must select at least one item.')]
+                );
+
+                $validator
+                ->add(
+                    'mission_levels',
+                    'custom',
+                    [
+                    'rule' => function ($value, $context) {
+                        if (empty($context['data']['mission_levels']['_ids'])) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('You must select at least one item.')]
+                );
+
+
+                return $validator;
     }
 
     /**
@@ -94,6 +172,7 @@ class MissionsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
+        $rules->add($rules->existsIn(['mentor_id'], 'Users'));
         return $rules;
     }
 }

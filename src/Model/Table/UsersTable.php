@@ -60,6 +60,12 @@ class UsersTable extends Table
                 'foreignKey' => 'user_id'
             ]
         );
+        $this->hasMany(
+            'Applications',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
         $this->belongsToMany(
             'Projects',
             [
@@ -99,10 +105,10 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('firstName');
+            ->notEmpty('firstName');
 
         $validator
-            ->allowEmpty('lastName');
+            ->notEmpty('lastName');
 
         $validator
             ->allowEmpty('biography');
@@ -127,7 +133,15 @@ class UsersTable extends Table
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
             ->notEmpty('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
+            ->add(
+                'email',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This email is already taken.')
+                ]
+            )
             ->add(
                 'confirm_email',
                 'custom',
@@ -182,7 +196,16 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
-            ->notEmpty('username');
+            ->notEmpty('username')
+            ->add(
+                'username',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This username is already taken.')
+                 ]
+            );
 
         $validator
             ->add(
@@ -204,6 +227,12 @@ class UsersTable extends Table
                     'message' => __(' Old password isn\'t valid')]
             );
 
+        $validator
+            ->add('isAvailableMentoring', 'valid', ['rule' => 'boolean']);
+
+        $validator
+            ->add('isStudent', 'valid', ['rule' => 'boolean']);
+
         return $validator;
     }
     /**
@@ -218,7 +247,6 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['username']));
-        $rules->add($rules->existsIn(['universitie_id'], 'Universities'));
         return $rules;
     }
 }

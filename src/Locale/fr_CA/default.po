@@ -4,9 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-05 16:49-0400\n"
-"PO-Revision-Date: 2015-10-05 16:58-0400\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-10-27 09:30-0400\n"
+"PO-Revision-Date: 2015-10-27 09:32-0400\n"
+"Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: Controller/AppController.php:58 Template/Layout/default.ctp:59
+#: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
 msgstr "ML²"
+
+#: Controller/AppController.php:73
+msgid "You must be logged in to access this page."
+msgstr "Vous devez être connecté pour accéder à cette page."
 
 #: Controller/CommentsController.php:89;116
 msgid "The comment has been saved."
@@ -35,53 +39,100 @@ msgstr "Le commentaire a été supprimé."
 msgid "The comment could not be deleted. Please, try again."
 msgstr "Le commentaire n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/MissionsController.php:89;115
+#: Controller/MissionsController.php:123
 msgid "The mission has been saved."
 msgstr "La mission a été enregistrée."
 
-#: Controller/MissionsController.php:92;118
+#: Controller/MissionsController.php:126
 msgid "The mission could not be saved. Please, try again."
 msgstr "La mission n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/MissionsController.php:135
-msgid "The mission has been deleted."
-msgstr "La mission a été supprimée."
-
-#: Controller/MissionsController.php:137
-msgid "The mission could not be deleted. Please, try again."
-msgstr "La mission n'a pas pu être supprimée. Veuillez réessayer."
-
-#: Controller/OrganizationsController.php:114;138;164
+#: Controller/OrganizationsController.php:208;235;261;327
 msgid "The organization has been saved."
 msgstr "L'organisation a été enregistrée."
 
-#: Controller/OrganizationsController.php:117;141;167
+#: Controller/OrganizationsController.php:211;238;264;312;330
 msgid "The organization could not be saved. Please, try again."
 msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/OrganizationsController.php:184
+#: Controller/OrganizationsController.php:288
+#: Controller/ProjectsController.php:321
+msgid "Cannot perform the change."
+msgstr "Le changement n'a pas pu être effectué"
+
+#: Controller/OrganizationsController.php:290
+#: Controller/ProjectsController.php:323
+msgid "Your change has been saved"
+msgstr "Le changement a été enregistré."
+
+#: Controller/OrganizationsController.php:293
+#: Controller/ProjectsController.php:326
+msgid "Not an AJAX Query"
+msgstr "Ceci n'est pas une requête AJAX"
+
+#: Controller/OrganizationsController.php:309
+msgid "The organization has been approved."
+msgstr "L'organisation a été approuvée."
+
+#: Controller/OrganizationsController.php:344
 msgid "The organization has been deleted."
 msgstr "L'organisation a été supprimée."
 
-#: Controller/OrganizationsController.php:186
+#: Controller/OrganizationsController.php:346
 msgid "The organization could not be deleted. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:121;149
+#: Controller/OrganizationsController.php:381
+msgid "The organization has been updated."
+msgstr "L'organisation a été modifiée."
+
+#: Controller/OrganizationsController.php:385
+msgid "The organization could not be updated. Please,try again."
+msgstr "L'organisation n'a pas pu être modifiée. Veuillez réessayer."
+
+#: Controller/OrganizationsController.php:424
+msgid "The user has been added."
+msgstr "L'utilisateur a été ajouté."
+
+#: Controller/OrganizationsController.php:428
+msgid "The user could not be added. Please,try again."
+msgstr "L'utilisateur n'a pas pu être ajouté. Veuillez réessayer."
+
+#: Controller/OrganizationsController.php:478
+msgid "You have left the organization."
+msgstr "Vous avez quitté l'organisation."
+
+#: Controller/OrganizationsController.php:486
+msgid "There was an error. Please,try again."
+msgstr "Il y a eu une erreur. Veuillez réessayer."
+
+#: Controller/ProjectsController.php:154;265;293;361
 msgid "The project has been saved."
 msgstr "Le projet a été enregistré."
 
-#: Controller/ProjectsController.php:124;152
+#: Controller/ProjectsController.php:157;268;296;345;364
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/ProjectsController.php:170
+#: Controller/ProjectsController.php:342
+msgid "The project has been accepted."
+msgstr "Le projet a été accepté."
+
+#: Controller/ProjectsController.php:379
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/ProjectsController.php:172
+#: Controller/ProjectsController.php:381
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez réessayer."
+
+#: Controller/ProjectsController.php:409
+msgid "The application has been saved."
+msgstr "La candidature a été enregistrée."
+
+#: Controller/ProjectsController.php:412
+msgid "The application could not be saved. Please, try again."
+msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
 #: Controller/SvnsController.php:89;115
 msgid "The svn has been saved."
@@ -131,81 +182,280 @@ msgstr "L'université a été supprimée."
 msgid "The university could not be deleted. Please, try again."
 msgstr "L'université n'a pas pu être supprimée. Veuillez réessayer."
 
-#: Controller/UsersController.php:96
+#: Controller/UsersController.php:114
 msgid "Username or password incorrect, try again."
 msgstr "Nom d'utilisateur ou mot de passe inccorect, veuillez réessayer."
 
-#: Controller/UsersController.php:147;183;222;260;295
+#: Controller/UsersController.php:163;199;244;283;321
 msgid "The user has been saved."
 msgstr "L'utilisateur a été enregistré."
 
-#: Controller/UsersController.php:151
+#: Controller/UsersController.php:167
 msgid ""
 "The new email could not be saved. Please,\n"
 "                try again."
 msgstr "Le courriel n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:187
+#: Controller/UsersController.php:203
 msgid ""
 "The user could not be saved. Please,\n"
 "                 try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:226;264
+#: Controller/UsersController.php:248;287
 msgid ""
 "The user could not be saved. Please,\n"
 "                     try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:299
+#: Controller/UsersController.php:325
 msgid ""
 "The password could not be saved. Please,\n"
 "                     try again."
 msgstr "Le mot de passe n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:325
+#: Controller/UsersController.php:358
 msgid "The user has been deleted."
 msgstr "L'utilisateur a été supprimé."
 
-#: Controller/UsersController.php:328
+#: Controller/UsersController.php:361
 msgid ""
 "The user could not be deleted. Please,\n"
-"             try again."
+"                     try again."
 msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Model/Table/OrganizationsTable.php:86 Model/Table/ProjectsTable.php:113
-#: Model/Table/UsersTable.php:122
+#: Model/Entity/Mission.php:113 Template/Missions/add.ctp:20
+#: Template/Projects/view.ctp:125
+msgid "Winter"
+msgstr "Hiver"
+
+#: Model/Entity/Mission.php:116 Template/Missions/add.ctp:21
+#: Template/Projects/view.ctp:126
+msgid "Summer"
+msgstr "Été"
+
+#: Model/Entity/Mission.php:119 Template/Missions/add.ctp:22
+#: Template/Projects/view.ctp:127
+msgid "Fall"
+msgstr "Automne"
+
+#: Model/Entity/Mission.php:122;145 Template/Missions/add.ctp:19;27
+#: Template/Projects/view.ctp:117;124 Template/Users/edit.ctp:14;52
+#: Template/Users/register.ctp:48
+msgid "Not specified"
+msgstr "Non spécifié"
+
+#: Model/Entity/Mission.php:136 Template/Missions/add.ctp:28
+#: Template/Projects/view.ctp:118
+msgid "1 term"
+msgstr "1 session"
+
+#: Model/Entity/Mission.php:139 Template/Missions/add.ctp:29
+#: Template/Projects/view.ctp:119
+msgid "2 terms"
+msgstr "2 sessions"
+
+#: Model/Entity/Mission.php:142 Template/Missions/add.ctp:30
+#: Template/Projects/view.ctp:120
+msgid "3 terms"
+msgstr "3 sessions"
+
+#: Model/Entity/MissionLevel.php:48 Model/Entity/TypeMission.php:56
+#: Template/Projects/view.ctp:133
+msgid "Master"
+msgstr "Maîtrise"
+
+#: Model/Entity/TypeMission.php:50 Template/Projects/view.ctp:131
+msgid "Intern"
+msgstr "Stagiaire"
+
+#: Model/Entity/TypeMission.php:53 Template/Projects/view.ctp:132
+msgid "Volunteer"
+msgstr "Bénévole"
+
+#: Model/Entity/TypeMission.php:59 Template/Projects/view.ctp:134
+msgid "Capstone"
+msgstr "PFE"
+
+#: Model/Table/MissionsTable.php:121
+msgid "The value must be a number"
+msgstr "La valeur doit être un nombre."
+
+#: Model/Table/MissionsTable.php:125
+msgid "Please enter a number between 1 and 100"
+msgstr "Veuillez entrer un nombre entre 1 et 100"
+
+#: Model/Table/MissionsTable.php:143;157
+msgid "You must select at least one item."
+msgstr "Vous devez au moins sélectionner un choix."
+
+#: Model/Table/OrganizationsTable.php:97
+msgid "This name is already taken."
+msgstr "Ce nom est déja utilisé."
+
+#: Model/Table/OrganizationsTable.php:113 Model/Table/ProjectsTable.php:119
+#: Model/Table/UsersTable.php:128
 msgid "Is not an url (Ex : http://website.ca)."
 msgstr "Le lien web n'est pas valide (Ex : http://website.ca)"
 
-#: Model/Table/UsersTable.php:158
+#: Model/Table/UsersTable.php:142
+msgid "This email is already taken."
+msgstr "Ce courriel est déja utilisé."
+
+#: Model/Table/UsersTable.php:172
 msgid "Is not a valid number."
 msgstr "Le numéro de téléphone n'est pas valide."
 
-#: Model/Table/UsersTable.php:204
+#: Model/Table/UsersTable.php:206
+msgid "This username is already taken."
+msgstr "Ce nom d'utilisateur est déja utilisé."
+
+#: Model/Table/UsersTable.php:227
 msgid " Old password isn't valid"
 msgstr "L'ancien mot de passe n'est pas valide."
 
+#: Template/Cell/Sidebar/organization.ctp:17
+msgid "Website of the organization"
+msgstr "Site web de l'organisation"
+
+#: Template/Cell/Sidebar/organization.ctp:41
+#: Template/Organizations/add_member.ctp:7
+msgid "Edit members"
+msgstr "Modifier les membres"
+
+#: Template/Cell/Sidebar/organization.ctp:54
+#: Template/Organizations/add_owner.ctp:7
+msgid "Edit owners"
+msgstr "Modifier les propriétaires"
+
+#: Template/Cell/Sidebar/organization.ctp:67
+msgid "Edit the organization"
+msgstr "Modifier l'organisation"
+
+#: Template/Cell/Sidebar/organization.ctp:83
+msgid "Add project"
+msgstr "Ajouter un projet"
+
+#: Template/Cell/Sidebar/organization.ctp:99
+msgid "Submit project"
+msgstr "Soumettre projet"
+
+#: Template/Cell/Sidebar/organization.ctp:116 Template/Organizations/quit.ctp:6
+msgid "Quit the organization"
+msgstr "Quitter l'organisation"
+
+#: Template/Cell/Sidebar/organization.ctp:133;150
+msgid "Approve the organization"
+msgstr "Accepter l'organisation"
+
+#: Template/Cell/Sidebar/organization.ctp:150
+msgid "Reject the organization"
+msgstr "Rejeté l'organisation"
+
+#: Template/Cell/Sidebar/organization_action.ctp:20
+#: Template/Layout/default.ctp:72 Template/Organizations/admin_index.ctp:9
+#: Template/Organizations/index.ctp:8
+msgid "List of organizations"
+msgstr "Liste des organisations"
+
+#: Template/Cell/Sidebar/organization_action.ctp:41
+msgid "Add an organization"
+msgstr "Ajouter une organisation"
+
+#: Template/Cell/Sidebar/organization_action.ctp:62
+#: Template/Layout/default.ctp:73
+msgid "Submit an organization"
+msgstr "Soumettre une organisation"
+
+#: Template/Cell/Sidebar/project.ctp:20
+msgid "Project's page"
+msgstr "Page du projet"
+
+#: Template/Cell/Sidebar/project.ctp:29 Template/Projects/add.ctp:11
+#: Template/Projects/submit.ctp:11
+msgid "Website of the project"
+msgstr "Site web du projet"
+
+#: Template/Cell/Sidebar/project.ctp:59
+msgid "Edit the project"
+msgstr "Modifier le projet"
+
+#: Template/Cell/Sidebar/project.ctp:76
+msgid "Accept the project"
+msgstr "Accepter le projet"
+
+#: Template/Cell/Sidebar/project.ctp:93
+msgid "Add mission"
+msgstr "Ajouter une mission"
+
+#: Template/Cell/Sidebar/project.ctp:110
+msgid "Restore the project"
+msgstr "Restaurer le projet"
+
+#: Template/Cell/Sidebar/project.ctp:110
+msgid "Archive the project"
+msgstr "Archiver le projet"
+
+#: Template/Cell/Sidebar/project_action.ctp:22 Template/Layout/default.ctp:74
+#: Template/Projects/admin_index.ctp:9 Template/Projects/index.ctp:7
+msgid "List of projects"
+msgstr "Liste des projets"
+
+#: Template/Cell/Sidebar/project_action.ctp:42
+msgid "Add an projects"
+msgstr "Ajouter un projet"
+
+#: Template/Cell/Sidebar/project_action.ctp:58
+#: Template/Element/News/news-table.ctp:22 Template/Layout/default.ctp:75
+#: Template/Pages/home.ctp:102
+msgid "Submit a project"
+msgstr "Soumettre un projet"
+
+#: Template/Cell/Sidebar/user.ctp:13
+msgid ""
+"This avatar is a gravatar linked with your email. If you want change your "
+"avatar, go on "
+msgstr ""
+"Cet avatar est un gravatar liée avec votre email . Si vous voulez changer "
+"votre avatar , allez sur"
+
+#: Template/Cell/Sidebar/user.ctp:20 Template/Users/edit.ctp:45
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: Template/Cell/Sidebar/user.ctp:43
+msgid "Change email"
+msgstr "Modifier le courriel"
+
+#: Template/Cell/Sidebar/user.ctp:57
+msgid "Change password"
+msgstr "Modifier le mot de passe"
+
+#: Template/Cell/Sidebar/user.ctp:73
+msgid "Edit profile"
+msgstr "Modifier le profil"
+
+#: Template/Cell/Sidebar/user.ctp:102
+msgid "Delete profile"
+msgstr "Supprimer le profil"
+
 #: Template/Comments/add.ctp:2 Template/Comments/edit.ctp:2
 #: Template/Comments/index.ctp:2;20 Template/Comments/view.ctp:2
-#: Template/Missions/add.ctp:2 Template/Missions/edit.ctp:2
-#: Template/Missions/index.ctp:2;21 Template/Missions/view.ctp:2;64
-#: Template/Organizations/add.ctp:2 Template/Organizations/edit.ctp:2
-#: Template/Organizations/submit.ctp:2 Template/OrganizationsProjects/add.ctp:2
+#: Template/Missions/edit.ctp:3 Template/Missions/index.ctp:3;25
+#: Template/OrganizationsProjects/add.ctp:2
 #: Template/OrganizationsProjects/edit.ctp:2
 #: Template/OrganizationsProjects/index.ctp:2;20
-#: Template/OrganizationsProjects/view.ctp:2 Template/Projects/add.ctp:2
-#: Template/SvnUsers/add.ctp:2 Template/SvnUsers/edit.ctp:2
-#: Template/SvnUsers/index.ctp:2;21 Template/SvnUsers/view.ctp:2
-#: Template/Svns/add.ctp:2 Template/Svns/edit.ctp:2
-#: Template/Svns/index.ctp:2;17 Template/Svns/view.ctp:2;44
-#: Template/TypeUsers/add.ctp:2 Template/TypeUsers/edit.ctp:2
-#: Template/TypeUsers/index.ctp:2;15 Template/TypeUsers/view.ctp:2
-#: Template/TypeUsersUsers/add.ctp:2 Template/TypeUsersUsers/edit.ctp:2
-#: Template/TypeUsersUsers/index.ctp:2;20 Template/TypeUsersUsers/view.ctp:2
-#: Template/Universities/add.ctp:2 Template/Universities/edit.ctp:2
-#: Template/Universities/index.ctp:2;15 Template/Universities/view.ctp:2
-#: Template/Users/add.ctp:2
+#: Template/OrganizationsProjects/view.ctp:2 Template/SvnUsers/add.ctp:2
+#: Template/SvnUsers/edit.ctp:2 Template/SvnUsers/index.ctp:2;21
+#: Template/SvnUsers/view.ctp:2 Template/Svns/add.ctp:2
+#: Template/Svns/edit.ctp:2 Template/Svns/index.ctp:2;17
+#: Template/Svns/view.ctp:2;44 Template/TypeUsers/add.ctp:2
+#: Template/TypeUsers/edit.ctp:2 Template/TypeUsers/index.ctp:2;15
+#: Template/TypeUsers/view.ctp:2 Template/TypeUsersUsers/add.ctp:2
+#: Template/TypeUsersUsers/edit.ctp:2 Template/TypeUsersUsers/index.ctp:2;20
+#: Template/TypeUsersUsers/view.ctp:2 Template/Universities/add.ctp:2
+#: Template/Universities/edit.ctp:2 Template/Universities/index.ctp:2;15
+#: Template/Universities/view.ctp:2 Template/Users/add.ctp:2
 msgid "Actions"
 msgstr "Actions"
 
@@ -223,36 +473,31 @@ msgstr "Liste des commentaires"
 
 #: Template/Comments/add.ctp:6 Template/Comments/edit.ctp:13
 #: Template/Comments/index.ctp:6 Template/Comments/view.ctp:8
-#: Template/Missions/add.ctp:8 Template/Missions/edit.ctp:15
-#: Template/Missions/index.ctp:8 Template/Missions/view.ctp:10
 msgid "List Projects Users"
 msgstr "Liste des projets de l'utilisateur"
 
 #: Template/Comments/add.ctp:7 Template/Comments/edit.ctp:14
 #: Template/Comments/index.ctp:7 Template/Comments/view.ctp:9
-#: Template/Missions/add.ctp:9 Template/Missions/edit.ctp:16
-#: Template/Missions/index.ctp:9 Template/Missions/view.ctp:11
 msgid "New Projects User"
 msgstr "Nouveau projet de l'utilisateur"
 
 #: Template/Comments/add.ctp:8 Template/Comments/edit.ctp:15
 #: Template/Comments/index.ctp:8 Template/Comments/view.ctp:10
-#: Template/Projects/add.ctp:8 Template/SvnUsers/add.ctp:8
-#: Template/SvnUsers/edit.ctp:15 Template/SvnUsers/index.ctp:8
-#: Template/SvnUsers/view.ctp:10 Template/TypeUsersUsers/add.ctp:8
-#: Template/TypeUsersUsers/edit.ctp:15 Template/TypeUsersUsers/index.ctp:8
-#: Template/TypeUsersUsers/view.ctp:10 Template/Users/add.ctp:5
-#: Template/Users/index.ctp:5
+#: Template/SvnUsers/add.ctp:8 Template/SvnUsers/edit.ctp:15
+#: Template/SvnUsers/index.ctp:8 Template/SvnUsers/view.ctp:10
+#: Template/TypeUsersUsers/add.ctp:8 Template/TypeUsersUsers/edit.ctp:15
+#: Template/TypeUsersUsers/index.ctp:8 Template/TypeUsersUsers/view.ctp:10
+#: Template/Users/add.ctp:5 Template/Users/index.ctp:6
 msgid "List Users"
 msgstr "Liste des utilisateurs"
 
 #: Template/Comments/add.ctp:9 Template/Comments/edit.ctp:16
 #: Template/Comments/index.ctp:9 Template/Comments/view.ctp:11
-#: Template/Projects/add.ctp:9 Template/SvnUsers/add.ctp:9
-#: Template/SvnUsers/edit.ctp:16 Template/SvnUsers/index.ctp:9
-#: Template/SvnUsers/view.ctp:11 Template/TypeUsersUsers/add.ctp:9
-#: Template/TypeUsersUsers/edit.ctp:16 Template/TypeUsersUsers/index.ctp:9
-#: Template/TypeUsersUsers/view.ctp:11 Template/Users/add.ctp:4
+#: Template/SvnUsers/add.ctp:9 Template/SvnUsers/edit.ctp:16
+#: Template/SvnUsers/index.ctp:9 Template/SvnUsers/view.ctp:11
+#: Template/TypeUsersUsers/add.ctp:9 Template/TypeUsersUsers/edit.ctp:16
+#: Template/TypeUsersUsers/index.ctp:9 Template/TypeUsersUsers/view.ctp:11
+#: Template/Users/add.ctp:4
 msgid "New User"
 msgstr "Nouvel utilisateur"
 
@@ -261,20 +506,21 @@ msgid "Add Comment"
 msgstr "Ajoute run commentaire"
 
 #: Template/Comments/add.ctp:22 Template/Comments/edit.ctp:29
-#: Template/Missions/add.ctp:24 Template/Missions/edit.ctp:31
-#: Template/Organizations/add.ctp:21 Template/Organizations/edit.ctp:28
-#: Template/Organizations/submit.ctp:21
+#: Template/Missions/add.ctp:41 Template/Missions/edit.ctp:34
+#: Template/Organizations/add.ctp:15 Template/Organizations/add_member.ctp:31
+#: Template/Organizations/add_owner.ctp:31 Template/Organizations/edit.ctp:13
+#: Template/Organizations/submit.ctp:15
 #: Template/OrganizationsProjects/add.ctp:21
-#: Template/OrganizationsProjects/edit.ctp:28 Template/Projects/add.ctp:25
-#: Template/Projects/apply.ctp:23 Template/Projects/edit.ctp:12
-#: Template/SvnUsers/add.ctp:22 Template/SvnUsers/edit.ctp:29
-#: Template/Svns/add.ctp:18 Template/Svns/edit.ctp:25
-#: Template/TypeUsers/add.ctp:16 Template/TypeUsers/edit.ctp:23
-#: Template/TypeUsersUsers/add.ctp:21 Template/TypeUsersUsers/edit.ctp:28
-#: Template/Universities/add.ctp:17 Template/Universities/edit.ctp:24
-#: Template/Users/add.ctp:35 Template/Users/edit.ctp:28
-#: Template/Users/email.ctp:19 Template/Users/password.ctp:19
-#: Template/Users/register.ctp:11
+#: Template/OrganizationsProjects/edit.ctp:28 Template/Projects/add.ctp:16
+#: Template/Projects/apply.ctp:16 Template/Projects/edit.ctp:15
+#: Template/Projects/submit.ctp:25 Template/SvnUsers/add.ctp:22
+#: Template/SvnUsers/edit.ctp:29 Template/Svns/add.ctp:18
+#: Template/Svns/edit.ctp:25 Template/TypeUsers/add.ctp:16
+#: Template/TypeUsers/edit.ctp:23 Template/TypeUsersUsers/add.ctp:21
+#: Template/TypeUsersUsers/edit.ctp:28 Template/Universities/add.ctp:17
+#: Template/Universities/edit.ctp:24 Template/Users/add.ctp:35
+#: Template/Users/edit.ctp:58 Template/Users/email.ctp:13
+#: Template/Users/password.ctp:13
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -283,8 +529,7 @@ msgid "Edit Comment"
 msgstr "Modifier un commentaire"
 
 #: Template/Comments/edit.ctp:6 Template/Comments/index.ctp:36
-#: Template/Missions/edit.ctp:6 Template/Missions/index.ctp:36
-#: Template/Missions/view.ctp:79 Template/Organizations/edit.ctp:6
+#: Template/Missions/edit.ctp:5 Template/Missions/index.ctp:41
 #: Template/OrganizationsProjects/edit.ctp:6
 #: Template/OrganizationsProjects/index.ctp:34 Template/SvnUsers/edit.ctp:6
 #: Template/SvnUsers/index.ctp:38 Template/Svns/edit.ctp:6
@@ -296,9 +541,8 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: Template/Comments/edit.ctp:8 Template/Comments/index.ctp:36
-#: Template/Comments/view.ctp:5 Template/Missions/edit.ctp:8
-#: Template/Missions/index.ctp:36 Template/Missions/view.ctp:5;79
-#: Template/Organizations/edit.ctp:8 Template/OrganizationsProjects/edit.ctp:8
+#: Template/Comments/view.ctp:5 Template/Missions/edit.ctp:7
+#: Template/Missions/index.ctp:41 Template/OrganizationsProjects/edit.ctp:8
 #: Template/OrganizationsProjects/index.ctp:34
 #: Template/OrganizationsProjects/view.ctp:5 Template/SvnUsers/edit.ctp:8
 #: Template/SvnUsers/index.ctp:38 Template/SvnUsers/view.ctp:5
@@ -311,37 +555,33 @@ msgstr "Supprimer"
 msgid "Are you sure you want to delete # {0}?"
 msgstr "Êtes-vous sur de vouloir supprimer # {0}?"
 
-#: Template/Comments/index.ctp:34 Template/Missions/index.ctp:34
-#: Template/Missions/view.ctp:77 Template/OrganizationsProjects/index.ctp:32
-#: Template/SvnUsers/index.ctp:36 Template/Svns/index.ctp:26
-#: Template/Svns/view.ctp:53 Template/TypeUsers/index.ctp:24
-#: Template/TypeUsersUsers/index.ctp:34 Template/Universities/index.ctp:24
+#: Template/Comments/index.ctp:34 Template/Missions/index.ctp:39
+#: Template/OrganizationsProjects/index.ctp:32 Template/SvnUsers/index.ctp:36
+#: Template/Svns/index.ctp:26 Template/Svns/view.ctp:53
+#: Template/TypeUsers/index.ctp:24 Template/TypeUsersUsers/index.ctp:34
+#: Template/Universities/index.ctp:24
 msgid "View"
 msgstr "Voir"
 
-#: Template/Comments/index.ctp:35 Template/Missions/index.ctp:35
-#: Template/Missions/view.ctp:78 Template/OrganizationsProjects/index.ctp:33
-#: Template/SvnUsers/index.ctp:37 Template/Svns/index.ctp:27
-#: Template/Svns/view.ctp:54 Template/TypeUsers/index.ctp:25
-#: Template/TypeUsersUsers/index.ctp:35 Template/Universities/index.ctp:25
+#: Template/Comments/index.ctp:35 Template/Missions/index.ctp:40
+#: Template/OrganizationsProjects/index.ctp:33 Template/SvnUsers/index.ctp:37
+#: Template/Svns/index.ctp:27 Template/Svns/view.ctp:54
+#: Template/TypeUsers/index.ctp:25 Template/TypeUsersUsers/index.ctp:35
+#: Template/Universities/index.ctp:25
 msgid "Edit"
 msgstr "Modifier"
 
-#: Template/Comments/index.ctp:46 Template/Missions/index.ctp:46
-#: Template/Organizations/index.ctp:23
-#: Template/OrganizationsProjects/index.ctp:44 Template/Projects/index.ctp:21
-#: Template/SvnUsers/index.ctp:48 Template/Svns/index.ctp:38
-#: Template/TypeUsers/index.ctp:36 Template/TypeUsersUsers/index.ctp:46
-#: Template/Universities/index.ctp:36 Template/Users/index.ctp:35
+#: Template/Comments/index.ctp:46 Template/Missions/index.ctp:49
+#: Template/OrganizationsProjects/index.ctp:44 Template/SvnUsers/index.ctp:48
+#: Template/Svns/index.ctp:38 Template/TypeUsers/index.ctp:36
+#: Template/TypeUsersUsers/index.ctp:46 Template/Universities/index.ctp:36
 msgid "previous"
 msgstr "précédent"
 
-#: Template/Comments/index.ctp:48 Template/Missions/index.ctp:48
-#: Template/Organizations/index.ctp:25
-#: Template/OrganizationsProjects/index.ctp:46 Template/Projects/index.ctp:23
-#: Template/SvnUsers/index.ctp:50 Template/Svns/index.ctp:40
-#: Template/TypeUsers/index.ctp:38 Template/TypeUsersUsers/index.ctp:48
-#: Template/Universities/index.ctp:38 Template/Users/index.ctp:37
+#: Template/Comments/index.ctp:48 Template/Missions/index.ctp:51
+#: Template/OrganizationsProjects/index.ctp:46 Template/SvnUsers/index.ctp:50
+#: Template/Svns/index.ctp:40 Template/TypeUsers/index.ctp:38
+#: Template/TypeUsersUsers/index.ctp:48 Template/Universities/index.ctp:38
 msgid "next"
 msgstr "suivant"
 
@@ -358,10 +598,10 @@ msgstr "Porjets de l'utilisateur"
 msgid "User"
 msgstr "Utilisateur"
 
-#: Template/Comments/view.ctp:30 Template/Missions/view.ctp:30;56
-#: Template/OrganizationsProjects/view.ctp:28 Template/SvnUsers/view.ctp:32
-#: Template/Svns/view.ctp:26;40 Template/TypeUsers/view.ctp:24
-#: Template/TypeUsersUsers/view.ctp:30 Template/Universities/view.ctp:24
+#: Template/Comments/view.ctp:30 Template/OrganizationsProjects/view.ctp:28
+#: Template/SvnUsers/view.ctp:32 Template/Svns/view.ctp:26;40
+#: Template/TypeUsers/view.ctp:24 Template/TypeUsersUsers/view.ctp:30
+#: Template/Universities/view.ctp:24
 msgid "Id"
 msgstr "Id"
 
@@ -369,244 +609,451 @@ msgstr "Id"
 msgid "Text"
 msgstr "Texte"
 
-#: Template/Element/Organizations/sidebar.ctp:12;45;64
-msgid "Website of the organization"
-msgstr "Site web de l'organisation"
+#: Template/Element/Meetup/meetup-table.ctp:5
+#: Template/Element/News/news-table.ctp:5
+msgid "Date"
+msgstr "Date"
 
-#: Template/Element/Organizations/sidebar.ctp:26
-msgid "Edit the organization"
-msgstr "Modifier l'organisation"
+#: Template/Element/Meetup/meetup-table.ctp:6 Template/Layout/default.ctp:81
+msgid "Meetup"
+msgstr "Meetup"
 
-#: Template/Element/Projects/sidebar.ctp:11;48;67
-msgid "Website of the project"
-msgstr "Site web du projet"
+#: Template/Element/Meetup/meetup-table.ctp:7
+#: Template/Element/News/news-table.ctp:36 Template/Layout/default.ctp:99
+#: Template/Pages/home.ctp:13 Template/Users/login.ctp:10
+#: Template/Users/register.ctp:5;61
+msgid "Register"
+msgstr "S'enregistrer"
 
-#: Template/Element/Projects/sidebar.ctp:29
-msgid "Edit the project"
-msgstr "Modifier le projet"
+#: Template/Element/Meetup/meetup-table.ctp:12
+msgid "November 3"
+msgstr "3 novembre"
 
-#: Template/Element/Users/sidebar.ctp:15;84 Template/Users/edit.ctp:19
-msgid "Portfolio"
-msgstr "Portfolio"
+#: Template/Element/Meetup/meetup-table.ctp:14
+msgid ""
+"Linux-Meetup sont des rencontres informelles où plusieurs personnes "
+"discutent de ce qui les\n"
+"\t\t\tpassionnent et font un partage de leurs cheminements dans le monde du "
+"logiciel libre avec\n"
+"\t\t\tLinux."
+msgstr ""
+"Linux-Meetup sont des rencontres informelles où plusieurs personnes "
+"discutent de ce qui les\n"
+"\t\t\tpassionnent et font un partage de leurs cheminements dans le monde du "
+"logiciel libre avec\n"
+"\t\t\tLinux."
 
-#: Template/Element/Users/sidebar.ctp:34
-msgid "Change email"
-msgstr "Modifier le courriel"
+#: Template/Element/Meetup/meetup-table.ctp:18
+msgid "Linux meetup"
+msgstr "Linux meetup"
 
-#: Template/Element/Users/sidebar.ctp:46
-msgid "Change password"
-msgstr "Modifier le mot de passe"
+#: Template/Element/Meetup/meetup-table.ctp:21
+msgid "November 11"
+msgstr "11 novembre"
 
-#: Template/Element/Users/sidebar.ctp:62
-msgid "Edit profile"
-msgstr "Modifier le profil"
+#: Template/Element/Meetup/meetup-table.ctp:22
+msgid ""
+"Odoo Montréal. Hosted by: Savoir-faire Linux. (Odoo Gold Partner), and "
+"Maxime C. (Leader de\n"
+"\t\t\tpratique Odoo chez Savoir-faire Linux)"
+msgstr ""
+"Odoo Montréal. Hosted by: Savoir-faire Linux. (Odoo Gold Partner), and "
+"Maxime C. (Leader de\n"
+"\t\t\tpratique Odoo chez Savoir-faire Linux)"
 
-#: Template/Layout/default.ctp:60
-msgid "Home"
-msgstr "Accueil"
+#: Template/Element/Meetup/meetup-table.ctp:25
+msgid "Odoo meetup"
+msgstr "Odoo meetup"
 
-#: Template/Layout/default.ctp:62
+#: Template/Element/News/news-table.ctp:6
+msgid "Info"
+msgstr "Info"
+
+#: Template/Element/News/news-table.ctp:7
+msgid "Link2"
+msgstr "Lien"
+
+#: Template/Element/News/news-table.ctp:12
+msgid "October 23"
+msgstr "23 octobre"
+
+#: Template/Element/News/news-table.ctp:13
+msgid ""
+"There are 6 active projects with 10 intern missions, 2 graduates student "
+"missions, and 12 capstone missions"
+msgstr ""
+"Il ya 6 projets actifs avec 10 missionns (stage), 2 missions (maîtrise) , et "
+"12 missions (PFE)"
+
+#: Template/Element/News/news-table.ctp:15
+msgid "Apply on a project"
+msgstr "Candidater sur un projet"
+
+#: Template/Element/News/news-table.ctp:19
+msgid "October 28"
+msgstr "28 octobre"
+
+#: Template/Element/News/news-table.ctp:20
+msgid "Deadline to submit an intern project."
+msgstr "Date limite pour soumettre une offre de stage "
+
+#: Template/Element/News/news-table.ctp:26
+msgid "December 15"
+msgstr "15 décembre"
+
+#: Template/Element/News/news-table.ctp:27
+msgid "Logo contest. Win a free t-shirt! Winner will be annnounced December 15"
+msgstr "Concours : Logo . Gagnez un t -shirt!"
+
+#: Template/Element/News/news-table.ctp:29
+msgid "Logo contest"
+msgstr "Concours"
+
+#: Template/Element/News/news-table.ctp:33;40
+msgid "December 1"
+msgstr "1 décembre"
+
+#: Template/Element/News/news-table.ctp:34
+msgid "ML2 Kick-off party at ÉTS. Register to get invited!"
+msgstr "ML² fête de lancement à l'ÉTS . Inscrivez-vous pour être invité !"
+
+#: Template/Element/News/news-table.ctp:41
+msgid "ÉTS substance article"
+msgstr "Article substance ÉTS"
+
+#: Template/Layout/default.ctp:61
 msgid "Language"
 msgstr "Langage"
 
-#: Template/Layout/default.ctp:64
+#: Template/Layout/default.ctp:63
 msgid "FR"
-msgstr ""
+msgstr "FR"
 
-#: Template/Layout/default.ctp:65
+#: Template/Layout/default.ctp:64
 msgid "EN"
-msgstr ""
+msgstr "EN"
 
-#: Template/Layout/default.ctp:70
-msgid "Become a sponsor"
-msgstr "Devenir un sponsor"
-
-#: Template/Layout/default.ctp:71
-msgid "Submit a project"
-msgstr "Soumettre un projet"
-
-#: Template/Layout/default.ctp:72
-msgid "Contest"
-msgstr "Concours"
-
-#: Template/Layout/default.ctp:73 Template/Organizations/view.ctp:27
+#: Template/Layout/default.ctp:70 Template/Organizations/view.ctp:17
 msgid "Projects"
 msgstr "Projets"
 
-#: Template/Layout/default.ctp:75
+#: Template/Layout/default.ctp:79
+msgid "Activities"
+msgstr "Activités"
+
+#: Template/Layout/default.ctp:82
+msgid "Survey"
+msgstr "Sondage"
+
+#: Template/Layout/default.ctp:83
+msgid "Contest"
+msgstr "Concours"
+
+#: Template/Layout/default.ctp:87
 msgid "Partners"
 msgstr "Partenaires"
 
-#: Template/Layout/default.ctp:77
+#: Template/Layout/default.ctp:89
 msgid "Industry"
 msgstr "Industriel"
 
-#: Template/Layout/default.ctp:78
+#: Template/Layout/default.ctp:90
 msgid "Academic"
 msgstr "Académique"
 
-#: Template/Layout/default.ctp:79
+#: Template/Layout/default.ctp:91
 msgid "Associations"
-msgstr "Association"
+msgstr "Associations"
 
-#: Template/Layout/default.ctp:82 Template/Pages/sponsor.ctp:23
+#: Template/Layout/default.ctp:95
+msgid "Profile"
+msgstr "Profil"
+
+#: Template/Layout/default.ctp:96
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: Template/Layout/default.ctp:98
+msgid "Login"
+msgstr "Connexion"
+
+#: Template/Layout/default.ctp:120;123
+msgid "Maison du Logiciel Libre"
+msgstr "Maison du Logiciel Libre"
+
+#: Template/Layout/default.ctp:121
+msgid "About us"
+msgstr "À propos"
+
+#: Template/Layout/default.ctp:122 Template/Pages/contact.ctp:8
+#: Template/Pages/meetup.ctp:10 Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: Template/Layout/default.ctp:84
-msgid "Profile"
-msgstr "Profil"
-
-#: Template/Layout/default.ctp:85
-msgid "Logout"
-msgstr "Déconnexion"
-
-#: Template/Layout/default.ctp:87
-msgid "Login"
-msgstr "Connexion"
-
-#: Template/Layout/default.ctp:88 Template/Users/register.ctp:4
-msgid "Register"
-msgstr "S'enregistrer"
-
-#: Template/Layout/default.ctp:114;117
-msgid "Maison du Logiciel Libre"
-msgstr "Maison du Logiciel Libre"
-
-#: Template/Layout/default.ctp:115
-msgid "Montfort street"
-msgstr "Rue Montfort"
-
-#: Template/Layout/default.ctp:115
-msgid "Montreal"
-msgstr "Montréal"
-
-#: Template/Missions/add.ctp:4 Template/Missions/edit.ctp:11
-#: Template/Missions/index.ctp:4 Template/Missions/view.ctp:7
-#: Template/Projects/add.ctp:7
-msgid "New Mission"
-msgstr "Nouvelle mission"
-
-#: Template/Missions/add.ctp:5 Template/Missions/edit.ctp:12
-#: Template/Missions/index.ctp:5 Template/Missions/view.ctp:6
-#: Template/Projects/add.ctp:6
-msgid "List Missions"
-msgstr "Liste des missions"
-
-#: Template/Missions/add.ctp:6 Template/Missions/edit.ctp:13
-#: Template/Missions/index.ctp:6 Template/Missions/view.ctp:8
-#: Template/Organizations/add.ctp:6 Template/Organizations/edit.ctp:13
-#: Template/Organizations/submit.ctp:6 Template/OrganizationsProjects/add.ctp:6
-#: Template/OrganizationsProjects/edit.ctp:13
-#: Template/OrganizationsProjects/index.ctp:6
-#: Template/OrganizationsProjects/view.ctp:8 Template/Projects/add.ctp:5
-#: Template/Users/add.ctp:10
-msgid "List Projects"
-msgstr "Liste de sprojets"
-
-#: Template/Missions/add.ctp:7 Template/Missions/edit.ctp:14
-#: Template/Missions/index.ctp:7 Template/Missions/view.ctp:9
-#: Template/Organizations/add.ctp:7 Template/Organizations/edit.ctp:14
-#: Template/Organizations/submit.ctp:7 Template/OrganizationsProjects/add.ctp:7
-#: Template/OrganizationsProjects/edit.ctp:14
-#: Template/OrganizationsProjects/index.ctp:7
-#: Template/OrganizationsProjects/view.ctp:9 Template/Projects/add.ctp:4
-#: Template/Users/add.ctp:11
-msgid "New Project"
-msgstr "Nouveau projet"
-
-#: Template/Missions/add.ctp:15
+#: Template/Missions/add.ctp:7
 msgid "Add Mission"
 msgstr "Ajouter une mission"
 
-#: Template/Missions/edit.ctp:4;22 Template/Missions/view.ctp:4
+#: Template/Missions/add.ctp:9
+msgid "Position title"
+msgstr "Titre du poste"
+
+#: Template/Missions/add.ctp:10
+msgid "Describe your mission"
+msgstr "Décrire votre mission"
+
+#: Template/Missions/add.ctp:11 Template/Pages/submit.ctp:31
+msgid "What are the student requirements to work on the project?"
+msgstr "Quel est le niveau technique requis pour candidater sur votre projet?"
+
+#: Template/Missions/add.ctp:11 Template/Pages/submit.ctp:33
+msgid ""
+" e.g. \"must know Python\" or \"easier project good for a student with more "
+"limited experience with C++.\""
+msgstr "exemple : \"une base en Python\" ou \"expérience limitée en C++\""
+
+#: Template/Missions/add.ctp:16 Template/Pages/submit.ctp:25
+msgid "What type of student(s) are you looking for?"
+msgstr "Quels types d'étudiant recherchez-vous?"
+
+#: Template/Missions/add.ctp:24
+msgid "Term"
+msgstr "Session"
+
+#: Template/Missions/add.ctp:32 Template/Projects/view.ctp:81
+msgid "Length"
+msgstr "Durée"
+
+#: Template/Missions/add.ctp:37
+msgid "School year"
+msgstr "Année d'étude"
+
+#: Template/Missions/add.ctp:38
+msgid "Places available"
+msgstr "Places disponibles"
+
+#: Template/Missions/add.ctp:42 Template/Organizations/add_member.ctp:32
+#: Template/Organizations/add_owner.ctp:32 Template/Projects/apply.ctp:17
+#: Template/Users/delete.ctp:23 Template/Users/edit.ctp:59
+#: Template/Users/email.ctp:14 Template/Users/password.ctp:14
+msgid "Cancel"
+msgstr "Annuler"
+
+#: Template/Missions/edit.ctp:10
+msgid "List Missions"
+msgstr "Liste des missions"
+
+#: Template/Missions/edit.ctp:11 Template/Missions/index.ctp:5
+#: Template/OrganizationsProjects/add.ctp:6
+#: Template/OrganizationsProjects/edit.ctp:13
+#: Template/OrganizationsProjects/index.ctp:6
+#: Template/OrganizationsProjects/view.ctp:8 Template/Users/add.ctp:10
+msgid "List Projects"
+msgstr "Liste des projets"
+
+#: Template/Missions/edit.ctp:12 Template/Missions/index.ctp:6
+#: Template/OrganizationsProjects/add.ctp:7
+#: Template/OrganizationsProjects/edit.ctp:14
+#: Template/OrganizationsProjects/index.ctp:7
+#: Template/OrganizationsProjects/view.ctp:9 Template/Users/add.ctp:11
+msgid "New Project"
+msgstr "Nouveau projet"
+
+#: Template/Missions/edit.ctp:13 Template/Missions/index.ctp:7
+msgid "List Mission Levels"
+msgstr "Listes des niveaux de mission"
+
+#: Template/Missions/edit.ctp:14 Template/Missions/index.ctp:8
+msgid "New Mission Level"
+msgstr "Nouveau niveau de mission"
+
+#: Template/Missions/edit.ctp:15 Template/Missions/index.ctp:9
+msgid "List Type Missions"
+msgstr "Liste des types de mission"
+
+#: Template/Missions/edit.ctp:16 Template/Missions/index.ctp:10
+msgid "New Type Mission"
+msgstr "Nouveau type de mission"
+
+#: Template/Missions/edit.ctp:22
 msgid "Edit Mission"
 msgstr "Modifier une mission"
 
-#: Template/Missions/view.ctp:5
-msgid "Delete Mission"
-msgstr "Supprimer une mission"
+#: Template/Missions/index.ctp:4
+msgid "New Mission"
+msgstr "Nouvelle mission"
 
-#: Template/Missions/view.ctp:20 Template/OrganizationsProjects/view.ctp:20
-msgid "Project"
-msgstr "Projet"
+#: Template/Missions/index.ctp:14 Template/Projects/view.ctp:72
+msgid "Missions"
+msgstr "Missions"
 
-#: Template/Missions/view.ctp:22
-msgid "Role"
-msgstr "Rôle"
+#: Template/Missions/view.ctp:11
+msgid "Postulate!"
+msgstr "Candidater!"
 
-#: Template/Missions/view.ctp:32
-msgid "Active"
-msgstr "Actif"
-
-#: Template/Missions/view.ctp:42
-msgid "Mission"
-msgstr "Mission"
-
-#: Template/Missions/view.ctp:51
-msgid "Related ProjectsUsers"
-msgstr ""
-
-#: Template/Missions/view.ctp:57 Template/Svns/view.ctp:43
-msgid "User Id"
-msgstr "utilisateur ID"
-
-#: Template/Missions/view.ctp:58
-msgid "Project Id"
-msgstr "Projet ID"
-
-#: Template/Missions/view.ctp:59
-msgid "Cv"
-msgstr "CV"
-
-#: Template/Missions/view.ctp:60
+#: Template/Missions/view.ctp:14
 msgid "Description"
 msgstr "Description"
 
-#: Template/Missions/view.ctp:61
-msgid "Presentation"
-msgstr "Présentation"
+#: Template/Missions/view.ctp:21
+msgid "Skills"
+msgstr "Compétences"
 
-#: Template/Missions/view.ctp:62
-msgid "Accepted"
-msgstr "Accepté"
+#: Template/Missions/view.ctp:29
+msgid "Information on the mission"
+msgstr "Informations de la mission"
 
-#: Template/Missions/view.ctp:63
-msgid "Is Mentor"
-msgstr "Est mentor"
+#: Template/Missions/view.ctp:33
+msgid "Term:"
+msgstr "Session :"
 
-#: Template/Organizations/add.ctp:4 Template/Organizations/edit.ctp:11
-#: Template/Organizations/submit.ctp:4 Template/OrganizationsProjects/add.ctp:9
-#: Template/OrganizationsProjects/edit.ctp:16
-#: Template/OrganizationsProjects/index.ctp:9
-#: Template/OrganizationsProjects/view.ctp:11 Template/Projects/add.ctp:11
-msgid "New Organization"
-msgstr "Nouvelle organisation"
+#: Template/Missions/view.ctp:37
+msgid "Length:"
+msgstr "Durée :"
 
-#: Template/Organizations/add.ctp:5 Template/Organizations/edit.ctp:12
-#: Template/Organizations/submit.ctp:5 Template/OrganizationsProjects/add.ctp:8
-#: Template/OrganizationsProjects/edit.ctp:15
-#: Template/OrganizationsProjects/index.ctp:8
-#: Template/OrganizationsProjects/view.ctp:10 Template/Projects/add.ctp:10
-msgid "List Organizations"
-msgstr "Liste des organisations"
+#: Template/Missions/view.ctp:41
+msgid "Places available:"
+msgstr "Places disponibles :"
 
-#: Template/Organizations/add.ctp:13
+#: Template/Missions/view.ctp:45
+msgid "School year:"
+msgstr "Année d'étude :"
+
+#: Template/Missions/view.ctp:51
+msgid "Looking for:"
+msgstr "Recherche :"
+
+#: Template/Missions/view.ctp:57
+msgid "Mentor:"
+msgstr "Mentor :"
+
+#: Template/Missions/view.ctp:67
+msgid "Company information"
+msgstr "Informations sur l'entreprise"
+
+#: Template/Missions/view.ctp:71
+msgid "Company:"
+msgstr "Entreprise :"
+
+#: Template/Missions/view.ctp:76
+msgid "Website:"
+msgstr "Site web :"
+
+#: Template/Missions/view.ctp:82
+msgid "Full company details"
+msgstr "Fiche complète"
+
+#: Template/Missions/view.ctp:84
+msgid "See"
+msgstr "Voir"
+
+#: Template/Organizations/add.ctp:6
+msgid ""
+"After the organization has been created, you will be redirect on the "
+"organization's page to create some projects."
+msgstr ""
+"Après que l'organisation soit créée , vous serez redirigé sur la page de "
+"l'organisation pour créer des projets "
+
+#: Template/Organizations/add.ctp:8
 msgid "Add Organization"
 msgstr "Ajouter l'organisation"
 
-#: Template/Organizations/edit.ctp:4;20
-msgid "Edit Organization"
-msgstr "Modifier l'organisation"
+#: Template/Organizations/add.ctp:11 Template/Organizations/edit.ctp:9
+#: Template/Organizations/submit.ctp:11 Template/Projects/add.ctp:11
+#: Template/Projects/edit.ctp:10 Template/Projects/submit.ctp:11
+#: Template/Universities/add.ctp:14 Template/Universities/edit.ctp:21
+#: Template/Users/add.ctp:24 Template/Users/edit.ctp:45
+msgid "http(s)://website.com"
+msgstr "http(s)://website.com"
 
-#: Template/Organizations/index.ctp:14 Template/Universities/view.ctp:34
+#: Template/Organizations/admin_index.ctp:16
+#: Template/Organizations/index.ctp:14 Template/Organizations/view.ctp:56
+#: Template/Projects/admin_index.ctp:16 Template/Projects/index.ctp:14
+#: Template/Svns/view.ctp:18 Template/TypeUsers/view.ctp:16
+#: Template/Universities/view.ctp:16
+msgid "Name"
+msgstr "Nom"
+
+#: Template/Organizations/admin_index.ctp:17
+#: Template/Organizations/index.ctp:15 Template/Projects/admin_index.ctp:17
+#: Template/Universities/view.ctp:34
 msgid "Website"
 msgstr "Site web"
 
-#: Template/Organizations/submit.ctp:13
+#: Template/Organizations/admin_index.ctp:18;35
+#: Template/Projects/admin_index.ctp:19
+msgid "Approved"
+msgstr "Approuvé"
+
+#: Template/Organizations/admin_index.ctp:19;42
+msgid "Rejected"
+msgstr "Rejeté"
+
+#: Template/Organizations/admin_index.ctp:27;29
+#: Template/Organizations/index.ctp:22;24
+#: Template/Projects/admin_index.ctp:28;29 Template/Projects/index.ctp:24;26
+#: Template/Projects/view.ctp:91;96 Template/Users/index.ctp:21;24;27
+msgid "Search ..."
+msgstr "Rechercher ..."
+
+#: Template/Organizations/admin_index.ctp:34
+msgid "Not approved"
+msgstr "Non approuvé"
+
+#: Template/Organizations/admin_index.ctp:41
+msgid "Not rejected"
+msgstr "Non rejeté"
+
+#: Template/Organizations/edit.ctp:6
+msgid "Edit Organization"
+msgstr "Modifier l'organisation"
+
+#: Template/Organizations/index.ctp:67 Template/Organizations/view.ctp:29
+#: Template/Projects/index.ctp:90 Template/Users/view.ctp:35;72
+msgid "Pending Validation"
+msgstr "En attente de validation"
+
+#: Template/Organizations/quit.ctp:7
+msgid "Are you sure you want to quit the organization?"
+msgstr "Êtes-vous sûr de vouloir quitter l'organisation ?"
+
+#: Template/Organizations/quit.ctp:9
+msgid "You are the last owner, this will delete the organization"
+msgstr "Vous êtes le dernier propriétaire , cela va supprimer l'organisation"
+
+#: Template/Organizations/quit.ctp:13 Template/Projects/admin_index.ctp:44;51
+msgid "Yes"
+msgstr "Oui"
+
+#: Template/Organizations/quit.ctp:14 Template/Projects/admin_index.ctp:43;50
+msgid "No"
+msgstr "Non"
+
+#: Template/Organizations/submit.ctp:6
+msgid ""
+"After submit the organization, you will be redirect on the organization's "
+"page to create some projects."
+msgstr ""
+"Après soumission de l'organisation , vous serez redirigé sur la page de "
+"l'organisation pour créer des projets ."
+
+#: Template/Organizations/submit.ctp:8
 msgid "Submit Organization"
 msgstr "Soummettre l'organisation"
+
+#: Template/Organizations/view.ctp:37 Template/Projects/admin_index.ctp:20
+msgid "Archived"
+msgstr "Archivé"
+
+#: Template/Organizations/view.ctp:51
+msgid "Members"
+msgstr "Membres"
+
+#: Template/Organizations/view.ctp:57 Template/Users/view.ctp:63
+msgid "Owner"
+msgstr "Propriétaires"
 
 #: Template/OrganizationsProjects/add.ctp:4
 #: Template/OrganizationsProjects/edit.ctp:11
@@ -622,6 +1069,20 @@ msgstr "Nouveau  projet des organisations"
 msgid "List Organizations Projects"
 msgstr "Liste projet des organisations"
 
+#: Template/OrganizationsProjects/add.ctp:8
+#: Template/OrganizationsProjects/edit.ctp:15
+#: Template/OrganizationsProjects/index.ctp:8
+#: Template/OrganizationsProjects/view.ctp:10
+msgid "List Organizations"
+msgstr "Liste des organisations"
+
+#: Template/OrganizationsProjects/add.ctp:9
+#: Template/OrganizationsProjects/edit.ctp:16
+#: Template/OrganizationsProjects/index.ctp:9
+#: Template/OrganizationsProjects/view.ctp:11
+msgid "New Organization"
+msgstr "Nouvelle organisation"
+
 #: Template/OrganizationsProjects/add.ctp:15
 msgid "Add Organizations Project"
 msgstr "Ajouter le projet des organisations"
@@ -635,16 +1096,32 @@ msgstr "Modifier le projet des organisations"
 msgid "Delete Organizations Project"
 msgstr "Supprimer le projet des organisations"
 
+#: Template/OrganizationsProjects/view.ctp:20
+msgid "Project"
+msgstr "Projet"
+
 #: Template/OrganizationsProjects/view.ctp:30
 msgid "Organization"
 msgstr "Organisation"
 
-#: Template/Pages/contact.ctp:6 Template/Users/edit.ctp:20
+#: Template/Pages/contact.ctp:7
+msgid ""
+"If you want to become a sponsor or host your free software/open source "
+"meetups or join our university network : École de Technologie Supérieure "
+"(ÉTS), UQÀM, McGill, Polytechnique, Université de Montréal, Concordia et "
+"Université de Sherbrooke"
+msgstr ""
+"Si vous voulez devenir un commanditaire ou réaliser vos meetups de logiciel "
+"libre/open source ou rejoindre notre réseau universitaire : École de "
+"Technologie Supérieure (ÉTS), UQÀM, McGill, Polytechnique, Université de "
+"Montréal, Concordia et Université de Sherbrooke"
+
+#: Template/Pages/contact.ctp:13 Template/Users/edit.ctp:46
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
-#: Template/Pages/contact.ctp:7 Template/Users/email.ctp:14;15
-#: Template/Users/register.ctp:8;9
+#: Template/Pages/contact.ctp:14 Template/Users/email.ctp:8;9
+#: Template/Users/register.ctp:29;33
 msgid "Email"
 msgstr "Courriel"
 
@@ -676,7 +1153,7 @@ msgstr "Rappel :"
 
 #: Template/Pages/contest.ctp:15
 msgid "The design must be original"
-msgstr "La conception doit être original"
+msgstr "La conception doit être originale"
 
 #: Template/Pages/contest.ctp:16
 msgid "You must have the rights to use the image(s) used"
@@ -697,40 +1174,199 @@ msgstr ""
 
 #: Template/Pages/contest.ctp:21
 msgid "Send your design at : "
-msgstr "Envoyer votre conception à :"
+msgstr "Envoyez votre conception à :"
 
-#: Template/Pages/home.ctp:10
-msgid "ML2 need a new logo!"
-msgstr "Aimez-vous notre logo ? Peut-être pouvez-vous faire mieux !"
+#: Template/Pages/home.ctp:4
+msgid "Welcome to Maison Logiciel Libre (ML2)"
+msgstr "Bienvenue à la Maison Logiciel du Libre ( ML² )"
 
-#: Template/Pages/home.ctp:20
-msgid "Register today!"
-msgstr "Inscrivez-vous aujourd'hui !"
-
-#: Template/Pages/home.ctp:21
+#: Template/Pages/home.ctp:6
 msgid ""
-"Join us at ML² in building the future of Free Software and Open Source code."
+"Our mission is to improve university students software development skills "
+"and hiring potential through\n"
+"                practical experience on free and open source software "
+"projects"
 msgstr ""
-"Joignez-vous à ML² pour contrsuire l'avenir du logiciel libre et du code "
-"Open Source."
+"Notre mission est d'améliorer les compétences de développement et le "
+"potentiel d'embauche des étudiants universitaires en logiciels par le biais\n"
+"                expérience pratique sur des projets de logiciels libres et "
+"open source"
 
-#: Template/Pages/home.ctp:22
-msgid "We need feedback!"
-msgstr "Nous avons besoin de vos commentaires!"
+#: Template/Pages/home.ctp:14
+msgid "to join our growing community of "
+msgstr "pour rejoindre notre communauté grandissante de"
 
-#: Template/Pages/home.ctp:23
-msgid "Take the ML² student survey"
-msgstr "Remplissez le formulaire étudiant ML²"
+#: Template/Pages/home.ctp:15
+msgid "university professors and students"
+msgstr "de professeurs et d'étudiants universitaire"
 
-#: Template/Pages/home.ctp:35;37
-msgid "Loading..."
-msgstr "Chargement en cours"
+#: Template/Pages/home.ctp:15
+msgid ","
+msgstr ","
 
-#: Template/Pages/home.ctp:46
+#: Template/Pages/home.ctp:16
+msgid "industry partners"
+msgstr "partenaires industriels"
+
+#: Template/Pages/home.ctp:16
+msgid "and"
+msgstr "et"
+
+#: Template/Pages/home.ctp:17
+msgid "associations"
+msgstr "associations"
+
+#: Template/Pages/home.ctp:17
+msgid "in Quebec."
+msgstr "au Québec."
+
+#: Template/Pages/home.ctp:24
+msgid "Discover the benefits of joining ML2"
+msgstr "Découvrez les bénifices du ML²"
+
+#: Template/Pages/home.ctp:31
+msgid "Our university Network"
+msgstr "Notre réseau universitaire"
+
+#: Template/Pages/home.ctp:36
+msgid "Join our network"
+msgstr "Joindre notre réseau"
+
+#: Template/Pages/home.ctp:41
+msgid "Our generous sponsors"
+msgstr "Nos commanditaires fondateurs"
+
+#: Template/Pages/home.ctp:48
+msgid "Get visibility and access to over"
+msgstr "Bénéficiez d'une visibilité et d'un accès à plus de"
+
+#: Template/Pages/home.ctp:48
+msgid "5000 software engineering and computer science students."
+msgstr "5000 étudiants en génie logiciel et science informatique."
+
+#: Template/Pages/home.ctp:49
+msgid ""
+"Create partnerships with professors in our university network. Form "
+"strategic alliances with our industry and government partners."
+msgstr ""
+"Créer des partenariats avec des professeurs dans notre réseau "
+"universitaire . Former des alliances stratégiques avec nos partenaires."
+
+#: Template/Pages/home.ctp:52
+msgid "Become a sponsor "
+msgstr "Devenir un commanditaire"
+
+#: Template/Pages/home.ctp:60
+msgid "Are you a university student?"
+msgstr "Êtes-vous un étudiant universitaire?"
+
+#: Template/Pages/home.ctp:61
+msgid "Take our survey and help us serve you better"
+msgstr "Participez à notre sondage et aidez-nous à mieux vous servir"
+
+#: Template/Pages/home.ctp:64
+msgid "Take the survey"
+msgstr "Participer au sondage"
+
+#: Template/Pages/home.ctp:66
+msgid "Apply to work on an open source project"
+msgstr "Candidater pour travailler sur un projet open source"
+
+#: Template/Pages/home.ctp:70
+msgid "Intern projects"
+msgstr "Projets (Stage)"
+
+#: Template/Pages/home.ctp:72
+msgid "Graduate projects"
+msgstr "Projets (Maîtrise)"
+
+#: Template/Pages/home.ctp:74
+msgid "Capstone projects"
+msgstr "Projets (PFE)"
+
+#: Template/Pages/home.ctp:76
+msgid "Are you new to Free Software and Open Source?"
+msgstr "Vous êtes nouveau dans le logiciel libre et open source ?"
+
+#: Template/Pages/home.ctp:79
+msgid "Register2"
+msgstr "Enregistrez-vous"
+
+#: Template/Pages/home.ctp:80
+msgid "and learn from our teaching assistants and Collaborate with students."
+msgstr ""
+"et apprener de nos assistants d'enseignement et collaborer avec les "
+"étudiants ."
+
+#: Template/Pages/home.ctp:81
+msgid "Visit our"
+msgstr "Visiter notre"
+
+#: Template/Pages/home.ctp:82
+msgid "Wiki"
+msgstr "Wiki"
+
+#: Template/Pages/home.ctp:83
+msgid "to learn about open source coding practices"
+msgstr "pour se renseigner sur les pratiques de codage open source"
+
+#: Template/Pages/home.ctp:90
+msgid "Hire interns, graduates, and capstone."
+msgstr "Embaucher des stagiaires , diplômés et PFE."
+
+#: Template/Pages/home.ctp:92
+msgid "Industry and Government: "
+msgstr "Industrie et gouvernement:"
+
+#: Template/Pages/home.ctp:92
+msgid ""
+"Develop open source features in your products, tools and\n"
+"                    dependencies. Promote your company in our open source "
+"community"
+msgstr ""
+"Développer des fonctionnalités, des outils  et des dépendances open source "
+"dans vos produits, et des dépendances. Promouvoir votre entreprise dans "
+"notre communauté open source"
+
+#: Template/Pages/home.ctp:96
+msgid "University professors: "
+msgstr "Professeurs universitaires:"
+
+#: Template/Pages/home.ctp:96
+msgid ""
+"Lighten the work load of posting & finding projects and monitoring student "
+"progress. Leverage our teaching assistants and\n"
+"                    dev-ops infrastructure."
+msgstr ""
+"Alléger la charge de travail de l'affichage , de trouver des projets et le "
+"suivi des progrès de l'élève . Tirer parti de nos assistants d'enseignement "
+"et de notre infrastructure."
+
+#: Template/Pages/meetup.ctp:5
+msgid ""
+"ML2 offers learning opportunities with meetups. Do not be shy, join one and "
+"meet other enthusiasts."
+msgstr ""
+"ML2 offre des possibilités d'apprentissage avec des meetups. Ne soyez pas "
+"timide , rejoignez-en un et rencontrer d'autres passionnés ."
+
+#: Template/Pages/meetup.ctp:9
+msgid ""
+"Offering a meetup through ML2 give you an increased visibility throughout "
+"our community. Take this oppurtinity and attract new enthusiasts."
+msgstr ""
+"Offrir un meetup à travers ML² vous donne une visibilité accrue au sein de "
+"notre communauté . Prenez cette oppurtinité et attirer de nouveaux passionés."
+
+#: Template/Pages/meetup.ctp:16
+msgid "ML2 Meetups at ÉTS"
+msgstr "Meetups ML² à l'ÉTS"
+
+#: Template/Pages/mission.ctp:2
 msgid "Our Mission"
 msgstr "Notre mission"
 
-#: Template/Pages/home.ctp:49
+#: Template/Pages/mission.ctp:5
 msgid ""
 "This initiative is born from a meeting between the ÉTS director and Google\n"
 "\t\tMontreal director. Seeing the difficulty that students have to hone "
@@ -748,7 +1384,7 @@ msgstr ""
 "réalisations, ils ont eu l’idée de créer la Maison du Logiciel Libre ou tout "
 "simplement ML²."
 
-#: Template/Pages/home.ctp:56
+#: Template/Pages/mission.ctp:12
 msgid ""
 "The foremost mission of ML2 is to offer a place of meeting and sharing in\n"
 "\t\tMontreal allowing the students to participate in open source software\n"
@@ -766,7 +1402,7 @@ msgstr ""
 "de côtoyer des participants provenant d’horizons différents et ayant eu des "
 "expériences académiques et professionnelles très variés."
 
-#: Template/Pages/home.ctp:65
+#: Template/Pages/mission.ctp:21
 msgid ""
 "The mission of ML2 is an educational mission. Multiple activities will be\n"
 "\t\teventually offered : free development, graduation projects, "
@@ -780,13 +1416,13 @@ msgid ""
 msgstr ""
 "La mission de ML² est donc une mission éducative. Diverses activités seront "
 "éventuellement possibles : activités libres de développement, projets de fin "
-"d’études, stages, projets de maîtrise, … Toutes ces activités graviteront au "
-"tour de projets de logiciel libre. Ces derniers pourront être proposés par "
+"d’études, stages, projets de maîtrise, … Toutes ces activités graviteront "
+"autour de projets de logiciel libre. Ces derniers pourront être proposés par "
 "les divers intervenants (étudiants, professeurs ou universités) ou encore "
 "être en lien avec des entreprises voulant s’investir dans la formation des "
 "étudiants. L’organisation de séminaires pourra compléter ce volet éducatif."
 
-#: Template/Pages/home.ctp:74
+#: Template/Pages/mission.ctp:30
 msgid ""
 "By participating in ML2 activities, the students will be able to (i)\n"
 "\t\tdiscover the open source software world with its codes and objectives; "
@@ -803,17 +1439,17 @@ msgstr ""
 "en logiciels libres ; (iv) obtenir éventuellement des reconnaissances de "
 "leurs acquis de leur université."
 
-#: Template/Pages/home.ctp:84
+#: Template/Pages/mission.ctp:40
 msgid "Value proposition for industry:"
 msgstr "Proposition de valeur pour l'industrie :"
 
-#: Template/Pages/home.ctp:87
+#: Template/Pages/mission.ctp:43
 msgid "Access to potential new hires in our logicel libre developer community"
 msgstr ""
 "Accès à des recrues potentielles au sein de notre communauté de développeur "
 "du logiciel libre"
 
-#: Template/Pages/home.ctp:88 Template/Pages/sponsor.ctp:8
+#: Template/Pages/mission.ctp:44 Template/Pages/sponsor.ctp:8
 #: Template/Pages/submit.ctp:8
 msgid ""
 "Develop new open source features faster and cheaper in your products and "
@@ -822,7 +1458,7 @@ msgstr ""
 "Augmenter la vitesse de développement tout en réduisant les coûts des "
 "fonctionnalités"
 
-#: Template/Pages/home.ctp:89 Template/Pages/sponsor.ctp:9
+#: Template/Pages/mission.ctp:45 Template/Pages/sponsor.ctp:9
 #: Template/Pages/submit.ctp:9
 msgid ""
 "Promote your company and create networks across the software engineering and "
@@ -830,46 +1466,46 @@ msgid ""
 msgstr ""
 "Promouvoir votre entreprise tout en créant un réseau au sein de 7 universités"
 
-#: Template/Pages/home.ctp:90 Template/Pages/sponsor.ctp:10
+#: Template/Pages/mission.ctp:46 Template/Pages/sponsor.ctp:10
 #: Template/Pages/submit.ctp:10
 msgid "Create Goodwill in the University and open source communities"
 msgstr ""
 "Augmenter la réputation de votre entreprise au sein des universités et de la "
 "communauté du logiciel libre"
 
-#: Template/Pages/home.ctp:93
+#: Template/Pages/mission.ctp:49
 msgid "Value proposition for universities and students:"
 msgstr "Proposition de valeur pour l'académie:"
 
-#: Template/Pages/home.ctp:96
+#: Template/Pages/mission.ctp:52
 msgid "Match Interns with Industry and Academic funded open source projects"
 msgstr "Jumeler des stagiaires à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:97
+#: Template/Pages/mission.ctp:53
 msgid ""
 "Match Capstone students with Industry and Academic sponsored open source "
 "projects"
 msgstr "Jumeler des projets de fin d’étude à des projets logiciel libre"
 
-#: Template/Pages/home.ctp:98
+#: Template/Pages/mission.ctp:54
 msgid "Support for graduate students working on open source projects"
 msgstr ""
 "Offrir du support aux étudiants gradués travaillant sur des projets logiciel "
 "libre"
 
-#: Template/Pages/home.ctp:99
+#: Template/Pages/mission.ctp:55
 msgid "Project mentorship (each submitted project must have a mentor)"
 msgstr "Mentorat de projet (chaque projet aura un mentor)"
 
-#: Template/Pages/home.ctp:100
+#: Template/Pages/mission.ctp:56
 msgid "Teaching assistant (TAs) access"
 msgstr "Accès à des professeurs"
 
-#: Template/Pages/home.ctp:101
+#: Template/Pages/mission.ctp:57
 msgid "Additional mentor access from ML2 staff"
 msgstr "Accès aux mentors de ML²"
 
-#: Template/Pages/home.ctp:102
+#: Template/Pages/mission.ctp:58
 msgid ""
 "Networking with ML2 members: students from 7 universities, open source "
 "community, mentors, and industry"
@@ -877,32 +1513,32 @@ msgstr ""
 "Accès au réseau de ML² : étudiants de 7 universités, la communauté du "
 "logiciel libre, mentors et industriels"
 
-#: Template/Pages/home.ctp:103
+#: Template/Pages/mission.ctp:59
 msgid "Promotion of projects and students on the ML2 website"
 msgstr "Promouvoir les projets et les étudiants sur le site web de ML²"
 
-#: Template/Pages/home.ctp:104
+#: Template/Pages/mission.ctp:60
 msgid "CV Portfolio testimonial plugin (testimonials from TAs & mentors)"
 msgstr ""
 "Accès aux commentaires des mentors et des professeurs pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:105
+#: Template/Pages/mission.ctp:61
 msgid ""
 "CV Portfolio open source code summary plugin (key performance indicators on "
 "open source repo contributions)"
 msgstr "Accès aux codes sources des projets pour les CV/portfolio "
 
-#: Template/Pages/home.ctp:106
+#: Template/Pages/mission.ctp:62
 msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr "Accès aux conférences et séminaires de ML²"
 
-#: Template/Pages/home.ctp:107
+#: Template/Pages/mission.ctp:63
 msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
 msgstr "Accès 24/7 au local de ML² (RC du pavilion A de l’ÉTS)"
 
 #: Template/Pages/sponsor.ctp:2
 msgid "Become a sponsor at  Maison du Logiciel Libre!"
-msgstr "Devenez un sponsor de la Maison du Logiciel Libre!"
+msgstr "Devenez un commanditaire de la Maison du Logiciel Libre!"
 
 #: Template/Pages/sponsor.ctp:4 Template/Pages/submit.ctp:4
 msgid "Benefits :"
@@ -927,20 +1563,20 @@ msgid ""
 "university network of UQÀM, McGill, Polytechnique,  Université de Montréal, "
 "Concordia, and Université de Sherbrooke"
 msgstr ""
-"Les sponsors sont affichés en évidence sur notre site web et sur un écran "
-"géant dans le hall principal  de l’École de Technologie Supérieure (ÉTS). Il "
-"est possible de promouvoir votre image à l’ÉTS  et à travers notre réseau "
-"universitaire."
+"Les commanditaires sont affichés en évidence sur notre site web et sur un "
+"écran géant dans le hall principal  de l’École de Technologie Supérieure "
+"(ÉTS). Il est possible de promouvoir votre image à l’ÉTS  et à travers notre "
+"réseau universitaire."
 
 #: Template/Pages/sponsor.ctp:17
 msgid "How does a company become a sponsor?"
-msgstr "Comment devenir un sponsor?"
+msgstr "Comment devenir un commanditaire?"
 
 #: Template/Pages/sponsor.ctp:19
 msgid ""
-"Send an email describing your organization and why you would like to join ML²"
+"Send an email describing your organization and why you would like to join ML2"
 msgstr ""
-"Envoyez un courriel décrivant votre organisation et pourquoi vous voulez "
+"Envoyer un courriel décrivant votre organisation et pourquoi vous désirez "
 "vous joindre à ML²"
 
 #: Template/Pages/submit.ctp:2
@@ -978,11 +1614,7 @@ msgstr "Chaque projet doit avoir un mentor"
 
 #: Template/Pages/submit.ctp:24
 msgid "What Free Software / open source license(s) does your project use?"
-msgstr "Quels licenses libres/open source votre projet utilise-t-il?"
-
-#: Template/Pages/submit.ctp:25
-msgid "What type of student(s) are you looking for?"
-msgstr "Quels types d'étudiant récherchez-vous?"
+msgstr "Quelles licenses libres/open source votre projet utilise-t-il?"
 
 #: Template/Pages/submit.ctp:27
 msgid "Full-time 4-month intern student"
@@ -999,16 +1631,6 @@ msgstr ""
 "Étudiant gradué (Projets de 1-2 ans pour les étudiants en maîtrise et "
 "doctorat)"
 
-#: Template/Pages/submit.ctp:31
-msgid "What are the student requirements to work on the project?"
-msgstr "Quel est le niveau technique requis pour candidater sur votre projet?"
-
-#: Template/Pages/submit.ctp:33
-msgid ""
-" e.g. \"must know Python\" or \"easier project good for a student with more "
-"limited experience with C++.\""
-msgstr "exemple : \"une base en Python\" ou \"expérience limitée en C++\""
-
 #: Template/Pages/submit.ctp:35
 msgid ""
 "What steps will you take to encourage students to interact with your "
@@ -1017,34 +1639,118 @@ msgstr ""
 "Qu’allez-vous faire pour encourager l’étudiant à intérargir avec la "
 "communauté de votre projet?"
 
-#: Template/Projects/add.ctp:17
+#: Template/Pages/survey.ctp:5
+msgid "Register today!"
+msgstr "Inscrivez-vous aujourd'hui !"
+
+#: Template/Pages/survey.ctp:6
+msgid ""
+"Join us at ML2 in building the future of Free Software and Open Source code."
+msgstr ""
+"Rejoignez-nous à ML² dans la construction de l'avenir du logiciel libre et "
+"de code open source ."
+
+#: Template/Pages/survey.ctp:7
+msgid "We need feedback!"
+msgstr "Nous avons besoin de vos commentaires!"
+
+#: Template/Pages/survey.ctp:14;16
+msgid "Loading..."
+msgstr "Chargement en cours"
+
+#: Template/Projects/add.ctp:7
 msgid "Add Project"
 msgstr "Ajouter projet"
 
-#: Template/Projects/apply.ctp:14
+#: Template/Projects/add.ctp:8
+msgid ""
+"After the project has been created, you will be redirect on the project's "
+"page to create some missions."
+msgstr ""
+"Après la création du projet , vous serez redirigé sur la page du projet pour "
+"créer des missions."
+
+#: Template/Projects/add.ctp:10 Template/Projects/submit.ctp:10
+msgid "Name of the project"
+msgstr "Nom du projet"
+
+#: Template/Projects/add.ctp:12 Template/Projects/submit.ctp:12
+msgid "Description of the project"
+msgstr "Description du project"
+
+#: Template/Projects/add.ctp:13 Template/Projects/submit.ctp:19
+msgid ""
+"Select organizations associated with the project. Leave blank if no "
+"organizations"
+msgstr ""
+"Sélection le(s) organisation(s) associée(s) avec le projet. Laissez vide "
+"s'il n'y a pas d'organisation(s)"
+
+#: Template/Projects/admin_index.ctp:18 Template/Projects/index.ctp:16
+#: Template/Projects/view.ctp:55
+msgid "Organizations"
+msgstr "Organisations"
+
+#: Template/Projects/apply.ctp:7
 msgid "Apply on this project"
 msgstr "Candidater sur ce projet"
 
-#: Template/Projects/apply.ctp:24 Template/Users/edit.ctp:29
-#: Template/Users/email.ctp:20 Template/Users/password.ctp:20
-msgid "Cancel"
-msgstr "Annuler"
-
-#: Template/Projects/edit.ctp:4
+#: Template/Projects/edit.ctp:7
 msgid "Edit Project"
 msgstr "Modifier projet"
 
-#: Template/Projects/view.ctp:27
+#: Template/Projects/index.ctp:15
+msgid "Link"
+msgstr "Site web"
+
+#: Template/Projects/submit.ctp:7
+msgid "Submit Project"
+msgstr "Soumettre un projet"
+
+#: Template/Projects/submit.ctp:8
+msgid ""
+"After submit the project, you will be redirect on the project's page to "
+"create some missions."
+msgstr ""
+"Après avoir soumis un projet,  vous serez redirigé sur la page du projet "
+"pour créer des missions."
+
+#: Template/Projects/submit.ctp:16
+msgid "You're not part of an organization. Add yours now!"
+msgstr ""
+"Vous ne faites pas partie d'une organisation . Ajouter la votre maintenant!"
+
+#: Template/Projects/submit.ctp:21
+msgid "Or you can add a new organizations "
+msgstr "Ou vous pouvez ajouter de nouvelles organisations"
+
+#: Template/Projects/submit.ctp:21
+msgid "here."
+msgstr "ici."
+
+#: Template/Projects/view.ctp:19
 msgid "Contributors"
 msgstr "Contributeurs"
 
-#: Template/Projects/view.ctp:43
+#: Template/Projects/view.ctp:37
 msgid "Mentors"
 msgstr "Mentors"
 
-#: Template/Projects/view.ctp:59
-msgid "Organizations"
-msgstr "Organisations"
+#: Template/Projects/view.ctp:79
+msgid "Position"
+msgstr "Poste"
+
+#: Template/Projects/view.ctp:80
+msgid "Session"
+msgstr "Session"
+
+#: Template/Projects/view.ctp:82
+msgid "Type"
+msgstr "Type"
+
+#: Template/Projects/view.ctp:83
+msgid "Mentor"
+msgstr "Mentor"
 
 #: Template/SvnUsers/add.ctp:4 Template/SvnUsers/edit.ctp:11
 #: Template/SvnUsers/index.ctp:4 Template/SvnUsers/view.ctp:7
@@ -1106,11 +1812,6 @@ msgstr "Modifier Svn"
 msgid "Delete Svn"
 msgstr "Supprimer Svn"
 
-#: Template/Svns/view.ctp:18 Template/TypeUsers/view.ctp:16
-#: Template/Universities/view.ctp:16
-msgid "Name"
-msgstr "Nom"
-
 #: Template/Svns/view.ctp:35
 msgid "Related SvnUsers"
 msgstr ""
@@ -1118,6 +1819,10 @@ msgstr ""
 #: Template/Svns/view.ctp:42
 msgid "Svn Id"
 msgstr "Svn ID"
+
+#: Template/Svns/view.ctp:43
+msgid "User Id"
+msgstr "utilisateur ID"
 
 #: Template/TypeUsers/add.ctp:4 Template/TypeUsers/edit.ctp:11
 #: Template/TypeUsers/index.ctp:4 Template/TypeUsers/view.ctp:7
@@ -1201,58 +1906,118 @@ msgstr "Supprimer l'université"
 msgid "Add User"
 msgstr "Ajouter un utilisateur"
 
-#: Template/Users/edit.ctp:14
+#: Template/Users/delete.ctp:7
+msgid "Delete your account"
+msgstr "Supprimer votre compte"
+
+#: Template/Users/delete.ctp:8
+msgid ""
+"You are about to unsubscribe from \"Maison du Logiciel Libre\". Here are the "
+"implications of this action who can not be undone:"
+msgstr ""
+"Vous êtes sur le point de vous désinscrire de \"Maison du Logiciel Libre\". "
+"Voici ce qu'implique cette action qui ne peut être annulée : "
+
+#: Template/Users/delete.ctp:11
+msgid "All your participation will be anonymized."
+msgstr "Toutes vos participations seront anonymisées"
+
+#: Template/Users/delete.ctp:12
+msgid "Your email address"
+msgstr "Votre adresse courriel"
+
+#: Template/Users/delete.ctp:13
+msgid "will be deleted from the system"
+msgstr "sera effacée du système"
+
+#: Template/Users/delete.ctp:15
+msgid "Your username"
+msgstr "Votre nom d'utilisateur"
+
+#: Template/Users/delete.ctp:16
+msgid "will be released and used by another member"
+msgstr "sera libéré et utilisable par un autre membre "
+
+#: Template/Users/delete.ctp:20
+msgid ""
+"If you wish to continue your unsubscribe, click the button \"Unsubscribe\" "
+"below. Otherwise it is not yet too late ..."
+msgstr ""
+"Si vous souhaitez poursuivre votre désinscription, cliquez sur le bouton "
+"\"Désinscription\" ci-dessous. Sinon il n'est pas encore trop tard ... "
+
+#: Template/Users/delete.ctp:22
+msgid "Unsubscribe"
+msgstr "Désinscription "
+
+#: Template/Users/edit.ctp:8
 msgid "Edit User"
 msgstr "Modifier l'utilisateur"
 
-#: Template/Users/edit.ctp:16
+#: Template/Users/edit.ctp:11 Template/Users/index.ctp:13
 msgid "First name"
 msgstr "Prénom"
 
-#: Template/Users/edit.ctp:17
+#: Template/Users/edit.ctp:12 Template/Users/index.ctp:14
 msgid "Last name"
 msgstr "Nom"
 
-#: Template/Users/edit.ctp:18
-msgid "Biography"
-msgstr "Biographie"
-
-#: Template/Users/edit.ctp:23
-msgid "Gender"
-msgstr "Sexe"
-
-#: Template/Users/edit.ctp:24
-msgid "Female"
-msgstr "Femme"
-
-#: Template/Users/edit.ctp:24
-msgid "Male"
-msgstr "Homme"
-
-#: Template/Users/edit.ctp:26
+#: Template/Users/edit.ctp:20 Template/Users/register.ctp:53
 msgid "University"
 msgstr "Université"
 
-#: Template/Users/email.ctp:13
+#: Template/Users/edit.ctp:27
+msgid "Status"
+msgstr "Status"
+
+#: Template/Users/edit.ctp:31
+msgid "Are you a student?"
+msgstr "Êtes-vous un étudiant"
+
+#: Template/Users/edit.ctp:35
+msgid "Would you like to be a mentor?"
+msgstr "Devenir mentor ?"
+
+#: Template/Users/edit.ctp:44
+msgid "Biography"
+msgstr "Biographie"
+
+#: Template/Users/edit.ctp:49
+msgid "Gender"
+msgstr "Sexe"
+
+#: Template/Users/edit.ctp:54
+msgid "Female"
+msgstr "Femme"
+
+#: Template/Users/edit.ctp:55
+msgid "Male"
+msgstr "Homme"
+
+#: Template/Users/email.ctp:7
 msgid "Change Email"
 msgstr "Modifier le courriel"
 
-#: Template/Users/email.ctp:14
+#: Template/Users/email.ctp:8
 msgid "Enter your new email"
 msgstr "Entrez votre nouveau courriel"
 
-#: Template/Users/email.ctp:15
+#: Template/Users/email.ctp:9
 msgid "Confirm your new email"
 msgstr "Confirmer votre nouveau courriel"
 
-#: Template/Users/email.ctp:17
+#: Template/Users/email.ctp:11
 msgid "Confirm your password to confirm the change"
 msgstr "Confirmer votre mot de passe "
 
-#: Template/Users/email.ctp:17 Template/Users/password.ctp:14;15;17
-#: Template/Users/register.ctp:6;7
+#: Template/Users/email.ctp:11 Template/Users/password.ctp:8;9;11
+#: Template/Users/register.ctp:17;21
 msgid "Password"
 msgstr "Mot de passe"
+
+#: Template/Users/index.ctp:12 Template/Users/register.ctp:9
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
 #: Template/Users/login.ctp:5
 msgid "Enter your username and password"
@@ -1262,54 +2027,160 @@ msgstr "Entrez votre nom d'utilisateur et votre mot de passe"
 msgid "Connect"
 msgstr "Connexion"
 
-#: Template/Users/password.ctp:13
+#: Template/Users/password.ctp:7
 msgid "Change Password"
 msgstr "Modifier le mot de passe"
 
-#: Template/Users/password.ctp:14
+#: Template/Users/password.ctp:8
 msgid "Choose a new password"
 msgstr "Entrez un nouveau mot de passe"
 
-#: Template/Users/password.ctp:15
+#: Template/Users/password.ctp:9
 msgid "Confirm the new password"
 msgstr "Confirmer le nouveau mot de passe"
 
-#: Template/Users/password.ctp:17
+#: Template/Users/password.ctp:11
 msgid "Confirm your current password to confirm the change"
 msgstr "Confirmer votre mot de passe actuel"
 
-#: Template/Users/register.ctp:5
+#: Template/Users/register.ctp:7
 msgid "Choose your username"
 msgstr "Entrez votre nom d'utilisateur"
 
-#: Template/Users/register.ctp:5
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: Template/Users/register.ctp:6
+#: Template/Users/register.ctp:15
 msgid "Choose a password"
 msgstr "Entrez votre mot de passe"
 
-#: Template/Users/register.ctp:7
+#: Template/Users/register.ctp:19
 msgid "Confirm password"
 msgstr "Confirmez votre mot de passe"
 
-#: Template/Users/register.ctp:8
+#: Template/Users/register.ctp:27
 msgid "Email adress"
 msgstr "Entrez votre adresse courriel"
 
-#: Template/Users/register.ctp:9
+#: Template/Users/register.ctp:31
 msgid "Confirm email adress"
 msgstr "Confirmez votre adresse courriel"
 
-#~ msgid "The application has been saved."
-#~ msgstr "La candidature a été enregistrée."
+#: Template/Users/register.ctp:39
+msgid "Enter your firstname"
+msgstr "Entrez votre prénom"
 
-#~ msgid "The application could not be saved. Please, try again."
-#~ msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
+#: Template/Users/register.ctp:41
+msgid "Firstname"
+msgstr "Prénom"
+
+#: Template/Users/register.ctp:43
+msgid "Enter your lastname"
+msgstr "Entrez votre nom"
+
+#: Template/Users/register.ctp:45
+msgid "Lastname"
+msgstr "Nom"
+
+#: Template/Users/register.ctp:63
+msgid "I have an account"
+msgstr "J'ai déja un compte"
+
+#: Template/Users/view.ctp:22
+msgid "Projects mentored"
+msgstr "Projets mentorés"
+
+#: Template/Users/view.ctp:51
+msgid "Organizations joined"
+msgstr "Organisations rejointe"
+
+#~ msgid ""
+#~ "If you want to become a sponsor or host your free software/open source "
+#~ "meetups or join our university network : École de Technologie Supérieure "
+#~ "(ÉTS), UQÀM, McGill, Polytechnique, Université de Montréal, Concordia et "
+#~ "Université de Sherbrooke "
+#~ msgstr ""
+#~ "Si vous voulez devenir un commanditaire ou héberger vos meetups de "
+#~ "logiciels libres / open source ou rejoindre notre réseau universitaire : "
+#~ "École de Technologie Supérieure (ÉTS ) , UQÀM , l'Université McGill , "
+#~ "Polytechnique , Université de Montréal , l'Université Concordia et "
+#~ "l'Université de Sherbrooke"
+
+#~ msgid ""
+#~ "Send an email describing your organization and why you would like to join "
+#~ "ML²"
+#~ msgstr ""
+#~ "Envoyez un courriel décrivant votre organisation et pourquoi vous voulez "
+#~ "vous joindre à ML²"
+
+#~ msgid ""
+#~ "Join us at ML² in building the future of Free Software and Open Source "
+#~ "code."
+#~ msgstr ""
+#~ "Joignez-vous à ML² pour contrsuire l'avenir du logiciel libre et du code "
+#~ "Open Source."
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid "Become a sponsor"
+#~ msgstr "Devenir un commanditaire"
+
+#~ msgid "Montfort street"
+#~ msgstr "Rue Montfort"
+
+#~ msgid "Montreal"
+#~ msgstr "Montréal"
+
+#~ msgid "ML2 need a new logo!"
+#~ msgstr "Aimez-vous notre logo ? Peut-être pouvez-vous faire mieux !"
+
+#~ msgid "Take the ML² student survey"
+#~ msgstr "Remplissez le formulaire étudiant ML²"
+
+#~ msgid "Looking for"
+#~ msgstr "Recherche"
+
+#~ msgid "The mission has been deleted."
+#~ msgstr "La mission a été supprimée."
+
+#~ msgid "The mission could not be deleted. Please, try again."
+#~ msgstr "La mission n'a pas pu être supprimée. Veuillez réessayer."
 
 #~ msgid "Apply on the project"
 #~ msgstr "Candidater sur le projet"
+
+#~ msgid "Delete Mission"
+#~ msgstr "Supprimer une mission"
+
+#~ msgid "Role"
+#~ msgstr "Rôle"
+
+#~ msgid "Active"
+#~ msgstr "Actif"
+
+#~ msgid "Mission"
+#~ msgstr "Mission"
+
+#~ msgid "Project Id"
+#~ msgstr "Projet ID"
+
+#~ msgid "Cv"
+#~ msgstr "CV"
+
+#~ msgid "Presentation"
+#~ msgstr "Présentation"
+
+#~ msgid "Accepted"
+#~ msgstr "Accepté"
+
+#~ msgid "Is Mentor"
+#~ msgstr "Est mentor"
+
+#~ msgid "Submit organization"
+#~ msgstr "Soumettre organisation"
+
+#~ msgid ""
+#~ "The user could not be deleted. Please,\n"
+#~ "             try again."
+#~ msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
 #~ msgid "Do not leave aside free software"
 #~ msgstr "Ne pas laisser de coté le logiciel libre"
@@ -1467,12 +2338,6 @@ msgstr "Confirmez votre adresse courriel"
 
 #~ msgid "LastName"
 #~ msgstr "Nom"
-
-#~ msgid "Yes"
-#~ msgstr "Oui"
-
-#~ msgid "No"
-#~ msgstr "Non"
 
 #~ msgid "Choose your username and password"
 #~ msgstr "Entrez votre nom d'utilisateur et mot de passe"

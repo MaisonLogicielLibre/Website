@@ -38,6 +38,8 @@ class UsersTableTest extends TestCase
     'app.type_users_users',
     'app.organizations',
     'app.organizations_Projects',
+    'app.organizations_Members',
+    'app.organizations_Owners',
     'app.users',
     'app.type_users',
     'app.svn_users',
@@ -103,6 +105,22 @@ class UsersTableTest extends TestCase
         
         $result = $user->getFirstName();
         
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getNameNUll
+     * @return void
+     */
+    public function testGetNameNull()
+    {
+        $id = 3;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getName();
+
         $this->assertEquals($expected, $result);
     }
     
@@ -187,21 +205,53 @@ class UsersTableTest extends TestCase
     }
     
     /**
-     * Test getGender
+     * Test getGender for true
      * @return void
      */
-    public function testGetGender()
+    public function testGetGenderTrue()
     {
         $id = 1;
-        $expected = 1;
+        $expected = true;
         
         $user = $this->Users->get($id);
         
-        $result = $user->getGender($expected);
+        $result = $user->getGender();
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getGender for false
+     * @return void
+     */
+    public function testGetGenderFalse()
+    {
+        $id = 2;
+        $expected = false;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGender();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getGender for null
+     * @return void
+     */
+    public function testGetGenderNull()
+    {
+        $id = 3;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGender();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPassword
      * @return void
@@ -231,6 +281,38 @@ class UsersTableTest extends TestCase
         
         $result = $user->getUsername();
         
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test IsAvailableMentoring
+     * @return void
+     */
+    public function testIsAvailableMentoring()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->isAvailableMentoring();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test IsStudent
+     * @return void
+     */
+    public function testIsStudent()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->isStudent();
+
         $this->assertEquals($expected, $result);
     }
 
@@ -347,6 +429,22 @@ class UsersTableTest extends TestCase
     }
 
     /**
+     * Test editGender
+     * @return void
+     */
+    public function testSetGenderNull()
+    {
+        $id = 1;
+        $expected = null;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editGender("null");
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test editUsername
      * @return void
      */
@@ -377,6 +475,38 @@ class UsersTableTest extends TestCase
         $check = (new DefaultPasswordHasher)->check($pass, $result);
 
         $this->assertTrue($check);
+    }
+
+    /**
+     * Test editIsAvailableMentoring
+     * @return void
+     */
+    public function testSetIsAvailableMentoring()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editIsAvailableMentoring($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editIsStudent
+     * @return void
+     */
+    public function testSetIsStudent()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editIsStudent($expected);
+
+        $this->assertEquals($expected, $result);
     }
     
     /**
@@ -442,6 +572,102 @@ class UsersTableTest extends TestCase
         $expected = $rule;
         
         $result = $this->Users->buildRules($rule);
+        
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test fail validation
+     * @return void
+     */
+    public function testValidationFail()
+    {
+        $id = 1;
+        $user = $this->Users->get($id);
+
+        $data = [
+                'portfolio' => 'www.github.com',
+                'email' => 'test@email.com',
+                'confirm_email' => 'test2@email.com',
+                'phone' => '111111111111',
+                'password' => 'allo',
+                'confirm_password' => 'allo2'
+            ];
+
+            $this->Users->patchEntity($user, $data);
+            $result = $this->Users->save($user);
+
+        if ($result != false) {
+            $result = true;
+        }
+
+            $this->assertFalse($result);
+    }
+    
+    /**
+     * Test isOwner - True
+     * @return void
+     */
+    public function testIsOwnerTrue()
+    {
+        $userId = 1;
+        $orgId = 1;
+        $expected = true;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isOwnerOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isOwner - False
+     * @return void
+     */
+    public function testIsOwnerFalse()
+    {
+        $userId = 2;
+        $orgId = 1;
+        $expected = false;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isOwnerOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isMember - True
+     * @return void
+     */
+    public function testIsMemberTrue()
+    {
+        $userId = 1;
+        $orgId = 1;
+        $expected = true;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isMemberOf($orgId);
+        
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test isMember - False
+     * @return void
+     */
+    public function testIsMemberFalse()
+    {
+        $userId = 2;
+        $orgId = 1;
+        $expected = false;
+
+        $user = $this->Users->get($userId);
+        
+        $result = $user->isMemberOf($orgId);
         
         $this->assertEquals($expected, $result);
     }

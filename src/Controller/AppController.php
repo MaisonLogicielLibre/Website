@@ -43,7 +43,10 @@ class AppController extends Controller
         'BootstrapUI.Form',
         'BootstrapUI.Html',
         'BootstrapUI.Flash',
-        'BootstrapUI.Paginator'
+        'BootstrapUI.Paginator',
+        'DataTables' => [
+            'className' => 'DataTables.DataTables'
+        ]
     ];
 
     /**
@@ -60,14 +63,17 @@ class AppController extends Controller
         $this->loadComponent(
             'Auth',
             [
+            'flash' => ['element' => 'error'],
             'authorize' => 'Controller',
             'logoutRedirect' => [
                 'controller' => 'Pages',
                 'action' => 'display',
                 'home'
-            ]
+            ],
+                'authError' => __('You must be logged in to access this page.'),
             ]
         );
+        $this->loadComponent('DataTables.DataTables');
     }
     
     /**
@@ -87,12 +93,36 @@ class AppController extends Controller
     }
     
     /**
+     * Keep last viewed paged
+     *
+     * @return void
+     */
+    protected function updateReferer()
+    {
+        if ($this->request->action != "login") {
+            $action = "";
+            $this->request->Session()->write('controllerRef', $this->request->controller);
+            
+            if ($this->request->action != "display") {
+                $action = $this->request->action . "/";
+            }
+                                    
+            if (count($this->request->pass)) {
+                $action = $action . $this->request->pass[0];
+            }
+            
+            $this->request->Session()->write('actionRef', $action);
+        }
+    }
+    
+    /**
      * Filter preparation
      * @param Event $event event
      * @return void
      */
     public function beforeFilter(Event $event)
     {
+        $this->updateReferer();
         $this->checkLanguage();
         $this->Auth->allow(['display']);
     }

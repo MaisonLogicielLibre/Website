@@ -52,6 +52,24 @@ class OrganizationsTable extends Table
             'joinTable' => 'organizations_projects'
             ]
         );
+        $this->belongsToMany(
+            'Owners',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'organization_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'organizations_owners'
+            ]
+        );
+        $this->belongsToMany(
+            'Members',
+            [
+            'className' => 'Users',
+            'foreignKey' => 'organization_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'organizations_members'
+            ]
+        );
     }
 
     /**
@@ -69,7 +87,16 @@ class OrganizationsTable extends Table
 
         $validator
             ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->notEmpty('name')
+            ->add(
+                'name',
+                'unique',
+                [
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This name is already taken.')
+                ]
+            );
 
         $validator
             ->allowEmpty('website')
@@ -99,22 +126,5 @@ class OrganizationsTable extends Table
         $validator
             ->notEmpty('isRejected');
         return $validator;
-    }
-
-    /**
-     * Return organizations who are validated and not rejected
-     * @param Query $query   query
-     * @param array $options options
-     * @return Query query
-     */
-    public function findShow(Query $query, array $options)
-    {
-        $query->where(
-            [
-            'Organizations.isValidated' => true,
-            'Organizations.isRejected' => false
-            ]
-        );
-        return $query;
     }
 }
