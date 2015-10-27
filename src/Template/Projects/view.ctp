@@ -76,7 +76,10 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th><?= __('Name'); ?></th>
+                            <th><?= __('Position'); ?></th>
+                            <th><?= __('Session'); ?></th>
+                            <th><?= __('Length'); ?></th>
+                            <th><?= __('Type'); ?></th>
                             <th><?= __('Mentor'); ?></th>
                         </tr>
                         </thead>
@@ -87,6 +90,9 @@
                             <td></td>
                             <td><input type="text" placeholder="<?= __('Search ...'); ?>"
                                        class="form-control input-sm input-block-level"/></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td><input type="text" placeholder="<?= __('Search ...'); ?>"
                                        class="form-control input-sm input-block-level"/></td>
                         </tr>
@@ -106,6 +112,27 @@
     ['block' => 'scriptBottom']);
 ?>
 <?php
+$lengthOptions =
+    [
+        0 => __('Not specified'),
+        1 => __('1 term'),
+        2 => __('2 terms'),
+        3 => __('3 terms')
+    ];
+$sessionOptions =
+    [
+        0 => __('Not specified'),
+        1 => __('Winter'),
+        2 => __('Summer'),
+        3 => __('Fall')
+    ];
+$typeMissionsOption =
+    [
+        0 => __('Intern'),
+        1 => __('Volunteer'),
+        2 => __('Master'),
+        3 => __('Capstone')
+    ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([
     'ajax' => [
@@ -127,6 +154,21 @@ echo $this->DataTables->init([
             'searchable' => true
         ],
         [
+            'name' => 'Mission.session',
+            'data' => 'session',
+            'searchable' => true
+        ],
+        [
+            'name' => 'Mission.length',
+            'data' => 'length',
+            'searchable' => true
+        ],
+        [
+            'name' => 'TypeMissions.name',
+            'data' => 'type_missions',
+            'searchable' => true
+        ],
+        [
             'name' => 'User',
             'data' => 'user',
             'searchable' => true
@@ -135,6 +177,9 @@ echo $this->DataTables->init([
     'lengthMenu' => ''
 ])->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
+echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
+echo 'var sessionTr=' . json_encode($sessionOptions) . ';';
+echo 'var typeMissionsTr=' . json_encode($typeMissionsOption) . ';';
 $this->Html->scriptEnd();
 ?>
 <?= $this->Html->script('projects/view.js', ['block' => 'scriptBottom']); ?>

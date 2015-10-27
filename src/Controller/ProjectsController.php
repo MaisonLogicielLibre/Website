@@ -216,11 +216,20 @@ class ProjectsController extends AppController
         $data = $this->DataTables->find(
             'Missions',
             [
-                'contain' => ['Users'],
+                'contain' => [
+                    'TypeMissions' => [
+                        'fields' => [
+                            'id', 'name', 'MissionsTypeMissions.mission_id'
+                        ]
+                    ],
+                    'Users'
+                ],
                 'conditions' => ['project_id' => $id],
-                'fields' => ['Missions.id', 'Missions.name', 'Users.firstName', 'Users.lastName']
+                'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName']
             ]
         );
+
+        //        debug($data);die;
 
         if (null != $this->request->session()->read('Auth.User.id')) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
