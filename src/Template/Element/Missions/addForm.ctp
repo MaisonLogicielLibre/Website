@@ -2,7 +2,7 @@
 $this->start('form');
 echo $this->Form->input('name', ['label' => __('Position title')]);
 echo $this->Form->input('description', ['label' => __('Describe your mission')]);
-echo $this->Form->input('competence', ['label' => __('What are the student requirements to work on the project?'), 'placeholder' => __(' e.g. "must know Python" or "easier project good for a student with more limited experience with C++."')]);
+echo $this->Form->input('competence', ['type' => 'textarea', 'label' => __('What are the student requirements to work on the project?'), 'placeholder' => __(' e.g. "must know Python" or "easier project good for a student with more limited experience with C++."')]);
 $typeOptions = [];
 foreach ($typeMissions as $type) {
     $typeOptions[$type->id] = $type->getName();
