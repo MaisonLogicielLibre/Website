@@ -210,18 +210,18 @@ class Mission extends Entity
 
     /**
      * Get if the mission is archived
-     * @return boolean archived
+     * @return bool archived
      */
     public function isArchived()
     {
         $projects = TableRegistry::get('Projects');
         $project = $projects->get($this->project_id);
 
-        if($project->isArchived()){
+        if ($project->isArchived()) {
             return true;
         }
 
-        if($this->_properties['archived'] == true){
+        if ($this->_properties['archived'] == true) {
             return true;
         }
 
