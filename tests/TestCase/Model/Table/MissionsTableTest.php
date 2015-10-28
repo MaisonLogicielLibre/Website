@@ -439,4 +439,52 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test isArchived (bool of mission)
+     * @return void
+     */
+    public function testIsArchived()
+    {
+        $id = 5;
+        $expected = 1;
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->isArchived();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test isArchived (bool of project)
+     * @return void
+     */
+    public function testIsArchivedByDefault()
+    {
+        $id = 2;
+        $expected = 1;
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->isArchived();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test isArchived (not archived)
+     * @return void
+     */
+    public function testIsArchivedNo()
+    {
+        $id = 6;
+        $expected = 0;
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->isArchived();
+
+        $this->assertEquals($expected, $result);
+    }
 }
