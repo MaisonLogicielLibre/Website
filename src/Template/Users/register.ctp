@@ -58,9 +58,8 @@
             <br/>
         </fieldset>
 
-        <?= $this->Form->button(__('Register'), ['class' => 'btn-success']) ?>
-        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>"
-           class="btn-primary btn"><?= __("I have an account"); ?></a>
+        <?= $this->Form->button(__('Register'), ['class' => 'btn-success']) ?> -
+        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>"><?= __("I have an account"); ?></a>
         <?= $this->Form->end() ?>
     </div>
 </div>
