@@ -180,6 +180,7 @@ echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'actio
 echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
 echo 'var sessionTr=' . json_encode($sessionOptions) . ';';
 echo 'var typeMissionsTr=' . json_encode($typeMissionsOption) . ';';
+echo 'var validationTr="' . __('Archived') . '";';
 $this->Html->scriptEnd();
 ?>
 <?= $this->Html->script('projects/view.js', ['block' => 'scriptBottom']); ?>

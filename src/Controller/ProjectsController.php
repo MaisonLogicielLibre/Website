@@ -225,7 +225,7 @@ class ProjectsController extends AppController
                     'Users'
                 ],
                 'conditions' => ['project_id' => $id],
-                'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName']
+                'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
             ]
         );
 

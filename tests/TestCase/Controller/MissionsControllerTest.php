@@ -260,4 +260,17 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editArchived/1');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
     }
+
+    /**
+     * Test restore a mission - Ok
+     *
+     * @return void
+     */
+    public function testRestoreOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editArchived/7');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 7]);
+    }
 }

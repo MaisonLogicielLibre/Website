@@ -157,10 +157,10 @@ class MissionsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Missions->patchEntity($mission, $this->request->data);
             if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
+                $this->Flash->success(__('The mission has been edited.'));
                 return $this->redirect(['action' => 'view', $mission->id]);
             } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
+                $this->Flash->error(__('The mission could not be edited. Please, try again.'));
             }
         }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
@@ -180,10 +180,14 @@ class MissionsController extends AppController
         $mission = $this->Missions->get($id);
         $mission->editArchived(!($mission->isArchived()));
         if ($this->Missions->save($mission)) {
-            $this->Flash->success(__('The mission has been saved.'));
+            if ($mission->archived) {
+                $this->Flash->success(__('The mission has been archived.'));
+            } else {
+                $this->Flash->success(__('The mission has been restored.'));
+            }
             return $this->redirect(['action' => 'view', $id]);
         } else {
-            $this->Flash->error(__('The mission could not be saved. Please, try again.'));
+            $this->Flash->error(__('The mission could not be archived. Please, try again.'));
             return $this->redirect(['action' => 'view', $id]);
         }
     }
