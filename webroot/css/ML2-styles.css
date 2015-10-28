@@ -287,6 +287,7 @@ hr.small {
 }
 
 footer {
+    margin-top: 15px;
     padding: 10px 0px;
     color: #FFF;
     background-color:black;
