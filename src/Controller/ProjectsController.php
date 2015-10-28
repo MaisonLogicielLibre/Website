@@ -141,7 +141,10 @@ class ProjectsController extends AppController
      */
     public function submit()
     {
+        $this->loadModel('Missions');
+
         $project = $this->Projects->newEntity();
+        $mission = $this->Missions->newEntity();
 
         $project->editAccepted(false);
         $project->editArchived(false);
@@ -157,7 +160,7 @@ class ProjectsController extends AppController
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        
+
         $organizations = $this->Projects->Organizations->find('list')
             ->join(
                 [
@@ -172,8 +175,10 @@ class ProjectsController extends AppController
                 ]
             );
 
-        $this->set(compact('project', 'organizations'));
-        $this->set('_serialize', ['project']);
+        $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
+        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
+        $this->set(compact('mission', 'missionLevels', 'typeMissions', 'project', 'organizations'));
+        $this->set('_serialize', ['project', 'mission']);
     }
     
     /**

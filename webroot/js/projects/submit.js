@@ -9,18 +9,22 @@ $(document).ready(function () {
             createNewMissionForm(nbrMission, missionForm);
             $(this).find('i').removeClass('fa-plus');
             $(this).removeAttr('id');
+            $('#addMission').attr('data-tab', 'mission-' + nbrMission);
         }
         $(this).tab('show');
+    });
+
+    $(document).on('click', '#addMission', function (e) {
+        e.preventDefault();
+        $('#formTab a#newMission').trigger('click');
     });
 
     $(document).on('click', '.deleteMission', function (e) {
         e.preventDefault();
         var index = $(this).parents().closest('.tab-pane').index();
-        console.log(index);
         $('#formTab a').eq(index - 1).tab('show');
         $('#formTab li').eq(index).remove();
-        console.log($('.tab-content div').eq(index).html());
-        $('.tab-content div').eq(index).remove();
+        $('.tab-content .tab-pane').eq(index).remove();
     });
 });
 
