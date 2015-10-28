@@ -6,8 +6,8 @@
             <?= $this->Form->input('username') ?>
             <?= $this->Form->input('password') ?>
         </fieldset>
-        <?= $this->Form->button(__('Connect'), ['class' => 'btn btn-success']); ?>
-        <a class="btn btn-primary" href="<?= $this->Url->build(["controller" => "Users", "action" => "register"]);?>"><?= __('Register');?></a>
+        <?= $this->Form->button(__('Connect'), ['class' => 'btn btn-success']); ?> -
+        <a href="<?= $this->Url->build(["controller" => "Users", "action" => "register"]);?>"><?= __('Register an account');?></a>
         <?= $this->Form->end() ?>
     </div>
 </div>
