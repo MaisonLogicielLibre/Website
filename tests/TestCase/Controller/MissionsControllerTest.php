@@ -181,4 +181,96 @@ class MissionsControllerTest extends IntegrationTestCase
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
+
+    /**
+     * Test edit - Ok
+     *
+     * @return void
+     */
+    public function testEditOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+
+        $this->get('/missions/edit/1');
+        $this->post('/missions/edit/1', $data);
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test edit - No Permission
+     *
+     * @return void
+     */
+    public function testEditNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [];
+        $this->post('/missions/edit/1', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit - No Authentification
+     *
+     * @return void
+     */
+    public function testEditNoAuth()
+    {
+        $data = [];
+        $this->post('/missions/edit/1', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived a mission - No Permission
+     *
+     * @return void
+     */
+    public function testArchivedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/missions/editArchived/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test archived a mission - No Authentification
+     *
+     * @return void
+     */
+    public function testArchivedNoAuth()
+    {
+        $this->post('/missions/editArchived/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived a mission - Ok
+     *
+     * @return void
+     */
+    public function testArchivedOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editArchived/1');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test restore a mission - Ok
+     *
+     * @return void
+     */
+    public function testRestoreOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editArchived/7');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 7]);
+    }
 }

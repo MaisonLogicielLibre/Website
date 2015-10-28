@@ -30,6 +30,8 @@ class MissionsController extends AppController
         'add' => ['add_mission'],
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
+        'editAccepted' => ['edit_mission', 'edit_mission'],
+        'editArchived' => ['edit_mission', 'edit_mission'],
         'view' => ['view_mission', 'view_missions'],
         'delete' => ['delete_mission', 'delete_missions']
     ];
@@ -136,6 +138,57 @@ class MissionsController extends AppController
             }
         } else {
             return $this->redirect(['controller' => 'projects', 'action' => 'index']);
+        }
+    }
+
+    /**
+     * Edit method
+     * @param string $id id
+     * @return redirect
+     */
+    public function edit($id = null)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' => ['Projects', 'TypeMissions', 'MissionLevels']
+            ]
+        );
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $project = $this->Missions->patchEntity($mission, $this->request->data);
+            if ($this->Missions->save($mission)) {
+                $this->Flash->success(__('The mission has been edited.'));
+                return $this->redirect(['action' => 'view', $mission->id]);
+            } else {
+                $this->Flash->error(__('The mission could not be edited. Please, try again.'));
+            }
+        }
+        $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
+        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
+        $this->set(compact('mission', 'typeMissions', 'missionLevels'));
+        $this->set('_serialize', ['mission']);
+    }
+
+    /**
+     * Edit archived method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editArchived($id)
+    {
+        $this->autoRender = false;
+        $mission = $this->Missions->get($id);
+        $mission->editArchived(!($mission->isArchived()));
+        if ($this->Missions->save($mission)) {
+            if ($mission->archived) {
+                $this->Flash->success(__('The mission has been archived.'));
+            } else {
+                $this->Flash->success(__('The mission has been restored.'));
+            }
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The mission could not be archived. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
         }
     }
 }

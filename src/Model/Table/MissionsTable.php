@@ -157,6 +157,8 @@ class MissionsTable extends Table
                     'message' => __('You must select at least one item.')]
                 );
 
+                $validator
+                    ->notEmpty('archived');
 
                 return $validator;
     }
