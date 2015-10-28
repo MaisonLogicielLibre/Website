@@ -11,6 +11,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Entity of MissionTable
@@ -194,5 +195,36 @@ class Mission extends Entity
     {
         $this->set('mentor_id', $mentorId);
         return $mentorId;
+    }
+
+    /**
+     * Set if the mission is archived
+     * @param  int $archived archived
+     * @return int archived
+     */
+    public function editArchived($archived)
+    {
+        $this->set('archived', $archived);
+        return $archived;
+    }
+
+    /**
+     * Get if the mission is archived
+     * @return boolean archived
+     */
+    public function isArchived()
+    {
+        $projects = TableRegistry::get('Projects');
+        $project = $projects->get($this->project_id);
+
+        if($project->isArchived()){
+            return true;
+        }
+
+        if($this->_properties['archived'] == true){
+            return true;
+        }
+
+        return false;
     }
 }
