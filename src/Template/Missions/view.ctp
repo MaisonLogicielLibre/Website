@@ -1,15 +1,14 @@
 <div class="row">
-<?= $this->cell('Sidebar::project', [$projectId]); ?>
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-        <div class="row-fluid">
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 no-pading">
-                <div class="clearfix">
-                    <h2 class="pull-left">
-                        <?= $mission->getName() ?>
-                    </h2>
-                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><h2
-                            class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
-                </div>
+<?= $this->cell('Sidebar::mission', [$mission->id]); ?>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="row-fluid">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 no-pading">
+            <div class="clearfix">
+                <h2 class="pull-left">
+                    <?= $mission->getName() ?>
+                </h2>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+            </div>
                 <div class="bs-callout bs-callout-warning">
                     <h4><?= __('Description'); ?></h4>
 
