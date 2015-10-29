@@ -234,8 +234,6 @@ class ProjectsController extends AppController
             ]
         );
 
-        //        debug($data);die;
-
         if (null != $this->request->session()->read('Auth.User.id')) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
         } else {
