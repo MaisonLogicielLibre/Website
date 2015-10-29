@@ -2,6 +2,10 @@
 <div class="row">
     <?= $this->cell('Sidebar::projectAction'); ?>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<div class="alert alert-warning alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h3><?=__('More projects from Google and our partners are coming soon...')?></h3>
+		</div>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><?= __('List of projects'); ?></h3>
