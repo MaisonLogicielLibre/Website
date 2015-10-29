@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-27 09:30-0400\n"
-"PO-Revision-Date: 2015-10-27 09:32-0400\n"
+"POT-Creation-Date: 2015-10-29 16:32-0400\n"
+"PO-Revision-Date: 2015-10-29 16:32-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -338,7 +338,7 @@ msgstr "Ajouter un projet"
 
 #: Template/Cell/Sidebar/organization.ctp:99
 msgid "Submit project"
-msgstr "Soumettre projet"
+msgstr "Soumettre un projet"
 
 #: Template/Cell/Sidebar/organization.ctp:116 Template/Organizations/quit.ctp:6
 msgid "Quit the organization"
@@ -397,7 +397,7 @@ msgid "Archive the project"
 msgstr "Archiver le projet"
 
 #: Template/Cell/Sidebar/project_action.ctp:22 Template/Layout/default.ctp:74
-#: Template/Projects/admin_index.ctp:9 Template/Projects/index.ctp:7
+#: Template/Projects/admin_index.ctp:9 Template/Projects/index.ctp:11
 msgid "List of projects"
 msgstr "Liste des projets"
 
@@ -416,8 +416,8 @@ msgid ""
 "This avatar is a gravatar linked with your email. If you want change your "
 "avatar, go on "
 msgstr ""
-"Cet avatar est un gravatar liée avec votre email . Si vous voulez changer "
-"votre avatar , allez sur"
+"Cet avatar est un gravatar liée avec votre email. Si vous voulez changer "
+"votre avatar, allez sur"
 
 #: Template/Cell/Sidebar/user.ctp:20 Template/Users/edit.ctp:45
 msgid "Portfolio"
@@ -619,7 +619,7 @@ msgid "Meetup"
 msgstr "Meetup"
 
 #: Template/Element/Meetup/meetup-table.ctp:7
-#: Template/Element/News/news-table.ctp:36 Template/Layout/default.ctp:99
+#: Template/Element/News/news-table.ctp:36 Template/Layout/default.ctp:100
 #: Template/Pages/home.ctp:13 Template/Users/login.ctp:10
 #: Template/Users/register.ctp:5;61
 msgid "Register"
@@ -657,8 +657,8 @@ msgid ""
 "Maxime C. (Leader de\n"
 "\t\t\tpratique Odoo chez Savoir-faire Linux)"
 msgstr ""
-"Odoo Montréal. Hosted by: Savoir-faire Linux. (Odoo Gold Partner), and "
-"Maxime C. (Leader de\n"
+"Odoo Montréal. Hébergé par: Savoir-faire Linux. (Odoo Partenaire Or), et "
+"Maxime C. (Chef de\n"
 "\t\t\tpratique Odoo chez Savoir-faire Linux)"
 
 #: Template/Element/Meetup/meetup-table.ctp:25
@@ -682,7 +682,7 @@ msgid ""
 "There are 6 active projects with 10 intern missions, 2 graduates student "
 "missions, and 12 capstone missions"
 msgstr ""
-"Il ya 6 projets actifs avec 10 missionns (stage), 2 missions (maîtrise) , et "
+"Il y a 6 projets actifs avec 10 missions (stage), 2 missions (maîtrise), et "
 "12 missions (PFE)"
 
 #: Template/Element/News/news-table.ctp:15
@@ -703,7 +703,7 @@ msgstr "15 décembre"
 
 #: Template/Element/News/news-table.ctp:27
 msgid "Logo contest. Win a free t-shirt! Winner will be annnounced December 15"
-msgstr "Concours : Logo . Gagnez un t -shirt!"
+msgstr "Concours : Logo. Gagnez un t-shirt!"
 
 #: Template/Element/News/news-table.ctp:29
 msgid "Logo contest"
@@ -715,7 +715,7 @@ msgstr "1 décembre"
 
 #: Template/Element/News/news-table.ctp:34
 msgid "ML2 Kick-off party at ÉTS. Register to get invited!"
-msgstr "ML² fête de lancement à l'ÉTS . Inscrivez-vous pour être invité !"
+msgstr "Fête de lancement de ML² à l'ÉTS. Inscrivez-vous pour être invité !"
 
 #: Template/Element/News/news-table.ctp:41
 msgid "ÉTS substance article"
@@ -765,27 +765,31 @@ msgstr "Académique"
 msgid "Associations"
 msgstr "Associations"
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:92
+msgid "Governement"
+msgstr "Gouvernemental"
+
+#: Template/Layout/default.ctp:96
 msgid "Profile"
 msgstr "Profil"
 
-#: Template/Layout/default.ctp:96
+#: Template/Layout/default.ctp:97
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: Template/Layout/default.ctp:98
+#: Template/Layout/default.ctp:99
 msgid "Login"
 msgstr "Connexion"
 
-#: Template/Layout/default.ctp:120;123
+#: Template/Layout/default.ctp:121;124
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:121
+#: Template/Layout/default.ctp:122
 msgid "About us"
 msgstr "À propos"
 
-#: Template/Layout/default.ctp:122 Template/Pages/contact.ctp:8
+#: Template/Layout/default.ctp:123 Template/Pages/contact.ctp:8
 #: Template/Pages/meetup.ctp:10 Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 msgid "Contact us"
@@ -953,7 +957,7 @@ msgid ""
 "After the organization has been created, you will be redirect on the "
 "organization's page to create some projects."
 msgstr ""
-"Après que l'organisation soit créée , vous serez redirigé sur la page de "
+"Après que l'organisation soit créée, vous serez redirigé sur la page de "
 "l'organisation pour créer des projets "
 
 #: Template/Organizations/add.ctp:8
@@ -970,7 +974,7 @@ msgstr "http(s)://website.com"
 
 #: Template/Organizations/admin_index.ctp:16
 #: Template/Organizations/index.ctp:14 Template/Organizations/view.ctp:56
-#: Template/Projects/admin_index.ctp:16 Template/Projects/index.ctp:14
+#: Template/Projects/admin_index.ctp:16 Template/Projects/index.ctp:18
 #: Template/Svns/view.ctp:18 Template/TypeUsers/view.ctp:16
 #: Template/Universities/view.ctp:16
 msgid "Name"
@@ -993,7 +997,7 @@ msgstr "Rejeté"
 
 #: Template/Organizations/admin_index.ctp:27;29
 #: Template/Organizations/index.ctp:22;24
-#: Template/Projects/admin_index.ctp:28;29 Template/Projects/index.ctp:24;26
+#: Template/Projects/admin_index.ctp:28;29 Template/Projects/index.ctp:28;30
 #: Template/Projects/view.ctp:91;96 Template/Users/index.ctp:21;24;27
 msgid "Search ..."
 msgstr "Rechercher ..."
@@ -1011,7 +1015,7 @@ msgid "Edit Organization"
 msgstr "Modifier l'organisation"
 
 #: Template/Organizations/index.ctp:67 Template/Organizations/view.ctp:29
-#: Template/Projects/index.ctp:90 Template/Users/view.ctp:35;72
+#: Template/Projects/index.ctp:94 Template/Users/view.ctp:35;72
 msgid "Pending Validation"
 msgstr "En attente de validation"
 
@@ -1021,7 +1025,7 @@ msgstr "Êtes-vous sûr de vouloir quitter l'organisation ?"
 
 #: Template/Organizations/quit.ctp:9
 msgid "You are the last owner, this will delete the organization"
-msgstr "Vous êtes le dernier propriétaire , cela va supprimer l'organisation"
+msgstr "Vous êtes le dernier propriétaire, cela va supprimer l'organisation"
 
 #: Template/Organizations/quit.ctp:13 Template/Projects/admin_index.ctp:44;51
 msgid "Yes"
@@ -1036,12 +1040,12 @@ msgid ""
 "After submit the organization, you will be redirect on the organization's "
 "page to create some projects."
 msgstr ""
-"Après soumission de l'organisation , vous serez redirigé sur la page de "
-"l'organisation pour créer des projets ."
+"Après soumission de l'organisation, vous serez redirigé sur la page de "
+"l'organisation pour créer des projets."
 
 #: Template/Organizations/submit.ctp:8
 msgid "Submit Organization"
-msgstr "Soummettre l'organisation"
+msgstr "Soumettre l'organisation"
 
 #: Template/Organizations/view.ctp:37 Template/Projects/admin_index.ctp:20
 msgid "Archived"
@@ -1053,14 +1057,14 @@ msgstr "Membres"
 
 #: Template/Organizations/view.ctp:57 Template/Users/view.ctp:63
 msgid "Owner"
-msgstr "Propriétaires"
+msgstr "Propriétaire"
 
 #: Template/OrganizationsProjects/add.ctp:4
 #: Template/OrganizationsProjects/edit.ctp:11
 #: Template/OrganizationsProjects/index.ctp:4
 #: Template/OrganizationsProjects/view.ctp:7
 msgid "New Organizations Project"
-msgstr "Nouveau  projet des organisations"
+msgstr "Nouveau projet des organisations"
 
 #: Template/OrganizationsProjects/add.ctp:5
 #: Template/OrganizationsProjects/edit.ctp:12
@@ -1112,7 +1116,7 @@ msgid ""
 "Université de Sherbrooke"
 msgstr ""
 "Si vous voulez devenir un commanditaire ou réaliser vos meetups de logiciel "
-"libre/open source ou rejoindre notre réseau universitaire : École de "
+"libre/open source ou rejoindre notre réseau universitaire: École de "
 "Technologie Supérieure (ÉTS), UQÀM, McGill, Polytechnique, Université de "
 "Montréal, Concordia et Université de Sherbrooke"
 
@@ -1127,13 +1131,13 @@ msgstr "Courriel"
 
 #: Template/Pages/contest.ctp:7
 msgid "The logo must : "
-msgstr "Les lignes directrices de conception  :"
+msgstr "Les lignes directrices de conception :"
 
 #: Template/Pages/contest.ctp:9
 msgid "Place the organisation name as a central part of the design"
 msgstr ""
 "Le nom de l'organisation Maison du Logiciel Libre doit être un élément "
-"central de la conception ."
+"central de la conception."
 
 #: Template/Pages/contest.ctp:10
 msgid "Represent a place of conviviality and exchange"
@@ -1178,7 +1182,7 @@ msgstr "Envoyez votre conception à :"
 
 #: Template/Pages/home.ctp:4
 msgid "Welcome to Maison Logiciel Libre (ML2)"
-msgstr "Bienvenue à la Maison Logiciel du Libre ( ML² )"
+msgstr "Bienvenue à la Maison du Logiciel Libre ( ML² )"
 
 #: Template/Pages/home.ctp:6
 msgid ""
@@ -1188,9 +1192,9 @@ msgid ""
 "projects"
 msgstr ""
 "Notre mission est d'améliorer les compétences de développement et le "
-"potentiel d'embauche des étudiants universitaires en logiciels par le biais\n"
-"                expérience pratique sur des projets de logiciels libres et "
-"open source"
+"potentiel d'embauche des étudiants universitaires en logiciel par le biais\n"
+"                d'expérience pratique sur des projets de logiciels libres et "
+"d'open source"
 
 #: Template/Pages/home.ctp:14
 msgid "to join our growing community of "
@@ -1198,15 +1202,11 @@ msgstr "pour rejoindre notre communauté grandissante de"
 
 #: Template/Pages/home.ctp:15
 msgid "university professors and students"
-msgstr "de professeurs et d'étudiants universitaire"
-
-#: Template/Pages/home.ctp:15
-msgid ","
-msgstr ","
+msgstr "professeurs et d'étudiants universitaire,"
 
 #: Template/Pages/home.ctp:16
 msgid "industry partners"
-msgstr "partenaires industriels"
+msgstr "de partenaires industriels"
 
 #: Template/Pages/home.ctp:16
 msgid "and"
@@ -1214,15 +1214,15 @@ msgstr "et"
 
 #: Template/Pages/home.ctp:17
 msgid "associations"
-msgstr "associations"
+msgstr "d'associations"
 
 #: Template/Pages/home.ctp:17
 msgid "in Quebec."
-msgstr "au Québec."
+msgstr "du Québec."
 
 #: Template/Pages/home.ctp:24
 msgid "Discover the benefits of joining ML2"
-msgstr "Découvrez les bénifices du ML²"
+msgstr "Découvrez les bénifices de ML²"
 
 #: Template/Pages/home.ctp:31
 msgid "Our university Network"
@@ -1249,8 +1249,8 @@ msgid ""
 "Create partnerships with professors in our university network. Form "
 "strategic alliances with our industry and government partners."
 msgstr ""
-"Créer des partenariats avec des professeurs dans notre réseau "
-"universitaire . Former des alliances stratégiques avec nos partenaires."
+"Créer des partenariats avec des professeurs dans notre réseau universitaire. "
+"Former des alliances stratégiques avec nos partenaires."
 
 #: Template/Pages/home.ctp:52
 msgid "Become a sponsor "
@@ -1286,7 +1286,7 @@ msgstr "Projets (PFE)"
 
 #: Template/Pages/home.ctp:76
 msgid "Are you new to Free Software and Open Source?"
-msgstr "Vous êtes nouveau dans le logiciel libre et open source ?"
+msgstr "Vous êtes nouveau dans le logiciel libre et open source?"
 
 #: Template/Pages/home.ctp:79
 msgid "Register2"
@@ -1295,8 +1295,8 @@ msgstr "Enregistrez-vous"
 #: Template/Pages/home.ctp:80
 msgid "and learn from our teaching assistants and Collaborate with students."
 msgstr ""
-"et apprener de nos assistants d'enseignement et collaborer avec les "
-"étudiants ."
+"pour apprendre de nos auxilaires d'enseignement et collaborer avec les "
+"étudiants."
 
 #: Template/Pages/home.ctp:81
 msgid "Visit our"
@@ -1308,15 +1308,15 @@ msgstr "Wiki"
 
 #: Template/Pages/home.ctp:83
 msgid "to learn about open source coding practices"
-msgstr "pour se renseigner sur les pratiques de codage open source"
+msgstr "pour se renseigner sur les bonnes pratiques de l'open source"
 
 #: Template/Pages/home.ctp:90
 msgid "Hire interns, graduates, and capstone."
-msgstr "Embaucher des stagiaires , diplômés et PFE."
+msgstr "Embaucher des stagiaires, diplômés et PFE."
 
 #: Template/Pages/home.ctp:92
 msgid "Industry and Government: "
-msgstr "Industrie et gouvernement:"
+msgstr "Industrie et gouvernement : "
 
 #: Template/Pages/home.ctp:92
 msgid ""
@@ -1324,13 +1324,13 @@ msgid ""
 "                    dependencies. Promote your company in our open source "
 "community"
 msgstr ""
-"Développer des fonctionnalités, des outils  et des dépendances open source "
-"dans vos produits, et des dépendances. Promouvoir votre entreprise dans "
-"notre communauté open source"
+"Développer des fonctionnalités, des outils et des librairies open source "
+"dans vos produits. Promouvoir votre entreprise dans notre communauté open "
+"source"
 
 #: Template/Pages/home.ctp:96
 msgid "University professors: "
-msgstr "Professeurs universitaires:"
+msgstr "Professeurs universitaires : "
 
 #: Template/Pages/home.ctp:96
 msgid ""
@@ -1338,9 +1338,13 @@ msgid ""
 "progress. Leverage our teaching assistants and\n"
 "                    dev-ops infrastructure."
 msgstr ""
-"Alléger la charge de travail de l'affichage , de trouver des projets et le "
-"suivi des progrès de l'élève . Tirer parti de nos assistants d'enseignement "
-"et de notre infrastructure."
+"Alléger la charge de travail de l'affichage, de la recherche de projets et "
+"du suivi des progrès de l'élève. Tirer parti de nos auxiliaires "
+"d'enseignement et de notre infrastructure."
+
+#: Template/Pages/meetup.ctp:4
+msgid "Join a meetup"
+msgstr "Assister à un meetup"
 
 #: Template/Pages/meetup.ctp:5
 msgid ""
@@ -1348,7 +1352,11 @@ msgid ""
 "meet other enthusiasts."
 msgstr ""
 "ML2 offre des possibilités d'apprentissage avec des meetups. Ne soyez pas "
-"timide , rejoignez-en un et rencontrer d'autres passionnés ."
+"timide, rejoignez-en un et rencontrer d'autres passionnés."
+
+#: Template/Pages/meetup.ctp:8
+msgid "Post a meetup"
+msgstr "Proposer un meetup"
 
 #: Template/Pages/meetup.ctp:9
 msgid ""
@@ -1356,7 +1364,7 @@ msgid ""
 "our community. Take this oppurtinity and attract new enthusiasts."
 msgstr ""
 "Offrir un meetup à travers ML² vous donne une visibilité accrue au sein de "
-"notre communauté . Prenez cette oppurtinité et attirer de nouveaux passionés."
+"notre communauté. Prenez cette oppurtinité et attirer de nouveaux passionés."
 
 #: Template/Pages/meetup.ctp:16
 msgid "ML2 Meetups at ÉTS"
@@ -1433,11 +1441,11 @@ msgid ""
 "\t\trecognitions from their university."
 msgstr ""
 "En participant aux activités de ML², les étudiants pourront ainsi (i) "
-"explorer le monde du logiciel libre avec ses codes et ses objectifs ; (ii) "
+"explorer le monde du logiciel libre avec ses codes et ses objectifs; (ii) "
 "développer leurs habilités à analyser, concevoir ou développer des tâches "
-"complexes ; (iii) bâtir un portfolio professionnel avec leurs réalisations "
-"en logiciels libres ; (iv) obtenir éventuellement des reconnaissances de "
-"leurs acquis de leur université."
+"complexes; (iii) bâtir un portfolio professionnel avec leurs réalisations en "
+"logiciels libres; (iv) obtenir éventuellement des reconnaissances de leurs "
+"acquis de leur université."
 
 #: Template/Pages/mission.ctp:40
 msgid "Value proposition for industry:"
@@ -1475,7 +1483,7 @@ msgstr ""
 
 #: Template/Pages/mission.ctp:49
 msgid "Value proposition for universities and students:"
-msgstr "Proposition de valeur pour l'académie:"
+msgstr "Proposition de valeur pour l'académie :"
 
 #: Template/Pages/mission.ctp:52
 msgid "Match Interns with Industry and Academic funded open source projects"
@@ -1641,14 +1649,14 @@ msgstr ""
 
 #: Template/Pages/survey.ctp:5
 msgid "Register today!"
-msgstr "Inscrivez-vous aujourd'hui !"
+msgstr "Inscrivez-vous aujourd'hui!"
 
 #: Template/Pages/survey.ctp:6
 msgid ""
 "Join us at ML2 in building the future of Free Software and Open Source code."
 msgstr ""
 "Rejoignez-nous à ML² dans la construction de l'avenir du logiciel libre et "
-"de code open source ."
+"de code open source."
 
 #: Template/Pages/survey.ctp:7
 msgid "We need feedback!"
@@ -1667,7 +1675,7 @@ msgid ""
 "After the project has been created, you will be redirect on the project's "
 "page to create some missions."
 msgstr ""
-"Après la création du projet , vous serez redirigé sur la page du projet pour "
+"Après la création du projet, vous serez redirigé sur la page du projet pour "
 "créer des missions."
 
 #: Template/Projects/add.ctp:10 Template/Projects/submit.ctp:10
@@ -1683,10 +1691,10 @@ msgid ""
 "Select organizations associated with the project. Leave blank if no "
 "organizations"
 msgstr ""
-"Sélection le(s) organisation(s) associée(s) avec le projet. Laissez vide "
-"s'il n'y a pas d'organisation(s)"
+"Sélectionnez le(s) organisation(s) associée(s) avec le projet. Laissez vide "
+"s'il n'y a pas d'organisation"
 
-#: Template/Projects/admin_index.ctp:18 Template/Projects/index.ctp:16
+#: Template/Projects/admin_index.ctp:18 Template/Projects/index.ctp:20
 #: Template/Projects/view.ctp:55
 msgid "Organizations"
 msgstr "Organisations"
@@ -1699,7 +1707,11 @@ msgstr "Candidater sur ce projet"
 msgid "Edit Project"
 msgstr "Modifier projet"
 
-#: Template/Projects/index.ctp:15
+#: Template/Projects/index.ctp:7
+msgid "More projects from Google and our partners are coming soon..."
+msgstr "D'autres projets de Google et de nos partenaires sont à venir ..."
+
+#: Template/Projects/index.ctp:19
 msgid "Link"
 msgstr "Site web"
 
@@ -1718,11 +1730,11 @@ msgstr ""
 #: Template/Projects/submit.ctp:16
 msgid "You're not part of an organization. Add yours now!"
 msgstr ""
-"Vous ne faites pas partie d'une organisation . Ajouter la votre maintenant!"
+"Vous ne faites pas partie d'une organisation. Ajouter la votre maintenant!"
 
 #: Template/Projects/submit.ctp:21
 msgid "Or you can add a new organizations "
-msgstr "Ou vous pouvez ajouter de nouvelles organisations"
+msgstr "Ou vous pouvez ajouter une nouvelle organisation "
 
 #: Template/Projects/submit.ctp:21
 msgid "here."
@@ -1976,7 +1988,7 @@ msgstr "Êtes-vous un étudiant"
 
 #: Template/Users/edit.ctp:35
 msgid "Would you like to be a mentor?"
-msgstr "Devenir mentor ?"
+msgstr "Devenir mentor?"
 
 #: Template/Users/edit.ctp:44
 msgid "Biography"
@@ -2090,6 +2102,13 @@ msgstr "Projets mentorés"
 #: Template/Users/view.ctp:51
 msgid "Organizations joined"
 msgstr "Organisations rejointe"
+
+#~ msgid ""
+#~ "More projects from Google and our other partners will be added in the "
+#~ "coming months, check back regularly"
+#~ msgstr ""
+#~ "D'autres projets de Google et de nos autres partenaires seront ajoutés "
+#~ "dans les mois à venir, vérifier régulièrement"
 
 #~ msgid ""
 #~ "If you want to become a sponsor or host your free software/open source "
