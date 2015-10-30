@@ -22,13 +22,6 @@
 			   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'submit']); ?>"><?= __('Submit a project'); ?></a></a>
 		</td>
 	</tr>
-	<tr class="success">
-		<td><?= __("December 15"); ?></td>
-		<td><?= __("Logo contest. Win a free t-shirt! Winner will be annnounced December 15"); ?></td>
-		<td><a class="btn btn-info"
-			   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contest']); ?>"><?= __('Logo contest'); ?></a>
-		</td>
-	</tr>
 	<tr class="danger">
 		<td><?= __("December 1"); ?></td>
 		<td><?= __("ML2 Kick-off party at ÉTS. Register to get invited!"); ?></td>
