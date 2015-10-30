@@ -12,7 +12,7 @@
             <h4>
                 <b><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>"><?= __("Register") ?></a></b>
                 <?= __("to join our growing community of "); ?>
-                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'academic']); ?>"><?= __("university professors and students") ?></a> <?= __(","); ?>
+                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'academic']); ?>"><?= __("university professors and students") ?></a>
                 <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'industry']); ?>"><?= __("industry partners") ?></a> <?= __("and"); ?>
 				<a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'aso']); ?>"><?= __("associations") ?></a> <?= __("in Quebec."); ?>
             </h4>
