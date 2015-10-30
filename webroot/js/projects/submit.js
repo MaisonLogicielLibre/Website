@@ -46,6 +46,32 @@ $(document).ready(function () {
     $('.tab-content').on('input', 'textarea', function () {
         validateInput(this);
     });
+
+    // When submitting the form'
+    $(document).on('click', '#submitProject', function (e) {
+        var invalidFields = '';
+        var error = false;
+        //Validating all forms
+        $('.tab-content').find('form').each(function (i, v) {
+            if (v.hasAttribute('name')) {
+                invalidFields = $(v).find(':invalid');
+                if (invalidFields.length > 0) {
+                    error = true;
+                }
+            }
+        });
+        if (!error) {
+            $('.tab-content').find('form[name*=mission]').each(function (i, v) {
+                $('#createProject').append($('<input/>', {
+                        type: 'hidden',
+                        name: 'mission-'+i,
+                        value: JSON.stringify($(v).serializeArray())
+                    })
+                )
+            });
+            $('#createProject').submit();
+        }
+    });
 });
 
 // Set the form name so it can be sended
@@ -87,7 +113,6 @@ function createNewMissionForm(index, missionForm) {
 
 // Validate the entire form
 function validateForm(form, tab) {
-    validateMultiCheckbox(form);
 
     var invalidFields = form.find(':invalid');
     var errorMessages = form.find('.error-message');

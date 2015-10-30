@@ -109,16 +109,16 @@ class ProjectsController extends AppController
                     ]
                 )->join(
                     [
-                    'table' => 'projects_mentors',
-                    'alias' => 'm',
-                    'type' => 'LEFT',
-                    'conditions' => 'm.project_id = Projects.id'
+                        'table' => 'projects_mentors',
+                        'alias' => 'm',
+                        'type' => 'LEFT',
+                        'conditions' => 'm.project_id = Projects.id'
                     ]
                 )->where(
                     [
                         'archived' => 0,
                         'accepted' => 1,
-                        ]
+                    ]
                 )->orWhere(
                     [
                         'archived' => 0,
@@ -126,15 +126,15 @@ class ProjectsController extends AppController
                         ]
                 )->group('project_id');
 
-                $this->set(
-                    [
+            $this->set(
+                [
                     'data' => $data,
                     '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                    ]
-                );
+                ]
+            );
         }
     }
-    
+
     /**
      * Submit method
      * @return redirect
@@ -152,8 +152,31 @@ class ProjectsController extends AppController
         $project->mentors = [$mentor];
 
         if ($this->request->is('post')) {
-            $project = $this->Projects->patchEntity($project, $this->request->data);
-            if ($this->Projects->save($project)) {
+            $post = $this->request->data;
+            $project = $this->Projects->patchEntity($project, $post);
+
+            $missions = $this->constructMission($project->id, $mentor->getId(), $post);
+
+            if (!is_null($mission))
+                $project->editMissions($missions);
+
+            if ($this->Projects->save($project,
+                [
+                    'associated' =>
+                        [
+                            'Mentors',
+                            'Organizations',
+                            'Missions' =>
+                                [
+                                    'associated' =>
+                                        [
+                                            'MissionLevels',
+                                            'TypeMissions'
+                                        ]
+                                ]
+                        ]
+                ])
+            ) {
                 $this->Flash->success(__('The project has been saved.'));
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
@@ -180,7 +203,7 @@ class ProjectsController extends AppController
         $this->set(compact('mission', 'missionLevels', 'typeMissions', 'project', 'organizations'));
         $this->set('_serialize', ['project', 'mission']);
     }
-    
+
     /**
      * Admin index method
      *
@@ -287,7 +310,7 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => ['Organizations']
+                'contain' => ['Organizations']
             ]
         );
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -419,5 +442,41 @@ class ProjectsController extends AppController
         $typeApplications = $this->Projects->Applications->TypeApplications->find('list', ['limit' => 200]);
         $this->set(compact('application', 'project', 'user', 'typeApplications'));
         $this->set('_serialize', ['application']);
+    }
+
+    /**
+     * Build missions object from json post
+     * @param $projectId
+     * @param $mentorId
+     * @param $post
+     * @return array|null
+     */
+    private function constructMission($projectId, $mentorId, $post)
+    {
+        $missions = null;
+
+        // Get only mission-* key from the array
+        $missionsPost = array_intersect_key($post, array_flip(preg_grep('/^mission-/', array_keys($post))));
+
+        foreach ($missionsPost as $missionPost) {
+            $missionPost = json_decode($missionPost, true);
+            $mission = $this->Missions->newEntity();
+            $temp = [];
+            foreach ($missionPost as $m) {
+                if ($m['name'] == 'type_missions[_ids][]') {
+                    $temp['type_missions']['_ids'][] = $m['value'];
+                } else if ($m['name'] == 'mission_levels[_ids][]') {
+                    $temp['mission_levels']['_ids'][] = $m['value'];
+                } else {
+                    $temp[$m['name']] = $m['value'];
+                }
+            }
+            $mission = $this->Missions->patchEntity($mission, $temp);
+
+            $mission->editProjectId($projectId);
+            $mission->editMentorId($mentorId);
+            $missions[] = $mission;
+        }
+        return $missions;
     }
 }

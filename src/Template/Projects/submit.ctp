@@ -43,7 +43,7 @@
                     </form>
                 </div>
             </div>
-            <?= $this->Form->button(__('Submit the project'), ['class' => 'btn-success ']) ?>
+            <?= $this->Form->button(__('Submit the project'), ['id' => 'submitProject', 'class' => 'btn-success ']) ?>
             <a id="addMission" href="#"><?= __('Or add a mission'); ?></a>
         </div>
     </div>
