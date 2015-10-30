@@ -48,31 +48,31 @@ class MissionsTable extends Table
         $this->belongsTo(
             'Projects',
             [
-            'foreignKey' => 'project_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'project_id',
+                'joinType' => 'INNER'
             ]
         );
         $this->belongsTo(
             'Users',
             [
-            'foreignKey' => 'mentor_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'mentor_id',
+                'joinType' => 'INNER'
             ]
         );
         $this->belongsToMany(
             'MissionLevels',
             [
-            'foreignKey' => 'mission_id',
-            'targetForeignKey' => 'mission_level_id',
-            'joinTable' => 'missions_mission_levels'
+                'foreignKey' => 'mission_id',
+                'targetForeignKey' => 'mission_level_id',
+                'joinTable' => 'missions_mission_levels'
             ]
         );
         $this->belongsToMany(
             'TypeMissions',
             [
-            'foreignKey' => 'mission_id',
-            'targetForeignKey' => 'type_mission_id',
-            'joinTable' => 'missions_type_missions'
+                'foreignKey' => 'mission_id',
+                'targetForeignKey' => 'type_mission_id',
+                'joinTable' => 'missions_type_missions'
             ]
         );
     }
@@ -128,12 +128,12 @@ class MissionsTable extends Table
             )
             ->requirePresence('internNbr', 'create')
             ->notEmpty('internNbr');
-
-                $validator
-                ->add(
-                    'type_missions',
-                    'custom',
-                    [
+        $validator
+            ->requirePresence('type_missions', 'create', ['message' => __('You must select at least one item.')])
+            ->add(
+                'type_missions',
+                'custom',
+                [
                     'rule' => function ($value, $context) {
                         if (empty($context['data']['type_missions']['_ids'])) {
                             return false;
@@ -141,13 +141,14 @@ class MissionsTable extends Table
                         return true;
                     },
                     'message' => __('You must select at least one item.')]
-                );
+            );
 
-                $validator
-                ->add(
-                    'mission_levels',
-                    'custom',
-                    [
+        $validator
+            ->requirePresence('mission_levels', 'create', ['message' => __('You must select at least one item.')])
+            ->add(
+                'mission_levels',
+                'custom',
+                [
                     'rule' => function ($value, $context) {
                         if (empty($context['data']['mission_levels']['_ids'])) {
                             return false;
@@ -155,12 +156,12 @@ class MissionsTable extends Table
                         return true;
                     },
                     'message' => __('You must select at least one item.')]
-                );
+            );
 
-                $validator
-                    ->notEmpty('archived');
+        $validator
+            ->notEmpty('archived');
 
-                return $validator;
+        return $validator;
     }
 
     /**
