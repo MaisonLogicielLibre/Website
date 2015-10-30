@@ -120,7 +120,7 @@ class OrganizationsController extends AppController
                         'isRejected' => 0,
                         'o.user_id' => (!is_null($user) ? $user->getId() : '')
                         ]
-                );
+                )->group('organization_id');
 
                 $this->set(
                     [
