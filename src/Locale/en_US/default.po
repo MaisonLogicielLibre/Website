@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-27 09:32-0400\n"
-"PO-Revision-Date: 2015-10-27 09:33-0400\n"
+"POT-Creation-Date: 2015-10-29 13:04-0400\n"
+"PO-Revision-Date: 2015-10-29 13:07-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -619,7 +619,7 @@ msgid "Meetup"
 msgstr "Meetup"
 
 #: Template/Element/Meetup/meetup-table.ctp:7
-#: Template/Element/News/news-table.ctp:36 Template/Layout/default.ctp:99
+#: Template/Element/News/news-table.ctp:36 Template/Layout/default.ctp:100
 #: Template/Pages/home.ctp:13 Template/Users/login.ctp:10
 #: Template/Users/register.ctp:5;61
 msgid "Register"
@@ -637,11 +637,9 @@ msgid ""
 "logiciel libre avec\n"
 "\t\t\tLinux."
 msgstr ""
-"Linux-Meetup sont des rencontres informelles où plusieurs personnes "
-"discutent de ce qui les\n"
-"\t\t\tpassionnent et font un partage de leurs cheminements dans le monde du "
-"logiciel libre avec\n"
-"\t\t\tLinux."
+"Linux Meetup are informal meetings where several people discuss about their "
+"passions\n"
+"\t\t\tand share their paths in the world of free software with Linux."
 
 #: Template/Element/Meetup/meetup-table.ctp:18
 msgid "Linux meetup"
@@ -765,27 +763,31 @@ msgstr "Academic"
 msgid "Associations"
 msgstr "Associations"
 
-#: Template/Layout/default.ctp:95
+#: Template/Layout/default.ctp:92
+msgid "Governement"
+msgstr "Governement"
+
+#: Template/Layout/default.ctp:96
 msgid "Profile"
 msgstr "Profile"
 
-#: Template/Layout/default.ctp:96
+#: Template/Layout/default.ctp:97
 msgid "Logout"
 msgstr "Logout"
 
-#: Template/Layout/default.ctp:98
+#: Template/Layout/default.ctp:99
 msgid "Login"
 msgstr "Login"
 
-#: Template/Layout/default.ctp:120;123
+#: Template/Layout/default.ctp:121;124
 msgid "Maison du Logiciel Libre"
 msgstr "Maison du Logiciel Libre"
 
-#: Template/Layout/default.ctp:121
+#: Template/Layout/default.ctp:122
 msgid "About us"
 msgstr "About us"
 
-#: Template/Layout/default.ctp:122 Template/Pages/contact.ctp:8
+#: Template/Layout/default.ctp:123 Template/Pages/contact.ctp:8
 #: Template/Pages/meetup.ctp:10 Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 msgid "Contact us"
@@ -1335,6 +1337,10 @@ msgstr ""
 "Lighten the work load of posting & finding projects and monitoring student "
 "progress. Leverage our teaching assistants and dev-ops infrastructure."
 
+#: Template/Pages/meetup.ctp:4
+msgid "Join a meetup"
+msgstr "Join a meetup"
+
 #: Template/Pages/meetup.ctp:5
 msgid ""
 "ML2 offers learning opportunities with meetups. Do not be shy, join one and "
@@ -1342,6 +1348,10 @@ msgid ""
 msgstr ""
 "ML² offers learning opportunities with meetups. Do not be shy, join one and "
 "meet other enthusiasts."
+
+#: Template/Pages/meetup.ctp:8
+msgid "Post a meetup"
+msgstr "Post a meetup"
 
 #: Template/Pages/meetup.ctp:9
 msgid ""

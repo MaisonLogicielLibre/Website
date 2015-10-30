@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-27 13:29+0000\n"
+"POT-Creation-Date: 2015-10-29 20:32+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -405,7 +405,7 @@ msgstr ""
 #: Template/Cell/Sidebar/project_action.ctp:22
 #: Template/Layout/default.ctp:74
 #: Template/Projects/admin_index.ctp:9
-#: Template/Projects/index.ctp:7
+#: Template/Projects/index.ctp:11
 msgid "List of projects"
 msgstr ""
 
@@ -715,7 +715,7 @@ msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:7
 #: Template/Element/News/news-table.ctp:36
-#: Template/Layout/default.ctp:99
+#: Template/Layout/default.ctp:100
 #: Template/Pages/home.ctp:13
 #: Template/Users/login.ctp:10
 #: Template/Users/register.ctp:5;61
@@ -843,27 +843,31 @@ msgstr ""
 msgid "Associations"
 msgstr ""
 
-#: Template/Layout/default.ctp:95
-msgid "Profile"
+#: Template/Layout/default.ctp:92
+msgid "Governement"
 msgstr ""
 
 #: Template/Layout/default.ctp:96
+msgid "Profile"
+msgstr ""
+
+#: Template/Layout/default.ctp:97
 msgid "Logout"
 msgstr ""
 
-#: Template/Layout/default.ctp:98
+#: Template/Layout/default.ctp:99
 msgid "Login"
 msgstr ""
 
-#: Template/Layout/default.ctp:120;123
+#: Template/Layout/default.ctp:121;124
 msgid "Maison du Logiciel Libre"
 msgstr ""
 
-#: Template/Layout/default.ctp:121
+#: Template/Layout/default.ctp:122
 msgid "About us"
 msgstr ""
 
-#: Template/Layout/default.ctp:122
+#: Template/Layout/default.ctp:123
 #: Template/Pages/contact.ctp:8
 #: Template/Pages/meetup.ctp:10
 #: Template/Pages/sponsor.ctp:23
@@ -1068,7 +1072,7 @@ msgstr ""
 #: Template/Organizations/index.ctp:14
 #: Template/Organizations/view.ctp:56
 #: Template/Projects/admin_index.ctp:16
-#: Template/Projects/index.ctp:14
+#: Template/Projects/index.ctp:18
 #: Template/Svns/view.ctp:18
 #: Template/TypeUsers/view.ctp:16
 #: Template/Universities/view.ctp:16
@@ -1094,7 +1098,7 @@ msgstr ""
 #: Template/Organizations/admin_index.ctp:27;29
 #: Template/Organizations/index.ctp:22;24
 #: Template/Projects/admin_index.ctp:28;29
-#: Template/Projects/index.ctp:24;26
+#: Template/Projects/index.ctp:28;30
 #: Template/Projects/view.ctp:91;96
 #: Template/Users/index.ctp:21;24;27
 msgid "Search ..."
@@ -1114,7 +1118,7 @@ msgstr ""
 
 #: Template/Organizations/index.ctp:67
 #: Template/Organizations/view.ctp:29
-#: Template/Projects/index.ctp:90
+#: Template/Projects/index.ctp:94
 #: Template/Users/view.ctp:35;72
 msgid "Pending Validation"
 msgstr ""
@@ -1279,10 +1283,6 @@ msgstr ""
 msgid "university professors and students"
 msgstr ""
 
-#: Template/Pages/home.ctp:15
-msgid ","
-msgstr ""
-
 #: Template/Pages/home.ctp:16
 msgid "industry partners"
 msgstr ""
@@ -1403,8 +1403,16 @@ msgstr ""
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and\n                    dev-ops infrastructure."
 msgstr ""
 
+#: Template/Pages/meetup.ctp:4
+msgid "Join a meetup"
+msgstr ""
+
 #: Template/Pages/meetup.ctp:5
 msgid "ML2 offers learning opportunities with meetups. Do not be shy, join one and meet other enthusiasts."
+msgstr ""
+
+#: Template/Pages/meetup.ctp:8
+msgid "Post a meetup"
 msgstr ""
 
 #: Template/Pages/meetup.ctp:9
@@ -1627,7 +1635,7 @@ msgid "Select organizations associated with the project. Leave blank if no organ
 msgstr ""
 
 #: Template/Projects/admin_index.ctp:18
-#: Template/Projects/index.ctp:16
+#: Template/Projects/index.ctp:20
 #: Template/Projects/view.ctp:55
 msgid "Organizations"
 msgstr ""
@@ -1640,7 +1648,11 @@ msgstr ""
 msgid "Edit Project"
 msgstr ""
 
-#: Template/Projects/index.ctp:15
+#: Template/Projects/index.ctp:7
+msgid "More projects from Google and our partners are coming soon..."
+msgstr ""
+
+#: Template/Projects/index.ctp:19
 msgid "Link"
 msgstr ""
 
