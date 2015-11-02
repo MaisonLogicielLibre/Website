@@ -80,6 +80,15 @@ class Project extends Entity
     {
         return $this->_properties['mentors'];
     }
+    
+    /**
+     * Get the missions
+     * @return array missions
+     */
+    public function getMissions()
+    {
+        return $this->_properties['missions'];
+    }
 
     /**
      * Get the organizations
@@ -172,5 +181,55 @@ class Project extends Entity
     {
         $this->set('missions', $missions);
         return $missions;
+    }
+
+    /**
+     * Set the mentors
+     * @param  array $mentors mentors
+     * @return array mentors
+     */
+    public function editMentors($mentors)
+    {
+        $this->set('mentors', $mentors);
+        return $mentors;
+    }
+    
+    /**
+     * Modify mentors
+     * @param array $usersId usersId
+     * @return null
+     */
+    public function modifyMentors($usersId)
+    {
+        $usersSelected = [];
+        $users = TableRegistry::get('Users');
+
+        foreach ($usersId as $id) {
+            $user = $users->get($id);
+            array_push($usersSelected, $user);
+        }
+        
+        $this->editMentors($usersSelected);
+    }
+    
+    /**
+     * check if a mission become mentorless
+     * @return null
+     */
+    public function checkMentorless()
+    {
+		$missions = $this->getMissions();
+		
+        foreach ($this->getMissions() as $mission) {
+            foreach ($this->getMentors() as $mentor) {
+                if ($mentor->getId() == $mission->getMentorId()) {
+                    if(($key = array_search($mission, $missions)) !== false) {
+						unset($missions[$key]);
+					}
+                }
+			}
+        }
+		
+		return $missions;
     }
 }
