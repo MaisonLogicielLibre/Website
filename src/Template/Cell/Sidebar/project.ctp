@@ -59,6 +59,19 @@
                             </span> <?= __('Edit the project') ?>
                     </a>
                 </li>
+				<li  class="<?= ($this->request->action == 'editMentor') ? 'active disabled' : ''; ?>">
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Projects',
+                            'action' => 'editMentor',
+                            $object->id
+                        ]) ?>">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-pencil fa-stack-1x" style="color:<?= ($this->request->action == 'editMentor') ? '#337ab7' : '#fff'; ?>"></i>
+                            </span> <?= __('Edit project mentors') ?>
+                    </a>
+                </li>
                 <?php
                     endif;
                     if ($user->hasPermissionName(['edit_projects']) && !$object->isAccepted()):
