@@ -36,6 +36,8 @@ class UsersControllerTest extends IntegrationTestCase
         'app.type_users_users',
         'app.organizations',
         'app.organizations_Projects',
+        'app.organizations_owners',
+        'app.organizations_members',
         'app.users',
         'app.type_users',
         'app.svn_users',
@@ -47,7 +49,9 @@ class UsersControllerTest extends IntegrationTestCase
         'app.projects_mentors',
         'app.missions',
         'app.permissions',
-        'app.permissions_type_users'
+        'app.permissions_type_users',
+        'app.hashes',
+        'app.hash_types'
     ];
 
     /**
@@ -505,5 +509,124 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->post('/users/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test recoverPassword - no account found
+     *
+     * @return void
+     */
+    public function testRecoverPasswordFail()
+    {
+        $this->get('/users/recoverPassword/');
+        $data = ['Information' => 'gezcezdzacdcazdz'];
+        $this->post('/users/recoverPassword/', $data);
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test recoverPassword - account found by email
+     *
+     * @return void
+     */
+    public function testRecoverPasswordByEmail()
+    {
+        $this->get('/users/recoverPassword/');
+        $data = ['Information' => 'email@gmail.com'];
+        $this->post('/users/recoverPassword/', $data);
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test recoverPassword - account found by username
+     *
+     * @return void
+     */
+    public function testRecoverPasswordByUsername()
+    {
+        $this->get('/users/recoverPassword/');
+        $data = ['Information' => 'tropHot'];
+        $this->post('/users/recoverPassword/', $data);
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test recoverPassword - account found by phone
+     *
+     * @return void
+     */
+    public function testRecoverPasswordByPhone()
+    {
+        $this->get('/users/recoverPassword/');
+        $data = ['Information' => '(514) 777-7777'];
+        $this->post('/users/recoverPassword/', $data);
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test recoverPassword - send Mail
+     *
+     * @return void
+     */
+    public function testRecoverPasswordSendMail()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test resetPassword - Ok
+     *
+     * @return void
+     */
+    public function testResetPasswordOk()
+    {
+        $this->get('/users/resetPassword/toto');
+        $data = ['password' => 'tutu', 'confirm_password' => 'tutu'];
+        $this->post('/users/resetPassword/toto', $data);
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+
+    /**
+     * Test resetPassword - Expired
+     *
+     * @return void
+     */
+    public function testResetPasswordExpired()
+    {
+        $this->get('/users/resetPassword/tutu');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+
+    /**
+     * Test resetPassword - Used
+     *
+     * @return void
+     */
+    public function testResetPasswordUsed()
+    {
+        $this->get('/users/resetPassword/titi');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+
+    /**
+     * Test resetPassword - Not exist
+     *
+     * @return void
+     */
+    public function testResetPasswordNotExist()
+    {
+        $this->get('/users/resetPassword/hashWhoNotExist');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+
+    /**
+     * Test resetPassword - wrong type
+     *
+     * @return void
+     */
+    public function testResetPasswordWrongType()
+    {
+        $this->get('/users/resetPassword/tata');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
 }

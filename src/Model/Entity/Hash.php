@@ -85,13 +85,14 @@ class Hash extends Entity
     /**
      * Set the hash
      *
-     * @param string url
+     * @param string $hash hash
      *
-     * @return void
+     * @return String $hash hash
      */
     public function setHash($hash)
     {
         $this->set('hash', $hash);
+        return $hash;
     }
 
     /**
@@ -99,11 +100,12 @@ class Hash extends Entity
      *
      * @param  User $user user
      *
-     * @return void
+     * @return User $user user
      */
     public function setUser($user)
     {
         $this->set('user_id', $user->id);
+        return $user;
     }
 
     /**
@@ -111,22 +113,24 @@ class Hash extends Entity
      *
      * @param  HashType $type type
      *
-     * @return void
+     * @return HashType $type type
      */
     public function setType($type)
     {
         $this->set('hash_type_id', $type->id);
+        return $type;
     }
 
     /**
      * Set if the hash is used
      *
-     * @param bool used
+     * @param bool $used used
      *
-     * @return void
+     * @return bool $used used
      */
     public function setUsed($used)
     {
         $this->set('used', $used);
+        return $used;
     }
 }
