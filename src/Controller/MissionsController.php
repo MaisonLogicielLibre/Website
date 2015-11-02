@@ -265,4 +265,48 @@ class MissionsController extends AppController
         $this->set(compact('mission'));
         $this->set('_serialize', ['mission']);
     }
+
+    /**
+     * editMentor method
+     * @param int $id id
+     * @return redirect
+     */
+	public function editMentor($id = null)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+            'contain' => 
+				[
+					'Projects' =>
+						[
+							'Mentors'
+						]
+				]
+            ]
+        );
+		
+		$mentors = $mission->getProject()->getMentors();
+        $currentMentorId = $mission->getMentorId();
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if (count($this->request->data)) {
+                $mentorId = $this->request->data['users'];
+							
+				$mission->editMentorId($mentorId[0]);
+				
+				if ($this->Missions->save($mission)) {
+					$this->Flash->success(__('The mentor have been modified.'));
+					return $this->redirect(['action' => 'view', $mission->id]);
+				} else {
+					$this->Flash->error(__('The mentor could not be modified. Please,try again.'));
+				}
+            } else {
+                $this->Flash->error(__('There must be at least one mentor'));
+            }
+        }
+       
+        $this->set(compact('currentMentorId', 'mentors', 'mission'));
+        $this->set('_serialize', ['mission']);
+    }
 }
