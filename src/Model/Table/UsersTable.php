@@ -61,6 +61,12 @@ class UsersTable extends Table
             ]
         );
         $this->hasMany(
+            'Hashes',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
+        $this->hasMany(
             'Applications',
             [
                 'foreignKey' => 'user_id'
