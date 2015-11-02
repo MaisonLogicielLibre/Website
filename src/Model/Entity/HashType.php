@@ -1,13 +1,25 @@
 <?php
+/**
+ * Entity of HashTypeTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Rignon Noël <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * HashType Entity.
+ * Entity of HashTypeTable
  *
- * @property int $id
- * @property string $name
+ * @category Entity
+ * @package  Website
+ * @author   Rignon Noël <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class HashType extends Entity
 {
@@ -21,7 +33,7 @@ class HashType extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

@@ -123,15 +123,13 @@ class User extends Entity
             if ($letter == '@') {
                 $hostname = false;
             }
-            if($hostname) {
-                $emailCensored = $emailCensored.'*';
+            if ($hostname) {
+                $emailCensored = $emailCensored . '*';
             } else {
-                $emailCensored = $emailCensored.$letter;
+                $emailCensored = $emailCensored . $letter;
             }
         }
         return $emailCensored;
-
-
     }
 
     /**
@@ -140,7 +138,7 @@ class User extends Entity
      */
     public function getAvatar()
     {
-        $gravatarLink = 'http://www.gravatar.com/avatar/'.md5($this->getEmail()).'?s=512';
+        $gravatarLink = 'http://www.gravatar.com/avatar/' . md5($this->getEmail()) . '?s=512';
         return $gravatarLink;
     }
     

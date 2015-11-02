@@ -383,6 +383,8 @@ class UsersController extends AppController
     /**
      * ResetPassword method
      *
+     * @param string $url url
+     *
      * @return \Cake\Network\Response|void
      */
     public function resetPassword($url)
@@ -450,12 +452,14 @@ class UsersController extends AppController
     /**
      * RecoverPassword method
      *
+     * @param int $id idOfUser
+     *
      * @return \Cake\Network\Response|void
      */
     public function recoverPassword($id = null)
     {
         if ($id) { //Send mail to the user to reset password
-            try{
+            try {
                 $user = $this->Users->get($id);
 
                 //Generate the url to reset password
@@ -477,28 +481,22 @@ class UsersController extends AppController
                 //Send the mail
                 $this->getMailer('User')->send('resetPassword', [$user, $link]);
 
-                 $this->Flash->success(
-                    __("The email has been send.")
-                );
-            }
-            catch (Exception $e) {
-                $this->Flash->error(
-                    __("Error in sending email, please try again.")
-                );
+                 $this->Flash->success(__("The email has been send."));
+            } catch (Exception $e) {
+                $this->Flash->error(__("Error in sending email, please try again."));
             }
             return $this->redirect(['action' => 'recoverPassword']);
-        }
-        elseif ($this->request->is('post')) { //Search account
+        } elseif ($this->request->is('post')) { //Search account
             $user = null;
 
             //By Email
             if ($this->request->data['Information']) {
                 $user = $this->Users->findByEmail($this->request->data['Information'])->first();
             }
-            if ($this->request->data['Information'] and !$user) {
+            if ($this->request->data['Information'] && !$user) {
                 $user = $this->Users->findByUsername($this->request->data['Information'])->first();
             }
-            if ($this->request->data['Information'] and !$user) {
+            if ($this->request->data['Information'] && !$user) {
                 $user = $this->Users->findByPhone($this->request->data['Information'])->first();
             }
 

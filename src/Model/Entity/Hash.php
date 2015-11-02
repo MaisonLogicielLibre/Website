@@ -1,18 +1,25 @@
 <?php
+/**
+ * Entity of HashTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Rignon Noël <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Hash Entity.
+ * Entity of HashTypeTable
  *
- * @property int $id
- * @property string $hash
- * @property bool $used
- * @property int $time
- * @property \Cake\I18n\Time $created
- * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\HashType $hash_type
+ * @category Entity
+ * @package  Website
+ * @author   Rignon Noël <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class Hash extends Entity
 {
@@ -26,7 +33,7 @@ class Hash extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -79,7 +86,6 @@ class Hash extends Entity
         } else {
             return false;
         }
-
     }
 
     /**
@@ -87,7 +93,7 @@ class Hash extends Entity
      *
      * @param string $hash hash
      *
-     * @return String $hash hash
+     * @return string $hash hash
      */
     public function setHash($hash)
     {
@@ -98,7 +104,7 @@ class Hash extends Entity
     /**
      * Set the user
      *
-     * @param  User $user user
+     * @param User $user user
      *
      * @return User $user user
      */
@@ -111,7 +117,7 @@ class Hash extends Entity
     /**
      * Set the type
      *
-     * @param  HashType $type type
+     * @param HashType $type type
      *
      * @return HashType $type type
      */

@@ -1,4 +1,13 @@
 <?php
+/**
+ * Hashes Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\Hash;
@@ -10,6 +19,11 @@ use Cake\Validation\Validator;
 /**
  * Hashes Model
  *
+ * @category Table
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class HashesTable extends Table
 {
@@ -18,6 +32,7 @@ class HashesTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -29,13 +44,13 @@ class HashesTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

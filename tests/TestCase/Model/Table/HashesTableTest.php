@@ -1,4 +1,13 @@
 <?php
+/**
+ * Tests for HashesTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\HashesTable;
@@ -6,7 +15,13 @@ use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\HashesTable Test Case
+ * Tests for HashesTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class HashesTableTest extends TestCase
 {
@@ -42,7 +57,7 @@ class HashesTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -54,7 +69,7 @@ class HashesTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */
@@ -67,6 +82,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test getTypeId
+     *
      * @return void
      */
     public function testGetTypeId()
@@ -83,6 +99,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test isUsed
+     *
      * @return void
      */
     public function testIsUsed()
@@ -99,6 +116,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test isExpired
+     *
      * @return void
      */
     public function testIsExpiredFalse()
@@ -115,6 +133,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test isExpired
+     *
      * @return void
      */
     public function testIsExpiredTrue()
@@ -131,6 +150,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test setHash
+     *
      * @return void
      */
     public function testSetHash()
@@ -147,6 +167,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test setUser
+     *
      * @return void
      */
     public function testSetUser()
@@ -163,6 +184,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test setType
+     *
      * @return void
      */
     public function testSetType()
@@ -179,6 +201,7 @@ class HashesTableTest extends TestCase
 
     /**
      * Test setUsed
+     *
      * @return void
      */
     public function testSetUsed()

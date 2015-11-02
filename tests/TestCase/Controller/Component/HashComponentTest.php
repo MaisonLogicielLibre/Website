@@ -1,4 +1,13 @@
 <?php
+/**
+ * Tests for HashComponent
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Controller\Component;
 
 use App\Controller\Component\HashComponent;
@@ -6,13 +15,19 @@ use Cake\Controller\ComponentRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\Component\HashComponent Test Case
+ * Tests for HashComponent
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class HashComponentTest extends TestCase
 {
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -24,7 +39,7 @@ class HashComponentTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */
