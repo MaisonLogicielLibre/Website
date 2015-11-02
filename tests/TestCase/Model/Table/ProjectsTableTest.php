@@ -222,6 +222,26 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+	
+	/**
+     * Test getMissions
+     * @return void
+     */
+    public function testGetMissions()
+    {
+        $id = 1;
+        $expected = 4;
+
+        $project = $this->Projects->get($id,
+			[
+				'contain' => ['Missions']
+			]
+		);
+
+        $result = count($project->getMissions());
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test editLink
@@ -284,6 +304,97 @@ class ProjectsTableTest extends TestCase
 
         $result = $project->editArchived($expected);
 
+        $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test editMentors
+     * @return void
+     */
+    public function testSetMentors()
+    {
+        $id = 1;	
+		$expected = [$this->Users->get($id)];
+		
+        $project = $this->Projects->get($id);
+
+        $result = $project->editMentors($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test modifyMentors
+     * @return void
+     */
+    public function testModifyMentors()
+    {
+        $id = 1;	
+		$expected = 1;
+		
+        $project = $this->Projects->get($id);
+
+        $project->modifyMentors([$id]);
+		$result = count($project->getMentors());
+
+        $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test editMentorless
+     * @return void
+     */
+    public function testEditMentorless()
+    {
+        $id = 1;	
+		$expected = 4;
+		
+        $project = $this->Projects->get($id,
+			[
+				'contain' => ['Missions']
+			]
+		);
+		
+		$mentor =  $this->Users->get(2);
+
+        $project->editMentors([$mentor]);
+		$project->editMentorless();
+		
+		$result = 0;
+		foreach($project->getMissions() as $mission) {
+			if($mission->getMentorId() == 0)
+				$result++;
+		}
+		
+        $this->assertEquals($expected, $result);
+    }
+	
+	/**
+     * Test editMentorless - No mentorless
+     * @return void
+     */
+    public function testEditMentorlessNo()
+    {
+        $id = 1;	
+		$expected = 0;
+		
+        $project = $this->Projects->get($id,
+			[
+				'contain' => ['Missions']
+			]
+		);
+		
+		$mentor =  $this->Users->get(1);
+
+        $project->editMentors([$mentor]);
+		$project->editMentorless();
+		
+		$result = 0;
+		foreach($project->getMissions() as $mission) {
+			if($mission->getMentorId() == 0)
+				$result++;
+		}
+		
         $this->assertEquals($expected, $result);
     }
     
