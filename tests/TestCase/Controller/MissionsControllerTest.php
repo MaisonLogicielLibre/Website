@@ -318,13 +318,13 @@ class MissionsControllerTest extends IntegrationTestCase
         $data = [];
         
         $this->session(['Auth.User.id' => 1]);
-		
+        
         $this->post('/missions/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-	
-	/**
+    
+    /**
      * Test edit mentor of a mission - Get
      *
      * @return void

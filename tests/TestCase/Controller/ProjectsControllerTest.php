@@ -466,8 +466,8 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->post('/projects/submit');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-	
-	/**
+    
+    /**
      * Test edit mentor - OK
      *
      * @return void
@@ -479,13 +479,13 @@ class ProjectsControllerTest extends IntegrationTestCase
         ];
         
         $this->session(['Auth.User.id' => 1]);
-		
+        
         $this->post('/projects/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-	
-	/**
+    
+    /**
      * Test edit mentor - Empty
      *
      * @return void
@@ -495,13 +495,13 @@ class ProjectsControllerTest extends IntegrationTestCase
         $data = [];
         
         $this->session(['Auth.User.id' => 1]);
-		
+        
         $this->post('/projects/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-	
-	/**
+    
+    /**
      * Test edit mentor of a project - Get
      *
      * @return void
@@ -537,6 +537,4 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->post('/projects/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-	
-	
 }
