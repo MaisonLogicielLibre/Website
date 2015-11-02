@@ -170,6 +170,14 @@ return [
             'client' => null,
             'tls' => null,
         ],
+        'main' => [
+            'host' => '',
+            'port' => 465,
+            'timeout' => 60,
+            'username' => 'maisonlogiciellibre@etsmtl.net',
+            'password' => '',
+            'className' => 'Smtp'
+        ]
     ],
     /**
      * Email delivery profiles
