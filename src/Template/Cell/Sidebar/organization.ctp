@@ -37,7 +37,7 @@
                         ]) ?>">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                            <i class="fa fa-users fa-stack-1x" style="color:#fff;"></i>
                         </span> <?= __('Edit members') ?>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                         ]) ?>">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
+                            <i class="fa fa-user-md fa-stack-1x" style="color:#fff;"></i>
                         </span> <?= __('Edit owners') ?>
                     </a>
                 </li>
@@ -63,7 +63,7 @@
                         ]) ?>">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
+                            <i class="fa fa-pencil fa-stack-1x" style="color:#fff;"></i>
                         </span> <?= __('Edit the organization') ?>
                     </a>
                 </li>

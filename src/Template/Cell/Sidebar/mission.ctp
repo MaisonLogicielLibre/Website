@@ -62,7 +62,7 @@
                             ]); ?>>
                                 <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa <?= ($object->isArchived() ? 'fa-check' : 'fa-minus' ) ?> fa-stack-1x" style="color:#fff;"></i>
+                                    <i class="fa <?= ($object->isArchived() ? 'fa-check' : 'fa-remove' ) ?> fa-stack-1x" style="color:#fff;"></i>
                                 </span> <?= (boolval($object->isArchived()) ? __('Restore the mission') : __('Archive the mission') ) ?>
                         </a>
                     </li>
