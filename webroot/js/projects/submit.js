@@ -1,6 +1,12 @@
+var nbrMission = 0;
+var missionForm = '';
 $(document).ready(function () {
-    var missionForm = $('#mission-tab-0').html(); // Get the mission form
-    var nbrMission = 0;
+
+    $('#mission-tab-0').find('input[type=text]').attr('value', ''); // Reset inputs because cakephp is dump
+    $('#mission-tab-0').find('textarea').html('');
+    missionForm = $('#mission-tab-0').html(); // Get the mission form
+
+    fillForms(); // This will something only if the form is returned with errors
 
     // If the user click on a tab
     $('#formTab').on('click', 'a', function (e) {
@@ -37,13 +43,13 @@ $(document).ready(function () {
         $('.tab-content .tab-pane').eq(index).remove();
     });
 
-    // Validate an input
-    $('.tab-content').on('input', 'input', function () {
+    // Validate an input or textareaa
+    $('.tab-content').on('input', 'input, textarea', function () {
         validateInput(this);
     });
 
-    // Validate a textarea
-    $('.tab-content').on('input', 'textarea', function () {
+    // Validate the checkbox
+    $('.tab-content').on('change', '[name*=type_missions], [name*=mission_levels]', function () {
         validateInput(this);
     });
 
@@ -64,12 +70,33 @@ $(document).ready(function () {
             $('.tab-content').find('form[name*=mission]').each(function (i, v) {
                 $('#createProject').append($('<input/>', {
                         type: 'hidden',
-                        name: 'mission-'+i,
+                        name: 'mission-' + i,
                         value: JSON.stringify($(v).serializeArray())
                     })
                 )
             });
             $('#createProject').submit();
+        } else {
+            $('#formTab').parents().eq(2).prepend($('<div/>', {
+                class: 'row',
+                html: $('<div/>', {
+                    class: 'col-lg-12 col-md-12 col-sm-12 col-xs-12',
+                    html: $('<div/>', {
+                        class: 'alert alert-dismissible fade in alert-danger',
+                        role: 'alert',
+                        html: $('<button/>', {
+                            class: 'close',
+                            'aria-label': 'Close',
+                            'data-dismiss': 'alert',
+                            'type': 'button',
+                            html: $('<span/>', {
+                                'aria-hidden': true,
+                                html: '×'
+                            })
+                        })
+                    }).append(errorMsg)
+                })
+            }));
         }
     });
 });
@@ -115,46 +142,73 @@ function createNewMissionForm(index, missionForm) {
 function validateForm(form, tab) {
 
     var invalidFields = form.find(':invalid');
-    var errorMessages = form.find('.error-message');
+    var errorMessages = form.find('.help-block');
+    var multiselectError = false;
 
     $(errorMessages).each(function (i, v) {
-        removeError(v);
+        if (v.length == 0) {
+            removeError(v);
+        }
     });
 
     $(invalidFields).each(function (i, v) {
-        createError(v);
+        if (v.length != 0) {
+            createError(v);
+        }
     });
+
+    $(form.find('.multicheckbox')).each(function (i, v) {
+        if ($(v).find('input:checked').length == 0) {
+            if (!$(v).find('.help-block').length) {
+                createError($(v).find('[type=hidden]'), multiselectTr);
+            }
+            multiselectError = true;
+        }
+    });
+
 
     if (invalidFields.length > 0) {
         invalidFields[0].focus();
     }
-    updateFormStatus(invalidFields, tab);
+    updateFormStatus(invalidFields, tab, multiselectError);
 }
 
 // Validate one input
 function validateInput(input) {
-    if (input.validationMessage.length > 0) {
-        createError(input);
-    } else {
-        removeError($(input).parent().find('.error-message'));
-    }
-
     var form = $(input).parents().closest('form');
-    var invalidFields = form.find(':invalid');
     var index = $(input).parents().closest('.tab-pane').index();
     var tab = $('#formTab a').eq(index);
-    updateFormStatus(invalidFields, tab);
+    var invalidFields = form.find(':invalid');
+    var div = $(input).parents().closest('.form-group');
+    var multiselectError = false;
+
+    removeError(div.find('.help-block'));
+
+    if ($(input).attr('name') == 'type_missions[_ids][]' || $(input).attr('name') == 'mission_levels[_ids][]') {
+        if (div.find('input:checked').length == 0) {
+            createError(div.find('[type=hidden]'), multiselectTr);
+            multiselectError = true;
+        }
+    }
+
+    if (input.validationMessage.length > 0)
+        createError(input, null);
+
+    updateFormStatus(invalidFields, tab, multiselectError);
 }
 
 
 // Create an error for an input
-function createError(input) {
+function createError(input, error) {
     var parent;
-    parent = $(input).parent();
+    if (error === null)
+        error = input.validationMessage;
+
+    parent = $(input).parents().closest('.form-group');
     parent.addClass('has-error');
     parent.append($('<div/>', {
-            class: 'error-message',
-            text: input.validationMessage
+            class: 'help-block',
+            text: error
         })
     );
 }
@@ -162,16 +216,71 @@ function createError(input) {
 // Remove the error on an input
 function removeError(error) {
     var parent;
-    parent = $(error).parent();
+    parent = $(error).parents().closest('.form-group');
     parent.removeClass('has-error');
     error.remove();
 }
 
 // Update the icon on the tab
-function updateFormStatus(invalidFields, tab) {
-    if (invalidFields.length) {
+function updateFormStatus(invalidFields, tab, multiselectError) {
+    if (invalidFields.length || multiselectError) {
         $(tab).find('i').removeClass('fa-check').addClass('fa-times').css('color', '#A94442');
     } else {
         $(tab).find('i').removeClass('fa-times').addClass('fa-check').css('color', '#5CB85C');
+    }
+}
+
+function fillForms() {
+    var data;
+    $('#createProject input[type=hidden][name*=mission-]').each(function (i, v) {
+        data = $.parseJSON($(v).val());
+        var form = $('.tab-content > div').eq(i + 1).find('form');
+        $(data).each(function (j, o) {
+            if (!Array.isArray(o)) {
+                if (o.name.match(/type_missions/)) {
+                    if (o.value != '') {
+                        form.find($('[name*=type_missions][value=' + o.value + ']')).prop('checked', true);
+                    }
+                } else if (o.name.match(/mission_levels/)) {
+                    if (o.value != '') {
+                        form.find($('[name*=mission_levels][value=' + o.value + ']')).prop('checked', true);
+                    }
+                }
+                else {
+                    form.find('[name=' + o.name + ']').val(o.value);
+                }
+            } else {
+                for (var arrayErrors in o) {
+                    var errors = o[arrayErrors];
+                    for (var error in errors) {
+                        if (error == 'type_missions') {
+                            createError(form.find('[name="type_missions[_ids]"]'), errors[error]);
+                        } else if (error == 'mission_levels') {
+                            createError(form.find('[name="mission_levels[_ids]"]'), errors[error]);
+                        } else {
+                            createError(form.find('[name=' + error + ']'), errors[error]);
+                        }
+                    }
+                }
+            }
+        });
+
+        // Prepare the next form
+        var tab = $('#formTab #newMission');
+        nbrMission += 1;
+        createNewMissionForm(nbrMission, missionForm);
+        initMissionForm(nbrMission);
+        $(tab).find('i').removeClass('fa-plus');
+        $(tab).removeAttr('id');
+        $('#addMission').attr('data-tab', 'mission-' + nbrMission);
+
+    });
+    // Validate form
+    if ($('#createProject input[type=hidden][name*=mission-]').length) {
+        $('.tab-content form').each(function (i, v) {
+            if (v.hasAttribute('name')) {
+                validateForm($(v), $('#formTab li').eq(i));
+            }
+        });
     }
 }

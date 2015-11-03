@@ -28,6 +28,14 @@
                         </p>
                         <?php
                     endif;
+                    $projectArray = $project->toArray();
+                    $missionsPost = array_intersect_key($projectArray, array_flip(preg_grep('/^mission-/', array_keys($projectArray))));
+                    if (!is_null($missionsPost)) :
+                        foreach($missionsPost as $i => $mission) :
+                    ?>
+                        <input type='hidden' name='<?= $i ?>' value='<?= $mission ?>'/>
+                    <?php endforeach;
+                    endif;
                     echo $this->Form->end()
                     ?>
                 </div>
@@ -58,5 +66,7 @@
 
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var btnSubmitTxt="' . __('Submit the project') . '";';
+echo 'var errorMsg="' . __('All tabs must be valid before submitting the project.') . '";';
+echo 'var multiselectTr="' .__('You must select at least one item.') . '";';
 $this->Html->scriptEnd();
 ?>

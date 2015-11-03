@@ -7,7 +7,7 @@ $typeOptions = [];
 foreach ($typeMissions as $type) {
     $typeOptions[$type->id] = $type->getName();
 }
-echo $this->Form->input('type_missions._ids', ['required' => true, 'label' => __('What type of student(s) are you looking for?'), 'options' => $typeOptions, 'multiple' => 'checkbox']);
+echo $this->Form->input('type_missions._ids', ['required' => true, 'label' => ['class' => 'control-label', 'text' => __('What type of student(s) are you looking for?')], 'options' => $typeOptions, 'multiple' => 'checkbox']);
 $sessionOptions =
     [
         0 => __('Not specified'),
@@ -28,7 +28,7 @@ $levelsOptions = [];
 foreach ($missionLevels as $level) {
     $levelsOptions[$level->id] = $level->getName();
 }
-echo $this->Form->input('mission_levels._ids', ['required' => true, 'label' => __('School year'), 'options' => $levelsOptions, 'multiple' => 'checkbox']);
+echo $this->Form->input('mission_levels._ids', ['required' => true, 'label' => ['class' => 'control-label', 'text' => __('School year')], 'options' => $levelsOptions, 'multiple' => 'checkbox']);
 echo $this->Form->input('internNbr', ['type' => 'number', 'required' => true, 'label' => __('Places available'), 'min' => 1, 'max' => 100]);
 
 $this->end();

@@ -156,6 +156,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $post);
 
             $missions = $this->constructMission($project->id, $mentor->getId(), $post);
+            $project = $this->addErrorsMissionPost($project, $missions);
 
             if (!is_null($mission))
                 $project->editMissions($missions);
@@ -477,6 +478,26 @@ class ProjectsController extends AppController
             $mission->editMentorId($mentorId);
             $missions[] = $mission;
         }
+
         return $missions;
+    }
+
+    private function addErrorsMissionPost($post, $missions)
+    {
+        if (!is_null($missions)) {
+            foreach ($missions as $key => $mission) {
+                $parseErrors = [];
+                foreach ($mission->errors() as $fieldName => $errors) {
+                    while (is_array($errors)) {
+                        $errors = array_pop($errors);
+                    }
+                    $parseErrors[$fieldName] = $errors;
+                }
+                $temp = json_decode($post['mission-' . $key]);
+                $temp[] = [$parseErrors];
+                $post['mission-' . $key] = json_encode($temp);
+            }
+        }
+        return $post;
     }
 }
