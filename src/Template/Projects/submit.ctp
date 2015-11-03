@@ -57,8 +57,10 @@
     </div>
 <?php echo $this->Html->script(
     [
-        'bootstrap/locale/bootstrap-markdown.fr',
+        'markdown/markdown',
+        'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
+        'bootstrap/locale/bootstrap-markdown.fr',
         'bootstrap.min',
         'projects/submit'
     ],
