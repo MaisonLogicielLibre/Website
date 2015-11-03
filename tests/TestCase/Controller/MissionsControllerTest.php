@@ -85,8 +85,8 @@ class MissionsControllerTest extends IntegrationTestCase
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
-            'type_missions_.ids' => 1,
-            'mission_levels_.ids' => 1,
+            'type_missions' => ['_ids' => 1],
+            'mission_levels' => ['_ids' => 1],
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06'
         ];
@@ -114,8 +114,8 @@ class MissionsControllerTest extends IntegrationTestCase
             'internNbr' => 0,
             'project_id' => 1,
             'mentor_id' => 1,
-            'type_missions_.ids' => '',
-            'mission_levels_.ids' => '',
+            'type_missions' => ['_ids' => 1],
+            'mission_levels' => ['_ids' => 1],
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06'
         ];
