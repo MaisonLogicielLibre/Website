@@ -155,13 +155,15 @@ class ProjectsController extends AppController
             $post = $this->request->data;
             $project = $this->Projects->patchEntity($project, $post);
 
-            $missions = $this->constructMission($project->id, $mentor->getId(), $post);
-            $project = $this->addErrorsMissionPost($project, $missions);
+            $missions = $this->_constructMission($project->id, $mentor->getId(), $post);
+            $project = $this->_addErrorsMissionPost($project, $missions);
 
-            if (!is_null($mission))
+            if (!is_null($mission)) {
                 $project->editMissions($missions);
+            }
 
-            if ($this->Projects->save($project,
+            if ($this->Projects->save(
+                $project,
                 [
                     'associated' =>
                         [
@@ -176,7 +178,8 @@ class ProjectsController extends AppController
                                         ]
                                 ]
                         ]
-                ])
+                ]
+            )
             ) {
                 $this->Flash->success(__('The project has been saved.'));
                 return $this->redirect(['action' => 'view', $project->id]);
@@ -447,12 +450,12 @@ class ProjectsController extends AppController
 
     /**
      * Build missions object from json post
-     * @param $projectId
-     * @param $mentorId
-     * @param $post
+     * @param int   $projectId projectId
+     * @param int   $mentorId  mentorId
+     * @param array $post      post
      * @return array|null
      */
-    private function constructMission($projectId, $mentorId, $post)
+    private function _constructMission($projectId, $mentorId, $post)
     {
         $missions = null;
 
@@ -466,7 +469,7 @@ class ProjectsController extends AppController
             foreach ($missionPost as $m) {
                 if ($m['name'] == 'type_missions[_ids][]') {
                     $temp['type_missions']['_ids'][] = $m['value'];
-                } else if ($m['name'] == 'mission_levels[_ids][]') {
+                } elseif ($m['name'] == 'mission_levels[_ids][]') {
                     $temp['mission_levels']['_ids'][] = $m['value'];
                 } else {
                     $temp[$m['name']] = $m['value'];
@@ -482,7 +485,13 @@ class ProjectsController extends AppController
         return $missions;
     }
 
-    private function addErrorsMissionPost($post, $missions)
+    /**
+     * Add backend error in missionpost for the view
+     * @param array $post     post
+     * @param array $missions missions
+     * @return array
+     */
+    private function _addErrorsMissionPost($post, $missions)
     {
         if (!is_null($missions)) {
             foreach ($missions as $key => $mission) {
