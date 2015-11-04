@@ -7,7 +7,19 @@
                 <!--
                 GENERAL
                 -->
-
+                <li class="<?= ($this->request->action == 'view') && ($this->request->controller == 'Organizations') ? 'active disabled' : ''; ?>">
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Organizations',
+                            'action' => 'view',
+                            $object->id
+                        ]) ?>">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'view')  && ($this->request->controller == 'Organizations') ? '#337ab7' : '#fff'; ?>"></i>
+                            </span> <?= __('Organization\'s page') ?>
+                    </a>
+                </li>
                 <?php if(!empty($object) && $object->getWebsite() != null): ?>
                     <li>
                         <a href="<?= $object->getWebsite() ?>">
@@ -28,7 +40,7 @@
 				<?php
                     if (($isOwner && $user->hasPermissionName(['edit_organization'])) || $user->hasPermissionName(['edit_organizations'])):
                 ?>
-                <li>
+                <li class="<?= ($this->request->action == 'addMember') && ($this->request->controller == 'Organizations') ? 'active disabled' : ''; ?>">
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Organizations',
@@ -41,7 +53,7 @@
                         </span> <?= __('Edit members') ?>
                     </a>
                 </li>
-				<li>
+				<li class="<?= ($this->request->action == 'addOwner') && ($this->request->controller == 'Organizations') ? 'active disabled' : ''; ?>">
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Organizations',
@@ -54,7 +66,7 @@
                         </span> <?= __('Edit owners') ?>
                     </a>
                 </li>
-				<li>
+				<li class="<?= ($this->request->action == 'edit') && ($this->request->controller == 'Organizations') ? 'active disabled' : ''; ?>">
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Organizations',
