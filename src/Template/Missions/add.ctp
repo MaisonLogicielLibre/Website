@@ -1,3 +1,4 @@
+<?= $this->Html->css('bootstrap-markdown.min', ['block' => 'cssTop']); ?>
 <div class="row">
     <?= $this->cell('Sidebar::project', [$projectId]); ?>
 
@@ -22,3 +23,14 @@
         ]); ?>
         <?= $this->Form->end() ?>
     </div>
+<?php
+echo $this->Html->script(
+    [
+        'markdown/markdown',
+        'markdown/to-markdown',
+        'bootstrap/bootstrap-markdown',
+    ],
+    ['block' => 'scriptBottom']);
+if ($this->request->session()->read('lang') == 'fr_CA')
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+?>
