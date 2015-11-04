@@ -1,3 +1,4 @@
+<?= $this->Html->css('bootstrap-markdown.min', ['block' => 'cssTop']); ?>
 <div class="row">
     <?= $this->cell('Sidebar::projectAction'); ?>
 
@@ -9,7 +10,15 @@
             <?php
             echo $this->Form->input('name', ['label' => __('Name of the project')]);
             echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
-            echo $this->Form->input('description', ['label' => __('Description of the project')]);
+            echo $this->Form->input('description',
+                [
+                    'label' => __('Description of the project'),
+                    'data-provide' => 'markdown',
+                    'data-iconlibrary' => 'fa',
+                    'data-hidden-buttons' => 'cmdImage',
+                    'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+                ]
+            );
             echo $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]);
             ?>
         </fieldset>
@@ -17,3 +26,14 @@
         <?= $this->Form->end() ?>
     </div>
 </div>
+<?php
+echo $this->Html->script(
+    [
+        'markdown/markdown',
+        'markdown/to-markdown',
+        'bootstrap/bootstrap-markdown',
+    ],
+    ['block' => 'scriptBottom']);
+if ($this->request->session()->read('lang') == 'fr_CA')
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+?>
