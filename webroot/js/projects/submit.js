@@ -17,7 +17,6 @@ $(document).ready(function () {
             initMissionForm(nbrMission);
             $(this).find('i').removeClass('fa-plus');
             $(this).removeAttr('id');
-            $('#addMission').attr('data-tab', 'mission-' + nbrMission);
         }
         $(this).tab('show');
     });
@@ -29,7 +28,7 @@ $(document).ready(function () {
     });
 
     // If the user click on the bottom link it trigger a tab change
-    $('.tab-content').on('click', '#addMission', function (e) {
+    $(document).on('click', '#addMission', function (e) {
         e.preventDefault();
         $('#formTab a#newMission').trigger('click');
     });
@@ -270,7 +269,6 @@ function fillForms() {
         initMissionForm(nbrMission);
         $(tab).find('i').removeClass('fa-plus');
         $(tab).removeAttr('id');
-        $('#addMission').attr('data-tab', 'mission-' + nbrMission);
 
     });
     // Validate form
