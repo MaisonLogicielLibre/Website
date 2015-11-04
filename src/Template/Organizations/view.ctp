@@ -1,3 +1,4 @@
+<?php $Parsedown = new Parsedown(); ?>
 <div class="row">
     <?= $this->cell('Sidebar::organization', [$organization->id]); ?>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -6,7 +7,7 @@
         </h2>
 
         <div class="bs-callout bs-callout-info" style="min-height:200px">
-            <p><?= $organization->getDescription(); ?></p>
+            <p><?= $Parsedown->text($organization->getDescription()); ?></p>
         </div>
     </div>
 
