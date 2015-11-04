@@ -5,7 +5,7 @@
         <?= $this->Form->create($organization); ?>
         <div class="alert alert-info" role="alert"><?= __("After submit the organization, you will be redirect on the organization's page to create some projects."); ?></div>
         <fieldset>
-            <legend><?= __('Submit Organization') ?></legend>
+            <legend><?= __('Submit Organization') ?> <?= $this->Wiki->addHelper('organizations:submit');?></legend>
             <?php
                 echo $this->Form->input('name');
                 echo $this->Form->input('website', ['placeholder' => __("http(s)://website.com")]);

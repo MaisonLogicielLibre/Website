@@ -5,7 +5,7 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><?= __('List of organizations'); ?></h3>
+                <h3 class="panel-title"><?= __('List of organizations'); ?> <a href="<?= $this->Wiki->buildLink('Organizations');?>"><i class="fa fa-question-circle"></i></a></h3>
             </div>
             <div class="table-responsive">
                 <table id="organizations" class="table table-striped table-bordered table-hover dataTable">

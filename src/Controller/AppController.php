@@ -88,6 +88,10 @@ class AppController extends Controller
             I18n::locale($_GET['lang']);
         } else {
             $lang = $this->request->session()->read('lang');
+            if (!$lang) {
+                $this->request->session()->write('lang', 'fr_CA');
+                $lang = 'fr_CA';
+            }
             I18n::locale($lang);
         }
     }
