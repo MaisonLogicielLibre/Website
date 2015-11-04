@@ -12,9 +12,10 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="project-tab">
+                    <div><a href="<?= $this->Wiki->buildLink('projects:submit'); ?>"><?= __('Need more informations?')  ?></a></div><br/>
                     <?= $this->Form->create($project, ['name' => 'project', 'id' => 'createProject']); ?>
                     <?php
-                    echo $this->Form->input('name', ['label' => __('Name of the project')]);
+                    echo $this->Form->input('name', ['label' => __('Name of the project ')]);
                     echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
                     echo $this->Form->input('description', ['label' => __('Description of the project'), 'data-provide' => 'markdown', 'data-iconlibrary' => 'fa', 'data-hidden-buttons' => 'cmdImage', 'data-language' => 'fr']);
                     if (empty($organizations->toArray())) : ?>
@@ -31,10 +32,10 @@
                     $projectArray = $project->toArray();
                     $missionsPost = array_intersect_key($projectArray, array_flip(preg_grep('/^mission-/', array_keys($projectArray))));
                     if (!is_null($missionsPost)) :
-                        foreach($missionsPost as $i => $mission) :
-                    ?>
-                        <input type='hidden' name='<?= $i ?>' value='<?= $mission ?>'/>
-                    <?php endforeach;
+                        foreach ($missionsPost as $i => $mission) :
+                            ?>
+                            <input type='hidden' name='<?= $i ?>' value='<?= $mission ?>'/>
+                        <?php endforeach;
                     endif;
                     echo $this->Form->end()
                     ?>
@@ -69,6 +70,6 @@
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var btnSubmitTxt="' . __('Submit the project') . '";';
 echo 'var errorMsg="' . __('All tabs must be valid before submitting the project.') . '";';
-echo 'var multiselectTr="' .__('You must select at least one item.') . '";';
+echo 'var multiselectTr="' . __('You must select at least one item.') . '";';
 $this->Html->scriptEnd();
 ?>
