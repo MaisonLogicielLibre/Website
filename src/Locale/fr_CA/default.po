@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-10-29 16:32-0400\n"
-"PO-Revision-Date: 2015-10-29 16:32-0400\n"
+"PO-Revision-Date: 2015-11-04 14:53-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
@@ -275,7 +275,7 @@ msgstr "Bénévole"
 
 #: Model/Entity/TypeMission.php:59 Template/Projects/view.ctp:134
 msgid "Capstone"
-msgstr "PFE"
+msgstr "Projet de fin d'étude"
 
 #: Model/Table/MissionsTable.php:121
 msgid "The value must be a number"
@@ -340,7 +340,8 @@ msgstr "Ajouter un projet"
 msgid "Submit project"
 msgstr "Soumettre un projet"
 
-#: Template/Cell/Sidebar/organization.ctp:116 Template/Organizations/quit.ctp:6
+#: Template/Cell/Sidebar/organization.ctp:116
+#: Template/Organizations/quit.ctp:6
 msgid "Quit the organization"
 msgstr "Quitter l'organisation"
 
