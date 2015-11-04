@@ -107,6 +107,40 @@ class User extends Entity
     {
         return $this->_properties['email'];
     }
+
+    /**
+     * Get the censored email
+     * @return string email
+     */
+    public function getCensoredEmail()
+    {
+        $email = $this->_properties['email'];
+        $email = str_split($email);
+
+        $emailCensored = "";
+        $hostname = true;
+        foreach ($email as $letter) {
+            if ($letter == '@') {
+                $hostname = false;
+            }
+            if ($hostname) {
+                $emailCensored = $emailCensored . '*';
+            } else {
+                $emailCensored = $emailCensored . $letter;
+            }
+        }
+        return $emailCensored;
+    }
+
+    /**
+     * Get the avatar
+     * @return string link
+     */
+    public function getAvatar()
+    {
+        $gravatarLink = 'http://www.gravatar.com/avatar/' . md5($this->getEmail()) . '?s=512';
+        return $gravatarLink;
+    }
     
     /**
      * Get the first phone number
