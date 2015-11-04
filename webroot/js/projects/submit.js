@@ -60,6 +60,7 @@ $(document).ready(function () {
         //Validating all forms
         $('.tab-content').find('form').each(function (i, v) {
             if (v.hasAttribute('name')) {
+                validateForm($(v), null);
                 invalidFields = $(v).find(':invalid');
                 if (invalidFields.length > 0) {
                     error = true;
@@ -140,27 +141,24 @@ function createNewMissionForm(index, missionForm) {
 
 // Validate the entire form
 function validateForm(form, tab) {
-
     var invalidFields = form.find(':invalid');
     var errorMessages = form.find('.help-block');
     var multiselectError = false;
 
     $(errorMessages).each(function (i, v) {
-        if (v.length == 0) {
             removeError(v);
-        }
     });
 
     $(invalidFields).each(function (i, v) {
         if (v.length != 0) {
-            createError(v);
+            createError(v, null);
         }
     });
 
     $(form.find('.multicheckbox')).each(function (i, v) {
         if ($(v).find('input:checked').length == 0) {
             if (!$(v).find('.help-block').length) {
-                createError($(v).find('[type=hidden]'), multiselectTr);
+                createError($(v).find('[type=hidden]'), null);
             }
             multiselectError = true;
         }
@@ -186,7 +184,7 @@ function validateInput(input) {
 
     if ($(input).attr('name') == 'type_missions[_ids][]' || $(input).attr('name') == 'mission_levels[_ids][]') {
         if (div.find('input:checked').length == 0) {
-            createError(div.find('[type=hidden]'), multiselectTr);
+            createError(div.find('[type=hidden]'), null);
             multiselectError = true;
         }
     }
