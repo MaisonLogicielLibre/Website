@@ -1,3 +1,5 @@
+<?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
+<?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
 <div class="row">
 <?= $this->cell('Sidebar::mission', [$mission->id]); ?>
 <?php $Parsedown = new Parsedown(); ?>
@@ -8,7 +10,9 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-                <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+				<?php if($user) { ?>
+					<a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+				<?php } ?>
             </div>
                 <div class="bs-callout bs-callout-warning">
                     <h4><?= __('Description'); ?></h4>
@@ -90,4 +94,74 @@
             </div>
         </div>
     </div>
+	<?php 
+		if($user) { 
+			if ($user->hasPermissionName(['edit_mission', 'edit_missions'])) {?>
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title"><?= __('List of applications'); ?></h3>
+						</div>
+						<div class="table-responsive">
+							<table id="applications" class="table table-striped table-bordered table-hover dataTable">
+								<thead>
+								<tr>
+									<th><?= __('Name'); ?></th>
+									<th><?= __('Approved'); ?></th>
+									<th><?= __('Rejected'); ?></th>
+								</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	<?php } } ?>
 </div>
+       <!-- Add DataTables scripts -->
+    <?= $this->Html->script(
+        [
+            'datatables/jquery.dataTables.min',
+            'datatables/dataTables.bootstrap.min',
+            'DataTables.cakephp.dataTables',
+            'bootstrap/bootstrap-switch.min'
+        ],
+        ['block' => 'scriptBottom']);
+    ?>
+
+    <?php
+    $this->Html->scriptStart(['block' => 'scriptBottom']);
+    echo $this->DataTables->init([
+        'ajax' => [
+            'url' => $this->Url->build(['action' => 'view', $mission->getId()]),
+        ],
+        'deferLoading' => $recordsTotal,
+        'delay' => 600,
+        "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        'columns' => [
+            [
+                'name' => 'applications.user_id',
+                'data' => 'user_id',
+                'searchable' => false
+            ],
+            [
+                'name' => 'applications.accepted',
+                'data' => 'accepted',
+                'searchable' => false
+            ],
+            [
+                'name' => 'applications.rejected',
+                'data' => 'rejected',
+                'searchable' => false
+            ]
+        ],
+        'lengthMenu' => ''
+    ])->draw('.dataTable');
+    echo 'var ajaxUrl="' . $this->Url->Build(['action' => 'editApplicationStatus']) . '";';
+    echo 'var userUrl="' . $this->Url->Build(['controller' => 'Users', 'action' => 'view']) . '";';
+    $this->Html->scriptEnd();
+    ?>
+    <?= $this->Html->script('missions/view.js', ['block' => 'scriptBottom']); ?>
