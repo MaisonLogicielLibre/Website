@@ -124,7 +124,7 @@ class ProjectsController extends AppController
                         'archived' => 0,
                         'm.user_id' => (!is_null($user) ? $user->getId() : '')
                         ]
-                )->group('project_id');
+                )->group('Projects.id');
 
                 $this->set(
                     [
