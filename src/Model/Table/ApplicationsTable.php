@@ -1,14 +1,4 @@
 <?php
-/**
- * Application Model
- *
- * @category Table
- * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
- */
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Application;
@@ -18,13 +8,10 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Entity of ApplicationTable
+ * Applications Model
  *
- * @category Entity
- * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @property \Cake\ORM\Association\BelongsTo $Missions
+ * @property \Cake\ORM\Association\BelongsTo $Users
  */
 class ApplicationsTable extends Table
 {
@@ -33,7 +20,6 @@ class ApplicationsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
-     *
      * @return void
      */
     public function initialize(array $config)
@@ -44,34 +30,20 @@ class ApplicationsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo(
-            'Projects',
-            [
-                'foreignKey' => 'project_id',
-                'joinType' => 'INNER'
-            ]
-        );
-        $this->belongsTo(
-            'Users',
-            [
-                'foreignKey' => 'user_id',
-                'joinType' => 'INNER'
-            ]
-        );
-        $this->belongsTo(
-            'TypeApplications',
-            [
-                'foreignKey' => 'type_application_id',
-                'joinType' => 'INNER'
-            ]
-        );
+        $this->belongsTo('Missions', [
+            'foreignKey' => 'mission_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
-     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -81,29 +53,14 @@ class ApplicationsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('presentation', 'create')
-            ->notEmpty('presentation');
-
-        $validator
-            ->add('weeklyHours', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('weeklyHours', 'create')
-            ->notEmpty('weeklyHours');
-
-        $validator
-            ->add('startDate', 'valid', ['rule' => 'date'])
-            ->requirePresence('startDate', 'create')
-            ->notEmpty('startDate');
-
-        $validator
-            ->add('endDate', 'valid', ['rule' => 'date'])
-            ->requirePresence('endDate', 'create')
-            ->notEmpty('endDate');
-
-        $validator
+            ->add('accepted', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('accepted', 'create')
             ->notEmpty('accepted');
 
         $validator
-            ->notEmpty('archived');
+            ->add('rejected', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('rejected', 'create')
+            ->notEmpty('rejected');
 
         return $validator;
     }
@@ -113,14 +70,12 @@ class ApplicationsTable extends Table
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['project_id'], 'Projects'));
+        $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['type_application_id'], 'TypeApplications'));
         return $rules;
     }
 }

@@ -12,6 +12,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 
 /**
  * Missions controller
@@ -24,16 +27,19 @@ use Cake\Event\Event;
  */
 class MissionsController extends AppController
 {
+	use MailerAwareTrait;
 
     private $_permissions = [
         'index' => ['list_missions_all'],
         'add' => ['add_mission'],
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
-        'editAccepted' => ['edit_mission', 'edit_mission'],
-        'editArchived' => ['edit_mission', 'edit_mission'],
+        'editAccepted' => ['edit_mission', 'edit_missions'],
+        'editArchived' => ['edit_mission', 'edit_missions'],
+		'editApplicationStatus' => ['edit_mission', 'edit_missions'],
         'view' => ['view_mission', 'view_missions'],
-        'delete' => ['delete_mission', 'delete_missions']
+        'delete' => ['delete_mission', 'delete_missions'],
+		'apply' => ['apply_mission']
     ];
 
     /**
@@ -50,6 +56,17 @@ class MissionsController extends AppController
                 return true;
             }
         }
+    }
+	
+	/**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
     }
 
     /**
@@ -87,10 +104,24 @@ class MissionsController extends AppController
             ]
             ]
         );
-
+		
+		$data = $this->DataTables->find(
+            'applications',
+            [
+            'contain' => ['Users']
+            ]
+        );
+		
+		$user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+		
         $projectId = $mission->getProjectId();
-        $this->set(compact('mission', 'projectId'));
-        $this->set('_serialize', ['mission']);
+        $this->set(compact('mission', 'projectId', 'user'));
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data', 'mission'])
+            ]
+        );
     }
 
     /**
@@ -189,5 +220,48 @@ class MissionsController extends AppController
             $this->Flash->error(__('The mission could not be archived. Please, try again.'));
             return $this->redirect(['action' => 'view', $id]);
         }
+    }
+	
+	/**
+     * Apply method
+     * @return redirect
+     */
+    public function apply($id)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' => ['Users']
+            ]
+        );
+		
+		if ($this->request->is(['patch', 'post', 'put'])) {
+			$applications = TableRegistry::get('Applications');
+			$userId = $this->request->session()->read('Auth.User.id');
+			$application = $applications->newEntity();
+			
+			$application->editMissionId($mission->getId());
+			$application->editUserId($userId);
+			$application->editAccepted(false);
+			$application->editRejected(false);
+		
+			if ($applications->save($application)) {
+				$this->Flash->success(__('You have applied on the mission'));
+				$user = $this->Users->get($userId);
+				$mentor = $mission->getMentor();
+				
+				$linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId()]);
+				$linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId]);
+				$this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+		
+				return $this->redirect(['action' => 'view', $id]);
+				
+			} else {
+				$this->Flash->error(__('There was an error. Please, try again.'));
+			}
+		}
+		
+		$this->set(compact('mission'));
+        $this->set('_serialize', ['mission']);
     }
 }

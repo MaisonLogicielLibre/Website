@@ -44,7 +44,13 @@ class MissionsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
+		
+		$this->hasMany(
+            'Applications',
+            [
+            'foreignKey' => 'mission_id'
+            ]
+        );
         $this->belongsTo(
             'Projects',
             [
