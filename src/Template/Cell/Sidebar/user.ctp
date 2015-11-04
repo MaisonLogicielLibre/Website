@@ -58,7 +58,7 @@
                             ]); ?>>
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-lock fa-stack-1x"
+                                            <i class="fa fa-unlock-alt  fa-stack-1x"
                                                style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
                                         </span> <?= __('Change password') ?></a></li>
                     <!-- Modify phone link/form -->
