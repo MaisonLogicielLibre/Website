@@ -170,7 +170,7 @@ return [
             'client' => null,
             'tls' => null,
         ],
-        'main' => [
+		'main' => [
             'host' => '',
             'port' => 465,
             'timeout' => 60,
@@ -189,12 +189,12 @@ return [
      * for more information.
      */
     'Email' => [
-        'default' => [
-            'transport' => 'default',
-            'from' => 'you@localhost',
-            //'charset' => 'utf-8',
-            //'headerCharset' => 'utf-8',
-        ],
+         'default' => [
+             'transport' => 'default',
+             'from' => 'you@localhost',
+             //'charset' => 'utf-8',
+             //'headerCharset' => 'utf-8',
+         ],
     ],
     /**
      * Connection information used by the ORM to connect
