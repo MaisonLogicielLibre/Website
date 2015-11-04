@@ -10,7 +10,13 @@
                  alt="avatar"
                  class="img-responsive center-block"/>
             <br/>
+            <?php
+            if ($isOwner):
+            ?>
             <p><?= __('This avatar is a gravatar linked with your email. If you want change your avatar, go on '); ?><a href="http://gravatar.com/">gravatar.com</a></p>
+            <?php
+            endif;
+            ?>
             <ul class="nav nav-pills nav-stacked">
                 <?php if(!empty($object) && $object->getPortfolio() != null): ?>
                     <li><a href="<?= $object->getPortfolio() ?>">
