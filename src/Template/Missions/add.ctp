@@ -4,7 +4,7 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <?= $this->Form->create($mission); ?>
         <fieldset>
-            <legend><?= __('Add Mission') ?></legend>
+            <legend><?= __('Add Mission') ?> <?= $this->Wiki->addHelper('missions:add');?></legend>
             <?php
             echo $this->Form->input('name', ['label' => __('Position title')]);
             echo $this->Form->input('description', ['label' => __('Describe your mission')]);

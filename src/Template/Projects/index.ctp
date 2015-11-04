@@ -8,7 +8,7 @@
 		</div>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><?= __('List of projects'); ?></h3>
+                <h3 class="panel-title"><?= __('List of projects'); ?> <?= $this->Wiki->addHelper('Projects');?></h3>
             </div>
             <div class="table-responsive">
                 <table id="projects" class="table table-striped table-bordered table-hover dataTable">
@@ -17,7 +17,7 @@
                         <th></th>
                         <th><?= __('Name'); ?></th>
                         <th><?= __('Link'); ?></th>
-                        <th><?= __('Organizations'); ?></th>
+                        <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations');?></th>
                     </tr>
                     </thead>
                     <tbody>

@@ -52,7 +52,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Organizations') ?></h3>
+                    <h3 class="panel-title"><?= __('Organizations') ?> <a href="<?= $this->Wiki->buildLink('Organizations');?>"><i class="fa fa-question-circle"></i></a></h3>
                 </div>
                 <table class="table table-striped">
                     <?php foreach ($project->organizations as $organization): ?>
@@ -69,7 +69,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Missions'); ?></h3>
+                    <h3 class="panel-title"><?= __('Missions'); ?> <?= $this->Wiki->addHelper('Missions');?></h3>
                 </div>
                 <div class="table-responsive">
                     <table id="projects" class="table table-striped table-bordered table-hover dataTable">

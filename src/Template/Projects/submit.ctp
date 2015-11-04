@@ -4,7 +4,7 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <?= $this->Form->create($project); ?>
         <fieldset>
-            <legend><?= __('Submit Project') ?></legend>
+            <legend><?= __('Submit Project') ?> <?= $this->Wiki->addHelper('projects:submit');?></legend>
             <div class="alert alert-info" role="alert"><?= __("After submit the project, you will be redirect on the project's page to create some missions."); ?></div>
             <?php
                 echo $this->Form->input('name', ['label' => __('Name of the project')]);
@@ -18,7 +18,7 @@
            <?php else : ?>
                 <?= $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]); ?>
                 <p>
-                    <?= __('Or you can add a new organizations ') . $this->Html->link(__('here.'), ['controller' => 'Organizations', 'action' => 'submit']) ?>
+                    <?= __('Or you can add a new organizations ') . $this->Html->link(__('here.'), ['controller' => 'Organizations', 'action' => 'submit']) ?> <?= $this->Wiki->addHelper('Organizations');?>
                 </p>
             <?php endif; ?>
         </fieldset>

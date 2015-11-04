@@ -14,7 +14,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Projects') ?></h3>
+                    <h3 class="panel-title"><?= __('Projects') ?> <?= $this->Wiki->addHelper('Projects');?></h3>
                 </div>
                 <table class="table table-striped">
                     <?php foreach ($organization->projects as $project): ?>
