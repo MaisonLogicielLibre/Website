@@ -162,4 +162,15 @@ class Project extends Entity
         $this->set('archived', $archived);
         return $archived;
     }
+
+    /**
+     * Set missions on a project
+     * @param array $missions mission
+     * @return array missions
+     */
+    public function editMissions($missions)
+    {
+        $this->set('missions', $missions);
+        return $missions;
+    }
 }

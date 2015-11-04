@@ -1,5 +1,6 @@
 <div class="row">
 <?= $this->cell('Sidebar::mission', [$mission->id]); ?>
+<?php $Parsedown = new Parsedown(); ?>
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <div class="row-fluid">
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 no-pading">
@@ -12,14 +13,14 @@
                 <div class="bs-callout bs-callout-warning">
                     <h4><?= __('Description'); ?></h4>
 
-                    <p><?= $mission->getDescription(); ?></p>
+                    <p><?= $Parsedown->text($mission->getDescription()); ?></p>
                 </div>
 
                 </p>
                 <div class="bs-callout bs-callout-primary">
                     <h4><?= __('Skills'); ?></h4>
 
-                    <p><?= $mission->getCompetence(); ?></p>
+                    <p><?= $Parsedown->text($mission->getCompetence()); ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding-right:0;">

@@ -128,10 +128,9 @@ class MissionsController extends AppController
                         $this->Flash->error(__('The mission could not be saved. Please, try again.'));
                     }
                 }
-                $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
                 $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
                 $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions', 'projectId'));
+                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'projectId'));
                 $this->set('_serialize', ['mission']);
             } else {
                 return $this->redirect(['controller' => 'projects', 'action' => 'index']);

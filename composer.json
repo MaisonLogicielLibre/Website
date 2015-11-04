@@ -22,7 +22,8 @@
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
 		"mll/apisvn": "1.0-alpha",
-        "simon-begin/cakephp-datatables": "dev-master"
+        "simon-begin/cakephp-datatables": "dev-master",
+        "erusev/parsedown": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",

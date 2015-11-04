@@ -62,7 +62,6 @@
                 endif;
                 ?>
             </ul>
-            </ul>
         </div>
     </div>
 </div>
