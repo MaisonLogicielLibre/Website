@@ -251,8 +251,8 @@ class MissionsController extends AppController
                 $user = $this->Users->get($userId);
                 $mentor = $mission->getMentor();
                 
-                $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId()]);
-                $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId]);
+                $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
                 $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
         
                 return $this->redirect(['action' => 'view', $id]);
