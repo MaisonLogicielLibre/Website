@@ -38,8 +38,8 @@ class Mission extends Entity
         '*' => true,
         'id' => false,
     ];
-	
-	/**
+    
+    /**
      * Get the id
      * @return int id
      */
@@ -110,15 +110,15 @@ class Mission extends Entity
     {
         return $this->_properties['internNbr'];
     }
-	
-	/**
+    
+    /**
      * Get the applications
      * @return array applications
      */
     public function getApplications()
     {
         $applications = TableRegistry::get('Applications')->findByMissionId($this->getId());
-		return $applications;
+        return $applications;
     }
 
     /**

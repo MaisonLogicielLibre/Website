@@ -377,9 +377,9 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
-     * test getApplications
+    
+    /**
+     * Test getApplications
      * @return void
      */
     public function testGetApplications()

@@ -1,19 +1,26 @@
 <?php
+/**
+ * Entity of ApplicationTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
 /**
- * Application Entity.
+ * Entity of ApplicationTable
  *
- * @property int $id
- * @property int $mission_id
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property bool $accepted
- * @property bool $archived
- * @property \App\Model\Entity\Project $project
+ * @category Entity
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class Application extends Entity
 {
@@ -27,39 +34,39 @@ class Application extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
-	
-	/**
-     * get the user id
+    
+    /**
+     * Get the user id
      * @return int userId
      */
     public function getUserId()
     {
         return $this->_properties['user_id'];
     }
-	
-	/**
-     * get if accepted
+    
+    /**
+     * Get if accepted
      * @return int userId
      */
     public function getAccepted()
     {
         return $this->_properties['accepted'];
     }
-	
-	/**
-     * get if rejected
+    
+    /**
+     * Get if rejected
      * @return int userId
      */
     public function getRejected()
     {
         return $this->_properties['rejected'];
     }
-	
-	/**
+    
+    /**
      * Set the missionId
      * @param int $missionId missionId
      * @return int missionId
@@ -69,8 +76,8 @@ class Application extends Entity
         $this->set('mission_id', $missionId);
         return $missionId;
     }
-	
-	/**
+    
+    /**
      * Set the userId
      * @param int $userId userId
      * @return int userId
@@ -80,8 +87,8 @@ class Application extends Entity
         $this->set('user_id', $userId);
         return $userId;
     }
-	
-	/**
+    
+    /**
      * Set if the application is accepted
      * @param int $isAccepted isAccepted
      * @return int isAccepted
@@ -91,8 +98,8 @@ class Application extends Entity
         $this->set('accepted', $isAccepted);
         return $isAccepted;
     }
-	
-	/**
+    
+    /**
      * Set if the application is rejected
      * @param int $isRejected isRejected
      * @return int isRejected
@@ -102,6 +109,4 @@ class Application extends Entity
         $this->set('rejected', $isRejected);
         return $isRejected;
     }
-	
-	
 }

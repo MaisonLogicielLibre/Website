@@ -27,7 +27,7 @@ use Cake\Routing\Router;
  */
 class MissionsController extends AppController
 {
-	use MailerAwareTrait;
+    use MailerAwareTrait;
 
     private $_permissions = [
         'index' => ['list_missions_all'],
@@ -36,10 +36,10 @@ class MissionsController extends AppController
         'edit' => ['edit_mission', 'edit_missions'],
         'editAccepted' => ['edit_mission', 'edit_missions'],
         'editArchived' => ['edit_mission', 'edit_missions'],
-		'editApplicationStatus' => ['edit_mission', 'edit_missions'],
+    'editApplicationStatus' => ['edit_mission', 'edit_missions'],
         'view' => ['view_mission', 'view_missions'],
         'delete' => ['delete_mission', 'delete_missions'],
-		'apply' => ['apply_mission']
+    'apply' => ['apply_mission']
     ];
 
     /**
@@ -57,8 +57,8 @@ class MissionsController extends AppController
             }
         }
     }
-	
-	/**
+    
+    /**
      * Add the RequestHandler component
      *
      * @return void
@@ -104,16 +104,16 @@ class MissionsController extends AppController
             ]
             ]
         );
-		
-		$data = $this->DataTables->find(
+        
+        $data = $this->DataTables->find(
             'applications',
             [
             'contain' => ['Users']
             ]
         );
-		
-		$user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
-		
+        
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        
         $projectId = $mission->getProjectId();
         $this->set(compact('mission', 'projectId', 'user'));
         $this->set(
@@ -221,9 +221,10 @@ class MissionsController extends AppController
             return $this->redirect(['action' => 'view', $id]);
         }
     }
-	
-	/**
+    
+    /**
      * Apply method
+     * @param int $id id
      * @return redirect
      */
     public function apply($id)
@@ -234,34 +235,34 @@ class MissionsController extends AppController
                 'contain' => ['Users']
             ]
         );
-		
-		if ($this->request->is(['patch', 'post', 'put'])) {
-			$applications = TableRegistry::get('Applications');
-			$userId = $this->request->session()->read('Auth.User.id');
-			$application = $applications->newEntity();
-			
-			$application->editMissionId($mission->getId());
-			$application->editUserId($userId);
-			$application->editAccepted(false);
-			$application->editRejected(false);
-		
-			if ($applications->save($application)) {
-				$this->Flash->success(__('You have applied on the mission'));
-				$user = $this->Users->get($userId);
-				$mentor = $mission->getMentor();
-				
-				$linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId()]);
-				$linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId]);
-				$this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
-		
-				return $this->redirect(['action' => 'view', $id]);
-				
-			} else {
-				$this->Flash->error(__('There was an error. Please, try again.'));
-			}
-		}
-		
-		$this->set(compact('mission'));
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $applications = TableRegistry::get('Applications');
+            $userId = $this->request->session()->read('Auth.User.id');
+            $application = $applications->newEntity();
+            
+            $application->editMissionId($mission->getId());
+            $application->editUserId($userId);
+            $application->editAccepted(false);
+            $application->editRejected(false);
+        
+            if ($applications->save($application)) {
+                $this->Flash->success(__('You have applied on the mission'));
+                $user = $this->Users->get($userId);
+                $mentor = $mission->getMentor();
+                
+                $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId()]);
+                $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId]);
+                $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+        
+                return $this->redirect(['action' => 'view', $id]);
+                
+            } else {
+                $this->Flash->error(__('There was an error. Please, try again.'));
+            }
+        }
+        
+        $this->set(compact('mission'));
         $this->set('_serialize', ['mission']);
     }
 }
