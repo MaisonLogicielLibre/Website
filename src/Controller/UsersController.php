@@ -476,7 +476,7 @@ class UsersController extends AppController
                 $hash->setType($type);
 
                 $this->Users->Hashes->save($hash);
-                $link = Router::build(['controller' => 'Users', 'action' => 'resetPassword', $url]);
+                $link = Router::url(['controller' => 'Users', 'action' => 'resetPassword', $url, '_full' => true]);
 
                 //Send the mail
                 $this->getMailer('User')->send('resetPassword', [$user, $link]);
