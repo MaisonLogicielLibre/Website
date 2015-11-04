@@ -273,4 +273,38 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editArchived/7');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 7]);
     }
+    
+    /**
+     * Test apply - Ok
+     *
+     * @return void
+     */
+    public function testApplyOk()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    /**
+     * Test apply - Get
+     *
+     * @return void
+     */
+    public function testApplyGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test apply - No Authentification
+     *
+     * @return void
+     */
+    public function testApplyNoAuth()
+    {
+        $this->post('/missions/apply/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
 }

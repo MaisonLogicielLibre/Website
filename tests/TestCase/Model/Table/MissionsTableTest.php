@@ -377,6 +377,22 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+    
+    /**
+     * Test getApplications
+     * @return void
+     */
+    public function testGetApplications()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $mission = $this->Missions->get($id);
+
+        $result = count($mission->getApplications());
+
+        $this->assertEquals($expected, $result);
+    }
 
     /**
      * Test setProjectId

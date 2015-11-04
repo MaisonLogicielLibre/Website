@@ -1,14 +1,13 @@
 <?php
 /**
- * Application Model
+ * Applications Model
  *
  * @category Table
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Application;
@@ -18,13 +17,13 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Entity of ApplicationTable
+ * Applications Model
  *
- * @category Entity
+ * @category Table
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class ApplicationsTable extends Table
 {
@@ -45,24 +44,17 @@ class ApplicationsTable extends Table
         $this->primaryKey('id');
 
         $this->belongsTo(
-            'Projects',
+            'Missions',
             [
-                'foreignKey' => 'project_id',
-                'joinType' => 'INNER'
+            'foreignKey' => 'mission_id',
+            'joinType' => 'INNER'
             ]
         );
         $this->belongsTo(
             'Users',
             [
-                'foreignKey' => 'user_id',
-                'joinType' => 'INNER'
-            ]
-        );
-        $this->belongsTo(
-            'TypeApplications',
-            [
-                'foreignKey' => 'type_application_id',
-                'joinType' => 'INNER'
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
             ]
         );
     }
@@ -81,29 +73,14 @@ class ApplicationsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('presentation', 'create')
-            ->notEmpty('presentation');
-
-        $validator
-            ->add('weeklyHours', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('weeklyHours', 'create')
-            ->notEmpty('weeklyHours');
-
-        $validator
-            ->add('startDate', 'valid', ['rule' => 'date'])
-            ->requirePresence('startDate', 'create')
-            ->notEmpty('startDate');
-
-        $validator
-            ->add('endDate', 'valid', ['rule' => 'date'])
-            ->requirePresence('endDate', 'create')
-            ->notEmpty('endDate');
-
-        $validator
+            ->add('accepted', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('accepted', 'create')
             ->notEmpty('accepted');
 
         $validator
-            ->notEmpty('archived');
+            ->add('rejected', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('rejected', 'create')
+            ->notEmpty('rejected');
 
         return $validator;
     }
@@ -118,9 +95,8 @@ class ApplicationsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['project_id'], 'Projects'));
+        $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['type_application_id'], 'TypeApplications'));
         return $rules;
     }
 }

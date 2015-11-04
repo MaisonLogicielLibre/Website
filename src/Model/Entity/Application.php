@@ -4,23 +4,23 @@
  *
  * @category Entity
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Entity of ApplicationTable
  *
  * @category Entity
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class Application extends Entity
 {
@@ -38,149 +38,75 @@ class Application extends Entity
         '*' => true,
         'id' => false,
     ];
-
+    
     /**
-     * Get the id
-     * @return int id
-     */
-    public function getId()
-    {
-        return $this->_properties['id'];
-    }
-
-    /**
-     * Get the presentation
-     * @return string presentation
-     */
-    public function getPresentation()
-    {
-        return $this->_properties['presentation'];
-    }
-
-    /**
-     * Get the start date
-     * @return date startDate
-     */
-    public function getStartDate()
-    {
-        return $this->_properties['startDate'];
-    }
-
-    /**
-     * Get the end date
-     * @return date endDate
-     */
-    public function getEndDate()
-    {
-        return $this->_properties['endDate'];
-    }
-
-    /**
-     * Get the weekly hours
-     * @return int weeklyHours
-     */
-    public function getWeeklyHours()
-    {
-        return $this->_properties['weeklyHours'];
-    }
-
-    /**
-     * If the application has been accepted
-     * @return bool accepted
-     */
-    public function getIsAccepted()
-    {
-        return $this->_properties['accepted'];
-    }
-
-    /**
-     * If the application has been archived
-     * @return bool archived
-     */
-    public function getIsArchived()
-    {
-        return $this->_properties['archived'];
-    }
-
-    /**
-     * Get project_id
-     * @return int project_id
-     */
-    public function getProjectId()
-    {
-        return $this->_properties['project_id'];
-    }
-
-    /**
-     * Get user_id
-     * @return int user_id
+     * Get the user id
+     * @return int userId
      */
     public function getUserId()
     {
         return $this->_properties['user_id'];
     }
-
+    
     /**
-     * Get type_application_id
-     * @return int type_application_id
+     * Get if accepted
+     * @return int userId
      */
-    public function getTypeApplicationId()
+    public function getAccepted()
     {
-        return $this->_properties['type_application_id'];
+        return $this->_properties['accepted'];
     }
-
+    
     /**
-     * Set the presentation
-     * @param string $presentation presentation
-     * @return string presentation
+     * Get if rejected
+     * @return int userId
      */
-    public function editPresentation($presentation)
+    public function getRejected()
     {
-        $this->set('presentation', $presentation);
-        return $presentation;
+        return $this->_properties['rejected'];
     }
-
+    
     /**
-     * Set if the application has been accepted
-     * @param bool $accepted accepted
-     * @return bool accepted
+     * Set the missionId
+     * @param int $missionId missionId
+     * @return int missionId
      */
-    public function editAccepted($accepted)
+    public function editMissionId($missionId)
     {
-        $this->set('accepted', $accepted);
-        return $accepted;
+        $this->set('mission_id', $missionId);
+        return $missionId;
     }
-
+    
     /**
-     * Set if the application has been archived
-     * @param bool $archived archived
-     * @return bool archived
+     * Set the userId
+     * @param int $userId userId
+     * @return int userId
      */
-    public function editArchived($archived)
+    public function editUserId($userId)
     {
-        $this->set('archived', $archived);
-        return $archived;
+        $this->set('user_id', $userId);
+        return $userId;
     }
-
+    
     /**
-     * Set user_id
-     * @param int $id id
-     * @return int id
+     * Set if the application is accepted
+     * @param int $isAccepted isAccepted
+     * @return int isAccepted
      */
-    public function editUserId($id)
+    public function editAccepted($isAccepted)
     {
-        $this->set('user_id', $id);
-        return $id;
+        $this->set('accepted', $isAccepted);
+        return $isAccepted;
     }
-
+    
     /**
-     * Set project_id
-     * @param int $id id
-     * @return int id
+     * Set if the application is rejected
+     * @param int $isRejected isRejected
+     * @return int isRejected
      */
-    public function editProjectId($id)
+    public function editRejected($isRejected)
     {
-        $this->set('project_id', $id);
-        return $id;
+        $this->set('rejected', $isRejected);
+        return $isRejected;
     }
 }
