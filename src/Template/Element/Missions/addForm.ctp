@@ -1,8 +1,28 @@
 <?php
 $this->start('form');
 echo $this->Form->input('name', ['required' => true, 'label' => __('Position title')]);
-echo $this->Form->input('description', ['type' => 'textarea', 'required' => true, 'label' => __('Describe your mission'), 'data-provide' => 'markdown', 'data-iconlibrary' => 'fa', 'data-hidden-buttons' => 'cmdImage', 'data-language' => 'fr']);
-echo $this->Form->input('competence', ['type' => 'textarea', 'required' => true, 'label' => __('What are the student requirements to work on the project?'), 'placeholder' => __(' e.g. "must know Python" or "easier project good for a student with more limited experience with C++."'), 'data-provide' => 'markdown', 'data-iconlibrary' => 'fa', 'data-hidden-buttons' => 'cmdImage', 'data-language' => 'fr']);
+echo $this->Form->input('description',
+    ['type' => 'textarea',
+        'required' => true,
+        'label' => __('Describe your mission'),
+        'data-provide' => 'markdown',
+        'data-iconlibrary' => 'fa',
+        'data-hidden-buttons' => 'cmdImage',
+        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+    ]
+);
+echo $this->Form->input('competence',
+    [
+        'type' => 'textarea',
+        'required' => true,
+        'label' => __('What are the student requirements to work on the project?'),
+        'placeholder' => __(' e.g. "must know Python" or "easier project good for a student with more limited experience with C++."'),
+        'data-provide' => 'markdown',
+        'data-iconlibrary' => 'fa',
+        'data-hidden-buttons' => 'cmdImage',
+        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+    ]
+);
 $typeOptions = [];
 foreach ($typeMissions as $type) {
     $typeOptions[$type->id] = $type->getName();

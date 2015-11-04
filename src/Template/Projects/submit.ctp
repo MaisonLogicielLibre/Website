@@ -16,7 +16,15 @@
                     <?php
                     echo $this->Form->input('name', ['label' => __('Name of the project')]);
                     echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
-                    echo $this->Form->input('description', ['label' => __('Description of the project'), 'data-provide' => 'markdown', 'data-iconlibrary' => 'fa', 'data-hidden-buttons' => 'cmdImage', 'data-language' => 'fr']);
+                    echo $this->Form->input('description',
+                        [
+                            'label' => __('Description of the project'),
+                            'data-provide' => 'markdown',
+                            'data-iconlibrary' => 'fa',
+                            'data-hidden-buttons' => 'cmdImage',
+                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+                        ]
+                    );
                     if (empty($organizations->toArray())) : ?>
                         <p>
                             <?= $this->Html->link(__('You\'re not part of an organization. Add yours now!'), ['controller' => 'Organizations', 'action' => 'submit']); ?>
@@ -60,12 +68,12 @@
         'markdown/markdown',
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
-        'bootstrap/locale/bootstrap-markdown.fr',
         'bootstrap.min',
         'projects/submit'
     ],
     ['block' => 'scriptBottom']);
-
+if ($this->request->session()->read('lang') == 'fr_CA')
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var btnSubmitTxt="' . __('Submit the project') . '";';
 echo 'var errorMsg="' . __('All tabs must be valid before submitting the project.') . '";';

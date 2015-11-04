@@ -12,6 +12,7 @@
             echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
             echo $this->Form->input('description',
                 [
+                    'label' => __('Description of the project'),
                     'data-provide' => 'markdown',
                     'data-iconlibrary' => 'fa',
                     'data-hidden-buttons' => 'cmdImage',
