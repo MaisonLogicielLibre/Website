@@ -18,6 +18,6 @@
 
 <?= __('We have received a password reset request for your account'); ?>.<br/><br/>
 
-<a href="http://<?= $link ?>"><?= __('Here is the link to reset your password'); ?></a><br/><br/>
+<a href="<?= $link ?>"><?= __('Here is the link to reset your password'); ?></a><br/><br/>
 
 <?= __('If it is not you who is asking Reset all this password, please do not consider this e-mail and delete it'); ?>.

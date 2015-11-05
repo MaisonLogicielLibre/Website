@@ -14,10 +14,9 @@
  */
 ?>
 
-<?= __('Hello');?> <?= $mentorname ?>,<br/><br/>
+<?= __('Hello');?> <?= $mentorname ?>,<?= "\r\n\r\n"; ?>
 
-<?= $username ?> http://<?= $linkUser ?>
+<?= $username ?> <?= __(' have applied on ') ?> <?= $missionname ?> <?= "\r\n\r\n"; ?>
 
-<?= __(' have applied on ') ?>
-
-<?= $missionname ?> http://<?= $linkMission ?>
+<?= __('You can see the mission on') ?> : <?= $linkMission ?><?= "\r\n"; ?>
+<?= __('Or the candidate on') ?> : <?= $linkUser ?>
