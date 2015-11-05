@@ -16,8 +16,8 @@
 
 <?= __('Hello');?> <?= $mentorname ?>,<br/><br/>
 
-<a href="http://<?= $linkUser ?>"><?= $username ?></a>
+<a href="<?= $linkUser ?>"><?= $username ?></a>
 
 <?= __(' have applied on ') ?>
 
-<a href="http://<?= $linkMission ?>"><?= $missionname ?></a>
+<a href="<?= $linkMission ?>"><?= $missionname ?></a>
