@@ -10,8 +10,9 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-				<a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+				<a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>"><h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
             </div>
+				<?= __('Your mission, should you choose to accept it, ...') ?>
                 <div class="bs-callout bs-callout-warning">
                     <h4><?= __('Description'); ?></h4>
 
@@ -50,7 +51,7 @@
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding-right:0;">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?= __('Information on the mission'); ?></h3>
+					<h3 class="panel-title"><?= __('Mission details'); ?></h3>
 				</div>
 				<table class="table table-striped table-responsive">
 					<tr>
