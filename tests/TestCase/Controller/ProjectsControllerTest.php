@@ -486,6 +486,24 @@ class ProjectsControllerTest extends IntegrationTestCase
     }
     
     /**
+     * Test edit mentor - Mentorless
+     *
+     * @return void
+     */
+    public function testEditMentorMentorless()
+    {
+        $data = [
+            'users' => [2]
+        ];
+        
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->post('/projects/editMentor/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+    
+    /**
      * Test edit mentor - Empty
      *
      * @return void

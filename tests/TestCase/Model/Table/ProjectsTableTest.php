@@ -342,10 +342,10 @@ class ProjectsTableTest extends TestCase
     }
     
     /**
-     * Test editMentorless
+     * Test checkMentorless
      * @return void
      */
-    public function testEditMentorless()
+    public function testCheckMentorless()
     {
         $id = 1;
         $expected = 4;
@@ -360,14 +360,7 @@ class ProjectsTableTest extends TestCase
         $mentor = $this->Users->get(2);
 
         $project->editMentors([$mentor]);
-        $project->editMentorless();
-        
-        $result = 0;
-        foreach ($project->getMissions() as $mission) {
-            if ($mission->getMentorId() == 0) {
-                $result++;
-            }
-        }
+        $result = count($project->checkMentorless());
         
         $this->assertEquals($expected, $result);
     }
@@ -379,7 +372,7 @@ class ProjectsTableTest extends TestCase
     public function testCheckMentorlessNo()
     {
         $id = 1;
-        $expected = 1;
+        $expected = 0;
         
         $project = $this->Projects->get(
             $id,
@@ -391,7 +384,7 @@ class ProjectsTableTest extends TestCase
         $mentor = $this->Users->get(1);
 
         $project->editMentors([$mentor]);
-        $result = $project->checkMentorless();
+        $result = count($project->checkMentorless());
         
         $this->assertEquals($expected, $result);
     }

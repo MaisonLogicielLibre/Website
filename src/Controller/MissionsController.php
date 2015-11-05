@@ -34,13 +34,13 @@ class MissionsController extends AppController
         'add' => ['add_mission'],
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
-		'editMentor' => ['edit_mission', 'edit_missions'],
+        'editMentor' => ['edit_mission', 'edit_missions'],
         'editAccepted' => ['edit_mission', 'edit_missions'],
         'editArchived' => ['edit_mission', 'edit_missions'],
-		'editApplicationStatus' => ['edit_mission', 'edit_missions'],
+        'editApplicationStatus' => ['edit_mission', 'edit_missions'],
         'view' => ['view_mission', 'view_missions'],
         'delete' => ['delete_mission', 'delete_missions'],
-		'apply' => ['apply_mission']
+        'apply' => ['apply_mission']
     ];
 
     /**

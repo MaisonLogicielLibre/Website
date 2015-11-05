@@ -547,45 +547,42 @@ class ProjectsController extends AppController
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
                 $project->modifyMentors($usersSelected);
-				
-				$mentorless = $project->checkMentorless();
-
-                if(!count($mentorless)) {
                 
-					$missions = TableRegistry::get('Missions');
-					foreach ($project->getMissions() as $mission) {
-						$missions->save($mission);
-					}
-					
-					if ($this->Projects->save($project)) {
-						$this->Flash->success(__('The mentors have been modified.'));
-						return $this->redirect(['action' => 'view', $project->id]);
-					} else {
-						$this->Flash->error(__('The mentors could not be modified. Please,try again.'));
-					}
-				} else {
-					
-					$mentorMessage = "";
-					$missionMessage = "";
-					$mentorsId = [];
-					$mentorsId[] = 0;
-					foreach ($mentorless as $mission) {
-						$missionMessage = $missionMessage . $mission->getName() . ", ";
-						if(!array_search($mission->getMentorId(), $mentorsId)) {
-							$mentorsId[] = $mission->getMentorId();
-							$mentor = $this->Users->findById($mission->getMentorId())->first();
-							$mentorMessage = $mentorMessage . $mentor->getName() . ", ";
-						}
-					}
-					
-					$mentorMessage = substr($mentorMessage, 0, -2);
-					$missionMessage = substr($missionMessage, 0, -2);
-					
-					$this->Flash->error($mentorMessage . " " .__('would cause') . " " . $missionMessage . " " . __('to become mentorless'));
-				}
+                $mentorless = $project->checkMentorless();
+
+                if (!count($mentorless)) {
+                    $missions = TableRegistry::get('Missions');
+                    foreach ($project->getMissions() as $mission) {
+                        $missions->save($mission);
+                    }
+                    
+                    if ($this->Projects->save($project)) {
+                        $this->Flash->success(__('The mentors have been modified.'));
+                        return $this->redirect(['action' => 'view', $project->id]);
+                    } else {
+                        $this->Flash->error(__('The mentors could not be modified. Please,try again.'));
+                    }
+                } else {
+                    $mentorMessage = "";
+                    $missionMessage = "";
+                    $mentorsId = [];
+                    $mentorsId[] = 0;
+                    foreach ($mentorless as $mission) {
+                        $missionMessage = $missionMessage . $mission->getName() . ", ";
+                        if (!array_search($mission->getMentorId(), $mentorsId)) {
+                            $mentorsId[] = $mission->getMentorId();
+                            $mentor = $this->Users->findById($mission->getMentorId())->first();
+                            $mentorMessage = $mentorMessage . $mentor->getName() . ", ";
+                        }
+                    }
+                    
+                    $mentorMessage = substr($mentorMessage, 0, -2);
+                    $missionMessage = substr($missionMessage, 0, -2);
+                    
+                    $this->Flash->error($mentorMessage . " " . __('would cause') . " " . $missionMessage . " " . __('to become mentorless'));
+                }
             } else {
-				
-				$this->Flash->error(__('There must be at least one mentor'));
+                $this->Flash->error(__('There must be at least one mentor'));
             }
         }
        

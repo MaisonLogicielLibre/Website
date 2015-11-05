@@ -214,23 +214,23 @@ class Project extends Entity
     }
     
     /**
-     * check if a mission become mentorless
+     * Check if a mission become mentorless
      * @return null
      */
     public function checkMentorless()
     {
-		$missions = $this->getMissions();
-		
+        $missions = $this->getMissions();
+        
         foreach ($this->getMissions() as $mission) {
             foreach ($this->getMentors() as $mentor) {
                 if ($mentor->getId() == $mission->getMentorId()) {
-                    if(($key = array_search($mission, $missions)) !== false) {
-						unset($missions[$key]);
-					}
+                    if (($key = array_search($mission, $missions)) !== false) {
+                        unset($missions[$key]);
+                    }
                 }
-			}
+            }
         }
-		
-		return $missions;
+        
+        return $missions;
     }
 }
