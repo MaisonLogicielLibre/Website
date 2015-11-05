@@ -36,8 +36,10 @@
 							<thead>
 							<tr>
 								<th><?= __('Name'); ?></th>
-								<th><?= __('Approved'); ?></th>
-								<th><?= __('Rejected'); ?></th>
+								<!--
+								<th><?= __('Approved'); ?> - <?= __('Coming soon') ?></th>
+								<th><?= __('Rejected'); ?> - <?= __('Coming soon') ?></th>
+								-->
 							</tr>
 							</thead>
 							<tbody>
@@ -140,6 +142,7 @@
                 'data' => 'user_id',
                 'searchable' => false
             ],
+			/**
             [
                 'name' => 'applications.accepted',
                 'data' => 'accepted',
@@ -150,6 +153,7 @@
                 'data' => 'rejected',
                 'searchable' => false
             ]
+			**/
         ],
         'lengthMenu' => ''
     ])->draw('.dataTable');
