@@ -235,39 +235,38 @@ class MissionsController extends AppController
                 'contain' => ['Users']
             ]
         );
-		
-		$applications = TableRegistry::get('Applications');
-		$userId = $this->request->session()->read('Auth.User.id');
-		
-        if(!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
-			if ($this->request->is(['patch', 'post', 'put'])) {
-
-				$application = $applications->newEntity();
-				
-				$application->editMissionId($mission->getId());
-				$application->editUserId($userId);
-				$application->editAccepted(false);
-				$application->editRejected(false);
-			
-				if ($applications->save($application)) {
-					$this->Flash->success(__('You have applied on the mission'));
-					$user = $this->Users->get($userId);
-					$mentor = $mission->getMentor();
-					
-					$linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
-					$linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
-					$this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
-			
-					return $this->redirect(['action' => 'view', $id]);
-					
-				} else {
-					$this->Flash->error(__('There was an error. Please, try again.'));
-				}
-			}
-		} else {
-			$this->Flash->error(__('You have already applied on this mission.'));
-			return $this->redirect(['action' => 'view', $id]);
-		}
+        
+        $applications = TableRegistry::get('Applications');
+        $userId = $this->request->session()->read('Auth.User.id');
+        
+        if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $application = $applications->newEntity();
+                
+                $application->editMissionId($mission->getId());
+                $application->editUserId($userId);
+                $application->editAccepted(false);
+                $application->editRejected(false);
+            
+                if ($applications->save($application)) {
+                    $this->Flash->success(__('You have applied on the mission'));
+                    $user = $this->Users->get($userId);
+                    $mentor = $mission->getMentor();
+                    
+                    $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                    $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
+                    $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+            
+                    return $this->redirect(['action' => 'view', $id]);
+                    
+                } else {
+                    $this->Flash->error(__('There was an error. Please, try again.'));
+                }
+            }
+        } else {
+            $this->Flash->error(__('You have already applied on this mission.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
         
         $this->set(compact('mission'));
         $this->set('_serialize', ['mission']);
