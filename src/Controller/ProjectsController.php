@@ -271,7 +271,7 @@ class ProjectsController extends AppController
         $this->set(
             [
                 'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data', 'project'])
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
             ]
         );
     }
