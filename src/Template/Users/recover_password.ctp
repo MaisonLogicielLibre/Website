@@ -24,15 +24,14 @@ else:
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <?= $this->Form->create() ?>
         <fieldset>
-            <legend><?= __("Recover my account"); ?></legend>
-            <p><?= __("For recover your account we need information about it. Enter your email, phone or username."); ?></p>
+            <legend><?= __("Reset my account"); ?></legend>
+            <p><?= __("To reset your password, we will send you a recovery email. Please enter your email address, phone numer or username, to enable us to retrieve your account."); ?></p>
             <?= $this->Form->input('Information') ?>
         </fieldset>
-        <?= $this->Form->button(__('Recover my account'), ['class' => 'btn btn-success']); ?>
+        <?= $this->Form->button(__('Search'), ['class' => 'btn btn-success']); ?>
         <?= $this->Form->end() ?>
     </div>
 </div>
 <?php
 endif;
 ?>
-
