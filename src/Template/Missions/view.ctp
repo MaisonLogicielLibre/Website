@@ -35,6 +35,7 @@
 						<table id="applications" class="table table-striped table-bordered table-hover dataTable">
 							<thead>
 							<tr>
+								<th></th>
 								<th><?= __('Name'); ?></th>
 								<!--
 								<th><?= __('Approved'); ?> - <?= __('Coming soon') ?></th>
@@ -137,9 +138,14 @@
         'delay' => 600,
         "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
         'columns' => [
+			[
+				'name' => 'Applications.id',
+				'data' => 'id',
+				'visible' => false
+			],
             [
-                'name' => 'applications.user_id',
-                'data' => 'user_id',
+                'name' => 'Users',
+                'data' => 'user',
                 'searchable' => false
             ],
 			/**
