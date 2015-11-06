@@ -117,7 +117,8 @@ class MissionsController extends AppController
                 ],
                 'fields' => [
                     'id', 'accepted', 'rejected'
-                ]
+                ],
+                'conditions' => ['mission_id' => $id]
             ]
         );
         
