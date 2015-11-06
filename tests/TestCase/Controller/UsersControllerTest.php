@@ -457,7 +457,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 1]);
         $this->get('/users/delete/1');
         $this->post('/users/delete/1');
-        $this->assertRedirect('/');
+        $this->assertRedirect('/pages/home');
     }
 
     /**
@@ -470,7 +470,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 2]);
         $this->get('/users/delete/1');
         $this->post('/users/delete/1');
-        $this->assertRedirect('/');
+        $this->assertRedirect('/pages/home');
     }
 
     /**

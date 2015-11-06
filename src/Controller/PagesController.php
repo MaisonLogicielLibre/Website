@@ -10,7 +10,9 @@
  */
 namespace App\Controller;
 
+use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
@@ -25,6 +27,18 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    /**
+     * Filter preparation
+     *
+     * @param Event $event event
+     *
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['display', 'home']);
+    }
     
     /**
      * Display method
@@ -56,5 +70,24 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    /**
+     * Home method
+     * @return redirect
+     */
+    public function home()
+    {
+        $this->loadModel("Users");
+        $numberUsers = $this->Users->find('all')->count();
+        $numberStudents = $this->Users->find('all')->where(['isStudent' => true])->count();
+
+        $this->loadModel("Projects");
+        $numberProjects = $this->Projects->find('all')->count();
+
+        $this->loadModel("Missions");
+        $numberMissions = $this->Missions->find('all')->count();
+
+        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
     }
 }

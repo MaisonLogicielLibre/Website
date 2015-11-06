@@ -1,3 +1,14 @@
+<div class="breadcrumb">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <?= __('We have') . ' <strong>' . $numberProjects . '</strong> ' . __('projects with') . ' <strong>' . $numberMissions . '</strong> ' . __('missions') ?>
+        </div>
+        <div class="col-sm-5 text-right">
+            <?= __('There are') . ' <strong>' . $numberUsers . '</strong> ' . __('registered users, including') . ' <strong>' . $numberStudents . '</strong> ' . __('confirmed students') ?><br/>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
