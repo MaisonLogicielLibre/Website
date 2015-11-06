@@ -17,6 +17,7 @@ $(document).ready(function () {
             initMissionForm(nbrMission);
             $(this).find('i').removeClass('fa-plus');
             $(this).removeAttr('id');
+            $(this)[0].childNodes[0].nodeValue = 'Mission - ' + ($('#formTab > li').length - 2) + ' ';
         }
         $(this).tab('show');
     });
@@ -40,6 +41,9 @@ $(document).ready(function () {
         $('#formTab a').eq(index - 1).tab('show');
         $('#formTab li').eq(index).remove();
         $('.tab-content .tab-pane').eq(index).remove();
+        $('#formTab > li').not(':eq(0)').not(':last-child').each(function (i, v) {
+            $(v).find('a')[0].childNodes[0].nodeValue = 'Mission - ' + (i + 1) + ' ';
+        });
     });
 
     // Validate an input or textareaa
@@ -269,6 +273,7 @@ function fillForms() {
         initMissionForm(nbrMission);
         $(tab).find('i').removeClass('fa-plus');
         $(tab).removeAttr('id');
+        $(tab)[0].childNodes[0].nodeValue = 'Mission - ' + ($('#formTab > li').length - 2) + ' ';
 
     });
     // Validate form
