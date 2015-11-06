@@ -17,6 +17,7 @@ $(document).ready(function () {
             initMissionForm(nbrMission);
             $(this).find('i').removeClass('fa-plus');
             $(this).removeAttr('id');
+            $(this)[0].childNodes[0].nodeValue = 'Mission - ' + ($('#formTab > li').length - 2) + ' ';
         }
         $(this).tab('show');
     });
@@ -40,6 +41,9 @@ $(document).ready(function () {
         $('#formTab a').eq(index - 1).tab('show');
         $('#formTab li').eq(index).remove();
         $('.tab-content .tab-pane').eq(index).remove();
+        $('#formTab > li').not(':eq(0)').not(':last-child').each(function (i, v) {
+            $(v).find('a')[0].childNodes[0].nodeValue = 'Mission - ' + (i + 1) + ' ';
+        });
     });
 
     // Validate an input or textareaa
@@ -157,7 +161,7 @@ function validateForm(form, tab) {
     $(form.find('.multicheckbox')).each(function (i, v) {
         if ($(v).find('input:checked').length == 0) {
             if (!$(v).find('.help-block').length) {
-                createError($(v).find('[type=hidden]'), null);
+                createError($(v).find('[type=hidden]'), multiselectTr);
             }
             multiselectError = true;
         }
@@ -183,7 +187,7 @@ function validateInput(input) {
 
     if ($(input).attr('name') == 'type_missions[_ids][]' || $(input).attr('name') == 'mission_levels[_ids][]') {
         if (div.find('input:checked').length == 0) {
-            createError(div.find('[type=hidden]'), null);
+            createError(div.find('[type=hidden]'), multiselectTr);
             multiselectError = true;
         }
     }
@@ -269,6 +273,7 @@ function fillForms() {
         initMissionForm(nbrMission);
         $(tab).find('i').removeClass('fa-plus');
         $(tab).removeAttr('id');
+        $(tab)[0].childNodes[0].nodeValue = 'Mission - ' + ($('#formTab > li').length - 2) + ' ';
 
     });
     // Validate form

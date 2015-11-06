@@ -8,7 +8,8 @@ echo $this->Form->input('description',
         'data-provide' => 'markdown',
         'data-iconlibrary' => 'fa',
         'data-hidden-buttons' => 'cmdImage',
-        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+        'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
     ]
 );
 echo $this->Form->input('competence',
@@ -20,7 +21,8 @@ echo $this->Form->input('competence',
         'data-provide' => 'markdown',
         'data-iconlibrary' => 'fa',
         'data-hidden-buttons' => 'cmdImage',
-        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+        'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+        'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
     ]
 );
 $typeOptions = [];

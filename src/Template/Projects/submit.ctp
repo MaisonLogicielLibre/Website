@@ -16,14 +16,15 @@
                     <?= $this->Form->create($project, ['name' => 'project', 'id' => 'createProject']); ?>
                     <?php
                     echo $this->Form->input('name', ['label' => __('Name of the project ')]);
-                    echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
+                    echo $this->Form->input('link', ['pattern' => '^(https?):\/\/(.*)\.(.+)', 'title' => 'http://website.ca','label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
                     echo $this->Form->input('description',
                         [
                             'label' => __('Description of the project'),
                             'data-provide' => 'markdown',
                             'data-iconlibrary' => 'fa',
                             'data-hidden-buttons' => 'cmdImage',
-                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                            'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                         ]
                     );
                     if (empty($organizations->toArray())) : ?>

@@ -47,7 +47,8 @@
                             'data-provide' => 'markdown',
                             'data-iconlibrary' => 'fa',
                             'data-hidden-buttons' => 'cmdImage',
-                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : '')
+                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                            'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                         ]
                     ); ?>
                     <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>

@@ -104,11 +104,21 @@ class MissionsController extends AppController
             ]
             ]
         );
-        
+
         $data = $this->DataTables->find(
-            'applications',
+            'Applications',
             [
-            'contain' => ['Users']
+                'contain' => [
+                    'Users' => [
+                        'fields' => [
+                            'id', 'firstName', 'lastName'
+                        ],
+                    ]
+                ],
+                'fields' => [
+                    'id', 'accepted', 'rejected'
+                ],
+                'conditions' => ['mission_id' => $id]
             ]
         );
         
@@ -119,7 +129,7 @@ class MissionsController extends AppController
         $this->set(
             [
                 'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data', 'mission'])
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
             ]
         );
     }
@@ -236,30 +246,36 @@ class MissionsController extends AppController
             ]
         );
         
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $applications = TableRegistry::get('Applications');
-            $userId = $this->request->session()->read('Auth.User.id');
-            $application = $applications->newEntity();
+        $applications = TableRegistry::get('Applications');
+        $userId = $this->request->session()->read('Auth.User.id');
+        
+        if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $application = $applications->newEntity();
+                
+                $application->editMissionId($mission->getId());
+                $application->editUserId($userId);
+                $application->editAccepted(false);
+                $application->editRejected(false);
             
-            $application->editMissionId($mission->getId());
-            $application->editUserId($userId);
-            $application->editAccepted(false);
-            $application->editRejected(false);
-        
-            if ($applications->save($application)) {
-                $this->Flash->success(__('You have applied on the mission'));
-                $user = $this->Users->get($userId);
-                $mentor = $mission->getMentor();
-                
-                $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
-                $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
-                $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
-        
-                return $this->redirect(['action' => 'view', $id]);
-                
-            } else {
-                $this->Flash->error(__('There was an error. Please, try again.'));
+                if ($applications->save($application)) {
+                    $this->Flash->success(__('You have applied on the mission'));
+                    $user = $this->Users->get($userId);
+                    $mentor = $mission->getMentor();
+                    
+                    $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                    $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
+                    $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+            
+                    return $this->redirect(['action' => 'view', $id]);
+                    
+                } else {
+                    $this->Flash->error(__('There was an error. Please, try again.'));
+                }
             }
+        } else {
+            $this->Flash->error(__('You have already applied on this mission.'));
+            return $this->redirect(['action' => 'view', $id]);
         }
         
         $this->set(compact('mission'));

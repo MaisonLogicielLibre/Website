@@ -10,8 +10,9 @@
                 <h2 class="pull-left">
                     <?= $mission->getName() ?>
                 </h2>
-				<a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>"><h2 class="btn btn-danger pull-right"><?= __('Postulate!'); ?></h2></a>
+				<a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>"><h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
             </div>
+				<?= __('Your mission, should you choose to accept it, ...') ?>
                 <div class="bs-callout bs-callout-warning">
                     <h4><?= __('Description'); ?></h4>
 
@@ -35,9 +36,12 @@
 						<table id="applications" class="table table-striped table-bordered table-hover dataTable">
 							<thead>
 							<tr>
+								<th></th>
 								<th><?= __('Name'); ?></th>
-								<th><?= __('Approved'); ?></th>
-								<th><?= __('Rejected'); ?></th>
+								<!--
+								<th><?= __('Approved'); ?> - <?= __('Coming soon') ?></th>
+								<th><?= __('Rejected'); ?> - <?= __('Coming soon') ?></th>
+								-->
 							</tr>
 							</thead>
 							<tbody>
@@ -50,7 +54,7 @@
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding-right:0;">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?= __('Information on the mission'); ?></h3>
+					<h3 class="panel-title"><?= __('Mission details'); ?></h3>
 				</div>
 				<table class="table table-striped table-responsive">
 					<tr>
@@ -135,11 +139,17 @@
         'delay' => 600,
         "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
         'columns' => [
+			[
+				'name' => 'Applications.id',
+				'data' => 'id',
+				'visible' => false
+			],
             [
-                'name' => 'applications.user_id',
-                'data' => 'user_id',
+                'name' => 'Users',
+                'data' => 'user',
                 'searchable' => false
             ],
+			/**
             [
                 'name' => 'applications.accepted',
                 'data' => 'accepted',
@@ -150,6 +160,7 @@
                 'data' => 'rejected',
                 'searchable' => false
             ]
+			**/
         ],
         'lengthMenu' => ''
     ])->draw('.dataTable');

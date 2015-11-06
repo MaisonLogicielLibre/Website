@@ -128,6 +128,5 @@ class AppController extends Controller
     {
         $this->updateReferer();
         $this->checkLanguage();
-        $this->Auth->allow(['display']);
     }
 }

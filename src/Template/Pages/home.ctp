@@ -1,3 +1,14 @@
+<div class="breadcrumb">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <?= __('We have') . ' <strong>' . $numberProjects . '</strong> ' . __('projects with') . ' <strong>' . $numberMissions . '</strong> ' . __('missions') ?>
+        </div>
+        <div class="col-sm-5 text-right">
+            <?= __('There are') . ' <strong>' . $numberUsers . '</strong> ' . __('registered users, including') . ' <strong>' . $numberStudents . '</strong> ' . __('confirmed students') ?><br/>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -36,12 +47,13 @@
                    href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Join our network'); ?></a>
             </div>
         </div>
-        <div class="col-sm-6 ml2_box_height home-block" align="center">
+        <div class="col-sm-6 ml2_box_height home-block" align="center" style="height:410px;">
             <hr class="hr-black" />
-            <h2 class="section-heading"><?= __("Our generous sponsors"); ?></h2>
+            <h2 class="section-heading"><?= __("Our founding partners"); ?></h2>
             <div>
                 <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
             </div>
+            <h2 class="section-heading"><?= __("Our sponsors"); ?></h2>
             <div>
                 <a href="https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
             </div>
