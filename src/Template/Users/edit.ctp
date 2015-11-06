@@ -1,4 +1,4 @@
-<?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
+<?= $this->Html->css(['bootstrap-switch.min', 'bootstrap-markdown.min'], ['block' => 'cssTop']); ?>
     <div class="row">
         <?= $this->cell('Sidebar::user', [$user->id]); ?>
 
@@ -41,7 +41,16 @@
             </div>
             <div class="row-fluid">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
-                    <?= $this->Form->input('biography', ['label' => __('Biography')]); ?>
+                    <?= $this->Form->input('biography',
+                        [
+                            'label' => __('Biography'),
+                            'data-provide' => 'markdown',
+                            'data-iconlibrary' => 'fa',
+                            'data-hidden-buttons' => 'cmdImage',
+                            'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                            'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
+                        ]
+                    ); ?>
                     <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
                     <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
 
@@ -71,4 +80,13 @@
         <?= $this->Form->end() ?>
     </div>
 </div>
-<?= $this->Html->script(['bootstrap/bootstrap-switch.min', 'users/edit'], ['block' => 'scriptBottom']); ?>
+<?= $this->Html->script([
+    'bootstrap/bootstrap-switch.min',
+    'users/edit',
+    'markdown/markdown',
+    'markdown/to-markdown',
+    'bootstrap/bootstrap-markdown',
+], ['block' => 'scriptBottom']);
+if ($this->request->session()->read('lang') == 'fr_CA')
+echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+?>

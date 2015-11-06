@@ -111,7 +111,7 @@ class ProjectsControllerTest extends IntegrationTestCase
             'link' => 'http://website.com',
             'description' => 'bla bla',
             'accepted' => 1,
-            'archived' => 1
+            'archived' => 1,
         ];
         $this->post('/projects/add', $data);
 
@@ -425,7 +425,8 @@ class ProjectsControllerTest extends IntegrationTestCase
             'link' => 'http://website.com',
             'description' => 'bla bla',
             'accepted' => 0,
-            'archived' => 0
+            'archived' => 0,
+            'mission-0' => '[{"name":"name","value":"1"},{"name":"description","value":"1"},{"name":"competence","value":"1"},{"name":"type_missions[_ids]","value":""},{"name":"type_missions[_ids][]","value":"1"},{"name":"session","value":"0"},{"name":"length","value":"0"},{"name":"mission_levels[_ids]","value":""},{"name":"mission_levels[_ids][]","value":"1"},{"name":"internNbr","value":"1"}]'
         ];
         
         $this->session(['Auth.User.id' => 2]);

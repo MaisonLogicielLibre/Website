@@ -112,4 +112,25 @@ class SidebarCell extends Cell
 
         $this->set(compact('user', 'object', 'isMember', 'isOwner'));
     }
+
+    /**
+     * mission method.
+     * @param int $missionId missionId
+     *
+     * @return void
+     */
+    public function mission($missionId)
+    {
+        $this->loadModel('Users');
+        $this->loadModel('Missions');
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        $object = $this->Missions->findById($missionId)->first();
+        $isMentor = false;
+        if ($user){
+            $isMentor = $user->isMentorOf($object->project_id);
+        }
+
+        $this->set(compact('user', 'object', 'isMentor'));
+    }
 }

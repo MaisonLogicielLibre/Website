@@ -12,6 +12,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 
 /**
  * Missions controller
@@ -24,14 +27,19 @@ use Cake\Event\Event;
  */
 class MissionsController extends AppController
 {
+    use MailerAwareTrait;
 
     private $_permissions = [
         'index' => ['list_missions_all'],
         'add' => ['add_mission'],
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
+        'editAccepted' => ['edit_mission', 'edit_missions'],
+        'editArchived' => ['edit_mission', 'edit_missions'],
+    'editApplicationStatus' => ['edit_mission', 'edit_missions'],
         'view' => ['view_mission', 'view_missions'],
-        'delete' => ['delete_mission', 'delete_missions']
+        'delete' => ['delete_mission', 'delete_missions'],
+    'apply' => ['apply_mission']
     ];
 
     /**
@@ -48,6 +56,17 @@ class MissionsController extends AppController
                 return true;
             }
         }
+    }
+    
+    /**
+     * Add the RequestHandler component
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
     }
 
     /**
@@ -86,9 +105,33 @@ class MissionsController extends AppController
             ]
         );
 
+        $data = $this->DataTables->find(
+            'Applications',
+            [
+                'contain' => [
+                    'Users' => [
+                        'fields' => [
+                            'id', 'firstName', 'lastName'
+                        ],
+                    ]
+                ],
+                'fields' => [
+                    'id', 'accepted', 'rejected'
+                ],
+                'conditions' => ['mission_id' => $id]
+            ]
+        );
+        
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        
         $projectId = $mission->getProjectId();
-        $this->set(compact('mission', 'projectId'));
-        $this->set('_serialize', ['mission']);
+        $this->set(compact('mission', 'projectId', 'user'));
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
@@ -126,10 +169,9 @@ class MissionsController extends AppController
                         $this->Flash->error(__('The mission could not be saved. Please, try again.'));
                     }
                 }
-                $projects = $this->Missions->Projects->find('list', ['limit' => 200]);
                 $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
                 $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-                $this->set(compact('mission', 'projects', 'missionLevels', 'typeMissions', 'projectId'));
+                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'projectId'));
                 $this->set('_serialize', ['mission']);
             } else {
                 return $this->redirect(['controller' => 'projects', 'action' => 'index']);
@@ -137,5 +179,106 @@ class MissionsController extends AppController
         } else {
             return $this->redirect(['controller' => 'projects', 'action' => 'index']);
         }
+    }
+
+    /**
+     * Edit method
+     * @param string $id id
+     * @return redirect
+     */
+    public function edit($id = null)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' => ['Projects', 'TypeMissions', 'MissionLevels']
+            ]
+        );
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $project = $this->Missions->patchEntity($mission, $this->request->data);
+            if ($this->Missions->save($mission)) {
+                $this->Flash->success(__('The mission has been edited.'));
+                return $this->redirect(['action' => 'view', $mission->id]);
+            } else {
+                $this->Flash->error(__('The mission could not be edited. Please, try again.'));
+            }
+        }
+        $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
+        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
+        $this->set(compact('mission', 'typeMissions', 'missionLevels'));
+        $this->set('_serialize', ['mission']);
+    }
+
+    /**
+     * Edit archived method
+     * @param string $id id
+     * @return redirect
+     */
+    public function editArchived($id)
+    {
+        $this->autoRender = false;
+        $mission = $this->Missions->get($id);
+        $mission->editArchived(!($mission->isArchived()));
+        if ($this->Missions->save($mission)) {
+            if ($mission->archived) {
+                $this->Flash->success(__('The mission has been archived.'));
+            } else {
+                $this->Flash->success(__('The mission has been restored.'));
+            }
+            return $this->redirect(['action' => 'view', $id]);
+        } else {
+            $this->Flash->error(__('The mission could not be archived. Please, try again.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
+    }
+    
+    /**
+     * Apply method
+     * @param int $id id
+     * @return redirect
+     */
+    public function apply($id)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' => ['Users']
+            ]
+        );
+        
+        $applications = TableRegistry::get('Applications');
+        $userId = $this->request->session()->read('Auth.User.id');
+        
+        if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $application = $applications->newEntity();
+                
+                $application->editMissionId($mission->getId());
+                $application->editUserId($userId);
+                $application->editAccepted(false);
+                $application->editRejected(false);
+            
+                if ($applications->save($application)) {
+                    $this->Flash->success(__('You have applied on the mission'));
+                    $user = $this->Users->get($userId);
+                    $mentor = $mission->getMentor();
+                    
+                    $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                    $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
+                    $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+            
+                    return $this->redirect(['action' => 'view', $id]);
+                    
+                } else {
+                    $this->Flash->error(__('There was an error. Please, try again.'));
+                }
+            }
+        } else {
+            $this->Flash->error(__('You have already applied on this mission.'));
+            return $this->redirect(['action' => 'view', $id]);
+        }
+        
+        $this->set(compact('mission'));
+        $this->set('_serialize', ['mission']);
     }
 }

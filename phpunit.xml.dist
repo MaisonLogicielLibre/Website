@@ -38,7 +38,10 @@
 		</blacklist>
 		<whitelist>
 		    <directory suffix=".php">./src/Controller/</directory>
-		    <directory suffix=".php">./src/Model/</directory>
+			<directory suffix=".php">./src/Model/</directory>
+			<exclude>
+		    	<directory suffix=".php">./tests</directory>
+			</exclude>
 		</whitelist>
 	</filter>
 </phpunit>

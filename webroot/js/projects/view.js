@@ -8,7 +8,12 @@ $(document).ready(function () {
                 $('<a/>', {
                     href: missionsUrl + '/' + aData['id'],
                     text: aData['name']
-                })
+                })[0].outerHTML
+                + (aData['archived'] ?  ' ' +
+                $('<span/>', {
+                    class: 'label label-warning label-as-badge',
+                    text: validationTr
+                })[0].outerHTML : '')
             );
             $('td:eq(1)', nRow).html(
                 sessionTr[aData['session']]
@@ -32,4 +37,5 @@ $(document).ready(function () {
             }
         }
     });
+
 });

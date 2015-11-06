@@ -61,6 +61,12 @@ class UsersTable extends Table
             ]
         );
         $this->hasMany(
+            'Hashes',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
+        $this->hasMany(
             'Applications',
             [
                 'foreignKey' => 'user_id'
@@ -199,12 +205,26 @@ class UsersTable extends Table
             ->notEmpty('username')
             ->add(
                 'username',
-                'unique',
                 [
-                    'rule' => 'validateUnique',
-                    'provider' => 'table',
-                    'message' => __('This username is already taken.')
-                 ]
+                    'unique' => [
+                        'rule' => 'validateUnique',
+                        'provider' => 'table',
+                        'message' => __('This username is already taken.')
+                    ],
+                    'custom' => [
+                        'rule' => function ($value) {
+                            if (!preg_match('/^([a-z0-9A-Z_\-.])*$/', $value)) {
+                                return false;
+                            }
+                            return true;
+                        },
+                        'message' => __('Please use only letters (a-z), numbers, periods, and underscore.')
+                    ],
+                    'between' => [
+                        'rule' => ['lengthBetween', 3, 16],
+                        "message" => __('Please use between 3 and 16 characters.')
+                    ]
+                ]
             );
 
         $validator

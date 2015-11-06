@@ -15,6 +15,10 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
+use Cake\Utility\Hash;
 
 /**
  * Users Controller
@@ -28,6 +32,8 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+    use MailerAwareTrait;
+
     private $_permissions = [
         'add' => [],
         'edit' => ['edit_user', 'edit_users'],
@@ -61,7 +67,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['register', 'logout', 'login', 'index', 'view']);
+        $this->Auth->allow(['register', 'logout', 'login', 'index', 'view', 'recoverPassword', 'resetPassword']);
     }
 
     /**
@@ -73,6 +79,7 @@ class UsersController extends AppController
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
+        $this->loadComponent('Hash');
     }
 
     /**
@@ -103,8 +110,8 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                
-                if ($this->request->Session()->read('actionRef') != 'register/') {
+
+                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/'])) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
                 } else {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
@@ -186,7 +193,7 @@ class UsersController extends AppController
     public function register()
     {
         $user = $this->Users->newEntity();
-        
+
         $typeUser = $this->Users->TypeUsers->findByName('User')->first();
         $user->type_users = [$typeUser];
 
@@ -207,7 +214,7 @@ class UsersController extends AppController
                 );
             }
         }
-        
+
         $universities = $this->Users->Universities->find('list', ['limit' => 200]);
         $this->set(compact('user', 'universities'));
         $this->set('_serialize', ['user']);
@@ -370,6 +377,141 @@ class UsersController extends AppController
             $this->set('_serialize', ['user']);
         } else {
             return $this->redirect(['action' => 'delete', $this->request->session()->read('Auth.User.id')]);
+        }
+    }
+
+    /**
+     * ResetPassword method
+     *
+     * @param string $url url
+     *
+     * @return \Cake\Network\Response|void
+     */
+    public function resetPassword($url)
+    {
+        $hash = $this->Hash->hash($url);
+        $hash = TableRegistry::get('hashes')->findByHash($hash)->first();
+
+        if ($hash) {
+            $user = $this->Users->get($hash->getUserId());
+        } else {
+            $this->Flash->error(
+                __("This link seems corrupted. Please contact the administration team.")
+            );
+            return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+        }
+
+        if ($this->request->is(['patch', 'post', 'put'])) { //Search account
+            $user = $this->Users->patchEntity($user, $this->request->data);
+
+            $user->password = $user->editPassword($this->request->data['password']);
+
+            if ($this->Users->save($user)) {
+                $hash->setUsed(true);
+                $this->loadModel("Hashes");
+                $this->Hashes->save($hash);
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+            } else {
+                $this->Flash->error(
+                    __(
+                        'The user could not be saved. Please,
+                 try again.'
+                    )
+                );
+            }
+        } else {
+            $type = TableRegistry::get('hashTypes');
+            $typeId = $type->findByName("resetPassword")->first()->id;
+
+            if ($hash->getTypeId() == $typeId) {
+                if (!$hash->isUsed()) {
+                    if (!$hash->isExpired()) {
+                        $this->set(compact('user'));
+                    } else {
+                        $this->Flash->error(
+                            __("This link is expired. Please request a new link.")
+                        );
+                        return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+                    }
+                } else {
+                    $this->Flash->error(
+                        __("This link was already used. Please request a new link.")
+                    );
+                    return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+                }
+            } else {
+                $this->Flash->error(
+                    __("This link seems corrupted. Please contact the administration team.")
+                );
+                return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+            }
+        }
+    }
+
+    /**
+     * RecoverPassword method
+     *
+     * @param int $id idOfUser
+     *
+     * @return \Cake\Network\Response|void
+     */
+    public function recoverPassword($id = null)
+    {
+        if ($id) { //Send mail to the user to reset password
+            try {
+                $user = $this->Users->get($id);
+
+                //Generate the url to reset password
+                $url = $this->Hash->generateRandomString();
+
+                //Create the hash to reset password
+                $hash = TableRegistry::get('hashes')->newEntity();
+                $hash->setHash($this->Hash->hash($url));
+                $hash->setUser($user);
+                $hash->time = 86400;
+
+                $type = TableRegistry::get('hashTypes');
+                $type = $type->findByName("resetPassword")->first();
+                $hash->setType($type);
+
+                $this->Users->Hashes->save($hash);
+                $link = Router::url(['controller' => 'Users', 'action' => 'resetPassword', $url, '_full' => true]);
+
+                //Send the mail
+                $this->getMailer('User')->send('resetPassword', [$user, $link]);
+
+                 $this->Flash->success(__("The email has been send."));
+            } catch (Exception $e) {
+                $this->Flash->error(__("Error in sending email, please try again."));
+            }
+            return $this->redirect(['action' => 'recoverPassword']);
+        } elseif ($this->request->is('post')) { //Search account
+            $user = null;
+
+            //By Email
+            if ($this->request->data['Information']) {
+                $user = $this->Users->findByEmail($this->request->data['Information'])->first();
+            }
+            if ($this->request->data['Information'] && !$user) {
+                $user = $this->Users->findByUsername($this->request->data['Information'])->first();
+            }
+            if ($this->request->data['Information'] && !$user) {
+                $user = $this->Users->findByPhone($this->request->data['Information'])->first();
+            }
+
+            //Return a user if we found an account
+            $this->set(compact('user'));
+
+            if (!$user) {
+                $this->Flash->error(
+                    __("No account associated with this information, try again.")
+                );
+            } else {
+                $this->Flash->success(
+                    __("An account was found!")
+                );
+            }
         }
     }
 }

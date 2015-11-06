@@ -1,3 +1,4 @@
+<?php $Parsedown = new Parsedown(); ?>
 <div class="row">
     <?= $this->cell('Sidebar::organization', [$organization->id]); ?>
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -6,7 +7,7 @@
         </h2>
 
         <div class="bs-callout bs-callout-info" style="min-height:200px">
-            <p><?= $organization->getDescription(); ?></p>
+            <p><?= $Parsedown->text($organization->getDescription()); ?></p>
         </div>
     </div>
 
@@ -14,7 +15,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Projects') ?></h3>
+                    <h3 class="panel-title"><?= __('Projects') ?> <?= $this->Wiki->addHelper('Projects'); ?></h3>
                 </div>
                 <table class="table table-striped">
                     <?php foreach ($organization->projects as $project): ?>
@@ -54,19 +55,19 @@
                 <thead>
                 <tr>
                     <th><?= __('Name') ?></th>
-                    <th><?= __('Owner') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php $added = [] ?>
                 <?php foreach ($members as $member): ?>
                     <tr>
-                        <td><?= $this->html->link('(' . $member->getUsername() . ') ' . $member->getname(), ['controller' => 'Users', 'action' => 'view', $member->getId()]) ?></td>
-                        <?php if ($member->isOwnerOf($organization->id)) { ?>
-                            <td class="col-md-1 text-center"><i class="fa fa-check ico-green"></i></td>
-                        <?php } else { ?>
-                            <td class="col-md-1 text-center"><i class="fa fa-remove ico-red"></i></td>
-                        <?php } ?>
+                        <td>
+                            <?php
+                            echo $this->html->link('(' . $member->getUsername() . ') ' . $member->getname(), ['controller' => 'Users', 'action' => 'view', $member->getId()]);
+                            if ($member->isOwnerOf($organization->id)) : ?>
+                                <span class="label label-info label-as-badge"><?= __('Owner'); ?></span>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

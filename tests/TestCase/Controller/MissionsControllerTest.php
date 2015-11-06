@@ -85,8 +85,8 @@ class MissionsControllerTest extends IntegrationTestCase
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
-            'type_missions_.ids' => 1,
-            'mission_levels_.ids' => 1,
+            'type_missions' => ['_ids' => 1],
+            'mission_levels' => ['_ids' => 1],
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06'
         ];
@@ -114,8 +114,8 @@ class MissionsControllerTest extends IntegrationTestCase
             'internNbr' => 0,
             'project_id' => 1,
             'mentor_id' => 1,
-            'type_missions_.ids' => '',
-            'mission_levels_.ids' => '',
+            'type_missions' => ['_ids' => 1],
+            'mission_levels' => ['_ids' => 1],
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06'
         ];
@@ -179,6 +179,132 @@ class MissionsControllerTest extends IntegrationTestCase
         $data = [];
         $this->post('/missions/add/1', $data);
 
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test edit - Ok
+     *
+     * @return void
+     */
+    public function testEditOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+
+        $this->get('/missions/edit/1');
+        $this->post('/missions/edit/1', $data);
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test edit - No Permission
+     *
+     * @return void
+     */
+    public function testEditNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $data = [];
+        $this->post('/missions/edit/1', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit - No Authentification
+     *
+     * @return void
+     */
+    public function testEditNoAuth()
+    {
+        $data = [];
+        $this->post('/missions/edit/1', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived a mission - No Permission
+     *
+     * @return void
+     */
+    public function testArchivedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/missions/editArchived/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test archived a mission - No Authentification
+     *
+     * @return void
+     */
+    public function testArchivedNoAuth()
+    {
+        $this->post('/missions/editArchived/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test archived a mission - Ok
+     *
+     * @return void
+     */
+    public function testArchivedOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editArchived/1');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
+    }
+
+    /**
+     * Test restore a mission - Ok
+     *
+     * @return void
+     */
+    public function testRestoreOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editArchived/7');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 7]);
+    }
+    
+    /**
+     * Test apply - Ok
+     *
+     * @return void
+     */
+    public function testApplyOk()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    /**
+     * Test apply - Get
+     *
+     * @return void
+     */
+    public function testApplyGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/1');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test apply - No Authentification
+     *
+     * @return void
+     */
+    public function testApplyNoAuth()
+    {
+        $this->post('/missions/apply/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 }

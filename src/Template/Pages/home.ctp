@@ -1,3 +1,14 @@
+<div class="breadcrumb">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <?= __('We have') . ' <strong>' . $numberProjects . '</strong> ' . __('projects with') . ' <strong>' . $numberMissions . '</strong> ' . __('missions') ?>
+        </div>
+        <div class="col-sm-5 text-right">
+            <?= __('There are') . ' <strong>' . $numberUsers . '</strong> ' . __('registered users, including') . ' <strong>' . $numberStudents . '</strong> ' . __('confirmed students') ?><br/>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -27,7 +38,7 @@
     </div>
     <div class="row home-row">
         <div class="col-sm-6 ml2_box_height" align="center">
-           <hr>
+           <hr class="hr-black" />
             <h2 class="section-heading"><?= __("Our university Network"); ?></h2>
             <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'class' => 'img-responsive'], array('max-height' => '350px')) ?>
             <br>
@@ -36,12 +47,13 @@
                    href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Join our network'); ?></a>
             </div>
         </div>
-        <div class="col-sm-6 ml2_box_height home-block" align="center">
-            <hr>
-            <h2 class="section-heading"><?= __("Our generous sponsors"); ?></h2>
+        <div class="col-sm-6 ml2_box_height home-block" align="center" style="height:410px;">
+            <hr class="hr-black" />
+            <h2 class="section-heading"><?= __("Our founding partners"); ?></h2>
             <div>
                 <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
             </div>
+            <h2 class="section-heading"><?= __("Our sponsors"); ?></h2>
             <div>
                 <a href="https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
             </div>
@@ -56,7 +68,7 @@
     </div>
     <div class="row home-row">
         <div class="col-sm-6">
-            <hr>
+            <hr class="hr-black" />
             <h2 class="section-heading"><i class="fa fa-graduation-cap"></i><?= __("Are you a university student?"); ?></h2>
             <h4><?= __("Take our survey and help us serve you better"); ?> <i class="fa fa-arrow-right"></i></h4>
 			<div align=center>
@@ -85,7 +97,7 @@
             </ul>
         </div>
         <div class="col-sm-6">
-            <hr>
+            <hr class="hr-black" />
             <h2 class="section-heading"><i
                     class="fa fa-hand-o-right "></i> <?= __("Hire interns, graduates, and capstone."); ?></h2>
             <ul>
@@ -105,11 +117,11 @@
     </div>
     <div class="row home-row">
         <div class="col-sm-6">
-			<hr>
+			<hr class="hr-black" />
             <?php echo $this->element('News/news-table'); ?>
         </div>
 		<div class="col-sm-6">
-			<hr>
+			<hr class="hr-black" />
 			<?php echo $this->element('Meetup/meetup-table'); ?>
 		</div>
     </div>

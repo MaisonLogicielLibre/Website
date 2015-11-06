@@ -58,7 +58,10 @@ INSERT INTO `permissions` (`id`, `name`) VALUES
 (31, 'list_projects'),
 (32, 'list_projects_all'),
 (33, 'list_organizations'),
-(34, 'list_organizations_all');
+(34, 'list_organizations_all'),
+(35, 'apply_mission'),
+(36, 'view_mission'),
+(37, 'view_missions');
 
 --
 -- Contenu de la table `permissions_type_users`
@@ -113,7 +116,8 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 (46, 3, 32),
 (47, 3, 33),
 (48, 3, 34),
-(49, 5, 5);
+(49, 5, 5),
+(50, 1, 35);
 
 --
 -- Contenu de la table `type_users`
@@ -136,7 +140,7 @@ INSERT INTO `universities` (`id`, `name`, `website`) VALUES
 
 INSERT INTO `mll_site`.`mission_levels` (`id`, `name`) VALUES (NULL, '1'), (NULL, '2'), (NULL, '3'), (NULL, '4'), (NULL, 'Master');
 INSERT INTO `mll_site`.`type_missions` (`id`, `name`) VALUES (NULL, 'Intern'), (NULL, 'Volunteer'), (NULL, 'Master'), (NULL, 'Capstone');
-
+INSERT INTO `mll_site`.`hash_types` (`id`, `name`) VALUES (NULL, 'resetPassword');
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

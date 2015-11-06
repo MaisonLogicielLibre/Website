@@ -6,7 +6,7 @@
             <div class="form-group clearfix">
                 <?= $this->Form->label('username', __('Choose your username'), ['class' => 'col-sm-2 control-label']); ?>
                 <div class="col-sm-10">
-                    <?= $this->Form->input('username', ['label' => false, 'placeholder' => __('Username'), 'autocomplete' => 'off']); ?>
+                    <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Username'), 'autocomplete' => 'off']); ?>
                 </div>
             </div>
             <br/>
@@ -58,9 +58,8 @@
             <br/>
         </fieldset>
 
-        <?= $this->Form->button(__('Register'), ['class' => 'btn-success']) ?>
-        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>"
-           class="btn-primary btn"><?= __("I have an account"); ?></a>
+        <?= $this->Form->button(__('Register'), ['class' => 'btn-success']) ?> -
+        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>"><?= __("I have an account"); ?></a>
         <?= $this->Form->end() ?>
     </div>
 </div>

@@ -1,31 +1,29 @@
 <?php
 /**
- * Tests for ApplicationTable
+ * Tests for ApplicationsTable
  *
  * @category Test
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/Site
  */
-
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\CommentsTable;
-use Cake\I18n\Time;
+use App\Model\Table\ApplicationsTable;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
- * Tests for ApplicationTable
+ * Tests for ApplicationsTable
  *
  * @category Test
  * @package  Website
- * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
+ * @link     https://github.com/MaisonLogicielLibre/Site
  */
 class ApplicationsTableTest extends TestCase
 {
@@ -39,15 +37,23 @@ class ApplicationsTableTest extends TestCase
         'app.applications',
         'app.projects',
         'app.missions',
-        'app.organizations',
-        'app.organizations_projects',
+        'app.users',
         'app.universities',
         'app.comments',
-        'app.users',
         'app.projects_contributors',
+        'app.organizations',
+        'app.organizations_projects',
         'app.projects_mentors',
         'app.type_users',
+        'app.permissions',
+        'app.permissions_type_users',
         'app.type_users_users',
+        'app.organizations_owners',
+        'app.organizations_members',
+        'app.mission_levels',
+        'app.missions_mission_levels',
+        'app.type_missions',
+        'app.missions_type_missions'
     ];
 
     /**
@@ -75,134 +81,6 @@ class ApplicationsTableTest extends TestCase
     }
 
     /**
-     * Test getId
-     * @return void
-     */
-    public function testGetId()
-    {
-        $id = 1;
-        $expected = 1;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getId();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getPresentation
-     * @return void
-     */
-    public function testGetPresentation()
-    {
-        $id = 1;
-        $expected = 'Du texte';
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getPresentation();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getStartDate
-     * @return void
-     */
-    public function testGetStartDate()
-    {
-        $id = 1;
-        $expected = new Time('2015-09-28');
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getStartDate();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getEndDate
-     * @return void
-     */
-    public function testGetEndDate()
-    {
-        $id = 1;
-        $expected = new Time('2015-09-28');
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getEndDate();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getWeeklyHours
-     * @return void
-     */
-    public function testGetWeeklyHours()
-    {
-        $id = 1;
-        $expected = '15';
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getWeeklyHours();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getIsAccepted
-     * @return void
-     */
-    public function testGetIsAccepted()
-    {
-        $id = 1;
-        $expected = false;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getIsAccepted();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getIsArchived
-     * @return void
-     */
-    public function testGetIsArchived()
-    {
-        $id = 1;
-        $expected = false;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getIsArchived();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test getProjectId
-     * @return void
-     */
-    public function testGetProjectId()
-    {
-        $id = 1;
-        $expected = 1;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getProjectId();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
      * Test getUserId
      * @return void
      */
@@ -217,39 +95,87 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-
+    
     /**
-     * Test getTypeApplicationId
+     * Test getRejected
      * @return void
      */
-    public function testGetTypeApplicationId()
+    public function testGetRejected()
     {
         $id = 1;
-        $expected = 1;
+        $expected = false;
 
         $application = $this->Applications->get($id);
 
-        $result = $application->getTypeApplicationId();
+        $result = $application->getRejected();
 
         $this->assertEquals($expected, $result);
     }
-
+    
     /**
-     * Test editPresentation
+     * Test getAccepted
      * @return void
      */
-    public function testEditPresentation()
+    public function testGetAccepted()
     {
         $id = 1;
-        $expected = 'stuff';
+        $expected = false;
 
         $application = $this->Applications->get($id);
 
-        $result = $application->editPresentation($expected);
+        $result = $application->getAccepted();
 
         $this->assertEquals($expected, $result);
     }
+    
+    /**
+     * Test edituserId
+     * @return void
+     */
+    public function testEditUserId()
+    {
+        $id = 1;
+        $expected = 2;
 
+        $application = $this->Applications->get($id);
+
+        $result = $application->edituserId(2);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editMissionId
+     * @return void
+     */
+    public function testEditMissionId()
+    {
+        $id = 1;
+        $expected = 2;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editMissionId(2);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editRejected
+     * @return void
+     */
+    public function testEditRejected()
+    {
+        $id = 1;
+        $expected = true;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editRejected(true);
+
+        $this->assertEquals($expected, $result);
+    }
+    
     /**
      * Test editAccepted
      * @return void
@@ -261,64 +187,17 @@ class ApplicationsTableTest extends TestCase
 
         $application = $this->Applications->get($id);
 
-        $result = $application->editAccepted($expected);
+        $result = $application->editAccepted(true);
 
         $this->assertEquals($expected, $result);
     }
-
+    
     /**
-     * Test editArchived
+     * Test validationDefault method
+     *
      * @return void
      */
-    public function testEditArchived()
-    {
-        $id = 1;
-        $expected = true;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->editArchived($expected);
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test editUserId
-     * @return void
-     */
-    public function testEditUserId()
-    {
-        $id = 1;
-        $expected = 3;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->editUserId($expected);
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test editProjectId
-     * @return void
-     */
-    public function testEditProjectId()
-    {
-        $id = 1;
-        $expected = 3;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->editProjectId($expected);
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
-     * Test validation
-     * @return void
-     */
-    public function testValidation()
+    public function testValidationDefault()
     {
         $validator = new Validator();
 
@@ -326,11 +205,12 @@ class ApplicationsTableTest extends TestCase
 
         $result = $this->Applications->validationDefault($validator);
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($validator, $result);
     }
 
     /**
-     * Test buildRules
+     * Test buildRules method
+     *
      * @return void
      */
     public function testBuildRules()
