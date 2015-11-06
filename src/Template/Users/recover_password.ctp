@@ -6,15 +6,15 @@ if (isset($user) and $user):
             <img src="<?= $user->getAvatar() ?>" alt="<?= $user->getAvatar() ?>" class="img-responsive center-block" width="200px" />
         </div>
         <div class="col-xs-8">
-            Username: <?= $user->username ?><br/><br/>
+            <?= __('Username'); ?> : <?= $user->username ?><br/><br/>
 
-            Firstname: <?= $user->firstName ?><br/>
-            Lastname : <?= $user->lastName ?><br/><br/>
+            <?= __('Firstname'); ?> : <?= $user->firstName ?><br/>
+            <?= __('Lastname'); ?> : <?= $user->lastName ?><br/><br/>
 
-            Email : <?= $user->getCensoredEmail() ?><br/><br/><br/><br/>
+            <?= __('Email'); ?> : <?= $user->getCensoredEmail() ?><br/><br/><br/><br/>
 
-            <a class="btn btn-success" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword', $user->id]);?>">Send link by email</a>
-            <a class="btn btn-danger" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword']);?>">Search again</a>
+            <a class="btn btn-success" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword', $user->id]);?>"><?= ('Send link by email'); ?></a>
+            <a class="btn btn-danger" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword']);?>"><?= ('Search again'); ?></a>
         </div>
     </div>
 <?php
