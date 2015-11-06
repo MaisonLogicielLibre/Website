@@ -157,7 +157,7 @@ function validateForm(form, tab) {
     $(form.find('.multicheckbox')).each(function (i, v) {
         if ($(v).find('input:checked').length == 0) {
             if (!$(v).find('.help-block').length) {
-                createError($(v).find('[type=hidden]'), null);
+                createError($(v).find('[type=hidden]'), multiselectTr);
             }
             multiselectError = true;
         }
@@ -183,7 +183,7 @@ function validateInput(input) {
 
     if ($(input).attr('name') == 'type_missions[_ids][]' || $(input).attr('name') == 'mission_levels[_ids][]') {
         if (div.find('input:checked').length == 0) {
-            createError(div.find('[type=hidden]'), null);
+            createError(div.find('[type=hidden]'), multiselectTr);
             multiselectError = true;
         }
     }
