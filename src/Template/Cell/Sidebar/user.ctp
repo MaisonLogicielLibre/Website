@@ -46,7 +46,7 @@
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x" style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
-                            </span> <?= __('Change email') ?>
+                            </span> <?= __('Change my email') ?>
                         </a>
                     </li>
                     <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
@@ -60,7 +60,7 @@
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-unlock-alt  fa-stack-1x"
                                                style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Change password') ?></a></li>
+                                        </span> <?= __('Change my password') ?></a></li>
                     <!-- Modify phone link/form -->
                     <li>
                         <hr/>
@@ -76,7 +76,7 @@
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-pencil fa-stack-1x"
                                                style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Edit profile') ?></a>
+                                        </span> <?= __('Edit my profile') ?></a>
                     </li>
                     <?php
                     endif;
@@ -105,7 +105,7 @@
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-trash fa-stack-1x"
                                                style="color:<?= ($this->request->action == 'delete') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Delete profile') ?></a>
+                                        </span> <?= __('Delete my account') ?></a>
                     </li>
                     <?php
                     endif;
