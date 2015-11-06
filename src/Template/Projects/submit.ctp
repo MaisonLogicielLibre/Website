@@ -15,8 +15,8 @@
                     <div><a href="<?= $this->Wiki->buildLink('projects:submit'); ?>"><?= __('Need more informations?')  ?></a></div><br/>
                     <?= $this->Form->create($project, ['name' => 'project', 'id' => 'createProject']); ?>
                     <?php
-                    echo $this->Form->input('name', ['label' => __('Name of the project')]);
-                    echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
+                    echo $this->Form->input('name', ['label' => __('Name of the project ')]);
+                    echo $this->Form->input('link', ['pattern' => '^(https?):\/\/(.*)\.(.+)', 'title' => 'http://website.ca','label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
                     echo $this->Form->input('description',
                         [
                             'label' => __('Description of the project'),
