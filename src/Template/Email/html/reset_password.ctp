@@ -16,8 +16,8 @@
 
 <?= __('Hello');?> <?= $username ?>,<br/><br/>
 
-<?= __('We have received a password reset request for your account'); ?>.<br/><br/>
+<?= __('We have received a password reset request from your account'); ?>.<br/><br/>
 
-<a href="<?= $link ?>"><?= __('Here is the link to reset your password'); ?></a><br/><br/>
+<a href="<?= $link ?>"><?= __('Click here to reset your password'); ?></a><br/><br/>
 
-<?= __('If it is not you who is asking Reset all this password, please do not consider this e-mail and delete it'); ?>.
+<?= __("Ignore this email if you did not request this password reset. Don't worry! Your account is safe!"); ?>.
