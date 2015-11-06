@@ -477,6 +477,6 @@ footer {
     border-radius: 1em;
 }
 
-.required label:after {
+.required > label:after {
     content: ' *';
 }
