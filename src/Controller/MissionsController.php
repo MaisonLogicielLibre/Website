@@ -104,11 +104,20 @@ class MissionsController extends AppController
             ]
             ]
         );
-        
+
         $data = $this->DataTables->find(
-            'applications',
+            'Applications',
             [
-            'contain' => ['Users']
+                'contain' => [
+                    'Users' => [
+                        'fields' => [
+                            'id', 'firstName', 'lastName'
+                        ],
+                    ]
+                ],
+                'fields' => [
+                    'id', 'accepted', 'rejected'
+                ]
             ]
         );
         
@@ -119,7 +128,7 @@ class MissionsController extends AppController
         $this->set(
             [
                 'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data', 'mission'])
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
             ]
         );
     }
