@@ -12,13 +12,12 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-?>
 
-<?= __('Hello');?> <?= $username ?>,<?= "\r\n\r\n"; ?>
+echo __('Hello') . ' ' . $username . ',' . "\r\n\r\n";
 
-<?= __('We have received a password reset request for your account'); ?>.<?= "\r\n\r\n"; ?>
+echo __('We have received a password reset request from your account') . '.' . "\r\n\r\n";
 
-<?= __('Here is the link to reset your password'); ?> :<?= "\r\n"; ?>
-<?= $link ?><?= "\r\n\r\n"; ?>
+echo __('Click here to reset your password') . ' : ' . "\r\n";
+echo  $link . "\r\n\r\n";
 
-<?= __('If it is not you who is asking Reset all this password, please do not consider this e-mail and delete it'); ?>.
+echo  __("Ignore this email if you did not request this password reset. Don't worry! Your account is safe!");
