@@ -1,6 +1,5 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
-<div class="row">
 <?= $this->cell('Sidebar::mission', [$mission->id]); ?>
 <?php $Parsedown = new Parsedown(); ?>
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">

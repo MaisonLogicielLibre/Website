@@ -29,6 +29,7 @@ class ProjectsController extends AppController
         'add' => ['add_project'],
         'submit' => ['submit_project'],
         'edit' => ['edit_project', 'edit_projects'],
+        'editMentor' => ['edit_project', 'edit_projects'],
         'editState' => ['edit_project', 'edit_projects'],
         'editAccepted' => ['edit_project', 'edit_projects'],
         'editArchived' => ['edit_project', 'edit_projects'],
@@ -122,7 +123,7 @@ class ProjectsController extends AppController
                 )->orWhere(
                     [
                         'archived' => 0,
-                        'm.user_id' => (!is_null($user) ? $user->getId() : '')
+                        'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
                         ]
                 )->group('Projects.id');
 
@@ -256,6 +257,7 @@ class ProjectsController extends AppController
                     ],
                     'Users'
                 ],
+                
                 'conditions' => ['project_id' => $id],
                 'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
             ]
@@ -508,5 +510,83 @@ class ProjectsController extends AppController
             }
         }
         return $post;
+    }
+
+    /**
+     * EditMentor method
+     * @param int $id id
+     * @return redirect
+     */
+    public function editMentor($id = null)
+    {
+        $project = $this->Projects->get(
+            $id,
+            [
+            'contain' => ['Organizations', 'Mentors', 'Missions']
+            ]
+        );
+        
+        $organizations = TableRegistry::get('Organizations');
+        $users = TableRegistry::get('Users');
+        $mentors = $project->getMentors();
+
+        
+        $members = [];
+        
+        foreach ($project->getOrganizations() as $organization) {
+            $organization = $organizations->get($organization->getId(), ['contain' => ['Members']]);
+            
+            foreach ($organization->getMembers() as $member) {
+                $members[] = $users->get($member->getId());
+            }
+        }
+        
+        $members = array_unique($members);
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if (count($this->request->data)) {
+                $usersSelected = $this->request->data['users'];
+                $project->modifyMentors($usersSelected);
+                
+                $mentorless = $project->checkMentorless();
+
+                if (!count($mentorless)) {
+                    $missions = TableRegistry::get('Missions');
+                    foreach ($project->getMissions() as $mission) {
+                        $missions->save($mission);
+                    }
+                    
+                    if ($this->Projects->save($project)) {
+                        $this->Flash->success(__('The mentors have been modified.'));
+                        return $this->redirect(['action' => 'view', $project->id]);
+                    } else {
+                        $this->Flash->error(__('The mentors could not be modified. Please,try again.'));
+                    }
+                } else {
+                    $mentorMessage = "";
+                    $missionMessage = "";
+                    $mentorsId = [];
+                    $mentorsId[] = 0;
+                    foreach ($mentorless as $mission) {
+                        $missionMessage = $missionMessage . $mission->getName() . ", ";
+                        if (!array_search($mission->getMentorId(), $mentorsId)) {
+                            $mentorsId[] = $mission->getMentorId();
+                            $mentor = $this->Users->findById($mission->getMentorId())->first();
+                            $mentorMessage = $mentorMessage . $mentor->getName() . ", ";
+                        }
+                    }
+                    
+                    $mentorMessage = substr($mentorMessage, 0, -2);
+                    $missionMessage = substr($missionMessage, 0, -2);
+                    
+                    $this->Flash->error($mentorMessage . " " . __('would cause') . " " . $missionMessage . " " . __('to become mentorless'));
+                }
+            } else {
+                $this->Flash->error(__('There must be at least one mentor'));
+            }
+        }
+       
+        $this->set(compact('project', 'members', 'mentors'));
+        $this->set('_serialize', ['project']);
     }
 }
