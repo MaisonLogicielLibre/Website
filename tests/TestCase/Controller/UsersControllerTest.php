@@ -254,6 +254,7 @@ class UsersControllerTest extends IntegrationTestCase
             'confirm_password' => 'allo',
             'email' => 'bla@bla.com',
             'confirm_email' => 'bla@bla.com',
+            'universitie_id' => 1
         ];
         $this->post('/users/register', $data);
 

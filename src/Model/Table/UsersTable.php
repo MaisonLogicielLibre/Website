@@ -253,6 +253,10 @@ class UsersTable extends Table
         $validator
             ->add('isStudent', 'valid', ['rule' => 'boolean']);
 
+        $validator
+            ->requirePresence('universitie_id', 'create')
+            ->notEmpty('universitie_id');
+
         return $validator;
     }
     /**
