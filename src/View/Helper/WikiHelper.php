@@ -58,7 +58,7 @@ class WikiHelper extends Helper
      */
     public function addHelper($pageName)
     {
-        $link = "<a title='". __('Go to wiki') ."' href='" . $this->buildLink($pageName) . "'><i class='fa fa-question-circle'></i></a>";
+        $link = "<a title='". __('Go to wiki') ."' href='" . $this->buildLink($pageName) . "' target='_blank'><i class='fa fa-question-circle'></i></a>";
         return $link;
     }
 }
