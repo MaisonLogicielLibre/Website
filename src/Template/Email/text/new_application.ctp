@@ -13,9 +13,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-    echo __('Hello') . ' ' . $mentorname . ",\r\n\r\n";
+    echo __('Hello {0}', $mentorname) . ",\r\n\r\n";
 
-    echo $username . ' ' . __('have applied to the mission') . ' ' . $missionname . ".\r\n\r\n";
+    echo __('{0} have applied to the mission {1}', [$username, $missionname]) . ".\r\n\r\n";
 
     echo __('Click here to see your mission details') . ' : ' . $linkMission . "\r\n";
     echo __("Click here to view the candidate's profile") . ' : ' . $linkUser . "\r\n\r\n";
