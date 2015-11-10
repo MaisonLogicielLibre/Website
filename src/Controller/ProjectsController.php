@@ -12,6 +12,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -25,6 +26,8 @@ use Cake\ORM\TableRegistry;
  */
 class ProjectsController extends AppController
 {
+    use MailerAwareTrait;
+
     private $_permissions = [
         'add' => ['add_project'],
         'submit' => ['submit_project'],
@@ -340,18 +343,28 @@ class ProjectsController extends AppController
         if ($this->request->is('ajax')) {
             $this->autoRender = false;
             $data = $this->request->data;
-            $projects = $this->Projects->get(intval($data['id']));
+            $project = $this->Projects->get(intval($data['id']), ['contain' => ['Mentors']]);
             if ($data['state'] == '4') { // Archived
-                $projects->editArchived($data['stateValue']);
+                $project->editArchived($data['stateValue']);
+                foreach ($project->getMentors() as $mentor) {
+                    if ($data['stateValue']) {
+                        $this->getMailer('Project')->send('archiveProject', [$project, $mentor]);
+                    } else {
+                        $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
+                    }
+                }
             } elseif ($data['state'] == '3') { // Approved
-                if (!$projects->isAccepted()) {
-                    $projects->editAccepted($data['stateValue']);
+                if (!$project->isAccepted()) {
+                    $project->editAccepted($data['stateValue']);
+                    foreach ($project->getMentors() as $mentor) {
+                        $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
+                    }
                 }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
             }
             echo json_encode(['success', __('Your change has been saved')]);
-            $this->Projects->save($projects);
+            $this->Projects->save($project);
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
             $this->redirect(['action' => 'index']);
@@ -366,9 +379,12 @@ class ProjectsController extends AppController
     public function editAccepted($id)
     {
         $this->autoRender = false;
-        $project = $this->Projects->get($id);
+        $project = $this->Projects->get($id, ['contain' => ['Mentors']]);
         $project->editAccepted(1);
         if ($this->Projects->save($project)) {
+            foreach ($project->getMentors() as $mentor) {
+                $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
+            }
             $this->Flash->success(__('The project has been accepted.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -385,9 +401,16 @@ class ProjectsController extends AppController
     public function editArchived($id)
     {
         $this->autoRender = false;
-        $project = $this->Projects->get($id);
+        $project = $this->Projects->get($id, ['contain' => ['Mentors']]);
         $project->editArchived(!($project->isArchived()));
         if ($this->Projects->save($project)) {
+            foreach ($project->getMentors() as $mentor) {
+                if ($project->isArchived()) {
+                    $this->getMailer('Project')->send('archiveProject', [$project, $mentor]);
+                } else {
+                    $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
+                }
+            }
             $this->Flash->success(__('The project has been saved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
