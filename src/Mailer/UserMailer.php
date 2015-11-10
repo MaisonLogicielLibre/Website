@@ -24,7 +24,7 @@ class UserMailer extends Mailer
             ->emailFormat('both')
             ->from(['maisonlogiciellibre@etsmtl.net' => 'Maison du Logiciel Libre'])
             ->to($user->getEmail())
-            ->subject('Reset password')
+            ->subject(__('Reset password'))
             ->set(['username' => $user->username, 'link' => $link]);
     }
 }
