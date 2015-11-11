@@ -5,6 +5,7 @@
         <?= $this->Form->create($user); ?>
         <fieldset>
             <legend><?= __('Change Password') ?></legend>
+            <input type="text" style="display:none;"/>
             <?= $this->Form->input('password', ['value' => '', 'label' => __('Choose a new password'), 'placeholder' => __('Password')]); ?>
             <?= $this->Form->input('confirm_password', ['value' => '', 'type' => 'password', 'label' => __('Confirm the new password'), 'placeholder' => __('Password')]); ?>
             </br />

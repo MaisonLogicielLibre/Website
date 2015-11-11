@@ -289,11 +289,30 @@ class UsersControllerTest extends IntegrationTestCase
         $data = [
             'old_password' => 'toto',
             'password' => 'allo',
-            'password_email' => 'allo',
+            'password_confirm' => 'allo',
         ];
         $this->get('/users/password/3');
         $this->post('/users/password/3', $data);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 3]);
+    }
+
+    /**
+     * Test password - Wrong Old Password
+     *
+     * @return void
+     */
+    public function testPasswordWrongOldPassword()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = [
+            'old_password' => 'rrrrrrr',
+            'password' => 'allo',
+            'password_confirm' => 'tr',
+        ];
+        $this->get('/users/password/3');
+        $this->post('/users/password/3', $data);
+        $this->assertResponseSuccess();
     }
 
     /**
