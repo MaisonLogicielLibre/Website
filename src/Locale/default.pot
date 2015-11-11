@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-11-06 21:11+0000\n"
+"POT-Creation-Date: 2015-11-11 15:34+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -39,43 +39,43 @@ msgstr ""
 msgid "The comment could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:165
+#: Controller/MissionsController.php:166
 msgid "The mission has been saved."
 msgstr ""
 
-#: Controller/MissionsController.php:168
+#: Controller/MissionsController.php:169
 msgid "The mission could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:199
+#: Controller/MissionsController.php:200
 msgid "The mission has been edited."
 msgstr ""
 
-#: Controller/MissionsController.php:202
+#: Controller/MissionsController.php:203
 msgid "The mission could not be edited. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:223
+#: Controller/MissionsController.php:224
 msgid "The mission has been archived."
 msgstr ""
 
-#: Controller/MissionsController.php:225
+#: Controller/MissionsController.php:226
 msgid "The mission has been restored."
 msgstr ""
 
-#: Controller/MissionsController.php:229
+#: Controller/MissionsController.php:230
 msgid "The mission could not be archived. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:261
+#: Controller/MissionsController.php:262
 msgid "You have applied on the mission"
 msgstr ""
 
-#: Controller/MissionsController.php:272
+#: Controller/MissionsController.php:273
 msgid "There was an error. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:276
+#: Controller/MissionsController.php:277
 msgid "You have already applied on this mission."
 msgstr ""
 
@@ -218,7 +218,7 @@ msgstr ""
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:170;206;251;290;328;413
+#: Controller/UsersController.php:170;206;251;290;329;414
 msgid "The user has been saved."
 msgstr ""
 
@@ -226,7 +226,7 @@ msgstr ""
 msgid "The new email could not be saved. Please,\n                try again."
 msgstr ""
 
-#: Controller/UsersController.php:210;417
+#: Controller/UsersController.php:210;418
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
@@ -234,43 +234,43 @@ msgstr ""
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:332
+#: Controller/UsersController.php:333
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:365
+#: Controller/UsersController.php:366
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:368
+#: Controller/UsersController.php:369
 msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:399;445
+#: Controller/UsersController.php:400;446
 msgid "This link seems corrupted. Please contact the administration team."
 msgstr ""
 
-#: Controller/UsersController.php:433
+#: Controller/UsersController.php:434
 msgid "This link is expired. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:439
+#: Controller/UsersController.php:440
 msgid "This link was already used. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:484
+#: Controller/UsersController.php:485
 msgid "The email has been send."
 msgstr ""
 
-#: Controller/UsersController.php:486
+#: Controller/UsersController.php:487
 msgid "Error in sending email, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:508
+#: Controller/UsersController.php:509
 msgid "No account associated with this information, try again."
 msgstr ""
 
-#: Controller/UsersController.php:512
+#: Controller/UsersController.php:513
 msgid "An account was found!"
 msgstr ""
 
@@ -665,7 +665,7 @@ msgstr ""
 #: Template/Users/add.ctp:35
 #: Template/Users/edit.ctp:67
 #: Template/Users/email.ctp:13
-#: Template/Users/password.ctp:13
+#: Template/Users/password.ctp:14
 #: Template/Users/reset_password.ctp:9
 msgid "Submit"
 msgstr ""
@@ -812,7 +812,7 @@ msgid "Register"
 msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:12
-msgid "November 3"
+msgid "First Tuesday of each month"
 msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:14
@@ -824,7 +824,7 @@ msgid "Linux meetup"
 msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:21
-msgid "November 11"
+msgid "Biweekly"
 msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:22
@@ -833,6 +833,18 @@ msgstr ""
 
 #: Template/Element/Meetup/meetup-table.ctp:25
 msgid "Odoo meetup"
+msgstr ""
+
+#: Template/Element/Meetup/meetup-table.ctp:28
+msgid "November 28"
+msgstr ""
+
+#: Template/Element/Meetup/meetup-table.ctp:29
+msgid "Second Coding Party of Nit project : L'objectif est de faire se rencontrer les développeurs intéressés par le projet Nit, ou simplement curieux, en leur permettant de faire ce qu'ils préfèrent faire dans la vie: coder, manger et boire."
+msgstr ""
+
+#: Template/Element/Meetup/meetup-table.ctp:31
+msgid "Corn it up"
 msgstr ""
 
 #: Template/Element/Missions/addForm.ctp:3
@@ -1073,7 +1085,7 @@ msgstr ""
 #: Template/Users/delete.ctp:23
 #: Template/Users/edit.ctp:68
 #: Template/Users/email.ctp:14
-#: Template/Users/password.ctp:14
+#: Template/Users/password.ctp:15
 msgid "Cancel"
 msgstr ""
 
@@ -1327,7 +1339,7 @@ msgstr ""
 msgid "Members"
 msgstr ""
 
-#: Template/Organizations/view.ctp:58
+#: Template/Organizations/view.ctp:68
 #: Template/Users/view.ctp:64
 msgid "Owner"
 msgstr ""
@@ -2170,7 +2182,7 @@ msgid "Confirm your password to confirm the change"
 msgstr ""
 
 #: Template/Users/email.ctp:11
-#: Template/Users/password.ctp:8;9;11
+#: Template/Users/password.ctp:9;10;12
 #: Template/Users/register.ctp:17;21
 #: Template/Users/reset_password.ctp:6;7
 msgid "Password"
@@ -2202,17 +2214,17 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
-#: Template/Users/password.ctp:8
+#: Template/Users/password.ctp:9
 #: Template/Users/reset_password.ctp:6
 msgid "Choose a new password"
 msgstr ""
 
-#: Template/Users/password.ctp:9
+#: Template/Users/password.ctp:10
 #: Template/Users/reset_password.ctp:7
 msgid "Confirm the new password"
 msgstr ""
 
-#: Template/Users/password.ctp:11
+#: Template/Users/password.ctp:12
 msgid "Confirm your current password to confirm the change"
 msgstr ""
 
