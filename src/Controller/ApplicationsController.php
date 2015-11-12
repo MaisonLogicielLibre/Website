@@ -155,7 +155,7 @@ class ApplicationsController extends AppController
 
                 $application->editRejected(true);
                 if ($this->Applications->save($application)) {
-                    $this->getMailer('Application')->send('.dkjfghjkdhfghdsgfkjdh', [$application]);
+                    $this->getMailer('Application')->send('rejectedOnApplication', [$application]);
                     $this->Flash->success(__('The application has been saved.'));
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {

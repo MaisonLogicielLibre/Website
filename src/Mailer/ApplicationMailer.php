@@ -47,14 +47,23 @@ class ApplicationMailer extends Mailer
 
 	public function rejectNoMorePosition($application)
 	{
-
-		debug($application->getUser());
-
-		$this->transport('main')
+		$this
+			->transport('main')
 			->emailFormat('both')
 			->from(['maisonlogiciellibre@etsmtl.net' => 'Maison du Logiciel Libre'])
 			->to($application->getUser()->getEmail())
 			->subject(__('All positions available for {0} have been filled', $application->getMission()->getName()))
+			->set(compact('application'));
+	}
+
+	public function rejectedOnApplication($application)
+	{
+		$this
+			->transport('main')
+			->emailFormat('both')
+			->from(['maisonlogiciellibre@etsmtl.net' => 'Maison du Logiciel Libre'])
+			->to($application->getUser()->getEmail())
+			->subject(__('You\'ve been rejected for {0}', $application->getMission()->getName()))
 			->set(compact('application'));
 	}
 }
