@@ -110,15 +110,28 @@ class Mission extends Entity
     {
         return $this->_properties['internNbr'];
     }
-    
+
+    /**
+     * Get the number of remaining places
+     * @return int places
+     */
+    public function getRemainingPlaces()
+    {
+        $count = 0;
+        foreach($this->getApplications() as $application) {
+            if ($application->getAccepted())
+                $count += 1;
+        }
+        return $this->getInternNbr() - $count;
+    }
+
     /**
      * Get the applications
      * @return array applications
      */
     public function getApplications()
     {
-        $applications = TableRegistry::get('Applications')->findByMissionId($this->getId());
-        return $applications;
+        return $this->_properties['applications'];
     }
 
     /**
