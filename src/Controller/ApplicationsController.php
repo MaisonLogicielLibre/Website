@@ -1,4 +1,13 @@
 <?php
+/**
+ * Applications controller
+ *
+ * @category Controller
+ * @package  Website
+ * @author   CakePHP <cakephp@email.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     http://cakephp.org CakePHP(tm) Project
+ */
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -6,9 +15,13 @@ use Cake\Event\Event;
 use Cake\Mailer\MailerAwareTrait;
 
 /**
- * Applications Controller
+ * Applications controller
  *
- * @property \App\Model\Table\ApplicationsTable $Applications
+ * @category Controller
+ * @package  Website
+ * @author   CakePHP <cakephp@email.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     http://cakephp.org CakePHP(tm) Project
  */
 class ApplicationsController extends AppController
 {
@@ -48,6 +61,11 @@ class ApplicationsController extends AppController
         $this->Auth->allow(['view']);
     }
 
+    /**
+     * Accepted method
+     * @param int|null $application application
+     * @return \Cake\Network\Response|null
+     */
     public function accepted($application = null)
     {
         if (is_null($application)) {
@@ -55,7 +73,8 @@ class ApplicationsController extends AppController
         }
 
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
-        $application = $this->Applications->get($application,
+        $application = $this->Applications->get(
+            $application,
             [
                 'contain' =>
                     [
@@ -93,7 +112,6 @@ class ApplicationsController extends AppController
             // Check the user password
             $user = $this->Users->patchEntity($user, $this->request->data);
             if (!$user->errors()) {
-
                 if ($application->getMission()->getRemainingPlaces() === 1) {
                     foreach ($application->getMission()->getApplications() as $app) {
                         if (!$app->getAccepted() && !$app->getRejected() && $app->id != $application->id) {
@@ -119,6 +137,11 @@ class ApplicationsController extends AppController
         $this->set(['mission' => $application->getMission(), 'application' => $application]);
     }
 
+    /**
+     * Rejected method
+     * @param int|null $application application
+     * @return \Cake\Network\Response|null
+     */
     public function rejected($application = null)
     {
         if (is_null($application)) {
@@ -126,7 +149,8 @@ class ApplicationsController extends AppController
         }
 
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
-        $application = $this->Applications->get($application,
+        $application = $this->Applications->get(
+            $application,
             [
                 'contain' =>
                     [
@@ -152,7 +176,6 @@ class ApplicationsController extends AppController
             // Check the user password
             $user = $this->Users->patchEntity($user, $this->request->data);
             if (!$user->errors()) {
-
                 $application->editRejected(true);
                 if ($this->Applications->save($application)) {
                     $this->getMailer('Application')->send('rejectedOnApplication', [$application]);

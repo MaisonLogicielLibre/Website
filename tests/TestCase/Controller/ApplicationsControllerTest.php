@@ -1,11 +1,26 @@
 <?php
+/**
+ * Tests for CommentsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ApplicationsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\ApplicationsController Test Case
+ * Tests for CommentsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class ApplicationsControllerTest extends IntegrationTestCase
 {
@@ -40,52 +55,224 @@ class ApplicationsControllerTest extends IntegrationTestCase
     ];
 
     /**
-     * Test index method
+     * Test accepted - Ok
      *
      * @return void
      */
-    public function testIndex()
+    public function testAcceptedOk()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/applications/accepted/1');
+        $this->assertResponseSuccess();
     }
 
     /**
-     * Test view method
+     * Test accepted - No Authentification
      *
      * @return void
      */
-    public function testView()
+    public function testAcceptedNoAuth()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/applications/accepted/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 
     /**
-     * Test add method
+     * Test accepted - No Permission
      *
      * @return void
      */
-    public function testAdd()
+    public function testAcceptedNoPerm()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 4]);
+
+        $this->get('/applications/accepted/1');
+        $this->assertResponseSuccess();
     }
 
     /**
-     * Test edit method
+     * Test accepted - No application
      *
      * @return void
      */
-    public function testEdit()
+    public function testAcceptedNoApplication()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 3]);
+        $this->get('/applications/accepted');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
 
     /**
-     * Test delete method
+     * Test accepted - Already accepted
      *
      * @return void
      */
-    public function testDelete()
+    public function testAcceptedAlreadyAccepted()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 3]);
+        $this->get('/applications/accepted/2');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 8]);
+    }
+
+    /**
+     * Test accepted - Not the mentor
+     *
+     * @return void
+     */
+    public function testAcceptedNotMentor()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->get('/applications/accepted/4');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 9]);
+    }
+
+    /**
+     * Test accepted - Wrong Password
+     *
+     * @return void
+     */
+    public function testAcceptedWrongPassword()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = ['old_password' => 'wrong'];
+        $this->post('/applications/accepted/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test accepted - Not the last place
+     *
+     * @return void
+     */
+    public function testAcceptedNotLast()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = ['old_password' => 'toto'];
+        $this->post('/applications/accepted/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test accepted - Last place
+     *
+     * @return void
+     */
+    public function testAcceptedLast()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = ['old_password' => 'toto'];
+        $this->post('/applications/accepted/4', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test rejected - Ok
+     *
+     * @return void
+     */
+    public function testRejectedOk()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $this->get('/applications/rejected/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test rejected - No Authentication
+     *
+     * @return void
+     */
+    public function testRejectedNoAuth()
+    {
+        $this->get('/applications/rejected/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test rejected - Not permission
+     *
+     * @return void
+     */
+    public function testRejectedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 4]);
+
+        $this->get('/applications/rejected/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test rejected - No application
+     *
+     * @return void
+     */
+    public function testRejectedNoApplication()
+    {
+        $this->session(['Auth.User.id' => 3]);
+        $this->get('/applications/rejected');
+        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+
+
+    /**
+     * Test rejected - Already Rejected
+     *
+     * @return void
+     */
+    public function testRejectedAlreadyRejected()
+    {
+        $this->session(['Auth.User.id' => 3]);
+        $this->get('/applications/rejected/2');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 8]);
+    }
+
+    /**
+     * Test rejected - Not the mentor
+     *
+     * @return void
+     */
+    public function testRejectedNotMentor()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->get('/applications/rejected/4');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 9]);
+    }
+
+    /**
+     * Test rejected - Wrong password
+     *
+     * @return void
+     */
+    public function testRejectedWrongPassword()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = ['old_password' => 'wrong'];
+        $this->post('/applications/rejected/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test rejected - Rejected
+     *
+     * @return void
+     */
+    public function testRejected()
+    {
+        $this->session(['Auth.User.id' => 3]);
+
+        $data = ['old_password' => 'toto'];
+        $this->post('/applications/rejected/4', $data);
+
+        $this->assertResponseSuccess();
     }
 }

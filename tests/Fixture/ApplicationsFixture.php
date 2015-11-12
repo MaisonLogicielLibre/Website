@@ -40,7 +40,35 @@ class ApplicationsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'mission_id' => 1,
+            'mission_id' => 8,
+            'user_id' => 1,
+            'accepted' => 0,
+            'rejected' => 0
+        ],
+        [
+            'id' => 2,
+            'mission_id' => 8,
+            'user_id' => 1,
+            'accepted' => 1,
+            'rejected' => 0
+        ],
+        [
+            'id' => 3,
+            'mission_id' => 8,
+            'user_id' => 1,
+            'accepted' => 0,
+            'rejected' => 0
+        ],
+        [
+            'id' => 4,
+            'mission_id' => 9,
+            'user_id' => 1,
+            'accepted' => 0,
+            'rejected' => 0
+        ],
+        [
+            'id' => 5,
+            'mission_id' => 9,
             'user_id' => 1,
             'accepted' => 0,
             'rejected' => 0

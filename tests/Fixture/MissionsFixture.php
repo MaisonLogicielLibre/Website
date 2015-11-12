@@ -143,5 +143,33 @@ class MissionsFixture extends TestFixture
             'modified' => '2015-10-20 15:10:06',
             'archived' => 1
         ],
+        [
+            'id' => 8,
+            'name' => 'Developpeur Django',
+            'session' => null,
+            'length' => null,
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'competence' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'internNbr' => 3,
+            'project_id' => 2,
+            'mentor_id' => 3,
+            'created' => '2015-10-20 15:10:06',
+            'modified' => '2015-10-20 15:10:06',
+            'archived' => 0
+        ],
+        [
+            'id' => 9,
+            'name' => 'Developpeur Django',
+            'session' => null,
+            'length' => null,
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'competence' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'internNbr' => 1,
+            'project_id' => 2,
+            'mentor_id' => 3,
+            'created' => '2015-10-20 15:10:06',
+            'modified' => '2015-10-20 15:10:06',
+            'archived' => 0
+        ],
     ];
 }
