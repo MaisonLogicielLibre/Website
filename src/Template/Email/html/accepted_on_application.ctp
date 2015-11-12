@@ -14,7 +14,7 @@
  */
 ?>
 
-<?= __('Hello');?> <?= $application->getUser()->getName() ?>,<br/><br/>
+<?= __('Hello');?> <?= (!is_null($application->getUser()->getName()) ? $application->getUser()->getName() : $application->getUser()->getUsername()) ?>,<br/><br/>
 
 <?= __('You\'ve been selected by {0} to participate in {1}', $application->getMission()->getMentor()->getName(), $application->getMission()->getName()); ?>.<br/><br/>
 

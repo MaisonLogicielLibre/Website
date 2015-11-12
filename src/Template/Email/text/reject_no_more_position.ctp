@@ -15,6 +15,4 @@
 
 echo __('Hello') . ' ' . (!is_null($application->getUser()->getName()) ? $application->getUser()->getName() : $application->getUser()->getUsername()) . ',\r\n\r\n';
 
-echo __('You\'ve been selected by {0} to participate in {1}', $application->getMission()->getMentor()->getName(), $application->getMission()->getName()) . '.\r\n\r\n';
-
-echo __('The mentor will contact you with further information') . '.';
+echo __('Your application for {0} on the project {1} has been automatically rejected because all available positions have been filled', $application->getMission()->getName(), $application->getMission()->getProject()->getName()) . '.\r\n\r\n';
