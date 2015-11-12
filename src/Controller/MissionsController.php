@@ -106,24 +106,43 @@ class MissionsController extends AppController
             ]
         );
 
-        $data = $this->DataTables->find(
-            'Applications',
-            [
-                'contain' => [
-                    'Users' => [
-                        'fields' => [
-                            'id', 'firstName', 'lastName'
-                        ],
-                    ]
-                ],
-                'fields' => [
-                    'id', 'accepted', 'rejected'
-                ],
-                'conditions' => ['mission_id' => $id]
-            ]
-        );
-        
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
+            $data = $this->DataTables->find(
+                'Applications',
+                [
+                    'contain' => [
+                        'Users' => [
+                            'fields' => [
+                                'id', 'firstName', 'lastName'
+                            ],
+                        ]
+                    ],
+                    'fields' => [
+                        'id', 'accepted', 'rejected'
+                    ],
+                    'conditions' => ['mission_id' => $id]
+                ]
+            );
+        } else {
+            $data = $this->DataTables->find(
+                'Applications',
+                [
+                    'contain' => [
+                        'Users' => [
+                            'fields' => [
+                                'id', 'firstName', 'lastName'
+                            ],
+                        ]
+                    ],
+                    'fields' => [
+                        'id',
+                    ],
+                    'conditions' => ['mission_id' => $id, 'accepted' => true]
+                ]
+            );
+        }
         
         $projectId = $mission->getProjectId();
         $this->set(compact('mission', 'projectId', 'user'));

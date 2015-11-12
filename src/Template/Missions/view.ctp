@@ -35,8 +35,13 @@
                             <tr>
                                 <th></th>
                                 <th><?= __('Name'); ?></th>
-                                <th><?= __('Approved'); ?></th>
-                                <th><?= __('Rejected'); ?></th>
+                                <?php
+                                if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) : ?>
+                                    <th><?= __('Approved'); ?></th>
+                                    <th><?= __('Rejected'); ?></th>
+                                    <?php
+                                endif;
+                                ?>
                             </tr>
                             </thead>
                             <tbody>
@@ -124,42 +129,70 @@
 
 <?php
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
-    'ajax' => [
-        'url' => $this->Url->build(['action' => 'view', $mission->getId()]),
-    ],
-    'deferLoading' => $recordsTotal,
-    'delay' => 600,
-    "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
-    'columns' => [
-        [
-            'name' => 'Applications.id',
-            'data' => 'id',
-            'visible' => false
+if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
+    echo $this->DataTables->init([
+        'ajax' => [
+            'url' => $this->Url->build(['action' => 'view', $mission->getId()]),
         ],
-        [
-            'name' => 'Users',
-            'data' => 'user',
-            'searchable' => false
+        'deferLoading' => $recordsTotal,
+        'delay' => 600,
+        "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        'columns' => [
+            [
+                'name' => 'Applications.id',
+                'data' => 'id',
+                'visible' => false
+            ],
+            [
+                'name' => 'Users',
+                'data' => 'user',
+                'searchable' => false
+            ],
+            [
+                'name' => 'Applications.accepted',
+                'data' => 'accepted',
+                'searchable' => false
+            ],
+            [
+                'name' => 'Applications.rejected',
+                'data' => 'rejected',
+                'searchable' => false
+            ]
         ],
-        [
-            'name' => 'Applications.accepted',
-            'data' => 'accepted',
-            'searchable' => false
+        'lengthMenu' => ''
+    ])->draw('.dataTable');
+} else {
+    echo $this->DataTables->init([
+        'ajax' => [
+            'url' => $this->Url->build(['action' => 'view', $mission->getId()]),
         ],
-        [
-            'name' => 'Applications.rejected',
-            'data' => 'rejected',
-            'searchable' => false
-        ]
-    ],
-    'lengthMenu' => ''
-])->draw('.dataTable');
+        'deferLoading' => $recordsTotal,
+        'delay' => 600,
+        "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        'columns' => [
+            [
+                'name' => 'Applications.id',
+                'data' => 'id',
+                'visible' => false
+            ],
+            [
+                'name' => 'Users',
+                'data' => 'user',
+                'searchable' => false
+            ],
+        ],
+        'lengthMenu' => ''
+    ])->draw('.dataTable');
+}
 echo 'var userUrl="' . $this->Url->Build(['controller' => 'Users', 'action' => 'view']) . '";';
 echo 'var rejectUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'rejected']) . '";';
 echo 'var acceptUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'accepted']) . '";';
 echo 'var rejectCandidateTr="' . __('Reject the candidate') . '";';
 echo 'var acceptCandidateTr="' . __('Accept the candidate') . '";';
 $this->Html->scriptEnd();
+if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
+    echo $this->Html->script('missions/viewMentor.js', ['block' => 'scriptBottom']);
+} else {
+    echo $this->Html->script('missions/view.js', ['block' => 'scriptBottom']);
+}
 ?>
-<?= $this->Html->script('missions/view.js', ['block' => 'scriptBottom']); ?>
