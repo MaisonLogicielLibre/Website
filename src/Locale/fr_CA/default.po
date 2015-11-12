@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-11-06 16:11-0500\n"
-"PO-Revision-Date: 2015-11-06 17:03-0500\n"
+"POT-Creation-Date: 2015-11-11 15:34+0000\n"
+"PO-Revision-Date: 2015-11-11 10:37-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
@@ -39,43 +39,43 @@ msgstr "Le commentaire a été supprimé."
 msgid "The comment could not be deleted. Please, try again."
 msgstr "Le commentaire n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/MissionsController.php:165
+#: Controller/MissionsController.php:166
 msgid "The mission has been saved."
 msgstr "La mission a été enregistrée."
 
-#: Controller/MissionsController.php:168
+#: Controller/MissionsController.php:169
 msgid "The mission could not be saved. Please, try again."
 msgstr "La mission n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/MissionsController.php:199
+#: Controller/MissionsController.php:200
 msgid "The mission has been edited."
 msgstr "La mission a été éditée."
 
-#: Controller/MissionsController.php:202
+#: Controller/MissionsController.php:203
 msgid "The mission could not be edited. Please, try again."
 msgstr "La mission n'a pas pu être éditée. Veuillez réessayer."
 
-#: Controller/MissionsController.php:223
+#: Controller/MissionsController.php:224
 msgid "The mission has been archived."
 msgstr "La mission a été archivée."
 
-#: Controller/MissionsController.php:225
+#: Controller/MissionsController.php:226
 msgid "The mission has been restored."
 msgstr "La mission a été désarchivée."
 
-#: Controller/MissionsController.php:229
+#: Controller/MissionsController.php:230
 msgid "The mission could not be archived. Please, try again."
 msgstr "La mission n'a pas pu être archivée. Veuillez réessayer."
 
-#: Controller/MissionsController.php:261
+#: Controller/MissionsController.php:262
 msgid "You have applied on the mission"
 msgstr "Votre candidature a été prise en compte."
 
-#: Controller/MissionsController.php:272
+#: Controller/MissionsController.php:273
 msgid "There was an error. Please, try again."
 msgstr "Une erreur est survenue. Veuillez réessayer."
 
-#: Controller/MissionsController.php:276
+#: Controller/MissionsController.php:277
 msgid "You have already applied on this mission."
 msgstr "Vous avez déjà candidaté sur cette mission."
 
@@ -218,7 +218,7 @@ msgstr "L'université n'a pas pu être supprimée. Veuillez réessayer."
 msgid "Username or password incorrect, try again."
 msgstr "Nom d'utilisateur ou mot de passe inccorect, veuillez réessayer."
 
-#: Controller/UsersController.php:170;206;251;290;328;413
+#: Controller/UsersController.php:170;206;251;290;329;414
 msgid "The user has been saved."
 msgstr "L'utilisateur a été enregistré."
 
@@ -228,7 +228,7 @@ msgid ""
 "                try again."
 msgstr "Le courriel n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:210;417
+#: Controller/UsersController.php:210;418
 msgid ""
 "The user could not be saved. Please,\n"
 "                 try again."
@@ -240,49 +240,49 @@ msgid ""
 "                     try again."
 msgstr "L'utilisateur n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:332
+#: Controller/UsersController.php:333
 msgid ""
 "The password could not be saved. Please,\n"
 "                     try again."
 msgstr "Le mot de passe n'a pas pu être enregistré. Veuillez réessayer."
 
-#: Controller/UsersController.php:365
+#: Controller/UsersController.php:366
 msgid "The user has been deleted."
 msgstr "L'utilisateur a été supprimé."
 
-#: Controller/UsersController.php:368
+#: Controller/UsersController.php:369
 msgid ""
 "The user could not be deleted. Please,\n"
 "                     try again."
 msgstr "L'utilisateur n'a pas pu être supprimé. Veuillez réessayer."
 
-#: Controller/UsersController.php:399;445
+#: Controller/UsersController.php:400;446
 msgid "This link seems corrupted. Please contact the administration team."
 msgstr ""
 "Ce lien semble être corrompu. Veuillez contacter l'équipe d'administration."
 
-#: Controller/UsersController.php:433
+#: Controller/UsersController.php:434
 msgid "This link is expired. Please request a new link."
 msgstr "Ce lien est expiré. Veuillez en demander un nouveau."
 
-#: Controller/UsersController.php:439
+#: Controller/UsersController.php:440
 msgid "This link was already used. Please request a new link."
 msgstr "Ce lien a déjà été utilisé. Veuillez en demander un nouveau."
 
-#: Controller/UsersController.php:484
+#: Controller/UsersController.php:485
 msgid "The email has been send."
 msgstr "Le courriel a été envoyé."
 
-#: Controller/UsersController.php:486
+#: Controller/UsersController.php:487
 msgid "Error in sending email, please try again."
 msgstr ""
 "Une erreur est survenue durant l'envoi du courriel. Veuillez réessayer."
 
-#: Controller/UsersController.php:508
+#: Controller/UsersController.php:509
 msgid "No account associated with this information, try again."
 msgstr "Nous n'avons pas pu trouver votre compte. Veuillez réessayer."
 
-#: Controller/UsersController.php:512
+#: Controller/UsersController.php:513
 msgid "An account was found!"
 msgstr "Un compte a été trouvé!"
 
@@ -609,7 +609,7 @@ msgstr "Ajouter un commentaire"
 #: Template/TypeUsersUsers/add.ctp:21 Template/TypeUsersUsers/edit.ctp:28
 #: Template/Universities/add.ctp:17 Template/Universities/edit.ctp:24
 #: Template/Users/add.ctp:35 Template/Users/edit.ctp:67
-#: Template/Users/email.ctp:13 Template/Users/password.ctp:13
+#: Template/Users/email.ctp:13 Template/Users/password.ctp:14
 #: Template/Users/reset_password.ctp:9
 msgid "Submit"
 msgstr "Soumettre"
@@ -714,8 +714,8 @@ msgid "Register"
 msgstr "S'enregistrer"
 
 #: Template/Element/Meetup/meetup-table.ctp:12
-msgid "November 3"
-msgstr "3 novembre"
+msgid "First Tuesday of each month"
+msgstr "Premier Mardi du mois"
 
 #: Template/Element/Meetup/meetup-table.ctp:14
 msgid ""
@@ -736,8 +736,8 @@ msgid "Linux meetup"
 msgstr "Linux meetup"
 
 #: Template/Element/Meetup/meetup-table.ctp:21
-msgid "November 11"
-msgstr "11 novembre"
+msgid "Biweekly"
+msgstr "Deux fois par mois"
 
 #: Template/Element/Meetup/meetup-table.ctp:22
 msgid ""
@@ -752,6 +752,26 @@ msgstr ""
 #: Template/Element/Meetup/meetup-table.ctp:25
 msgid "Odoo meetup"
 msgstr "Odoo meetup"
+
+#: Template/Element/Meetup/meetup-table.ctp:28
+msgid "November 28"
+msgstr "28 Novembre"
+
+#: Template/Element/Meetup/meetup-table.ctp:29
+msgid ""
+"Second Coding Party of Nit project : L'objectif est de faire se rencontrer "
+"les développeurs intéressés par le projet Nit, ou simplement curieux, en "
+"leur permettant de faire ce qu'ils préfèrent faire dans la vie: coder, "
+"manger et boire."
+msgstr ""
+"Deuxième Coding Party du projet Nit : L'objectif est de faire se rencontrer "
+"les développeurs intéressés par le projet Nit, ou simplement curieux, en "
+"leur permettant de faire ce qu'ils préfèrent faire dans la vie: coder, "
+"manger et boire."
+
+#: Template/Element/Meetup/meetup-table.ctp:31
+msgid "Corn it up"
+msgstr "corn it up"
 
 #: Template/Element/Missions/addForm.ctp:3 Template/Missions/edit.ctp:10
 msgid "Position title"
@@ -983,7 +1003,7 @@ msgstr "Ajouter une mission"
 #: Template/Missions/edit.ctp:65 Template/Organizations/add_member.ctp:32
 #: Template/Organizations/add_owner.ctp:32 Template/Projects/apply.ctp:17
 #: Template/Users/delete.ctp:23 Template/Users/edit.ctp:68
-#: Template/Users/email.ctp:14 Template/Users/password.ctp:14
+#: Template/Users/email.ctp:14 Template/Users/password.ctp:15
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1225,7 +1245,7 @@ msgstr "Archivé"
 msgid "Members"
 msgstr "Membres"
 
-#: Template/Organizations/view.ctp:58 Template/Users/view.ctp:64
+#: Template/Organizations/view.ctp:68 Template/Users/view.ctp:64
 msgid "Owner"
 msgstr "Propriétaire"
 
@@ -2181,7 +2201,7 @@ msgstr "Confirmer votre nouveau courriel"
 msgid "Confirm your password to confirm the change"
 msgstr "Confirmer votre mot de passe "
 
-#: Template/Users/email.ctp:11 Template/Users/password.ctp:8;9;11
+#: Template/Users/email.ctp:11 Template/Users/password.ctp:9;10;12
 #: Template/Users/register.ctp:17;21 Template/Users/reset_password.ctp:6;7
 msgid "Password"
 msgstr "Mot de passe"
@@ -2211,15 +2231,15 @@ msgstr "Créer un compte"
 msgid "Change Password"
 msgstr "Modifier le mot de passe"
 
-#: Template/Users/password.ctp:8 Template/Users/reset_password.ctp:6
+#: Template/Users/password.ctp:9 Template/Users/reset_password.ctp:6
 msgid "Choose a new password"
 msgstr "Entrez un nouveau mot de passe"
 
-#: Template/Users/password.ctp:9 Template/Users/reset_password.ctp:7
+#: Template/Users/password.ctp:10 Template/Users/reset_password.ctp:7
 msgid "Confirm the new password"
 msgstr "Confirmer le nouveau mot de passe"
 
-#: Template/Users/password.ctp:11
+#: Template/Users/password.ctp:12
 msgid "Confirm your current password to confirm the change"
 msgstr "Confirmer votre mot de passe actuel"
 
@@ -2301,6 +2321,9 @@ msgstr "Organisations rejointe"
 #: View/Helper/WikiHelper.php:61
 msgid "Go to wiki"
 msgstr "Allez sur le wiki"
+
+#~ msgid "November 11"
+#~ msgstr "11 novembre"
 
 #~ msgid "Our generous sponsors"
 #~ msgstr "Nos commanditaires fondateurs"
