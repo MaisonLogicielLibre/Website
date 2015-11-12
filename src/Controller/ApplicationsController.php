@@ -130,7 +130,7 @@ class ApplicationsController extends AppController
             [
                 'contain' =>
                     [
-                        'Missions',
+                        'Missions' => ['Projects'],
                         'Users'
                     ]
             ]
