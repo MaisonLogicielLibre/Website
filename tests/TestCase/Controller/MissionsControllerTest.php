@@ -299,6 +299,11 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
     }
 
+    /**
+     * Test apply - No more place
+     *
+     * @return void
+     */
     public function testApplyNoMorePlaces()
     {
         $this->session(['Auth.User.id' => 1]);
@@ -323,7 +328,7 @@ class MissionsControllerTest extends IntegrationTestCase
     /**
      * Test apply - Get
      *
-     * @return voids
+     * @return void
      */
     public function testApplyAlreadyApply()
     {
@@ -396,6 +401,4 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-
-//    public function
 }
