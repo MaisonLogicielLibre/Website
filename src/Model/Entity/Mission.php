@@ -118,9 +118,10 @@ class Mission extends Entity
     public function getRemainingPlaces()
     {
         $count = 0;
-        foreach($this->getApplications() as $application) {
-            if ($application->getAccepted())
+        foreach ($this->getApplications() as $application) {
+            if ($application->getAccepted()) {
                 $count += 1;
+            }
         }
         return $this->getInternNbr() - $count;
     }

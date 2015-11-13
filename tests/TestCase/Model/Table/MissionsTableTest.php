@@ -387,7 +387,7 @@ class MissionsTableTest extends TestCase
         $id = 1;
         $expected = 1;
 
-        $mission = $this->Missions->get($id);
+        $mission = $this->Missions->get($id, ['contain' => 'Applications']);
 
         $result = count($mission->getApplications());
 

@@ -154,13 +154,13 @@ class MissionsController extends AppController
             ]
         );
     }
-
+    
     /**
      * Add method
      *
      * @param int $projectId Project id.
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add($projectId = null)
     {
@@ -268,7 +268,6 @@ class MissionsController extends AppController
         );
 
         if ($mission->getRemainingPlaces() > 0) {
-
             $applications = TableRegistry::get('Applications');
             $userId = $this->request->session()->read('Auth.User.id');
 
@@ -304,7 +303,7 @@ class MissionsController extends AppController
             $this->set(compact('mission'));
             $this->set('_serialize', ['mission']);
         } else {
-            $this->Flash->error(__('No more position available').'.');
+            $this->Flash->error(__('No more position available') . '.');
             return $this->redirect(['action' => 'view', $id]);
         }
     }

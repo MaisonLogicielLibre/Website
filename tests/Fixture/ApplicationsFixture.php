@@ -73,5 +73,12 @@ class ApplicationsFixture extends TestFixture
             'accepted' => 0,
             'rejected' => 0
         ],
+        [
+            'id' => 6,
+            'mission_id' => 1,
+            'user_id' => 1,
+            'accepted' => 0,
+            'rejected' => 0
+        ],
     ];
 }

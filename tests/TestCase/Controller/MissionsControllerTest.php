@@ -67,6 +67,17 @@ class MissionsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test view - Ok no user
+     *
+     * @return void
+     */
+    public function testViewOkNoUser()
+    {
+        $this->get('/missions/view/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
      * Test add - Ok
      *
      * @return void
@@ -258,6 +269,7 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 1]);
 
         $this->post('/missions/editArchived/1');
+        $this->post('/missions/editArchived/1');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
     }
 
@@ -281,9 +293,20 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testApplyOk()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/1');
+        $this->assertResponseSuccess();
     }
-    
+
+    public function testApplyNoMorePlaces()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->post('/missions/apply/10');
+
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 10]);
+    }
+
     /**
      * Test apply - Get
      *
@@ -293,8 +316,21 @@ class MissionsControllerTest extends IntegrationTestCase
     {
         $this->session(['Auth.User.id' => 1]);
 
-        $this->post('/missions/apply/1');
+        $this->get('/missions/apply/1');
         $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test apply - Get
+     *
+     * @return voids
+     */
+    public function testApplyAlreadyApply()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/8');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 8]);
     }
     
     /**
@@ -304,7 +340,7 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testApplyNoAuth()
     {
-        $this->post('/missions/apply/1');
+        $this->get('/missions/apply/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 
@@ -360,4 +396,6 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
+
+//    public function
 }
