@@ -13,7 +13,7 @@
             <?php
             if ($isOwner):
             ?>
-            <p><?= __('This avatar is a gravatar linked with your email. If you want change your avatar, go on '); ?><a href="http://gravatar.com/">gravatar.com</a></p>
+            <p><?= __('This avatar is a gravatar linked with your email. If you want change your avatar, go on {0}', $this->Html->link('gravatar.com', 'http://gravatar.com', ['target' => '_blank'])); ?></p>
             <?php
             endif;
             ?>
