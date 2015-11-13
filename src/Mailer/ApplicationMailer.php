@@ -24,7 +24,7 @@ class ApplicationMailer extends Mailer
 			->emailFormat('both')
 			->from(['maisonlogiciellibre@etsmtl.net' => 'Maison du Logiciel Libre'])
 			->to($mentor->getEmail())
-			->subject('New application')
+			->subject(__('New application'))
 			->set([
 				   'mentorname' => $mentor->getName(), 
 			       'username' => $user->getName(), 

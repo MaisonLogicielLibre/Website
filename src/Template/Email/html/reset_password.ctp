@@ -14,7 +14,7 @@
  */
 ?>
 
-<?= __('Hello');?> <?= $username ?>,<br/><br/>
+<?= __('Hello {0}', $username) ?>,<br/><br/>
 
 <?= __('We have received a password reset request from your account'); ?>.<br/><br/>
 
