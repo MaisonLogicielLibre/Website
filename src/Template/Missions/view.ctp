@@ -8,8 +8,10 @@
                     <h2 class="pull-left">
                         <?= $mission->getName() ?>
                     </h2>
-                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
-                        <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+                    <?php if ($mission->getRemainingPlaces() > 0) : ?>
+                        <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
+                            <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+                    <?php endif; ?>
                 </div>
                 <?= __('Your mission, should you choose to accept it, ...') ?>
                 <div class="bs-callout bs-callout-warning">
