@@ -59,15 +59,30 @@ function sendNewState(e, state) {
         data: {
             id: row['id'],
             state: $(e).parents('td').index(),
-            stateValue: state
+            stateValue: + state
         },
         success: function (data) {
             data = $.parseJSON(data);
-            if (data[0] == "error") {
-                $('#content').prepend('<div role="alert" class="alert alert-dismissible fade in alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' + data[1] + '</div>');
-            } else {
-                $('#content').prepend('<div role="alert" class="alert alert-dismissible fade in alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' + data[1] + '</div>');
-            }
+            $('#container-fluid').prepend($('<div/>', {
+                class: 'row',
+                html: $('<div/>', {
+                    class: 'col-lg-12 col-md-12 col-sm-12 col-xs-12',
+                    html: $('<div/>', {
+                        class: 'fade in alert alert-dismissible ' + (data[0] == "error" ? 'alert-danger' : 'alert-success'),
+                        role: 'alert',
+                        html: $('<button/>', {
+                            class: 'close',
+                            'aria-label': 'Close',
+                            'data-dismiss': 'alert',
+                            'type': 'button',
+                            html: $('<span/>', {
+                                'aria-hidden': true,
+                                html: '×'
+                            })
+                        })
+                    }).append(data[1])
+                })
+            }));
         }
     })
 }

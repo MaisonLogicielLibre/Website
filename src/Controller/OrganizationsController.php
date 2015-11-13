@@ -279,10 +279,10 @@ class OrganizationsController extends AppController
             $data = $this->request->data;
             $organization = $this->Organizations->get(intval($data['id']));
             if ($data['state'] == '3') {
-                $organization->editIsRejected($data['stateValue']);
+                $organization->editIsRejected((bool)$data['stateValue']);
             } elseif ($data['state'] == '2') {
                 if (!$organization->getIsValidated()) {
-                    $organization->editIsValidated($data['stateValue']);
+                    $organization->editIsValidated((bool)$data['stateValue']);
                 }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
