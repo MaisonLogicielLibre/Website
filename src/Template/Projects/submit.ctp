@@ -2,6 +2,10 @@
     <div class="row">
         <?= $this->cell('Sidebar::projectAction'); ?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?=__("A project can be of development or system administration and it can be owned by zero, one or more organizations. It may provide mission to students.")?>
+            </div>
             <ul id="formTab" class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#project-tab" aria-controls="project" data-toggle="tab"><?= __('Project') ?>
                         <i class="fa"></i></a></li>
