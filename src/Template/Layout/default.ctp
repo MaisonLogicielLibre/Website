@@ -90,13 +90,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 							<li><?= $this->Html->link(__('Associations'), ['controller' => 'Pages', 'action' => 'aso']);?></li>
 						</ul>
 					</li>
-					<?php if($this->request->session()->read('Auth.User.username')) {?>
-						<li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'view', $this->request->session()->read('Auth.User.id')]);?></li>
-						<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
-					<?php } else { ?>
-						<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']);?></li>
-						<li><?= $this->Html->link(__('Register'), ['controller' => 'Users', 'action' => 'register']);?></li>
-					<?php } ?>
+					<?php
+					$user = $this->request->session()->read('Auth.User');
+					if ($user) :?>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<?= $this->Html->image('http://www.gravatar.com/avatar/' . (!empty($user['email']) ? md5($user['email']) : md5('no@email.com')) . '?s=24', ['class' => 'img-circle']); ?>
+							<?php
+							$fn = (!empty($user['firstName']) ? $user['firstName'] . ' ' . $user['lastName'] : $user['username']);
+							echo strlen($fn) > 25 ? substr($fn, 0, 25) . "..." : $fn;
+							?>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><?= $this->Html->link(__('My profile'), ['controller' => 'Users', 'action' => 'view', $user['id']]) ?></li>
+							<li><?= $this->Html->link(__('My projects'), ['controller' => 'Projects', 'action' => 'myprojects']) ?></li>
+							<li><?= $this->Html->link(__('My Organizations'), ['controller' => 'Organizations', 'action' => 'myorg']); ?></li>
+							<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
+						</ul>
+					</li>
+					<?php else : ?>
+						<li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']); ?></li>
+						<li><?= $this->Html->link(__('Register'), ['controller' => 'Users', 'action' => 'register']); ?></li>
+					<?php endif; ?>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
