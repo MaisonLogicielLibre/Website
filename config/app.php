@@ -174,9 +174,9 @@ return [
             'host' => '',
             'port' => 465,
             'timeout' => 60,
-            'username' => 'maisonlogiciellibre@etsmtl.net',
+            'username' => '',
             'password' => '',
-            'className' => 'Smtp'
+            'className' => 'debug'
         ]
     ],
     /**

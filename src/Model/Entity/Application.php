@@ -47,6 +47,15 @@ class Application extends Entity
     {
         return $this->_properties['user_id'];
     }
+
+    /**
+     * Get the user object
+     * @return object user
+     */
+    public function getUser()
+    {
+        return $this->_properties['user'];
+    }
     
     /**
      * Get if accepted
@@ -64,6 +73,15 @@ class Application extends Entity
     public function getRejected()
     {
         return $this->_properties['rejected'];
+    }
+
+    /**
+     * Get mission
+     * @return object mission
+     */
+    public function getMission()
+    {
+        return $this->_properties['mission'];
     }
     
     /**

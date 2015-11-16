@@ -170,6 +170,14 @@ return [
             'client' => null,
             'tls' => null,
         ],
+        'main' => [
+            'host' => '',
+            'port' => 465,
+            'timeout' => 60,
+            'username' => '',
+            'password' => '',
+            'className' => 'debug'
+        ]
     ],
     /**
      * Email delivery profiles
