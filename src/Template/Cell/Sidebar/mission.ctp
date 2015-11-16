@@ -31,7 +31,7 @@
 
 
                 <?php
-                if (($user->hasPermissionName(['edit_mission']) && ($isMentor || $isOwner)) || $user->hasPermissionName(['edit_missions'])):
+                if (($user->hasPermissionName(['edit_mission']) && ($isMentor)) || $user->hasPermissionName(['edit_missions'])):
                 ?>
 					<li>
 						<hr/>
