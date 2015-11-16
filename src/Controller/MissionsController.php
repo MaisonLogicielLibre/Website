@@ -108,8 +108,12 @@ class MissionsController extends AppController
         );
 
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $isMentor = false;
+        if ($user && ($user->id == $mission->mentor_id)) {
+            $isMentor = true;
+        }
 
-        if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
+        if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) {
             $data = $this->DataTables->find(
                 'Applications',
                 [
@@ -146,7 +150,7 @@ class MissionsController extends AppController
         }
         
         $projectId = $mission->getProjectId();
-        $this->set(compact('mission', 'projectId', 'user'));
+        $this->set(compact('mission', 'projectId', 'user', 'isMentor'));
         $this->set(
             [
                 'data' => $data,

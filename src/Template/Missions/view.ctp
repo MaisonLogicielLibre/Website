@@ -31,7 +31,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <?php if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions']))
+                                <?php if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])))
                                     echo __('List of applications');
                                 else
                                     echo __('Contributors');
@@ -45,7 +45,7 @@
                                     <th></th>
                                     <th><?= __('Name'); ?></th>
                                     <?php
-                                    if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) : ?>
+                                    if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
                                         <th><?= __('Approved'); ?></th>
                                         <th><?= __('Rejected'); ?></th>
                                         <?php
@@ -139,7 +139,7 @@
 
 <?php
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
+if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) {
     echo $this->DataTables->init([
         'ajax' => [
             'url' => $this->Url->build(['action' => 'view', $mission->getId()]),
