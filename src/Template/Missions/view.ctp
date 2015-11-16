@@ -27,30 +27,38 @@
                     <p><?= $Parsedown->text($mission->getCompetence()); ?></p>
                 </div>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><?= __('List of applications'); ?></h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table id="applications" class="table table-striped table-bordered table-hover dataTable">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th><?= __('Name'); ?></th>
-                                <?php
-                                if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) : ?>
-                                    <th><?= __('Approved'); ?></th>
-                                    <th><?= __('Rejected'); ?></th>
-                                    <?php
-                                endif;
+                <?php if ($recordsTotal) : ?>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <?php if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions']))
+                                    echo __('List of applications');
+                                else
+                                    echo __('Contributors');
                                 ?>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                            </h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="applications" class="table table-striped table-bordered table-hover dataTable">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><?= __('Name'); ?></th>
+                                    <?php
+                                    if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) : ?>
+                                        <th><?= __('Approved'); ?></th>
+                                        <th><?= __('Rejected'); ?></th>
+                                        <?php
+                                    endif;
+                                    ?>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding-right:0;">
                 <div class="panel panel-warning">

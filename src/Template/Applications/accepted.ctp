@@ -32,7 +32,7 @@
 
             <p><?= __('We will advise the candidate that they have been selected by email'); ?>.</p><br/>
             <input type="text" style="display:none;">
-            <?= $this->Form->input('old_password', ['label' => __('Please insert your password to finalise your choice'), 'type' => 'password', 'autocomplete' => 'off']); ?>
+            <?= $this->Form->input('old_password', ['label' => __('Please insert your password to finalize your choice'), 'type' => 'password', 'autocomplete' => 'off']); ?>
 
         </fieldset>
         <?= $this->Form->button(__('Accept the candidate'), ['class' => 'btn-success']); ?>
