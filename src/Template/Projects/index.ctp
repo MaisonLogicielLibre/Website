@@ -87,7 +87,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ]
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
 echo 'var projectUrl="' . $this->Url->Build(['action' => 'view']) . '";';
