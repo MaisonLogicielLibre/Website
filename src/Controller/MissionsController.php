@@ -212,21 +212,39 @@ class MissionsController extends AppController
         $mission = $this->Missions->get(
             $id,
             [
-                'contain' => ['Projects', 'TypeMissions', 'MissionLevels']
+                'contain' => ['Projects', 'TypeMissions', 'MissionLevels', 'Applications']
             ]
         );
+        $isEditable = true;
+        $minInternNbr = 0;
+        foreach ($mission->applications as $application) {
+            $isEditable = false;
+            if ($application->accepted == true) {
+                $minInternNbr++;
+            }
+        }
+        if ($minInternNbr == 0) {
+            $minInternNbr = 1;
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $project = $this->Missions->patchEntity($mission, $this->request->data);
+            if ($isEditable) {
+                $this->Missions->patchEntity($mission, $this->request->data);
+            } else {
+                $mission->internNbr = $this->request->data['internNbr'];
+            }
+
             if ($this->Missions->save($mission)) {
                 $this->Flash->success(__('The mission has been edited.'));
                 return $this->redirect(['action' => 'view', $mission->id]);
             } else {
                 $this->Flash->error(__('The mission could not be edited. Please, try again.'));
             }
+
         }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
         $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-        $this->set(compact('mission', 'typeMissions', 'missionLevels'));
+        $this->set(compact('mission', 'typeMissions', 'missionLevels', 'isEditable', 'minInternNbr'));
         $this->set('_serialize', ['mission']);
     }
 
