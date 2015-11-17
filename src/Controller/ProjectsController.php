@@ -194,7 +194,8 @@ class ProjectsController extends AppController
                 'data' => $data,
                 '_serialize' => array_merge($this->viewVars['_serialize'], ['data']),
                 compact('org')
-            ]);
+            ]
+        );
     }
 
     /**

@@ -123,9 +123,8 @@ class ApplicationsController extends AppController
                 }
                 $application->editAccepted(true);
                 if ($this->Applications->save($application)) {
-
                     $this->loadModel('ProjectsContributors');
-                    $contributor = $this->ProjectsContributors->newEntity(['user_id' => $application->getUserId(), 'project_id' =>$application->getMission()->getProject()->getId()]);
+                    $contributor = $this->ProjectsContributors->newEntity(['user_id' => $application->getUserId(), 'project_id' => $application->getMission()->getProject()->getId()]);
                     $this->ProjectsContributors->save($contributor);
 
                     $this->getMailer('Application')->send('acceptedOnApplication', [$application]);

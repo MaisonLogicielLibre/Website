@@ -1,16 +1,25 @@
 <?php
+/**
+ * Entity of ProjectsContributors
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * ProjectsContributor Entity.
+ * Entity of ProjectsContributors
  *
- * @property int $id
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property int $project_id
- * @property \App\Model\Entity\Project $project
+ * @category Entity
+ * @package  Website
+ * @author   Simon Begin <ak36250@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class ProjectsContributor extends Entity
 {
@@ -24,7 +33,7 @@ class ProjectsContributor extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

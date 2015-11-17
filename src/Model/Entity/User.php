@@ -366,12 +366,14 @@ class User extends Entity
     {
         $permissions = $this->getPermissions();
 
-        if (empty($permission))
+        if (empty($permission)) {
             return true;
+        }
 
         foreach ($permissions as $perm) {
-            if (in_array($perm->name, $permission))
+            if (in_array($perm->name, $permission)) {
                 return true;
+            }
         }
         return false;
     }
