@@ -104,8 +104,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						</a>
 						<ul class="dropdown-menu">
 							<li><?= $this->Html->link(__('My profile'), ['controller' => 'Users', 'action' => 'view', $user['id']]) ?></li>
-							<li><?= $this->Html->link(__('My projects'), ['controller' => 'Projects', 'action' => 'myprojects']) ?></li>
-							<li><?= $this->Html->link(__('My Organizations'), ['controller' => 'Organizations', 'action' => 'myorg']); ?></li>
+							<li><?= $this->Html->link(__('My projects'), ['controller' => 'Projects', 'action' => 'myProjects']) ?></li>
+							<li><?= $this->Html->link(__('My Organizations'), ['controller' => 'Organizations', 'action' => 'myOrg']); ?></li>
 							<li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']);?></li>
 						</ul>
 					</li>

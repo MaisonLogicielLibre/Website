@@ -37,7 +37,8 @@ class ProjectsController extends AppController
         'editAccepted' => ['edit_project', 'edit_projects'],
         'editArchived' => ['edit_project', 'edit_projects'],
         'delete' => ['delete_project', 'delete_projects'],
-        'apply' => ['add_application']
+        'apply' => ['add_application'],
+        'myProjects' => [],
     ];
 
     /**
@@ -137,6 +138,63 @@ class ProjectsController extends AppController
                 ]
             );
         }
+    }
+
+    /**
+     * MyProjects method
+     * @return redirect
+     */
+    public function myProjects()
+    {
+        $orgs = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('orgs'));
+        $user = $this->request->session()->read('Auth.User');
+
+        $data = $this->DataTables
+            ->find(
+                'Projects',
+                [
+                    'contain' => [
+                        'Organizations' => [
+                            'fields' => [
+                                'id', 'name', 'OrganizationsProjects.project_id'
+                            ]
+                        ]
+                    ],
+                    'fields' => [
+                        'id', 'name', 'link', 'accepted'
+                    ],
+                ]
+            )->join(
+                [
+                    'table' => 'projects_mentors',
+                    'alias' => 'm',
+                    'type' => 'LEFT',
+                    'conditions' => 'm.project_id = Projects.id'
+                ]
+            )->join(
+                [
+                    'table' => 'projects_contributors',
+                    'alias' => 'c',
+                    'type' => 'LEFT',
+                    'conditions' => 'c.project_id = Projects.id'
+                ]
+            )->where(
+                [
+                    'm.user_id' => $user['id'],
+                ]
+            )->OrWhere(
+                [
+                    'c.user_id' => $user['id'],
+                ]
+            )->group('Projects.id');
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data']),
+                compact('org')
+            ]);
     }
 
     /**
@@ -260,7 +318,7 @@ class ProjectsController extends AppController
                     ],
                     'Users'
                 ],
-                
+
                 'conditions' => ['project_id' => $id],
                 'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
             ]
@@ -548,29 +606,29 @@ class ProjectsController extends AppController
             'contain' => ['Organizations', 'Mentors', 'Missions']
             ]
         );
-        
+
         $organizations = TableRegistry::get('Organizations');
         $users = TableRegistry::get('Users');
         $mentors = $project->getMentors();
 
-        
+
         $members = [];
-        
+
         foreach ($project->getOrganizations() as $organization) {
             $organization = $organizations->get($organization->getId(), ['contain' => ['Members']]);
-            
+
             foreach ($organization->getMembers() as $member) {
                 $members[] = $users->get($member->getId());
             }
         }
-        
+
         $members = array_unique($members);
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
                 $project->modifyMentors($usersSelected);
-                
+
                 $mentorless = $project->checkMentorless();
 
                 if (!count($mentorless)) {
@@ -578,7 +636,7 @@ class ProjectsController extends AppController
                     foreach ($project->getMissions() as $mission) {
                         $missions->save($mission);
                     }
-                    
+
                     if ($this->Projects->save($project)) {
                         $this->Flash->success(__('The mentors have been modified.'));
                         return $this->redirect(['action' => 'view', $project->id]);
@@ -598,17 +656,17 @@ class ProjectsController extends AppController
                             $mentorMessage = $mentorMessage . $mentor->getName() . ", ";
                         }
                     }
-                    
+
                     $mentorMessage = substr($mentorMessage, 0, -2);
                     $missionMessage = substr($missionMessage, 0, -2);
-                    
+
                     $this->Flash->error($mentorMessage . " " . __('would cause') . " " . $missionMessage . " " . __('to become mentorless'));
                 }
             } else {
                 $this->Flash->error(__('There must be at least one mentor'));
             }
         }
-       
+
         $this->set(compact('project', 'members', 'mentors'));
         $this->set('_serialize', ['project']);
     }
