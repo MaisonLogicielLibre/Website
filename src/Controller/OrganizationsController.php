@@ -33,7 +33,8 @@ class OrganizationsController extends AppController
         'editRejected' => ['edit_organizations', 'edit_organization'],
         'delete' => ['delete_organizations', 'delete_organization'],
         'addOwner' => ['edit_organization'],
-        'addMember' => ['edit_organization']
+        'addMember' => ['edit_organization'],
+        'myOrg' => []
     ];
 
     /**
@@ -129,6 +130,60 @@ class OrganizationsController extends AppController
                     ]
                 );
         }
+    }
+
+    /**
+     * MyOrg method
+     * @return void
+     */
+    public function myOrg()
+    {
+        $user = $this->request->session()->read('Auth.User');
+
+        $data = $this->DataTables
+            ->find(
+                'Organizations',
+                [
+                    'fields' =>
+                        [
+                            'id',
+                            'name',
+                            'website',
+                            'isValidated',
+                            'isRejected'
+                        ]
+                ]
+            )->join(
+                [
+                    'table' => 'organizations_owners',
+                    'alias' => 'o',
+                    'type' => 'LEFT',
+                    'conditions' => 'o.organization_id = Organizations.id'
+                ]
+            )->join(
+                [
+                    'table' => 'organizations_members',
+                    'alias' => 'm',
+                    'type' => 'LEFT',
+                    'conditions' => 'm.organization_id = Organizations.id'
+                ]
+            )->where(
+                [
+                    'o.user_id' => $user['id']
+                ]
+            )->orWhere(
+                [
+                    'm.user_id' => $user['id']
+
+                ]
+            )->group('Organizations.id');
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
