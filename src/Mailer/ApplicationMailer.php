@@ -26,8 +26,8 @@ class ApplicationMailer extends Mailer
 			->to($mentor->getEmail())
 			->subject(__('New application'))
 			->set([
-				   'mentorname' => $mentor->getName(), 
-			       'username' => $user->getName(), 
+				   'mentorname' => $mentor->getUsername(), 
+			       'username' => $user->getUsername(), 
 				   'linkUser' => $linkUser,
 				   'missionname' => $mission->getName(),
 				   'linkMission' => $linkMission
