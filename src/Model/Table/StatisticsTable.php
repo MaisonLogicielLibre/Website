@@ -1,4 +1,13 @@
 <?php
+/**
+ * Statistic Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\Statistic;
@@ -8,8 +17,13 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Statistics Model
+ * Statistic Model
  *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
 class StatisticsTable extends Table
 {
@@ -18,6 +32,7 @@ class StatisticsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -27,13 +42,13 @@ class StatisticsTable extends Table
         $this->table('statistics');
         $this->displayField('id');
         $this->primaryKey('id');
-
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)

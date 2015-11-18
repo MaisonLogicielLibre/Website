@@ -14,7 +14,9 @@
 			)
 		->setOptions([
 			'height' => 300,
-			'title' => __('Contributions to the ML² website project')
+			'title' => __('Contributions to the ML² website project'),
+			'legend' => 'none',
+			'vAxis' => ['format' => '#']
 		])
 		?>
 	</div>
@@ -98,7 +100,10 @@
 				$stats['users']['universities']
 			)
 		->setOptions([
-			'height' => 300
+			'height' => 300,
+			'legend' => 'none',
+			'title' => __('Users per university'),
+ 			'vAxis' => ['format' => '#']
 		])
 		?>
 	</div>

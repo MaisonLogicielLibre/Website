@@ -52,7 +52,7 @@ class PagesControllerTest extends IntegrationTestCase
         'app.permissions_type_users',
         'app.hashes',
         'app.hash_types',
-		'app.statistics'
+        'app.statistics'
     ];
 
     /**
@@ -78,8 +78,8 @@ class PagesControllerTest extends IntegrationTestCase
         $this->get('/pages/statistics');
         $this->assertResponseOk();
     }
-	
-	/**
+    
+    /**
      * Test statistics - No Perm
      *
      * @return void

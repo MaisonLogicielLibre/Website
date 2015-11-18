@@ -75,7 +75,7 @@ class PagesController extends AppController
 
     /**
      * Home method
-     * @return redirect
+     * @return void
      */
     public function home()
     {
@@ -125,165 +125,151 @@ class PagesController extends AppController
     }
 
     
-	/**
+    /**
      * Statistics method
-     * @return redirect
+     * @return void
      */
     public function statistics()
     {
         $this->loadModel("Statistics");
         $statistics = $this->Statistics->find('all')->toArray();
-		
-		$this->loadModel("Users");
+        
+        $this->loadModel("Users");
         $users = $this->Users->find('all')->toArray();
-		
-		$this->loadModel("Projects");
+        
+        $this->loadModel("Projects");
         $projects = $this->Projects->find('all')->toArray();
-		
-		$this->loadModel("Organizations");
+        
+        $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
-		
-		$this->loadModel("Missions");
+        
+        $this->loadModel("Missions");
         $missions = $this->Missions->find('all')->toArray();
-	
-		$issues = 0;
-		$prs = 0;
-		$commits = 0;
-		
-		$contributions = [];
-		
-		if($statistics) {
-			foreach($statistics as $statistic) {
-				$contributions[] = [
-					$statistic->getContributionDate(),
-					$statistic->getContribution()
-				];
-				
-				$issues += $statistic->getIssues();
-				$prs += $statistic->getPullRequests();
-				$commits += $statistic->getCommits();
-			}
-		}
-		
-		
-		$female = 0;
-		$male = 0;
-		$otherGender = 0;
-		
-		$ets =0;
-		$sher = 0;
-		$con =0;
-		$udm = 0;
-		$uqam = 0;
-		$poly = 0;
-		$mc = 0;
-		$otherUni =0;
-		
-		$mentors = 0;
-		$students = 0;
-		
-		foreach($users as $user) {
-			
-			$user = $this->Users->get(
-				$user->getId(),
-				[
-					'contain' => ['Universities']
-				]
-			);
-			
-			if ($user->getGender() === null) {
-				$otherGender++;
-			} elseif ($user->getGender()) {
-				$male++;
-			} else {
-				$female++;
-			}
-			
-			if($user->getUniversity()) {
-				switch($user->getUniversity()->getName()){
-					case "École de Technologie Supérieure" : 
-						$ets++;
-						break;
-					case "Université du Québec à Montréal" : 
-						$uqam++;
-						break;
-					case "McGill" : 
-						$mc++;
-						break;
-					case "Concordia" : 
-						$con++;
-						break;
-					case "Université de Montréal" : 
-						$udm++;
-						break;
-					case "Université de Sherbrooke" : 
-						$sher++;
-						break;
-					case "Polytechnique de Montréal" : 
-						$poly++;
-						break;
-					default :
-						$otherUni++;
-						break;
-				}
-			} else {
-				$otherUni++;
-			}
-			
-			
-			if($user->isAvailableMentoring()){
-				$mentors++;
-			}
-			
-			if($user->isStudent()){
-				$students++;
-			}
-		}
-		
-		$genders = [
-			['Male', $male],
-			['Female', $female],
-			['Not specified', $otherGender]
-		];
-		
-		$universities = [
-			['École de Technologie Supérieure', $ets],
-			['Université du Québec à Montréal', $uqam],
-			['McGill', $mc],
-			['Concordia', $con],
-			['Université de Montréal', $udm],
-			['Université de Sherbrooke', $sher],
-			['Polytechnique de Montréal', $poly],
-			['Not specified', $otherUni]
-		];
-		
-		$statsRepo = [
-			'issues' => $issues,
-			'pullRequests' => $prs,
-			'commits' => $commits
-		];
-		
-		$statsUsers = [
-			'genders' => $genders,
-			'universities' => $universities,
-			'mentors' => $mentors,
-			'students' => $students,
-			'count' => count($users)
-		];
-		
-		$statsWeb = [
-			'organizations' => count($organizations),
-			'projects' => count($projects),
-			'missions' => count($missions)
-			
-		];
-		
-		$stats = [
-			'repository' => $statsRepo,
-			'users' => $statsUsers,
-			'website' => $statsWeb
-		];
-		
+        
+        $this->loadModel("Universities");
+        $universities = $this->Universities->find('all')->toArray();
+    
+        $issues = 0;
+        $prs = 0;
+        $commits = 0;
+        
+        $contributions = [];
+        
+        if ($statistics) {
+            foreach ($statistics as $statistic) {
+                $contributions[] = [
+                $statistic->getContributionDate(),
+                $statistic->getContribution()
+                ];
+                
+                $issues += $statistic->getIssues();
+                $prs += $statistic->getPullRequests();
+                $commits += $statistic->getCommits();
+            }
+        }
+        
+        $countUni = [];
+        
+        $loopCount = count($universities) + 1;
+        for ($i = 0; $i < $loopCount; $i++) {
+            $countUni[] = 0;
+        }
+        
+        $mentors = 0;
+        $students = 0;
+        
+        foreach ($users as $user) {
+            $user = $this->Users->get(
+                $user->getId(),
+                [
+                'contain' => ['Universities']
+                ]
+            );
+            
+            if ($user->getUniversity()) {
+				// @codingStandardsIgnoreStart
+                switch ($user->getUniversity()->getId()) {
+                    case 1: 
+                        $countUni[0] = $countUni[0] + 1;
+                        break;
+                    case 2:
+                        $countUni[1] = $countUni[1] + 1;
+                        break;
+                    case 3:
+                        $countUni[2] = $countUni[2] + 1;
+                        break;
+                    case 4:
+                        $countUni[3] = $countUni[3] + 1;
+                        break;
+                    case 5:
+                        $countUni[4] = $countUni[4] + 1;
+                        break;
+                    case 6:
+                        $countUni[5] = $countUni[5] + 1;
+                        break;
+                    case 7:
+                        $countUni[6] = $countUni[6] + 1;
+                        break;
+                    default:
+                        $countUni[7] = $countUni[7] + 1;
+                        break;
+				// @codingStandardsIgnoreEnd
+                }
+            } else {
+                $countUni[7] = $countUni[7] + 1;
+            }
+            
+            
+            if ($user->isAvailableMentoring()) {
+                $mentors++;
+            }
+            
+            if ($user->isStudent()) {
+                $students++;
+            }
+        }
+       
+        $statsUni = [];
+        
+        $loopCount = count($universities);
+        for ($i = 0; $i < $loopCount; $i++) {
+            $statsUni[] = [
+                $this->Universities->findById($i + 1)->first()->getName(),
+                $countUni[$i]
+            ];
+        }
+        
+        $statsUni[] = [
+            __('Not specified'),
+            $countUni[count($universities)]
+        ];
+        
+        $statsRepo = [
+            'issues' => $issues,
+            'pullRequests' => $prs,
+            'commits' => $commits
+        ];
+        
+        $statsUsers = [
+            'universities' => $statsUni,
+            'mentors' => $mentors,
+            'students' => $students,
+            'count' => count($users)
+        ];
+        
+        $statsWeb = [
+            'organizations' => count($organizations),
+            'projects' => count($projects),
+            'missions' => count($missions)
+            
+        ];
+        
+        $stats = [
+            'repository' => $statsRepo,
+            'users' => $statsUsers,
+            'website' => $statsWeb
+        ];
+        
         $this->set(compact('contributions', 'stats'));
     }
 }

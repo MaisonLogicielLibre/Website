@@ -1,4 +1,13 @@
 <?php
+/**
+ * Tests for StatisticsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\StatisticsTable;
@@ -7,7 +16,13 @@ use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
- * App\Model\Table\StatisticsTable Test Case
+ * Tests for StatisticsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
  */
 class StatisticsTableTest extends TestCase
 {
@@ -44,8 +59,8 @@ class StatisticsTableTest extends TestCase
 
         parent::tearDown();
     }
-	
-	/**
+    
+    /**
      * Test getCommits
      * @return void
      */
@@ -60,8 +75,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getPullRequests
      * @return void
      */
@@ -76,8 +91,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getPullRequestsOpen
      * @return void
      */
@@ -92,8 +107,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getPullRequestsClose
      * @return void
      */
@@ -108,8 +123,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getIssues
      * @return void
      */
@@ -124,8 +139,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getIssuesOpen
      * @return void
      */
@@ -140,8 +155,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getIssuesClose
      * @return void
      */
@@ -156,8 +171,8 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getContributions
      * @return void
      */
@@ -172,15 +187,15 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getContributionsDate
      * @return void
      */
     public function testGetContributionDate()
     {
         $id = 1;
-        $expected = "15-11-18 14:06";
+        $expected = "11/18";
 
         $application = $this->Statistics->get($id);
 
