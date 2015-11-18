@@ -121,6 +121,18 @@ class ProjectsController extends AppController
                                     'alias' => 'm',
                                     'type' => 'LEFT',
                                     'conditions' => 'm.project_id = Projects.id'
+                                ],
+                                [
+                                    'table' => 'projects_contributors',
+                                    'alias' => 'c',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'c.project_id = Projects.id'
+                                ],
+                                [
+                                    'table' => 'organizations_projects',
+                                    'alias' => 'o',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'o.project_id = Projects.id'
                                 ]
                             ],
                             'conditions' =>
@@ -133,14 +145,18 @@ class ProjectsController extends AppController
                                         ],
                                         [
                                             'archived' => 0,
-                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
+                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' '),
+                                        ],
+                                        [
+                                            'archived' => 0,
+                                            'o.organization_id IN' => (!is_null($user) ? array_map(function ($o) {return $o->getId();}, $user->getOrganizationsJoined()) : ' ')
                                         ]
                                     ]
                             ],
                             'group' => 'Projects.id'
                     ]
                 );
-
+            
             $this->set(
                 [
                     'data' => $data,
