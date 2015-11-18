@@ -34,7 +34,7 @@ class OrganizationsController extends AppController
         'delete' => ['delete_organizations', 'delete_organization'],
         'addOwner' => ['edit_organization'],
         'addMember' => ['edit_organization'],
-        'myOrg' => []
+        'myOrganizations' => []
     ];
 
     /**
@@ -133,10 +133,10 @@ class OrganizationsController extends AppController
     }
 
     /**
-     * MyOrg method
+     * MyOrganizations method
      * @return void
      */
-    public function myOrg()
+    public function myOrganizations()
     {
         $user = $this->request->session()->read('Auth.User');
 

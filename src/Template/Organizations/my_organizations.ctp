@@ -44,7 +44,7 @@
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([
     'ajax' => [
-        'url' => $this->Url->build(['action' => 'myOrg']),
+        'url' => $this->Url->build(['action' => 'myOrganizations']),
     ],
     'deferLoading' => $recordsTotal,
     'delay' => 600,
