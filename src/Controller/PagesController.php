@@ -15,6 +15,7 @@ use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use GithubApi;
 
 /**
  * Pages controller
@@ -37,7 +38,7 @@ class PagesController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['display', 'home', 'tv']);
+        $this->Auth->allow(['display', 'home', 'tv', 'statistics']);
     }
     
     /**
@@ -121,5 +122,168 @@ class PagesController extends AppController
                 break;
         }
         // @codingStandardsIgnoreEnd
+    }
+
+    
+	/**
+     * Statistics method
+     * @return redirect
+     */
+    public function statistics()
+    {
+        $this->loadModel("Statistics");
+        $statistics = $this->Statistics->find('all')->toArray();
+		
+		$this->loadModel("Users");
+        $users = $this->Users->find('all')->toArray();
+		
+		$this->loadModel("Projects");
+        $projects = $this->Projects->find('all')->toArray();
+		
+		$this->loadModel("Organizations");
+        $organizations = $this->Organizations->find('all')->toArray();
+		
+		$this->loadModel("Missions");
+        $missions = $this->Missions->find('all')->toArray();
+	
+		$issues = 0;
+		$prs = 0;
+		$commits = 0;
+		
+		$contributions = [];
+		
+		if($statistics) {
+			foreach($statistics as $statistic) {
+				$contributions[] = [
+					$statistic->getContributionDate(),
+					$statistic->getContribution()
+				];
+				
+				$issues += $statistic->getIssues();
+				$prs += $statistic->getPullRequests();
+				$commits += $statistic->getCommits();
+			}
+		}
+		
+		
+		$female = 0;
+		$male = 0;
+		$otherGender = 0;
+		
+		$ets =0;
+		$sher = 0;
+		$con =0;
+		$udm = 0;
+		$uqam = 0;
+		$poly = 0;
+		$mc = 0;
+		$otherUni =0;
+		
+		$mentors = 0;
+		$students = 0;
+		
+		foreach($users as $user) {
+			
+			$user = $this->Users->get(
+				$user->getId(),
+				[
+					'contain' => ['Universities']
+				]
+			);
+			
+			if ($user->getGender() === null) {
+				$otherGender++;
+			} elseif ($user->getGender()) {
+				$male++;
+			} else {
+				$female++;
+			}
+			
+			if($user->getUniversity()) {
+				switch($user->getUniversity()->getName()){
+					case "École de Technologie Supérieure" : 
+						$ets++;
+						break;
+					case "Université du Québec à Montréal" : 
+						$uqam++;
+						break;
+					case "McGill" : 
+						$mc++;
+						break;
+					case "Concordia" : 
+						$con++;
+						break;
+					case "Université de Montréal" : 
+						$udm++;
+						break;
+					case "Université de Sherbrooke" : 
+						$sher++;
+						break;
+					case "Polytechnique de Montréal" : 
+						$poly++;
+						break;
+					default :
+						$otherUni++;
+						break;
+				}
+			} else {
+				$otherUni++;
+			}
+			
+			
+			if($user->isAvailableMentoring()){
+				$mentors++;
+			}
+			
+			if($user->isStudent()){
+				$students++;
+			}
+		}
+		
+		$genders = [
+			['Male', $male],
+			['Female', $female],
+			['Not specified', $otherGender]
+		];
+		
+		$universities = [
+			['École de Technologie Supérieure', $ets],
+			['Université du Québec à Montréal', $uqam],
+			['McGill', $mc],
+			['Concordia', $con],
+			['Université de Montréal', $udm],
+			['Université de Sherbrooke', $sher],
+			['Polytechnique de Montréal', $poly],
+			['Not specified', $otherUni]
+		];
+		
+		$statsRepo = [
+			'issues' => $issues,
+			'pullRequests' => $prs,
+			'commits' => $commits
+		];
+		
+		$statsUsers = [
+			'genders' => $genders,
+			'universities' => $universities,
+			'mentors' => $mentors,
+			'students' => $students,
+			'count' => count($users)
+		];
+		
+		$statsWeb = [
+			'organizations' => count($organizations),
+			'projects' => count($projects),
+			'missions' => count($missions)
+			
+		];
+		
+		$stats = [
+			'repository' => $statsRepo,
+			'users' => $statsUsers,
+			'website' => $statsWeb
+		];
+		
+        $this->set(compact('contributions', 'stats'));
     }
 }
