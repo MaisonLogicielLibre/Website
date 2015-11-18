@@ -103,14 +103,14 @@ class OrganizationsController extends AppController
                                 'isValidated',
                                 'isRejected'
                             ],
-                        'join' =>
+                            'join' =>
                             [
                                 'table' => 'organizations_owners',
                                 'alias' => 'o',
                                 'type' => 'LEFT',
                                 'conditions' => 'o.organization_id = Organizations.id'
                             ],
-                        'conditions' =>
+                            'conditions' =>
                             [
                                 'OR' =>
                                     [
@@ -124,7 +124,7 @@ class OrganizationsController extends AppController
                                         ]
                                     ]
                             ],
-                        'group' => 'Organizations.id'
+                            'group' => 'Organizations.id'
                     ]
                 );
 
@@ -157,7 +157,7 @@ class OrganizationsController extends AppController
                             'isValidated',
                             'isRejected'
                         ],
-                    'join' =>
+                        'join' =>
                         [
                             [
                                 'table' => 'organizations_owners',
@@ -172,7 +172,7 @@ class OrganizationsController extends AppController
                                 'conditions' => 'm.organization_id = Organizations.id'
                             ]
                         ],
-                    'conditions' =>
+                        'conditions' =>
                         [
                             'OR' =>
                                 [
@@ -184,7 +184,7 @@ class OrganizationsController extends AppController
                                     ]
                                 ]
                         ],
-                    'group' => 'Organizations.id'
+                        'group' => 'Organizations.id'
                 ]
             );
 

@@ -102,34 +102,44 @@ class ProjectsController extends AppController
                     'Projects',
                     [
                         'contain' => [
-                            'Organizations' => [
-                                'fields' => [
-                                    'id', 'name', 'OrganizationsProjects.project_id'
+                            'Organizations' =>
+                                [
+                                    'fields' =>
+                                        [
+                                            'id', 'name', 'OrganizationsProjects.project_id'
+                                        ]
                                 ]
-                            ]
                         ],
-                        'fields' => [
-                            'id', 'name', 'link', 'accepted'
-                        ],
+                        'fields' =>
+                            [
+                                'id', 'name', 'link', 'accepted'
+                            ],
+                            'join' =>
+                            [
+                                [
+                                    'table' => 'projects_mentors',
+                                    'alias' => 'm',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'm.project_id = Projects.id'
+                                ]
+                            ],
+                            'conditions' =>
+                            [
+                                'OR' =>
+                                    [
+                                        [
+                                            'archived' => 0,
+                                            'accepted' => 1,
+                                        ],
+                                        [
+                                            'archived' => 0,
+                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
+                                        ]
+                                    ]
+                            ],
+                            'group' => 'Projects.id'
                     ]
-                )->join(
-                    [
-                        'table' => 'projects_mentors',
-                        'alias' => 'm',
-                        'type' => 'LEFT',
-                        'conditions' => 'm.project_id = Projects.id'
-                    ]
-                )->where(
-                    [
-                        'archived' => 0,
-                        'accepted' => 1,
-                    ]
-                )->orWhere(
-                    [
-                        'archived' => 0,
-                        'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
-                        ]
-                )->group('Projects.id');
+                );
 
             $this->set(
                 [
@@ -164,30 +174,35 @@ class ProjectsController extends AppController
                     'fields' => [
                         'id', 'name', 'link', 'accepted'
                     ],
+                    'join' =>
+                        [
+                            [
+                                'table' => 'projects_mentors',
+                                'alias' => 'm',
+                                'type' => 'LEFT',
+                                'conditions' => 'm.project_id = Projects.id'
+                            ],
+                            [
+                                'table' => 'projects_contributors',
+                                'alias' => 'c',
+                                'type' => 'LEFT',
+                                'conditions' => 'c.project_id = Projects.id'
+                            ]
+                        ],
+                        'conditions' =>
+                        [
+                            'OR' => [
+                                [
+                                    'm.user_id' => $user['id'],
+                                ],
+                                [
+                                    'c.user_id' => $user['id'],
+                                ]
+                            ]
+                        ],
+                        'group' => 'Projects.id'
                 ]
-            )->join(
-                [
-                    'table' => 'projects_mentors',
-                    'alias' => 'm',
-                    'type' => 'LEFT',
-                    'conditions' => 'm.project_id = Projects.id'
-                ]
-            )->join(
-                [
-                    'table' => 'projects_contributors',
-                    'alias' => 'c',
-                    'type' => 'LEFT',
-                    'conditions' => 'c.project_id = Projects.id'
-                ]
-            )->where(
-                [
-                    'm.user_id' => $user['id'],
-                ]
-            )->OrWhere(
-                [
-                    'c.user_id' => $user['id'],
-                ]
-            )->group('Projects.id');
+            );
 
         $this->set(
             [
