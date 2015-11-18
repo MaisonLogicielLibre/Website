@@ -70,7 +70,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ]
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var userUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 $this->Html->scriptEnd(); ?>

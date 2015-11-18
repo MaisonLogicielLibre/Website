@@ -61,7 +61,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ],
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 echo 'var validationTxt="' . __('Pending Validation') . '";';
