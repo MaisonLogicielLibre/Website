@@ -217,7 +217,7 @@ class ProjectsController extends AppController
      *
      * @return void
      */
-    public function adminIndex()
+    protected function adminIndex()
     {
         $data = $this->DataTables->find(
             'Projects',

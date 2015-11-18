@@ -136,7 +136,7 @@ class OrganizationsController extends AppController
      *
      * @return void
      */
-    public function adminIndex()
+    protected function adminIndex()
     {
         $data = $this->DataTables->find(
             'organizations',
