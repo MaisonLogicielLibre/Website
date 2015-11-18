@@ -480,3 +480,7 @@ footer {
 .required > label:after {
     content: ' *';
 }
+
+.navbar-nav >li > a {
+    line-height: 26px;!important
+}
