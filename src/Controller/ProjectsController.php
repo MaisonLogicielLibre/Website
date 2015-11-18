@@ -314,9 +314,10 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-                'contain' => ['Organizations']
+                'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -326,7 +327,19 @@ class ProjectsController extends AppController
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-        $organizations = $this->Projects->Organizations->find('list', ['limit' => 200]);
+         $organizations = $this->Projects->Organizations->find('list')
+             ->join(
+                 [
+                    'table' => 'organizations_members',
+                    'alias' => 'm',
+                    'type' => 'LEFT',
+                    'conditions' => 'm.organization_id = Organizations.id'
+                 ]
+             )->where(
+                 [
+                    'm.user_id' => $this->request->session()->read('Auth.User.id')
+                 ]
+             );
         $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
