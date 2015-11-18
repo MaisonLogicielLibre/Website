@@ -317,7 +317,7 @@ class ProjectsController extends AppController
                 'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
-		
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -328,18 +328,18 @@ class ProjectsController extends AppController
             }
         }
          $organizations = $this->Projects->Organizations->find('list')
-            ->join(
-                [
+             ->join(
+                 [
                     'table' => 'organizations_members',
                     'alias' => 'm',
                     'type' => 'LEFT',
                     'conditions' => 'm.organization_id = Organizations.id'
-                ]
-            )->where(
-                [
+                 ]
+             )->where(
+                 [
                     'm.user_id' => $this->request->session()->read('Auth.User.id')
-                ]
-            );
+                 ]
+             );
         $this->set(compact('project', 'organizations'));
         $this->set('_serialize', ['project']);
     }
