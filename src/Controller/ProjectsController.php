@@ -156,7 +156,7 @@ class ProjectsController extends AppController
                             'group' => 'Projects.id'
                     ]
                 );
-            
+
             $this->set(
                 [
                     'data' => $data,
@@ -332,6 +332,8 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
         $project = $this->Projects->get(
             $id,
             [
@@ -339,36 +341,45 @@ class ProjectsController extends AppController
             ]
         );
 
-        $data = $this->DataTables->find(
-            'Missions',
-            [
-                'contain' => [
-                    'TypeMissions' => [
-                        'fields' => [
-                            'id', 'name', 'MissionsTypeMissions.mission_id'
-                        ]
+        $userOrgs = array_map(function($o) {return $o->getId();},$user->getOrganizationsJoined());
+        $projectOrgs = array_map(function($o) {return $o->getId();},$project->getOrganizations());
+        $projectContrib = array_map(function($o) {return $o->getId();}, $project->getContributors());
+
+        if ($project->isAccepted() || count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib)) {
+
+            $data = $this->DataTables->find(
+                'Missions',
+                [
+                    'contain' => [
+                        'TypeMissions' => [
+                            'fields' => [
+                                'id', 'name', 'MissionsTypeMissions.mission_id'
+                            ]
+                        ],
+                        'Users'
                     ],
-                    'Users'
-                ],
 
-                'conditions' => ['project_id' => $id],
-                'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
-            ]
-        );
+                    'conditions' => ['project_id' => $id],
+                    'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
+                ]
+            );
 
-        if (null != $this->request->session()->read('Auth.User.id')) {
-            $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+            if (null != $this->request->session()->read('Auth.User.id')) {
+                $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+            } else {
+                $user = null;
+            }
+
+            $this->set(compact('project', 'user'));
+            $this->set(
+                [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                ]
+            );
         } else {
-            $user = null;
+            return $this->redirect(['action' => 'index']);
         }
-
-        $this->set(compact('project', 'user'));
-        $this->set(
-            [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-            ]
-        );
     }
 
     /**

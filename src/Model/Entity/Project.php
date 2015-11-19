@@ -101,6 +101,15 @@ class Project extends Entity
     }
 
     /**
+     * Get the contributors
+     * @return array contributors
+     */
+    public function getContributors()
+    {
+        return $this->_properties['contributors'];
+    }
+
+    /**
      * Get if the project is accepted
      * @return int accepted
      */
