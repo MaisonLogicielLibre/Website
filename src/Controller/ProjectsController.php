@@ -341,12 +341,22 @@ class ProjectsController extends AppController
             ]
         );
 
-        $userOrgs = array_map(function($o) {return $o->getId();},$user->getOrganizationsJoined());
-        $projectOrgs = array_map(function($o) {return $o->getId();},$project->getOrganizations());
-        $projectContrib = array_map(function($o) {return $o->getId();}, $project->getContributors());
+        if ($user) {
+            $userOrgs = array_map(function ($o) {
+                return $o->getId();
+            }, $user->getOrganizationsJoined());
+            $projectOrgs = array_map(function ($o) {
+                return $o->getId();
+            }, $project->getOrganizations());
+            $projectContrib = array_map(function ($o) {
+                return $o->getId();
+            }, $project->getContributors());
+            $projectMentors = array_map(function ($o) {
+                return $o->getId();
+            }, $project->getMentors());
+        }
 
-        if ($project->isAccepted() || count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib)) {
-
+        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors))) {
             $data = $this->DataTables->find(
                 'Missions',
                 [
