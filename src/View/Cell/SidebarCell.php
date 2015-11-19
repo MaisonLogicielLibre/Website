@@ -18,6 +18,16 @@ class SidebarCell extends Cell
     protected $_validCellOptions = [];
 
     /**
+     * Default sidebar
+     *
+     * @return void
+     */
+    public function all()
+    {
+        $this->set([]);
+    }
+
+    /**
      * user method.
      * @param int $userId userId
      *
