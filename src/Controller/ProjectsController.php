@@ -149,7 +149,12 @@ class ProjectsController extends AppController
                                         ],
                                         [
                                             'archived' => 0,
-                                            'o.organization_id IN' => (!is_null($user) ? array_map(function ($o) {return $o->getId();}, $user->getOrganizationsJoined()) : ' ')
+                                            'o.organization_id IN' => (!is_null($user) ? array_map(
+                                                function ($o) {
+                                                    return $o->getId();
+                                                },
+                                                $user->getOrganizationsJoined()
+                                            ) : ' ')
                                         ]
                                     ]
                             ],
@@ -342,18 +347,30 @@ class ProjectsController extends AppController
         );
 
         if ($user) {
-            $userOrgs = array_map(function ($o) {
-                return $o->getId();
-            }, $user->getOrganizationsJoined());
-            $projectOrgs = array_map(function ($o) {
-                return $o->getId();
-            }, $project->getOrganizations());
-            $projectContrib = array_map(function ($o) {
-                return $o->getId();
-            }, $project->getContributors());
-            $projectMentors = array_map(function ($o) {
-                return $o->getId();
-            }, $project->getMentors());
+            $userOrgs = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $user->getOrganizationsJoined()
+            );
+            $projectOrgs = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getOrganizations()
+            );
+            $projectContrib = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getContributors()
+            );
+            $projectMentors = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getMentors()
+            );
         }
 
         if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors))) {
