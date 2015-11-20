@@ -27,7 +27,12 @@
                         <tr>
                             <td>
                                 <!-- Name of project -->
-                                <?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
+                                <?php if ($project->isAccepted() && !$project->isArchived()) {
+                                   echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                } elseif (!$project->isAccepted() && !$project->isArchived()) {
+                                    echo $project->getName();
+                                }
+                                ?>
                                 <!-- Badge pending-->
                                 <?php
                                 if (!$project->isAccepted() && !$project->isArchived()):

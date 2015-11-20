@@ -121,6 +121,18 @@ class ProjectsController extends AppController
                                     'alias' => 'm',
                                     'type' => 'LEFT',
                                     'conditions' => 'm.project_id = Projects.id'
+                                ],
+                                [
+                                    'table' => 'projects_contributors',
+                                    'alias' => 'c',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'c.project_id = Projects.id'
+                                ],
+                                [
+                                    'table' => 'organizations_projects',
+                                    'alias' => 'o',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'o.project_id = Projects.id'
                                 ]
                             ],
                             'conditions' =>
@@ -133,7 +145,16 @@ class ProjectsController extends AppController
                                         ],
                                         [
                                             'archived' => 0,
-                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
+                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' '),
+                                        ],
+                                        [
+                                            'archived' => 0,
+                                            'o.organization_id IN' => (!is_null($user) ? array_map(
+                                                function ($o) {
+                                                    return $o->getId();
+                                                },
+                                                $user->getOrganizationsJoined()
+                                            ) : ' ')
                                         ]
                                     ]
                             ],
@@ -316,6 +337,8 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
         $project = $this->Projects->get(
             $id,
             [
@@ -323,36 +346,67 @@ class ProjectsController extends AppController
             ]
         );
 
-        $data = $this->DataTables->find(
-            'Missions',
-            [
-                'contain' => [
-                    'TypeMissions' => [
-                        'fields' => [
-                            'id', 'name', 'MissionsTypeMissions.mission_id'
-                        ]
-                    ],
-                    'Users'
-                ],
-
-                'conditions' => ['project_id' => $id],
-                'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
-            ]
-        );
-
-        if (null != $this->request->session()->read('Auth.User.id')) {
-            $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
-        } else {
-            $user = null;
+        if ($user) {
+            $userOrgs = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $user->getOrganizationsJoined()
+            );
+            $projectOrgs = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getOrganizations()
+            );
+            $projectContrib = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getContributors()
+            );
+            $projectMentors = array_map(
+                function ($o) {
+                    return $o->getId();
+                },
+                $project->getMentors()
+            );
         }
 
-        $this->set(compact('project', 'user'));
-        $this->set(
-            [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-            ]
-        );
+        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors))) {
+            $data = $this->DataTables->find(
+                'Missions',
+                [
+                    'contain' => [
+                        'TypeMissions' => [
+                            'fields' => [
+                                'id', 'name', 'MissionsTypeMissions.mission_id'
+                            ]
+                        ],
+                        'Users'
+                    ],
+
+                    'conditions' => ['project_id' => $id],
+                    'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
+                ]
+            );
+
+            if (null != $this->request->session()->read('Auth.User.id')) {
+                $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+            } else {
+                $user = null;
+            }
+
+            $this->set(compact('project', 'user'));
+            $this->set(
+                [
+                    'data' => $data,
+                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                ]
+            );
+        } else {
+            return $this->redirect(['action' => 'index']);
+        }
     }
 
     /**
