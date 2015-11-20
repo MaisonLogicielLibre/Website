@@ -92,12 +92,14 @@ class PagesController extends AppController
     }
 
     /**
-     *
-     * @param null $id
+     * TV Method
+     * @param null $id tv page
      * @return redirect
      */
-    public function tv($id = null) {
+    public function tv($id = null)
+    {
         $this->viewBuilder()->layout(false);
+        // @codingStandardsIgnoreStart
         switch ($id) {
             case 1:
                 $this->render('tv1');
@@ -118,5 +120,6 @@ class PagesController extends AppController
                 $this->render('tv1');
                 break;
         }
+        // @codingStandardsIgnoreEnd
     }
 }
