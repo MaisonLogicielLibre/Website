@@ -37,7 +37,7 @@ class PagesController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['display', 'home']);
+        $this->Auth->allow(['display', 'home', 'tv']);
     }
     
     /**
@@ -89,5 +89,34 @@ class PagesController extends AppController
         $numberMissions = $this->Missions->find('all')->count();
 
         $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
+    }
+
+    /**
+     *
+     * @param null $id
+     * @return redirect
+     */
+    public function tv($id = null) {
+        $this->viewBuilder()->layout(false);
+        switch ($id) {
+            case 1:
+                $this->render('tv1');
+                break;
+            case 2:
+                $this->render('tv1');
+                break;
+            case 3:
+                $this->render('tv1');
+                break;
+            case 4:
+                $this->render('tv1');
+                break;
+            case 5:
+                $this->render('tv1');
+                break;
+            default:
+                $this->render('tv1');
+                break;
+        }
     }
 }
