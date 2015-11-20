@@ -3,6 +3,10 @@
         <?= $this->cell('Sidebar::organizationAction'); ?>
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?=__("The goal of an organization is to submit projects to be able to recruit students on project missions. The organizations allow to gather actors and projects in a single community, this allows a better idea of the entity.")?>
+        </div>
         <?= $this->Form->create($organization); ?>
         <div class="alert alert-info" role="alert"><?= __("After submit the organization, you will be redirect on the organization's page to create some projects."); ?></div>
         <fieldset>
