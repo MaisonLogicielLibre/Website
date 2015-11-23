@@ -1,3 +1,4 @@
+<?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h4 class="page-title"><?= __('List of projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h4>
@@ -14,6 +15,7 @@
 
         <div class="panel">
             <div class="panel-body">
+                <div class="table-responsive">
                     <table id="projects" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                         <tr>
@@ -46,6 +48,7 @@
                         </tfoot>
                     </table>
                 </div>
+            </div>
         </div>
     </div>
 </div>

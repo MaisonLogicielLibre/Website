@@ -1,7 +1,7 @@
-<div id="sidebar-wrapper">
-    <ul id="menu" class="sidebar-nav nav-stacked">
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
         <li class="menu-title">
-            <?= __('Navigation') ?>
+            <?= __('Navigation'); ?>
         </li>
         <li class="active">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>"><span
@@ -11,7 +11,7 @@
             <a href="#">
                 <span class="fa-stack fa-lg pull-left"><i class="fa fa-tasks fa-stack-1x"></i></span>
                 <?= __('Projects'); ?>
-                <span class="label label-info pull-right">4</span>
+                <span class="label label-default pull-right">4</span>
             </a>
             <ul class="nav-stacked">
                 <li><?= $this->Html->link(__('List of organizations'), ['controller' => 'Organizations', 'action' => 'index']); ?></li>
@@ -19,12 +19,12 @@
                 <li><?= $this->Html->link(__('List of projects'), ['controller' => 'Projects', 'action' => 'index']); ?></li>
                 <li><?= $this->Html->link(__('Submit a project'), ['controller' => 'Projects', 'action' => 'submit']); ?></li>
             </ul>
-        </li>
+        </li>a
         <li>
             <a href="#">
                 <span class="fa-stack fa-lg pull-left"><i class="fa fa-calendar fa-stack-1x"></i></span>
                 <?= __('Activities') ?>
-                <span class="label label-info pull-right">2</span>
+                <span class="label label-default pull-right">2</span>
             </a>
             <ul class="nav-stacked">
                 <li><?= $this->Html->link(__('Meetup'), ['controller' => 'Pages', 'action' => 'meetup']); ?></li>
@@ -35,7 +35,7 @@
             <a href="#">
                 <span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x"></i></span>
                 <?= __('Partners') ?>
-                <span class="label label-info pull-right">4</span>
+                <span class="label label-default pull-right">4</span>
             </a>
             <ul class="nav-stacked">
                 <li><?= $this->Html->link(__('Industry'), ['controller' => 'Pages', 'action' => 'industry']); ?></li>
