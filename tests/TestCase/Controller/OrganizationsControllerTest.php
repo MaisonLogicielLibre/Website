@@ -644,4 +644,17 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $q = $organizations->findById(1)->first();
         $this->assertEquals($expected, $q->getIsRejected());
     }
+
+    /**
+     * Test myOrganizations - Ok
+     *
+     * @return void
+     */
+    public function testMyOrganizations()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/organizations/myOrganizations');
+        $this->assertResponseSuccess();
+    }
 }
