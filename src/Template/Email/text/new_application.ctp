@@ -20,6 +20,6 @@
     echo __('Click here to see your mission details') . ' : ' . $linkMission . "\r\n";
     echo __("Click here to view the candidate's profile") . ' : ' . $linkUser . "\r\n\r\n";
 
-    echo __('Contact us to accept this candidate') . ' : ' . $this->Url->build(['controller' => 'Pages', 'action' => 'contact'], true) . "\r\n\r\n";
+    echo __('Go on the mission page to accept or reject the candidate');
 
-    echo __('Note: You will be able to directly approve the candidate next release');
+  
