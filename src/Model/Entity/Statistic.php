@@ -122,7 +122,7 @@ class Statistic extends Entity
      */
     public function getContributionDate()
     {
-        $date = date_create(date($this->_properties['date']));
-        return date_format($date, "m/d");
+        $date = $this->_properties['date'];
+        return $date->month . "/" . $date->day;
     }
 }
