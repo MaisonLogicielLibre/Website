@@ -65,6 +65,7 @@ echo $this->DataTables->init([
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 echo 'var validationTxt="' . __('Pending Validation') . '";';
+echo 'var ownerTxt="' . __('Owner') . '";';
 $this->Html->scriptEnd(); ?>
-<?= $this->Html->script('organizations/index.js', ['block' => 'scriptBottom']); ?>
+<?= $this->Html->script('organizations/myOrganizations', ['block' => 'scriptBottom']); ?>
 
