@@ -53,6 +53,8 @@ INSERT INTO `statistics` (`id`, `commits`, `pull_requests_open`, `pull_requests_
 (9, 141, 46, 45, 33, 34, '2015-11-02 00:00:00'),
 (10, 32, 21, 18, 13, 12, '2015-11-09 00:00:00'),
 (11, 32, 11, 10, 10, 12, '2015-11-16 00:00:00');
+(11, 40, 21, 22, 28, 23, '2015-11-23 00:00:00');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
