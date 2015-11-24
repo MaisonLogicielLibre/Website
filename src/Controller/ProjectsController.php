@@ -12,6 +12,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -25,15 +26,19 @@ use Cake\ORM\TableRegistry;
  */
 class ProjectsController extends AppController
 {
+    use MailerAwareTrait;
+
     private $_permissions = [
         'add' => ['add_project'],
         'submit' => ['submit_project'],
         'edit' => ['edit_project', 'edit_projects'],
+        'editMentor' => ['edit_project', 'edit_projects'],
         'editState' => ['edit_project', 'edit_projects'],
         'editAccepted' => ['edit_project', 'edit_projects'],
         'editArchived' => ['edit_project', 'edit_projects'],
         'delete' => ['delete_project', 'delete_projects'],
-        'apply' => ['add_application']
+        'apply' => ['add_application'],
+        'myProjects' => [],
     ];
 
     /**
@@ -97,34 +102,44 @@ class ProjectsController extends AppController
                     'Projects',
                     [
                         'contain' => [
-                            'Organizations' => [
-                                'fields' => [
-                                    'id', 'name', 'OrganizationsProjects.project_id'
+                            'Organizations' =>
+                                [
+                                    'fields' =>
+                                        [
+                                            'id', 'name', 'OrganizationsProjects.project_id'
+                                        ]
                                 ]
-                            ]
                         ],
-                        'fields' => [
-                            'id', 'name', 'link', 'accepted'
-                        ],
+                        'fields' =>
+                            [
+                                'id', 'name', 'link', 'accepted'
+                            ],
+                            'join' =>
+                            [
+                                [
+                                    'table' => 'projects_mentors',
+                                    'alias' => 'm',
+                                    'type' => 'LEFT',
+                                    'conditions' => 'm.project_id = Projects.id'
+                                ]
+                            ],
+                            'conditions' =>
+                            [
+                                'OR' =>
+                                    [
+                                        [
+                                            'archived' => 0,
+                                            'accepted' => 1,
+                                        ],
+                                        [
+                                            'archived' => 0,
+                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' ')
+                                        ]
+                                    ]
+                            ],
+                            'group' => 'Projects.id'
                     ]
-                )->join(
-                    [
-                        'table' => 'projects_mentors',
-                        'alias' => 'm',
-                        'type' => 'LEFT',
-                        'conditions' => 'm.project_id = Projects.id'
-                    ]
-                )->where(
-                    [
-                        'archived' => 0,
-                        'accepted' => 1,
-                    ]
-                )->orWhere(
-                    [
-                        'archived' => 0,
-                        'm.user_id' => (!is_null($user) ? $user->getId() : '')
-                        ]
-                )->group('Projects.id');
+                );
 
             $this->set(
                 [
@@ -133,6 +148,69 @@ class ProjectsController extends AppController
                 ]
             );
         }
+    }
+
+    /**
+     * MyProjects method
+     * @return redirect
+     */
+    public function myProjects()
+    {
+        $orgs = $this->Projects->Organizations->find('list', ['limit' => 200]);
+        $this->set(compact('orgs'));
+        $user = $this->request->session()->read('Auth.User');
+
+        $data = $this->DataTables
+            ->find(
+                'Projects',
+                [
+                    'contain' => [
+                        'Organizations' => [
+                            'fields' => [
+                                'id', 'name', 'OrganizationsProjects.project_id'
+                            ]
+                        ]
+                    ],
+                    'fields' => [
+                        'id', 'name', 'link', 'accepted'
+                    ],
+                    'join' =>
+                        [
+                            [
+                                'table' => 'projects_mentors',
+                                'alias' => 'm',
+                                'type' => 'LEFT',
+                                'conditions' => 'm.project_id = Projects.id'
+                            ],
+                            [
+                                'table' => 'projects_contributors',
+                                'alias' => 'c',
+                                'type' => 'LEFT',
+                                'conditions' => 'c.project_id = Projects.id'
+                            ]
+                        ],
+                        'conditions' =>
+                        [
+                            'OR' => [
+                                [
+                                    'm.user_id' => $user['id'],
+                                ],
+                                [
+                                    'c.user_id' => $user['id'],
+                                ]
+                            ]
+                        ],
+                        'group' => 'Projects.id'
+                ]
+            );
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data']),
+                compact('org')
+            ]
+        );
     }
 
     /**
@@ -213,7 +291,7 @@ class ProjectsController extends AppController
      *
      * @return void
      */
-    public function adminIndex()
+    protected function adminIndex()
     {
         $data = $this->DataTables->find(
             'Projects',
@@ -256,6 +334,7 @@ class ProjectsController extends AppController
                     ],
                     'Users'
                 ],
+
                 'conditions' => ['project_id' => $id],
                 'fields' => ['Missions.id', 'Missions.name', 'Missions.session', 'Missions.length', 'Users.firstName', 'Users.lastName', 'Missions.archived']
             ]
@@ -340,8 +419,8 @@ class ProjectsController extends AppController
                     'm.user_id' => $this->request->session()->read('Auth.User.id')
                  ]
              );
-        $this->set(compact('project', 'organizations'));
-        $this->set('_serialize', ['project']);
+         $this->set(compact('project', 'organizations'));
+         $this->set('_serialize', ['project']);
     }
 
     /**
@@ -353,18 +432,28 @@ class ProjectsController extends AppController
         if ($this->request->is('ajax')) {
             $this->autoRender = false;
             $data = $this->request->data;
-            $projects = $this->Projects->get(intval($data['id']));
+            $project = $this->Projects->get(intval($data['id']), ['contain' => ['Mentors']]);
             if ($data['state'] == '4') { // Archived
-                $projects->editArchived($data['stateValue']);
+                $project->editArchived($data['stateValue']);
+                foreach ($project->getMentors() as $mentor) {
+                    if ($data['stateValue']) {
+                        $this->getMailer('Project')->send('archiveProject', [$project, $mentor]);
+                    } else {
+                        $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
+                    }
+                }
             } elseif ($data['state'] == '3') { // Approved
-                if (!$projects->isAccepted()) {
-                    $projects->editAccepted($data['stateValue']);
+                if (!$project->isAccepted()) {
+                    $project->editAccepted($data['stateValue']);
+                    foreach ($project->getMentors() as $mentor) {
+                        $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
+                    }
                 }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
             }
             echo json_encode(['success', __('Your change has been saved')]);
-            $this->Projects->save($projects);
+            $this->Projects->save($project);
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
             $this->redirect(['action' => 'index']);
@@ -379,9 +468,12 @@ class ProjectsController extends AppController
     public function editAccepted($id)
     {
         $this->autoRender = false;
-        $project = $this->Projects->get($id);
+        $project = $this->Projects->get($id, ['contain' => ['Mentors']]);
         $project->editAccepted(1);
         if ($this->Projects->save($project)) {
+            foreach ($project->getMentors() as $mentor) {
+                $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
+            }
             $this->Flash->success(__('The project has been accepted.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -398,9 +490,16 @@ class ProjectsController extends AppController
     public function editArchived($id)
     {
         $this->autoRender = false;
-        $project = $this->Projects->get($id);
+        $project = $this->Projects->get($id, ['contain' => ['Mentors']]);
         $project->editArchived(!($project->isArchived()));
         if ($this->Projects->save($project)) {
+            foreach ($project->getMentors() as $mentor) {
+                if ($project->isArchived()) {
+                    $this->getMailer('Project')->send('archiveProject', [$project, $mentor]);
+                } else {
+                    $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
+                }
+            }
             $this->Flash->success(__('The project has been saved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -521,5 +620,83 @@ class ProjectsController extends AppController
             }
         }
         return $post;
+    }
+
+    /**
+     * EditMentor method
+     * @param int $id id
+     * @return redirect
+     */
+    public function editMentor($id = null)
+    {
+        $project = $this->Projects->get(
+            $id,
+            [
+            'contain' => ['Organizations', 'Mentors', 'Missions']
+            ]
+        );
+
+        $organizations = TableRegistry::get('Organizations');
+        $users = TableRegistry::get('Users');
+        $mentors = $project->getMentors();
+
+
+        $members = [];
+
+        foreach ($project->getOrganizations() as $organization) {
+            $organization = $organizations->get($organization->getId(), ['contain' => ['Members']]);
+
+            foreach ($organization->getMembers() as $member) {
+                $members[] = $users->get($member->getId());
+            }
+        }
+
+        $members = array_unique($members);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if (count($this->request->data)) {
+                $usersSelected = $this->request->data['users'];
+                $project->modifyMentors($usersSelected);
+
+                $mentorless = $project->checkMentorless();
+
+                if (!count($mentorless)) {
+                    $missions = TableRegistry::get('Missions');
+                    foreach ($project->getMissions() as $mission) {
+                        $missions->save($mission);
+                    }
+
+                    if ($this->Projects->save($project)) {
+                        $this->Flash->success(__('The mentors have been modified.'));
+                        return $this->redirect(['action' => 'view', $project->id]);
+                    } else {
+                        $this->Flash->error(__('The mentors could not be modified. Please,try again.'));
+                    }
+                } else {
+                    $mentorMessage = "";
+                    $missionMessage = "";
+                    $mentorsId = [];
+                    $mentorsId[] = 0;
+                    foreach ($mentorless as $mission) {
+                        $missionMessage = $missionMessage . $mission->getName() . ", ";
+                        if (!array_search($mission->getMentorId(), $mentorsId)) {
+                            $mentorsId[] = $mission->getMentorId();
+                            $mentor = $this->Users->findById($mission->getMentorId())->first();
+                            $mentorMessage = $mentorMessage . $mentor->getName() . ", ";
+                        }
+                    }
+
+                    $mentorMessage = substr($mentorMessage, 0, -2);
+                    $missionMessage = substr($missionMessage, 0, -2);
+
+                    $this->Flash->error($mentorMessage . " " . __('would cause') . " " . $missionMessage . " " . __('to become mentorless'));
+                }
+            } else {
+                $this->Flash->error(__('There must be at least one mentor'));
+            }
+        }
+
+        $this->set(compact('project', 'members', 'mentors'));
+        $this->set('_serialize', ['project']);
     }
 }

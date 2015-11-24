@@ -90,6 +90,21 @@ class UsersFixture extends TestFixture
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0
+        ],
+        [
+            'id' => 4,
+            'firstName' => 'Simon',
+            'lastName' => '',
+            'biography' => 'Une petite bio.',
+            'portfolio' => 'http://monportfolio.com',
+            'email' => 'email@gmail.com',
+            'phone' => '(514) 777-7777',
+            'gender' => null,
+            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
+            'username' => 'admin2',
+            'universitie_id' => 1,
+            'isAvailableMentoring' => 1,
+            'isStudent' => 0
         ]
     ];
 }

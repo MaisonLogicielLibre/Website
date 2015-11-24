@@ -9,13 +9,6 @@
 	</thead>
 	<tbody>
 	<tr class="info">
-		<td><?= __("October 23"); ?></td>
-		<td><?= __("There are 6 active projects with 10 intern missions, 2 graduates student missions, and 12 capstone missions"); ?></td>
-		<td><a class="btn btn-success"
-			   href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>"><?= __('Apply on a project'); ?></a></a>
-		</td>
-	</tr>
-	<tr class="info">
 		<td><?= __("October 28"); ?></td>
 		<td><?= __("Deadline to submit an intern project."); ?></td>
 		<td><a class="btn btn-success"

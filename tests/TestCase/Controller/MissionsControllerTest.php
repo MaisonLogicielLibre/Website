@@ -67,6 +67,17 @@ class MissionsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test view - Ok no user
+     *
+     * @return void
+     */
+    public function testViewOkNoUser()
+    {
+        $this->get('/missions/view/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
      * Test add - Ok
      *
      * @return void
@@ -258,6 +269,7 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 1]);
 
         $this->post('/missions/editArchived/1');
+        $this->post('/missions/editArchived/1');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
     }
 
@@ -281,9 +293,25 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testApplyOk()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/1');
+        $this->assertResponseSuccess();
     }
-    
+
+    /**
+     * Test apply - No more place
+     *
+     * @return void
+     */
+    public function testApplyNoMorePlaces()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->post('/missions/apply/10');
+
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 10]);
+    }
+
     /**
      * Test apply - Get
      *
@@ -293,8 +321,21 @@ class MissionsControllerTest extends IntegrationTestCase
     {
         $this->session(['Auth.User.id' => 1]);
 
-        $this->post('/missions/apply/1');
+        $this->get('/missions/apply/1');
         $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test apply - Get
+     *
+     * @return void
+     */
+    public function testApplyAlreadyApply()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/apply/8');
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 8]);
     }
     
     /**
@@ -304,7 +345,60 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testApplyNoAuth()
     {
-        $this->post('/missions/apply/1');
+        $this->get('/missions/apply/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    /**
+     * Test edit mission - Empty
+     *
+     * @return void
+     */
+    public function testEditMentorEmpty()
+    {
+        $data = [];
+        
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->post('/missions/editMentor/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test edit mentor of a mission - Get
+     *
+     * @return void
+     */
+    public function testEditMentorGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/missions/editMentor/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit mentor of a mission - No permission
+     *
+     * @return void
+     */
+    public function testEditMentorNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/missions/editMentor/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit mentor of a mission - No authentification
+     *
+     * @return void
+     */
+    public function testEditMentorNoAuth()
+    {
+        $this->post('/missions/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 }

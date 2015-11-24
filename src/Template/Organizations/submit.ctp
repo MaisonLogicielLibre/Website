@@ -3,8 +3,12 @@
         <?= $this->cell('Sidebar::organizationAction'); ?>
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?=__("An organization owner or member submits a project to Maison Logiciel Libre. Each project must have member(s), and project mission(s) that can accept applications from registered university students. The project mentor is responsible for accepting or rejecting mission applicants.")?>
+        </div>
         <?= $this->Form->create($organization); ?>
-        <div class="alert alert-info" role="alert"><?= __("After submit the organization, you will be redirect on the organization's page to create some projects."); ?></div>
+        <div class="alert alert-info" role="alert"><?= __("You will be redirected to your organization page to create projects once you submit your organization."); ?></div>
         <fieldset>
             <legend><?= __('Submit Organization') ?> <?= $this->Wiki->addHelper('organizations:submit');?></legend>
             <?php

@@ -97,7 +97,8 @@
                 'searchable' => true
             ]
         ],
-        'lengthMenu' => ''
+        'lengthMenu' => '',
+        'pageLength' => 50
     ])->draw('.dataTable');
     echo 'var ajaxUrl="' . $this->Url->Build(['action' => 'editStatus']) . '";';
     echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';

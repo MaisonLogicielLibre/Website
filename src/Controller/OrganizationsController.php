@@ -33,7 +33,8 @@ class OrganizationsController extends AppController
         'editRejected' => ['edit_organizations', 'edit_organization'],
         'delete' => ['delete_organizations', 'delete_organization'],
         'addOwner' => ['edit_organization'],
-        'addMember' => ['edit_organization']
+        'addMember' => ['edit_organization'],
+        'myOrganizations' => []
     ];
 
     /**
@@ -94,33 +95,38 @@ class OrganizationsController extends AppController
                 ->find(
                     'Organizations',
                     [
-                    'fields' =>
-                        [
-                            'id',
-                            'name',
-                            'website',
-                            'isValidated',
-                            'isRejected'
-                        ]
+                        'fields' =>
+                            [
+                                'id',
+                                'name',
+                                'website',
+                                'isValidated',
+                                'isRejected'
+                            ],
+                            'join' =>
+                            [
+                                'table' => 'organizations_owners',
+                                'alias' => 'o',
+                                'type' => 'LEFT',
+                                'conditions' => 'o.organization_id = Organizations.id'
+                            ],
+                            'conditions' =>
+                            [
+                                'OR' =>
+                                    [
+                                        [
+                                            'isRejected' => 0,
+                                            'isValidated' => 1,
+                                        ],
+                                        [
+                                            'isRejected' => 0,
+                                            'o.user_id' => (!is_null($user) ? $user->getId() : '')
+                                        ]
+                                    ]
+                            ],
+                            'group' => 'Organizations.id'
                     ]
-                )->join(
-                    [
-                    'table' => 'organizations_owners',
-                    'alias' => 'o',
-                    'type' => 'LEFT',
-                    'conditions' => 'o.organization_id = Organizations.id'
-                    ]
-                )->where(
-                    [
-                        'isRejected' => 0,
-                        'isValidated' => 1,
-                        ]
-                )->orWhere(
-                    [
-                        'isRejected' => 0,
-                        'o.user_id' => (!is_null($user) ? $user->getId() : '')
-                        ]
-                )->group('organization_id');
+                );
 
                 $this->set(
                     [
@@ -132,11 +138,83 @@ class OrganizationsController extends AppController
     }
 
     /**
+     * MyOrganizations method
+     * @return void
+     */
+    public function myOrganizations()
+    {
+        $user = $this->request->session()->read('Auth.User');
+
+        $data = $this->DataTables
+            ->find(
+                'Organizations',
+                [
+                    'contain' =>
+                        [
+                            'Owners' =>
+                                [
+                                    'fields' =>
+                                        [
+                                            'id',
+                                            'OrganizationsOwners.organization_id'
+                                        ],
+                                        'conditions' => 'Owners.id = ' . $user['id']
+                                ]
+                        ],
+                        'fields' =>
+                        [
+                            'id',
+                            'name',
+                            'website',
+                            'isValidated',
+                            'isRejected',
+
+                        ],
+                        'join' =>
+                        [
+                            [
+                                'table' => 'organizations_owners',
+                                'alias' => 'o',
+                                'type' => 'LEFT',
+                                'conditions' => 'o.organization_id = Organizations.id',
+                            ],
+                            [
+                                'table' => 'organizations_members',
+                                'alias' => 'm',
+                                'type' => 'LEFT',
+                                'conditions' => 'm.organization_id = Organizations.id'
+                            ]
+                        ],
+                        'conditions' =>
+                        [
+                            'OR' =>
+                                [
+                                    [
+                                        'o.user_id' => $user['id']
+                                    ],
+                                    [
+                                        'm.user_id' => $user['id']
+                                    ]
+                                ]
+                        ],
+                        'group' => 'Organizations.id'
+                ]
+            );
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
+    }
+
+    /**
      * Admin index method
      *
      * @return void
      */
-    public function adminIndex()
+    protected function adminIndex()
     {
         $data = $this->DataTables->find(
             'organizations',

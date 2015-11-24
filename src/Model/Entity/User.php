@@ -365,6 +365,11 @@ class User extends Entity
     public function hasPermissionName($permission)
     {
         $permissions = $this->getPermissions();
+
+        if (empty($permission)) {
+            return true;
+        }
+
         foreach ($permissions as $perm) {
             if (in_array($perm->name, $permission)) {
                 return true;

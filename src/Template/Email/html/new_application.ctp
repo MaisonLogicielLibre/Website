@@ -14,13 +14,11 @@
  */
 ?>
 
-<?= __('Hello');?> <?= $mentorname ?>,<br/><br/>
+<?= __('Hello {0}', $mentorname) ?>,<br/><br/>
 
-<?= $username ?> <?= __('have applied to the mission') ?> <?= $missionname ?></a>.<br/><br/>
+<?= __('{0} have applied to the mission {1}', [$username, $missionname]) ?>.<br/><br/>
 
 <a href="<?= $linkMission ?>"><?= __('Click here to see your mission details') ?></a><br/>
 <a href="<?= $linkUser ?>"><?= __("Click here to view the candidate's profile") ?></a><br/><br/>
 
-<a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact'], true) ?>"><?= __('Contact us') ?></a> <?= __('to accept this candidate')?>.<br/><br/>
-
-<?= __('Note: You will be able to directly approve the candidate next release') ?>
+<?= __('Go on the mission to accept or reject the candidate')?>

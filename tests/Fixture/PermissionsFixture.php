@@ -174,6 +174,11 @@ class PermissionsFixture extends TestFixture
 		[
             'id' => 35,
             'name' => 'quit_organization'
+        ],
+        [
+            'id' => 36,
+            'name' => 'apply_mission'
         ]
+
     ];
 }

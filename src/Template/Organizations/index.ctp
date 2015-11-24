@@ -3,6 +3,10 @@
     <?= $this->cell('Sidebar::organizationAction'); ?>
 
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?=__("The goal of an organization is to submit projects to be able to recruit students on project missions. The organizations allow to gather actors and projects in a single community, this allows a better idea of the entity.")?>
+        </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><?= __('List of organizations'); ?> <a href="<?= $this->Wiki->buildLink('Organizations');?>"><i class="fa fa-question-circle"></i></a></h3>
@@ -61,7 +65,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ],
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 echo 'var validationTxt="' . __('Pending Validation') . '";';

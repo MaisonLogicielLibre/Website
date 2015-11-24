@@ -31,12 +31,29 @@
 
 
                 <?php
-                if (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])):
+                if (($user->hasPermissionName(['edit_mission']) && ($isMentor)) || $user->hasPermissionName(['edit_missions'])):
                 ?>
-                <li>
-                    <hr/>
-                </li>
-                <li class="<?= ($this->request->action == 'edit') ? 'active disabled' : ''; ?>">
+					<li>
+						<hr/>
+					</li>
+					<li class="<?= ($this->request->action == 'editMentor') ? 'active disabled' : ''; ?>">
+                    <a href="<?= $this->Url->build(
+                        [
+                            'controller' => 'Missions',
+                            'action' => 'editMentor',
+                            $object->id
+                        ]) ?>">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-pencil fa-stack-1x" style="color:<?= ($this->request->action == 'editMentor') ? '#337ab7' : '#fff'; ?>"></i>
+                            </span> <?= __('Edit the mentor') ?>
+                    </a>
+					</li>
+                <?php
+                    endif;
+                    if (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])):
+                ?>
+					<li class="<?= ($this->request->action == 'edit') ? 'active disabled' : ''; ?>">
                     <a href="<?= $this->Url->build(
                         [
                             'controller' => 'Missions',
@@ -48,11 +65,7 @@
                                 <i class="fa fa-pencil fa-stack-1x" style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
                             </span> <?= __('Edit the mission') ?>
                     </a>
-                </li>
-                <?php
-                    endif;
-                    if (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])):
-                ?>
+					</li>
                     <li>
                         <a href=<?= $this->Url->build(
                             [

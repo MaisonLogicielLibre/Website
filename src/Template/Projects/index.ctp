@@ -4,7 +4,7 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 		<div class="alert alert-warning alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h3><?=__('More projects from Google and our partners are coming soon...')?></h3>
+			<?=__("A project can be of development or system administration and it can be owned by zero, one or more organizations. It may provide mission to students.")?>
 		</div>
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -87,7 +87,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ]
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
 echo 'var projectUrl="' . $this->Url->Build(['action' => 'view']) . '";';
