@@ -20,7 +20,7 @@
 </div>
 <div class="row">
 	<div class="col-sm-4 col-sm-offset-4">
-		<h3> <?php echo __('Phone') ?> : <a href="tel:15147819312">(514) 781-9312</a> </h3>
+		<h3> <?php echo __('Phone') ?> : <a href="tel:15143968799">(514) 396-8799</a></h3>
 		<h3> <?php echo __('Email') ?> : <a href="mailto:maisonlogiciellibre@etsmtl.net">maisonlogiciellibre@etsmtl.net</a>  </h3>
 	</div>
 </div>
