@@ -21,7 +21,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
-		"mll/apisvn": "1.0-alpha",
+		"mll/apisvn": "dev-master",
         "simon-begin/cakephp-datatables": "dev-master",
         "erusev/parsedown": "dev-master"
     },

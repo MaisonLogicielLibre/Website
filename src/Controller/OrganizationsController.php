@@ -149,13 +149,26 @@ class OrganizationsController extends AppController
             ->find(
                 'Organizations',
                 [
-                    'fields' =>
+                    'contain' =>
+                        [
+                            'Owners' =>
+                                [
+                                    'fields' =>
+                                        [
+                                            'id',
+                                            'OrganizationsOwners.organization_id'
+                                        ],
+                                        'conditions' => 'Owners.id = ' . $user['id']
+                                ]
+                        ],
+                        'fields' =>
                         [
                             'id',
                             'name',
                             'website',
                             'isValidated',
-                            'isRejected'
+                            'isRejected',
+
                         ],
                         'join' =>
                         [
@@ -163,7 +176,7 @@ class OrganizationsController extends AppController
                                 'table' => 'organizations_owners',
                                 'alias' => 'o',
                                 'type' => 'LEFT',
-                                'conditions' => 'o.organization_id = Organizations.id'
+                                'conditions' => 'o.organization_id = Organizations.id',
                             ],
                             [
                                 'table' => 'organizations_members',

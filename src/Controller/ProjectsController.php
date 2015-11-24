@@ -473,8 +473,8 @@ class ProjectsController extends AppController
                     'm.user_id' => $this->request->session()->read('Auth.User.id')
                  ]
              );
-        $this->set(compact('project', 'organizations'));
-        $this->set('_serialize', ['project']);
+         $this->set(compact('project', 'organizations'));
+         $this->set('_serialize', ['project']);
     }
 
     /**
