@@ -2,7 +2,7 @@
 <div class="row">
     <?= $this->cell('Sidebar::user', [$user->id]); ?>
     <div class="col-sm-2">
-			<a class="btn btn-block btn-social btn-github" href="https://github.com/login/oauth/authorize?scope=user:email&client_id=e10d326475ff982bbd84">
+			<a class="btn btn-block btn-social btn-github" href="https://github.com/login/oauth/authorize?scope=user:email&client_id=<?= GITHUBID ?>">
 				<span class="fa fa-github"></span> Sign in with GitHub
 			</a>
     </div>
