@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-11-23 14:27-0500\n"
-"PO-Revision-Date: 2015-11-23 14:27-0500\n"
+"PO-Revision-Date: 2015-11-24 08:40-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: Controller/AppController.php:61 Template/Layout/default.ctp:59
 msgid "ML2"
-msgstr "The ML² tv"
+msgstr "ML²"
 
 #: Controller/AppController.php:73
 msgid "You must be logged in to access this page."
