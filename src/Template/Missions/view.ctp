@@ -169,7 +169,8 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
                 'searchable' => false
             ]
         ],
-        'lengthMenu' => ''
+        'lengthMenu' => '',
+        'pageLength' => 25
     ])->draw('.dataTable');
 } else {
     echo $this->DataTables->init([
@@ -191,7 +192,8 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
                 'searchable' => false
             ],
         ],
-        'lengthMenu' => ''
+        'lengthMenu' => '',
+        'pageLength' => 25
     ])->draw('.dataTable');
 }
 echo 'var userUrl="' . $this->Url->Build(['controller' => 'Users', 'action' => 'view']) . '";';

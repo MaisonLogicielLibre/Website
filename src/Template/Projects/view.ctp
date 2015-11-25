@@ -176,7 +176,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ],
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 25
 ])->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
 echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
