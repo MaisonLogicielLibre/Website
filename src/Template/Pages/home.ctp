@@ -36,34 +36,35 @@
             </h4>
         </div>
     </div>
-    <div class="row home-row">
-        <div class="col-sm-6 ml2_box_height" align="center">
-           <hr class="hr-black" />
+    <div id="link-partners" class="row home-row">
+        <div class="col-sm-6">
+            <hr class="hr-black"/>
             <h2 class="section-heading"><?= __("Our university Network"); ?></h2>
             <?= $this->Html->image('banner.png', ['alt' => 'ML2', 'class' => 'img-responsive'], array('max-height' => '350px')) ?>
-            <br>
-            <div class="bottom_align">
-                <a class="btn btn-primary"
-                   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Join our network'); ?></a>
-            </div>
+            <a class="btn btn-primary"
+               href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Join our network'); ?></a>
         </div>
-        <div class="col-sm-6 ml2_box_height home-block" align="center" style="height:410px;">
-            <hr class="hr-black" />
+        <div class="col-sm-6">
+            <hr class="hr-black"/>
             <h2 class="section-heading"><?= __("Our founding partners"); ?></h2>
-            <div>
-                <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
-            </div>
+            <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'id' => 'google-logo', 'class' => 'img-responsive']) ?></a>
+
             <h2 class="section-heading"><?= __("Our sponsors"); ?></h2>
-            <div>
-                <a href="https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'width' => '50%', 'height' => 'auto', 'class' => 'img-responsive']) ?></a>
+            <div id="list-sponsors" class="row">
+                <div class="col-sm-6">
+                    <a href=https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'class' => 'img-responsive']) ?></a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="https://facil.qc.ca/"><?php echo $this->Html->image('facil.png', ['alt' => 'FACIL', 'id' => 'facil-logo', 'class' => 'img-responsive']) ?></a>
+                </div>
             </div>
-            <?= __("Get visibility and access to over") ?> <b> <?= __("5000 software engineering and computer science students.") ?> </b> 
-			<?= __("Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners.") ?>
-            <div class="bottom_align">
+            <p>
+                <?= __("Get visibility and access to over") ?>
+                <strong> <?= __("5000 software engineering and computer science students.") ?> </strong>
+                <?= __("Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners.") ?>
+            </p>
                 <a class="btn btn-primary"
-                   href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Become a sponsor '); ?></a>
-                <br>
-            </div>
+               href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'contact']); ?>"><?= __('Become a sponsor '); ?></a>
         </div>
     </div>
     <div class="row home-row">

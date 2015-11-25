@@ -484,3 +484,27 @@ footer {
 .navbar-nav >li > a {
     line-height: 26px;!important
 }
+
+#link-partners {
+    text-align: center;
+}
+
+#link-partners a.btn {
+    margin-top: 10px;
+}
+
+#link-partners img {
+    margin: 0 auto;
+}
+
+#link-partners p {
+    margin-top: 10px;
+}
+
+#link-partners img#google-logo {
+    width: 50%;
+}
+
+#link-partners #facil-logo {
+    width: 50%;
+}
