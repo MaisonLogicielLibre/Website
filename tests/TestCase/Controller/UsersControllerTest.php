@@ -664,4 +664,67 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/resetPassword/tata');
         $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
+    
+    /**
+     * Test svn - OK
+     *
+     * @return void
+     */
+    public function testSvnOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svn/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test svn - Code
+     *
+     * @return void
+     */
+    public function testSvnCode()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svn/1?code=1323141412412');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test svn - No Auth
+     *
+     * @return void
+     */
+    public function testSvnNoAuth()
+    {
+        $this->post('/users/svn/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test svnCallBack - OK
+     *
+     * @return void
+     */
+    public function testSvnCallbackOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svnCallBack?code=1212312312');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test svnRemove - OK
+     *
+     * @return void
+     */
+    public function testSvnRemoveOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svnRemove/1?pseudo=pseudo');
+        $this->assertResponseSuccess();
+    }
 }
