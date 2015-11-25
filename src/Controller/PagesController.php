@@ -99,6 +99,118 @@ class PagesController extends AppController
      */
     public function tv($id = null)
     {
+        $this->loadModel("Users");
+        $users = $this->Users->find('all')->toArray();
+
+        $this->loadModel("Projects");
+        $projects = $this->Projects->find('all')->toArray();
+
+        $this->loadModel("Organizations");
+        $organizations = $this->Organizations->find('all')->toArray();
+
+        $this->loadModel("Missions");
+        $missions = $this->Missions->find('all')->toArray();
+
+        $this->loadModel("Universities");
+        $universities = $this->Universities->find('all')->toArray();
+
+        $countUni = [];
+
+        $loopCount = count($universities) + 1;
+        for ($i = 0; $i < $loopCount; $i++) {
+            $countUni[] = 0;
+        }
+
+        $mentors = 0;
+        $students = 0;
+
+        foreach ($users as $user) {
+            $user = $this->Users->get(
+                $user->getId(),
+                [
+                    'contain' => ['Universities']
+                ]
+            );
+
+            if ($user->getUniversity()) {
+                // @codingStandardsIgnoreStart
+                switch ($user->getUniversity()->getId()) {
+                    case 1:
+                        $countUni[0] = $countUni[0] + 1;
+                        break;
+                    case 2:
+                        $countUni[1] = $countUni[1] + 1;
+                        break;
+                    case 3:
+                        $countUni[2] = $countUni[2] + 1;
+                        break;
+                    case 4:
+                        $countUni[3] = $countUni[3] + 1;
+                        break;
+                    case 5:
+                        $countUni[4] = $countUni[4] + 1;
+                        break;
+                    case 6:
+                        $countUni[5] = $countUni[5] + 1;
+                        break;
+                    case 7:
+                        $countUni[6] = $countUni[6] + 1;
+                        break;
+                    default:
+                        $countUni[7] = $countUni[7] + 1;
+                        break;
+                    // @codingStandardsIgnoreEnd
+                }
+            } else {
+                $countUni[7] = $countUni[7] + 1;
+            }
+
+
+            if ($user->isAvailableMentoring()) {
+                $mentors++;
+            }
+
+            if ($user->isStudent()) {
+                $students++;
+            }
+        }
+
+        $statsUni = [];
+
+        $loopCount = count($universities);
+        for ($i = 0; $i < $loopCount; $i++) {
+            $statsUni[] = [
+                $this->Universities->findById($i + 1)->first()->getName(),
+                $countUni[$i]
+            ];
+        }
+
+        $statsUni[] = [
+            __('Not specified'),
+            $countUni[count($universities)]
+        ];
+
+        $statsUsers = [
+            'universities' => $statsUni,
+            'mentors' => $mentors,
+            'students' => $students,
+            'count' => count($users)
+        ];
+
+        $statsWeb = [
+            'organizations' => count($organizations),
+            'projects' => count($projects),
+            'missions' => count($missions)
+
+        ];
+
+        $stats = [
+            'users' => $statsUsers,
+            'website' => $statsWeb
+        ];
+
+        $this->set(compact('stats'));
+
         $this->viewBuilder()->layout(false);
         // @codingStandardsIgnoreStart
         switch ($id) {
@@ -106,7 +218,7 @@ class PagesController extends AppController
                 $this->render('tv1');
                 break;
             case 2:
-                $this->render('tv1');
+                $this->render('tv2');
                 break;
             case 3:
                 $this->render('tv1');
