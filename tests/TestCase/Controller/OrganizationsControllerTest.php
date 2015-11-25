@@ -497,16 +497,16 @@ class OrganizationsControllerTest extends IntegrationTestCase
     }
     
     /**
-     * Test quit - Get
+     * Test quit - Mentor
      *
      * @return void
      */
-    public function testQuitGet()
+    public function testQuitMentor()
     {
         $this->session(['Auth.User.id' => 1]);
 
         $this->get('/organizations/quit/1');
-        $this->assertResponseOk();
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
     
     /**
@@ -516,7 +516,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
      */
     public function testQuitOk()
     {
-        $this->session(['Auth.User.id' => 1]);
+        $this->session(['Auth.User.id' => 4]);
 
         $this->post('/organizations/quit/1');
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
@@ -529,7 +529,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
      */
     public function testQuitSingle()
     {
-        $this->session(['Auth.User.id' => 1]);
+        $this->session(['Auth.User.id' => 2]);
 
         $this->post('/organizations/quit/2');
         $this->assertResponseSuccess();

@@ -84,7 +84,7 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testAddOk()
     {
-        $this->session(['Auth.User.id' => 2]);
+        $this->session(['Auth.User.id' => 1]);
 
         $data = [
             'id' => 3,
@@ -102,6 +102,20 @@ class MissionsControllerTest extends IntegrationTestCase
             'modified' => '2015-10-20 15:10:06'
         ];
         $this->post('/missions/add/1', $data);
+
+        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
+    }
+	
+	/**
+     * Test add - Get
+     *
+     * @return void
+     */
+    public function testAddGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/missions/add/1');
 
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
