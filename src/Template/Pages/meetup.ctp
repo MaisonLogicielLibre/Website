@@ -14,6 +14,6 @@
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		<h2 class="section-heading text-center"><?= __("ML2 Meetups at ÉTS"); ?></h2>
-		<?php echo $this->element('Meetup/meetup-table'); ?>
+		<?= $this->cell('Meetups::listMeetups'); ?>
 	</div>
 </div>

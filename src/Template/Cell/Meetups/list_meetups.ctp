@@ -8,28 +8,27 @@
 	</tr>
 	</thead>
 	<tbody>
-	<tr class="success">
-		<td><?= __("First Tuesday of each month"); ?></td>
-		<td>
-			<?= __("Linux-Meetup sont des rencontres informelles où plusieurs personnes discutent de ce qui les
-			passionnent et font un partage de leurs cheminements dans le monde du logiciel libre avec
-			Linux."); ?>
-		</td>
-		<td><a href="http://www.meetup.com/Linux-Montreal/"><?= __('Linux meetup'); ?></a></td>
-	</tr>
-	<tr class="info">
-		<td><?= __("Biweekly"); ?></td>
-		<td><?= __("Odoo Montréal. Hosted by: Savoir-faire Linux. (Odoo Gold Partner), and Maxime C. (Leader de
-			pratique Odoo chez Savoir-faire Linux)"); ?>
-		</td>
-		<td><a href="http://www.meetup.com/Odoo-Montreal/"><?= __('Odoo meetup'); ?></a></td>
-	</tr>
-	<tr class="success">
-		<td><?= __("November 28"); ?></td>
-		<td><?= __("Second Coding Party of Nit project : L'objectif est de faire se rencontrer les développeurs intéressés par le projet Nit, ou simplement curieux, en leur permettant de faire ce qu'ils préfèrent faire dans la vie: coder, manger et boire."); ?>
-		</td>
-		<td><a href="http://nitlanguage.org/cornitup"><?= __('Corn it up'); ?></a></td>
-	</tr>
+		<?php
+		$compteur = 0;
+		foreach ($meetups as $meetup):
+			$compteur++;
+			if ($compteur % 2)
+				echo "<tr class='success'>";
+			else
+				echo "<tr class='info'>";
+		?>
+				<td><?= $meetup->date ?></td>
+				<td><?= $meetup->description ?></td>
+				<td>
+					<?php if ($meetup->link) :
+						echo $this->html->link(__('Link'), $meetup->link);
+					endif;
+					?>
+				</td>
+			</tr>
+		<?php
+		endforeach;
+		?>
 	</tbody>
 </table>
 

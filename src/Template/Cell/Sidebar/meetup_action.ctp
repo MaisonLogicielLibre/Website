@@ -13,7 +13,7 @@
                         ]) ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'view')  && ($this->request->controller == 'Organizations') ? '#337ab7' : '#fff'; ?>"></i>
+                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'index')  && ($this->request->controller == 'Meetups') ? '#337ab7' : '#fff'; ?>"></i>
                             </span> <?= __('List meetup') ?>
                     </a>
                 </li>
@@ -26,7 +26,7 @@
                         ]) ?>">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-info fa-stack-1x" style="color:<?= ($this->request->action == 'view')  && ($this->request->controller == 'Organizations') ? '#337ab7' : '#fff'; ?>"></i>
+                                <i class="fa fa-plus fa-stack-1x" style="color:<?= ($this->request->action == 'add')  && ($this->request->controller == 'Meetups') ? '#337ab7' : '#fff'; ?>"></i>
                             </span> <?= __('Add meetup') ?>
                     </a>
                 </li>
