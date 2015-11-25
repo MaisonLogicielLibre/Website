@@ -95,6 +95,24 @@ class UsersTable extends Table
                 'joinTable' => 'type_users_users'
             ]
         );
+        $this->belongsToMany(
+            'Owners',
+            [
+                'className' => 'Organizations',
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'organization_id',
+                'joinTable' => 'organizations_owners'
+            ]
+        );
+        $this->belongsToMany(
+            'Members',
+            [
+                'className' => 'Organizations',
+                'foreignKey' => 'user_id',
+                'targetForeignKey' => 'organization_id',
+                'joinTable' => 'organizations_members'
+            ]
+        );
     }
 
     /**
