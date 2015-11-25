@@ -133,4 +133,17 @@ class SidebarCell extends Cell
 
         $this->set(compact('user', 'object', 'isMentor'));
     }
+
+    /**
+     * meetupAction method.
+     *
+     * @return void
+     */
+    public function meetupAction()
+    {
+        $this->loadModel('Users');
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        $this->set(compact('user'));
+    }
 }
