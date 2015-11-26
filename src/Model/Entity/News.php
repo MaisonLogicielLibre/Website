@@ -1,18 +1,25 @@
 <?php
+/**
+ * Entity of NewTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * News Entity.
+ * Entity of NewTable
  *
- * @property int $id
- * @property string $name
- * @property string $description
- * @property \Cake\I18n\Time $date
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property string $link
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class News extends Entity
 {
@@ -26,7 +33,7 @@ class News extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

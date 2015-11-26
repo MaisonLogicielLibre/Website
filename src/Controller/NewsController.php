@@ -1,15 +1,27 @@
 <?php
+/**
+ * News controller
+ *
+ * @category Controller
+ * @package  Website
+ * @author   CakePHP <cakephp@email.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     http://cakephp.org CakePHP(tm) Project
+ */
 namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 
-
 /**
- * News Controller
+ * News controller
  *
- * @property \App\Model\Table\NewsTable $News
+ * @category Controller
+ * @package  Website
+ * @author   CakePHP <cakephp@email.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     http://cakephp.org CakePHP(tm) Project
  */
 class NewsController extends AppController
 {
@@ -97,14 +109,19 @@ class NewsController extends AppController
      * Edit method
      *
      * @param string|null $id News id.
+     *
      * @return void Redirects on successful edit, renders view otherwise.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $news = $this->News->get($id, [
+        $news = $this->News->get(
+            $id,
+            [
             'contain' => []
-        ]);
+            ]
+        );
         if ($this->request->is(['patch', 'post', 'put'])) {
             $news = $this->News->patchEntity($news, $this->request->data);
             if ($this->News->save($news)) {
@@ -122,7 +139,9 @@ class NewsController extends AppController
      * Delete method
      *
      * @param string|null $id News id.
+     *
      * @return \Cake\Network\Response|null Redirects to index.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
