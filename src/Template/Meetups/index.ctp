@@ -4,7 +4,7 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><?= __('Missions') ?></h3>
+                <h3 class="panel-title"><?= __('Meetups') ?></h3>
             </div>
             <table class="table table-striped">
                 <?php foreach ($meetups as $meetup): ?>
