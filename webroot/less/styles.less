@@ -116,13 +116,13 @@ h1, h2, h3, h4, h5, h6 {
   background: #ebeff2;
 }
 
-#login-wrapper {
+#login-wrapper, #recover-password-wrapper {
   width: 420px;
   position: relative;
   margin: 5% auto;
 }
 
-#register-wrapper, #login-wrapper {
+#register-wrapper, #login-wrapper, #recover-password-wrapper {
   .panel {
     padding-bottom: 20px;
     h2 {
@@ -134,16 +134,16 @@ h1, h2, h3, h4, h5, h6 {
         text-transform: capitalize;
       }
     }
-    button[type="submit"] {
+    button[type="submit"], a.btn {
       width: 100%;
       margin: 20px 0;
       text-transform: uppercase;
     }
   }
-  #register-login-link, #login-register-link {
+  #register-login-link, #login-register-link, #recover-password-search-link {
     text-align: center;
   }
-  #login-alert, #register-alert {
+  #login-alert, #register-alert, #recover-password-alert {
     &:empty {
       padding-bottom: 40px;
     }
@@ -175,6 +175,13 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 0.8em;
       color: lighten(@text-color, 13.5%)
     }
+  }
+}
+
+#recover-password-wrapper {
+  span.recover-password-info {
+    display: block;
+    margin: 5px 0;
   }
 }
 

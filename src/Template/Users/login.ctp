@@ -28,7 +28,7 @@
             <div class="col-sm-12">
                 <?= $this->Form->input('username', ['label' => false, 'placeholder' => __('username')]); ?>
                 <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('password')]) ?>
-                <?= $this->Form->input('remember', ['label' => 'Remember me', 'type' => 'checkbox']) ?>
+                <?= $this->Form->input('remember', ['label' => __('Remember me'), 'type' => 'checkbox']) ?>
                 <?= $this->Form->button(__('Log In'), ['class' => 'btn btn-info']); ?>
             </div>
             <?= $this->Form->end() ?>
@@ -56,4 +56,4 @@
     ]
 ); ?>
 </body>
-
+</html>
