@@ -499,25 +499,18 @@ class OrganizationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-				
-				if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
-					array_push($usersSelected, $you);
-				}
                 
                 $organization->modifyOwners($usersSelected);
+				
+				if ($this->Organizations->save($organization)) {
+					$this->Flash->success(__('The user has been added.'));
+					return $this->redirect(['action' => 'view', $organization->id]);
+				} else {
+					$this->Flash->error(__('The user could not be added. Please,try again.'));
+				}
             } else {
-                $organization->modifyOwners([$you]);
+                $this->Flash->error(__('There must be at least one owner'));
             }
-            
-            if ($this->Organizations->save($organization)) {
-                $this->Flash->success(__('The user has been added.'));
-                return $this->redirect(['action' => 'view', $organization->id]);
-            } else {
-                $this->Flash->error(
-                    __('The user could not be added. Please,try again.')
-                );
-            }
-    
         }
        
         $this->set(compact('organization', 'users', 'owners', 'you'));
