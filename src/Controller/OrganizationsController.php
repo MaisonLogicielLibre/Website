@@ -442,15 +442,20 @@ class OrganizationsController extends AppController
             ]
         );
         
-        $users = $this->loadModel("Users")->find('all')->toArray();
+		$usersTable = $this->loadModel("Users");
+        $users = $usersTable->find('all')->toArray();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
         
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                array_push($usersSelected, $you);
-                $organization->modifyMembers($usersSelected, $you);
+				
+				if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
+					array_push($usersSelected, $you);
+				}
+				
+                $organization->modifyMembers($usersSelected);
             } else {
                 $organization->modifyMembers([$you]);
             }
@@ -485,14 +490,20 @@ class OrganizationsController extends AppController
             ]
         );
         
-        $users = $this->loadModel("Users")->find('all')->toArray();
+		$usersTable = $this->loadModel("Users");
+		$users = $usersTable->find('all')->toArray();
+		
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
                 
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                array_push($usersSelected, $you);
+				
+				if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
+					array_push($usersSelected, $you);
+				}
+                
                 $organization->modifyOwners($usersSelected);
             } else {
                 $organization->modifyOwners([$you]);
