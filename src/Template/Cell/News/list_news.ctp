@@ -3,6 +3,7 @@
     <tr>
         <th class="mll-table"><?= __("Date"); ?></th>
         <th><?= __("New"); ?></th>
+        <th><?= __("Link"); ?></th>
     </tr>
     </thead>
     <tbody>
