@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <h1><?= __("Welcome to Maison Logiciel Libre (ML2)");?></h1>
+            <h1><?= __("Welcome to maison du logiciel libre (ML2)");?></h1>
 
             <h3><?= __("Our mission is to improve university students software development skills and hiring potential through
                 practical experience on free and open source software projects");?></h3>
@@ -52,7 +52,7 @@
             <h2 class="section-heading"><?= __("Our sponsors"); ?></h2>
             <div id="list-sponsors" class="row">
                 <div class="col-sm-6">
-                    <a href=https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'class' => 'img-responsive']) ?></a>
+                    <a href=https://www.savoirfairelinux.com"><?php echo $this->Html->image('savoirfairelinux.svg', ['alt' => 'Savoirfairelinux', 'id' => 'sfl-logo', 'class' => 'img-responsive']) ?></a>
                 </div>
                 <div class="col-sm-6">
                     <a href="https://facil.qc.ca/"><?php echo $this->Html->image('facil.png', ['alt' => 'FACIL', 'id' => 'facil-logo', 'class' => 'img-responsive']) ?></a>

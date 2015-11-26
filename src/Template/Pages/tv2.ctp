@@ -7,8 +7,8 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
 
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('bootstrap.min'); ?>
-    <?= $this->Html->css('font-awesome.min.css'); ?>
+    <link rel="stylesheet" href="webroot/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="webroot/css/font-awesome.min.css"/>
 
     <?= $this->fetch('meta') ?>
     <style>
