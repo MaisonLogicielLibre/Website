@@ -105,8 +105,8 @@ class MissionsControllerTest extends IntegrationTestCase
 
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
-	
-	/**
+    
+    /**
      * Test add - Get
      *
      * @return void
@@ -117,7 +117,7 @@ class MissionsControllerTest extends IntegrationTestCase
 
         $this->get('/missions/add/1');
 
-        $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
+        $this->assertResponseSuccess();
     }
 
     /**

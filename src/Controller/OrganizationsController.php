@@ -525,13 +525,13 @@ class OrganizationsController extends AppController
             $id,
             [
             'contain' => [
-				'Owners', 
-				'Members', 
-				'Projects' => ['Mentors']
-				]
+            'Owners',
+            'Members',
+            'Projects' => ['Mentors']
+            ]
             ]
         );
-		
+        
         $users = $this->loadModel("Users")->find('all')->toArray();
         $owners = $organization->getOwners();
         $members = $organization->getMembers();
@@ -547,7 +547,7 @@ class OrganizationsController extends AppController
         }
         
 
-		
+        
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
         if ($user) {
             if (!$user->isMemberOf($organization->getId())) {
@@ -558,7 +558,7 @@ class OrganizationsController extends AppController
         }
         
         if ($this->request->is(['patch', 'post', 'put'])) {
-			
+            
             if (count($owners) == 1 && $user->isOwnerOf($organization->getId())) {
                 $organization->editIsRejected(true);
                 $organization->editMembers([]);
