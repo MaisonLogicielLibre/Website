@@ -361,61 +361,6 @@ footer {
     padding:0;
 }
 
-@media screen and (max-width: 1000px) {
-	.partner {
-		height: 200px;
-		width: 46%;
-		margin: 2%;
-		float: left;
-	}
-	
-	.logos{
-		margin-left: 0%;
-	}
-	
-	.home-text{
-		width:90%;
-		margin:5%;
-		text-align:center;
-	}
-	
-	.contest{
-		margin: 0 auto;
-		width: 60%;
-	}
-	
-	/* temp */
-
-	.temp-text{
-		margin: 0 auto;
-		width: 80%;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.partner {
-		height: 15%;
-		width: 100%;
-		margin: 15% 5%;
-	}
-	
-	.logos{
-		margin-left: 0%;
-	}
-	
-	.contest{
-		margin: 0 auto;
-		width: 100%;
-	}
-	
-	/* temp */
-
-	.temp-text{
-		margin: 0 auto;
-		width: 100%;
-	}
-}
-
 .bs-callout {
     padding: 20px;
     margin: 20px 0;
@@ -505,6 +450,74 @@ footer {
     width: 50%;
 }
 
-#link-partners #facil-logo {
-    width: 50%;
+#facil-logo {
+    width: 35%;
+}
+
+#sfl-logo {
+    width: 75%;
+}
+@media screen and (max-width: 1000px) {
+    .partner {
+        height: 200px;
+        width: 46%;
+        margin: 2%;
+        float: left;
+    }
+
+    .logos{
+        margin-left: 0%;
+    }
+
+    .home-text{
+        width:90%;
+        margin:5%;
+        text-align:center;
+    }
+
+    .contest{
+        margin: 0 auto;
+        width: 60%;
+    }
+
+    /* temp */
+
+    .temp-text{
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #facil-logo{
+        width: 30%;
+    }
+
+    #sfl-logo{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .partner {
+        height: 15%;
+        width: 100%;
+        margin: 15% 5%;
+    }
+
+    .logos{
+        margin-left: 0%;
+    }
+
+    .contest{
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* temp */
+
+    .temp-text{
+        margin: 0 auto;
+        width: 100%;
+    }
 }
