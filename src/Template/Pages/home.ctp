@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <h1><?= __("Welcome to Maison Logiciel Libre (ML2)");?></h1>
+            <h1><?= __("Welcome to maison du logiciel libre (ML2)");?></h1>
 
             <h3><?= __("Our mission is to improve university students software development skills and hiring potential through
                 practical experience on free and open source software projects");?></h3>
