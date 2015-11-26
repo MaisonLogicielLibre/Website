@@ -120,22 +120,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 420px;
   position: relative;
   margin: 5% auto;
+}
+
+#register-wrapper, #login-wrapper {
   .panel {
     padding-bottom: 20px;
-    #login-alert {
-        &:empty {
-          padding-bottom: 40px;
-        }
-        padding-bottom: 0;
-        margin: 10px 0;
-
-    }
     h2 {
       text-align: center;
       font-size: 1.8em;
     }
     input {
-      &[placeholder] {
+      &[placeholder]:first-letter {
         text-transform: capitalize;
       }
     }
@@ -145,13 +140,40 @@ h1, h2, h3, h4, h5, h6 {
       text-transform: uppercase;
     }
   }
-  #login-register-link {
+  #register-login-link, #login-register-link {
     text-align: center;
-    a {
-      color: @brand-primary;
-      &:hover {
-        color: darken(@brand-primary, 15%);
+  }
+  #login-alert, #register-alert {
+    &:empty {
+      padding-bottom: 40px;
+    }
+    padding-bottom: 0;
+    margin: 10px 0;
+
+  }
+}
+
+#register-wrapper {
+  max-width: 840px;
+  width: 100%;
+  position: relative;
+  margin: 5% auto;
+  .panel {
+    legend {
+      font-size: 1.2em;
+      .sub {
+        font-size: 0.6em;
       }
+    }
+    p {
+      margin: 0!important;
+    }
+    #universitie-id {
+      margin-top: 15px;
+    }
+    .register-university-info {
+      font-size: 0.8em;
+      color: lighten(@text-color, 13.5%)
     }
   }
 }
