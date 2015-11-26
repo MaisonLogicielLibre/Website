@@ -1,17 +1,26 @@
 <?php
+/**
+ * Entity of MeetupTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Meetup Entity.
+ * Entity of MeetupTable
  *
- * @property int $id
- * @property string $name
- * @property string $description
- * @property \Cake\I18n\Time $date
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class Meetup extends Entity
 {
@@ -25,7 +34,7 @@ class Meetup extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

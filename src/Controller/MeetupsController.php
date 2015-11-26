@@ -109,14 +109,19 @@ class MeetupsController extends AppController
      * Edit method
      *
      * @param string|null $id Meetup id.
+     *
      * @return void Redirects on successful edit, renders view otherwise.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $meetup = $this->Meetups->get($id, [
+        $meetup = $this->Meetups->get(
+            $id,
+            [
             'contain' => []
-        ]);
+            ]
+        );
         if ($this->request->is(['patch', 'post', 'put'])) {
             $meetup = $this->Meetups->patchEntity($meetup, $this->request->data);
             if ($this->Meetups->save($meetup)) {
@@ -134,7 +139,9 @@ class MeetupsController extends AppController
      * Delete method
      *
      * @param string|null $id Meetup id.
+     *
      * @return \Cake\Network\Response|null Redirects to index.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
