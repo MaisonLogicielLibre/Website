@@ -7,7 +7,7 @@
             <legend><?= __('Edit members') ?></legend>
             <select multiple id="users" name="users[]">
                 <?php foreach ($users as $user) {
-                    if ($user->getId() != $you) {
+                    if ($user->getId() != $you || $user->hasRoleName(['Administrator'])) {
                         foreach ($members as $member) {
                             if ($member->getId() === $user->getId()) {
                                 $selected = true;

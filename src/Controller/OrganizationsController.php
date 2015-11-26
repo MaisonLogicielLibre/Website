@@ -442,7 +442,7 @@ class OrganizationsController extends AppController
             ]
         );
         
-		$usersTable = $this->loadModel("Users");
+        $usersTable = $this->loadModel("Users");
         $users = $usersTable->find('all')->toArray();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
@@ -450,11 +450,11 @@ class OrganizationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-				
-				if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
-					array_push($usersSelected, $you);
-				}
-				
+                
+                if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
+                    array_push($usersSelected, $you);
+                }
+                
                 $organization->modifyMembers($usersSelected);
             } else {
                 $organization->modifyMembers([$you]);
@@ -490,9 +490,9 @@ class OrganizationsController extends AppController
             ]
         );
         
-		$usersTable = $this->loadModel("Users");
-		$users = $usersTable->find('all')->toArray();
-		
+        $usersTable = $this->loadModel("Users");
+        $users = $usersTable->find('all')->toArray();
+        
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
                 
@@ -501,13 +501,13 @@ class OrganizationsController extends AppController
                 $usersSelected = $this->request->data['users'];
                 
                 $organization->modifyOwners($usersSelected);
-				
-				if ($this->Organizations->save($organization)) {
-					$this->Flash->success(__('The user has been added.'));
-					return $this->redirect(['action' => 'view', $organization->id]);
-				} else {
-					$this->Flash->error(__('The user could not be added. Please,try again.'));
-				}
+                
+                if ($this->Organizations->save($organization)) {
+                    $this->Flash->success(__('The user has been added.'));
+                    return $this->redirect(['action' => 'view', $organization->id]);
+                } else {
+                    $this->Flash->error(__('The user could not be added. Please,try again.'));
+                }
             } else {
                 $this->Flash->error(__('There must be at least one owner'));
             }

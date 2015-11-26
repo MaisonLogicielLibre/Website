@@ -348,7 +348,7 @@ class User extends Entity
         $roles = TableRegistry::get('TypeUsersUsers');
 
         $roles = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
-		
+        
         foreach ($roles as $role) {
             if (in_array($role->type_user->name, $permission)) {
                 return true;
