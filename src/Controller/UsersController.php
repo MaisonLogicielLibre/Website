@@ -426,6 +426,7 @@ class UsersController extends AppController
      */
     public function resetPassword($url)
     {
+        $this->viewBuilder()->layout(false);
         $hash = $this->Hash->hash($url);
         $hash = TableRegistry::get('hashes')->findByHash($hash)->first();
 
@@ -447,8 +448,8 @@ class UsersController extends AppController
                 $hash->setUsed(true);
                 $this->loadModel("Hashes");
                 $this->Hashes->save($hash);
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+                $this->Flash->success(__('Your password was modified.'));
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             } else {
                 $this->Flash->error(
                     __(
