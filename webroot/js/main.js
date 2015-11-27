@@ -1,15 +1,16 @@
+var activeMenu = null;
 $(document).ready(function () {
-    $('#menu ul').hide();
-    $('#menu ul').children('.current').parent().show();
-});
-
-$('#menu-toggle').click(function (e) {
-    e.preventDefault();
-    $('#wrapper').toggleClass('toggled');
-});
-
-$('#menu-toggle-2').click(function (e) {
-    e.preventDefault();
-    $('#wrapper').toggleClass('toggled-2');
-    $('#menu ul').hide();
+    $('.side-nav a').click(function () {
+        var li = $(this).parent();
+        if (li.hasClass('active')) {
+            li.removeClass('active');
+        } else {
+            li.addClass('active');
+            if (activeMenu !== null) {
+                activeMenu.removeClass('active');
+                activeMenu.find('ul.in').collapse('hide');
+            }
+            activeMenu = li;
+        }
+    });
 });
