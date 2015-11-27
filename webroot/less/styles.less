@@ -2,6 +2,10 @@
 @import 'sidebar.less';
 @import 'custom-variables.less';
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: #ebeff2;
   margin: 100px 0 0 0;
@@ -55,14 +59,14 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
   #nav-avatar {
-    margin-top : -8px;
+    margin-top: -8px;
   }
   #badge-notif {
-      position: absolute;
-      top: 12px;
-      right: 10px;
-      background: @brand-danger;
-      padding: 3px 5px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    background: @brand-danger;
+    padding: 3px 5px;
   }
   #badge-lang {
     position: absolute;
@@ -119,13 +123,13 @@ h1, h2, h3, h4, h5, h6 {
       background: rgba(0, 0, 0, 0.05);
       > a, > a:hover {
         border-left: 3px solid @brand-success;
-         color: @brand-success;
+        color: @brand-success;
       }
     }
     a {
       color: @gray-light;
       &:hover, &:focus {
-        background : none;
+        background: none;
         color: @brand-success;
       }
     }
@@ -144,10 +148,13 @@ h1, h2, h3, h4, h5, h6 {
 
 #wrapper {
   padding-left: 0;
+  margin-bottom: -65px;
+  height: 100%;
 }
 
 #page-wrapper {
   width: 100%;
+  min-height: 100%;
   padding: 0;
   background: #ebeff2;
 }
@@ -195,9 +202,6 @@ footer#footer {
   color: #58666e;
   text-align: left !important;
   padding: 20px 30px;
-  position: absolute;
-  right: 0;
-  left: 250px;
 }
 
 #register-wrapper {
@@ -213,7 +217,7 @@ footer#footer {
       }
     }
     p {
-      margin: 0!important;
+      margin: 0 !important;
     }
     #universitie-id {
       margin-top: 15px;
@@ -285,10 +289,82 @@ footer#footer {
 .badge-xs {
   font-size: 9px;
 }
+
 .badge-xs,
 .badge-sm {
   -webkit-transform: translate(0, -2px);
   -ms-transform: translate(0, -2px);
   -o-transform: translate(0, -2px);
   transform: translate(0, -2px);
+}
+
+.page-action {
+  background: #fff;
+  border-radius: 5px;
+  .page-header {
+    text-align: center;
+    padding: 20px 0 10px 0;
+    background: @brand-info;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    &:hover {
+      background: @brand-success;
+    }
+    img.img-circle {
+      border: 10px solid rgba(255, 255, 255, 0.3)
+    }
+    span {
+      display: block;
+      color: #fff;
+      font-size: 1.4em;
+    }
+    a {
+      display: block;
+      color: #fff;
+      font-size: 0.9em;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  ul {
+    //border: 1px solid #ddd;
+    border-top: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    li {
+      &.active {
+        background: rgba(0, 0, 0, 0.05);
+        a {
+          border-left: 3px solid @brand-info;
+          color: @brand-info;
+          &:hover {
+            color: @brand-info;
+          }
+        }
+      }
+      a {
+        color: #777;
+        &:hover {
+          color: @brand-info;
+        }
+      }
+    }
+  }
+}
+
+.special-panel {
+  .panel-heading {
+    border-radius: 5px;
+    background: #1abc9c;
+    color: #fff;
+    min-height: 100px;
+  }
+  .panel-body {
+
+  }
 }

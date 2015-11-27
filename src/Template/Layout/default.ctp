@@ -28,7 +28,6 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>" class="navbar-brand">
-                <?= $this->Html->image('logo-navbar.png'); ?>
                 <strong><?= __('ML2') ?></strong>
             </a>
         </div>

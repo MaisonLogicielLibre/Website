@@ -1,34 +1,40 @@
+<?= $this->cell('Sidebar::user', [$user->id]); ?>
 <?php $Parsedown = new Parsedown(); ?>
-<div class="row">
-    <?= $this->cell('Sidebar::user', [$user->id]); ?>
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-        <h2>
-            <?= (!(empty($user->getName())) ? $user->getName() : $user->getUsername()); ?>
-        </h2>
-        <?php if ($user->getUniversity() != null): ?>
-            <h4>
-                <?= $user->getUniversity()->getName(); ?>
-            </h4>
-        <?php endif; ?>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="panel special-panel">
+        <div class="panel-heading">
+            <?= (!(empty($user->getBiography())) ? $Parsedown->text($user->getBiography()) : __('Your biography')) ?>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table-responsive">
+                    <tr>
+                        <td><?= __('Bio'); ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= __('Firstname'); ?></td>
+                        <td><?= __('Lastname'); ?></td>
+                    </tr>
+                    <tr>
 
-        <div class="bs-callout bs-callout-info" style="min-height:200px">
-            <p><?= (!(empty($user->getBiography())) ? $Parsedown->text($user->getBiography()) : 'Votre biographie') ?></p>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
-    <?php if (!empty($user->getProjectsMentored())): ?>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Projects mentored') ?> <?= $this->Wiki->addHelper('Projects');?></h3>
-                </div>
+</div>
+<?php if (!empty($user->getProjectsMentored())): ?>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3><?= __('Projects mentored') ?> <?= $this->Wiki->addHelper('Projects'); ?></h3>
                 <table class="table table-striped">
                     <?php foreach ($user->getProjectsMentored() as $project): ?>
                         <tr>
                             <td>
                                 <!-- Name of project -->
                                 <?php if ($project->isAccepted() && !$project->isArchived()) {
-                                   echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                    echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
                                 } elseif (!$project->isAccepted() && !$project->isArchived()) {
                                     echo $project->getName();
                                 }
@@ -48,14 +54,14 @@
                 </table>
             </div>
         </div>
-    <?php endif; ?>
+    </div>
+<?php endif; ?>
 
-    <?php if (!empty($user->getOrganizationsJoined())): ?>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Organizations joined') ?> <?= $this->Wiki->addHelper('Organizations');?></h3>
-                </div>
+<?php if (!empty($user->getOrganizationsJoined())): ?>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3><?= __('Organizations joined') ?> <?= $this->Wiki->addHelper('Organizations'); ?></h3>
                 <table class="table table-striped">
                     <?php foreach ($user->getOrganizationsJoined() as $organization): ?>
                         <tr>
@@ -85,5 +91,5 @@
                 </table>
             </div>
         </div>
-    <?php endif; ?>
-</div>
+    </div>
+<?php endif; ?>

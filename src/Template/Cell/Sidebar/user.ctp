@@ -1,117 +1,82 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-            <!--
-            GENERAL
-            -->
-
-            <img src="<?= 'http://www.gravatar.com/avatar/' . (!empty($object) ? md5($object->getEmail()) : md5('no@email.com')) . '?s=512' ?>"
-                 alt="avatar"
-                 class="img-responsive center-block"/>
-            <br/>
-            <?php
-            if ($isOwner):
-            ?>
-            <p><?= __('This avatar is a gravatar linked with your email. If you want change your avatar, go on {0}', $this->Html->link('gravatar.com', 'http://gravatar.com', ['target' => '_blank'])); ?></p>
-            <?php
-            endif;
-            ?>
-            <ul class="nav nav-pills nav-stacked">
-                <?php if(!empty($object) && $object->getPortfolio() != null): ?>
-                    <li><a href="<?= $object->getPortfolio() ?>">
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-external-link fa-stack-1x" style="color:#fff;"></i>
-                            </span> <?= __('Portfolio') ?></a></li>
-            <?php endif;
-            if ($user):
-            ?>
-                <!--
-                EDITION
-                -->
-                    <?php
-                    if (($user->hasPermissionName(['edit_user']) && $isOwner) || $user->hasPermissionName(['edit_users'])):
+    <div class="page-action">
+        <div class="page-header">
+            <img
+                src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
+                class="img-circle"/>
+            <span><?= $user->getName(); ?></span>
+            <?php if (!empty($object) && $object->getPortfolio() != null): ?>
+                <a href="<?= $object->getPortfolio() ?>">
+                    <?= __('Portfolio') ?>
+                </a>
+            <?php endif; ?>
+        </div>
+        <ul class="nav nav-stacked">
+            <?php if ($user):
+                if (($user->hasPermissionName(['edit_user']) && $isOwner) || $user->hasPermissionName(['edit_users'])):
                     ?>
-                    <li>
-                        <hr/>
+                    <li class="<?= ($this->request->action == 'view') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
+                            [
+                                "controller" => "Users",
+                                "action" => "view",
+                                $object->id
+                            ]); ?>">
+                            <i class="fa fa-user"></i>
+                            <?= __('My profile') ?>
+                        </a>
                     </li>
-                    <li class="<?= ($this->request->action == 'email') ? 'active disabled' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+                    <li class="<?= ($this->request->action == 'email') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "email",
                                 $object->id
-                            ]); ?>>
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-envelope fa-stack-1x" style="color:<?= ($this->request->action == 'email') ? '#337ab7' : '#fff'; ?>"></i>
-                            </span> <?= __('Change my email') ?>
+                            ]); ?>">
+                            <i class="fa fa-envelope"></i>
+                            <?= __('Change my email') ?>
                         </a>
                     </li>
-                    <li class="<?= ($this->request->action == 'password') ? 'active disabled' : ''; ?>">
+                    <li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
                         <a href=<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "password",
                                 $object->id
                             ]); ?>>
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-unlock-alt  fa-stack-1x"
-                                               style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Change my password') ?></a></li>
+                            <i class="fa fa-unlock-alt"></i>
+                            <?= __('Change my password') ?></a></li>
                     <!-- Modify phone link/form -->
-                    <li>
-                        <hr/>
-                    </li>
-                    <li class="<?= ($this->request->action == 'edit') ? 'active disabled' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+                    <li class="<?= ($this->request->action == 'edit') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "edit",
                                 $object->id
-                            ]); ?>>
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-pencil fa-stack-1x"
-                                               style="color:<?= ($this->request->action == 'edit') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Edit my profile') ?></a>
+                            ]); ?>">
+                            <i class="fa fa-pencil"></i>
+                            <?= __('Edit my profile') ?></a>
                     </li>
                     <?php
-                    endif;
+                endif;
+                ?>
+                <?php
+                if (($user->hasPermissionName(['delete_user']) && $isOwner) || $user->hasPermissionName(['delete_users'])):
                     ?>
-
-
-                    <!--
-                    DELETE
-                    -->
-
-
-                    <?php
-                    if (($user->hasPermissionName(['delete_user']) && $isOwner) || $user->hasPermissionName(['delete_users'])):
-                    ?>
-                    <li>
-                        <hr/>
-                    </li>
-                    <li class="<?= ($this->request->action == 'delete') ? 'active disabled' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+                    <li class="<?= ($this->request->action == 'delete') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "delete",
                                 $object->id
-                            ]); ?>>
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-trash fa-stack-1x"
-                                               style="color:<?= ($this->request->action == 'delete') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Delete my account') ?></a>
+                            ]); ?>">
+                            <i class="fa fa-trash"></i>
+                            <?= __('Delete my account') ?></a>
                     </li>
                     <?php
-                    endif;
                 endif;
-                ?>
-            </ul>
-        </div>
+            endif;
+            ?>
+        </ul>
     </div>
 </div>
