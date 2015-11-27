@@ -1,7 +1,7 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h4 class="page-title"><?= __('List of projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h4>
+        <h1 class="page-header"><?= __('List of projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h1>
         <?php
         $this->Html->addCrumb(__('Home'), '/');
         $this->Html->addCrumb(__('Projects'), '/Projects');
@@ -12,11 +12,10 @@
 </div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-        <div class="panel">
+        <div class="panel panel-default">
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table id="projects" class="table table-striped table-bordered table-hover dataTable">
+                    <table id="projects" class="table table-striped table-bordered dataTable">
                         <thead>
                         <tr>
                             <th></th>
@@ -70,6 +69,7 @@ echo $this->DataTables->init([
     'deferLoading' => $recordsTotal,
     'delay' => 600,
     "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+    "autoWidth" => false,
     'columns' => [
         [
             'name' => 'Projects.id',
@@ -93,7 +93,6 @@ echo $this->DataTables->init([
             'searchable' => true
         ]
     ],
-    'lengthMenu' => '',
     'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
