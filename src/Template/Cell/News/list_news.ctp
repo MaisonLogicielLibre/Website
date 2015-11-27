@@ -17,7 +17,7 @@
             echo "<tr class='info'>";
     ?>
             <td><?= $new->date ?></td>
-            <td><?= $new->description ?></td>
+            <td class="text-justify"><?= $new->description ?></td>
             <td>
                 <?php if ($new->link) :
                     echo $this->html->link(__('Link'), $new->link);
