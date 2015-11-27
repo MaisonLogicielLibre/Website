@@ -40,7 +40,43 @@ h1, h2, h3, h4, h5, h6 {
       padding-top: 15px;
       padding-bottom: 15px;
       line-height: 20px;
+      color: #ccc;
+      &:hover, &:focus {
+        background: darken(@bgDefault, 6.5%);
+        color: #fff;
+      }
     }
+  }
+  #nav-avatar {
+    margin-top : -8px;
+  }
+  #badge-notif {
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      background: @brand-danger;
+      padding: 3px 5px;
+  }
+  #badge-lang {
+    position: absolute;
+    top: 12px;
+    right: 3px;
+    background: @brand-primary;
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+  #quebec-flag, #canada-flag {
+    img {
+      width: 32px;
+      height: auto;
+    }
+    span {
+      margin: 0 0 0 5px;
+    }
+  }
+  .open > a, .open > a:hover, .open > a:focus {
+    background: darken(@bgDefault, 6.5%);
+    color: #fff;
   }
   .btn-register {
     left: 1px;
@@ -65,11 +101,6 @@ h1, h2, h3, h4, h5, h6 {
       border-top-right-radius: 0;
       -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
       box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-      & > li {
-        & > a {
-          white-space: normal;
-        }
-      }
     }
   }
 }
@@ -82,8 +113,8 @@ h1, h2, h3, h4, h5, h6 {
       margin: 0 0 0 15px;
     }
     &.active {
-      border-left: 3px solid @brand-primary;
       a, a:hover {
+        border-left: 3px solid @brand-primary;
         color: @brand-primary;
       }
     }
@@ -151,6 +182,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10px 0;
 
   }
+}
+
+footer#footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  color: #58666e;
+  text-align: left !important;
+  padding: 20px 30px;
+  position: absolute;
+  right: 0;
+  left: 250px;
 }
 
 #register-wrapper {
@@ -234,4 +276,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .table > tfoot > tr.info > td {
   background: #ebeff2;
+}
+
+.badge-xs {
+  font-size: 9px;
+}
+.badge-xs,
+.badge-sm {
+  -webkit-transform: translate(0, -2px);
+  -ms-transform: translate(0, -2px);
+  -o-transform: translate(0, -2px);
+  transform: translate(0, -2px);
 }
