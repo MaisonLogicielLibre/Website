@@ -65,7 +65,11 @@ INSERT INTO `permissions` (`id`, `name`) VALUES
 (38, 'list_meetups'),
 (39, 'add_meetups'),
 (40, 'edit_meetups'),
-(41, 'delete_meetups');
+(41, 'delete_meetups'),
+(42, 'list_news'),
+(43, 'add_news'),
+(44, 'edit_news'),
+(45, 'delete_news');
 --
 -- Contenu de la table `permissions_type_users`
 --
@@ -124,7 +128,11 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 (51, 3, 38),
 (52, 3, 39),
 (53, 3, 40),
-(54, 3, 41);
+(54, 3, 41),
+(55, 3, 42),
+(56, 3, 43),
+(57, 3, 44),
+(58, 3, 45);
 
 --
 -- Contenu de la table `type_users`

@@ -146,4 +146,17 @@ class SidebarCell extends Cell
 
         $this->set(compact('user'));
     }
+
+    /**
+     * newAction method.
+     *
+     * @return void
+     */
+    public function newAction()
+    {
+        $this->loadModel('Users');
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        $this->set(compact('user'));
+    }
 }

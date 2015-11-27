@@ -119,7 +119,7 @@
     <div class="row home-row">
         <div class="col-sm-6">
 			<hr class="hr-black" />
-            <?php echo $this->element('News/news-table'); ?>
+            <?= $this->cell('News::listNews'); ?>
         </div>
 		<div class="col-sm-6">
 			<hr class="hr-black" />
