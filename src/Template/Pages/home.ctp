@@ -123,7 +123,7 @@
         </div>
 		<div class="col-sm-6">
 			<hr class="hr-black" />
-			<?php echo $this->element('Meetup/meetup-table'); ?>
+            <?= $this->cell('Meetups::listMeetups'); ?>
 		</div>
     </div>
 </div>
