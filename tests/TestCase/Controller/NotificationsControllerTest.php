@@ -1,11 +1,26 @@
 <?php
+/**
+ * Tests for NotificationsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\NotificationsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\NotificationsController Test Case
+ * Tests for NotificationsController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class NotificationsControllerTest extends IntegrationTestCase
 {

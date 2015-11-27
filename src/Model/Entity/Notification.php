@@ -1,18 +1,25 @@
 <?php
+/**
+ * Entity of NotificationsTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Notification Entity.
+ * Entity of OrganizationsTable
  *
- * @property int $id
- * @property string $name
- * @property string $link
- * @property bool $isRead
- * @property \Cake\I18n\Time $created
- * @property int $user_id
- * @property \App\Model\Entity\User $user
+ * @category Entity
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class Notification extends Entity
 {
@@ -26,7 +33,7 @@ class Notification extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

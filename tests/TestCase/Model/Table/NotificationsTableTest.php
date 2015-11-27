@@ -1,4 +1,13 @@
 <?php
+/**
+ * Tests for NotificationsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\NotificationsTable;
@@ -6,7 +15,13 @@ use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\NotificationsTable Test Case
+ * Tests for NotificationsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Noël Rignon <rignon.noel@openmailbox.org>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class NotificationsTableTest extends TestCase
 {
