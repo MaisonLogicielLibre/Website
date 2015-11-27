@@ -340,7 +340,7 @@ class User extends Entity
 
     /**
      * Check if the user has the role specified
-     * @param string $permission the permission required to open the page
+     * @param array $permission the permission required to open the page
      * @return bool
      */
     public function hasRoleName($permission)
@@ -348,7 +348,7 @@ class User extends Entity
         $roles = TableRegistry::get('TypeUsersUsers');
 
         $roles = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
-
+        
         foreach ($roles as $role) {
             if (in_array($role->type_user->name, $permission)) {
                 return true;

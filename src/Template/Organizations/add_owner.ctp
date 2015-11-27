@@ -7,23 +7,21 @@
             <legend><?= __('Edit owners') ?></legend>
             <select multiple id="users" name="users[]">
                 <?php foreach ($users as $user) {
-                    if ($user->getId() != $you) {
-                        foreach ($owners as $owner) {
-                            if ($owner->getId() === $user->getId()) {
-                                $selected = true;
-                                break;
-                            } else
-                                $selected = false;
-                        }
+					foreach ($owners as $owner) {
+						if ($owner->getId() === $user->getId()) {
+							$selected = true;
+							break;
+						} else
+							$selected = false;
+					}
 
-                        if ($selected) { ?>
-                            <option value="<?= $user['id'] ?>"
-                                    selected><?= '(' . $user['username'] . ') ' . $user['firstName'] . ' ' . $user['lastName'] ?></option>
-                        <?php } else { ?>
-                            <option
-                                value="<?= $user['id'] ?>"><?= '(' . $user['username'] . ') ' . $user['firstName'] . ' ' . $user['lastName'] ?></option>
-                        <?php }
-                    }
+					if ($selected) { ?>
+						<option value="<?= $user['id'] ?>"
+								selected><?= '(' . $user['username'] . ') ' . $user['firstName'] . ' ' . $user['lastName'] ?></option>
+					<?php } else { ?>
+						<option
+							value="<?= $user['id'] ?>"><?= '(' . $user['username'] . ') ' . $user['firstName'] . ' ' . $user['lastName'] ?></option>
+					<?php }
                 } ?>
             </select>
         </fieldset>
