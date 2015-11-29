@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'my Organizations']); ?>">
+                            <a href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'myOrganizations']); ?>">
                                 <i class="fa fa-fw fa-suitcase"></i>
                                 <?= __('My organizations'); ?>
                             </a>
