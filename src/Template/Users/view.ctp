@@ -1,24 +1,50 @@
-<?= $this->cell('Sidebar::user', [$user->id]); ?>
 <?php $Parsedown = new Parsedown(); ?>
+<div class="row">
+<?= $this->cell('Sidebar::user', [$user->id]); ?>
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-    <div class="panel special-panel">
+    <div class="panel special-panel profile-panel">
         <div class="panel-heading">
             <?= (!(empty($user->getBiography())) ? $Parsedown->text($user->getBiography()) : __('Your biography')) ?>
         </div>
         <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table-responsive">
-                    <tr>
-                        <td><?= __('Bio'); ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= __('Firstname'); ?></td>
-                        <td><?= __('Lastname'); ?></td>
-                    </tr>
-                    <tr>
-
-                    </tr>
-                </table>
+            <div class="col-lg-12">
+                <h3 class="header-title"><?= __('Bio'); ?></h3>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="table-responsive">
+                    <table class="profile-table">
+                        <tr>
+                            <td><?= __('Firstname'); ?></td>
+                            <td><?= $user->getFirstName(); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= __('Student'); ?></td>
+                            <td><?= ($user->isStudent() ? __('Yes') : __('No')); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= __('Email'); ?></td>
+                            <td><?= $user->getEmail(); ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="table-responsive">
+                    <table class="profile-table">
+                        <tr>
+                            <td><?= __('Lastname'); ?></td>
+                            <td><?= $user->getLastName(); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= __('University'); ?></td>
+                            <td><?= ($user->getUniversity()) ? $user->getUniversity()->getName() : __('Not specified'); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= __('Phone number'); ?></td>
+                            <td><?= $user->getPhone(); ?></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -27,8 +53,8 @@
     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h3><?= __('Projects mentored') ?> <?= $this->Wiki->addHelper('Projects'); ?></h3>
-                <table class="table table-striped">
+                <h3 class="header-title"><?= __('Projects mentored') ?> <?= $this->Wiki->addHelper('Projects'); ?></h3>
+                <table class="table borderless table-striped">
                     <?php foreach ($user->getProjectsMentored() as $project): ?>
                         <tr>
                             <td>
@@ -61,8 +87,8 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h3><?= __('Organizations joined') ?> <?= $this->Wiki->addHelper('Organizations'); ?></h3>
-                <table class="table table-striped">
+                <h3 class="header-title"><?= __('Organizations joined') ?> <?= $this->Wiki->addHelper('Organizations'); ?></h3>
+                <table class="table borderless table-striped">
                     <?php foreach ($user->getOrganizationsJoined() as $organization): ?>
                         <tr>
                             <td>
@@ -93,3 +119,4 @@
         </div>
     </div>
 <?php endif; ?>
+</div>
