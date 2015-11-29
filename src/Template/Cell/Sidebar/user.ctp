@@ -4,7 +4,7 @@
             <img
                 src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
                 class="img-circle img-responsive"/>
-            <span><?= $user->getName(); ?></span>
+            <span><?= (!empty($user) ? $user->getName() : ''); ?></span>
             <?php if (!empty($object) && $object->getPortfolio() != null): ?>
                 <a href="<?= $object->getPortfolio() ?>">
                     <?= __('Portfolio') ?>
