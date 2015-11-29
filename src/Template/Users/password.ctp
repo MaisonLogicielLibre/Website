@@ -25,7 +25,7 @@
                             </br />
                             <?= $this->Form->input('old_password', ['value' => '', 'type' => 'password', 'label' => __('Confirm your current password to confirm the change'), 'placeholder' => __('Password')]); ?>
                         </fieldset>
-                        <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+                        <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                         <?= $this->Form->button(__('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',

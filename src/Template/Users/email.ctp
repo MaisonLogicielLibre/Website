@@ -24,7 +24,7 @@
                         </br />
                         <?= $this->Form->input('old_password', ['type' => 'password', 'label' => __('Confirm your password to confirm the change'), 'placeholder' => __('Password'), 'autocomplete' => 'off']); ?>
                     </fieldset>
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
+                    <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                     <?= $this->Form->button(__('Cancel'), [
                         'type' => 'button',
                         'class' => 'btn btn-default',
