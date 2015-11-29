@@ -5,7 +5,7 @@
         <?php
         $this->Html->addCrumb(__('Home'), '/');
         $this->Html->addCrumb(__('Projects'), '/Projects');
-        $this->Html->addCrumb(__('List'));
+        $this->Html->addCrumb(__('List of projects'));
 
         echo $this->Html->getCrumbList(); ?>
     </div>
@@ -14,6 +14,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-body">
+                <h3 class="header-title"><?= __('List of projects'); ?></h3>
                 <div class="table-responsive">
                     <table id="projects" class="table table-striped table-bordered dataTable">
                         <thead>
