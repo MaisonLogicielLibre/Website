@@ -3,12 +3,12 @@
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="page-header"><?= __('Change Email'); ?></h1>
+                <h1 class="page-header"><?= __('Change my email'); ?></h1>
                 <?php
                 $this->Html->addCrumb(__('Home'), '/');
                 $this->Html->addCrumb(__('Users'), '/Users');
                 $this->Html->addCrumb(__('My profile'), '/users/view/'.$user->id);
-                $this->Html->addCrumb(__('Change Email'));
+                $this->Html->addCrumb(__('Change my email'));
 
                 echo $this->Html->getCrumbList(); ?>
             </div>
@@ -17,6 +17,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <h3 class="header-title"><?= __('Change my email'); ?></h3>
                     <?= $this->Form->create($user); ?>
                     <fieldset>
                         <?= $this->Form->input('email', ['value' => "", 'label' => __('Enter your new email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>

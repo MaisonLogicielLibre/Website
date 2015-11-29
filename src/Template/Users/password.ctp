@@ -17,6 +17,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <h3 class="header-title"><?= __('Change my password'); ?></h3>
                         <?= $this->Form->create($user); ?>
                         <fieldset>
                             <input type="text" style="display:none;"/>
