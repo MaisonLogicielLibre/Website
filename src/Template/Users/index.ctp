@@ -1,10 +1,10 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1 class="page-header"><?= __('List Users'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h1>
+            <h1 class="page-header"><?= __('List Users'); ?></h1>
             <?php
             $this->Html->addCrumb(__('Home'), '/');
-            $this->Html->addCrumb(__('Users'), '/users');
+            $this->Html->addCrumb(__('Projects'), '/Users');
             $this->Html->addCrumb(__('List Users'));
 
             echo $this->Html->getCrumbList(); ?>
@@ -23,6 +23,9 @@
                                 <th><?= __('Username'); ?></th>
                                 <th><?= __('First name'); ?></th>
                                 <th><?= __('Last name'); ?></th>
+                                <th><?= __('University'); ?></th>
+                                <th><?= __('Organizations'); ?></th>
+                                <th><?= __('Student'); ?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,6 +40,33 @@
                                 </td>
                                 <td><input type="text" placeholder="<?= __('Search ...') ?>"
                                            class="form-control input-sm input-block-level"/>
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="">-----</option>
+                                        <?php
+                                        foreach ($universities as $i => $university) {
+                                            echo '<option value="' . $university . '">' . $university . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="">-----</option>
+                                        <?php
+                                        foreach ($orgs as $org) {
+                                            echo '<option value="' . $org . '">' . $org . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="">-----</option>
+                                        <option value="1"><?= __('Yes'); ?></option>
+                                        <option value="0"><?= __('No'); ?></option>
+                                    </select>
                                 </td>
                             </tr>
                             </tfoot>
@@ -67,18 +97,33 @@ echo $this->DataTables->init([
     "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
     'columns' => [
         [
-            'name' => 'users.username',
+            'name' => 'Users.username',
             'data' => 'username',
             'searchable' => true
         ],
         [
-            'name' => 'users.firstName',
+            'name' => 'Users.firstName',
             'data' => 'firstName',
             'searchable' => true
         ],
         [
-            'name' => 'users.lastName',
+            'name' => 'Users.lastName',
             'data' => 'lastName',
+            'searchable' => true
+        ],
+        [
+            'name' => 'Universities.name',
+            'data' => 'university',
+            'searchable' => true
+        ],
+        [
+            'name' => 'Owners.name',
+            'data' => 'owners',
+            'searchable' => true
+        ],
+        [
+            'name' => 'Users.isStudent',
+            'data' => 'isStudent',
             'searchable' => true
         ]
     ],
@@ -86,5 +131,10 @@ echo $this->DataTables->init([
     'pageLength' => 50
 ])->draw('.dataTable');
 echo 'var userUrl="' . $this->Url->Build(['action' => 'view']) . '";';
+echo 'var universityUrl="' . $this->Url->Build(['controller' => 'Universities', 'action' => 'view']) . '";';
+echo 'var orgUrl="' . $this->Url->Build(['controller' => 'Organizations', 'action' => 'view']) . '";';
+echo 'var notSpecifiedTr="' . __('Not specified') . '";';
+echo 'var yesTr="' . __('Yes') . '";';
+echo 'var noTr="' . __('No') . '";';
 $this->Html->scriptEnd(); ?>
 <?= $this->Html->script('users/index.js', ['block' => 'scriptBottom']); ?>
