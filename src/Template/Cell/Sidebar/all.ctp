@@ -1,16 +1,16 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-        <li class="active">
+        <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
                 <i class="fa fa-home fa-lg"></i>Home</a>
         </li>
-        <li>
+        <li class="<?= ($this->request->controller == 'Organizations') ? 'active' : ''; ?>">
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
                 <i class="fa fa-lg fa-suitcase"></i>
                 <?= __('Organizations'); ?>
                 <span class="label label-info label-as-badge pull-right">2</span>
             </a>
-            <ul id="organizations-submenu" class="collapse">
+            <ul id="organizations-submenu" class="<?= ($this->request->controller == 'Organizations') ? 'collapse in' : 'collapse'; ?>">
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'index']); ?>">
                         <i class="fa fa-list-ul"></i>
@@ -25,13 +25,13 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li class="<?= ($this->request->controller == 'Projects') ? 'active' : ''; ?>">
             <a href="javascript:;" data-toggle="collapse" data-target="#projects-submenu">
                <i class="fa fa-lg fa-cubes"></i>
                 <?= __('Projects'); ?>
                 <span class="label label-info label-as-badge pull-right">2</span>
             </a>
-            <ul id="projects-submenu" class="collapse">
+            <ul id="projects-submenu" class="<?= ($this->request->controller == 'Projects') ? 'collapse in' : 'collapse'; ?>">
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>">
                         <i class="fa fa-list-ul"></i>

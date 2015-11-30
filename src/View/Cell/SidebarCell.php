@@ -24,7 +24,10 @@ class SidebarCell extends Cell
      */
     public function all()
     {
-        $this->set([]);
+        $this->loadModel('Users');
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        $this->set(compact('user'));
     }
 
     /**
