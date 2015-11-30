@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'aso']); ?>">
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'association']); ?>">
                         <i class="fa fa-male"></i>
                         <?= __('Associations'); ?>
                     </a>
