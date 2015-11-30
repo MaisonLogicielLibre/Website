@@ -603,7 +603,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/resetPassword/toto');
         $data = ['password' => 'tutu', 'confirm_password' => 'tutu'];
         $this->post('/users/resetPassword/toto', $data);
-        $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 
     /**
