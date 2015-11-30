@@ -105,6 +105,7 @@ echo $this->Html->script(
         'markdown/markdown',
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
+        'initial.min'
     ],
     ['block' => 'scriptBottom']);
 if ($this->request->session()->read('lang') == 'fr_CA')

@@ -59,3 +59,4 @@
         </div>
     </div>
 </div>
+<?= $this->Html->script(['initial.min'], ['block' => 'scriptBottom']); ?>

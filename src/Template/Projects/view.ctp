@@ -64,7 +64,6 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <h3 class="header-title"><?= __('Missions'); ?> <?= $this->Wiki->addHelper('Missions'); ?></h3>
-
                             <div class="table-responsive">
                                 <table id="projects" class="table table-striped table-bordered table-hover dataTable">
                                     <thead>
