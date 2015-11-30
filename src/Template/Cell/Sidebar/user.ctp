@@ -57,18 +57,6 @@
                             <i class="fa fa-pencil"></i>
                             <?= __('Edit my profile') ?></a>
                     </li>
-                    <?php else : ?>
-                    <li class="<?= ($this->request->action == 'view') ? 'active' : ''; ?>">
-                        <a href="<?= $this->Url->build(
-                            [
-                                "controller" => "Users",
-                                "action" => "view",
-                                $object->id
-                            ]); ?>">
-                            <i class="fa fa-user"></i>
-                            <?= __('Profile') ?>
-                        </a>
-                    </li>
                 <?php endif; ?>
                 <?php
                 if (($user->hasPermissionName(['delete_user']) && $isOwner) || $user->hasPermissionName(['delete_users'])):
@@ -85,8 +73,19 @@
                     </li>
                     <?php
                 endif;
-            endif;
-            ?>
+            else: ?>
+                <li class="<?= ($this->request->action == 'view') ? 'active' : ''; ?>">
+                    <a href="<?= $this->Url->build(
+                        [
+                            "controller" => "Users",
+                            "action" => "view",
+                            $object->id
+                        ]); ?>">
+                        <i class="fa fa-user"></i>
+                        <?= __('Profile') ?>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </div>
