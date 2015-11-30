@@ -105,14 +105,18 @@ class AppController extends Controller
     protected function updateNotifications()
     {
         $notifications = TableRegistry::get('Notifications');
-        $listNotifications = $notifications->findByUserId($this->request->session()->read('Auth.User.id'));
+        $listNotifications = $notifications->find('all', ['conditions' => ['isRead' => false, 'user_id' => $this->request->session()->read('Auth.User.id')]])->toArray();
+        $numberOfNotifications = count($listNotifications);
 
         foreach ($listNotifications as $notification) {
             if ('/' . $notification->link == $this->request->here(false)) {
                 $notification->isRead = 1;
+                $numberOfNotifications -= 1;
                 $notifications->save($notification);
             }
         }
+
+        $this->request->Session()->write('Auth.User.numberOfNotifications', $numberOfNotifications);
     }
     
     /**
