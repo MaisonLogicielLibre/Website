@@ -133,9 +133,9 @@ class SidebarCell extends Cell
     {
         $this->loadModel('Users');
         $this->loadModel('Missions');
-        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $user = $this->Users->get($this->request->session()->read('Auth.User.id'));
 
-        $object = $this->Missions->findById($missionId)->first();
+        $object = $this->Missions->get($missionId, ['contain' => ['Projects']]);
         $isMentor = false;
         if ($user){
             $isMentor = $user->isMentorOf($object->project_id);
