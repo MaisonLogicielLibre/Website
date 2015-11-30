@@ -77,7 +77,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#partners-submenu">
                 <i class="fa fa-lg fa-users"></i>
                 <?= __('Partners') ?>
-                <span class="label label-info label-as-badge pull-right">4</span>
+                <span class="label label-info label-as-badge pull-right">3</span>
             </a>
             <ul id="partners-submenu" class="collapse">
                 <li>
