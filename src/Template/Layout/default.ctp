@@ -59,7 +59,10 @@
             if ($user) : ?>
                 <li class="dropdown">
                     <a href="<?= $this->Url->build(['controller' => 'Notifications', 'action' => 'index']) ?>">
-                        <i class="fa fa-bell-o fa-lg"></i><span id="badge-notif" class="badge badge-xs"><?= $user['numberOfNotifications'] ?></span>
+                        <i class="fa fa-bell-o fa-lg"></i>
+                        <?php if ($this->request->session()->read('numberOfNotifications')): ?>
+                        <span id="badge-notif" class="badge badge-xs"><?= $this->request->session()->read('numberOfNotifications') ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="dropdown">

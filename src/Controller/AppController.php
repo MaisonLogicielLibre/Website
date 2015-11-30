@@ -116,7 +116,7 @@ class AppController extends Controller
             }
         }
 
-        $this->request->Session()->write('Auth.User.numberOfNotifications', $numberOfNotifications);
+        $this->request->Session()->write('numberOfNotifications', $numberOfNotifications);
     }
     
     /**

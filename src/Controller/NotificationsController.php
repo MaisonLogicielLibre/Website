@@ -125,7 +125,7 @@ class NotificationsController extends AppController
             }
         }
 
-        $this->Flash->success(__('{0} notifications has been mark as read.', count($notifications)));
+        $this->Flash->success(__('All notifications has been mark as read.'));
         return $this->redirect(['action' => 'index']);
     }
 }
