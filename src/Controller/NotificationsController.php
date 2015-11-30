@@ -86,6 +86,8 @@ class NotificationsController extends AppController
     /**
      * MarkAsRead method
      *
+     * @param int $notificationId notificationId
+     *
      * @return redirect
      */
     public function markAsRead($notificationId)
@@ -115,7 +117,7 @@ class NotificationsController extends AppController
     {
         $this->autoRender = false;
         $user = TableRegistry::get('Users')->get($this->request->session()->read('Auth.User.id'));
-        $notifications = $this->Notifications->find('all' , ['condition' => ['isRead' => false, 'userId' => $user->id]]);
+        $notifications = $this->Notifications->find('all', ['condition' => ['isRead' => false, 'userId' => $user->id]]);
 
         foreach ($notifications as $notification) {
             $notification->isRead = true;
