@@ -1,4 +1,4 @@
-var activeMenu = null;
+var activeMenu = $('.side-nav li.active');
 $(document).ready(function () {
     $('.side-nav a').click(function () {
         var li = $(this).parent();
