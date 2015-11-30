@@ -528,7 +528,11 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => ['Owners', 'Members']
+            'contain' => [
+            'Owners',
+            'Members',
+            'Projects' => ['Mentors']
+            ]
             ]
         );
         
@@ -536,7 +540,18 @@ class OrganizationsController extends AppController
         $owners = $organization->getOwners();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
-    
+        
+        foreach ($organization->projects as $project) {
+            foreach ($project->getMentors() as $mentor) {
+                if ($mentor->getId() == $you) {
+                    $this->Flash->error(__('You are a mentor of a project, you cannot leave the organization. You must remove yourself from the mentor list of the project to quit'));
+                    return $this->redirect(['action' => 'view', $organization->id]);
+                }
+            }
+        }
+        
+
+        
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
         if ($user) {
             if (!$user->isMemberOf($organization->getId())) {
@@ -547,6 +562,7 @@ class OrganizationsController extends AppController
         }
         
         if ($this->request->is(['patch', 'post', 'put'])) {
+            
             if (count($owners) == 1 && $user->isOwnerOf($organization->getId())) {
                 $organization->editIsRejected(true);
                 $organization->editMembers([]);
