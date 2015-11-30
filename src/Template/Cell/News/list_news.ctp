@@ -1,32 +1,22 @@
-<table class="table table-responsive">
-    <thead>
-    <tr>
-        <th class="mll-table"><?= __("Date"); ?></th>
-        <th><?= __("New"); ?></th>
-        <th><?= __("Link"); ?></th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    $compteur = 0;
-    foreach ($news as $new):
-        $compteur++;
-        if ($compteur % 2)
-            echo "<tr class='success'>";
-        else
-            echo "<tr class='info'>";
-    ?>
-            <td><?= $new->date ?></td>
-            <td class="text-justify"><?= $new->description ?></td>
-            <td>
-                <?php if ($new->link) :
-                    echo $this->html->link(__('Link'), $new->link);
-                endif;
-                ?>
-            </td>
-        </tr>
-    <?php
-    endforeach;
-    ?>
-    </tbody>
-</table>
+<?php
+$compteur = 0;
+foreach ($news as $new):
+	$compteur++; ?>
+	<div class="row">
+		<div class="panel panel-default col-sm-6 col-sm-offset-3">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<h4><?= $this->html->link($new->name, $new->link) ?></h4>
+					</div>
+				</div>
+				<div class="row">	
+					<div class="col-sm-12">
+						<p> <?= $new->description ?> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endforeach;
+?>
