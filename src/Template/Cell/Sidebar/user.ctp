@@ -2,9 +2,9 @@
     <div class="page-action">
         <div class="page-header">
             <img
-                src="<?= 'http://www.gravatar.com/avatar/' . (!empty($user) ? md5($user->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
+                src="<?= 'http://www.gravatar.com/avatar/' . (!empty($object) ? md5($object->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
                 class="img-circle img-responsive"/>
-            <span><?= (!empty($user) ? $user->getName() : ''); ?></span>
+            <span><?= (!empty($object) ? $object->getName() : ''); ?></span>
             <?php if (!empty($object) && $object->getPortfolio() != null): ?>
                 <a href="<?= $object->getPortfolio() ?>">
                     <?= __('Portfolio') ?>
@@ -57,9 +57,19 @@
                             <i class="fa fa-pencil"></i>
                             <?= __('Edit my profile') ?></a>
                     </li>
-                    <?php
-                endif;
-                ?>
+                    <?php else : ?>
+                    <li class="<?= ($this->request->action == 'view') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
+                            [
+                                "controller" => "Users",
+                                "action" => "view",
+                                $object->id
+                            ]); ?>">
+                            <i class="fa fa-user"></i>
+                            <?= __('Profile') ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <?php
                 if (($user->hasPermissionName(['delete_user']) && $isOwner) || $user->hasPermissionName(['delete_users'])):
                     ?>
