@@ -27,6 +27,8 @@ class NotificationsController extends AppController
 {
     private $_permissions = [
         'index' => [],
+        'markAsRead' => [],
+        'markAllAsRead' => [],
     ];
 
     /**
@@ -79,5 +81,51 @@ class NotificationsController extends AppController
         $notifications = $this->Notifications->find('all', ['conditions' => ['isRead' => false, 'user_id' => $this->request->session()->read('Auth.User.id')]])->toArray();
         $this->set('notifications', $notifications);
         $this->set('_serialize', ['notifications']);
+    }
+
+    /**
+     * MarkAsRead method
+     *
+     * @return redirect
+     */
+    public function markAsRead($notificationId)
+    {
+        $this->autoRender = false;
+        $user = TableRegistry::get('Users')->get($this->request->session()->read('Auth.User.id'));
+        $notification = $this->Notifications->get($notificationId, ['contain' => 'Users']);
+
+        if ($notification->user->id == $user->id) {
+            $notification->isRead = true;
+            if ($this->Notifications->save($notification)) {
+                $this->Flash->success(__('The notification has been mark as read.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The notification could not be mark as read. Please, try again.'));
+                return $this->redirect(['action' => 'index']);
+            }
+        }
+    }
+
+    /**
+     * MarkAllAsRead method
+     *
+     * @return redirect
+     */
+    public function markAllAsRead()
+    {
+        $this->autoRender = false;
+        $user = TableRegistry::get('Users')->get($this->request->session()->read('Auth.User.id'));
+        $notifications = $this->Notifications->find('all' , ['condition' => ['isRead' => false, 'userId' => $user->id]]);
+
+        foreach ($notifications as $notification) {
+            $notification->isRead = true;
+            if (!$this->Notifications->save($notification)) {
+                $this->Flash->error(__('The notification could not be mark as read. Please, try again.'));
+                return $this->redirect(['action' => 'index']);
+            }
+        }
+
+        $this->Flash->success(__('{0} notifications has been mark as read.', count($notifications)));
+        return $this->redirect(['action' => 'index']);
     }
 }
