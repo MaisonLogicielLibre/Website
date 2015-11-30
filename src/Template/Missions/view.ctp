@@ -1,129 +1,136 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?= $this->cell('Sidebar::mission', [$mission->id]); ?>
 <?php $Parsedown = new Parsedown(); ?>
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-        <div class="row-fluid">
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 no-pading">
-                <div class="clearfix">
-                    <h2 class="pull-left">
-                        <?= $mission->getName() ?>
-                    </h2>
-                    <?php if ($mission->getRemainingPlaces() > 0) : ?>
-                        <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
-                            <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+    <div class="row">
+        <?= $this->cell('Sidebar::mission', [$mission->id]); ?>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="page-header"><?= $mission->getName() ?></h1>
+                    <?php
+                    $this->Html->addCrumb(__('Home'), '/');
+                    $this->Html->addCrumb(__('Projects'), '/Projects');
+                    $this->Html->addCrumb($mission->project->getName(), '/projects/view/' . $mission->project->id);
+                    $this->Html->addCrumb($mission->getName());
+
+                    echo $this->Html->getCrumbList(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel special-panel">
+                        <div class="panel-heading">
+                            <?= $Parsedown->text($mission->getDescription()); ?>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h3 class="header-title"><?= __('Your mission, should you choose to accept it, ...') ?></h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="profile-table">
+                                            <tr>
+                                                <td><?= __('Term:'); ?></td>
+                                                <td><?= $mission->getSession(); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?= __('Length:'); ?></td>
+                                                <td><?= $mission->getLength(); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?= __('Places available:'); ?></td>
+                                                <td><?= $mission->getInternNbr(); ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="profile-table">
+                                            <tr>
+                                                <td><?= __('School year:'); ?></td>
+                                                <td><?= implode(', ', array_map(function ($v) {
+                                                        return $v->getName();
+                                                    }, $mission->getLevels())) ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><?= __('Looking for:'); ?></td>
+                                                <td><?= implode(', ', array_map(function ($v) {
+                                                        return $v->getName();
+                                                    }, $mission->getType())) ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><?= __('Mentor:'); ?></td>
+                                                <td>
+                                                    <a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h3 class="header-title"><?= __('Skills'); ?></h3>
+                                        <div>
+                                            <?= $Parsedown->text($mission->getCompetence()); ?>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <?php if ($mission->getRemainingPlaces() > 0) : ?>
+                                        <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
+                                            <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <?php if ($recordsTotal) : ?>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3 class="header-title">
+                                    <?php if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])))
+                                        echo __('List of applications');
+                                    else
+                                        echo __('Contributors');
+                                    ?>
+                                </h3>
+
+                                <div class="table-responsive">
+                                    <table id="applications"
+                                           class="table table-striped table-bordered table-hover dataTable">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th><?= __('Name'); ?></th>
+                                            <?php
+                                            if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
+                                                <th><?= __('Approved'); ?></th>
+                                                <th><?= __('Rejected'); ?></th>
+                                                <?php
+                                            endif;
+                                            ?>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     <?php endif; ?>
                 </div>
-                <?= __('Your mission, should you choose to accept it, ...') ?>
-                <div class="bs-callout bs-callout-warning">
-                    <h4><?= __('Description'); ?></h4>
-
-                    <p><?= $Parsedown->text($mission->getDescription()); ?></p>
-                </div>
-
-                </p>
-                <div class="bs-callout bs-callout-primary">
-                    <h4><?= __('Skills'); ?></h4>
-
-                    <p><?= $Parsedown->text($mission->getCompetence()); ?></p>
-                </div>
-
-                <?php if ($recordsTotal) : ?>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                <?php if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])))
-                                    echo __('List of applications');
-                                else
-                                    echo __('Contributors');
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table id="applications" class="table table-striped table-bordered table-hover dataTable">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th><?= __('Name'); ?></th>
-                                    <?php
-                                    if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
-                                        <th><?= __('Approved'); ?></th>
-                                        <th><?= __('Rejected'); ?></th>
-                                        <?php
-                                    endif;
-                                    ?>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="padding-right:0;">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><?= __('Mission details'); ?></h3>
-                    </div>
-                    <table class="table table-striped table-responsive">
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('Term:'); ?></strong></td>
-                            <td><?= $mission->getSession(); ?></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('Length:'); ?></strong></td>
-                            <td><?= $mission->getLength(); ?></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('Places available:'); ?></strong></td>
-                            <td><?= $mission->getInternNbr(); ?></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('School year:'); ?></strong></td>
-                            <td><?= implode(', ', array_map(function ($v) {
-                                    return $v->getName();
-                                }, $mission->getLevels())) ?></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('Looking for:'); ?></strong></td>
-                            <td><?= implode(', ', array_map(function ($v) {
-                                    return $v->getName();
-                                }, $mission->getType())) ?></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space:pre"><strong><?= __('Mentor:'); ?></strong></td>
-                            <td>
-                                <a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <?php foreach ($mission->getProject()->getOrganizations() as $org): ?>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><?= __('Company information'); ?></h3>
-                        </div>
-                        <table class="table table-bordered table-responsive">
-                            <tr>
-                                <td style="border-right:none;"><strong><?= __('Company:'); ?></strong></td>
-                                <td style="border-left:none"><?= $org->getName(); ?></td>
-                            </tr>
-                            <?php if (!empty($org->getWebsite())) : ?>
-                                <tr>
-                                    <td style="border-right:none;"><strong><?= __('Website:'); ?></strong></td>
-                                    <td style="border-left:none;"><a
-                                            href="<?= $org->getWebsite(); ?>"><?= $org->getWebsite() ?></a></td>
-                                </tr>
-                            <?php endif; ?>
-                            <tr>
-                                <td style="border-right:none;"><strong><?= __('Full company details'); ?></strong></td>
-                                <td style="border-left:none;"><a
-                                        href="<?= $this->Url->Build(['controller' => 'Organizations', 'action' => 'view', $org->getId()]); ?>"><?= __('See'); ?></a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -203,8 +210,8 @@ echo 'var rejectCandidateTr="' . __('Reject the candidate') . '";';
 echo 'var acceptCandidateTr="' . __('Accept the candidate') . '";';
 $this->Html->scriptEnd();
 if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
-    echo $this->Html->script('missions/viewMentor.js', ['block' => 'scriptBottom']);
+    echo $this->Html->script(['initial.min', 'missions/viewMentor.js'], ['block' => 'scriptBottom']);
 } else {
-    echo $this->Html->script('missions/view.js', ['block' => 'scriptBottom']);
+    echo $this->Html->script(['initial.min', 'missions/view.js'], ['block' => 'scriptBottom']);
 }
 ?>

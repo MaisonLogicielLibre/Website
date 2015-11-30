@@ -1,0 +1,400 @@
+@import '../bootstrap/less/bootstrap.less';
+@import 'sidebar.less';
+@import 'custom-variables.less';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #ebeff2;
+  margin: 100px 0 0 0;
+}
+
+a {
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+}
+
+button {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+a {
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    margin-top: 50px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #505458;
+}
+
+.top-nav {
+  padding: 0 15px;
+  & > li {
+    display: inline-block;
+    float: left;
+    & > a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      line-height: 20px;
+      color: #ccc;
+      &:hover, &:focus {
+        background: darken(@bgDefault, 6.5%);
+        color: #fff;
+      }
+    }
+  }
+  #nav-avatar {
+    margin-top: -8px;
+  }
+  #badge-notif {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    background: @brand-danger;
+    padding: 3px 5px;
+  }
+  #badge-lang {
+    position: absolute;
+    top: 12px;
+    right: 3px;
+    background: @brand-primary;
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+  #quebec-flag, #canada-flag {
+    img {
+      width: 32px;
+      height: auto;
+    }
+    span {
+      margin: 0 0 0 5px;
+    }
+  }
+  .open > a, .open > a:hover, .open > a:focus {
+    background: darken(@bgDefault, 6.5%);
+    color: #fff;
+  }
+  .btn-register {
+    left: 1px;
+  }
+  .btn-login, .btn-register {
+    border-radius: 0;
+    border: none;
+    padding: 15px;
+    position: relative;
+    bottom: -1px;
+    &:hover {
+      border: none;
+    }
+  }
+  & > .open {
+    & > .dropdown-menu {
+      float: left;
+      position: absolute;
+      margin-top: 0;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+  }
+}
+
+.side-nav {
+  padding: 30px 0 0 0;
+  & > li {
+    &.active {
+      background: rgba(0, 0, 0, 0.1);
+      > a, > a:hover {
+        border-left: 3px solid @brand-success;
+        color: @brand-success;
+      }
+    }
+    a {
+      color: @gray-light;
+      &:hover, &:focus {
+        background: none;
+        color: @brand-success;
+      }
+    }
+    & > ul {
+      padding: 0;
+      & > li {
+        & > a {
+          display: block;
+          padding: 10px 15px 10px 38px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+#wrapper {
+  padding-left: 0;
+  margin-bottom: -65px;
+  height: 100%;
+}
+
+#page-wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  background: #ebeff2;
+}
+
+#login-wrapper, #recover-password-wrapper, #reset-password-wrapper {
+  width: 420px;
+  position: relative;
+  margin: 5% auto;
+}
+
+#register-wrapper, #login-wrapper, #recover-password-wrapper, #reset-password-wrapper {
+  .panel {
+    padding-bottom: 20px;
+    h2 {
+      text-align: center;
+      font-size: 1.8em;
+    }
+    input {
+      &[placeholder]:first-letter {
+        text-transform: capitalize;
+      }
+    }
+    button[type="submit"], a.btn {
+      width: 100%;
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+  }
+  #register-login-link, #login-register-link, #recover-password-search-link {
+    text-align: center;
+  }
+  #login-alert, #register-alert, #recover-password-alert, #reset-password-alert {
+    &:empty {
+      padding-bottom: 40px;
+    }
+    padding-bottom: 0;
+    margin: 10px 0;
+
+  }
+}
+
+footer#footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  color: #58666e;
+  text-align: left !important;
+  padding: 20px 30px;
+}
+
+#register-wrapper {
+  max-width: 840px;
+  width: 100%;
+  position: relative;
+  margin: 5% auto;
+  .panel {
+    legend {
+      font-size: 1.2em;
+      .sub {
+        font-size: 0.6em;
+      }
+    }
+    p {
+      margin: 0 !important;
+    }
+    #universitie-id {
+      margin-top: 15px;
+    }
+    .register-university-info {
+      font-size: 0.8em;
+      color: lighten(@text-color, 13.5%)
+    }
+  }
+}
+
+#recover-password-wrapper {
+  span.recover-password-info {
+    display: block;
+    margin: 5px 0;
+  }
+}
+
+@media (min-width: 768px) {
+
+  #wrapper {
+    padding-left: 250px;
+  }
+
+  #page-wrapper {
+    padding: 10px;
+  }
+
+  .side-nav {
+    position: fixed;
+    top: 51px;
+    left: 250px;
+    width: 250px;
+    margin-left: -250px;
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+    background: #fff;
+    bottom: 0;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    & > li {
+      & > a {
+        width: 250px;
+        &:hover, &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.page-header {
+  font-size: 20px;
+  margin-bottom: 0;
+  margin-top: 7px;
+  font-weight: 600;
+}
+
+.breadcrumb {
+  background: none;
+  padding: 8px 0;
+}
+
+.table > tfoot > tr.info > td {
+  background: #ebeff2;
+}
+
+.badge-xs {
+  font-size: 9px;
+}
+
+.badge-xs,
+.badge-sm {
+  -webkit-transform: translate(0, -2px);
+  -ms-transform: translate(0, -2px);
+  -o-transform: translate(0, -2px);
+  transform: translate(0, -2px);
+}
+
+.page-action {
+  background: #fff;
+  border-radius: 5px;
+  .page-header {
+    text-align: center;
+    padding: 20px 0 10px 0;
+    background: @brand-info;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    &:hover {
+      background: @brand-success;
+    }
+    img.img-circle {
+      margin: 0px auto;
+      border: 10px solid rgba(255, 255, 255, 0.3)
+    }
+    span {
+      display: block;
+      color: #fff;
+      font-size: 1.4em;
+    }
+    a {
+      display: block;
+      color: #fff;
+      font-size: 0.9em;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  ul {
+    //border: 1px solid #ddd;
+    border-top: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    li {
+      &.active {
+        background: rgba(0, 0, 0, 0.1);
+        a {
+          border-left: 3px solid @brand-info;
+          color: @brand-info;
+          &:hover {
+            color: @brand-info;
+          }
+        }
+      }
+      a {
+        color: #777;
+        &:hover {
+          color: @brand-info;
+        }
+      }
+    }
+  }
+}
+
+.panel-body {
+  .header-title {
+    font-size: 1em;
+    margin-top: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.special-panel {
+  &.profile-panel {margin-top: 6px;}
+  .panel-heading {
+    background: #1abc9c;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    min-height: 100px;
+    a {
+      text-decoration: underline;
+      color: #fff;
+    }
+  }
+  .panel-body {
+    .profile-table {
+      width: 100%;
+      tr {
+        width: 100%;
+      }
+        td {
+          width: 100%;
+          &:first-child {
+            width: 40%;
+          }
+          &:last-child {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }

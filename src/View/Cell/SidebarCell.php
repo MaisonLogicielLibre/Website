@@ -18,6 +18,16 @@ class SidebarCell extends Cell
     protected $_validCellOptions = [];
 
     /**
+     * Default sidebar
+     *
+     * @return void
+     */
+    public function all()
+    {
+        $this->set([]);
+    }
+
+    /**
      * user method.
      * @param int $userId userId
      *
@@ -125,7 +135,7 @@ class SidebarCell extends Cell
         $this->loadModel('Missions');
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        $object = $this->Missions->findById($missionId)->first();
+        $object = $this->Missions->get($missionId, ['contain' => ['Projects']]);
         $isMentor = false;
         if ($user){
             $isMentor = $user->isMentorOf($object->project_id);

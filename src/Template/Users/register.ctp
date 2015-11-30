@@ -1,66 +1,106 @@
-<div class="row">
-    <div class="users form col-lg-12 col-md-12 columns">
-        <?= $this->Form->create($user, ['class' => 'form-hozitontal']); ?>
-        <fieldset>
-            <legend><?= __('Register') ?></legend>
-            <div class="form-group clearfix required">
-                <?= $this->Form->label('username', __('Choose your username'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Username'), 'autocomplete' => 'off']); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?= $this->Html->charset() ?>
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= $this->fetch('title') ?>
+    </title>
+    <?= $this->Html->meta('icon') ?>
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600' rel='stylesheet' type='text/css'>
+
+    <?= $this->Less->less('less/styles.less'); ?>
+    <?= $this->Html->css('bootstrap-switch.min'); ?>
+</head>
+<body>
+<div id="register-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <?= $this->Form->create($user, ['class' => 'form-horizontal']) ?>
+            <div class="col-sm-12 col-xs-12">
+                <h2><?= __("Sign Up to {0}", '<strong>' . __('ML2') . '</strong>') ?></h2>
+            </div>
+            <div id="register-alert" class="col-sm-12"><?= $this->Flash->render() ?></div>
+            <div class="col-sm-5 col-xs-12">
+                <fieldset>
+                    <legend>Personal info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <?= $this->Form->input('firstName', ['label' => false, 'placeholder' => __('Enter your firstname'), 'autocomplete' => 'off']); ?>
+                    <?= $this->Form->input('lastName', ['label' => false, 'placeholder' => __('Enter your lastname'), 'autocomplete' => 'off']); ?>
+                </fieldset>
+            </div>
+            <div class="col-sm-offset-1 col-sm-6 col-xs-12">
+                <fieldset>
+                    <legend>Account info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Choose your username'), 'autocomplete' => 'off']); ?>
+                    <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('Choose a password'), 'autocomplete' => 'off']); ?>
+                    <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Confirm password'), 'autocomplete' => 'off']); ?>
+                </fieldset>
+            </div>
+            <div class="col-sm-5 col-xs-12">
+                <fieldset>
+                    <legend>Contact info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <?= $this->Form->input('email', ['label' => false, 'placeholder' => __('Email adress'), 'autocomplete' => 'off']); ?>
+                    <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Confirm email adress'), 'autocomplete' => 'off']); ?>
+                </fieldset>
+            </div>
+            <div class="col-sm-offset-1 col-sm-6 col-xs-12">
+                <fieldset>
+                    <legend><?= __('University info'); ?></legend>
+                    <p class="register-university-info"><?= __('If you\'re a student please select yes and then select your university. If not, let the case be.'); ?></p>
+                    <?= $this->Form->input('isStudent', ['label' => false, 'class' => 'form-control']); ?>
+                    <p class="register-university-info"><?= __('P.S.: Only university students will be able to apply to projects.'); ?></p>
+                    <?php
+                    $options[] = ['value' => '', 'text' => __('Please select your university'), 'disabled' => true, 'selected' => true];
+                    foreach ($universities as $i => $university) {
+                        $options[] = ['value' => $i, 'text' => $university];
+                    }
+                    $options[] = ['value' => '0', 'text' => __('Not specified')];
+                    ?>
+                    <?= $this->Form->input('universitie_id', [
+                        'type' => 'select',
+                        'label' => false,
+                        'options' => $options,
+                        'required' => true,
+                        'class' => 'form-control',
+                    ]); ?>
+                </fieldset>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <div class="checkbox">
+                    <input name="remember" value="0" type="hidden">
+                    <label for="remember">
+                        <input name="remember" value="0" id="remember" type="checkbox" required>
+                        <?= __('I accept {0}', $this->Html->link(__('Terms and Conditions'), ['controller' => 'Pages', 'action' => 'terms'])); ?>
+                    </label>
                 </div>
             </div>
-            <br/>
-
-            <div class="form-group clearfix required">
-                <?= $this->Form->label('password', __('Choose a password'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('Password'), 'autocomplete' => 'off']); ?>
-                </div>
-                <?= $this->Form->label('confirm_password', __('Confirm password'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Password'), 'autocomplete' => 'off']); ?>
-                </div>
-            </div>
-            <br/>
-
-            <div class="form-group clearfix required">
-                <?= $this->Form->label('email', __('Email adress'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('email', ['label' => false, 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
-                </div>
-                <?= $this->Form->label('confirm_email', __('Confirm email adress'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
-                </div>
-            </div>
-            <br/>
-
-            <div class="form-group clearfix required">
-                <?= $this->Form->label('firstName', __('Enter your firstname'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('firstName', ['label' => false, 'placeholder' => __('Firstname'), 'autocomplete' => 'off']); ?>
-                </div>
-                <?= $this->Form->label('lastName', __('Enter your lastname'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('lastName', ['label' => false, 'placeholder' => __('Lastname'), 'autocomplete' => 'off']); ?>
-                </div>
-                <?php
-                $options[] = ['value' => '', 'text' => '', 'disabled' => true, 'selected' => true];
-                foreach ($universities as $i => $university) {
-                    $options[] = ['value' => $i, 'text' => $university];
-                }
-                $options[] = ['value'=> 0, 'text' => __('Not specified')];
-                ?>
-                <?= $this->Form->label('universitie_id', __('University'), ['class' => 'col-sm-2 control-label']); ?>
-                <div class="col-sm-10">
-                    <?= $this->Form->input('universitie_id', ['type' => 'select', 'label' => false, 'options' => $options, 'required' => true, 'class' => 'form-control']); ?>
-                </div>
-            </div>
-            <br/>
-        </fieldset>
-
-        <?= $this->Form->button(__('Register'), ['class' => 'btn-success']) ?> -
-        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>"><?= __("I have an account"); ?></a>
-        <?= $this->Form->end() ?>
+            <?= $this->Form->button(__('Sign Up'), ['class' => 'btn btn-info']); ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+    <div id="register-login-link" class="col-sm-12 col-xs-12">
+        <?= __('Already have account?'); ?>
+        <a href="<?= $this->Url->build(["controller" => "Users", "action" => "login"]); ?>">
+            <strong><?= __('Sign In'); ?></strong>
+        </a>
     </div>
 </div>
+<?= $this->Html->script(
+    [
+        'jquery-2.1.4.min',
+        'bootstrap.min',
+        'googleAnalytics',
+        'bootstrap/bootstrap-switch.min'
+    ]
+); ?>
+<script>
+    <?= 'var yesTr="' . __('Yes') . '";'; ?>
+    <?= 'var noTr="' . __('No') . '";'; ?>
+</script>
+<?= $this->Html->script('users/register'); ?>
+</body>
+</html>

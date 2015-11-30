@@ -140,6 +140,7 @@ class UsersController extends AppController
      */
     public function login()
     {
+        $this->viewBuilder()->layout(false);
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
@@ -226,6 +227,7 @@ class UsersController extends AppController
      */
     public function register()
     {
+        $this->viewBuilder()->layout(false);
         $user = $this->Users->newEntity();
 
         $typeUser = $this->Users->TypeUsers->findByName('User')->first();
@@ -235,10 +237,9 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
 
             $user->editPassword($this->request->data['password']);
-            $user->editIsStudent(true);
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Welcome to {0}', __('ML2')));
                 return $this->redirect(['action' => 'login']);
             } else {
                 $this->Flash->error(
@@ -425,6 +426,7 @@ class UsersController extends AppController
      */
     public function resetPassword($url)
     {
+        $this->viewBuilder()->layout(false);
         $hash = $this->Hash->hash($url);
         $hash = TableRegistry::get('hashes')->findByHash($hash)->first();
 
@@ -446,8 +448,8 @@ class UsersController extends AppController
                 $hash->setUsed(true);
                 $this->loadModel("Hashes");
                 $this->Hashes->save($hash);
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
+                $this->Flash->success(__('Your password was modified.'));
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             } else {
                 $this->Flash->error(
                     __(
@@ -494,6 +496,7 @@ class UsersController extends AppController
      */
     public function recoverPassword($id = null)
     {
+        $this->viewBuilder()->layout(false);
         if ($id) { //Send mail to the user to reset password
             try {
                 $user = $this->Users->get($id);

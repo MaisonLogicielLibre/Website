@@ -196,7 +196,7 @@ class MissionsController extends AppController
                 }
                 $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
                 $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'projectId'));
+                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'project'));
                 $this->set('_serialize', ['mission']);
             } else {
                 return $this->redirect(['controller' => 'projects', 'action' => 'index']);

@@ -1,50 +1,59 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <?= $this->Html->css('bootstrap-switch.min', ['block' => 'cssTop']); ?>
 <div class="row">
-    <?= $this->cell('Sidebar::organizationAction'); ?>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="page-header"><?= __('List of organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></h1>
+        <?php
+        $this->Html->addCrumb(__('Home'), '/');
+        $this->Html->addCrumb(__('Organizations'), '/Organizations');
+        $this->Html->addCrumb(__('List of organizations'));
 
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= __('List of organizations'); ?></h3>
-            </div>
-            <div class="table-responsive">
-                <table id="organizations" class="table table-striped table-bordered table-hover dataTable">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th><?= __('Name'); ?></th>
-                        <th><?= __('Website'); ?></th>
-                        <th><?= __('Approved'); ?></th>
-                        <th><?= __('Rejected'); ?></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                    <tr class="table-search info">
-                        <td></td>
-                        <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
-                        </td>
-                        <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
-                        </td>
-                        <td>
-                            <select class="form-control">
-                                <option value="">-----</option>
-                                <option value="0"><?= __('Not approved'); ?></option>
-                                <option value="1"><?= __('Approved'); ?></option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-control">
-                                <option value="">-----</option>
-                                <option value="0" selected><?= __('Not rejected'); ?></option>
-                                <option value="1"><?= __('Rejected'); ?></option>
-                            </select>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+        echo $this->Html->getCrumbList(); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="header-title"><?= __('List of organizations'); ?></h3>
+                <div class="table-responsive">
+                    <table id="organizations" class="table table-striped table-bordered dataTable">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th><?= __('Name'); ?></th>
+                            <th><?= __('Website'); ?></th>
+                            <th><?= __('Approved'); ?></th>
+                            <th><?= __('Rejected'); ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                        <tr class="table-search info">
+                            <td></td>
+                            <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
+                            </td>
+                            <td><input type="text" placeholder="<?= __('Search ...') ?>" class="form-control input-sm input-block-level"/>
+                            </td>
+                            <td>
+                                <select class="form-control">
+                                    <option value="">-----</option>
+                                    <option value="0"><?= __('Not approved'); ?></option>
+                                    <option value="1"><?= __('Approved'); ?></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control">
+                                    <option value="">-----</option>
+                                    <option value="0" selected><?= __('Not rejected'); ?></option>
+                                    <option value="1"><?= __('Rejected'); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
