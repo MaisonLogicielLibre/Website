@@ -133,7 +133,7 @@ class SidebarCell extends Cell
     {
         $this->loadModel('Users');
         $this->loadModel('Missions');
-        $user = $this->Users->get($this->request->session()->read('Auth.User.id'));
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
 
         $object = $this->Missions->get($missionId, ['contain' => ['Projects']]);
         $isMentor = false;
