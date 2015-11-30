@@ -48,7 +48,8 @@ class AppControllerTest extends IntegrationTestCase
         'app.permissions',
         'app.permissions_type_users',
         'app.meetups',
-        'app.news'
+        'app.news',
+        'app.notifications'
     ];
 
     /**
