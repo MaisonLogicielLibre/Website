@@ -1,48 +1,59 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<div class="row">
-    <?= $this->cell('Sidebar::projectAction'); ?>
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= __('My projects'); ?> <?= $this->Wiki->addHelper('Projects');?></h3>
-            </div>
-            <div class="table-responsive">
-                <table id="projects" class="table table-striped table-bordered table-hover dataTable">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th><?= __('Name'); ?></th>
-                        <th><?= __('Link'); ?></th>
-                        <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations');?></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                    <tr class="table-search info">
-                        <td></td>
-                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                   class="form-control input-sm input-block-level"/></td>
-                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                   class="form-control input-sm input-block-level"/></td>
-                        <td>
-                            <select class="form-control">
-                                <option value="">-----</option>
-                                <?php
-                                foreach ($orgs as $org) {
-                                    echo '<option value="' . $org . '">' . $org . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="page-header"><?= __('My projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h1>
+            <?php
+            $this->Html->addCrumb(__('Home'), '/');
+            $this->Html->addCrumb(__('Projects'), '/Projects');
+            $this->Html->addCrumb(__('My projects'));
+
+            echo $this->Html->getCrumbList(); ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="header-title"><?= __('My projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h3>
+
+                    <div class="table-responsive">
+                        <table id="projects" class="table table-striped table-bordered table-hover dataTable">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Link'); ?></th>
+                                <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                            <tr class="table-search info">
+                                <td></td>
+                                <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                           class="form-control input-sm input-block-level"/></td>
+                                <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                           class="form-control input-sm input-block-level"/></td>
+                                <td>
+                                    <select class="form-control">
+                                        <option value="">-----</option>
+                                        <?php
+                                        foreach ($orgs as $org) {
+                                            echo '<option value="' . $org . '">' . $org . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Add DataTables scripts -->
+    <!-- Add DataTables scripts -->
 <?= $this->Html->script(
     [
         'datatables/jquery.dataTables.min',
