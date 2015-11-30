@@ -76,7 +76,7 @@ class NotificationsController extends AppController
      */
     public function index()
     {
-        $notifications = $this->Notifications->findByUserId($this->request->session()->read('Auth.User.id'));
+        $notifications = $this->Notifications->find('all', ['conditions' => ['isRead' => false, 'user_id' => $this->request->session()->read('Auth.User.id')]])->toArray();
         $this->set('notifications', $notifications);
         $this->set('_serialize', ['notifications']);
     }
