@@ -1,8 +1,18 @@
 <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="page-header"><?= __('Industry'); ?></h1>
+        <?php
+        $this->Html->addCrumb(__('Home'), '/');
+        $this->Html->addCrumb(__('Industry'));
+
+        echo $this->Html->getCrumbList(); ?>
+    </div>
+</div>
+<div class="row">
 	<div class="panel panel-warning col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
-				<div col-sm-2 style="float:left">
+				<div style="float:left">
 					<?php echo $this->Html->image('google.png', ['alt' => 'Google', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
@@ -21,7 +31,7 @@
 	<div class="panel panel-info col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
-				<div col-sm-2 style="float:left">
+				<div style="float:left">
 					<?php echo $this->Html->image('savoirfairelinux.jpg', ['alt' => 'Savoirfairelinux', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
@@ -40,7 +50,7 @@
 	<div class="panel panel-default col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
-				<div col-sm-2 style="float:left">
+				<div style="float:left">
 					<?php echo $this->Html->image('mozilla.png', ['alt' => 'Mozilla corporation', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
@@ -59,7 +69,7 @@
 	<div class="panel panel-default col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
-				<div col-sm-2 style="float:left">
+				<div style="float:left">
 					<?php echo $this->Html->image('ericsson.png', ['alt' => 'Mozilla', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
@@ -78,7 +88,7 @@
 	<div class="panel panel-default col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
-				<div col-sm-2 style="float:left">
+				<div style="float:left">
 					<?php echo $this->Html->image('shutterstock.png', ['alt' => 'Mozilla', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
