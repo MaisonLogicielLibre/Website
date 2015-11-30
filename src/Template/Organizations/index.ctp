@@ -4,7 +4,7 @@
         <h1 class="page-header"><?= __('List of organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></h1>
         <?php
         $this->Html->addCrumb(__('Home'), '/');
-        $this->Html->addCrumb(__('Organizations'), '/Organiaztions');
+        $this->Html->addCrumb(__('Organizations'), '/Organizations');
         $this->Html->addCrumb(__('List of organizations'));
 
         echo $this->Html->getCrumbList(); ?>
