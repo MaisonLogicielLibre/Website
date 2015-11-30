@@ -1,34 +1,26 @@
-<!-- todo this section should be automatically generated from an admin page. for this SPRINT we will manually maintain -->
-<table class="table table-responsive">
-	<thead>
-	<tr>
-		<th class="mll-table"><?= __("Date"); ?></th>
-		<th><?= __("Meetup"); ?></th>
-		<th class="mll-table"><?= __("Register"); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-		<?php
-		$compteur = 0;
-		foreach ($meetups as $meetup):
-			$compteur++;
-			if ($compteur % 2)
-				echo "<tr class='success'>";
-			else
-				echo "<tr class='info'>";
-		?>
-				<td><?= $meetup->date ?></td>
-				<td><?= $meetup->description ?></td>
-				<td>
-					<?php if ($meetup->link) :
-						echo $this->html->link(__('Link'), $meetup->link);
-					endif;
-					?>
-				</td>
-			</tr>
-		<?php
-		endforeach;
-		?>
-	</tbody>
-</table>
+<?php
+$compteur = 0;
+foreach ($meetups as $meetup):
+	$compteur++; ?>
+	<div class="row">
+		<div class="panel panel-default col-sm-6 col-sm-offset-3">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-9">
+						<h4><?= $this->html->link($meetup->name, $meetup->link) ?></h4>
+					</div>
+					<div class="col-sm-3 text-right">
+						<h4><?= $meetup->date ?></h4>
+					</div>
+				</div>
+				<div class="row">	
+					<div class="col-sm-12">
+						<p> <?= $meetup->description ?> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endforeach;
+?>
 
