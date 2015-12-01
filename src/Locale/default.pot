@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-01 17:54+0000\n"
+"POT-Creation-Date: 2015-12-01 20:06+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -17,7 +17,7 @@ msgstr ""
 #: Controller/AppController.php:62
 #: Controller/UsersController.php:242
 #: Template/Layout/default.ctp:31
-#: Template/Pages/home.ctp:31;165
+#: Template/Pages/home.ctp:31;106
 #: Template/Users/login.ctp:25
 #: Template/Users/register.ctp:25
 msgid "ML2"
@@ -787,7 +787,7 @@ msgid "Partners"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:92
-#: Template/Pages/home.ctp:178
+#: Template/Pages/home.ctp:119
 #: Template/Pages/industry.ctp:3;6
 msgid "Industry"
 msgstr ""
@@ -935,7 +935,6 @@ msgstr ""
 #: Template/Cell/Sidebar/user.ctp:26
 #: Template/Layout/default.ctp:81
 #: Template/Notifications/index.ctp:9
-#: Template/Pages/home.ctp:81
 #: Template/Users/delete.ctp:10
 #: Template/Users/edit.ctp:11
 #: Template/Users/email.ctp:10
@@ -1482,37 +1481,34 @@ msgid "Your project {0} has been unarchived"
 msgstr ""
 
 #: Template/Layout/default.ctp:87
-#: Template/Pages/home.ctp:87
 #: Template/Projects/my_projects.ctp:4;8;17
 msgid "My projects"
 msgstr ""
 
 #: Template/Layout/default.ctp:93
 #: Template/Organizations/my_organizations.ctp:4;8;17
-#: Template/Pages/home.ctp:93
 msgid "My organizations"
 msgstr ""
 
 #: Template/Layout/default.ctp:100
-#: Template/Pages/home.ctp:100
 msgid "Logout"
 msgstr ""
 
 #: Template/Layout/default.ctp:109
-#: Template/Pages/home.ctp:109;202
+#: Template/Pages/home.ctp:143
 #: Template/Users/login.ctp:47
 #: Template/Users/register.ctp:81
 msgid "Sign Up"
 msgstr ""
 
 #: Template/Layout/default.ctp:115
-#: Template/Pages/home.ctp:115;203
+#: Template/Pages/home.ctp:144
 #: Template/Users/register.ctp:88
 msgid "Sign In"
 msgstr ""
 
 #: Template/Layout/default.ctp:130
-#: Template/Pages/home.ctp:322;387
+#: Template/Pages/home.ctp:263;328
 #: Template/Pages/meetup.ctp:23
 #: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
@@ -1520,7 +1516,7 @@ msgid "Contact us"
 msgstr ""
 
 #: Template/Layout/default.ctp:131
-#: Template/Pages/home.ctp:392
+#: Template/Pages/home.ctp:333
 msgid "About us"
 msgstr ""
 
@@ -1871,22 +1867,22 @@ msgid "1100, rue Notre-Dame Ouest"
 msgstr ""
 
 #: Template/Pages/government.ctp:35
-#: Template/Pages/home.ctp:308
+#: Template/Pages/home.ctp:249
 msgid "Become a sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:40
-#: Template/Pages/home.ctp:314
+#: Template/Pages/home.ctp:255
 msgid "Get visibility and access to over"
 msgstr ""
 
 #: Template/Pages/government.ctp:41
-#: Template/Pages/home.ctp:315
+#: Template/Pages/home.ctp:256
 msgid "5000 software engineering and computer science students."
 msgstr ""
 
 #: Template/Pages/government.ctp:42
-#: Template/Pages/home.ctp:316
+#: Template/Pages/home.ctp:257
 msgid "Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners."
 msgstr ""
 
@@ -1894,100 +1890,100 @@ msgstr ""
 msgid "Go to dashboard"
 msgstr ""
 
-#: Template/Pages/home.ctp:139
+#: Template/Pages/home.ctp:80
 msgid "Welcome to maison du logiciel libre (ML2)"
 msgstr ""
 
-#: Template/Pages/home.ctp:141
+#: Template/Pages/home.ctp:82
 msgid "Ici nous brassons du code!"
 msgstr ""
 
-#: Template/Pages/home.ctp:152
+#: Template/Pages/home.ctp:93
 #: Template/Users/index.ctp:28
 #: Template/Users/view.ctp:23
 msgid "Student"
 msgstr ""
 
-#: Template/Pages/home.ctp:153
+#: Template/Pages/home.ctp:94
 msgid "Improve your skill and C.V. by working on open source industry projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:179
+#: Template/Pages/home.ctp:120
 msgid "Propose a project and find motivated students in our university ecosystem"
 msgstr ""
 
-#: Template/Pages/home.ctp:192
+#: Template/Pages/home.ctp:133
 msgid "We have"
 msgstr ""
 
-#: Template/Pages/home.ctp:197
+#: Template/Pages/home.ctp:138
 msgid "{0} and learn from our teaching assistants and collaborate with students."
 msgstr ""
 
-#: Template/Pages/home.ctp:197
+#: Template/Pages/home.ctp:138
 msgid "Register now"
 msgstr ""
 
-#: Template/Pages/home.ctp:215
+#: Template/Pages/home.ctp:156
 msgid "Registered students"
 msgstr ""
 
-#: Template/Pages/home.ctp:232
+#: Template/Pages/home.ctp:173
 msgid "Ongoing projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:249
+#: Template/Pages/home.ctp:190
 msgid "Available missions"
 msgstr ""
 
-#: Template/Pages/home.ctp:268
+#: Template/Pages/home.ctp:209
 msgid "Our founding partners"
 msgstr ""
 
-#: Template/Pages/home.ctp:287
+#: Template/Pages/home.ctp:228
 msgid "Our sponsors"
 msgstr ""
 
-#: Template/Pages/home.ctp:336
+#: Template/Pages/home.ctp:277
 msgid "Are you a university student?"
 msgstr ""
 
-#: Template/Pages/home.ctp:342
+#: Template/Pages/home.ctp:283
 msgid "Take our survey and help us serve you better"
 msgstr ""
 
-#: Template/Pages/home.ctp:344
+#: Template/Pages/home.ctp:285
 msgid "Take the survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:349
+#: Template/Pages/home.ctp:290
 msgid "Apply to work on an open source project"
 msgstr ""
 
-#: Template/Pages/home.ctp:351
+#: Template/Pages/home.ctp:292
 msgid "Our projects list"
 msgstr ""
 
-#: Template/Pages/home.ctp:359
+#: Template/Pages/home.ctp:300
 #: Template/Pages/tv3.ctp:43
 msgid "Hire interns, graduates, and capstone."
 msgstr ""
 
-#: Template/Pages/home.ctp:367
+#: Template/Pages/home.ctp:308
 #: Template/Pages/tv3.ctp:47
 msgid "Industry and Government: "
 msgstr ""
 
-#: Template/Pages/home.ctp:367
+#: Template/Pages/home.ctp:308
 msgid "Develop open source features in your products, tools and dependencies. Promote your company in our open source community"
 msgstr ""
 
-#: Template/Pages/home.ctp:371
+#: Template/Pages/home.ctp:312
 #: Template/Pages/tv3.ctp:53
 msgid "University professors: "
 msgstr ""
 
-#: Template/Pages/home.ctp:371
+#: Template/Pages/home.ctp:312
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and dev-ops infrastructure."
 msgstr ""
 

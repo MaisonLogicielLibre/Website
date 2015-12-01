@@ -410,6 +410,7 @@ footer#footer {
 }
 
 #carousel {
+  display: none;
   background: #fff;
   max-height: 950px;
   .carousel-indicators li {
@@ -439,6 +440,9 @@ footer#footer {
 }
 
 @media (min-width: 768px) {
+  #carousel {
+    display: block;
+  }
   #stats-row {
     .stats-cell {
       margin: 0;
@@ -455,7 +459,7 @@ footer#footer {
   color: #fff;
   .stats-cell {
     margin: 20px 0;
-    height: 250px;
+    min-height: 250px;
   }
   h1 {
     color: #fff;
