@@ -4,13 +4,13 @@
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
                 <i class="fa fa-home fa-lg"></i>Home</a>
         </li>
-        <li class="<?= ($this->request->controller == 'Organizations') ? 'active' : ''; ?>">
+        <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
                 <i class="fa fa-lg fa-suitcase"></i>
                 <?= __('Organizations'); ?>
                 <span class="label label-info label-as-badge pull-right">2</span>
             </a>
-            <ul id="organizations-submenu" class="<?= ($this->request->controller == 'Organizations') ? 'collapse in' : 'collapse'; ?>">
+            <ul id="organizations-submenu" class="collapse">
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'index']); ?>">
                         <i class="fa fa-list-ul"></i>
@@ -25,13 +25,13 @@
                 </li>
             </ul>
         </li>
-        <li class="<?= ($this->request->controller == 'Projects') ? 'active' : ''; ?>">
+        <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#projects-submenu">
                <i class="fa fa-lg fa-cubes"></i>
                 <?= __('Projects'); ?>
                 <span class="label label-info label-as-badge pull-right">2</span>
             </a>
-            <ul id="projects-submenu" class="<?= ($this->request->controller == 'Projects') ? 'collapse in' : 'collapse'; ?>">
+            <ul id="projects-submenu" class="collapse">
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'index']); ?>">
                         <i class="fa fa-list-ul"></i>
@@ -52,7 +52,7 @@
                 <?= __('Activities') ?>
                 <span class="label label-info label-as-badge pull-right">3</span>
             </a>
-            <ul id="activities-submenu" class="collapse">
+            <ul id="activities-submenu" class="collapse" class="collapse">
 				<li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
                     <i class="fa fa-newspaper-o"></i>
@@ -77,7 +77,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#partners-submenu">
                 <i class="fa fa-lg fa-users"></i>
                 <?= __('Partners') ?>
-                <span class="label label-info label-as-badge pull-right">3</span>
+                <span class="label label-info label-as-badge pull-right">4</span>
             </a>
             <ul id="partners-submenu" class="collapse">
                 <li>
