@@ -130,10 +130,10 @@
         </div>
         <div class="container-fluid">
             <div class="row" id="welcome-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-xs-offset-2 col-xs-8 text-center">
                     <h1><?= __("Welcome to maison du logiciel libre (ML2)"); ?></h1>
 
-                    <h3><?= __('Ici nous brassons du code!') ?></h3>
+                    <h3><?= __('Ici nous brassons du code !') ?></h3>
 
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
