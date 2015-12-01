@@ -88,14 +88,20 @@
                 </li>
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'academic']); ?>">
-                        <i class="fa fa-bank"></i>
+                        <i class="fa fa-graduation-cap"></i>
                         <?= __('Academic'); ?>
                     </a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'association']); ?>">
                         <i class="fa fa-male"></i>
-                        <?= __('Associations'); ?>
+                        <?= __('Association'); ?>
+                    </a>
+                </li>
+				<li>
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'government']); ?>">
+                        <i class="fa fa-bank"></i>
+                        <?= __('Government'); ?>
                     </a>
                 </li>
             </ul>
