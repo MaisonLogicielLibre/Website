@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-01 12:01-0500\n"
-"PO-Revision-Date: 2015-12-01 12:08-0500\n"
+"POT-Creation-Date: 2015-12-01 12:56-0500\n"
+"PO-Revision-Date: 2015-12-01 12:57-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -564,10 +564,11 @@ msgid "Accept the candidate"
 msgstr "Accept the candidate"
 
 #: Template/Applications/accepted.ctp:8 Template/Applications/rejected.ctp:8
-#: Template/Missions/add.ctp:9 Template/Missions/apply.ctp:8
-#: Template/Missions/edit.ctp:9 Template/Missions/edit_mentor.ctp:8
-#: Template/Missions/view.ctp:10 Template/Notifications/index.ctp:7
-#: Template/Organizations/add.ctp:6 Template/Organizations/add_member.ctp:9
+#: Template/Cell/Sidebar/all.ctp:5 Template/Missions/add.ctp:9
+#: Template/Missions/apply.ctp:8 Template/Missions/edit.ctp:9
+#: Template/Missions/edit_mentor.ctp:8 Template/Missions/view.ctp:10
+#: Template/Notifications/index.ctp:7 Template/Organizations/add.ctp:6
+#: Template/Organizations/add_member.ctp:9
 #: Template/Organizations/add_owner.ctp:9
 #: Template/Organizations/admin_index.ctp:7 Template/Organizations/edit.ctp:9
 #: Template/Organizations/index.ctp:6
@@ -2704,6 +2705,10 @@ msgstr "Search again"
 msgid "Sign Up to {0}"
 msgstr "Sign Up to {0}"
 
+#: Template/Users/register.ctp:30
+msgid "Personal info"
+msgstr "Personal info"
+
 #: Template/Users/register.ctp:30;37;45
 msgid "(required)"
 msgstr "(required)"
@@ -2715,6 +2720,10 @@ msgstr "Enter your firstname"
 #: Template/Users/register.ctp:32
 msgid "Enter your lastname"
 msgstr "Enter your lastname"
+
+#: Template/Users/register.ctp:37
+msgid "Account info"
+msgstr "Account info"
 
 #: Template/Users/register.ctp:38
 msgid ""
@@ -2734,6 +2743,10 @@ msgstr "Choose a password"
 #: Template/Users/register.ctp:40
 msgid "Confirm password"
 msgstr "Confirm password"
+
+#: Template/Users/register.ctp:45
+msgid "Contact info"
+msgstr "Contact info"
 
 #: Template/Users/register.ctp:46
 msgid "Email adress"
