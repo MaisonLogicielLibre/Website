@@ -272,6 +272,12 @@ footer#footer {
   }
 }
 
+#wrapper-home {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
 .page-header {
   font-size: 20px;
   margin-bottom: 0;
@@ -404,8 +410,8 @@ footer#footer {
 }
 
 #carousel {
-  margin-top: -95px;
   background: #fff;
+  max-height: 950px;
   .carousel-indicators li {
     background-color: #999;
     background-color: rgba(70,70,70,.25);
@@ -432,15 +438,24 @@ footer#footer {
   }
 }
 
+@media (min-width: 768px) {
+  #stats-row {
+    .stats-cell {
+      margin: 0;
+      &:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+
 #stats-row {
   padding: 100px 0;
   background: @gray-dark;
   color: #fff;
   .stats-cell {
+    margin: 20px 0;
     height: 250px;
-    &:not(:last-child) {
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
-    }
   }
   h1 {
     color: #fff;
