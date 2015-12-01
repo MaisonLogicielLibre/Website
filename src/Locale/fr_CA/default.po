@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-01 12:08-0500\n"
-"PO-Revision-Date: 2015-12-01 12:41-0500\n"
+"POT-Creation-Date: 2015-12-01 12:54-0500\n"
+"PO-Revision-Date: 2015-12-01 12:55-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -569,10 +569,11 @@ msgid "Accept the candidate"
 msgstr "Accepter le candidat"
 
 #: Template/Applications/accepted.ctp:8 Template/Applications/rejected.ctp:8
-#: Template/Missions/add.ctp:9 Template/Missions/apply.ctp:8
-#: Template/Missions/edit.ctp:9 Template/Missions/edit_mentor.ctp:8
-#: Template/Missions/view.ctp:10 Template/Notifications/index.ctp:7
-#: Template/Organizations/add.ctp:6 Template/Organizations/add_member.ctp:9
+#: Template/Cell/Sidebar/all.ctp:5 Template/Missions/add.ctp:9
+#: Template/Missions/apply.ctp:8 Template/Missions/edit.ctp:9
+#: Template/Missions/edit_mentor.ctp:8 Template/Missions/view.ctp:10
+#: Template/Notifications/index.ctp:7 Template/Organizations/add.ctp:6
+#: Template/Organizations/add_member.ctp:9
 #: Template/Organizations/add_owner.ctp:9
 #: Template/Organizations/admin_index.ctp:7 Template/Organizations/edit.ctp:9
 #: Template/Organizations/index.ctp:6
@@ -1786,7 +1787,7 @@ msgstr "Enregistrez-vous maintenant"
 
 #: Template/Pages/home.ctp:215
 msgid "Registered students"
-msgstr "Étuditants enregistrés"
+msgstr "Étudiants enregistrés"
 
 #: Template/Pages/home.ctp:232
 msgid "Ongoing projects"
@@ -1794,7 +1795,7 @@ msgstr "Projets en cours"
 
 #: Template/Pages/home.ctp:249
 msgid "Available missions"
-msgstr "Missions disponible"
+msgstr "Missions disponibles"
 
 #: Template/Pages/home.ctp:268
 msgid "Our founding partners"
@@ -2728,6 +2729,10 @@ msgstr "Cherchez à nouveau"
 msgid "Sign Up to {0}"
 msgstr "S'enregistrer à {0}"
 
+#: Template/Users/register.ctp:30
+msgid "Personal info"
+msgstr "Information personnelle"
+
 #: Template/Users/register.ctp:30;37;45
 msgid "(required)"
 msgstr "(requis)"
@@ -2739,6 +2744,10 @@ msgstr "Saisissez votre prénom"
 #: Template/Users/register.ctp:32
 msgid "Enter your lastname"
 msgstr "Saisissez votre nom"
+
+#: Template/Users/register.ctp:37
+msgid "Account info"
+msgstr "Information du compte"
 
 #: Template/Users/register.ctp:38
 msgid ""
@@ -2757,6 +2766,10 @@ msgstr "Saisissez votre mot de passe"
 #: Template/Users/register.ctp:40
 msgid "Confirm password"
 msgstr "Confirmez votre mot de passe"
+
+#: Template/Users/register.ctp:45
+msgid "Contact info"
+msgstr "Information de contact"
 
 #: Template/Users/register.ctp:46
 msgid "Email adress"
@@ -2789,7 +2802,7 @@ msgstr "Veuillez sélectionner votre université"
 
 #: Template/Users/register.ctp:77
 msgid "I accept {0}"
-msgstr "J'acceptes {0}"
+msgstr "J'accepte les {0}"
 
 #: Template/Users/register.ctp:77
 msgid "Terms and Conditions"

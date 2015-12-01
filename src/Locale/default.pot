@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-01 17:00+0000\n"
+"POT-Creation-Date: 2015-12-01 17:54+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -574,6 +574,7 @@ msgstr ""
 
 #: Template/Applications/accepted.ctp:8
 #: Template/Applications/rejected.ctp:8
+#: Template/Cell/Sidebar/all.ctp:5
 #: Template/Missions/add.ctp:9
 #: Template/Missions/apply.ctp:8
 #: Template/Missions/edit.ctp:9
@@ -2752,6 +2753,10 @@ msgstr ""
 msgid "Sign Up to {0}"
 msgstr ""
 
+#: Template/Users/register.ctp:30
+msgid "Personal info"
+msgstr ""
+
 #: Template/Users/register.ctp:30;37;45
 msgid "(required)"
 msgstr ""
@@ -2762,6 +2767,10 @@ msgstr ""
 
 #: Template/Users/register.ctp:32
 msgid "Enter your lastname"
+msgstr ""
+
+#: Template/Users/register.ctp:37
+msgid "Account info"
 msgstr ""
 
 #: Template/Users/register.ctp:38
@@ -2778,6 +2787,10 @@ msgstr ""
 
 #: Template/Users/register.ctp:40
 msgid "Confirm password"
+msgstr ""
+
+#: Template/Users/register.ctp:45
+msgid "Contact info"
 msgstr ""
 
 #: Template/Users/register.ctp:46
