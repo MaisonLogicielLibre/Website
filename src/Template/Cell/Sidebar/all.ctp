@@ -1,6 +1,6 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-        <li class="active">
+        <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
                 <i class="fa fa-home fa-lg"></i>Home</a>
         </li>
@@ -52,7 +52,7 @@
                 <?= __('Activities') ?>
                 <span class="label label-info label-as-badge pull-right">3</span>
             </a>
-            <ul id="activities-submenu" class="collapse">
+            <ul id="activities-submenu" class="collapse" class="collapse">
 				<li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
                     <i class="fa fa-newspaper-o"></i>
