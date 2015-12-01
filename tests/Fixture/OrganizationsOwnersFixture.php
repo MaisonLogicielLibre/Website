@@ -49,7 +49,12 @@ class OrganizationsOwnersFixture extends TestFixture
 		[
             'id' => 3,
             'organization_id' => 2,
-            'user_id' => 1
+            'user_id' => 2
+        ],
+		[
+            'id' => 4,
+            'organization_id' => 1,
+            'user_id' => 4
         ]
     ];
 }

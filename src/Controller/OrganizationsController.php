@@ -442,15 +442,20 @@ class OrganizationsController extends AppController
             ]
         );
         
-        $users = $this->loadModel("Users")->find('all')->toArray();
+        $usersTable = $this->loadModel("Users");
+        $users = $usersTable->find('all')->toArray();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
         
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                array_push($usersSelected, $you);
-                $organization->modifyMembers($usersSelected, $you);
+                
+                if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
+                    array_push($usersSelected, $you);
+                }
+                
+                $organization->modifyMembers($usersSelected);
             } else {
                 $organization->modifyMembers([$you]);
             }
@@ -485,28 +490,27 @@ class OrganizationsController extends AppController
             ]
         );
         
-        $users = $this->loadModel("Users")->find('all')->toArray();
+        $usersTable = $this->loadModel("Users");
+        $users = $usersTable->find('all')->toArray();
+        
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
                 
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                array_push($usersSelected, $you);
+                
                 $organization->modifyOwners($usersSelected);
+                
+                if ($this->Organizations->save($organization)) {
+                    $this->Flash->success(__('The user has been added.'));
+                    return $this->redirect(['action' => 'view', $organization->id]);
+                } else {
+                    $this->Flash->error(__('The user could not be added. Please,try again.'));
+                }
             } else {
-                $organization->modifyOwners([$you]);
+                $this->Flash->error(__('There must be at least one owner'));
             }
-            
-            if ($this->Organizations->save($organization)) {
-                $this->Flash->success(__('The user has been added.'));
-                return $this->redirect(['action' => 'view', $organization->id]);
-            } else {
-                $this->Flash->error(
-                    __('The user could not be added. Please,try again.')
-                );
-            }
-    
         }
        
         $this->set(compact('organization', 'users', 'owners', 'you'));
@@ -524,7 +528,11 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => ['Owners', 'Members']
+            'contain' => [
+            'Owners',
+            'Members',
+            'Projects' => ['Mentors']
+            ]
             ]
         );
         
@@ -532,7 +540,18 @@ class OrganizationsController extends AppController
         $owners = $organization->getOwners();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
-    
+        
+        foreach ($organization->projects as $project) {
+            foreach ($project->getMentors() as $mentor) {
+                if ($mentor->getId() == $you) {
+                    $this->Flash->error(__('You are a mentor of a project, you cannot leave the organization. You must remove yourself from the mentor list of the project to quit'));
+                    return $this->redirect(['action' => 'view', $organization->id]);
+                }
+            }
+        }
+        
+
+        
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
         if ($user) {
             if (!$user->isMemberOf($organization->getId())) {
@@ -543,6 +562,7 @@ class OrganizationsController extends AppController
         }
         
         if ($this->request->is(['patch', 'post', 'put'])) {
+            
             if (count($owners) == 1 && $user->isOwnerOf($organization->getId())) {
                 $organization->editIsRejected(true);
                 $organization->editMembers([]);

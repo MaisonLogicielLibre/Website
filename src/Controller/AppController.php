@@ -19,6 +19,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
+use Cake\ORM\TableRegistry;
 
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -95,6 +96,28 @@ class AppController extends Controller
             I18n::locale($lang);
         }
     }
+
+    /**
+     * Update notifications
+     *
+     * @return void
+     */
+    protected function updateNotifications()
+    {
+        $notifications = TableRegistry::get('Notifications');
+        $listNotifications = $notifications->find('all', ['conditions' => ['isRead' => false, 'user_id' => $this->request->session()->read('Auth.User.id')]])->toArray();
+        $numberOfNotifications = count($listNotifications);
+
+        foreach ($listNotifications as $notification) {
+            if ('/' . $notification->link == $this->request->here(false)) {
+                $notification->isRead = 1;
+                $numberOfNotifications -= 1;
+                $notifications->save($notification);
+            }
+        }
+
+        $this->request->Session()->write('numberOfNotifications', $numberOfNotifications);
+    }
     
     /**
      * Keep last viewed paged
@@ -128,5 +151,6 @@ class AppController extends Controller
     {
         $this->updateReferer();
         $this->checkLanguage();
+        $this->updateNotifications();
     }
 }

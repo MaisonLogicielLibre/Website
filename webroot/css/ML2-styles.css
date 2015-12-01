@@ -457,6 +457,11 @@ footer {
 #sfl-logo {
     width: 75%;
 }
+
+.display-block{
+    display: block;
+}
+
 @media screen and (max-width: 1000px) {
     .partner {
         height: 200px;

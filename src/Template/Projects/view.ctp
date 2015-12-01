@@ -3,107 +3,101 @@
     <div class="row">
         <?= $this->cell('Sidebar::project', [$project->id]); ?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-            <h2>
-                <?= $project->getName(); ?>
-            </h2>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel special-panel profile-panel">
+                        <div class="panel-heading">
+                            <?= (!(empty($project->getDescription())) ? $Parsedown->text($project->getDescription()) : __('Description')) ?>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="table-responsive">
+                                    <h3 class="header-title"><?= __('Organizations') ?> <a
+                                            href="<?= $this->Wiki->buildLink(''); ?>"><i
+                                                class="fa fa-question-circle"></i></a></h3>
+                                    <?php if (!empty($project->organizations)): ?>
+                                        <table class="table borderless table-striped">
+                                            <?php foreach ($project->organizations as $organization): ?>
+                                                <tr>
+                                                    <td><?= $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </table>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="table-responsive">
+                                    <h3 class="header-title"><?= __('Contributors') ?></h3>
+                                    <?php if (!empty($project->contributors)): ?>
+                                        <table class="table borderless table-striped">
+                                            <?php foreach ($project->contributors as $contributor): ?>
+                                                <tr>
+                                                    <td><?= $this->html->link($contributor->getName(), ['controller' => 'Users', 'action' => 'view', $contributor->id]) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </table>
 
-            <div class="bs-callout bs-callout-info" style="min-height:200px">
-                <p><?= $Parsedown->text($project->getDescription()); ?></p>
-            </div>
-        </div>
-    </div>
-<?php if (!empty($project->contributors)): ?>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Contributors') ?></h3>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="table-responsive">
+                                    <h3 class="header-title"><?= __('Mentors') ?></h3>
+                                    <?php if (!empty($project->mentors)): ?>
+                                        <table class="table borderless table-striped">
+                                            <?php foreach ($project->mentors as $mentor): ?>
+                                                <tr>
+                                                    <td><?= $this->html->link($mentor->getName(), ['controller' => 'Users', 'action' => 'view', $mentor->id]) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </table>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table class="table table-striped">
-                    <?php foreach ($project->contributors as $contributor): ?>
-                        <tr>
-                            <td><?= $this->html->link($contributor->getName(), ['controller' => 'Users', 'action' => 'view', $contributor->id]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
             </div>
-        </div>
-    </div>
-<?php endif; ?>
-<?php if (!empty($project->mentors)): ?>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Mentors') ?></h3>
-                </div>
-                <table class="table table-striped">
-                    <?php foreach ($project->mentors as $mentor): ?>
-                        <tr>
-                            <td><?= $this->html->link($mentor->getName(), ['controller' => 'Users', 'action' => 'view', $mentor->id]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
-<?php if (!empty($project->organizations)): ?>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Organizations') ?> <a href="<?= $this->Wiki->buildLink('Organizations');?>"><i class="fa fa-question-circle"></i></a></h3>
-                </div>
-                <table class="table table-striped">
-                    <?php foreach ($project->organizations as $organization): ?>
-                        <tr>
-                            <td><?= $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Missions'); ?> <?= $this->Wiki->addHelper('Missions');?></h3>
-                </div>
-                <div class="table-responsive">
-                    <table id="projects" class="table table-striped table-bordered table-hover dataTable">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th><?= __('Position'); ?></th>
-                            <th><?= __('Session'); ?></th>
-                            <th><?= __('Length'); ?></th>
-                            <th><?= __('Type'); ?></th>
-                            <th><?= __('Mentor'); ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                        <tr class="table-search info">
-                            <td></td>
-                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                       class="form-control input-sm input-block-level"/></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                       class="form-control input-sm input-block-level"/></td>
-                        </tr>
-                        </tfoot>
-                    </table>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="header-title"><?= __('Missions'); ?> <?= $this->Wiki->addHelper('Missions'); ?></h3>
+                            <div class="table-responsive">
+                                <table id="projects" class="table table-striped table-bordered table-hover dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th><?= __('Position'); ?></th>
+                                        <th><?= __('Session'); ?></th>
+                                        <th><?= __('Length'); ?></th>
+                                        <th><?= __('Type'); ?></th>
+                                        <th><?= __('Mentor'); ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="table-search info">
+                                        <td></td>
+                                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                                   class="form-control input-sm input-block-level"/></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                                   class="form-control input-sm input-block-level"/></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 <?= $this->Html->script(
     [
         'datatables/jquery.dataTables.min',
@@ -176,7 +170,8 @@ echo $this->DataTables->init([
             'searchable' => true
         ],
     ],
-    'lengthMenu' => ''
+    'lengthMenu' => '',
+    'pageLength' => 25
 ])->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
 echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
@@ -185,4 +180,4 @@ echo 'var typeMissionsTr=' . json_encode($typeMissionsOption) . ';';
 echo 'var validationTr="' . __('Archived') . '";';
 $this->Html->scriptEnd();
 ?>
-<?= $this->Html->script('projects/view.js', ['block' => 'scriptBottom']); ?>
+<?= $this->Html->script(['initial.min', 'projects/view.js'], ['block' => 'scriptBottom']); ?>

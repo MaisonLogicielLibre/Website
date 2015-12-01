@@ -196,7 +196,7 @@ class MissionsController extends AppController
                 }
                 $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
                 $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'projectId'));
+                $this->set(compact('mission', 'missionLevels', 'typeMissions', 'project'));
                 $this->set('_serialize', ['mission']);
             } else {
                 return $this->redirect(['controller' => 'projects', 'action' => 'index']);
@@ -294,35 +294,45 @@ class MissionsController extends AppController
                 $applications = TableRegistry::get('Applications');
                 $userId = $this->request->session()->read('Auth.User.id');
 
-                if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
-                    if ($this->request->is(['patch', 'post', 'put'])) {
-                        $application = $applications->newEntity();
+                $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
+                if ($user->isStudent()) {
+                    if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && $user->getGender() && $user->getBiography()) {
+                        if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
+                            if ($this->request->is(['patch', 'post', 'put'])) {
+                                $application = $applications->newEntity();
 
-                        $application->editMissionId($mission->getId());
-                        $application->editUserId($userId);
-                        $application->editAccepted(false);
-                        $application->editRejected(false);
+                                $application->editMissionId($mission->getId());
+                                $application->editUserId($userId);
+                                $application->editAccepted(false);
+                                $application->editRejected(false);
 
-                        if ($applications->save($application)) {
-                            $this->Flash->success(__('You have applied on the mission'));
-                            $user = $this->Users->get($userId);
-                            $mentor = $mission->getMentor();
+                                if ($applications->save($application)) {
+                                    $this->Flash->success(__('You have applied on the mission'));
+                                    $user = $this->Users->get($userId);
+                                    $mentor = $mission->getMentor();
 
-                            $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
-                            $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
-                            $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+                                    $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                                    $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
+                                    $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
 
-                            return $this->redirect(['action' => 'view', $id]);
+                                    return $this->redirect(['action' => 'view', $id]);
 
+                                } else {
+                                    $this->Flash->error(__('There was an error. Please, try again.'));
+                                }
+                            }
                         } else {
-                            $this->Flash->error(__('There was an error. Please, try again.'));
+                            $this->Flash->error(__('You have already applied on this mission.'));
+                            return $this->redirect(['action' => 'view', $id]);
                         }
+                    } else {
+                        $this->Flash->error(__('You need to fill your profile before apply on this mission.'));
+                        return $this->redirect(['action' => 'view', $id]);
                     }
                 } else {
-                    $this->Flash->error(__('You have already applied on this mission.'));
+                    $this->Flash->error(__("Only students can apply on missions. If you are a student, please fill your profile."));
                     return $this->redirect(['action' => 'view', $id]);
                 }
-
                 $this->set(compact('mission'));
                 $this->set('_serialize', ['mission']);
             } else {

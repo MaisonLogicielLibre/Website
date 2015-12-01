@@ -1,37 +1,82 @@
-<?php
-if (isset($user) and $user):
-?>
-    <div class="row">
-        <div class="col-xs-4">
-            <img src="<?= $user->getAvatar() ?>" alt="<?= $user->getAvatar() ?>" class="img-responsive center-block" width="200px" />
-        </div>
-        <div class="col-xs-8">
-            <?= __('Username'); ?> : <?= $user->username ?><br/><br/>
+<!DOCTYPE html>
+<html>
+<head>
+    <?= $this->Html->charset() ?>
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= $this->fetch('title') ?>
+    </title>
+    <?= $this->Html->meta('icon') ?>
 
-            <?= __('Firstname'); ?> : <?= $user->firstName ?><br/>
-            <?= __('Lastname'); ?> : <?= $user->lastName ?><br/><br/>
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->Html->css('font-awesome.min') ?>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600' rel='stylesheet' type='text/css'>
 
-            <?= __('Email'); ?> : <?= $user->getCensoredEmail() ?><br/><br/><br/><br/>
+    <?= $this->Less->less('less/styles.less'); ?>
+</head>
+<body>
+<div id="recover-password-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <?php
+            if (isset($user) and $user):
+            ?>
+            <div class="col-sm-12 col-xs-12">
+                <h2><?= __("Reset my account"); ?></h2>
+            </div>
+                <div id="recover-password-alert" class="col-sm-12 col-xs-12"><?= $this->Flash->render() ?></div>
+                <div id="recover-password-avatar" class="col-sm-offset-4 col-sm-4 col-xs-4 col-xs-offset-12">
+                    <img src="<?= $user->getAvatar() ?>" alt="<?= $user->getAvatar() ?>" class="img-responsive img-circle img-thumbnail" />
+                </div>
+                <div class="col-sm-12 col-xs-12 text-center">
+                    <h4><?= $user->getName() ?></h4>
+                </div>
+            <div class="col-sm-12 col-xs-12">
+                <span class="recover-password-info"><strong><?= __('Username'); ?> :</strong> <?= $user->getUsername() ?></span>
 
-            <a class="btn btn-success" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword', $user->id]);?>"><?= ('Send link by email'); ?></a>
-            <a class="btn btn-danger" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword']);?>"><?= ('Search again'); ?></a>
+                <span class="recover-password-info"><strong><?= __('Email'); ?> :</strong> <?= $user->getCensoredEmail() ?></span>
+
+                <a class="btn btn-info" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword', $user->id]);?>"><?= ('Send link by email'); ?></a>
+            </div>
+            <?php else: ?>
+            <?= $this->Form->create() ?>
+            <div class="col-sm-12 col-xs-12">
+                <h2><?= __("Reset my account"); ?></h2>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <div role="alert" class="alert alert-dismissible fade in alert-info">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <?= __("Please enter your email address, phone numer or username, to enable us to retrieve your account."); ?>
+                </div>
+            </div>
+            <div id="recover-password-alert" class="col-sm-12 col-xs-12"><?= $this->Flash->render() ?></div>
+            <div class="col-sm-12 col-xs-12">
+                <?= $this->Form->input('Information', ['label' => false, 'placeholder' => __('Information')]); ?>
+                <?= $this->Form->button(__('Search'), ['class' => 'btn btn-info']); ?>
+            </div>
+            <?= $this->Form->end(); ?>
+            <?php endif; ?>
         </div>
     </div>
-<?php
-else:
-?>
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <?= $this->Form->create() ?>
-        <fieldset>
-            <legend><?= __("Reset my account"); ?></legend>
-            <p><?= __("To reset your password, we will send you a recovery email. Please enter your email address, phone numer or username, to enable us to retrieve your account."); ?></p>
-            <?= $this->Form->input('Information') ?>
-        </fieldset>
-        <?= $this->Form->button(__('Search'), ['class' => 'btn btn-success']); ?>
-        <?= $this->Form->end() ?>
+    <?php if (isset($user) and $user): ?>
+    <div id="recover-password-search-link" class="col-sm-12">
+        <?= __('Not your account?'); ?>
+        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword']); ?>">
+            <strong><?= __('Search again'); ?></strong>
+        </a>
     </div>
+    <?php endif; ?>
 </div>
-<?php
-endif;
-?>
+
+<?= $this->Html->script(
+    [
+        'jquery-2.1.4.min',
+        'bootstrap.min',
+        'googleAnalytics',
+    ]
+); ?>
+</body>
+</html>
