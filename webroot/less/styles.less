@@ -240,33 +240,35 @@ footer#footer {
 
   #wrapper {
     padding-left: 250px;
-  }
-
-  #page-wrapper {
-    padding: 10px;
-  }
-
-  .side-nav {
-    position: fixed;
-    top: 51px;
-    left: 250px;
-    width: 250px;
-    margin-left: -250px;
-    border: none;
-    border-radius: 0;
-    overflow-y: auto;
-    background: #fff;
-    bottom: 0;
-    overflow-x: hidden;
-    padding-bottom: 40px;
-    & > li {
-      & > a {
-        width: 250px;
-        &:hover, &:focus {
-          outline: none;
+    #page-wrapper {
+      padding: 10px;
+    }
+    .side-nav {
+      position: fixed;
+      top: 51px;
+      left: 250px;
+      width: 250px;
+      margin-left: -250px;
+      border: none;
+      border-radius: 0;
+      overflow-y: auto;
+      background: #fff;
+      bottom: 0;
+      overflow-x: hidden;
+      padding-bottom: 40px;
+      & > li {
+        & > a {
+          width: 250px;
+          &:hover, &:focus {
+            outline: none;
+          }
         }
       }
     }
+  }
+
+  #wrapper-home {
+    padding: 0;
   }
 }
 
@@ -368,7 +370,9 @@ footer#footer {
 }
 
 .special-panel {
-  &.profile-panel {margin-top: 6px;}
+  &.profile-panel {
+    margin-top: 6px;
+  }
   .panel-heading {
     background: #1abc9c;
     color: #fff;
@@ -386,15 +390,160 @@ footer#footer {
       tr {
         width: 100%;
       }
-        td {
-          width: 100%;
-          &:first-child {
-            width: 40%;
-          }
-          &:last-child {
-            width: 60%;
-          }
+      td {
+        width: 100%;
+        &:first-child {
+          width: 40%;
+        }
+        &:last-child {
+          width: 60%;
         }
       }
     }
   }
+}
+
+#carousel {
+  margin-top: -95px;
+  background: #fff;
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70,70,70,.25);
+    border: none;
+  }
+
+  .carousel-indicators .active {
+    background-color: @gray-dark;
+    border: none;
+  }
+}
+
+#welcome-row {
+  background: #fff;
+  padding: 100px 0;
+  h1 {
+    font-weight: 700;
+    font-size: 50px;
+  }
+  h3 {
+    font-size: 50px;
+    color: @brand-info;
+    margin-bottom: 30px;
+  }
+}
+
+#stats-row {
+  padding: 100px 0;
+  background: @gray-dark;
+  color: #fff;
+  .stats-cell {
+    height: 250px;
+    &:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+  h1 {
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  .home-stats-desc-title {
+    line-height: 0;
+  }
+  .home-stats-desc {
+    margin-bottom: 20px;
+  }
+  .home-stats {
+    font-weight: 700;
+    font-size: 120px;
+    line-height: 0;
+    color: @brand-info;
+  }
+  .home-stats-info {
+    text-transform: uppercase;
+    font-size: 30px;
+    word-spacing: 9999999px;
+  }
+}
+
+#partners-row {
+  background: #fff;
+  padding: 100px 0;
+}
+
+#carousel-sponsors {
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70,70,70,.25);
+    border: none;
+  }
+
+  .carousel-indicators .active {
+    background-color: @gray-dark;
+    border: none;
+  }
+  .carousel-inner {
+    height: 200px;
+    width: 100%;
+  }
+}
+
+#universities-row {
+  padding: 50px 0;
+  background: @gray-lighter;
+  #universities-qi {
+    max-height: 150px;
+  }
+  #list-universities {
+    margin-top: 100px;
+  }
+}
+
+#carousel-universities {
+  .carousel-inner {
+    height: 200px;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 100px;
+    }
+  }
+}
+
+#sub-info-row {
+  background: @brand-info;
+  padding: 100px 0;
+  color: #fff;
+  h1, h2, h3, h4, h5 {
+    color: #fff;
+  }
+}
+
+#contact-row {
+  background: @gray-dark;
+  padding: 50px 0;
+  color: #fff;
+}
+
+.panel-blue {
+  background: @brand-info;
+  color: #fff;
+}
+
+.panel-red {
+  background: @brand-danger;
+  color: #fff;
+}
+
+.panel-green {
+  background: @brand-success;
+  color: #fff;
+}
+
+#contact-row {
+  a {
+    color: @brand-info;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

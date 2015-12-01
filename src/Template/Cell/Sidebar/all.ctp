@@ -60,6 +60,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'statistics']); ?>">
+                    <i class="fa fa-pie-chart"></i>
+                    <?= __('Statistics'); ?>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'meetup']); ?>">
                     <i class="fa fa-comments-o"></i>
                     <?= __('Meetup'); ?>
