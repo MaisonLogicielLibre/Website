@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-warning col-sm-6 col-sm-offset-3">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
