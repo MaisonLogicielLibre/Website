@@ -27,14 +27,14 @@
             <div id="register-alert" class="col-sm-12"><?= $this->Flash->render() ?></div>
             <div class="col-sm-5 col-xs-12">
                 <fieldset>
-                    <legend>Personal info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <legend><?= __('Personal info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
                     <?= $this->Form->input('firstName', ['label' => false, 'placeholder' => __('Enter your firstname'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('lastName', ['label' => false, 'placeholder' => __('Enter your lastname'), 'autocomplete' => 'off']); ?>
                 </fieldset>
             </div>
             <div class="col-sm-offset-1 col-sm-6 col-xs-12">
                 <fieldset>
-                    <legend>Account info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <legend><?= __('Account info') ?><span class="sub"><?= __('(required)'); ?></span></legend>
                     <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Choose your username'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('Choose a password'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Confirm password'), 'autocomplete' => 'off']); ?>
@@ -42,7 +42,7 @@
             </div>
             <div class="col-sm-5 col-xs-12">
                 <fieldset>
-                    <legend>Contact info <span class="sub"><?= __('(required)'); ?></span></legend>
+                    <legend><?= __('Contact info') ?><span class="sub"><?= __('(required)'); ?></span></legend>
                     <?= $this->Form->input('email', ['label' => false, 'placeholder' => __('Email adress'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Confirm email adress'), 'autocomplete' => 'off']); ?>
                 </fieldset>

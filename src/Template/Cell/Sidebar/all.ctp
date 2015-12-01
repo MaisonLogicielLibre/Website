@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav side-nav">
         <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
-                <i class="fa fa-home fa-lg"></i>Home</a>
+                <i class="fa fa-home fa-lg"></i><?= __('Home') ?></a>
         </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
