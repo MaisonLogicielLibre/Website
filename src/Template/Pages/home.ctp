@@ -32,6 +32,9 @@
             </a>
         </div>
         <ul class="nav navbar-right top-nav">
+            <li>
+                <?= $this->Html->link(__('Go to dashboard'), ['controller' => 'Pages', 'action' => 'news']); ?>
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-lg fa-globe"></i>
@@ -120,7 +123,6 @@
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -128,9 +130,6 @@
                 </div>
                 <div class="item">
                     <?= $this->Html->image('carousel/2.jpg'); ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('carousel/3.jpg'); ?>
                 </div>
             </div>
         </div>
@@ -150,37 +149,34 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong>Mentor</strong></h4>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et magna lacus. Sed
-                                    enim purus, rutrum ac purus nec, convallis vehicula augue.
+                                    <h4><strong><?= __('Student'); ?></strong></h4>
+                                    <p><?= __('Improve your skill and C.V. by working on open source industry projects'); ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-user fa-5x"></i>
+                                    <i class="fa fa-exchange fa-5x"></i>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong>Mentor</strong></h4>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et magna lacus. Sed
-                                    enim purus, rutrum ac purus nec, convallis vehicula augue.
+                                    <h4><strong><?= __('ML2'); ?></strong></h4>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-user fa-5x"></i>
+                                    <i class="fa fa-user-md  fa-5x"></i>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong>Mentor</strong></h4>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et magna lacus. Sed
-                                    enim purus, rutrum ac purus nec, convallis vehicula augue.
+                                    <h4><strong><?= __('Industry'); ?></strong></h4>
+                                    <p><?= __('Propose a project and find motivated students in our university ecosystem'); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -278,6 +274,11 @@
                                     <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'id' => 'google-logo', 'class' => 'img-responsive']) ?></a>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-6">
+                                    <a href="http://www.etsmtl.ca"><?php echo $this->Html->image('ets.svg', ['class' => 'img-responsive']) ?></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center sponsors-cell">
                             <div class="row">
@@ -288,21 +289,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-offset-3 col-xs-5">
-                                    <div id="carousel-sponsors" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carousel-sponsors" data-slide="0" class="active"></li>
-                                            <li data-target="#carousel-sponsors" data-slide="1"></li>
-                                        </ol>
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item active">
-                                                <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive']); ?>
-                                            </div>
-                                            <div class="item">
-                                                <?= $this->Html->image('facil.png', ['class' => 'img-responsive']); ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-xs-offset-1 col-xs-10" style="margin-bottom:10px;">
+                                    <?= $this->Html->image('montreal.svg', ['class' => 'img-responsive']); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-xs-6">
+                                    <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive']); ?>
+                                </div>
+                                <div class="col-xs-5">
+                                    <?= $this->Html->image('facil.png', ['class' => 'img-responsive']); ?>
                                 </div>
                             </div>
                         </div>
@@ -324,62 +320,6 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact'], ['class' => 'btn btn-info']); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="universities-row">
-                <div class="col-xs-offset-2 col-xs-8">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h1>
-                                        <?= __("Our university Network"); ?>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <?= $this->Html->image('qi.png', ['class' => 'img-responsive']); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                            <div id="carousel-universities" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-universities" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="1"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="2"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="3"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="4"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="5"></li>
-                                    <li data-target="#carousel-universities" data-slide-to="6"></li>
-                                </ol>
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <?= $this->Html->image('ets.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('mcgill.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('poly.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('udm.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('uds.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('uqam.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
-                                    <div class="item">
-                                        <?= $this->Html->image('concordia.svg', ['class' => 'img-responsive']); ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -438,12 +378,20 @@
                 </div>
             </div>
             <div class="row" id="contact-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-xs-offset-4 col-xs-4">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                             <p>Copyright © Maison du Logiciel Libre 2015</p>
-                            - <?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']); ?>
-                            - <?= $this->Html->link(__('About us'), ['controller' => 'Pages', 'action' => 'mission']); ?>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <?= $this->Html->link(__('About us'), ['controller' => 'Pages', 'action' => 'mission']); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

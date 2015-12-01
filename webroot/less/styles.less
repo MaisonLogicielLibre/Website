@@ -42,12 +42,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #505458;
 }
 
-#wrapper-home {
-  .navbar {
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
 .top-nav {
   padding: 0 15px;
   & > li {
@@ -411,6 +405,17 @@ footer#footer {
 
 #carousel {
   margin-top: -95px;
+  background: #fff;
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70,70,70,.25);
+    border: none;
+  }
+
+  .carousel-indicators .active {
+    background-color: @gray-dark;
+    border: none;
+  }
 }
 
 #welcome-row {
@@ -483,15 +488,24 @@ footer#footer {
 }
 
 #universities-row {
-  padding: 100px 0;
+  padding: 50px 0;
   background: @gray-lighter;
-  max-height: 300px;
-  overflow:hidden;
+  #universities-qi {
+    max-height: 150px;
+  }
+  #list-universities {
+    margin-top: 100px;
+  }
 }
 
 #carousel-universities {
   .carousel-inner {
-    max-height: 200px;
+    height: 200px;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 100px;
+    }
   }
 }
 
@@ -523,4 +537,13 @@ footer#footer {
 .panel-green {
   background: @brand-success;
   color: #fff;
+}
+
+#contact-row {
+  a {
+    color: @brand-info;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
