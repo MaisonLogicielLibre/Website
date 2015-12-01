@@ -118,6 +118,7 @@
     <?= $this->cell('Sidebar::all'); ?>
     <div id="page-wrapper">
         <div class="container-fluid">
+            <?= $this->Flash->render() ?>
             <?= $this->fetch('content'); ?>
         </div>
     </div>
