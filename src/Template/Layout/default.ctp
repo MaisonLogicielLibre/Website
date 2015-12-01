@@ -58,8 +58,11 @@
             $user = $this->request->session()->read('Auth.User');
             if ($user) : ?>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o fa-lg"></i><span id="badge-notif" class="badge badge-xs">3</span>
+                    <a href="<?= $this->Url->build(['controller' => 'Notifications', 'action' => 'index']) ?>">
+                        <i class="fa fa-bell-o fa-lg"></i>
+                        <?php if ($this->request->session()->read('numberOfNotifications')): ?>
+                        <span id="badge-notif" class="badge badge-xs"><?= $this->request->session()->read('numberOfNotifications') ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <li class="dropdown">
