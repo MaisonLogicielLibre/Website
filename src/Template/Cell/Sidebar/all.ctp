@@ -95,7 +95,13 @@
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'association']); ?>">
                         <i class="fa fa-male"></i>
-                        <?= __('Associations'); ?>
+                        <?= __('Association'); ?>
+                    </a>
+                </li>
+				<li>
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'government']); ?>">
+                        <i class="fa fa-male"></i>
+                        <?= __('Government'); ?>
                     </a>
                 </li>
             </ul>
