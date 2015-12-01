@@ -97,7 +97,7 @@
 			</div>
 			<div class="row">	
 				<div class="col-sm-11 col-sm-offset-1">
-					<p> onjure est le club de développement de jeux vidéo de l’École de Technologie Supérieure de Montréal. Nos membres ont comme projet le développement d’un jeu vidéo de leur choix. Nous utilisons plusieurs outils qui sont aussi utilisé dans l'industrie, tel que Unreal Engine et Unity. Nos membres participes aussi a des game jam, des compétitions intensives de développement de jeu vidéo qui se déroule en général sur une courte période de temps.  </p>
+					<p> Conjure est le club de développement de jeux vidéo de l’École de Technologie Supérieure de Montréal. Nos membres ont comme projet le développement d’un jeu vidéo de leur choix. Nous utilisons plusieurs outils qui sont aussi utilisé dans l'industrie, tel que Unreal Engine et Unity. Nos membres participes aussi a des game jam, des compétitions intensives de développement de jeu vidéo qui se déroule en général sur une courte période de temps.  </p>
 				</div>
 			</div>
 		</div>
