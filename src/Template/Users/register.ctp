@@ -34,7 +34,7 @@
             </div>
             <div class="col-sm-offset-1 col-sm-6 col-xs-12">
                 <fieldset>
-                    <legend><?= __('Account info') ?><span class="sub"><?= __('(required)'); ?></span></legend>
+                    <legend><?= __('Account info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
                     <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Choose your username'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('Choose a password'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Confirm password'), 'autocomplete' => 'off']); ?>
@@ -42,14 +42,14 @@
             </div>
             <div class="col-sm-5 col-xs-12">
                 <fieldset>
-                    <legend><?= __('Contact info') ?><span class="sub"><?= __('(required)'); ?></span></legend>
+                    <legend><?= __('Contact info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
                     <?= $this->Form->input('email', ['label' => false, 'placeholder' => __('Email adress'), 'autocomplete' => 'off']); ?>
                     <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Confirm email adress'), 'autocomplete' => 'off']); ?>
                 </fieldset>
             </div>
             <div class="col-sm-offset-1 col-sm-6 col-xs-12">
                 <fieldset>
-                    <legend><?= __('University info'); ?></legend>
+                    <legend><?= __('University info'); ?> </legend>
                     <p class="register-university-info"><?= __('If you\'re a student please select yes and then select your university. If not, let the case be.'); ?></p>
                     <?= $this->Form->input('isStudent', ['label' => false, 'class' => 'form-control']); ?>
                     <p class="register-university-info"><?= __('P.S.: Only university students will be able to apply to projects.'); ?></p>
