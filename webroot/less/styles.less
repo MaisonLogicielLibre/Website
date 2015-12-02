@@ -154,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #page-wrapper {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   padding: 0;
   background: #ebeff2;
 }
@@ -273,6 +273,7 @@ footer#footer {
 }
 
 #wrapper-home {
+  height: 100%;
   .navbar-toggle {
     display: none;
   }
@@ -411,8 +412,25 @@ footer#footer {
 
 #carousel {
   display: none;
-  background: #fff;
-  max-height: 950px;
+  height: 100%;
+  .item, .item.active {
+    height: 100%;
+  }
+
+  .carousel-inner {
+    height: 100%;
+  }
+
+  .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
   .carousel-indicators li {
     background-color: #999;
     background-color: rgba(70,70,70,.25);
