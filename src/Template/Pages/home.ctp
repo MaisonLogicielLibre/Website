@@ -195,7 +195,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <?= $this->Html->link(__('Sign Up'), ['controller' => 'Users', 'action' => 'register'], ['class' => 'btn btn-info']); ?>
-                                    <?= $this->Html->link(__('Sign In'), ['controller' => 'Users', 'action' => 'register'], ['class' => 'btn btn-default']); ?>
+                                    <?= $this->Html->link(__('Sign In'), ['controller' => 'Users', 'action' => 'login'], ['class' => 'btn btn-default']); ?>
                                 </div>
                             </div>
                         </div>
@@ -343,7 +343,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4><?= __("Apply to work on an open source project"); ?> <i
                                             class="fa fa-arrow-right"></i></h4>
-                                    <?= $this->Html->link(__("Our projects list"), ['controller' => 'Pages', 'action' => 'survey'], ['class' => 'btn btn-default']); ?>
+                                    <?= $this->Html->link(__("Our projects list"), ['controller' => 'Projects', 'action' => 'index'], ['class' => 'btn btn-default']); ?>
                                 </div>
                             </div>
                         </div>
