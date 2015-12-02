@@ -94,7 +94,8 @@ class ProjectsController extends AppController
 
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        $orgUser = (!is_null($user) ? array_map(function ($o) {
+        $orgUser = (!is_null($user) ? array_map(
+            function ($o) {
                 return $o->getId();
             },
             $user->getOrganizationsJoined()
@@ -374,7 +375,7 @@ class ProjectsController extends AppController
             );
         }
 
-        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors))) {
+        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors)) || ($user && $user->hasRoleName(['Administrator']))) {
             $data = $this->DataTables->find(
                 'Missions',
                 [
