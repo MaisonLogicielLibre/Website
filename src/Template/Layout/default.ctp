@@ -69,7 +69,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?= $this->Html->image('http://www.gravatar.com/avatar/' . (!empty($user['email']) ? md5($user['email']) : md5('no@email.com')) . '?s=24', ['id' => 'nav-avatar', 'class' => 'fa img-circle']); ?>
                         <?php
-                        $fn = (!empty($user['firstName']) ? $user['firstName'] . ' ' . $user['lastName'] : $user['username']);
+                        $fn = (!empty($user['firstName']) ? $user['firstName'] . ' ' . $user['lastName'] : (!empty($user['username']) ? $user['username'] : ''));
                         echo strlen($fn) > 25 ? substr($fn, 0, 25) . "..." : $fn;
                         ?>
                         <span class="caret"></span>
