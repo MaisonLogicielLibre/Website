@@ -101,7 +101,7 @@ class UsersFixture extends TestFixture
             'phone' => '(514) 777-7777',
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
-            'username' => 'admin2',
+            'username' => 'admin3',
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0

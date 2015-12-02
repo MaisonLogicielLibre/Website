@@ -62,11 +62,6 @@
             if ($user) : ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o fa-lg"></i><span id="badge-notif" class="badge badge-xs">3</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?= $this->Html->image('http://www.gravatar.com/avatar/' . (!empty($user['email']) ? md5($user['email']) : md5('no@email.com')) . '?s=24', ['id' => 'nav-avatar', 'class' => 'fa img-circle']); ?>
                         <?php
                         $fn = (!empty($user['firstName']) ? $user['firstName'] . ' ' . $user['lastName'] : $user['username']);
@@ -119,26 +114,26 @@
         </ul>
     </nav>
     <div id="page-wrapper">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
+        <header id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <?= $this->Html->image('carousel/1.jpg'); ?>
+                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>');"></div>
                 </div>
                 <div class="item">
-                    <?= $this->Html->image('carousel/2.jpg'); ?>
+                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>');"></div>
                 </div>
             </div>
-        </div>
+        </header>
         <div class="container-fluid">
             <div class="row" id="welcome-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-xs-offset-2 col-xs-8 text-center">
                     <h1><?= __("Welcome to maison du logiciel libre (ML2)"); ?></h1>
 
-                    <h3><?= __('Ici nous brassons du code!') ?></h3>
+                    <h3><?= __('Ici nous brassons du code !') ?></h3>
 
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
@@ -200,7 +195,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <?= $this->Html->link(__('Sign Up'), ['controller' => 'Users', 'action' => 'register'], ['class' => 'btn btn-info']); ?>
-                                    <?= $this->Html->link(__('Sign In'), ['controller' => 'Users', 'action' => 'register'], ['class' => 'btn btn-default']); ?>
+                                    <?= $this->Html->link(__('Sign In'), ['controller' => 'Users', 'action' => 'login'], ['class' => 'btn btn-default']); ?>
                                 </div>
                             </div>
                         </div>
@@ -348,7 +343,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4><?= __("Apply to work on an open source project"); ?> <i
                                             class="fa fa-arrow-right"></i></h4>
-                                    <?= $this->Html->link(__("Our projects list"), ['controller' => 'Pages', 'action' => 'survey'], ['class' => 'btn btn-default']); ?>
+                                    <?= $this->Html->link(__("Our projects list"), ['controller' => 'Projects', 'action' => 'index'], ['class' => 'btn btn-default']); ?>
                                 </div>
                             </div>
                         </div>
