@@ -50,7 +50,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#activities-submenu">
                 <i class="fa fa-lg fa-calendar"></i>
                 <?= __('Activities') ?>
-                <span class="label label-info label-as-badge pull-right">3</span>
+                <span class="label label-info label-as-badge pull-right">4</span>
             </a>
             <ul id="activities-submenu" class="collapse" class="collapse">
 				<li>
