@@ -114,20 +114,20 @@
         </ul>
     </nav>
     <div id="page-wrapper">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
+        <header id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <?= $this->Html->image('carousel/1.jpg'); ?>
+                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>');"></div>
                 </div>
                 <div class="item">
-                    <?= $this->Html->image('carousel/2.jpg'); ?>
+                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>');"></div>
                 </div>
             </div>
-        </div>
+        </header>
         <div class="container-fluid">
             <div class="row" id="welcome-row">
                 <div class="col-xs-offset-2 col-xs-8 text-center">

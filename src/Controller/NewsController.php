@@ -79,6 +79,7 @@ class NewsController extends AppController
      */
     public function index()
     {
+
         $this->set('news', $this->paginate($this->News));
         $this->set('_serialize', ['news']);
     }
