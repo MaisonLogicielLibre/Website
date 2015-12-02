@@ -94,6 +94,12 @@ class ProjectsController extends AppController
 
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
+        $orgUser = (!is_null($user) ? array_map(function ($o) {
+                return $o->getId();
+            },
+            $user->getOrganizationsJoined()
+        ) : []);
+
         if (!is_null($user) && $user->hasPermissionName(['list_projects_all'])) {
             $this->adminIndex();
         } else {
@@ -149,12 +155,7 @@ class ProjectsController extends AppController
                                         ],
                                         [
                                             'archived' => 0,
-                                            'o.organization_id IN' => (!is_null($user) ? array_map(
-                                                function ($o) {
-                                                    return $o->getId();
-                                                },
-                                                $user->getOrganizationsJoined()
-                                            ) : ' ')
+                                            'o.organization_id IN' => (!empty($orgUser) ? $orgUser : ' ')
                                         ]
                                     ]
                             ],
