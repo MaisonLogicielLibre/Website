@@ -307,55 +307,53 @@ class Organization extends Entity
     }
     
     /**
-      * Add Members
-      * @param array $usersId usersId
-	  * @return bool
-      */
-     public function modifyMembers($usersId)
-     {
-         $usersSelected = [];
-         $members = $this->getMembers();
-         $users = TableRegistry::get('Users');
+     * Add Members
+     * @param array $usersId usersId
+     * @return bool
+     */
+    public function modifyMembers($usersId)
+    {
+        $usersSelected = [];
+        $members = $this->getMembers();
+        $users = TableRegistry::get('Users');
  
-         foreach ($usersId as $id) {
-             $user = $users->get($id);
-             array_push($usersSelected, $user);
-         }
+        foreach ($usersId as $id) {
+            $user = $users->get($id);
+            array_push($usersSelected, $user);
+        }
          
-		if($this->synchronize($usersSelected)) {
-			$this->editMembers($usersSelected);
-			return true;
-		} else {
-			return false;
-		}
-			
-     }
-	
-	/**
+        if ($this->_synchronize($usersSelected)) {
+            $this->editMembers($usersSelected);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
      * Synchronize members with owners
      * @param array $members members
      * @return bool
      */
-	private function synchronize($members) {
-		$owners = [];
-		$currentOwners = $this->getOwners();
-		
-		foreach ($members as $member) {
-			foreach ($currentOwners as $currentOwner) {
-				if ($currentOwner->getId() === $member->getId()) {
-					$owners[] = $currentOwner;
-					break;
-				}
-			}
-		}
-		
-		if( count($owners) > 0) {
-			$this->editOwners($owners);
-			return true;
-		} else {
-			return false;
-		}
-			
-		
-	}
+    private function _synchronize($members)
+    {
+        $owners = [];
+        $currentOwners = $this->getOwners();
+        
+        foreach ($members as $member) {
+            foreach ($currentOwners as $currentOwner) {
+                if ($currentOwner->getId() === $member->getId()) {
+                    $owners[] = $currentOwner;
+                    break;
+                }
+            }
+        }
+        
+        if (count($owners) > 0) {
+            $this->editOwners($owners);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

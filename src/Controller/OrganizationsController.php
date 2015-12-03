@@ -458,9 +458,9 @@ class OrganizationsController extends AppController
                 $haveOwner = $organization->modifyMembers($usersSelected);
             } else {
                 if ($usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
-					$haveOwner = false;
+                    $haveOwner = false;
                 } else {
-					$haveOwner = $organization->modifyMembers([$you]);
+                    $haveOwner = $organization->modifyMembers([$you]);
                 }
             }
             
@@ -498,7 +498,7 @@ class OrganizationsController extends AppController
         );
         
         $usersTable = $this->loadModel("Users");
-        $users =  $organization->getMembers();
+        $users = $organization->getMembers();
         
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
