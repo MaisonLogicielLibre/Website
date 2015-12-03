@@ -75,7 +75,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testIndexNoAuth()
     {
         $this->get('/users/index');
-        $this->assertResponseOk();
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
     
     /**
