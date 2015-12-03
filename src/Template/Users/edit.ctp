@@ -79,6 +79,9 @@
                                 <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
                             </select>
                         </div>
+
+                        <?= $this->Form->input('mailingList', ['label' => __('Subscribe to receive promotional email from ML2')]); ?>
+
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                         <?= $this->Form->button(__('Cancel'), [
                             'type' => 'button',
