@@ -478,6 +478,22 @@ class UsersTableTest extends TestCase
     }
 
     /**
+     * Test editMailingList
+     * @return void
+     */
+    public function testSetMailingList()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editMailingList($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test editIsAvailableMentoring
      * @return void
      */

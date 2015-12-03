@@ -339,6 +339,17 @@ class User extends Entity
     }
 
     /**
+     * Set mailingList
+     * @param bool $mailingList mailingList
+     * @return bool mailingList
+     */
+    public function editMailingList($mailingList)
+    {
+        $this->set('mailingList', $mailingList);
+        return $mailingList;
+    }
+
+    /**
      * Check if the user has the role specified
      * @param array $permission the permission required to open the page
      * @return bool
