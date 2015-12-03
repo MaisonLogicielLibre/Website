@@ -455,19 +455,26 @@ class OrganizationsController extends AppController
                     array_push($usersSelected, $you);
                 }
                 
-                $organization->modifyMembers($usersSelected);
+                $haveOwner = $organization->modifyMembers($usersSelected);
             } else {
-                $organization->modifyMembers([$you]);
+                if ($usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
+					$haveOwner = false;
+                } else {
+					$haveOwner = $organization->modifyMembers([$you]);
+                }
             }
             
-            if ($this->Organizations->save($organization)) {
-                $this->Flash->success(__('The organization has been updated.'));
-                return $this->redirect(['action' => 'view', $organization->id]);
+            if ($haveOwner) {
+                if ($this->Organizations->save($organization)) {
+                    $this->Flash->success(__('The organization has been updated.'));
+                    return $this->redirect(['action' => 'view', $organization->id]);
+                } else {
+                    $this->Flash->error(__('The organization could not be updated. Please,try again.'));
+                }
             } else {
-                $this->Flash->error(
-                    __('The organization could not be updated. Please,try again.')
-                );
+                $this->Flash->error(__('There must be at least one owner and one member'));
             }
+           
         }
        
         $this->set(compact('organization', 'users', 'members', 'you'));
@@ -491,7 +498,7 @@ class OrganizationsController extends AppController
         );
         
         $usersTable = $this->loadModel("Users");
-        $users = $usersTable->find('all')->toArray();
+        $users =  $organization->getMembers();
         
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
