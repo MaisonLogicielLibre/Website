@@ -462,21 +462,36 @@ class ProjectsController extends AppController
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
             }
         }
-         $organizations = $this->Projects->Organizations->find('list')
-             ->join(
-                 [
-                    'table' => 'organizations_members',
-                    'alias' => 'm',
-                    'type' => 'LEFT',
-                    'conditions' => 'm.organization_id = Organizations.id'
-                 ]
-             )->where(
-                 [
-                    'm.user_id' => $this->request->session()->read('Auth.User.id')
-                 ]
-             );
-         $this->set(compact('project', 'organizations'));
-         $this->set('_serialize', ['project']);
+        $user = $this->Users->get($this->request->session()->read('Auth.User.id'));
+        if ($user->hasRoleName(['Administrator'])) {
+            $organizations = $this->Projects->Organizations->find('list')
+                ->join(
+                    [
+                        'table' => 'organizations_members',
+                        'alias' => 'm',
+                        'type' => 'LEFT',
+                        'conditions' => 'm.organization_id = Organizations.id'
+                    ]
+                );
+            $this->set(compact('project', 'organizations'));
+            $this->set('_serialize', ['project']);
+        } else {
+            $organizations = $this->Projects->Organizations->find('list')
+                ->join(
+                    [
+                        'table' => 'organizations_members',
+                        'alias' => 'm',
+                        'type' => 'LEFT',
+                        'conditions' => 'm.organization_id = Organizations.id'
+                    ]
+                )->where(
+                    [
+                        'm.user_id' => $this->request->session()->read('Auth.User.id')
+                    ]
+                );
+            $this->set(compact('project', 'organizations'));
+            $this->set('_serialize', ['project']);
+        }
     }
 
     /**
