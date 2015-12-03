@@ -116,7 +116,7 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 (39, 3, 30),
 (40, 1, 26),
 (41, 1, 27),
-(42, 1, 28),
+(42, 6, 28),
 (43, 1, 30),
 (44, 1, 9),
 (45, 3, 31),
