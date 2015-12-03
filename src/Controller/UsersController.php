@@ -40,7 +40,7 @@ class UsersController extends AppController
         'email' => ['edit_user', 'edit_users'],
         'password' => ['edit_user', 'edit_users'],
         'delete' => ['delete_user', 'delete_users'],
-		'index' => ['list_users']
+        'index' => ['list_users']
     ];
 
     /**
@@ -90,48 +90,48 @@ class UsersController extends AppController
      */
     public function index()
     {
-		$data = $this->DataTables->find(
-			'Users',
-			[
-				'contain' =>
-					[
-						'Universities' =>
-							[
-								'fields' =>
-								[
-									'id',
-									'name'
-								]
-							],
-							'Owners' =>
-							[
-							'fields' =>
-							[
-								'OrganizationsOwners.user_id',
-								'id',
-								'name'
-							]
-							]
-					],
-					'fields' =>
-					[
-						'id',
-						'username',
-						'firstName',
-						'lastName',
-						'isStudent',
-						'universitie_id'
-					]
-			]
-		);
-		$this->set(
-			[
-				'data' => $data,
-				'universities' => $this->Users->Universities->find('list', ['limit' => 200]),
-				'orgs' => $this->loadModel('Organizations')->find('list', ['limit' => 200, 'conditions' => ['isRejected' => 0, 'isValidated' => 1]]),
-				'_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-			]
-		);
+        $data = $this->DataTables->find(
+            'Users',
+            [
+                'contain' =>
+                    [
+                        'Universities' =>
+                            [
+                                'fields' =>
+                                [
+                                    'id',
+                                    'name'
+                                ]
+                            ],
+                            'Owners' =>
+                            [
+                            'fields' =>
+                            [
+                                'OrganizationsOwners.user_id',
+                                'id',
+                                'name'
+                            ]
+                            ]
+                    ],
+                    'fields' =>
+                    [
+                        'id',
+                        'username',
+                        'firstName',
+                        'lastName',
+                        'isStudent',
+                        'universitie_id'
+                    ]
+            ]
+        );
+        $this->set(
+            [
+                'data' => $data,
+                'universities' => $this->Users->Universities->find('list', ['limit' => 200]),
+                'orgs' => $this->loadModel('Organizations')->find('list', ['limit' => 200, 'conditions' => ['isRejected' => 0, 'isValidated' => 1]]),
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
