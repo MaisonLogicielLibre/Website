@@ -237,6 +237,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
 
             $user->editPassword($this->request->data['password']);
+            $user->editMailingList(true);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Welcome to {0}', __('ML2')));
@@ -284,7 +285,7 @@ class UsersController extends AppController
                 $user->editGender($this->request->data['gender']);
 
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('The user has been saved.'));
+                    $this->Flash->success(__('Your profile has been updated successfully'));
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {
                     $this->Flash->error(

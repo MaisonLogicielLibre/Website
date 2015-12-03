@@ -30,6 +30,7 @@ class UsersFixture extends TestFixture
         'universitie_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'mailingList' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -59,7 +60,8 @@ class UsersFixture extends TestFixture
             'username' => 'tropHot',
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
-            'isStudent' => 1
+            'isStudent' => 1,
+            'mailingList' => 0
         ],
         [
             'id' => 2,
@@ -74,7 +76,8 @@ class UsersFixture extends TestFixture
             'username' => 'admin',
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
-            'isStudent' => 0
+            'isStudent' => 0,
+            'mailingList' => 0
         ],
         [
             'id' => 3,
@@ -89,7 +92,8 @@ class UsersFixture extends TestFixture
             'username' => 'admin2',
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
-            'isStudent' => 0
+            'isStudent' => 0,
+            'mailingList' => 0
         ],
         [
             'id' => 4,
@@ -104,7 +108,8 @@ class UsersFixture extends TestFixture
             'username' => 'admin3',
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
-            'isStudent' => 0
+            'isStudent' => 0,
+            'mailingList' => 0
         ]
     ];
 }

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-01 20:06+0000\n"
+"POT-Creation-Date: 2015-12-03 14:58+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -15,9 +15,9 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: Controller/AppController.php:62
-#: Controller/UsersController.php:242
+#: Controller/UsersController.php:243
 #: Template/Layout/default.ctp:31
-#: Template/Pages/home.ctp:31;106
+#: Template/Pages/home.ctp:31;160
 #: Template/Users/login.ctp:25
 #: Template/Users/register.ctp:25
 msgid "ML2"
@@ -44,12 +44,12 @@ msgid "You're not the mentor on this mission."
 msgstr ""
 
 #: Controller/ApplicationsController.php:131;186
-#: Controller/ProjectsController.php:605
+#: Controller/ProjectsController.php:607
 msgid "The application has been saved."
 msgstr ""
 
 #: Controller/ApplicationsController.php:134;189
-#: Controller/ProjectsController.php:608
+#: Controller/ProjectsController.php:610
 msgid "The application could not be saved. Please, try again."
 msgstr ""
 
@@ -155,7 +155,7 @@ msgid "The mentor could not be modified. Please,try again."
 msgstr ""
 
 #: Controller/MissionsController.php:384
-#: Controller/ProjectsController.php:749
+#: Controller/ProjectsController.php:751
 msgid "There must be at least one mentor"
 msgstr ""
 
@@ -196,17 +196,17 @@ msgid "The organization could not be saved. Please, try again."
 msgstr ""
 
 #: Controller/OrganizationsController.php:366
-#: Controller/ProjectsController.php:507
+#: Controller/ProjectsController.php:509
 msgid "Cannot perform the change."
 msgstr ""
 
 #: Controller/OrganizationsController.php:368
-#: Controller/ProjectsController.php:509
+#: Controller/ProjectsController.php:511
 msgid "Your change has been saved"
 msgstr ""
 
 #: Controller/OrganizationsController.php:371
-#: Controller/ProjectsController.php:512
+#: Controller/ProjectsController.php:514
 msgid "Not an AJAX Query"
 msgstr ""
 
@@ -267,39 +267,39 @@ msgstr ""
 msgid "Not specified"
 msgstr ""
 
-#: Controller/ProjectsController.php:283;428;457;557
+#: Controller/ProjectsController.php:285;430;459;559
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:286;431;460;534;560
+#: Controller/ProjectsController.php:288;433;462;536;562
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:531
+#: Controller/ProjectsController.php:533
 msgid "The project has been accepted."
 msgstr ""
 
-#: Controller/ProjectsController.php:575
+#: Controller/ProjectsController.php:577
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:577
+#: Controller/ProjectsController.php:579
 msgid "The project could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:724
+#: Controller/ProjectsController.php:726
 msgid "The mentors have been modified."
 msgstr ""
 
-#: Controller/ProjectsController.php:727
+#: Controller/ProjectsController.php:729
 msgid "The mentors could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:746
+#: Controller/ProjectsController.php:748
 msgid "would cause"
 msgstr ""
 
-#: Controller/ProjectsController.php:746
+#: Controller/ProjectsController.php:748
 msgid "to become mentorless"
 msgstr ""
 
@@ -355,7 +355,7 @@ msgstr ""
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:205;287;326;365
+#: Controller/UsersController.php:205;327;366
 msgid "The user has been saved."
 msgstr ""
 
@@ -363,59 +363,63 @@ msgstr ""
 msgid "The new email could not be saved. Please,\n                try again."
 msgstr ""
 
-#: Controller/UsersController.php:242
+#: Controller/UsersController.php:243
 msgid "Welcome to {0}"
 msgstr ""
 
-#: Controller/UsersController.php:246;455
+#: Controller/UsersController.php:247;456
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
-#: Controller/UsersController.php:291;330
+#: Controller/UsersController.php:288
+msgid "Your profile has been updated successfully"
+msgstr ""
+
+#: Controller/UsersController.php:292;331
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:369
+#: Controller/UsersController.php:370
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:402
+#: Controller/UsersController.php:403
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:405
+#: Controller/UsersController.php:406
 msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:437;483
+#: Controller/UsersController.php:438;484
 msgid "This link seems corrupted. Please contact the administration team."
 msgstr ""
 
-#: Controller/UsersController.php:451
+#: Controller/UsersController.php:452
 msgid "Your password was modified."
 msgstr ""
 
-#: Controller/UsersController.php:471
+#: Controller/UsersController.php:472
 msgid "This link is expired. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:477
+#: Controller/UsersController.php:478
 msgid "This link was already used. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:523
+#: Controller/UsersController.php:524
 msgid "The email has been send."
 msgstr ""
 
-#: Controller/UsersController.php:525
+#: Controller/UsersController.php:526
 msgid "Error in sending email, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:547
+#: Controller/UsersController.php:548
 msgid "No account associated with this information, try again."
 msgstr ""
 
-#: Controller/UsersController.php:551
+#: Controller/UsersController.php:552
 msgid "An account was found!"
 msgstr ""
 
@@ -687,7 +691,7 @@ msgstr ""
 #: Template/Projects/edit.ctp:40
 #: Template/Projects/edit_mentor.ctp:45
 #: Template/Users/delete.ctp:38
-#: Template/Users/edit.ctp:83
+#: Template/Users/edit.ctp:86
 #: Template/Users/email.ctp:29
 #: Template/Users/password.ctp:30
 msgid "Cancel"
@@ -787,7 +791,7 @@ msgid "Partners"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:92
-#: Template/Pages/home.ctp:119
+#: Template/Pages/home.ctp:173
 #: Template/Pages/industry.ctp:3;6
 msgid "Industry"
 msgstr ""
@@ -935,6 +939,7 @@ msgstr ""
 #: Template/Cell/Sidebar/user.ctp:26
 #: Template/Layout/default.ctp:81
 #: Template/Notifications/index.ctp:9
+#: Template/Pages/home.ctp:76
 #: Template/Users/delete.ctp:10
 #: Template/Users/edit.ctp:11
 #: Template/Users/email.ctp:10
@@ -1097,7 +1102,7 @@ msgstr ""
 #: Template/Universities/add.ctp:17
 #: Template/Universities/edit.ctp:24
 #: Template/Users/add.ctp:35
-#: Template/Users/edit.ctp:82
+#: Template/Users/edit.ctp:85
 #: Template/Users/email.ctp:28
 #: Template/Users/password.ctp:29
 #: Template/Users/reset_password.ctp:32
@@ -1481,34 +1486,37 @@ msgid "Your project {0} has been unarchived"
 msgstr ""
 
 #: Template/Layout/default.ctp:87
+#: Template/Pages/home.ctp:82
 #: Template/Projects/my_projects.ctp:4;8;17
 msgid "My projects"
 msgstr ""
 
 #: Template/Layout/default.ctp:93
 #: Template/Organizations/my_organizations.ctp:4;8;17
+#: Template/Pages/home.ctp:88
 msgid "My organizations"
 msgstr ""
 
 #: Template/Layout/default.ctp:100
+#: Template/Pages/home.ctp:95
 msgid "Logout"
 msgstr ""
 
 #: Template/Layout/default.ctp:109
-#: Template/Pages/home.ctp:143
+#: Template/Pages/home.ctp:104;197
 #: Template/Users/login.ctp:47
 #: Template/Users/register.ctp:81
 msgid "Sign Up"
 msgstr ""
 
 #: Template/Layout/default.ctp:115
-#: Template/Pages/home.ctp:144
+#: Template/Pages/home.ctp:110;198
 #: Template/Users/register.ctp:88
 msgid "Sign In"
 msgstr ""
 
 #: Template/Layout/default.ctp:130
-#: Template/Pages/home.ctp:263;328
+#: Template/Pages/home.ctp:317;382
 #: Template/Pages/meetup.ctp:23
 #: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
@@ -1516,7 +1524,7 @@ msgid "Contact us"
 msgstr ""
 
 #: Template/Layout/default.ctp:131
-#: Template/Pages/home.ctp:333
+#: Template/Pages/home.ctp:387
 msgid "About us"
 msgstr ""
 
@@ -1867,22 +1875,22 @@ msgid "1100, rue Notre-Dame Ouest"
 msgstr ""
 
 #: Template/Pages/government.ctp:35
-#: Template/Pages/home.ctp:249
+#: Template/Pages/home.ctp:303
 msgid "Become a sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:40
-#: Template/Pages/home.ctp:255
+#: Template/Pages/home.ctp:309
 msgid "Get visibility and access to over"
 msgstr ""
 
 #: Template/Pages/government.ctp:41
-#: Template/Pages/home.ctp:256
+#: Template/Pages/home.ctp:310
 msgid "5000 software engineering and computer science students."
 msgstr ""
 
 #: Template/Pages/government.ctp:42
-#: Template/Pages/home.ctp:257
+#: Template/Pages/home.ctp:311
 msgid "Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners."
 msgstr ""
 
@@ -1890,100 +1898,100 @@ msgstr ""
 msgid "Go to dashboard"
 msgstr ""
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:134
 msgid "Welcome to maison du logiciel libre (ML2)"
 msgstr ""
 
-#: Template/Pages/home.ctp:82
-msgid "Ici nous brassons du code!"
+#: Template/Pages/home.ctp:136
+msgid "Ici nous brassons du code !"
 msgstr ""
 
-#: Template/Pages/home.ctp:93
+#: Template/Pages/home.ctp:147
 #: Template/Users/index.ctp:28
 #: Template/Users/view.ctp:23
 msgid "Student"
 msgstr ""
 
-#: Template/Pages/home.ctp:94
+#: Template/Pages/home.ctp:148
 msgid "Improve your skill and C.V. by working on open source industry projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:120
+#: Template/Pages/home.ctp:174
 msgid "Propose a project and find motivated students in our university ecosystem"
 msgstr ""
 
-#: Template/Pages/home.ctp:133
+#: Template/Pages/home.ctp:187
 msgid "We have"
 msgstr ""
 
-#: Template/Pages/home.ctp:138
+#: Template/Pages/home.ctp:192
 msgid "{0} and learn from our teaching assistants and collaborate with students."
 msgstr ""
 
-#: Template/Pages/home.ctp:138
+#: Template/Pages/home.ctp:192
 msgid "Register now"
 msgstr ""
 
-#: Template/Pages/home.ctp:156
+#: Template/Pages/home.ctp:210
 msgid "Registered students"
 msgstr ""
 
-#: Template/Pages/home.ctp:173
+#: Template/Pages/home.ctp:227
 msgid "Ongoing projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:190
+#: Template/Pages/home.ctp:244
 msgid "Available missions"
 msgstr ""
 
-#: Template/Pages/home.ctp:209
+#: Template/Pages/home.ctp:263
 msgid "Our founding partners"
 msgstr ""
 
-#: Template/Pages/home.ctp:228
+#: Template/Pages/home.ctp:282
 msgid "Our sponsors"
 msgstr ""
 
-#: Template/Pages/home.ctp:277
+#: Template/Pages/home.ctp:331
 msgid "Are you a university student?"
 msgstr ""
 
-#: Template/Pages/home.ctp:283
+#: Template/Pages/home.ctp:337
 msgid "Take our survey and help us serve you better"
 msgstr ""
 
-#: Template/Pages/home.ctp:285
+#: Template/Pages/home.ctp:339
 msgid "Take the survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:290
+#: Template/Pages/home.ctp:344
 msgid "Apply to work on an open source project"
 msgstr ""
 
-#: Template/Pages/home.ctp:292
+#: Template/Pages/home.ctp:346
 msgid "Our projects list"
 msgstr ""
 
-#: Template/Pages/home.ctp:300
+#: Template/Pages/home.ctp:354
 #: Template/Pages/tv3.ctp:43
 msgid "Hire interns, graduates, and capstone."
 msgstr ""
 
-#: Template/Pages/home.ctp:308
+#: Template/Pages/home.ctp:362
 #: Template/Pages/tv3.ctp:47
 msgid "Industry and Government: "
 msgstr ""
 
-#: Template/Pages/home.ctp:308
+#: Template/Pages/home.ctp:362
 msgid "Develop open source features in your products, tools and dependencies. Promote your company in our open source community"
 msgstr ""
 
-#: Template/Pages/home.ctp:312
+#: Template/Pages/home.ctp:366
 #: Template/Pages/tv3.ctp:53
 msgid "University professors: "
 msgstr ""
 
-#: Template/Pages/home.ctp:312
+#: Template/Pages/home.ctp:366
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and dev-ops infrastructure."
 msgstr ""
 
@@ -2653,6 +2661,10 @@ msgstr ""
 
 #: Template/Users/edit.ctp:79
 msgid "Male"
+msgstr ""
+
+#: Template/Users/edit.ctp:83
+msgid "Subscribe to receive promotional email from ML2"
 msgstr ""
 
 #: Template/Users/email.ctp:23
