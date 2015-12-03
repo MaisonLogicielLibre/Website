@@ -41,14 +41,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li id="quebec-flag">
-                        <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']); ?>">
-                            <?= $this->Html->image('flags/quebec.svg'); ?>
+                        <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']); ?>"
                             <span>Français</span>
                         </a>
                     </li>
                     <li id="canada-flag">
                         <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'en_CA']); ?>">
-                            <?= $this->Html->image('flags/canada.svg'); ?>
                             <span>English</span>
                         </a>
                     </li>
