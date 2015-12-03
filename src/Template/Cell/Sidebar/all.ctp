@@ -8,7 +8,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
                 <i class="fa fa-lg fa-suitcase"></i>
                 <?= __('Organizations'); ?>
-                <span class="label label-info label-as-badge pull-right">2</span>
+                <i class="fa submenu-arrow pull-right"></i>
             </a>
             <ul id="organizations-submenu" class="collapse">
                 <li>
@@ -29,7 +29,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#projects-submenu">
                <i class="fa fa-lg fa-cubes"></i>
                 <?= __('Projects'); ?>
-                <span class="label label-info label-as-badge pull-right">2</span>
+                <i class="fa submenu-arrow pull-right"></i>
             </a>
             <ul id="projects-submenu" class="collapse">
                 <li>
@@ -50,9 +50,9 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#activities-submenu">
                 <i class="fa fa-lg fa-calendar"></i>
                 <?= __('Activities') ?>
-                <span class="label label-info label-as-badge pull-right">4</span>
+                <i class="fa submenu-arrow pull-right"></i>
             </a>
-            <ul id="activities-submenu" class="collapse" class="collapse">
+            <ul id="activities-submenu" class="collapse">
 				<li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
                     <i class="fa fa-newspaper-o"></i>
@@ -83,7 +83,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#partners-submenu">
                 <i class="fa fa-lg fa-users"></i>
                 <?= __('Partners') ?>
-                <span class="label label-info label-as-badge pull-right">4</span>
+                <i class="fa submenu-arrow pull-right"></i>
             </a>
             <ul id="partners-submenu" class="collapse">
                 <li>

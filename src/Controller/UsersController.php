@@ -39,7 +39,8 @@ class UsersController extends AppController
         'edit' => ['edit_user', 'edit_users'],
         'email' => ['edit_user', 'edit_users'],
         'password' => ['edit_user', 'edit_users'],
-        'delete' => ['delete_user', 'delete_users']
+        'delete' => ['delete_user', 'delete_users'],
+        'index' => ['list_users']
     ];
 
     /**
@@ -67,7 +68,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['register', 'logout', 'login', 'index', 'view', 'recoverPassword', 'resetPassword']);
+        $this->Auth->allow(['register', 'logout', 'login', 'view', 'recoverPassword', 'resetPassword']);
     }
 
     /**
@@ -237,6 +238,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
 
             $user->editPassword($this->request->data['password']);
+            $user->editMailingList(true);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Welcome to {0}', __('ML2')));
@@ -284,7 +286,7 @@ class UsersController extends AppController
                 $user->editGender($this->request->data['gender']);
 
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('The user has been saved.'));
+                    $this->Flash->success(__('Your profile has been updated successfully'));
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {
                     $this->Flash->error(

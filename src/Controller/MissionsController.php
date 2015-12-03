@@ -219,6 +219,9 @@ class MissionsController extends AppController
                 'contain' => ['Projects', 'TypeMissions', 'MissionLevels', 'Applications']
             ]
         );
+        
+        $applications = TableRegistry::get('Applications');
+        
         $isEditable = true;
         $minInternNbr = 0;
         foreach ($mission->applications as $application) {
@@ -234,6 +237,14 @@ class MissionsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             if ($isEditable) {
                 $this->Missions->patchEntity($mission, $this->request->data);
+                if ($minInternNbr === $mission->getInternNbr()) {
+                    foreach ($mission->applications as $application) {
+                        if ($application->accepted != true) {
+                            $application->editRejected(true);
+                            $applications->save($application);
+                        }
+                    }
+                }
             } else {
                 $mission->internNbr = $this->request->data['internNbr'];
             }
