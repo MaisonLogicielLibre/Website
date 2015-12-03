@@ -125,12 +125,22 @@ h1, h2, h3, h4, h5, h6 {
         border-left: 3px solid @brand-success;
         color: @brand-success;
       }
+     .submenu-arrow {
+       &:before {
+         content: "\f0de";
+       }
+     }
     }
     a {
       color: @gray-light;
       &:hover, &:focus {
         background: none;
         color: @brand-success;
+      }
+      .submenu-arrow {
+        &:before {
+          content: "\f0dd";
+        }
       }
     }
     & > ul {
