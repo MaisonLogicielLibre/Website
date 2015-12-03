@@ -158,12 +158,14 @@ h1, h2, h3, h4, h5, h6 {
 
 #wrapper {
   padding-left: 0;
-  margin-bottom: -65px;
+  height: 100%;
+  #page-wrapper {
+    min-height: 100%;
+  }
 }
 
 #page-wrapper {
   width: 100%;
-  height: 100%;
   padding: 0;
   background: #ebeff2;
 }
@@ -285,6 +287,9 @@ footer#footer {
   height: 100%;
   .navbar-toggle {
     display: none;
+  }
+  #page-wrapper {
+    height: 100%;
   }
 }
 
