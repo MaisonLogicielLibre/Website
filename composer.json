@@ -23,8 +23,7 @@
         "elboletaire/twbs-cake-plugin": "dev-master",
 		"mll/apisvn": "dev-master",
         "simon-begin/cakephp-datatables": "dev-master",
-        "erusev/parsedown": "dev-master",
-        "select2/select2": "dev-master"
+        "erusev/parsedown": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",
@@ -48,9 +47,6 @@
             "App\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
-    },
-    "config": {
-        "component-dir": "webroot/assets"
     },
     "scripts": {
         "post-install-cmd": "App\\Console\\Installer::postInstall",
