@@ -98,7 +98,43 @@ class User extends Entity
     {
         return $this->_properties['portfolio'];
     }
-    
+
+    /**
+     * Get the twitter
+     * @return string twitter
+     */
+    public function getTwitter()
+    {
+        return $this->_properties['twitter'];
+    }
+
+    /**
+     * Get the facebook
+     * @return string facebook
+     */
+    public function getFacebook()
+    {
+        return $this->_properties['facebook'];
+    }
+
+    /**
+     * Get the googlePlus
+     * @return string googlePlus
+     */
+    public function getGooglePlus()
+    {
+        return $this->_properties['googlePlus'];
+    }
+
+    /**
+     * Get the linkedIn
+     * @return string linkedIn
+     */
+    public function getLinkedIn()
+    {
+        return $this->_properties['linkedIn'];
+    }
+
     /**
      * Get the email
      * @return string email
@@ -256,7 +292,51 @@ class User extends Entity
         $this->set('portfolio', $portfolio);
         return $portfolio;
     }
-    
+
+    /**
+     * Set the twitter
+     * @param  string $twitter twitter
+     * @return string twitter
+     */
+    public function editTwitter($twitter)
+    {
+        $this->set('twitter', $twitter);
+        return $twitter;
+    }
+
+    /**
+     * Set the facebook
+     * @param  string $facebook facebook
+     * @return string facebook
+     */
+    public function editFacebook($facebook)
+    {
+        $this->set('facebook', $facebook);
+        return $facebook;
+    }
+
+    /**
+     * Set the googlePlus
+     * @param  string $googlePlus googlePlus
+     * @return string googlePlus
+     */
+    public function editGooglePlus($googlePlus)
+    {
+        $this->set('googlePlus', $googlePlus);
+        return $googlePlus;
+    }
+
+    /**
+     * Set the linkedIn
+     * @param  string $linkedIn linkedIn
+     * @return string linkedIn
+     */
+    public function editLinkedIn($linkedIn)
+    {
+        $this->set('linkedIn', $linkedIn);
+        return $linkedIn;
+    }
+
     /**
      * Set the email
      * @param  string $email email
