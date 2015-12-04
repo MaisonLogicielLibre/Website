@@ -66,7 +66,10 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
-                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <div id="bloodhound">
+                        <?= $this->Form->input('skills', ['type' => 'text', 'placeholder' => __('Enter and select your skills')]); ?>
+                        </div>
+                            <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
                         <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
 
                         <div class="form-group">
@@ -94,12 +97,18 @@
                         ]); ?>
                     </div>
                 </div>
-
         <?= $this->Form->end() ?>
     </div>
 </div>
+<?php
+    $this->Html->scriptStart(['block' => 'scriptBottom']);
+    echo 'var urlUsersSkills="' . $this->request->webroot . 'json/UsersSkills.json";';
+    $this->Html->scriptEnd();
+?>
 <?= $this->Html->script([
     'bootstrap/bootstrap-switch.min',
+    'bootstrap-tokenfield',
+    'typeahead.min',
     'users/edit',
     'markdown/markdown',
     'markdown/to-markdown',
