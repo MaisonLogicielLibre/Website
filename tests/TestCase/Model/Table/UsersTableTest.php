@@ -155,7 +155,23 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getInterest
+     * @return void
+     */
+    public function testGetInterest()
+    {
+        $id = 1;
+        $expected = 'Un petit interet.';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getInterest();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPortfolio
      * @return void
@@ -251,7 +267,23 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getEmailPublic
+     * @return void
+     */
+    public function testGetEmailPublic()
+    {
+        $id = 1;
+        $expected = 'email@gmail.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getEmailPublic();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPhone
      * @return void
@@ -427,7 +459,23 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test editInterest
+     * @return void
+     */
+    public function testSetInterest()
+    {
+        $id = 1;
+        $expected = 'Un petit interet.';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editInterest($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test editPortfolio
      * @return void
@@ -520,6 +568,22 @@ class UsersTableTest extends TestCase
         $user = $this->Users->get($id);
 
         $result = $user->editEmail($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editEmailPublic
+     * @return void
+     */
+    public function testSetEmailPublic()
+    {
+        $id = 1;
+        $expected = 'email@gmail.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editEmailPublic($expected);
 
         $this->assertEquals($expected, $result);
     }
