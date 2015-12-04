@@ -41,10 +41,10 @@ class UsersController extends AppController
         'email' => ['edit_user', 'edit_users'],
         'password' => ['edit_user', 'edit_users'],
         'delete' => ['delete_user', 'delete_users'],
-		'svn' => ['edit_user', 'edit_users'],
-		'svnCallback' => ['edit_user', 'edit_users'],
-		'svnRemove' => ['edit_user', 'edit_users'],
-		'index' => ['list_users']
+        'svn' => ['edit_user', 'edit_users'],
+        'svnCallback' => ['edit_user', 'edit_users'],
+        'svnRemove' => ['edit_user', 'edit_users'],
+        'index' => ['list_users']
     ];
 
     /**

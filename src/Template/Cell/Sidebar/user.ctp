@@ -37,29 +37,26 @@
                             <?= __('Change my email') ?>
                         </a>
                     </li>
-                    <li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+					<li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "password",
                                 $object->id
-                            ]); ?>>
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-unlock-alt  fa-stack-1x"
-                                               style="color:<?= ($this->request->action == 'password') ? '#337ab7' : '#fff'; ?>"></i>
-                                        </span> <?= __('Change my password') ?></a></li>
-					<li class="<?= ($this->request->action == 'svn') ? 'active disabled' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+                            ]); ?>">
+                            <i class="fa fa-unlock"></i>
+                            <?= __('Change my password') ?>
+                        </a>
+                    </li>
+					<li class="<?= ($this->request->action == 'svn') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "svn",
                                 $object->id
-                            ]); ?>>
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-code-fork fa-stack-1x" style="color:<?= ($this->request->action == 'svn') ? '#337ab7' : '#fff'; ?>"></i>
-                            </span> <?= __('Edit SVN') ?>
+                            ]); ?>">
+                            <i class="fa fa-code-fork"></i>
+                            <?= __('Edit SVN') ?>
                         </a>
                     </li>
                     <!-- Modify phone link/form -->
