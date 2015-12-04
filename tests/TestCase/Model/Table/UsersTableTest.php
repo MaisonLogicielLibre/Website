@@ -171,7 +171,71 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getTwitter
+     * @return void
+     */
+    public function testGetTwitter()
+    {
+        $id = 1;
+        $expected = 'http://montwitter.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getTwitter();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getFacebook
+     * @return void
+     */
+    public function testGetFacebook()
+    {
+        $id = 1;
+        $expected = 'http://monfacebook.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getFacebook();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getGooglePlus
+     * @return void
+     */
+    public function testGetGooglePlus()
+    {
+        $id = 1;
+        $expected = 'http://mongoogleplus.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGooglePlus();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLinkedIn
+     * @return void
+     */
+    public function testGetLinkedIn()
+    {
+        $id = 1;
+        $expected = 'http://monlinkedin.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getLinkedin();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getEmail
      * @return void
@@ -376,6 +440,70 @@ class UsersTableTest extends TestCase
         $user = $this->Users->get($id);
 
         $result = $user->editPortfolio($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editTwitter
+     * @return void
+     */
+    public function testSetTwitter()
+    {
+        $id = 1;
+        $expected = 'http://montwitter.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editTwitter($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editFacebook
+     * @return void
+     */
+    public function testSetFacebook()
+    {
+        $id = 1;
+        $expected = 'http://monfacebook.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editFacebook($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editGooglePlus
+     * @return void
+     */
+    public function testSetGooglePlus()
+    {
+        $id = 1;
+        $expected = 'http://mongoogleplus.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editGooglePlus($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editLinkedin
+     * @return void
+     */
+    public function testSetLinkedin()
+    {
+        $id = 1;
+        $expected = 'http://monlinkedin.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editLinkedin($expected);
 
         $this->assertEquals($expected, $result);
     }
