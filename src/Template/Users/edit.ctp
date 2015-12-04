@@ -66,10 +66,24 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
+                        <?= $this->Form->input('interest',
+                            [
+                                'label' => __('What are your interests'),
+                                'data-provide' => 'markdown',
+                                'data-iconlibrary' => 'fa',
+                                'data-hidden-buttons' => 'cmdImage',
+                                'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                                'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
+                            ]
+                        ); ?>
                         <div id="bloodhound">
                         <?= $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]); ?>
                         </div>
-                            <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('googlePlus', ['type' => 'text', 'label' => __('Google+'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
                         <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
 
                         <div class="form-group">
@@ -82,8 +96,18 @@
                                 <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
                             </select>
                         </div>
-
+                        <br />
+                        <h3 class="header-title"><?= __('Contact information'); ?></h3>
+                        <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
+                        <?= $this->Form->input('emailPublic', ['value' => "", 'label' => __('Enter your public email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
                         <?= $this->Form->input('mailingList', ['label' => __('Subscribe to receive promotional email from ML2')]); ?>
+                        <br />
+                        <h3 class="header-title"><?= __('Social networks'); ?></h3>
+                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('googlePlus', ['type' => 'text', 'label' => __('Google+'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
 
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                         <?= $this->Form->button(__('Cancel'), [

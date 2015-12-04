@@ -89,7 +89,16 @@ class User extends Entity
     {
         return $this->_properties['biography'];
     }
-    
+
+    /**
+     * Get the interest
+     * @return string interest
+     */
+    public function getInterest()
+    {
+        return $this->_properties['interest'];
+    }
+
     /**
      * Get the portfolio
      * @return string portfolio
@@ -142,6 +151,15 @@ class User extends Entity
     public function getEmail()
     {
         return $this->_properties['email'];
+    }
+
+    /**
+     * Get the public email
+     * @return string publicEmail
+     */
+    public function getEmailPublic()
+    {
+        return $this->_properties['emailPublic'];
     }
 
     /**
@@ -281,6 +299,17 @@ class User extends Entity
         $this->set('biography', $biography);
         return $biography;
     }
+
+    /**
+     * Set the interest
+     * @param  string $interest interest
+     * @return string interest
+     */
+    public function editInterest($interest)
+    {
+        $this->set('interest', $interest);
+        return $interest;
+    }
     
     /**
      * Set the portfolio
@@ -346,6 +375,17 @@ class User extends Entity
     {
         $this->set('email', $email);
         return $email;
+    }
+
+    /**
+     * Set the public email
+     * @param  string $emailPublic emailPublic
+     * @return string emailPublic
+     */
+    public function editEmailPublic($emailPublic)
+    {
+        $this->set('emailPublic', $emailPublic);
+        return $emailPublic;
     }
 
     /**
