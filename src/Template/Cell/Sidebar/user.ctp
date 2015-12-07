@@ -6,9 +6,19 @@
                 class="img-circle img-responsive"/>
             <span><?= (!empty($object) ? $object->getName() : ''); ?></span>
             <?php if (!empty($object) && $object->getPortfolio() != null): ?>
-                <a href="<?= $object->getPortfolio() ?>">
-                    <?= __('Portfolio') ?>
-                </a>
+                <a href="<?= $object->getPortfolio() ?>"><i class="fa fa-globe"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getTwitter() != null): ?>
+                <a href="https://twitter.com/<?= $object->getTwitter() ?>"><i class="fa fa-twitter"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getFacebook() != null): ?>
+                <a href="https://www.facebook.com/<?= $object->getFacebook() ?>"><i class="fa fa-facebook"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getGooglePlus() != null): ?>
+                <a href="<?= $object->getGooglePlus() ?>"><i class="fa fa-google-plus"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getLinkedIn() != null): ?>
+                <a href="<?= $object->getLinkedIn() ?>"><i class="fa fa-linkedin"></i></a>
             <?php endif; ?>
         </div>
         <ul class="nav nav-stacked">

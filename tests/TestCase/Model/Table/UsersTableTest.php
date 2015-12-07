@@ -155,7 +155,23 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getInterest
+     * @return void
+     */
+    public function testGetInterest()
+    {
+        $id = 1;
+        $expected = 'Un petit interet.';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getInterest();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPortfolio
      * @return void
@@ -171,7 +187,71 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getTwitter
+     * @return void
+     */
+    public function testGetTwitter()
+    {
+        $id = 1;
+        $expected = 'http://montwitter.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getTwitter();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getFacebook
+     * @return void
+     */
+    public function testGetFacebook()
+    {
+        $id = 1;
+        $expected = 'http://monfacebook.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getFacebook();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getGooglePlus
+     * @return void
+     */
+    public function testGetGooglePlus()
+    {
+        $id = 1;
+        $expected = 'http://mongoogleplus.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getGooglePlus();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLinkedIn
+     * @return void
+     */
+    public function testGetLinkedIn()
+    {
+        $id = 1;
+        $expected = 'http://monlinkedin.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getLinkedin();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getEmail
      * @return void
@@ -187,7 +267,23 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getEmailPublic
+     * @return void
+     */
+    public function testGetEmailPublic()
+    {
+        $id = 1;
+        $expected = 'email@gmail.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->getEmailPublic();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getPhone
      * @return void
@@ -363,7 +459,23 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test editInterest
+     * @return void
+     */
+    public function testSetInterest()
+    {
+        $id = 1;
+        $expected = 'Un petit interet.';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editInterest($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test editPortfolio
      * @return void
@@ -381,6 +493,70 @@ class UsersTableTest extends TestCase
     }
 
     /**
+     * Test editTwitter
+     * @return void
+     */
+    public function testSetTwitter()
+    {
+        $id = 1;
+        $expected = 'http://montwitter.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editTwitter($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editFacebook
+     * @return void
+     */
+    public function testSetFacebook()
+    {
+        $id = 1;
+        $expected = 'http://monfacebook.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editFacebook($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editGooglePlus
+     * @return void
+     */
+    public function testSetGooglePlus()
+    {
+        $id = 1;
+        $expected = 'http://mongoogleplus.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editGooglePlus($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editLinkedin
+     * @return void
+     */
+    public function testSetLinkedin()
+    {
+        $id = 1;
+        $expected = 'http://monlinkedin.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editLinkedin($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test editEmail
      * @return void
      */
@@ -392,6 +568,22 @@ class UsersTableTest extends TestCase
         $user = $this->Users->get($id);
 
         $result = $user->editEmail($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editEmailPublic
+     * @return void
+     */
+    public function testSetEmailPublic()
+    {
+        $id = 1;
+        $expected = 'email@gmail.com';
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editEmailPublic($expected);
 
         $this->assertEquals($expected, $result);
     }

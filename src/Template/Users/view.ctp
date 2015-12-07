@@ -25,7 +25,14 @@
                                     </tr>
                                     <tr>
                                         <td><?= __('Email'); ?></td>
-                                        <td><?= $user->getEmail(); ?></td>
+                                        <td>
+                                            <?php if ($user->getEmailPublic()):
+                                            echo $user->getEmailPublic();
+                                            else:
+                                            echo $user->getCensoredEmail();
+                                            endif;
+                                            ?>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
@@ -54,6 +61,12 @@
                         <div class="col-lg-12">
                             <?= $user->getSkills(); ?>
                         </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="col-lg-12">
+                            <h3 class="header-title"><?= __('Interests'); ?></h3>
+                        </div>
+                        <?= (!(empty($user->getInterest())) ? $Parsedown->text($user->getInterest()) : __('Your Interest')) ?>
                     </div>
                 </div>
             </div>

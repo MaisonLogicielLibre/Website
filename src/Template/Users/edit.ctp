@@ -32,6 +32,16 @@
                             <?= $this->Form->label('universitie_id', __('University'), ['class' => 'control-label']); ?>
                             <?= $this->Form->select('universitie_id', $options, ['class' => 'form-control']); ?>
                         </div>
+                        <div class="form-group">
+                            <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
+                            <select class="form-control" name="gender">
+                                <option
+                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
+                                <option
+                                    value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
+                                <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,24 +76,31 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
+                        <?= $this->Form->input('interest',
+                            [
+                                'label' => __('What are your interests'),
+                                'data-provide' => 'markdown',
+                                'data-iconlibrary' => 'fa',
+                                'data-hidden-buttons' => 'cmdImage',
+                                'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                                'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
+                            ]
+                        ); ?>
                         <div id="bloodhound">
                         <?= $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]); ?>
                         </div>
-                            <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <br />
+                        <h3 class="header-title"><?= __('Contact information'); ?></h3>
                         <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
-
-                        <div class="form-group">
-                            <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
-                            <select class="form-control" name="gender">
-                                <option
-                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
-                                <option
-                                    value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
-                                <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
-                            </select>
-                        </div>
-
+                        <?= $this->Form->input('emailPublic', ['label' => __('Enter your public email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
                         <?= $this->Form->input('mailingList', ['label' => __('Subscribe to receive promotional email from ML2')]); ?>
+                        <br />
+                        <h3 class="header-title"><?= __('Social networks'); ?></h3>
+                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("username twitter")]); ?>
+                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("username facebook")]); ?>
+                        <?= $this->Form->input('googlePlus', ['type' => 'text', 'label' => __('Google+'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
 
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                         <?= $this->Form->button(__('Cancel'), [

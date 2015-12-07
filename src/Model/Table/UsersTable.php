@@ -154,6 +154,44 @@ class UsersTable extends Table
             );
 
         $validator
+            ->allowEmpty('twitter');
+
+        $validator
+            ->allowEmpty('facebook');
+
+        $validator
+            ->allowEmpty('googlePlus')
+            ->add(
+                'googlePlus',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
+
+        $validator
+            ->allowEmpty('linkedIn')
+            ->add(
+                'linkedIn',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
+
+        $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
             ->notEmpty('email')
