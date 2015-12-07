@@ -63,7 +63,9 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <?= __('Interest')?>:<br />
+                        <div class="col-lg-12">
+                            <h3 class="header-title"><?= __('Interests'); ?></h3>
+                        </div>
                         <?= (!(empty($user->getInterest())) ? $Parsedown->text($user->getInterest()) : __('Your Interest')) ?>
                     </div>
                 </div>
