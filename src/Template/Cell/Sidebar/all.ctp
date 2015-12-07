@@ -46,6 +46,21 @@
                 </li>
             </ul>
         </li>
+		<li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#missions-submenu">
+               <i class="fa fa-lg fa-file-text"></i>
+                <?= __('Missions'); ?>
+                <i class="fa submenu-arrow pull-right"></i>
+            </a>
+            <ul id="missions-submenu" class="collapse">
+                <li>
+                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'index']); ?>">
+                        <i class="fa fa-list-ul"></i>
+                        <?= __('List of missions'); ?>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#activities-submenu">
                 <i class="fa fa-lg fa-calendar"></i>
