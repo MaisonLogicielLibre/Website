@@ -31,15 +31,27 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
+
 <div class="row">
-    <div class="col-sm-offset-2 col-sm-8">
-        <h2 class="text-danger"><?= h($message) ?></h2>
-        <p class="error">
-            <strong><?= __d('cake', 'Error') ?>: </strong>
-            <?= sprintf(
-                __d('cake', 'The requested address %s was not found on this server.'),
-                "<strong>'{$url}'</strong>"
-            ) ?>
-        </p>
-    </div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<h1 class="page-header"><?= __('Somewhere'); ?></h1>
+		<?php
+		$this->Html->addCrumb(__('Home'), '/');
+		$this->Html->addCrumb(__('?'));
+
+		echo $this->Html->getCrumbList(); ?>
+	</div>
+</div>
+<div class="row">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<img class="img-responsive" src="<?= $this->request->webroot . 'img/errors/404.png' ?>" alt="404">
+		</div>
+	</div>
+	<div class="row">
+		<h3 class="col-sm-6 col-sm-offset-3 error-text"> 
+			<?= __('Looks like a ghost stole your page. Quickly go to') ?> 
+			<a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>"><strong><?= __('Home') ?></strong></a>
+		</h3>
+	</div> 
 </div>
