@@ -282,7 +282,13 @@ class UsersTable extends Table
                 [
                     'rule' => function ($value) {
                         $json = json_decode(file_get_contents(WWW_ROOT . '/json/UsersSkills.json'), true);
-                        $valueArray = array_map(function ($o) {return ltrim($o, ' ');}, explode(',', $value));
+                        $valueArray = array_map(
+                            function ($o) {
+                                return ltrim($o, ' ');
+
+                            },
+                            explode(',', $value)
+                        );
                         if (count(array_diff($valueArray, $json)) > 0) {
                             return false;
                         }
