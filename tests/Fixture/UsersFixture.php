@@ -31,6 +31,7 @@ class UsersFixture extends TestFixture
         'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'mailingList' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'skills' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -61,7 +62,8 @@ class UsersFixture extends TestFixture
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
             'isStudent' => 1,
-            'mailingList' => 0
+            'mailingList' => 0,
+            'skills' => 'PHP, CakePHP'
         ],
         [
             'id' => 2,

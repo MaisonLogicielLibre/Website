@@ -687,4 +687,18 @@ class UsersTableTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test getSkills
+     * @return void
+     */
+    public function testGetSkills()
+    {
+        $expected = 'PHP, CakePHP';
+        $user = $this->Users->get(1);
+
+        $result = $user->getSkills();
+
+        $this->assertEquals($expected, $result);
+    }
 }
