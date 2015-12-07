@@ -14,6 +14,8 @@ $(document).ready(function () {
         prefetch: urlUsersSkills
     });
 
+    // If JS is enabled
+    $('#skills').prop('disabled', false);
     $('#skills').tokenfield({
         typeahead: [
             null,
@@ -34,7 +36,7 @@ $(document).ready(function () {
         var available_tokens = usersSkills.index.datums;
         var exists = true;
         $.each(available_tokens, function(index, token) {
-            if (token === event.attrs.value) {
+            if (token == event.attrs.value) {
                 exists = false;
             }
         });
