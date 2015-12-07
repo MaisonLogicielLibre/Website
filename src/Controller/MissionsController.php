@@ -159,11 +159,11 @@ class MissionsController extends AppController
             $id,
             [
             'contain' => [
-                'Projects' => ['Organizations'],
-                'MissionLevels',
-                'TypeMissions',
-                'Users',
-                'Applications'
+            'Projects' => ['Organizations'],
+            'MissionLevels',
+            'TypeMissions',
+            'Users',
+            'Applications'
             ]
             ]
         );

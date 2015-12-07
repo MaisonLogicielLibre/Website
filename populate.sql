@@ -161,8 +161,8 @@ INSERT INTO `mll_site`.`hash_types` (`id`, `name`) VALUES (NULL, 'resetPassword'
 -- Contenu de la table `svns`
 --
 
-INSERT INTO `svns` (`id`, `name`) VALUES
-(1, 'GitHub');
+INSERT INTO `svns` (`id`, `name`, `link`) VALUES
+(1, 'GitHub', 'https://github.com/');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

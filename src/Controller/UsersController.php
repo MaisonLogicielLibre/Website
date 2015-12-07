@@ -188,9 +188,18 @@ class UsersController extends AppController
         $user = $this->Users->get(
             $id,
             [
-                'contain' => ['TypeUsers', 'Universities', 'Projects', 'Comments']
+                'contain' => [
+                    'TypeUsers',
+                    'Universities',
+                    'Projects',
+                    'Comments',
+                    'SvnUsers' => [
+                        'Svns'
+                    ]
+                ]
             ]
         );
+        
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
         $this->set(compact('user', 'you'));
         $this->set('_serialize', ['user']);
