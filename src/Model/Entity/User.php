@@ -448,6 +448,14 @@ class User extends Entity
     }
 
     /**
+     * Get skills of user
+     * @return string
+     */
+    public function getSkills()
+    {
+        return $this->_properties['skills'];
+    }
+    /**
      * Get projects where user is mentor
      * @return array
      */

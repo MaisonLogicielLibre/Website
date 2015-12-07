@@ -48,6 +48,12 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="col-lg-12 voffset2">
+                            <h3 class="header-title"><?= __('Skills'); ?></h3>
+                        </div>
+                        <div class="col-lg-12">
+                            <?= $user->getSkills(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
