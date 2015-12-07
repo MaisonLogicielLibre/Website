@@ -83,8 +83,8 @@ class MissionsController extends AppController
         $this->loadModel("Users");
         $this->Auth->allow(['view', 'index']);
     }
-	
-	/**
+    
+    /**
      * Index method
      *
      * @return void
@@ -93,56 +93,56 @@ class MissionsController extends AppController
     {
         $types = $this->loadModel("TypeMissions")->find('list', ['limit' => 200]);
         $this->set(compact('types'));
-		
-		$orgs = $this->loadModel("Organizations")->find('list', ['limit' => 200]);
+        
+        $orgs = $this->loadModel("Organizations")->find('list', ['limit' => 200]);
         $this->set(compact('orgs'));
-		
+        
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-		$data = $this->DataTables->find (
-			'Missions',
-			[
-				'contain' => [
-					'Projects' => [
-						'Organizations'	=> [
-							'fields' => [
-								'id', 'name', 'OrganizationsProjects.project_id'
-							]
-						],
-						'fields' => [
-								'id', 'name'
-						]
-					],
-					'TypeMissions' => [
-						'fields' =>
-							[
-								'id', 'name', 'MissionsTypeMissions.mission_id'
-							]
-					],
-				],
-				'fields' =>[
-					'id', 'name', 'session'
-				],
-				'conditions' =>[
-					'AND' => [
-						[
-							'Projects.archived' => 0,
-							'Projects.accepted' => 1
-						],
-						[
-							'Missions.archived' => 0
-						]
-					]
-				],
-			]
-		);
+        $data = $this->DataTables->find(
+            'Missions',
+            [
+                'contain' => [
+                    'Projects' => [
+                        'Organizations' => [
+                            'fields' => [
+                                'id', 'name', 'OrganizationsProjects.project_id'
+                            ]
+                        ],
+                        'fields' => [
+                                'id', 'name'
+                        ]
+                    ],
+                    'TypeMissions' => [
+                        'fields' =>
+                            [
+                                'id', 'name', 'MissionsTypeMissions.mission_id'
+                            ]
+                    ],
+                ],
+                'fields' => [
+                    'id', 'name', 'session'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
 
-		$this->set(
-			[
-				'data' => $data,
-				'_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-			]
-		);
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
