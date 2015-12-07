@@ -9,10 +9,10 @@
                 <a href="<?= $object->getPortfolio() ?>"><i class="fa fa-globe"></i></a>
             <?php endif; ?>
             <?php if (!empty($object) && $object->getTwitter() != null): ?>
-                <a href="<?= $object->getTwitter() ?>"><i class="fa fa-twitter"></i></a>
+                <a href="https://twitter.com/<?= $object->getTwitter() ?>"><i class="fa fa-twitter"></i></a>
             <?php endif; ?>
             <?php if (!empty($object) && $object->getFacebook() != null): ?>
-                <a href="<?= $object->getFacebook() ?>"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.facebook.com/<?= $object->getFacebook() ?>"><i class="fa fa-facebook"></i></a>
             <?php endif; ?>
             <?php if (!empty($object) && $object->getGooglePlus() != null): ?>
                 <a href="<?= $object->getGooglePlus() ?>"><i class="fa fa-google-plus"></i></a>

@@ -104,8 +104,8 @@
                         <br />
                         <h3 class="header-title"><?= __('Social networks'); ?></h3>
                         <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
-                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("http(s)://website.com")]); ?>
-                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("username twitter")]); ?>
+                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("username facebook")]); ?>
                         <?= $this->Form->input('googlePlus', ['type' => 'text', 'label' => __('Google+'), 'placeholder' => __("http(s)://website.com")]); ?>
                         <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
 

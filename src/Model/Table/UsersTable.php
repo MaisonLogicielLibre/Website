@@ -154,36 +154,10 @@ class UsersTable extends Table
             );
 
         $validator
-            ->allowEmpty('twitter')
-            ->add(
-                'twitter',
-                'custom',
-                [
-                    'rule' => function ($value) {
-                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
-                            return false;
-                        }
-                        return true;
-                    },
-                    'message' => __('Is not an url (Ex : http://website.ca).')
-                ]
-            );
+            ->allowEmpty('twitter');
 
         $validator
-            ->allowEmpty('facebook')
-            ->add(
-                'facebook',
-                'custom',
-                [
-                    'rule' => function ($value) {
-                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
-                            return false;
-                        }
-                        return true;
-                    },
-                    'message' => __('Is not an url (Ex : http://website.ca).')
-                ]
-            );
+            ->allowEmpty('facebook');
 
         $validator
             ->allowEmpty('googlePlus')
