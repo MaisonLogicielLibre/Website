@@ -6,13 +6,13 @@
 # Site
 Site internet de la Maison du Logiciel Libre (MLL) codé à l'aide du framework [CakePHP](http://cakephp.org/) 3.0.
 
-Ce site est destiné à la communauté étudiante, il permet l'intégration et le suivi de projet ainsi que de leurs différents intervenants. Le but étant de pouvoir faire leurs promotions et de suivre leurs avancé au travers d'indicateurs de performance.
+Ce site est destiné à la communauté étudiante, il permet l'intégration et le suivi de projets ainsi que de leurs différents intervenants. Le but étant de pouvoir faire leur promotion et de suivre leur avancée au travers d'indicateurs de performance.
 
 # Fonctionnalités
 
 Les fonctionnalités à venir sont reportées essentiellement dans le [*bugtraker*](https://github.com/MaisonLogicielLibre/TableauDeBord/issues).
 
-Vous pouvez suivre l'avancé du projet sur notre [dashboard](https://waffle.io/MaisonLogicielLibre/Website) héberger sur Waffle.io.
+Vous pouvez suivre l'avancée du projet sur notre [dashboard](https://waffle.io/MaisonLogicielLibre/Website) hébergé sur Waffle.io.
 
 # Prototype
 
