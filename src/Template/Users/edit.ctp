@@ -99,7 +99,7 @@
                         <br />
                         <h3 class="header-title"><?= __('Contact information'); ?></h3>
                         <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
-                        <?= $this->Form->input('emailPublic', ['value' => "", 'label' => __('Enter your public email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
+                        <?= $this->Form->input('emailPublic', ['label' => __('Enter your public email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
                         <?= $this->Form->input('mailingList', ['label' => __('Subscribe to receive promotional email from ML2')]); ?>
                         <br />
                         <h3 class="header-title"><?= __('Social networks'); ?></h3>
