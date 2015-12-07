@@ -275,6 +275,23 @@ class UsersTable extends Table
             ->requirePresence('universitie_id', 'create')
             ->notEmpty('universitie_id');
 
+        $validator
+            ->add(
+                'skills',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        $json = json_decode(file_get_contents(WWW_ROOT . '/json/UsersSkills.json'), true);
+                        $valueArray = array_map(function ($o) {return ltrim($o, ' ');}, explode(',', $value));
+                        if (count(array_diff($valueArray, $json)) > 0) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('One or more skills are not recognized')
+                ]
+            );
+
         return $validator;
     }
     /**
