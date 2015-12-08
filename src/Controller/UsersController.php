@@ -16,6 +16,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\MailerAwareTrait;
+use Cake\Network\Http\Client;
 use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
 use Cake\Utility\Hash;
@@ -40,6 +41,9 @@ class UsersController extends AppController
         'email' => ['edit_user', 'edit_users'],
         'password' => ['edit_user', 'edit_users'],
         'delete' => ['delete_user', 'delete_users'],
+        'svn' => ['edit_user', 'edit_users'],
+        'svnCallback' => ['edit_user', 'edit_users'],
+        'svnRemove' => ['edit_user', 'edit_users'],
         'index' => ['list_users']
     ];
 
@@ -184,9 +188,18 @@ class UsersController extends AppController
         $user = $this->Users->get(
             $id,
             [
-                'contain' => ['TypeUsers', 'Universities', 'Projects', 'Comments']
+                'contain' => [
+                    'TypeUsers',
+                    'Universities',
+                    'Projects',
+                    'Comments',
+                    'SvnUsers' => [
+                        'Svns'
+                    ]
+                ]
             ]
         );
+        
         $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
         $this->set(compact('user', 'you'));
         $this->set('_serialize', ['user']);
@@ -554,5 +567,99 @@ class UsersController extends AppController
                 );
             }
         }
+    }
+    
+    /**
+     * Svn method
+     * @param  int $id user id
+     * @return void
+     */
+    public function svn($id)
+    {
+        $user = $this->Users->get($id);
+        $svnsUsers = TableRegistry::get('svn_users');
+        $pseudos = $svnsUsers->findByUserId($id)->toArray();
+        
+        $code = $this->request->query('code');
+        
+        if ($code) {
+            $http = new Client();
+            
+            $result = $http->post(
+                'https://github.com/login/oauth/access_token',
+                [
+                    'client_id' => GITHUBID,
+                    'client_secret' => GITHUBKEY,
+                    'code' => $code,
+                ]
+            );
+            
+            $tmp = explode('&', $result->body)[0];
+            $token = explode('=', $tmp)[1];
+            
+            if ($token != "bad_verification_code") {
+                $result = $http->get(
+                    'https://api.github.com/user',
+                    [
+                    'access_token' => $token
+                       ]
+                );
+                         
+                $res = json_decode($result->body, true);
+                
+                if (!$svnsUsers->findByPseudo($res['login'])->toArray()) {
+                    $svnUser = $svnsUsers->newEntity();
+                    $svnUser->editPseudo($res['login']);
+                    $svnUser->editSvnId(1);
+                    $svnUser->edituserId($id);
+                    
+                    if ($svnsUsers->save($svnUser)) {
+                          $this->Flash->success(__('The account have been added'));
+                          return $this->redirect(['controller' => 'Users', 'action' => 'svn', $id]);
+                    } else {
+                        $this->Flash->error(__('Error in adding the account, please try again.'));
+                    }
+                } else {
+                    $this->Flash->error(__('This account have already been added'));
+                }
+            }
+        }
+        
+        $this->set(compact('user', 'pseudos'));
+        $this->set('_serialize', ['user']);
+    }
+    
+    /**
+     * Svn method used for token callback
+     *
+     * @return void
+     */
+    public function svnCallback()
+    {
+        $userId = $this->Users->get($this->Auth->user('id'))->getId();
+        $code = $this->request->query('code');
+        
+        return $this->redirect(['controller' => 'Users', 'action' => 'svn', $userId, '?' => ['code' => $code]]);
+    }
+    
+    /**
+     * Svn method used to remove account
+     * @param int $id user_id
+     * @return void
+     */
+    public function svnRemove($id)
+    {
+        $svnsUsers = TableRegistry::get('svn_users');
+        
+        $pseudo = $this->request->query('pseudo');
+        $account = $svnsUsers->findByPseudo($pseudo)->first();
+        
+        if ($svnsUsers->delete($account)) {
+            $this->Flash->success(__('The account has been deleted.'));
+        } else {
+            $this->Flash->error(__('The account could not be deleted. Please try again.'));
+        }
+        
+        return $this->redirect(['controller' => 'Users', 'action' => 'svn', $id]);
     }
 }

@@ -72,4 +72,37 @@ class SvnUser extends Entity
     {
         return $this->_properties['user_id'];
     }
+    
+    /**
+     * Edit the pseudo
+     * @param  string $pseudo pseudo
+     * @return string pseudo
+     */
+    public function editPseudo($pseudo)
+    {
+        $this->set('pseudo', $pseudo);
+        return $pseudo;
+    }
+
+    /**
+     * Edit the svn_id
+     * @param  int $svnId svnId
+     * @return int svn_id
+     */
+    public function editSvnId($svnId)
+    {
+        $this->set('svn_id', $svnId);
+        return $svnId;
+    }
+
+    /**
+     * Edit the user_id
+     * @param  int $userId user_id
+     * @return int user_id
+     */
+    public function editUserId($userId)
+    {
+        $this->set('user_id', $userId);
+        return $userId;
+    }
 }

@@ -56,7 +56,16 @@ class Svn extends Entity
     }
     
     /**
-     * Get the name
+     * Get the link
+     * @return string lnk
+     */
+    public function getLink()
+    {
+        return $this->_properties['link'];
+    }
+    
+    /**
+     * Edit the name
      * @param  string $name name
      * @return string name
      */
@@ -64,5 +73,16 @@ class Svn extends Entity
     {
         $this->set('name', $name);
         return $name;
+    }
+    
+    /**
+     * Edit the link
+     * @param  string $link link
+     * @return string link
+     */
+    public function editLink($link)
+    {
+        $this->set('link', $link);
+        return $link;
     }
 }

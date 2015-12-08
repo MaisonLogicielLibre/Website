@@ -47,15 +47,28 @@
                             <?= __('Change my email') ?>
                         </a>
                     </li>
-                    <li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+					<li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "password",
                                 $object->id
-                            ]); ?>>
-                            <i class="fa fa-unlock-alt"></i>
-                            <?= __('Change my password') ?></a></li>
+                            ]); ?>">
+                            <i class="fa fa-unlock"></i>
+                            <?= __('Change my password') ?>
+                        </a>
+                    </li>
+					<li class="<?= ($this->request->action == 'svn') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
+                            [
+                                "controller" => "Users",
+                                "action" => "svn",
+                                $object->id
+                            ]); ?>">
+                            <i class="fa fa-code-fork"></i>
+                            <?= __('Edit CVS') ?>
+                        </a>
+                    </li>
                     <!-- Modify phone link/form -->
                     <li class="<?= ($this->request->action == 'edit') ? 'active' : ''; ?>">
                         <a href="<?= $this->Url->build(

@@ -105,6 +105,22 @@ class SvnsTableTest extends TestCase
     }
     
     /**
+     * Test getLink
+     * @return void
+     */
+    public function testGetLink()
+    {
+        $id = 1;
+        $expected = 'https://github.com/';
+
+        $svn = $this->Svns->get($id);
+
+        $result = $svn->getLink();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
      * Test editName
      * @return void
      */
@@ -116,6 +132,22 @@ class SvnsTableTest extends TestCase
         $svn = $this->Svns->get($id);
 
         $result = $svn->editName($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editLink
+     * @return void
+     */
+    public function testSetLink()
+    {
+        $id = 1;
+        $expected = 'https://bitbucket.com/';
+
+        $svn = $this->Svns->get($id);
+
+        $result = $svn->editLink($expected);
 
         $this->assertEquals($expected, $result);
     }

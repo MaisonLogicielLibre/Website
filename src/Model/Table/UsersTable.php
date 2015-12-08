@@ -72,6 +72,12 @@ class UsersTable extends Table
                 'foreignKey' => 'user_id'
             ]
         );
+        $this->hasMany(
+            'SvnUsers',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
         $this->belongsToMany(
             'Projects',
             [
