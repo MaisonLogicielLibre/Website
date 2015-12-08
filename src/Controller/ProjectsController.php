@@ -518,6 +518,13 @@ class ProjectsController extends AppController
                         $notifications->save($notification);
                     } else {
                         $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
+
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(_("Your project has been unarchived"));
+                        $notification->editLink('projects/view/' . $project->id);
+                        $notification->editUser($mentor);
+                        $notifications->save($notification);
                     }
                 }
             } elseif ($data['state'] == '3') { // Approved
