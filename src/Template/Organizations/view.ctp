@@ -1,5 +1,5 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?php $Parsedown = new Parsedown(); ?>
+<?php $Parsedown = new ParsedownNoImage(); ?>
     <div class="row">
         <?= $this->cell('Sidebar::organization', [$organization->id]); ?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
