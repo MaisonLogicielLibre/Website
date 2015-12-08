@@ -358,6 +358,14 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->get(intval($data['id']));
             if ($data['state'] == '3') {
                 $organization->editIsRejected((bool)$data['stateValue']);
+                foreach ($organization->getOwners() as $owner) {
+                    $notifications = $this->loadModel("Notifications");
+                    $notification = $notifications->newEntity();
+                    $notification->editName(_("Your organization has been archived"));
+                    $notification->editLink('organizations/view/' . $organization->id);
+                    $notification->editUser($owner);
+                    $notifications->save($notification);
+                }
             } elseif ($data['state'] == '2') {
                 if (!$organization->getIsValidated()) {
                     $organization->editIsValidated((bool)$data['stateValue']);
