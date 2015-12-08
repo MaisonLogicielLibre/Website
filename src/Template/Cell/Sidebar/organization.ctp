@@ -120,7 +120,7 @@
                         "action" => "editValidated",
                         $object->id
                     ]); ?>">
-                    <i class="fa fa-check fa-stack-1x" style="color:#fff;"></i>
+                    <i class="fa fa-check"></i>
                     <?= __('Approve the organization') ?>
                 </a>
             </li>
