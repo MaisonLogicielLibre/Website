@@ -716,6 +716,22 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test editIsProfessor
+     * @return void
+     */
+    public function testSetIsProfessor()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $user = $this->Users->get($id);
+
+        $result = $user->editIsStudent($expected);
+
+        $this->assertEquals($expected, $result);
+    }
     
     /**
      * Test hasRoleName
