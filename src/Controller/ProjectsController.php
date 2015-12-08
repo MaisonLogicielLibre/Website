@@ -532,6 +532,13 @@ class ProjectsController extends AppController
                     $project->editAccepted($data['stateValue']);
                     foreach ($project->getMentors() as $mentor) {
                         $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
+
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(_("Your project has been approved"));
+                        $notification->editLink('projects/view/' . $project->id);
+                        $notification->editUser($mentor);
+                        $notifications->save($notification);
                     }
                 }
             } else {
