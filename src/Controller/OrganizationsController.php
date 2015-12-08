@@ -378,6 +378,14 @@ class OrganizationsController extends AppController
             } elseif ($data['state'] == '2') {
                 if (!$organization->getIsValidated()) {
                     $organization->editIsValidated((bool)$data['stateValue']);
+                    foreach ($organization->getOwners() as $owner) {
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(_("Your organization has been approved"));
+                        $notification->editLink('organizations/view/' . $organization->id);
+                        $notification->editUser($owner);
+                        $notifications->save($notification);
+                    }
                 }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
