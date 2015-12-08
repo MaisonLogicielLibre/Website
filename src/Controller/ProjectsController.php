@@ -89,9 +89,6 @@ class ProjectsController extends AppController
      */
     public function index()
     {
-        $orgs = $this->Projects->Organizations->find('list', ['limit' => 200, 'conditions' => ['AND' => ['isValidated' => 1, 'isRejected' => 0, ]]]);
-        $this->set(compact('orgs'));
-
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
         $orgUser = (!is_null($user) ? array_map(

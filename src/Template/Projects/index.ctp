@@ -42,16 +42,8 @@
                                        class="form-control input-sm input-block-level"/></td>
                             <td><input type="text" placeholder="<?= __('Search ...'); ?>"
                                        class="form-control input-sm input-block-level"/></td>
-                            <td>
-                                <select class="form-control">
-                                    <option value="">-----</option>
-                                    <?php
-                                    foreach ($orgs as $org) {
-                                        echo '<option value="' . $org . '">' . $org . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </td>
+                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
+                                       class="form-control input-sm input-block-level"/></td>
                         </tr>
                         </tfoot>
                     </table>
