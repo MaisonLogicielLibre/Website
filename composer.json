@@ -12,6 +12,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/simon-begin/cakephp-datatables"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/simon-begin/parsedown-noImage"
         }
 	],
     "require": {
@@ -23,7 +27,8 @@
         "elboletaire/twbs-cake-plugin": "dev-master",
 		"mll/apisvn": "dev-master",
         "simon-begin/cakephp-datatables": "dev-master",
-        "erusev/parsedown": "dev-master"
+        "erusev/parsedown": "dev-master",
+        "simon-begin/parsedown-noImage": "dev-master"
     },
     "require-dev": {
         "psy/psysh": "@stable",
