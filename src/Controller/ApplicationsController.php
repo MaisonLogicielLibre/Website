@@ -198,6 +198,14 @@ class ApplicationsController extends AppController
                 $application->editRejected(true);
                 if ($this->Applications->save($application)) {
                     $this->getMailer('Application')->send('rejectedOnApplication', [$application]);
+
+                    $notifications = $this->loadModel("Notifications");
+                    $notification = $notifications->newEntity();
+                    $notification->editName(_("Your application has been rejected"));
+                    $notification->editLink('missions/view/' . $application->getMission()->id);
+                    $notification->editUser($application->getUser()->id);
+                    $notifications->save($notification);
+
                     $this->Flash->success(__('The application has been saved.'));
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
