@@ -509,6 +509,13 @@ class ProjectsController extends AppController
                 foreach ($project->getMentors() as $mentor) {
                     if ($data['stateValue']) {
                         $this->getMailer('Project')->send('archiveProject', [$project, $mentor]);
+
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(_("Your project has been archived"));
+                        $notification->editLink('projects/view/' . $project->id);
+                        $notification->editUser($mentor);
+                        $notifications->save($notification);
                     } else {
                         $this->getMailer('Project')->send('unarchiveProject', [$project, $mentor]);
                     }
