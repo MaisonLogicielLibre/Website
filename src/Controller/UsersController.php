@@ -251,6 +251,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
 
             $user->editPassword($this->request->data['password']);
+            $user->editEmailPublic($this->request->data['email']);
             $user->editMailingList(true);
 
             if ($this->Users->save($user)) {
