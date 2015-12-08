@@ -1,11 +1,15 @@
 $(document).ready(function () {
     $('#isavailablementoring').bootstrapSwitch({
-        'onText': 'Yes',
-        'offText': 'No'
+        'onText': yesTr,
+        'offText': noTr
     });
     $('#isstudent').bootstrapSwitch({
-        'onText': 'Yes',
-        'offText': 'No'
+        'onText': yesTr,
+        'offText': noTr
+    });
+    $('#isprofessor').bootstrapSwitch({
+        'onText': yesTr,
+        'offText': noTr
     });
 
     var usersSkills = new Bloodhound({
