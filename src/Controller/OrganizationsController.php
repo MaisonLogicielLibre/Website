@@ -384,6 +384,14 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get($id);
         $organization->editIsValidated(1);
         if ($this->Organizations->save($organization)) {
+            foreach ($organization->getOwners() as $owner) {
+                $notifications = $this->loadModel("Notifications");
+                $notification = $notifications->newEntity();
+                $notification->editName(_("Your organization has been approved"));
+                $notification->editLink('organizations/view/' . $organization->id);
+                $notification->editUser($owner);
+                $notifications->save($notification);
+            }
             $this->Flash->success(__('The organization has been approved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -402,6 +410,7 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get($id);
         $organization->editIsRejected(!($organization->getIsRejected()));
         if ($this->Organizations->save($organization)) {
+
             $this->Flash->success(__('The organization has been saved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
