@@ -118,6 +118,13 @@ class ApplicationsController extends AppController
                             $app->editRejected(true);
                             $this->Applications->save($app);
                             $this->getMailer('Application')->send('rejectNoMorePosition', [$app]);
+
+                            $notifications = $this->loadModel("Notifications");
+                            $notification = $notifications->newEntity();
+                            $notification->editName(_("Your application has been rejected"));
+                            $notification->editLink('missions/view/' . $app->getMission()->id);
+                            $notification->editUser($app->getUser()->id);
+                            $notifications->save($notification);
                         }
                     }
                 }
