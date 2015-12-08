@@ -328,16 +328,35 @@ footer#footer {
   border-radius: 5px;
   .page-header {
     text-align: center;
+    background: @brand-success;
     padding: 20px 0 10px 0;
-    background: @brand-info;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    .user-status {
+      display: inline-block;
+      font-size: 1em;
+      &:not(:first-child):before {
+        content: "| ";
+      }
+    }
+    &.page-header-student {
+      background: @brand-info;
+      &:hover {
+        background: darken(@brand-info, 6.5%);
+      }
+    }
+    &.page-header-professor {
+      background: @brand-danger;
+      &:hover {
+        background: darken(@brand-danger, 6.5%);
+      }
+    }
     &:hover {
-      background: @brand-success;
+      background: darken(@brand-success, 15%);
     }
     img.img-circle {
       margin: 0px auto;
