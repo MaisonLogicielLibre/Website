@@ -33,6 +33,7 @@ class NotificationsTableTest extends TestCase
      */
     public $fixtures = [
         'app.notifications',
+        'app.users'
     ];
 
     /**
@@ -45,6 +46,8 @@ class NotificationsTableTest extends TestCase
         parent::setUp();
         $config = TableRegistry::exists('Notifications') ? [] : ['className' => 'App\Model\Table\NotificationsTable'];
         $this->Notifications = TableRegistry::get('Notifications', $config);
+        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
+        $this->Users = TableRegistry::get('Users', $config);
     }
 
     /**
@@ -87,5 +90,117 @@ class NotificationsTableTest extends TestCase
     public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getId
+     * @return void
+     */
+    public function testGetId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->getId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getName
+     * @return void
+     */
+    public function testGetName()
+    {
+        $id = 1;
+        $expected = 'notification1';
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getUser
+     * @return void
+     */
+    public function testGetUser()
+    {
+        $id = 1;
+        $expected = $this->Users->get(1);
+
+        $notification = $this->Notifications->get($id, ['contain' => 'Users']);
+
+        $result = $notification->getUser();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getLink
+     * @return void
+     */
+    public function testGetLink()
+    {
+        $id = 1;
+        $expected = 'projects/view/1';
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->getLink();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editName
+     * @return void
+     */
+    public function testSetName()
+    {
+        $id = 1;
+        $expected = 'notification';
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->editName($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editUser
+     * @return void
+     */
+    public function testSetUser()
+    {
+        $id = 1;
+        $expected = $this->Users->get(1);
+
+        $notification = $this->Notifications->get($id, ['contain' => 'Users']);
+
+        $result = $notification->editUser($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test editLink
+     * @return void
+     */
+    public function testSetLink()
+    {
+        $id = 1;
+        $expected = 'organizations/view/1';
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->editLink($expected);
+
+        $this->assertEquals($expected, $result);
     }
 }
