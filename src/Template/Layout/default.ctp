@@ -41,7 +41,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li id="quebec-flag">
-                        <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']); ?>"
+                        <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']); ?>">
                             <span>Français</span>
                         </a>
                     </li>
