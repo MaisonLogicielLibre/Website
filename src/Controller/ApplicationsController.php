@@ -135,6 +135,14 @@ class ApplicationsController extends AppController
                     $this->ProjectsContributors->save($contributor);
 
                     $this->getMailer('Application')->send('acceptedOnApplication', [$application]);
+
+                    $notifications = $this->loadModel("Notifications");
+                    $notification = $notifications->newEntity();
+                    $notification->editName(_("Your application has been accepted"));
+                    $notification->editLink('missions/view/' . $application->getMission()->id);
+                    $notification->editUser($application->getUser()->id);
+                    $notifications->save($notification);
+
                     $this->Flash->success(__('The application has been saved.'));
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
