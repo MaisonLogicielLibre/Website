@@ -268,6 +268,15 @@ class User extends Entity
     }
 
     /**
+     * Get isProfessor
+     * @return bool isProfessor
+     */
+    public function isProfessor()
+    {
+        return $this->_properties['isProfessor'];
+    }
+
+    /**
      * Set the first name
      * @param  string $firstName firstName
      * @return string firstName
