@@ -54,6 +54,10 @@
                             <?= $this->Form->input('isStudent', ['label' => false, 'class' => 'form-control']); ?>
                         </div>
                         <div class="form-group">
+                            <?= $this->Form->label('isProfessor', __('Are you a professor?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
+                            <?= $this->Form->input('isProfessor', ['label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                        <div class="form-group">
                             <?= $this->Form->label('isAvailableMentoring', __('Would you like to be a mentor?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
                             <?= $this->Form->input('isAvailableMentoring', ['label' => false, 'class' => 'form-control']); ?>
                         </div>
@@ -120,6 +124,8 @@
 <?php
     $this->Html->scriptStart(['block' => 'scriptBottom']);
     echo 'var urlUsersSkills="' . $this->request->webroot . 'json/UsersSkills.json";';
+    echo 'var yesTr="' . __('Yes') . '";';
+    echo 'var noTr="' . __('No') . '";';
     $this->Html->scriptEnd();
 ?>
 <?= $this->Html->script([
