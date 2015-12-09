@@ -171,6 +171,45 @@ class ApplicationsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
+	
+	/**
+     * Test view - Ok
+     *
+     * @return void
+     */
+    public function testViewOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/applications/view/1');
+        $this->assertResponseOk();
+    }
+	
+	/**
+     * Test view - No Auth
+     *
+     * @return void
+     */
+    public function testViewNoAuth()
+    {
+        $this->get('/applications/view/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+	
+	/**
+     * Test view - No Perm
+     *
+     * @return void
+     */
+    public function testViewNoPerm()
+    {
+        $this->session(['Auth.User.id' => 4]);
+
+        $this->get('/applications/view/1');
+        $this->assertResponseSuccess();
+    }
+	
+	
 
     /**
      * Test rejected - Ok
