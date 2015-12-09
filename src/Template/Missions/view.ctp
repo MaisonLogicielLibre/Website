@@ -118,6 +118,7 @@
                                             if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
                                                 <th><?= __('Approved'); ?></th>
                                                 <th><?= __('Rejected'); ?></th>
+												<th><?= __('View details'); ?></th>
                                                 <?php
                                             endif;
                                             ?>
@@ -174,6 +175,11 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
                 'name' => 'Applications.rejected',
                 'data' => 'rejected',
                 'searchable' => false
+            ],
+			[
+                'name' => 'Applications.view',
+                'data' => 'rejected',
+                'searchable' => false
             ]
         ],
         'lengthMenu' => '',
@@ -206,8 +212,10 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
 echo 'var userUrl="' . $this->Url->Build(['controller' => 'Users', 'action' => 'view']) . '";';
 echo 'var rejectUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'rejected']) . '";';
 echo 'var acceptUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'accepted']) . '";';
+echo 'var detailsUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'view']) . '";';
 echo 'var rejectCandidateTr="' . __('Reject the candidate') . '";';
 echo 'var acceptCandidateTr="' . __('Accept the candidate') . '";';
+echo 'var detailsTr="' . __('View details') . '";';
 $this->Html->scriptEnd();
 if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
     echo $this->Html->script(['initial.min', 'missions/viewMentor.js'], ['block' => 'scriptBottom']);

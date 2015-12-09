@@ -80,6 +80,7 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
+						<?= $this->Form->input('email', ['value' => "", 'label' => __('Enter your contact email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
                         <?= $this->Form->input('interest',
                             [
                                 'label' => __('What are your interests'),
