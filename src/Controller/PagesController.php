@@ -38,7 +38,7 @@ class PagesController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['display', 'home', 'tv', 'statistics']);
+        $this->Auth->allow(['display', 'home', 'tv', 'statistics', 'administration']);
     }
     
     /**
@@ -384,5 +384,17 @@ class PagesController extends AppController
         ];
         
         $this->set(compact('contributions', 'stats'));
+    }
+
+    /**
+     * Administration method
+     * @return void
+     */
+    public function administration()
+    {
+        $this->loadModel("Projects");
+        $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
+
+        $this->set(compact('projects',));
     }
 }
