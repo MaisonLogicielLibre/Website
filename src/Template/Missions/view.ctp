@@ -69,6 +69,12 @@
                                                     <a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a>
                                                 </td>
                                             </tr>
+                                            <?php if ($mission->getProfessor()): ?>
+                                                <tr>
+                                                    <td><?= __('Professor:'); ?></td>
+                                                    <td><a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getProfessorId()]); ?>"><?= $mission->getProfessor()->getName(); ?></a></td>
+                                                </tr>
+                                            <?php endif; ?>
                                         </table>
                                     </div>
                                 </div>

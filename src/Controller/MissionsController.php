@@ -164,6 +164,7 @@ class MissionsController extends AppController
             'MissionLevels',
             'TypeMissions',
             'Users',
+            'Professors',
             'Applications'
             ]
             ]
