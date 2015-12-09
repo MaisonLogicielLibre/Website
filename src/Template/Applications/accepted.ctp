@@ -18,6 +18,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="header-title"><?= __('Accept the candidate for {0}', $mission->getName()); ?></h3>
+                        <?= $this->Form->create($application, ['type' => 'post', 'action' => 'accepted']); ?>
                         <fieldset>
                             <?php if ($application->getMission()->getRemainingPlaces() === 1) : ?>
                                 <div class="bs-callout bs-callout-danger">
