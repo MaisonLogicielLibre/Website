@@ -185,7 +185,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get(
+        $userSelected = $this->Users->get(
             $id,
             [
                 'contain' => [
@@ -200,8 +200,8 @@ class UsersController extends AppController
             ]
         );
         
-        $you = $this->request->session()->read('Auth.User.id') === $user->getId() ? true : false;
-        $this->set(compact('user', 'you'));
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $this->set(compact('userSelected', 'user'));
         $this->set('_serialize', ['user']);
     }
 
