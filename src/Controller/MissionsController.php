@@ -35,6 +35,7 @@ class MissionsController extends AppController
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
         'editMentor' => ['edit_mission', 'edit_missions'],
+        'editProfessor' => ['edit_mission', 'edit_missions'],
         'editAccepted' => ['edit_mission', 'edit_missions'],
         'editArchived' => ['edit_mission', 'edit_missions'],
         'editApplicationStatus' => ['edit_mission', 'edit_missions'],
@@ -458,6 +459,48 @@ class MissionsController extends AppController
         }
        
         $this->set(compact('currentMentorId', 'mentors', 'mission'));
+        $this->set('_serialize', ['mission']);
+    }
+
+    /**
+     * EditProfessor method
+     * @param int $id id
+     * @return redirect
+     */
+    public function editProfessor($id = null)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' =>
+                    [
+                        'Projects',
+                        'Professors'
+                    ]
+            ]
+        );
+
+        $professors = $this->Users->find('all', ['conditions' => ['isProfessor' => true]]);
+        $currentProfessorId = $mission->getProfessorId();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if (count($this->request->data)) {
+                $professorId = $this->request->data['users'];
+
+                $mission->editProfessorId($professorId[0]);
+
+                if ($this->Missions->save($mission)) {
+                    $this->Flash->success(__('The professor have been modified.'));
+                    return $this->redirect(['action' => 'view', $mission->id]);
+                } else {
+                    $this->Flash->error(__('The professor could not be modified. Please,try again.'));
+                }
+            } else {
+                $this->Flash->error(__('There must be at least one professor'));
+            }
+        }
+
+        $this->set(compact('currentProfessorId', 'professors', 'mission'));
         $this->set('_serialize', ['mission']);
     }
 }
