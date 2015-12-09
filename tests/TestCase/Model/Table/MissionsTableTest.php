@@ -135,6 +135,22 @@ class MissionsTableTest extends TestCase
     }
 
     /**
+     * Test getProfessorId
+     * @return void
+     */
+    public function testGetProfessorId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $mission = $this->Missions->get($id);
+
+        $result = $mission->getProfessorId();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test getProject
      * @return void
      */
@@ -377,7 +393,24 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Test getProfessor
+     * @return object user
+     */
+    public function testGetProfessor()
+    {
+        $id = 1;
+
+        $expected = 1;
+
+        $mission = $this->Missions->get($id, ['contain' => ['Users', 'Professors']]);
+
+        $result = $mission->getProfessor()->getId();
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * Test getApplications
      * @return void
@@ -422,6 +455,22 @@ class MissionsTableTest extends TestCase
         $user = $this->Missions->get($id);
 
         $result = $user->editMentorId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test setProfessorId
+     * @return void
+     */
+    public function testSetProfessorId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $user = $this->Missions->get($id);
+
+        $result = $user->editProfessorId($expected);
 
         $this->assertEquals($expected, $result);
     }
