@@ -87,6 +87,19 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/view/1');
         $this->assertResponseSuccess();
     }
+
+    /**
+     * Test view Members of org - Ok
+     *
+     * @return void
+     */
+    public function testViewMemberOf()
+    {
+        $this->session(['Auth.User.id' => 4]);
+
+        $this->get('/organizations/view/1');
+        $this->assertResponseSuccess();
+    }
     
     /**
      * Test view - No Authentification
