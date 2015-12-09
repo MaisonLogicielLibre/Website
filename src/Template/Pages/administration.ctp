@@ -24,4 +24,19 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-6 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="header-title"><?= __('Organizations') ?></h3>
+                <table class="table">
+                    <?php foreach ($organizations as $organization):?>
+                        <tr>
+                            <td><?= $this->Html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+                <a class="btn btn-info pull-right"><?= __('Add organization');?></a>
+            </div>
+        </div>
+    </div>
 </div>

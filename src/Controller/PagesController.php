@@ -395,6 +395,9 @@ class PagesController extends AppController
         $this->loadModel("Projects");
         $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
 
-        $this->set(compact('projects',));
+        $this->loadModel("Organizations");
+        $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
+
+        $this->set(compact('projects', 'organizations'));
     }
 }
