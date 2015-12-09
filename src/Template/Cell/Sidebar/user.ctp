@@ -5,10 +5,13 @@
                 src="<?= 'http://www.gravatar.com/avatar/' . (!empty($object) ? md5($object->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
                 class="img-circle img-responsive"/>
             <span><?= (!empty($object) ? $object->getName() : ''); ?></span>
-            <div class="col-xs-12">
-                <?= ($object->isStudent() ? '<span class="user-status">' . __('Student') . '</span>' : ''); ?>
-                <?= ($object->isProfessor() ? '<span class="user-status">' . __('Professor') . '</span>' : ''); ?></span>
+            <div class="row">
+                <div class="col-xs-12">
+                    <?= ($object->isStudent() ? '<span class="user-status">' . __('Student') . '</span>' : ''); ?>
+                    <?= ($object->isProfessor() ? '<span class="user-status">' . __('Professor') . '</span>' : ''); ?>
+                </div>
             </div>
+
             <?php if (!empty($object) && $object->getPortfolio() != null): ?>
                 <a href="<?= $object->getPortfolio() ?>"><i class="fa fa-globe"></i></a>
             <?php endif; ?>
