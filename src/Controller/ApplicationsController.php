@@ -30,7 +30,8 @@ class ApplicationsController extends AppController
 
     private $_permissions = [
         'accepted' => ['edit_mission', 'edit_missions'],
-        'rejected' => ['edit_mission', 'edit_missions']
+        'rejected' => ['edit_mission', 'edit_missions'],
+		'view' => ['edit_mission', 'edit_missions']
     ];
 
     /**
@@ -58,7 +59,6 @@ class ApplicationsController extends AppController
     {
         parent::beforeFilter($event);
         $this->loadModel("Users");
-        $this->Auth->allow(['view']);
     }
 
     /**
@@ -195,4 +195,22 @@ class ApplicationsController extends AppController
 
         $this->set(['mission' => $application->getMission(), 'application' => $application]);
     }
+	
+	/**
+     * View method
+     * @param int|null $application application
+     * @return \Cake\Network\Response|null
+     */
+    public function view($id = null)
+    {
+        $application = $this->Applications->get(
+            $id,
+            [
+                'contain' => ['Users', 'Missions', 'TypeMissions']
+            ]
+        );
+
+		$this->set(compact('application'));
+        $this->set('_serialize', ['application']);
+	}
 }

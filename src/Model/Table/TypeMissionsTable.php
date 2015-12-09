@@ -51,6 +51,12 @@ class TypeMissionsTable extends Table
             'joinTable' => 'missions_type_missions'
             ]
         );
+		$this->hasMany(
+            'Applications',
+            [
+                'foreignKey' => 'type_mission_id'
+            ]
+        );
     }
 
     /**

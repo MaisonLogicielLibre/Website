@@ -83,6 +83,33 @@ class Application extends Entity
     {
         return $this->_properties['mission'];
     }
+	
+	/**
+     * Get text
+     * @return text
+     */
+    public function getText()
+    {
+        return $this->_properties['text'];
+    }
+	
+	/**
+     * Get email
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->_properties['email'];
+    }
+	
+	/**
+     * Get type
+     * @return int
+     */
+    public function getType()
+    {
+        return $this->_properties['type_mission_id'];
+    }
     
     /**
      * Set the missionId
@@ -126,5 +153,38 @@ class Application extends Entity
     {
         $this->set('rejected', $isRejected);
         return $isRejected;
+    }
+	
+	/**
+     * Set the text
+     * @param text $text text
+     * @return text text
+     */
+    public function editText($text)
+    {
+        $this->set('text', $text);
+        return $text;
+    }
+	
+	/**
+     * Set the email
+     * @param string $email email
+     * @return string email
+     */
+    public function editEmail($email)
+    {
+        $this->set('email', $email);
+        return $email;
+    }
+	
+	/**
+     * Set the type
+     * @param int $type type
+     * @return int type
+     */
+    public function editType($type)
+    {
+        $this->set('type_mission_id', $type);
+        return $type;
     }
 }
