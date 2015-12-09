@@ -127,7 +127,8 @@ $typeMissionsOption =
         0 => __('Intern'),
         1 => __('Volunteer'),
         2 => __('Master'),
-        3 => __('Capstone')
+        3 => __('Capstone'),
+        4 => __('Professor')
     ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([
