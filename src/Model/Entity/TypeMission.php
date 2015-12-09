@@ -58,6 +58,9 @@ class TypeMission extends Entity
             case 'Capstone':
                 return __('Capstone');
                 break;
+            case 'Professor':
+                return __('Professor');
+                break;
         }
         // @codingStandardsIgnoreEnd
     }
