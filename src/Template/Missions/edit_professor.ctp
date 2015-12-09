@@ -22,7 +22,7 @@
                         <fieldset>
                             <p>
                                 <?= __('Professor of the mission : ') ?>
-                                <select id="users" name="users[]">
+                                <select id="users" name="users[]" class="form-control">
                                     <?php foreach ($professors as $professor) {
                                         if ($professor->getId() == $currentProfessorId) {
                                             $selected = true;
