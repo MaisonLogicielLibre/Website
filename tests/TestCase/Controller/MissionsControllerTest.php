@@ -415,4 +415,57 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
+
+    /**
+     * Test edit mission - Empty
+     *
+     * @return void
+     */
+    public function testEditProfessorEmpty()
+    {
+        $data = [];
+
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->post('/missions/editProfessor/1', $data);
+
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit professor of a mission - Get
+     *
+     * @return void
+     */
+    public function testEditProfessorGet()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/missions/editProfessor/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit professor of a mission - No permission
+     *
+     * @return void
+     */
+    public function testEditProfessorNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->post('/missions/editProfessor/1');
+        $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit professor of a mission - No authentification
+     *
+     * @return void
+     */
+    public function testEditProfessorNoAuth()
+    {
+        $this->post('/missions/editProfessor/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
 }
