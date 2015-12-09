@@ -29,6 +29,20 @@ use GithubApi;
 class PagesController extends AppController
 {
     /**
+     * Check if the user has the rights to see the page
+     * @param array $user user's informations
+     * @return bool
+     */
+    public function isAuthorized($user)
+    {
+        $user = $this->Users->findById($user['id'])->first();
+
+        if ($user && $this->request->action == "administration" && $user->hasRoleName(['Administrator'])) {
+            return true;
+        }
+    }
+
+    /**
      * Filter preparation
      *
      * @param Event $event event
@@ -38,7 +52,8 @@ class PagesController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['display', 'home', 'tv', 'statistics', 'administration']);
+        $this->loadModel("Users");
+        $this->Auth->allow(['display', 'home', 'tv', 'statistics']);
     }
     
     /**
