@@ -103,14 +103,14 @@ class OrganizationsController extends AppController
                                 'isValidated',
                                 'isRejected'
                             ],
-                        'join' =>
+                            'join' =>
                             [
                                 'table' => 'organizations_owners',
                                 'alias' => 'o',
                                 'type' => 'LEFT',
                                 'conditions' => 'o.organization_id = Organizations.id'
                             ],
-                        'conditions' =>
+                            'conditions' =>
                             [
                                 'OR' =>
                                     [
@@ -124,7 +124,7 @@ class OrganizationsController extends AppController
                                         ]
                                     ]
                             ],
-                        'group' => 'Organizations.id'
+                            'group' => 'Organizations.id'
                     ]
                 );
 
@@ -158,10 +158,10 @@ class OrganizationsController extends AppController
                                             'id',
                                             'OrganizationsOwners.organization_id'
                                         ],
-                                    'conditions' => 'Owners.id = ' . $user['id']
+                                        'conditions' => 'Owners.id = ' . $user['id']
                                 ]
                         ],
-                    'fields' =>
+                        'fields' =>
                         [
                             'id',
                             'name',
@@ -170,7 +170,7 @@ class OrganizationsController extends AppController
                             'isRejected',
 
                         ],
-                    'join' =>
+                        'join' =>
                         [
                             [
                                 'table' => 'organizations_owners',
@@ -185,7 +185,7 @@ class OrganizationsController extends AppController
                                 'conditions' => 'm.organization_id = Organizations.id'
                             ]
                         ],
-                    'conditions' =>
+                        'conditions' =>
                         [
                             'OR' =>
                                 [
@@ -197,7 +197,7 @@ class OrganizationsController extends AppController
                                     ]
                                 ]
                         ],
-                    'group' => 'Organizations.id'
+                        'group' => 'Organizations.id'
                 ]
             );
 
@@ -263,9 +263,11 @@ class OrganizationsController extends AppController
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
 
         if ($organization->getIsRejected() || !$organization->getIsValidated()) {
-            if ($user && !$user->hasRoleName(['Administrator']))
-                if (!$user->isMemberOf($id))
+            if ($user && !$user->hasRoleName(['Administrator'])) {
+                if (!$user->isMemberOf($id)) {
                     return $this->redirect(['action' => 'index']);
+                }
+            }
         }
         $this->set(compact('organization', 'user', 'members'));
         $this->set('_serialize', ['organization']);
@@ -573,7 +575,6 @@ class OrganizationsController extends AppController
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
-
             if (count($owners) == 1 && $user->isOwnerOf($organization->getId())) {
                 $organization->editIsRejected(true);
                 $organization->editMembers([]);
