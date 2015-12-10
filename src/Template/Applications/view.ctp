@@ -15,9 +15,12 @@
             </div>
         </div>
         <div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<div class="col-sm-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
+						<div class="row col-sm-12">
+							<h3 class="header-title"> <?= __('Application information') ?></h3>
+						</div>
 						<div class="row col-sm-12">
 							<?= __('User :') ?> <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'view', $application->user->id]); ?>"><?= $application->user->getName()?></a>
 						</div>
@@ -25,11 +28,17 @@
 							<?= __('Email :') ?> <a href="mailto:<?=$application->getEmail()?>"><?=$application->getEmail()?></a>
 						</div>
 						<div class="row col-sm-12 top-buffer">
-							<?= __('Type :') ?> <?= __($application->type_mission->name) ?>
+							<?= __('Type :') ?> <?php if (isset($application->type_mission)) { echo __($application->type_mission->name); } else { echo ''; } ?>
 						</div>
+						<?php if ($application->getText() != '') { ?>
+							<div class="row col-sm-12 top-buffer">
+								<h3 class="header-title"><?= __('Extra information') ?></h3>
+								<?= $Parsedown->text($application->getText()) ?>
+							</div>
+						<?php } ?>
 						<div class="row col-sm-12 top-buffer">
-							<strong><?= __('Extra information') ?></strong>
-							<?= $Parsedown->text($application->getText()) ?>
+							<input class="btn-success btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'accepted',$application->id])?>';" value="<?=__('Approved')?>"/>
+							<input  class="btn-danger btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'rejected',$application->id])?>';" value="<?=__('Rejected')?>"/>
 						</div>
 					</div>
 				</div>
