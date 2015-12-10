@@ -307,7 +307,7 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testApplyOk()
     {
-        $this->session(['Auth.User.id' => 1]);
+        $this->session(['Auth.User.id' => 2]);
 
         $this->post('/missions/apply/1');
         $this->assertResponseSuccess();

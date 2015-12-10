@@ -90,7 +90,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <?php if ($mission->getRemainingPlaces() > 0) : ?>
+                                    <?php if ((($user && !$isMentor) || !$user) && $mission->getRemainingPlaces() > 0) : ?>
                                         <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
                                             <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
                                     <?php endif; ?>
