@@ -6,6 +6,7 @@
                 <h1 class="page-header"><?= __('News'); ?></h1>
                 <?php
                 $this->Html->addCrumb(__('Home'), '/');
+                $this->Html->addCrumb(__('Administration'), '/Pages/administration');
                 $this->Html->addCrumb(__('News'), '/News');
 
                 echo $this->Html->getCrumbList(); ?>

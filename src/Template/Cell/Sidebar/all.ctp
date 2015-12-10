@@ -127,5 +127,11 @@
                 </li>
             </ul>
         </li>
+        <?php if ($user && $user->hasRoleName(['Administrator'])): ?>
+        <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'administration') ? 'active' : ''; ?>">
+            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'administration']); ?>">
+                <i class="fa fa-wrench  fa-lg"></i><?= __('Administration') ?></a>
+        </li>
+        <?php endif; ?>
     </ul>
 </div>
