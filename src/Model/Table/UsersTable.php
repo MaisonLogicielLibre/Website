@@ -340,7 +340,8 @@ class UsersTable extends Table
                     },
                     'message' => __('One or more skills are not recognized')
                 ]
-            );
+            )
+            ->allowEmpty('skills');
 
         return $validator;
     }
