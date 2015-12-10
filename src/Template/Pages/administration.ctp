@@ -13,12 +13,17 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-newspaper-o fa-5x"></i> <?= __('News'); ?>
+                        <i class="fa fa-newspaper-o fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">
                             <a class="btn btn-warning" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'index']);?>"><?= __('Manage');?></a>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <?= __('News'); ?>
                     </div>
                 </div>
             </div>
@@ -29,12 +34,18 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-comments-o fa-5x"></i> <?= __('Meetups'); ?>
+                        <i class="fa fa-comments-o fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">
                             <a class="btn btn-warning" href="<?= $this->Url->build(['controller' => 'Meetups', 'action' => 'index']);?>"><?= __('Manage');?></a>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <?= __('Meetups'); ?>
                     </div>
                 </div>
             </div>
