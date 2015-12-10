@@ -37,4 +37,73 @@ class Notification extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    /**
+     * Get the id
+     * @return int id
+     */
+    public function getId()
+    {
+        return $this->_properties['id'];
+    }
+
+    /**
+     * Get the name
+     * @return string name
+     */
+    public function getName()
+    {
+        return $this->_properties['name'];
+    }
+
+    /**
+     * Get the user
+     * @return objet user
+     */
+    public function getUser()
+    {
+        return $this->_properties['user'];
+    }
+
+    /**
+     * Get the link
+     * @return string link
+     */
+    public function getLink()
+    {
+        return $this->_properties['link'];
+    }
+
+    /**
+     * Set the name
+     * @param  string $name name
+     * @return string name
+     */
+    public function editName($name)
+    {
+        $this->set('name', $name);
+        return $name;
+    }
+
+    /**
+     * Set the user
+     * @param  object $user user
+     * @return object user
+     */
+    public function editUser($user)
+    {
+        $this->set('user', $user);
+        return $user;
+    }
+
+    /**
+     * Set the link
+     * @param  string $link link
+     * @return string link
+     */
+    public function editLink($link)
+    {
+        $this->set('link', $link);
+        return $link;
+    }
 }
