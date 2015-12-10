@@ -130,6 +130,22 @@ class TypeMissionsTableTest extends TestCase
     }
 
     /**
+     * Test getName
+     * @return void
+     */
+    public function testGetName5()
+    {
+        $id = 5;
+        $expected = __('Professor');
+
+        $type = $this->TypeMissions->get($id);
+
+        $result = $type->getName();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test validation
      * @return void
      */

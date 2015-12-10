@@ -154,7 +154,7 @@ INSERT INTO `universities` (`id`, `name`, `website`) VALUES
 (1, 'École de Technologie Supérieure', '');
 
 INSERT INTO `mll_site`.`mission_levels` (`id`, `name`) VALUES (NULL, '1'), (NULL, '2'), (NULL, '3'), (NULL, '4'), (NULL, 'Master');
-INSERT INTO `mll_site`.`type_missions` (`id`, `name`) VALUES (NULL, 'Intern'), (NULL, 'Volunteer'), (NULL, 'Master'), (NULL, 'Capstone');
+INSERT INTO `mll_site`.`type_missions` (`id`, `name`) VALUES (NULL, 'Intern'), (NULL, 'Volunteer'), (NULL, 'Master'), (NULL, 'Capstone'), (NULL, 'Professor');
 INSERT INTO `mll_site`.`hash_types` (`id`, `name`) VALUES (NULL, 'resetPassword');
 
 --

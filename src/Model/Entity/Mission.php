@@ -67,6 +67,15 @@ class Mission extends Entity
     }
 
     /**
+     * Get the professor_id
+     * @return int id
+     */
+    public function getProfessorId()
+    {
+        return $this->_properties['professor_id'];
+    }
+
+    /**
      * Get the name
      * @return string name
      */
@@ -209,6 +218,15 @@ class Mission extends Entity
     }
 
     /**
+     * Get the professor
+     * @return object user
+     */
+    public function getProfessor()
+    {
+        return $this->_properties['professor'];
+    }
+
+    /**
      * Set the projectId
      * @param int $projectId projectId
      * @return int projectId
@@ -228,6 +246,17 @@ class Mission extends Entity
     {
         $this->set('mentor_id', $mentorId);
         return $mentorId;
+    }
+
+    /**
+     * Set the professorId
+     * @param int $professorId professorId
+     * @return int professorId
+     */
+    public function editProfessorId($professorId)
+    {
+        $this->set('professor_id', $professorId);
+        return $professorId;
     }
 
     /**

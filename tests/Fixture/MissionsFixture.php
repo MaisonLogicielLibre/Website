@@ -29,6 +29,7 @@ class MissionsFixture extends TestFixture
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'archived' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'professor_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -55,6 +56,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -69,6 +71,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -83,6 +86,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -97,6 +101,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 1,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -111,6 +116,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 2,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 1
@@ -125,6 +131,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 2,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -139,6 +146,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 2,
             'mentor_id' => 1,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 1
@@ -153,6 +161,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 3,
             'project_id' => 2,
             'mentor_id' => 3,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -167,6 +176,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 1,
             'project_id' => 2,
             'mentor_id' => 3,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0
@@ -181,6 +191,7 @@ class MissionsFixture extends TestFixture
             'internNbr' => 0,
             'project_id' => 2,
             'mentor_id' => 3,
+            'professor_id' => 1,
             'created' => '2015-10-20 15:10:06',
             'modified' => '2015-10-20 15:10:06',
             'archived' => 0

@@ -41,6 +41,21 @@
                 </li>
             <?php
                 endif;
+                if (($user->hasPermissionName(['edit_mission']) && ($isMentor)) || $user->hasPermissionName(['edit_missions'])):
+                    ?>
+                    <li class="<?= ($this->request->action == 'editProfessor') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
+                            [
+                                'controller' => 'Missions',
+                                'action' => 'editProfessor',
+                                $object->id
+                            ]) ?>">
+                            <i class="fa fa-pencil"></i>
+                            <?= __('Edit the professor') ?>
+                        </a>
+                    </li>
+            <?php
+                endif;
                 if (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions'])):
             ?>
                 <li class="<?= ($this->request->action == 'edit') ? 'active' : ''; ?>">
