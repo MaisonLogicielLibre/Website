@@ -27,7 +27,7 @@
                 <h2><?= __("Reset my account"); ?></h2>
             </div>
                 <div id="recover-password-alert" class="col-sm-12 col-xs-12"><?= $this->Flash->render() ?></div>
-                <div id="recover-password-avatar" class="col-sm-offset-4 col-sm-4 col-xs-4 col-xs-offset-12">
+                <div id="recover-password-avatar" class="col-xs-offset-4 col-xs-4">
                     <img src="<?= $user->getAvatar() ?>" alt="<?= $user->getAvatar() ?>" class="img-responsive img-circle img-thumbnail" />
                 </div>
                 <div class="col-sm-12 col-xs-12 text-center">
