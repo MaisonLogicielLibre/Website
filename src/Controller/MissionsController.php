@@ -357,27 +357,34 @@ class MissionsController extends AppController
         $mission = $this->Missions->get(
             $id,
             [
-                'contain' => ['Users', 'Applications', 'Projects']
+                'contain' => ['Users', 'Applications', 'Projects', 'TypeMissions']
             ]
         );
-
+        
+        $userId = $this->request->session()->read('Auth.User.id');
+        $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
+        
+        $userEmail = $user->getEmailPublic();
+        
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($mission->getRemainingPlaces() > 0) {
                 $applications = TableRegistry::get('Applications');
-                $userId = $this->request->session()->read('Auth.User.id');
+                
 
-                $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
                 if ($user->isStudent()) {
-                    if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && $user->getGender() && $user->getBiography()) {
+                    if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
                         if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
                             if ($this->request->is(['patch', 'post', 'put'])) {
                                 $application = $applications->newEntity();
+                                
+                                $data = $this->request->data;
+                                $data['rejected'] = false;
+                                $data['accepted'] = false;
+                                $data['user_id'] = $userId;
+                                $data['mission_id'] = $mission->getId();
 
-                                $application->editMissionId($mission->getId());
-                                $application->editUserId($userId);
-                                $application->editAccepted(false);
-                                $application->editRejected(false);
-
+                                $application = $applications->patchEntity($application, $data);
+                                
                                 if ($applications->save($application)) {
                                     $this->Flash->success(__('You have applied on the mission'));
                                     $user = $this->Users->get($userId);
@@ -405,7 +412,7 @@ class MissionsController extends AppController
                     $this->Flash->error(__("Only students can apply on missions. If you are a student, please fill your profile."));
                     return $this->redirect(['action' => 'view', $id]);
                 }
-                $this->set(compact('mission'));
+                $this->set(compact('mission', 'userEmail'));
                 $this->set('_serialize', ['mission']);
             } else {
                 $this->Flash->error(__('No more position available') . '.');
