@@ -92,7 +92,7 @@ class UsersFixture extends TestFixture
             'username' => 'admin',
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
-            'isStudent' => 0,
+            'isStudent' => 1,
             'mailingList' => 0,
             'twitter' => 'http://montwitter.com',
             'facebook' => 'http://monfacebook.com',
