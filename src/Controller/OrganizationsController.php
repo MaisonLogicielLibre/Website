@@ -355,7 +355,7 @@ class OrganizationsController extends AppController
         if ($this->request->is('ajax')) {
             $this->autoRender = false;
             $data = $this->request->data;
-            $organization = $this->Organizations->get(intval($data['id']));
+            $organization = $this->Organizations->get(intval($data['id']), ['contain' => ['Owners']]);
             if ($data['state'] == '3') {
                 $organization->editIsRejected((bool)$data['stateValue']);
                 foreach ($organization->getOwners() as $owner) {
@@ -406,7 +406,7 @@ class OrganizationsController extends AppController
     public function editValidated($id)
     {
         $this->autoRender = false;
-        $organization = $this->Organizations->get($id);
+        $organization = $this->Organizations->get($id, ['contain' => ['Owners']]);
         $organization->editIsValidated(1);
         if ($this->Organizations->save($organization)) {
             foreach ($organization->getOwners() as $owner) {
@@ -432,7 +432,7 @@ class OrganizationsController extends AppController
     public function editRejected($id)
     {
         $this->autoRender = false;
-        $organization = $this->Organizations->get($id);
+        $organization = $this->Organizations->get($id, ['contain' => ['Owners']]);
         $organization->editIsRejected(!($organization->getIsRejected()));
         if ($this->Organizations->save($organization)) {
             foreach ($organization->getOwners() as $owner) {

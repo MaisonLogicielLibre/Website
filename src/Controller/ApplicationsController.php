@@ -123,7 +123,7 @@ class ApplicationsController extends AppController
                             $notification = $notifications->newEntity();
                             $notification->editName(_("Your application has been rejected"));
                             $notification->editLink('missions/view/' . $app->getMission()->id);
-                            $notification->editUser($app->getUser()->id);
+                            $notification->editUser($app->getUser());
                             $notifications->save($notification);
                         }
                     }
@@ -140,7 +140,7 @@ class ApplicationsController extends AppController
                     $notification = $notifications->newEntity();
                     $notification->editName(_("Your application has been accepted"));
                     $notification->editLink('missions/view/' . $application->getMission()->id);
-                    $notification->editUser($application->getUser()->id);
+                    $notification->editUser($application->getUser());
                     $notifications->save($notification);
 
                     $this->Flash->success(__('The application has been saved.'));
@@ -203,7 +203,7 @@ class ApplicationsController extends AppController
                     $notification = $notifications->newEntity();
                     $notification->editName(_("Your application has been rejected"));
                     $notification->editLink('missions/view/' . $application->getMission()->id);
-                    $notification->editUser($application->getUser()->id);
+                    $notification->editUser($application->getUser());
                     $notifications->save($notification);
 
                     $this->Flash->success(__('The application has been saved.'));
