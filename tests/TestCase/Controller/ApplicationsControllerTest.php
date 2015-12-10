@@ -171,8 +171,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
-	
-	/**
+    
+    /**
      * Test view - Ok
      *
      * @return void
@@ -184,8 +184,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertResponseOk();
     }
-	
-	/**
+    
+    /**
      * Test view - No Auth
      *
      * @return void
@@ -195,8 +195,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-	
-	/**
+    
+    /**
      * Test view - No Perm
      *
      * @return void
@@ -208,8 +208,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertResponseSuccess();
     }
-	
-	
+    
+    
 
     /**
      * Test rejected - Ok

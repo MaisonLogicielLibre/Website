@@ -83,8 +83,8 @@ class Application extends Entity
     {
         return $this->_properties['mission'];
     }
-	
-	/**
+    
+    /**
      * Get text
      * @return text
      */
@@ -92,8 +92,8 @@ class Application extends Entity
     {
         return $this->_properties['text'];
     }
-	
-	/**
+    
+    /**
      * Get email
      * @return string
      */
@@ -101,8 +101,8 @@ class Application extends Entity
     {
         return $this->_properties['email'];
     }
-	
-	/**
+    
+    /**
      * Get type
      * @return int
      */
@@ -154,8 +154,8 @@ class Application extends Entity
         $this->set('rejected', $isRejected);
         return $isRejected;
     }
-	
-	/**
+    
+    /**
      * Set the text
      * @param text $text text
      * @return text text
@@ -165,8 +165,8 @@ class Application extends Entity
         $this->set('text', $text);
         return $text;
     }
-	
-	/**
+    
+    /**
      * Set the email
      * @param string $email email
      * @return string email
@@ -176,8 +176,8 @@ class Application extends Entity
         $this->set('email', $email);
         return $email;
     }
-	
-	/**
+    
+    /**
      * Set the type
      * @param int $type type
      * @return int type

@@ -111,8 +111,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getText
      * @return void
      */
@@ -127,8 +127,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getType
      * @return void
      */
@@ -143,8 +143,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test getEmail
      * @return void
      */
@@ -239,8 +239,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test editText
      * @return void
      */
@@ -255,8 +255,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test editEmail
      * @return void
      */
@@ -271,8 +271,8 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-	
-	/**
+    
+    /**
      * Test editType
      * @return void
      */

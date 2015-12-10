@@ -360,12 +360,12 @@ class MissionsController extends AppController
                 'contain' => ['Users', 'Applications', 'Projects', 'TypeMissions']
             ]
         );
-		
-		$userId = $this->request->session()->read('Auth.User.id');
+        
+        $userId = $this->request->session()->read('Auth.User.id');
         $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
-		
-		$userEmail = $user->getEmailPublic();
-		
+        
+        $userEmail = $user->getEmailPublic();
+        
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($mission->getRemainingPlaces() > 0) {
                 $applications = TableRegistry::get('Applications');
@@ -376,15 +376,15 @@ class MissionsController extends AppController
                         if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
                             if ($this->request->is(['patch', 'post', 'put'])) {
                                 $application = $applications->newEntity();
-								
-								$data = $this->request->data;
-								$data['rejected'] = false;
-								$data['accepted'] = false;
-								$data['user_id'] = $userId;
-								$data['mission_id'] = $mission->getId();
+                                
+                                $data = $this->request->data;
+                                $data['rejected'] = false;
+                                $data['accepted'] = false;
+                                $data['user_id'] = $userId;
+                                $data['mission_id'] = $mission->getId();
 
-								$application = $applications->patchEntity($application, $data);
-								
+                                $application = $applications->patchEntity($application, $data);
+                                
                                 if ($applications->save($application)) {
                                     $this->Flash->success(__('You have applied on the mission'));
                                     $user = $this->Users->get($userId);
