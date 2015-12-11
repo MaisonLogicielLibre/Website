@@ -36,10 +36,13 @@
 								<?= $Parsedown->text($application->getText()) ?>
 							</div>
 						<?php } ?>
-						<div class="row col-sm-12 top-buffer">
-							<input class="btn-success btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'accepted',$application->id])?>';" value="<?=__('Approved')?>"/>
-							<input  class="btn-danger btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'rejected',$application->id])?>';" value="<?=__('Rejected')?>"/>
-						</div>
+						
+						<?php if(!($application->accepted)) : ?>
+							<div class="row col-sm-12 top-buffer">
+								<input class="btn-success btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'accepted',$application->id])?>';" value="<?=__('Approved')?>"/>
+								<input  class="btn-danger btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'rejected',$application->id])?>';" value="<?=__('Rejected')?>"/>
+							</div>
+						<?php endif ; ?>
 					</div>
 				</div>
 			</div>
