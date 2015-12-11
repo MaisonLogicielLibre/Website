@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2015-12-11 16:37+0000\n"
-"PO-Revision-Date: 2015-12-11 13:11-0500\n"
+"PO-Revision-Date: 2015-12-11 16:25-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -795,12 +795,12 @@ msgstr "Information additionnelle"
 #: Template/Organizations/admin_index.ctp:26;43
 #: Template/Projects/admin_index.ctp:28
 msgid "Approved"
-msgstr "Approuvé"
+msgstr "Approuver"
 
 #: Template/Applications/view.ctp:41 Template/Missions/view.ctp:126
 #: Template/Organizations/admin_index.ctp:27;50
 msgid "Rejected"
-msgstr "Rejeté"
+msgstr "Rejeter"
 
 #: Template/Cell/Sidebar/all.ctp:10 Template/Missions/index.ctp:26
 #: Template/Organizations/add.ctp:7 Template/Organizations/add_member.ctp:10
