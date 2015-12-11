@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-10 14:34-0500\n"
-"PO-Revision-Date: 2015-12-10 14:44-0500\n"
+"POT-Creation-Date: 2015-12-11 16:37+0000\n"
+"PO-Revision-Date: 2015-12-11 12:39-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: en_US\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: Controller/AppController.php:65 Controller/UsersController.php:258
 #: Template/Layout/default.ctp:31 Template/Pages/home.ctp:31;104
@@ -41,6 +41,14 @@ msgstr "rejected"
 msgid "You're not the mentor on this mission."
 msgstr "You are not the mentor of this mission."
 
+#: Controller/ApplicationsController.php:124;204
+msgid "Your application has been rejected"
+msgstr "Your application has been rejected"
+
+#: Controller/ApplicationsController.php:141
+msgid "Your application has been accepted"
+msgstr "Your application has been accepted"
+
 #: Controller/ApplicationsController.php:146;209
 #: Controller/ProjectsController.php:660
 msgid "The application has been saved."
@@ -51,7 +59,8 @@ msgstr "The application has been saved."
 msgid "The application could not be saved. Please, try again."
 msgstr "The application could not be saved. Please try again."
 
-#: Controller/ApplicationsController.php:152;215 Model/Table/UsersTable.php:309
+#: Controller/ApplicationsController.php:152;215
+#: Model/Table/UsersTable.php:309
 msgid " Old password isn't valid"
 msgstr " Old password is not valid"
 
@@ -211,6 +220,18 @@ msgstr "The organization has been saved."
 msgid "The organization could not be saved. Please, try again."
 msgstr "The organization could not be saved. Please try again."
 
+#: Controller/OrganizationsController.php:372;448
+msgid "Your organization has been archived"
+msgstr "Your organization has been archived"
+
+#: Controller/OrganizationsController.php:379
+msgid "Your organization has been unarchived"
+msgstr "Your organization has been unarchived"
+
+#: Controller/OrganizationsController.php:391;422
+msgid "Your organization has been approved"
+msgstr "Your organization has been approved"
+
 #: Controller/OrganizationsController.php:398
 #: Controller/ProjectsController.php:542
 msgid "Cannot perform the change."
@@ -279,11 +300,11 @@ msgid "There was an error. Please,try again."
 msgstr "There was an error. Please try again."
 
 #: Controller/PagesController.php:205;371 Model/Entity/Mission.php:165;188
-#: Template/Element/Missions/addForm.ctp:35;43 Template/Missions/edit.ctp:70;78
-#: Template/Missions/index.ctp:69 Template/Organizations/view.ctp:78;85
-#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26;39
-#: Template/Users/index.ctp:136 Template/Users/register.ctp:61
-#: Template/Users/view.ctp:49
+#: Template/Element/Missions/addForm.ctp:35;43
+#: Template/Missions/edit.ctp:70;78 Template/Missions/index.ctp:69
+#: Template/Organizations/view.ctp:78;85 Template/Projects/view.ctp:113;120
+#: Template/Users/edit.ctp:26;39 Template/Users/index.ctp:136
+#: Template/Users/register.ctp:61 Template/Users/view.ctp:49
 msgid "Not specified"
 msgstr "Not specified"
 
@@ -294,6 +315,22 @@ msgstr "The project has been saved."
 #: Controller/ProjectsController.php:285;430;459;575;615
 msgid "The project could not be saved. Please, try again."
 msgstr "The project could not be saved. Please try again."
+
+#: Controller/ProjectsController.php:512;597 Mailer/ProjectMailer.php:38
+msgid "Your project has been archived"
+msgstr "Your project has been archived"
+
+#: Controller/ProjectsController.php:521;606 Mailer/ProjectMailer.php:49
+msgid "Your project has been unarchived"
+msgstr "Your project has been unarchived"
+
+#: Controller/ProjectsController.php:535 Mailer/ProjectMailer.php:27
+msgid "Your project has been approved"
+msgstr "Your project has been approved"
+
+#: Controller/ProjectsController.php:567
+msgid "Your project has been accepted"
+msgstr "Your project has been accepted"
 
 #: Controller/ProjectsController.php:572
 msgid "The project has been accepted."
@@ -489,18 +526,6 @@ msgstr "All positions available for {0} has been filled"
 #: Mailer/ApplicationMailer.php:66
 msgid "You've been rejected for {0}"
 msgstr "You has been rejected for {0}"
-
-#: Mailer/ProjectMailer.php:27
-msgid "Your project has been approved"
-msgstr "Your project has been approved"
-
-#: Mailer/ProjectMailer.php:38
-msgid "Your project has been archived"
-msgstr "Your project has been archived"
-
-#: Mailer/ProjectMailer.php:49
-msgid "Your project has been unarchived"
-msgstr "Your project has been unarchived"
 
 #: Mailer/UserMailer.php:27
 msgid "Reset password"
@@ -795,12 +820,14 @@ msgstr "Organizations list"
 msgid "Submit an organization"
 msgstr "Submit organization"
 
-#: Template/Cell/Sidebar/all.ctp:38 Template/Cell/Sidebar/project_action.ctp:22
+#: Template/Cell/Sidebar/all.ctp:38
+#: Template/Cell/Sidebar/project_action.ctp:22
 #: Template/Projects/admin_index.ctp:5;9;18 Template/Projects/index.ctp:4;8;25
 msgid "List of projects"
 msgstr "Projects list"
 
-#: Template/Cell/Sidebar/all.ctp:44 Template/Cell/Sidebar/project_action.ctp:58
+#: Template/Cell/Sidebar/all.ctp:44
+#: Template/Cell/Sidebar/project_action.ctp:58
 #: Template/Element/News/news-table.ctp:15 Template/Pages/tv3.ctp:62
 #: Template/Projects/submit.ctp:4;8;26
 msgid "Submit a project"
@@ -856,8 +883,8 @@ msgstr "Government"
 
 #: Template/Cell/Sidebar/all.ctp:133 Template/Meetups/add.ctp:10
 #: Template/Meetups/edit.ctp:10 Template/Meetups/index.ctp:10
-#: Template/News/add.ctp:10 Template/News/edit.ctp:10 Template/News/index.ctp:9
-#: Template/Pages/administration.ctp:3;6
+#: Template/News/add.ctp:10 Template/News/edit.ctp:10
+#: Template/News/index.ctp:9 Template/Pages/administration.ctp:3;6
 msgid "Administration"
 msgstr "Administration"
 
@@ -869,7 +896,8 @@ msgstr "List meetup"
 msgid "Add meetup"
 msgstr "Add meetup"
 
-#: Template/Cell/Sidebar/mission.ctp:9 Template/Cell/Sidebar/organization.ctp:9
+#: Template/Cell/Sidebar/mission.ctp:9
+#: Template/Cell/Sidebar/organization.ctp:9
 #: Template/Cell/Sidebar/project.ctp:9 Template/Meetups/index.ctp:37
 #: Template/News/index.ctp:27;48 Template/Projects/index.ctp:32
 #: Template/Projects/my_projects.ctp:25
@@ -1085,9 +1113,10 @@ msgstr "Add comment"
 #: Template/Comments/add.ctp:22 Template/Comments/edit.ctp:29
 #: Template/Meetups/add.ctp:29 Template/Meetups/edit.ctp:29
 #: Template/Missions/add.ctp:29 Template/Missions/edit.ctp:92
-#: Template/Missions/edit_mentor.ctp:45 Template/Missions/edit_professor.ctp:45
-#: Template/News/add.ctp:31 Template/News/edit.ctp:31
-#: Template/Organizations/add.ctp:34 Template/Organizations/add_member.ctp:47
+#: Template/Missions/edit_mentor.ctp:45
+#: Template/Missions/edit_professor.ctp:45 Template/News/add.ctp:31
+#: Template/News/edit.ctp:31 Template/Organizations/add.ctp:34
+#: Template/Organizations/add_member.ctp:47
 #: Template/Organizations/add_owner.ctp:45 Template/Organizations/edit.ctp:38
 #: Template/Organizations/submit.ctp:43
 #: Template/OrganizationsProjects/add.ctp:21
@@ -1238,9 +1267,8 @@ msgid "Odoo meetup"
 msgstr "Odoo meetup"
 
 #: Template/Element/Meetup/meetup-table.ctp:28
-#, fuzzy
 msgid "November 28"
-msgstr "November 3"
+msgstr "November 28"
 
 #: Template/Element/Meetup/meetup-table.ctp:29
 msgid ""
@@ -1602,7 +1630,8 @@ msgstr "Session"
 #: Template/Missions/index.ctp:34 Template/Organizations/admin_index.ctp:35;37
 #: Template/Organizations/index.ctp:38;40
 #: Template/Organizations/my_organizations.ctp:30;32
-#: Template/Projects/admin_index.ctp:37;39 Template/Projects/index.ctp:41;43;45
+#: Template/Projects/admin_index.ctp:37;39
+#: Template/Projects/index.ctp:41;43;45
 #: Template/Projects/my_projects.ctp:34;36 Template/Projects/view.ctp:84;89
 #: Template/Users/index.ctp:35;38;41
 msgid "Search ..."
