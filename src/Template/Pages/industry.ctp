@@ -35,7 +35,7 @@
 					<?php echo $this->Html->image('savoirfairelinux.jpg', ['alt' => 'Savoirfairelinux', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
 				<div class="col-sm-10">
-					<h4><a href="https://www.savoirfairelinux.com"> Savoir-faire LINUX </a></h4>
+					<h4><a href="https://www.savoirfairelinux.com"> Savoir-faire Linux </a></h4>
 				</div>
 			</div>
 			<div class="row">
