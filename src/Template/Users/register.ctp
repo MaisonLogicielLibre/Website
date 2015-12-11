@@ -69,15 +69,7 @@
                     ]); ?>
                 </fieldset>
             </div>
-            <div class="col-sm-12 col-xs-12">
-                <div class="checkbox">
-                    <input name="remember" value="0" type="hidden">
-                    <label for="remember">
-                        <input name="remember" value="0" id="remember" type="checkbox" required>
-                        <?= __('I accept {0}', $this->Html->link(__('Terms and Conditions'), ['controller' => 'Pages', 'action' => 'terms'])); ?>
-                    </label>
-                </div>
-            </div>
+            
             <?= $this->Form->button(__('Sign Up'), ['class' => 'btn btn-info']); ?>
             <?= $this->Form->end() ?>
         </div>
