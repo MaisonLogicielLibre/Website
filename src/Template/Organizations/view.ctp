@@ -19,7 +19,23 @@
                                         <table class="table borderless table-striped">
                                             <?php foreach ($organization->projects as $project): ?>
                                                 <tr>
-                                                    <td><?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?></td>
+													<?php if($project->isArchived()) :
+															if($user && $user->isMemberOf($organization->getId())) : ?>
+																<td>
+																	<?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?> 
+																	<span class="label label-warning label-as-badge"><?= __('Archived'); ?></span>
+																</td>
+															<?php else : ?>
+																<td>
+																	<?= $project->getName() ?>
+																	<span class="label label-warning label-as-badge"><?= __('Archived'); ?></span>
+																</td>
+															<?php endif ; ?>
+															
+												
+													<?php else : ?>
+														<?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
+													<?php endif ; ?>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </table>
