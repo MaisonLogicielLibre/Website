@@ -197,7 +197,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h3 class="header-title">Utilisateurs par université</h3>
+                <h3 class="header-title"><?= __('Users per university') ?></h3>
                 <?= $this->GoogleChart->create("ColumnChart", "chart3")
                     ->addColumns([[
                         'string',

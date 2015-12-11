@@ -32,6 +32,16 @@
                             <?= $this->Form->label('universitie_id', __('University'), ['class' => 'control-label']); ?>
                             <?= $this->Form->select('universitie_id', $options, ['class' => 'form-control']); ?>
                         </div>
+                        <div class="form-group">
+                            <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
+                            <select class="form-control" name="gender">
+                                <option
+                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
+                                <option
+                                    value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
+                                <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,6 +52,10 @@
                         <div class="form-group">
                             <?= $this->Form->label('isStudent', __('Are you a student?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
                             <?= $this->Form->input('isStudent', ['label' => false, 'class' => 'form-control']); ?>
+                        </div>
+                        <div class="form-group">
+                            <?= $this->Form->label('isProfessor', __('Are you a professor?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
+                            <?= $this->Form->input('isProfessor', ['label' => false, 'class' => 'form-control']); ?>
                         </div>
                         <div class="form-group">
                             <?= $this->Form->label('isAvailableMentoring', __('Would you like to be a mentor?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
@@ -66,21 +80,32 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
-                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
-                        <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
-
-                        <div class="form-group">
-                            <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
-                            <select class="form-control" name="gender">
-                                <option
-                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
-                                <option
-                                    value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
-                                <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>
-                            </select>
+						<?= $this->Form->input('email', ['value' => "", 'label' => __('Enter your contact email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
+                        <?= $this->Form->input('interest',
+                            [
+                                'label' => __('What are your interests'),
+                                'data-provide' => 'markdown',
+                                'data-iconlibrary' => 'fa',
+                                'data-hidden-buttons' => 'cmdImage',
+                                'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
+                                'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
+                            ]
+                        ); ?>
+                        <div id="bloodhound">
+                        <?= $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]); ?>
                         </div>
-
+                        <br />
+                        <h3 class="header-title"><?= __('Contact information'); ?></h3>
+                        <?= $this->Form->input('phone', ['label' => __('Phone')]); ?>
+                        <?= $this->Form->input('emailPublic', ['label' => __('Enter your public email'), 'placeholder' => __('Email'), 'autocomplete' => 'off']); ?>
                         <?= $this->Form->input('mailingList', ['label' => __('Subscribe to receive promotional email from ML2')]); ?>
+                        <br />
+                        <h3 class="header-title"><?= __('Social networks'); ?></h3>
+                        <?= $this->Form->input('portfolio', ['type' => 'text', 'label' => __('Portfolio'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('twitter', ['type' => 'text', 'label' => __('Twitter'), 'placeholder' => __("username twitter")]); ?>
+                        <?= $this->Form->input('facebook', ['type' => 'text', 'label' => __('Facebook'), 'placeholder' => __("username facebook")]); ?>
+                        <?= $this->Form->input('googlePlus', ['type' => 'text', 'label' => __('Google+'), 'placeholder' => __("http(s)://website.com")]); ?>
+                        <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
 
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
                         <?= $this->Form->button(__('Cancel'), [
@@ -94,12 +119,20 @@
                         ]); ?>
                     </div>
                 </div>
-
         <?= $this->Form->end() ?>
     </div>
 </div>
+<?php
+    $this->Html->scriptStart(['block' => 'scriptBottom']);
+    echo 'var urlUsersSkills="' . $this->request->webroot . 'json/UsersSkills.json";';
+    echo 'var yesTr="' . __('Yes') . '";';
+    echo 'var noTr="' . __('No') . '";';
+    $this->Html->scriptEnd();
+?>
 <?= $this->Html->script([
     'bootstrap/bootstrap-switch.min',
+    'bootstrap-tokenfield',
+    'typeahead.min',
     'users/edit',
     'markdown/markdown',
     'markdown/to-markdown',

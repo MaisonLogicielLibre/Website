@@ -1,5 +1,5 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?php $Parsedown = new Parsedown(); ?>
+<?php $Parsedown = new ParsedownNoImage(); ?>
     <div class="row">
         <?= $this->cell('Sidebar::project', [$project->id]); ?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -127,7 +127,8 @@ $typeMissionsOption =
         0 => __('Intern'),
         1 => __('Volunteer'),
         2 => __('Master'),
-        3 => __('Capstone')
+        3 => __('Capstone'),
+        4 => __('Professor')
     ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([

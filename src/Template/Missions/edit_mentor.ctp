@@ -22,7 +22,7 @@
                         <fieldset>
                             <p>
                                 <?= __('Mentor of the mission : ') ?>
-                                <select id="users" name="users[]">
+                                <select id="users" name="users[]" class="form-control">
                                     <?php foreach ($mentors as $mentor) {
                                         if ($mentor->getId() == $currentMentorId) {
                                             $selected = true;

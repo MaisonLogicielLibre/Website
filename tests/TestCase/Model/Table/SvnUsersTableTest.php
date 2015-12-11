@@ -143,6 +143,54 @@ class SvnUsersTableTest extends TestCase
     }
     
     /**
+     * Test editPseudo
+     * @return void
+     */
+    public function testSetPseudo()
+    {
+        $id = 1;
+        $expected = 'pseudo';
+
+        $svn = $this->SvnUsers->get($id);
+
+        $result = $svn->editPseudo($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editSvnId
+     * @return void
+     */
+    public function testSetSvnId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $svn = $this->SvnUsers->get($id);
+
+        $result = $svn->editSvnId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editUserId
+     * @return void
+     */
+    public function testSetUserId()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $svn = $this->SvnUsers->get($id);
+
+        $result = $svn->editUserId($expected);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
      * Test validation
      * @return void
      */

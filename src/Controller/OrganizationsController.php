@@ -45,7 +45,7 @@ class OrganizationsController extends AppController
     public function isAuthorized($user)
     {
         $user = $this->Users->findById($user['id'])->first();
-       
+
         if (isset($this->_permissions[$this->request->action])) {
             if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
@@ -128,12 +128,12 @@ class OrganizationsController extends AppController
                     ]
                 );
 
-                $this->set(
-                    [
+            $this->set(
+                [
                     'data' => $data,
                     '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                    ]
-                );
+                ]
+            );
         }
     }
 
@@ -219,14 +219,14 @@ class OrganizationsController extends AppController
         $data = $this->DataTables->find(
             'organizations',
             [
-            'contain' => []
+                'contain' => []
             ]
         );
 
         $this->set(
             [
-            'data' => $data,
-            '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
             ]
         );
         $this->render('adminIndex');
@@ -235,33 +235,40 @@ class OrganizationsController extends AppController
     /**
      * View method
      * @param string $id id
-     * @return void
+     * @return redirect
      */
     public function view($id = null)
     {
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => ['Projects', 'Members', 'Owners']
+                'contain' => ['Projects', 'Members', 'Owners']
             ]
         );
-        
+
         $members = [];
         $ids = [];
-        
+
         foreach ($organization->getOwners() as $owner) {
             array_push($members, $owner);
             array_push($ids, $owner->getId());
         }
-        
+
         foreach ($organization->getMembers() as $member) {
             if (!in_array($member->getId(), $ids)) {
                 array_push($members, $member);
             }
         }
-        
-        
+
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        if ($organization->getIsRejected() || !$organization->getIsValidated()) {
+            if ($user && !$user->hasRoleName(['Administrator'])) {
+                if (!$user->isMemberOf($id)) {
+                    return $this->redirect(['action' => 'index']);
+                }
+            }
+        }
         $this->set(compact('organization', 'user', 'members'));
         $this->set('_serialize', ['organization']);
     }
@@ -330,7 +337,7 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => []
+                'contain' => []
             ]
         );
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -355,12 +362,37 @@ class OrganizationsController extends AppController
         if ($this->request->is('ajax')) {
             $this->autoRender = false;
             $data = $this->request->data;
-            $organization = $this->Organizations->get(intval($data['id']));
+            $organization = $this->Organizations->get(intval($data['id']), ['contain' => ['Owners']]);
             if ($data['state'] == '3') {
                 $organization->editIsRejected((bool)$data['stateValue']);
+                foreach ($organization->getOwners() as $owner) {
+                    if ($data['stateValue']) {
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(__("Your organization has been archived"));
+                        $notification->editLink('organizations/view/' . $organization->id);
+                        $notification->editUser($owner);
+                        $notifications->save($notification);
+                    } else {
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(__("Your organization has been unarchived"));
+                        $notification->editLink('organizations/view/' . $organization->id);
+                        $notification->editUser($owner);
+                        $notifications->save($notification);
+                    }
+                }
             } elseif ($data['state'] == '2') {
                 if (!$organization->getIsValidated()) {
                     $organization->editIsValidated((bool)$data['stateValue']);
+                    foreach ($organization->getOwners() as $owner) {
+                        $notifications = $this->loadModel("Notifications");
+                        $notification = $notifications->newEntity();
+                        $notification->editName(__("Your organization has been approved"));
+                        $notification->editLink('organizations/view/' . $organization->id);
+                        $notification->editUser($owner);
+                        $notifications->save($notification);
+                    }
                 }
             } else {
                 echo json_encode(['error', __('Cannot perform the change.')]);
@@ -381,9 +413,17 @@ class OrganizationsController extends AppController
     public function editValidated($id)
     {
         $this->autoRender = false;
-        $organization = $this->Organizations->get($id);
+        $organization = $this->Organizations->get($id, ['contain' => ['Owners']]);
         $organization->editIsValidated(1);
         if ($this->Organizations->save($organization)) {
+            foreach ($organization->getOwners() as $owner) {
+                $notifications = $this->loadModel("Notifications");
+                $notification = $notifications->newEntity();
+                $notification->editName(__("Your organization has been approved"));
+                $notification->editLink('organizations/view/' . $organization->id);
+                $notification->editUser($owner);
+                $notifications->save($notification);
+            }
             $this->Flash->success(__('The organization has been approved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -399,9 +439,17 @@ class OrganizationsController extends AppController
     public function editRejected($id)
     {
         $this->autoRender = false;
-        $organization = $this->Organizations->get($id);
+        $organization = $this->Organizations->get($id, ['contain' => ['Owners']]);
         $organization->editIsRejected(!($organization->getIsRejected()));
         if ($this->Organizations->save($organization)) {
+            foreach ($organization->getOwners() as $owner) {
+                $notifications = $this->loadModel("Notifications");
+                $notification = $notifications->newEntity();
+                $notification->editName(__("Your organization has been archived"));
+                $notification->editLink('organizations/view/' . $organization->id);
+                $notification->editUser($owner);
+                $notifications->save($notification);
+            }
             $this->Flash->success(__('The organization has been saved.'));
             return $this->redirect(['action' => 'view', $id]);
         } else {
@@ -425,7 +473,7 @@ class OrganizationsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
-    
+
     /**
      * Add member to the organization
      *
@@ -438,23 +486,23 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => ['Members', 'Owners']
+                'contain' => ['Members', 'Owners']
             ]
         );
-        
+
         $usersTable = $this->loadModel("Users");
         $users = $usersTable->find('all')->toArray();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                
+
                 if (!$usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
                     array_push($usersSelected, $you);
                 }
-                
+
                 $haveOwner = $organization->modifyMembers($usersSelected);
             } else {
                 if ($usersTable->findById($you)->first()->hasRoleName(['Administrator'])) {
@@ -463,7 +511,7 @@ class OrganizationsController extends AppController
                     $haveOwner = $organization->modifyMembers([$you]);
                 }
             }
-            
+
             if ($haveOwner) {
                 if ($this->Organizations->save($organization)) {
                     $this->Flash->success(__('The organization has been updated.'));
@@ -474,13 +522,13 @@ class OrganizationsController extends AppController
             } else {
                 $this->Flash->error(__('There must be at least one owner and one member'));
             }
-           
+
         }
-       
+
         $this->set(compact('organization', 'users', 'members', 'you'));
         $this->set('_serialize', ['organization']);
     }
-    
+
     /**
      * Add owner to the organization
      *
@@ -493,22 +541,22 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => ['Owners', 'Members']
+                'contain' => ['Owners', 'Members']
             ]
         );
-        
+
         $usersTable = $this->loadModel("Users");
         $users = $organization->getMembers();
-        
+
         $owners = $organization->getOwners();
         $you = $this->request->session()->read('Auth.User.id');
-                
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $usersSelected = $this->request->data['users'];
-                
+
                 $organization->modifyOwners($usersSelected);
-                
+
                 if ($this->Organizations->save($organization)) {
                     $this->Flash->success(__('The user has been added.'));
                     return $this->redirect(['action' => 'view', $organization->id]);
@@ -519,11 +567,11 @@ class OrganizationsController extends AppController
                 $this->Flash->error(__('There must be at least one owner'));
             }
         }
-       
+
         $this->set(compact('organization', 'users', 'owners', 'you'));
         $this->set('_serialize', ['organization']);
     }
-    
+
     /**
      * Quit method -- Allow member or owner to quit
      * If the owner is the last, it will archive the organization
@@ -535,19 +583,19 @@ class OrganizationsController extends AppController
         $organization = $this->Organizations->get(
             $id,
             [
-            'contain' => [
-            'Owners',
-            'Members',
-            'Projects' => ['Mentors']
-            ]
+                'contain' => [
+                    'Owners',
+                    'Members',
+                    'Projects' => ['Mentors']
+                ]
             ]
         );
-        
+
         $users = $this->loadModel("Users")->find('all')->toArray();
         $owners = $organization->getOwners();
         $members = $organization->getMembers();
         $you = $this->request->session()->read('Auth.User.id');
-        
+
         foreach ($organization->projects as $project) {
             foreach ($project->getMentors() as $mentor) {
                 if ($mentor->getId() == $you) {
@@ -556,9 +604,8 @@ class OrganizationsController extends AppController
                 }
             }
         }
-        
 
-        
+
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
         if ($user) {
             if (!$user->isMemberOf($organization->getId())) {
@@ -567,9 +614,8 @@ class OrganizationsController extends AppController
         } else {
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
-            
             if (count($owners) == 1 && $user->isOwnerOf($organization->getId())) {
                 $organization->editIsRejected(true);
                 $organization->editMembers([]);
@@ -578,10 +624,10 @@ class OrganizationsController extends AppController
                 $organization->removeMembers([$you]);
                 $organization->removeOwners([$you]);
             }
-            
+
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('You have left the organization.'));
-                
+
                 if ($organization->isRejected) {
                     return $this->redirect(['action' => 'index']);
                 } else {
@@ -592,7 +638,7 @@ class OrganizationsController extends AppController
             }
 
         }
-       
+
         $this->set(compact('organization', 'you', 'user'));
         $this->set('_serialize', ['organization']);
     }

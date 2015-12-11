@@ -35,6 +35,7 @@ class MissionsController extends AppController
         'submit' => ['submit_mission'],
         'edit' => ['edit_mission', 'edit_missions'],
         'editMentor' => ['edit_mission', 'edit_missions'],
+        'editProfessor' => ['edit_mission', 'edit_missions'],
         'editAccepted' => ['edit_mission', 'edit_missions'],
         'editArchived' => ['edit_mission', 'edit_missions'],
         'editApplicationStatus' => ['edit_mission', 'edit_missions'],
@@ -81,7 +82,68 @@ class MissionsController extends AppController
     {
         parent::beforeFilter($event);
         $this->loadModel("Users");
-        $this->Auth->allow(['view']);
+        $this->Auth->allow(['view', 'index']);
+    }
+    
+    /**
+     * Index method
+     *
+     * @return void
+     */
+    public function index()
+    {
+        $types = $this->loadModel("TypeMissions")->find('list', ['limit' => 200]);
+        $this->set(compact('types'));
+        
+        $orgs = $this->loadModel("Organizations")->find('list', ['limit' => 200]);
+        $this->set(compact('orgs'));
+        
+        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        $data = $this->DataTables->find(
+            'Missions',
+            [
+                'contain' => [
+                    'Projects' => [
+                        'Organizations' => [
+                            'fields' => [
+                                'id', 'name', 'OrganizationsProjects.project_id'
+                            ]
+                        ],
+                        'fields' => [
+                                'id', 'name'
+                        ]
+                    ],
+                    'TypeMissions' => [
+                        'fields' =>
+                            [
+                                'id', 'name', 'MissionsTypeMissions.mission_id'
+                            ]
+                    ],
+                ],
+                'fields' => [
+                    'id', 'name', 'session'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**
@@ -98,11 +160,12 @@ class MissionsController extends AppController
             $id,
             [
             'contain' => [
-                'Projects' => ['Organizations'],
-                'MissionLevels',
-                'TypeMissions',
-                'Users',
-                'Applications'
+            'Projects' => ['Organizations'],
+            'MissionLevels',
+            'TypeMissions',
+            'Users',
+            'Professors',
+            'Applications'
             ]
             ]
         );
@@ -296,58 +359,71 @@ class MissionsController extends AppController
         $mission = $this->Missions->get(
             $id,
             [
-                'contain' => ['Users', 'Applications', 'Projects']
+                'contain' => ['Users', 'Applications', 'Projects', 'TypeMissions']
             ]
         );
-
+        
+        $userId = $this->request->session()->read('Auth.User.id');
+        $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
+        
+        $userEmail = $user->getEmailPublic();
+        
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
-            if ($mission->getRemainingPlaces() > 0) {
-                $applications = TableRegistry::get('Applications');
-                $userId = $this->request->session()->read('Auth.User.id');
+            if ($user->id != $mission->mentor_id) {
+                if ($mission->getRemainingPlaces() > 0) {
+                    $applications = TableRegistry::get('Applications');
 
-                $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
-                if ($user->isStudent()) {
-                    if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && $user->getGender() && $user->getBiography()) {
-                        if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
-                            if ($this->request->is(['patch', 'post', 'put'])) {
-                                $application = $applications->newEntity();
 
-                                $application->editMissionId($mission->getId());
-                                $application->editUserId($userId);
-                                $application->editAccepted(false);
-                                $application->editRejected(false);
+                    if ($user->isStudent()) {
+                        if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
+                            if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
+                                if ($this->request->is(['patch', 'post', 'put'])) {
+                                    $application = $applications->newEntity();
 
-                                if ($applications->save($application)) {
-                                    $this->Flash->success(__('You have applied on the mission'));
-                                    $user = $this->Users->get($userId);
-                                    $mentor = $mission->getMentor();
+                                    $data = $this->request->data;
+                                    $data['rejected'] = false;
+                                    $data['accepted'] = false;
+                                    $data['user_id'] = $userId;
+                                    $data['mission_id'] = $mission->getId();
 
-                                    $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
-                                    $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
-                                    $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
+                                    $application = $applications->patchEntity($application, $data);
 
-                                    return $this->redirect(['action' => 'view', $id]);
+                                    if ($applications->save($application)) {
+                                        $this->Flash->success(__('You have applied on the mission'));
+                                        $user = $this->Users->get($userId);
+                                        $mentor = $mission->getMentor();
+                                        $linkMission = Router::url(['controller' => 'Missions', 'action' => 'view', $mission->getId(), '_full' => true]);
+                                        $linkUser = Router::url(['controller' => 'Users', 'action' => 'view', $userId, '_full' => true]);
+                                        $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
 
-                                } else {
-                                    $this->Flash->error(__('There was an error. Please, try again.'));
+                                        return $this->redirect(['action' => 'view', $id]);
+
+                                    } else {
+                                        $this->Flash->error(__('There was an error. Please, try again.'));
+                                    }
                                 }
+                            } else {
+                                $this->Flash->error(__('You have already applied on this mission.'));
+                                return $this->redirect(['action' => 'view', $id]);
                             }
                         } else {
-                            $this->Flash->error(__('You have already applied on this mission.'));
+                            $this->Flash->error(__('You need to fill your profile before apply on this mission.'));
                             return $this->redirect(['action' => 'view', $id]);
                         }
                     } else {
-                        $this->Flash->error(__('You need to fill your profile before apply on this mission.'));
+                        $this->Flash->error(__("Only students can apply on missions. If you are a student, please fill your profile."));
                         return $this->redirect(['action' => 'view', $id]);
                     }
+                    $this->set(compact('mission'));
+                    $this->set('_serialize', ['mission']);
                 } else {
-                    $this->Flash->error(__("Only students can apply on missions. If you are a student, please fill your profile."));
+                    $this->Flash->error(__('No more position available') . '.');
                     return $this->redirect(['action' => 'view', $id]);
                 }
-                $this->set(compact('mission'));
+                $this->set(compact('mission', 'userEmail'));
                 $this->set('_serialize', ['mission']);
             } else {
-                $this->Flash->error(__('No more position available') . '.');
+                $this->Flash->error(__("You can't apply on your mission, you are the mentor") . '.');
                 return $this->redirect(['action' => 'view', $id]);
             }
         } else {
@@ -397,6 +473,48 @@ class MissionsController extends AppController
         }
        
         $this->set(compact('currentMentorId', 'mentors', 'mission'));
+        $this->set('_serialize', ['mission']);
+    }
+
+    /**
+     * EditProfessor method
+     * @param int $id id
+     * @return redirect
+     */
+    public function editProfessor($id = null)
+    {
+        $mission = $this->Missions->get(
+            $id,
+            [
+                'contain' =>
+                    [
+                        'Projects',
+                        'Professors'
+                    ]
+            ]
+        );
+
+        $professors = $this->Users->find('all', ['conditions' => ['isProfessor' => true]]);
+        $currentProfessorId = $mission->getProfessorId();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if (count($this->request->data)) {
+                $professorId = $this->request->data['users'];
+
+                $mission->editProfessorId($professorId[0]);
+
+                if ($this->Missions->save($mission)) {
+                    $this->Flash->success(__('The professor have been modified.'));
+                    return $this->redirect(['action' => 'view', $mission->id]);
+                } else {
+                    $this->Flash->error(__('The professor could not be modified. Please,try again.'));
+                }
+            } else {
+                $this->Flash->error(__('There must be at least one professor'));
+            }
+        }
+
+        $this->set(compact('currentProfessorId', 'professors', 'mission'));
         $this->set('_serialize', ['mission']);
     }
 }

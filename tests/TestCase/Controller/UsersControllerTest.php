@@ -77,7 +77,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/index');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test login - From Register
      *
@@ -87,14 +87,14 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('This test has not been implemented yet.');
         $this->session(['actionRef' => 'register/']);
-        
+
         $data = [
             'username' => 'admin2',
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
         ];
-        
+
         $this->post('/users/login', $data);
-        
+
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view/3']);
     }
 
@@ -108,14 +108,14 @@ class UsersControllerTest extends IntegrationTestCase
         $this->markTestIncomplete('This test has not been implemented yet.');
         $this->session(['controllerRef' => 'Pages']);
         $this->session(['actionRef' => 'home']);
-        
+
         $data = [
             'username' => 'admin2',
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
         ];
-        
+
         $this->post('/users/login', $data);
-        
+
         $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
 
@@ -354,7 +354,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/password/2', $data);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test email - Ok
      *
@@ -439,6 +439,21 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/edit/1');
         $this->post('/users/edit/2', $data);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 2]);
+    }
+
+    /**
+     * Test edit Skill - Not ok
+     *
+     * @return void
+     */
+    public function testEditSkillNotOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+        $data = [
+            'skills' => ';lfjgh'
+        ];
+        $this->post('/users/edit/2', $data);
+        $this->assertResponseSuccess();
     }
 
     /**
@@ -648,5 +663,68 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->get('/users/resetPassword/tata');
         $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+    }
+    
+    /**
+     * Test svn - OK
+     *
+     * @return void
+     */
+    public function testSvnOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svn/1');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test svn - Code
+     *
+     * @return void
+     */
+    public function testSvnCode()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svn/1?code=1323141412412');
+        $this->assertResponseOk();
+    }
+    
+    /**
+     * Test svn - No Auth
+     *
+     * @return void
+     */
+    public function testSvnNoAuth()
+    {
+        $this->post('/users/svn/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+    }
+    
+    /**
+     * Test svnCallBack - OK
+     *
+     * @return void
+     */
+    public function testSvnCallbackOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svnCallBack?code=1212312312');
+        $this->assertResponseSuccess();
+    }
+    
+    /**
+     * Test svnRemove - OK
+     *
+     * @return void
+     */
+    public function testSvnRemoveOK()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        
+        $this->get('/users/svnRemove/1?pseudo=pseudo');
+        $this->assertResponseSuccess();
     }
 }

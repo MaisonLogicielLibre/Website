@@ -16,6 +16,9 @@
  */
 namespace App\Controller;
 
+$path = realpath(__DIR__ . '/..' . '/..' . '/config/api/secret.php');
+require_once $path;
+
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\I18n\I18n;

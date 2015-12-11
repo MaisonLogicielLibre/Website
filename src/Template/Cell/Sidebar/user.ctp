@@ -1,14 +1,31 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <div class="page-action">
-        <div class="page-header">
+        <div class="page-header <?= ($object->isStudent() ? 'page-header-student' : ''); ?> <?= ($object->isProfessor() ? 'page-header-professor' : ''); ?>">
             <img
                 src="<?= 'http://www.gravatar.com/avatar/' . (!empty($object) ? md5($object->getEmail()) : md5('no@email.com')) . '?s=128' ?>"
                 class="img-circle img-responsive"/>
             <span><?= (!empty($object) ? $object->getName() : ''); ?></span>
+            <div class="row">
+                <div class="col-xs-12">
+                    <?= ($object->isStudent() ? '<span class="user-status">' . __('Student') . '</span>' : ''); ?>
+                    <?= ($object->isProfessor() ? '<span class="user-status">' . __('Professor') . '</span>' : ''); ?>
+                </div>
+            </div>
+
             <?php if (!empty($object) && $object->getPortfolio() != null): ?>
-                <a href="<?= $object->getPortfolio() ?>">
-                    <?= __('Portfolio') ?>
-                </a>
+                <a href="<?= $object->getPortfolio() ?>"><i class="fa fa-globe"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getTwitter() != null): ?>
+                <a href="https://twitter.com/<?= $object->getTwitter() ?>"><i class="fa fa-twitter"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getFacebook() != null): ?>
+                <a href="https://www.facebook.com/<?= $object->getFacebook() ?>"><i class="fa fa-facebook"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getGooglePlus() != null): ?>
+                <a href="<?= $object->getGooglePlus() ?>"><i class="fa fa-google-plus"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($object) && $object->getLinkedIn() != null): ?>
+                <a href="<?= $object->getLinkedIn() ?>"><i class="fa fa-linkedin"></i></a>
             <?php endif; ?>
         </div>
         <ul class="nav nav-stacked">
@@ -37,15 +54,28 @@
                             <?= __('Change my email') ?>
                         </a>
                     </li>
-                    <li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
-                        <a href=<?= $this->Url->build(
+					<li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
                                 "action" => "password",
                                 $object->id
-                            ]); ?>>
-                            <i class="fa fa-unlock-alt"></i>
-                            <?= __('Change my password') ?></a></li>
+                            ]); ?>">
+                            <i class="fa fa-unlock"></i>
+                            <?= __('Change my password') ?>
+                        </a>
+                    </li>
+					<li class="<?= ($this->request->action == 'svn') ? 'active' : ''; ?>">
+                        <a href="<?= $this->Url->build(
+                            [
+                                "controller" => "Users",
+                                "action" => "svn",
+                                $object->id
+                            ]); ?>">
+                            <i class="fa fa-code-fork"></i>
+                            <?= __('Edit CVS') ?>
+                        </a>
+                    </li>
                     <!-- Modify phone link/form -->
                     <li class="<?= ($this->request->action == 'edit') ? 'active' : ''; ?>">
                         <a href="<?= $this->Url->build(

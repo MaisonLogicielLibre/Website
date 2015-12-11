@@ -72,6 +72,12 @@ class UsersTable extends Table
                 'foreignKey' => 'user_id'
             ]
         );
+        $this->hasMany(
+            'SvnUsers',
+            [
+                'foreignKey' => 'user_id'
+            ]
+        );
         $this->belongsToMany(
             'Projects',
             [
@@ -141,6 +147,44 @@ class UsersTable extends Table
             ->allowEmpty('portfolio')
             ->add(
                 'portfolio',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
+
+        $validator
+            ->allowEmpty('twitter');
+
+        $validator
+            ->allowEmpty('facebook');
+
+        $validator
+            ->allowEmpty('googlePlus')
+            ->add(
+                'googlePlus',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('Is not an url (Ex : http://website.ca).')
+                ]
+            );
+
+        $validator
+            ->allowEmpty('linkedIn')
+            ->add(
+                'linkedIn',
                 'custom',
                 [
                     'rule' => function ($value) {
@@ -274,6 +318,30 @@ class UsersTable extends Table
         $validator
             ->requirePresence('universitie_id', 'create')
             ->notEmpty('universitie_id');
+
+        $validator
+            ->add(
+                'skills',
+                'custom',
+                [
+                    'rule' => function ($value) {
+                        $json = json_decode(file_get_contents(WWW_ROOT . '/json/UsersSkills.json'), true);
+                        $valueArray = array_map(
+                            function ($o) {
+                                return ltrim($o, ' ');
+
+                            },
+                            explode(',', $value)
+                        );
+                        if (count(array_diff($valueArray, $json)) > 0) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('One or more skills are not recognized')
+                ]
+            )
+            ->allowEmpty('skills');
 
         return $validator;
     }

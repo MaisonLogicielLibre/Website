@@ -32,9 +32,6 @@
             </a>
         </div>
         <ul class="nav navbar-right top-nav">
-            <li>
-                <?= $this->Html->link(__('Go to dashboard'), ['controller' => 'Pages', 'action' => 'news']); ?>
-            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-lg fa-globe"></i>
@@ -45,72 +42,19 @@
                 <ul class="dropdown-menu">
                     <li id="quebec-flag">
                         <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'fr_CA']); ?>">
-                            <?= $this->Html->image('flags/quebec.svg'); ?>
                             <span>Français</span>
                         </a>
                     </li>
                     <li id="canada-flag">
                         <a href="<?= $this->Url->build(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef'), 'lang' => 'en_CA']); ?>">
-                            <?= $this->Html->image('flags/canada.svg'); ?>
                             <span>English</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <?php
-            $user = $this->request->session()->read('Auth.User');
-            if ($user) : ?>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <?= $this->Html->image('http://www.gravatar.com/avatar/' . (!empty($user['email']) ? md5($user['email']) : md5('no@email.com')) . '?s=24', ['id' => 'nav-avatar', 'class' => 'fa img-circle']); ?>
-                        <?php
-                        $fn = (!empty($user['firstName']) ? $user['firstName'] . ' ' . $user['lastName'] : $user['username']);
-                        echo strlen($fn) > 25 ? substr($fn, 0, 25) . "..." : $fn;
-                        ?>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'view', $user['id']]); ?>">
-                                <i class="fa fa-fw fa-user"></i>
-                                <?= __('My profile'); ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'myProjects']); ?>">
-                                <i class="fa fa-fw fa-cubes"></i>
-                                <?= __('My projects'); ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'myOrganizations']); ?>">
-                                <i class="fa fa-fw fa-suitcase"></i>
-                                <?= __('My organizations'); ?>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']); ?>">
-                                <i class="fa fa-fw fa-sign-out"></i>
-                                <?= __('Logout'); ?>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            <?php else : ?>
-                <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>">
-                        <i class="fa fa-lg fa-share-square-o"></i>
-                        <?= __('Sign Up'); ?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>">
-                        <i class="fa fa-lg fa-sign-in"></i>
-                        <?= __('Sign In'); ?>
-                    </a>
-                </li>
-            <?php endif; ?>
+            <li>
+                <?= $this->Html->link(__('Go to dashboard'), ['controller' => 'Pages', 'action' => 'news']); ?>
+            </li>
         </ul>
     </nav>
     <div id="page-wrapper">
@@ -130,7 +74,7 @@
         </header>
         <div class="container-fluid">
             <div class="row" id="welcome-row">
-                <div class="col-xs-offset-2 col-xs-8 text-center">
+                <div class="col-sm-offset-2 col-sm-8 col-xs-12 text-center">
                     <h1><?= __("Welcome to maison du logiciel libre (ML2)"); ?></h1>
 
                     <h3><?= __('Ici nous brassons du code !') ?></h3>
@@ -179,7 +123,7 @@
                 </div>
             </div>
             <div class="row" id="stats-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-sm-offset-2 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
                             <div class="row">
@@ -254,7 +198,7 @@
                 </div>
             </div>
             <div class="row" id="partners-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-sm-offset-2 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center sponsors-cell">
                             <div class="row">
@@ -265,12 +209,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-offset-2 col-sm-8">
+                                <div class="col-sm-offset-2 col-sm-8 col-xs-12">
                                     <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'id' => 'google-logo', 'class' => 'img-responsive']) ?></a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-offset-2 col-sm-6">
+                                <div class="col-sm-offset-2 col-sm-6 col-xs-12">
                                     <a href="http://www.etsmtl.ca"><?php echo $this->Html->image('ets.svg', ['class' => 'img-responsive']) ?></a>
                                 </div>
                             </div>
@@ -284,7 +228,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-offset-1 col-xs-10" style="margin-bottom:10px;">
+                                <div class="col-xs-sm-1 col-sm-10 col-xs-12" style="margin-bottom:10px;">
                                     <?= $this->Html->image('montreal.svg', ['class' => 'img-responsive']); ?>
                                 </div>
                             </div>
@@ -322,7 +266,7 @@
                 </div>
             </div>
             <div class="row" id="sub-info-row">
-                <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-sm-offset-2 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                             <div class="row">
@@ -373,7 +317,7 @@
                 </div>
             </div>
             <div class="row" id="contact-row">
-                <div class="col-xs-offset-4 col-xs-4">
+                <div class="col-sm-offset-4 col-sm-4 col-xs-12">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                             <p>Copyright © Maison du Logiciel Libre 2015</p>

@@ -30,7 +30,8 @@ class ApplicationsController extends AppController
 
     private $_permissions = [
         'accepted' => ['edit_mission', 'edit_missions'],
-        'rejected' => ['edit_mission', 'edit_missions']
+        'rejected' => ['edit_mission', 'edit_missions'],
+        'view' => ['edit_mission', 'edit_missions']
     ];
 
     /**
@@ -58,7 +59,6 @@ class ApplicationsController extends AppController
     {
         parent::beforeFilter($event);
         $this->loadModel("Users");
-        $this->Auth->allow(['view']);
     }
 
     /**
@@ -118,6 +118,13 @@ class ApplicationsController extends AppController
                             $app->editRejected(true);
                             $this->Applications->save($app);
                             $this->getMailer('Application')->send('rejectNoMorePosition', [$app]);
+
+                            $notifications = $this->loadModel("Notifications");
+                            $notification = $notifications->newEntity();
+                            $notification->editName(__("Your application has been rejected"));
+                            $notification->editLink('missions/view/' . $app->getMission()->id);
+                            $notification->editUser($app->getUser());
+                            $notifications->save($notification);
                         }
                     }
                 }
@@ -128,6 +135,14 @@ class ApplicationsController extends AppController
                     $this->ProjectsContributors->save($contributor);
 
                     $this->getMailer('Application')->send('acceptedOnApplication', [$application]);
+
+                    $notifications = $this->loadModel("Notifications");
+                    $notification = $notifications->newEntity();
+                    $notification->editName(__("Your application has been accepted"));
+                    $notification->editLink('missions/view/' . $application->getMission()->id);
+                    $notification->editUser($application->getUser());
+                    $notifications->save($notification);
+
                     $this->Flash->success(__('The application has been saved.'));
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
@@ -183,6 +198,14 @@ class ApplicationsController extends AppController
                 $application->editRejected(true);
                 if ($this->Applications->save($application)) {
                     $this->getMailer('Application')->send('rejectedOnApplication', [$application]);
+
+                    $notifications = $this->loadModel("Notifications");
+                    $notification = $notifications->newEntity();
+                    $notification->editName(__("Your application has been rejected"));
+                    $notification->editLink('missions/view/' . $application->getMission()->id);
+                    $notification->editUser($application->getUser());
+                    $notifications->save($notification);
+
                     $this->Flash->success(__('The application has been saved.'));
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
@@ -194,5 +217,34 @@ class ApplicationsController extends AppController
         }
 
         $this->set(['mission' => $application->getMission(), 'application' => $application]);
+    }
+    
+    /**
+     * View method
+     * @param int|null $id id
+     * @return \Cake\Network\Response|null
+     */
+    public function view($id = null)
+    {
+        $application = $this->Applications->get($id);
+        
+        if ($application->getType() != 0) {
+            $application = $this->Applications->get(
+                $id,
+                [
+                'contain' => ['Users', 'Missions', 'TypeMissions']
+                ]
+            );
+        } else {
+            $application = $this->Applications->get(
+                $id,
+                [
+                'contain' => ['Users', 'Missions']
+                ]
+            );
+        }
+        
+        $this->set(compact('application'));
+        $this->set('_serialize', ['application']);
     }
 }

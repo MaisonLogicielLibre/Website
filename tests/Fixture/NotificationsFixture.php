@@ -41,8 +41,8 @@ class NotificationsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'Lorem ipsum dolor sit amet',
-            'link' => 'Lorem ipsum dolor sit amet',
+            'name' => 'notification1',
+            'link' => 'projects/view/1',
             'isRead' => 1,
             'created' => '2015-11-27 01:19:31',
             'user_id' => 1

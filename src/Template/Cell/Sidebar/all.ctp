@@ -46,6 +46,21 @@
                 </li>
             </ul>
         </li>
+		<li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#missions-submenu">
+               <i class="fa fa-lg fa-file-text"></i>
+                <?= __('Missions'); ?>
+                <i class="fa submenu-arrow pull-right"></i>
+            </a>
+            <ul id="missions-submenu" class="collapse">
+                <li>
+                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'index']); ?>">
+                        <i class="fa fa-list-ul"></i>
+                        <?= __('List of missions'); ?>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#activities-submenu">
                 <i class="fa fa-lg fa-calendar"></i>
@@ -112,5 +127,11 @@
                 </li>
             </ul>
         </li>
+        <?php if ($user && $user->hasRoleName(['Administrator'])): ?>
+        <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'administration') ? 'active' : ''; ?>">
+            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'administration']); ?>">
+                <i class="fa fa-wrench  fa-lg"></i><?= __('Administration') ?></a>
+        </li>
+        <?php endif; ?>
     </ul>
 </div>

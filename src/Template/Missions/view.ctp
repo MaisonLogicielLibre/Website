@@ -1,5 +1,5 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?php $Parsedown = new Parsedown(); ?>
+<?php $Parsedown = new ParsedownNoImage(); ?>
     <div class="row">
         <?= $this->cell('Sidebar::mission', [$mission->id]); ?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -69,6 +69,12 @@
                                                     <a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getMentorId()]); ?>"><?= $mission->getMentor()->getName(); ?></a>
                                                 </td>
                                             </tr>
+                                            <?php if ($mission->getProfessor()): ?>
+                                                <tr>
+                                                    <td><?= __('Professor:'); ?></td>
+                                                    <td><a href="<?= $this->Url->Build(['controller' => 'users', 'action' => 'view', $mission->getProfessorId()]); ?>"><?= $mission->getProfessor()->getName(); ?></a></td>
+                                                </tr>
+                                            <?php endif; ?>
                                         </table>
                                     </div>
                                 </div>
@@ -84,7 +90,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <?php if ($mission->getRemainingPlaces() > 0) : ?>
+                                    <?php if ((($user && !$isMentor) || !$user) && $mission->getRemainingPlaces() > 0) : ?>
                                         <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
                                             <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
                                     <?php endif; ?>
@@ -118,6 +124,7 @@
                                             if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
                                                 <th><?= __('Approved'); ?></th>
                                                 <th><?= __('Rejected'); ?></th>
+												<th><?= __('View details'); ?></th>
                                                 <?php
                                             endif;
                                             ?>
@@ -174,6 +181,11 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
                 'name' => 'Applications.rejected',
                 'data' => 'rejected',
                 'searchable' => false
+            ],
+			[
+                'name' => 'Applications.view',
+                'data' => 'rejected',
+                'searchable' => false
             ]
         ],
         'lengthMenu' => '',
@@ -206,8 +218,10 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
 echo 'var userUrl="' . $this->Url->Build(['controller' => 'Users', 'action' => 'view']) . '";';
 echo 'var rejectUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'rejected']) . '";';
 echo 'var acceptUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'accepted']) . '";';
+echo 'var detailsUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'view']) . '";';
 echo 'var rejectCandidateTr="' . __('Reject the candidate') . '";';
 echo 'var acceptCandidateTr="' . __('Accept the candidate') . '";';
+echo 'var detailsTr="' . __('View details') . '";';
 $this->Html->scriptEnd();
 if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {
     echo $this->Html->script(['initial.min', 'missions/viewMentor.js'], ['block' => 'scriptBottom']);

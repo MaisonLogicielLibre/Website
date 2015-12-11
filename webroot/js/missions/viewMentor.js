@@ -30,6 +30,13 @@ $(document).ready(function () {
                     class: 'btn ' + (aData.accepted || aData.rejected ? 'btn-default disabled' : 'btn-danger')
                 })
             );
+			$('td:eq(3)', nRow).html(
+                $('<a />', {
+                    href: detailsUrl + '/' + aData.id,
+                    text: detailsTr,
+                    class: 'btn ' + 'btn-info'
+                })
+            );
         }
     });
 });

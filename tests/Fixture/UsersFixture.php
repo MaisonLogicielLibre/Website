@@ -28,9 +28,17 @@ class UsersFixture extends TestFixture
         'password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'username' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'universitie_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'mailingList' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'skills' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'twitter' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'facebook' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'googlePlus' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'linkedIn' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'emailPublic' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'interest' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'isProfessor' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -61,7 +69,15 @@ class UsersFixture extends TestFixture
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
             'isStudent' => 1,
-            'mailingList' => 0
+            'mailingList' => 0,
+            'skills' => 'PHP, CakePHP',
+            'twitter' => 'http://montwitter.com',
+            'facebook' => 'http://monfacebook.com',
+            'googlePlus' => 'http://mongoogleplus.com',
+            'linkedIn' => 'http://monlinkedin.com',
+            'emailPublic' => 'email@gmail.com',
+            'interest' => 'Un petit interet.',
+            'isProfessor' => 0
         ],
         [
             'id' => 2,
@@ -76,8 +92,15 @@ class UsersFixture extends TestFixture
             'username' => 'admin',
             'universitie_id' => 1,
             'isAvailableMentoring' => 0,
-            'isStudent' => 0,
-            'mailingList' => 0
+            'isStudent' => 1,
+            'mailingList' => 0,
+            'twitter' => 'http://montwitter.com',
+            'facebook' => 'http://monfacebook.com',
+            'googlePlus' => 'http://mongoogleplus.com',
+            'linkedIn' => 'http://monlinkedin.com',
+            'emailPublic' => 'email@gmail.com',
+            'interest' => 'Un petit interet.',
+            'isProfessor' => 0
         ],
         [
             'id' => 3,
@@ -93,7 +116,14 @@ class UsersFixture extends TestFixture
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
-            'mailingList' => 0
+            'mailingList' => 0,
+            'twitter' => 'http://montwitter.com',
+            'facebook' => 'http://monfacebook.com',
+            'googlePlus' => 'http://mongoogleplus.com',
+            'linkedIn' => 'http://monlinkedin.com',
+            'emailPublic' => 'email@gmail.com',
+            'interest' => 'Un petit interet.',
+            'isProfessor' => 0
         ],
         [
             'id' => 4,
@@ -109,7 +139,14 @@ class UsersFixture extends TestFixture
             'universitie_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
-            'mailingList' => 0
+            'mailingList' => 0,
+            'twitter' => 'http://montwitter.com',
+            'facebook' => 'http://monfacebook.com',
+            'googlePlus' => 'http://mongoogleplus.com',
+            'linkedIn' => 'http://monlinkedin.com',
+            'emailPublic' => 'email@gmail.com',
+            'interest' => 'Un petit interet.',
+            'isProfessor' => 0
         ]
     ];
 }

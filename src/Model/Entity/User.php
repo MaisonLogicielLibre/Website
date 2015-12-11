@@ -89,7 +89,16 @@ class User extends Entity
     {
         return $this->_properties['biography'];
     }
-    
+
+    /**
+     * Get the interest
+     * @return string interest
+     */
+    public function getInterest()
+    {
+        return $this->_properties['interest'];
+    }
+
     /**
      * Get the portfolio
      * @return string portfolio
@@ -98,7 +107,43 @@ class User extends Entity
     {
         return $this->_properties['portfolio'];
     }
-    
+
+    /**
+     * Get the twitter
+     * @return string twitter
+     */
+    public function getTwitter()
+    {
+        return $this->_properties['twitter'];
+    }
+
+    /**
+     * Get the facebook
+     * @return string facebook
+     */
+    public function getFacebook()
+    {
+        return $this->_properties['facebook'];
+    }
+
+    /**
+     * Get the googlePlus
+     * @return string googlePlus
+     */
+    public function getGooglePlus()
+    {
+        return $this->_properties['googlePlus'];
+    }
+
+    /**
+     * Get the linkedIn
+     * @return string linkedIn
+     */
+    public function getLinkedIn()
+    {
+        return $this->_properties['linkedIn'];
+    }
+
     /**
      * Get the email
      * @return string email
@@ -106,6 +151,15 @@ class User extends Entity
     public function getEmail()
     {
         return $this->_properties['email'];
+    }
+
+    /**
+     * Get the public email
+     * @return string publicEmail
+     */
+    public function getEmailPublic()
+    {
+        return $this->_properties['emailPublic'];
     }
 
     /**
@@ -214,6 +268,15 @@ class User extends Entity
     }
 
     /**
+     * Get isProfessor
+     * @return bool isProfessor
+     */
+    public function isProfessor()
+    {
+        return $this->_properties['isProfessor'];
+    }
+
+    /**
      * Set the first name
      * @param  string $firstName firstName
      * @return string firstName
@@ -245,6 +308,17 @@ class User extends Entity
         $this->set('biography', $biography);
         return $biography;
     }
+
+    /**
+     * Set the interest
+     * @param  string $interest interest
+     * @return string interest
+     */
+    public function editInterest($interest)
+    {
+        $this->set('interest', $interest);
+        return $interest;
+    }
     
     /**
      * Set the portfolio
@@ -256,7 +330,51 @@ class User extends Entity
         $this->set('portfolio', $portfolio);
         return $portfolio;
     }
-    
+
+    /**
+     * Set the twitter
+     * @param  string $twitter twitter
+     * @return string twitter
+     */
+    public function editTwitter($twitter)
+    {
+        $this->set('twitter', $twitter);
+        return $twitter;
+    }
+
+    /**
+     * Set the facebook
+     * @param  string $facebook facebook
+     * @return string facebook
+     */
+    public function editFacebook($facebook)
+    {
+        $this->set('facebook', $facebook);
+        return $facebook;
+    }
+
+    /**
+     * Set the googlePlus
+     * @param  string $googlePlus googlePlus
+     * @return string googlePlus
+     */
+    public function editGooglePlus($googlePlus)
+    {
+        $this->set('googlePlus', $googlePlus);
+        return $googlePlus;
+    }
+
+    /**
+     * Set the linkedIn
+     * @param  string $linkedIn linkedIn
+     * @return string linkedIn
+     */
+    public function editLinkedIn($linkedIn)
+    {
+        $this->set('linkedIn', $linkedIn);
+        return $linkedIn;
+    }
+
     /**
      * Set the email
      * @param  string $email email
@@ -266,6 +384,17 @@ class User extends Entity
     {
         $this->set('email', $email);
         return $email;
+    }
+
+    /**
+     * Set the public email
+     * @param  string $emailPublic emailPublic
+     * @return string emailPublic
+     */
+    public function editEmailPublic($emailPublic)
+    {
+        $this->set('emailPublic', $emailPublic);
+        return $emailPublic;
     }
 
     /**
@@ -447,6 +576,14 @@ class User extends Entity
         return $listRolesUser;
     }
 
+    /**
+     * Get skills of user
+     * @return string
+     */
+    public function getSkills()
+    {
+        return $this->_properties['skills'];
+    }
     /**
      * Get projects where user is mentor
      * @return array

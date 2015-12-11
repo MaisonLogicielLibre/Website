@@ -113,6 +113,54 @@ class ApplicationsTableTest extends TestCase
     }
     
     /**
+     * Test getText
+     * @return void
+     */
+    public function testGetText()
+    {
+        $id = 1;
+        $expected = '';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getText();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test getType
+     * @return void
+     */
+    public function testGetType()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getType();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test getEmail
+     * @return void
+     */
+    public function testGetEmail()
+    {
+        $id = 1;
+        $expected = 'test@test.com';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->getEmail();
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
      * Test getAccepted
      * @return void
      */
@@ -188,6 +236,54 @@ class ApplicationsTableTest extends TestCase
         $application = $this->Applications->get($id);
 
         $result = $application->editAccepted(true);
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editText
+     * @return void
+     */
+    public function testEditText()
+    {
+        $id = 1;
+        $expected = 'Plop';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editText('Plop');
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editEmail
+     * @return void
+     */
+    public function testEditEmail()
+    {
+        $id = 1;
+        $expected = 'test2@test.com';
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editEmail('test2@test.com');
+
+        $this->assertEquals($expected, $result);
+    }
+    
+    /**
+     * Test editType
+     * @return void
+     */
+    public function testEditType()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+
+        $result = $application->editType(1);
 
         $this->assertEquals($expected, $result);
     }

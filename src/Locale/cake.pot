@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-03 14:58+0000\n"
+"POT-Creation-Date: 2015-12-11 16:37+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,16 +14,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Template/Error/error400.ctp:38
-#: Template/Error/error500.ctp:35
-msgid "Error"
-msgstr ""
-
-#: Template/Error/error400.ctp:40
-msgid "The requested address %s was not found on this server."
-msgstr ""
-
 #: Template/Error/error500.ctp:33
 msgid "An Internal Error Has Occurred"
+msgstr ""
+
+#: Template/Error/error500.ctp:35
+msgid "Error"
 msgstr ""
 

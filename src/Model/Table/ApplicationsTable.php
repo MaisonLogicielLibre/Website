@@ -4,7 +4,7 @@
  *
  * @category Table
  * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/site_mll
  */
@@ -21,9 +21,12 @@ use Cake\Validation\Validator;
  *
  * @category Table
  * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @author   Raphael St-Arnaud <raphael.st-arnaud.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @property \Cake\ORM\Association\BelongsTo $Missions
+ * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsTo $TypeMissions
  */
 class ApplicationsTable extends Table
 {
@@ -57,6 +60,13 @@ class ApplicationsTable extends Table
             'joinType' => 'INNER'
             ]
         );
+        $this->belongsTo(
+            'TypeMissions',
+            [
+            'foreignKey' => 'type_mission_id',
+            'joinType' => 'INNER'
+            ]
+        );
     }
 
     /**
@@ -82,6 +92,13 @@ class ApplicationsTable extends Table
             ->requirePresence('rejected', 'create')
             ->notEmpty('rejected');
 
+        $validator
+            ->allowEmpty('text');
+
+        $validator
+            ->add('email', 'valid', ['rule' => 'email'])
+            ->notEmpty('email');
+
         return $validator;
     }
 
@@ -95,8 +112,10 @@ class ApplicationsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
         return $rules;
     }
 }

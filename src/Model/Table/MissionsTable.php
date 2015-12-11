@@ -65,6 +65,14 @@ class MissionsTable extends Table
             'joinType' => 'LEFT'
             ]
         );
+        $this->belongsTo(
+            'Professors',
+            [
+                'className' => 'Users',
+                'foreignKey' => 'professor_id',
+                'joinType' => 'LEFT'
+            ]
+        );
         $this->belongsToMany(
             'MissionLevels',
             [
