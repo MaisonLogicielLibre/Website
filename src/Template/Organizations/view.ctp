@@ -31,10 +31,10 @@
 																	<span class="label label-warning label-as-badge"><?= __('Archived'); ?></span>
 																</td>
 															<?php endif ; ?>
-															
-												
 													<?php else : ?>
+                                                        <td>
 														<?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
+                                                        </td>
 													<?php endif ; ?>
                                                 </tr>
                                             <?php endforeach; ?>
