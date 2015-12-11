@@ -121,7 +121,7 @@ class ApplicationsController extends AppController
 
                             $notifications = $this->loadModel("Notifications");
                             $notification = $notifications->newEntity();
-                            $notification->editName(_("Your application has been rejected"));
+                            $notification->editName(__("Your application has been rejected"));
                             $notification->editLink('missions/view/' . $app->getMission()->id);
                             $notification->editUser($app->getUser());
                             $notifications->save($notification);
@@ -138,7 +138,7 @@ class ApplicationsController extends AppController
 
                     $notifications = $this->loadModel("Notifications");
                     $notification = $notifications->newEntity();
-                    $notification->editName(_("Your application has been accepted"));
+                    $notification->editName(__("Your application has been accepted"));
                     $notification->editLink('missions/view/' . $application->getMission()->id);
                     $notification->editUser($application->getUser());
                     $notifications->save($notification);
@@ -201,7 +201,7 @@ class ApplicationsController extends AppController
 
                     $notifications = $this->loadModel("Notifications");
                     $notification = $notifications->newEntity();
-                    $notification->editName(_("Your application has been rejected"));
+                    $notification->editName(__("Your application has been rejected"));
                     $notification->editLink('missions/view/' . $application->getMission()->id);
                     $notification->editUser($application->getUser());
                     $notifications->save($notification);
