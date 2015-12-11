@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-10 19:19+0000\n"
+"POT-Creation-Date: 2015-12-11 16:37+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -41,6 +41,14 @@ msgstr ""
 
 #: Controller/ApplicationsController.php:107;190
 msgid "You're not the mentor on this mission."
+msgstr ""
+
+#: Controller/ApplicationsController.php:124;204
+msgid "Your application has been rejected"
+msgstr ""
+
+#: Controller/ApplicationsController.php:141
+msgid "Your application has been accepted"
 msgstr ""
 
 #: Controller/ApplicationsController.php:146;209
@@ -211,6 +219,18 @@ msgstr ""
 msgid "The organization could not be saved. Please, try again."
 msgstr ""
 
+#: Controller/OrganizationsController.php:372;448
+msgid "Your organization has been archived"
+msgstr ""
+
+#: Controller/OrganizationsController.php:379
+msgid "Your organization has been unarchived"
+msgstr ""
+
+#: Controller/OrganizationsController.php:391;422
+msgid "Your organization has been approved"
+msgstr ""
+
 #: Controller/OrganizationsController.php:398
 #: Controller/ProjectsController.php:542
 msgid "Cannot perform the change."
@@ -294,6 +314,25 @@ msgstr ""
 
 #: Controller/ProjectsController.php:285;430;459;575;615
 msgid "The project could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProjectsController.php:512;597
+#: Mailer/ProjectMailer.php:38
+msgid "Your project has been archived"
+msgstr ""
+
+#: Controller/ProjectsController.php:521;606
+#: Mailer/ProjectMailer.php:49
+msgid "Your project has been unarchived"
+msgstr ""
+
+#: Controller/ProjectsController.php:535
+#: Mailer/ProjectMailer.php:27
+msgid "Your project has been approved"
+msgstr ""
+
+#: Controller/ProjectsController.php:567
+msgid "Your project has been accepted"
 msgstr ""
 
 #: Controller/ProjectsController.php:572
@@ -478,18 +517,6 @@ msgstr ""
 
 #: Mailer/ApplicationMailer.php:66
 msgid "You've been rejected for {0}"
-msgstr ""
-
-#: Mailer/ProjectMailer.php:27
-msgid "Your project has been approved"
-msgstr ""
-
-#: Mailer/ProjectMailer.php:38
-msgid "Your project has been archived"
-msgstr ""
-
-#: Mailer/ProjectMailer.php:49
-msgid "Your project has been unarchived"
 msgstr ""
 
 #: Mailer/UserMailer.php:27

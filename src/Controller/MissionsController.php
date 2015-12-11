@@ -369,7 +369,7 @@ class MissionsController extends AppController
         $userEmail = $user->getEmailPublic();
         
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
-            if (!$user->id == $mission->user->id) {
+            if ($user->id != $mission->mentor_id) {
                 if ($mission->getRemainingPlaces() > 0) {
                     $applications = TableRegistry::get('Applications');
 

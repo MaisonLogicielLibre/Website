@@ -509,7 +509,7 @@ class ProjectsController extends AppController
 
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your project has been archived"));
+                        $notification->editName(__("Your project has been archived"));
                         $notification->editLink('projects/view/' . $project->id);
                         $notification->editUser($mentor);
                         $notifications->save($notification);
@@ -518,7 +518,7 @@ class ProjectsController extends AppController
 
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your project has been unarchived"));
+                        $notification->editName(__("Your project has been unarchived"));
                         $notification->editLink('projects/view/' . $project->id);
                         $notification->editUser($mentor);
                         $notifications->save($notification);
@@ -532,7 +532,7 @@ class ProjectsController extends AppController
 
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your project has been approved"));
+                        $notification->editName(__("Your project has been approved"));
                         $notification->editLink('projects/view/' . $project->id);
                         $notification->editUser($mentor);
                         $notifications->save($notification);
@@ -564,7 +564,7 @@ class ProjectsController extends AppController
                 $this->getMailer('Project')->send('approveProject', [$project, $mentor]);
                 $notifications = $this->loadModel("Notifications");
                 $notification = $notifications->newEntity();
-                $notification->editName(_("Your project has been accepted"));
+                $notification->editName(__("Your project has been accepted"));
                 $notification->editLink('projects/view/' . $project->id);
                 $notification->editUser($mentor);
                 $notifications->save($notification);
@@ -594,7 +594,7 @@ class ProjectsController extends AppController
 
                     $notifications = $this->loadModel("Notifications");
                     $notification = $notifications->newEntity();
-                    $notification->editName(_("Your project has been archived"));
+                    $notification->editName(__("Your project has been archived"));
                     $notification->editLink('projects/view/' . $project->id);
                     $notification->editUser($mentor);
                     $notifications->save($notification);
@@ -603,7 +603,7 @@ class ProjectsController extends AppController
 
                     $notifications = $this->loadModel("Notifications");
                     $notification = $notifications->newEntity();
-                    $notification->editName(_("Your project has been unarchived"));
+                    $notification->editName(__("Your project has been unarchived"));
                     $notification->editLink('projects/view/' . $project->id);
                     $notification->editUser($mentor);
                     $notifications->save($notification);

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-10 14:20-0500\n"
-"PO-Revision-Date: 2015-12-10 14:34-0500\n"
+"POT-Creation-Date: 2015-12-11 16:37+0000\n"
+"PO-Revision-Date: 2015-12-11 13:11-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -40,6 +40,14 @@ msgstr "rejeté"
 #: Controller/ApplicationsController.php:107;190
 msgid "You're not the mentor on this mission."
 msgstr "Vous n'êtes pas le mentor de cette mission."
+
+#: Controller/ApplicationsController.php:124;204
+msgid "Your application has been rejected"
+msgstr "Votre application a été rejetée"
+
+#: Controller/ApplicationsController.php:141
+msgid "Your application has been accepted"
+msgstr "Votre application a été acceptée"
 
 #: Controller/ApplicationsController.php:146;209
 #: Controller/ProjectsController.php:660
@@ -213,6 +221,18 @@ msgstr "L'organisation a été enregistrée."
 msgid "The organization could not be saved. Please, try again."
 msgstr "L'organisation n'a pas pu être enregistrée. Veuillez réessayer."
 
+#: Controller/OrganizationsController.php:372;448
+msgid "Your organization has been archived"
+msgstr "Votre organisation a été archivée"
+
+#: Controller/OrganizationsController.php:379
+msgid "Your organization has been unarchived"
+msgstr "Votre organisation a été désarchivée"
+
+#: Controller/OrganizationsController.php:391;422
+msgid "Your organization has been approved"
+msgstr "Votre organisation a été approuvée"
+
 #: Controller/OrganizationsController.php:398
 #: Controller/ProjectsController.php:542
 msgid "Cannot perform the change."
@@ -296,6 +316,22 @@ msgstr "Le projet a été enregistré."
 #: Controller/ProjectsController.php:285;430;459;575;615
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez réessayer."
+
+#: Controller/ProjectsController.php:512;597 Mailer/ProjectMailer.php:38
+msgid "Your project has been archived"
+msgstr "Votre projet a été archivé"
+
+#: Controller/ProjectsController.php:521;606 Mailer/ProjectMailer.php:49
+msgid "Your project has been unarchived"
+msgstr "Votre projet a été désarchivé"
+
+#: Controller/ProjectsController.php:535 Mailer/ProjectMailer.php:27
+msgid "Your project has been approved"
+msgstr "Votre projet a été approuvé"
+
+#: Controller/ProjectsController.php:567
+msgid "Your project has been accepted"
+msgstr "Votre projet a été accepté"
 
 #: Controller/ProjectsController.php:572
 msgid "The project has been accepted."
@@ -492,18 +528,6 @@ msgstr "Toutes les places disponibles pour {0} ont été comblées."
 #: Mailer/ApplicationMailer.php:66
 msgid "You've been rejected for {0}"
 msgstr "Vous avez été rejeté pour {0}"
-
-#: Mailer/ProjectMailer.php:27
-msgid "Your project has been approved"
-msgstr "Votre projet a été approuvé"
-
-#: Mailer/ProjectMailer.php:38
-msgid "Your project has been archived"
-msgstr "Votre projet a été archivé"
-
-#: Mailer/ProjectMailer.php:49
-msgid "Your project has been unarchived"
-msgstr "Votre projet a été désarchivé"
 
 #: Mailer/UserMailer.php:27
 msgid "Reset password"
@@ -1576,8 +1600,8 @@ msgid ""
 "This mission has contributor(s) who has been accepted, some informations are "
 "disabled."
 msgstr ""
-"La mission possède au moins un contributeur accepté, certaines informations "
-"ne peuvent plus être modifiées."
+"La mission possède au moins une application, certaines informations ne "
+"peuvent plus être modifiées."
 
 #: Template/Missions/edit_mentor.ctp:6;11;20
 msgid "Edit mentor"
@@ -1773,7 +1797,7 @@ msgid ""
 "submit your organization."
 msgstr ""
 "Vous serez redirigé vers la page de votre organisation pour créer des "
-"projets lorsque vous aurai soumis votre organisation."
+"projets lorsque vous aurez soumis votre organisation."
 
 #: Template/Organizations/view.ctp:10 Template/Projects/view.ctp:10
 msgid "Description"

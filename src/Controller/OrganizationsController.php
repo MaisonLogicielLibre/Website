@@ -369,14 +369,14 @@ class OrganizationsController extends AppController
                     if ($data['stateValue']) {
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your organization has been archived"));
+                        $notification->editName(__("Your organization has been archived"));
                         $notification->editLink('organizations/view/' . $organization->id);
                         $notification->editUser($owner);
                         $notifications->save($notification);
                     } else {
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your organization has been unarchived"));
+                        $notification->editName(__("Your organization has been unarchived"));
                         $notification->editLink('organizations/view/' . $organization->id);
                         $notification->editUser($owner);
                         $notifications->save($notification);
@@ -388,7 +388,7 @@ class OrganizationsController extends AppController
                     foreach ($organization->getOwners() as $owner) {
                         $notifications = $this->loadModel("Notifications");
                         $notification = $notifications->newEntity();
-                        $notification->editName(_("Your organization has been approved"));
+                        $notification->editName(__("Your organization has been approved"));
                         $notification->editLink('organizations/view/' . $organization->id);
                         $notification->editUser($owner);
                         $notifications->save($notification);
@@ -419,7 +419,7 @@ class OrganizationsController extends AppController
             foreach ($organization->getOwners() as $owner) {
                 $notifications = $this->loadModel("Notifications");
                 $notification = $notifications->newEntity();
-                $notification->editName(_("Your organization has been approved"));
+                $notification->editName(__("Your organization has been approved"));
                 $notification->editLink('organizations/view/' . $organization->id);
                 $notification->editUser($owner);
                 $notifications->save($notification);
@@ -445,7 +445,7 @@ class OrganizationsController extends AppController
             foreach ($organization->getOwners() as $owner) {
                 $notifications = $this->loadModel("Notifications");
                 $notification = $notifications->newEntity();
-                $notification->editName(_("Your organization has been archived"));
+                $notification->editName(__("Your organization has been archived"));
                 $notification->editLink('organizations/view/' . $organization->id);
                 $notification->editUser($owner);
                 $notifications->save($notification);
