@@ -82,12 +82,18 @@
                                     <tr>
                                         <td>
                                             <!-- Name of project -->
-                                            <?php if ($project->isAccepted() && !$project->isArchived()) {
+                                            <?php
+                                            if (!$project->isAccepted() || $project->isArhived()) {
+                                                if ($user && ($user->isMentorOf($project->id) || $user->hasRoleName(['Administrator']))) {
+                                                    echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                                } else {
+                                                    echo $project->getName();
+                                                }
+                                            } else {
                                                 echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
-                                            } elseif (!$project->isAccepted() && !$project->isArchived()) {
-                                                echo $project->getName();
                                             }
                                             ?>
+
                                             <!-- Badge pending-->
                                             <?php
                                             if (!$project->isAccepted() && !$project->isArchived()):
@@ -116,7 +122,8 @@
                                     <tr>
                                         <td>
                                             <!-- Name of organization -->
-                                            <?php if (!$organization->getIsValidated() || $organization->getIsRejected()) {
+                                            <?php
+                                            if (!$organization->getIsValidated() || $organization->getIsRejected()) {
                                                 if ($user && ($user->isMemberOf($organization->id) || $user->hasRoleName(['Administrator']))) {
                                                     echo $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]);
                                                 } else {
@@ -124,7 +131,8 @@
                                                 }
                                             } else {
                                                 echo $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]);
-                                            } ?>
+                                            }
+                                            ?>
                                             <!-- Badge owner -->
                                             <?php
                                             if ($userSelected->isOwnerOf($organization->id)):
