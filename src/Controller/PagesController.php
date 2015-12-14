@@ -100,24 +100,24 @@ class PagesController extends AppController
         $numberStudents = $this->Users->find('all')->where(['isStudent' => true])->count();
 
         $this->loadModel("Projects");
-		$projects = $this->Projects->find(
-			'all',
-			[
-				'contain' => [
-					'Missions'
-				],
-				'conditions' => [
-					'AND' =>[
-						'Projects.accepted' => true,
-						'Projects.archived' => false
-					]
-				]
-			]
-		);
-		$numberProjects = count($projects->toArray());
-		
-		$this->loadModel("Missions");
-		$missions = $this->Missions->find(
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+        
+        $this->loadModel("Missions");
+        $missions = $this->Missions->find(
             'all',
             [
                 'contain' => [
@@ -137,7 +137,7 @@ class PagesController extends AppController
                 ],
             ]
         );
-		$numberMissions = count($missions->toArray());
+        $numberMissions = count($missions->toArray());
 
         $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
     }
