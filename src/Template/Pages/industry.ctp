@@ -15,8 +15,11 @@
 				<div style="float:left">
 					<?php echo $this->Html->image('google.png', ['alt' => 'Google', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<h4><a href="http://www.google.com"> Google </a></h4>
+				</div>
+				<div class="col-sm-4">
+					<h5 class="partner-text-founder"><?= __('Founding partner') ?></h5>
 				</div>
 			</div>
 			<div class="row">	
@@ -34,8 +37,11 @@
 				<div style="float:left">
 					<?php echo $this->Html->image('savoirfairelinux.jpg', ['alt' => 'Savoirfairelinux', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<h4><a href="https://www.savoirfairelinux.com"> Savoir-faire Linux </a></h4>
+				</div>
+				<div class="col-sm-4">
+					<h5 class="partner-text-premium"><?= __('Premium sponsor') ?></h5>
 				</div>
 			</div>
 			<div class="row">

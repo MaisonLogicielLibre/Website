@@ -15,8 +15,11 @@
 				<div style="float:left">
 					<?php echo $this->Html->image('ets.png', ['alt' => 'ETS', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<h4><a href="http://www.etsmtl.ca"> École de technologie supérieure </a></h4>
+				</div>
+				<div class="col-sm-4">
+					<h5 class="partner-text-founder"><?= __('Founding partner') ?></h5>
 				</div>
 			</div>
 			<div class="row">	
