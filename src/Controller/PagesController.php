@@ -153,16 +153,52 @@ class PagesController extends AppController
         $users = $this->Users->find('all')->toArray();
 
         $this->loadModel("Projects");
-        $projects = $this->Projects->find('all')->toArray();
 
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
 
         $this->loadModel("Missions");
-        $missions = $this->Missions->find('all')->toArray();
 
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
+        
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+        
+        $missions = $this->Missions->find(
+            'all',
+            [
+                'contain' => [
+                    'Projects' => [
+                    ]
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'AND' => [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+        $numberMissions = count($missions->toArray());
 
         $countUni = [];
 
@@ -249,8 +285,8 @@ class PagesController extends AppController
 
         $statsWeb = [
             'organizations' => count($organizations),
-            'projects' => count($projects),
-            'missions' => count($missions)
+            'projects' => $numberProjects,
+            'missions' => $numberMissions
 
         ];
 
@@ -258,7 +294,7 @@ class PagesController extends AppController
             'users' => $statsUsers,
             'website' => $statsWeb
         ];
-
+        
         $this->set(compact('stats'));
 
         $this->viewBuilder()->layout(false);
@@ -300,13 +336,11 @@ class PagesController extends AppController
         $users = $this->Users->find('all')->toArray();
         
         $this->loadModel("Projects");
-        $projects = $this->Projects->find('all')->toArray();
         
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
         
         $this->loadModel("Missions");
-        $missions = $this->Missions->find('all')->toArray();
         
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
@@ -314,6 +348,45 @@ class PagesController extends AppController
         $issues = 0;
         $prs = 0;
         $commits = 0;
+        
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+        
+        $missions = $this->Missions->find(
+            'all',
+            [
+                'contain' => [
+                    'Projects' => [
+                    ]
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'AND' => [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+        $numberMissions = count($missions->toArray());
+
         
         $contributions = [];
         
@@ -421,8 +494,8 @@ class PagesController extends AppController
         
         $statsWeb = [
             'organizations' => count($organizations),
-            'projects' => count($projects),
-            'missions' => count($missions)
+            'projects' => $numberProjects,
+            'missions' => $numberMissions
             
         ];
         
