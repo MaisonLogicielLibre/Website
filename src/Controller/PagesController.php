@@ -161,8 +161,8 @@ class PagesController extends AppController
 
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
-		
-		$projects = $this->Projects->find(
+        
+        $projects = $this->Projects->find(
             'all',
             [
                 'contain' => [
@@ -177,8 +177,8 @@ class PagesController extends AppController
             ]
         );
         $numberProjects = count($projects->toArray());
-		
-		$missions = $this->Missions->find(
+        
+        $missions = $this->Missions->find(
             'all',
             [
                 'contain' => [
@@ -294,7 +294,7 @@ class PagesController extends AppController
             'users' => $statsUsers,
             'website' => $statsWeb
         ];
-		
+        
         $this->set(compact('stats'));
 
         $this->viewBuilder()->layout(false);
@@ -348,8 +348,8 @@ class PagesController extends AppController
         $issues = 0;
         $prs = 0;
         $commits = 0;
-		
-		$projects = $this->Projects->find(
+        
+        $projects = $this->Projects->find(
             'all',
             [
                 'contain' => [
@@ -364,8 +364,8 @@ class PagesController extends AppController
             ]
         );
         $numberProjects = count($projects->toArray());
-		
-		$missions = $this->Missions->find(
+        
+        $missions = $this->Missions->find(
             'all',
             [
                 'contain' => [
