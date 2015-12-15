@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="panel panel-warning col-sm-6 col-sm-offset-3">
+	<div class="panel col-sm-6 col-sm-offset-3 partner-panel partner-founder">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -28,7 +28,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -47,7 +47,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -66,7 +66,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -85,7 +85,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -104,7 +104,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -123,7 +123,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
