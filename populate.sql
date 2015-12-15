@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- Contenu de la table `permissions`
 --
 
-INSERT INTO `permissions` (`id`, `name`) VALUES
+REPLACE `permissions` (`id`, `name`) VALUES
 (1, 'edit_organizations'),
 (2, 'delete_organizations'),
 (3, 'submit_organization'),
@@ -74,7 +74,7 @@ INSERT INTO `permissions` (`id`, `name`) VALUES
 -- Contenu de la table `permissions_type_users`
 --
 
-INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VALUES
+REPLACE `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VALUES
 (1, 3, 1),
 (2, 3, 2),
 (3, 1, 3),
@@ -138,7 +138,7 @@ INSERT INTO `permissions_type_users` (`id`, `type_user_id`, `permission_id`) VAL
 -- Contenu de la table `type_users`
 --
 
-INSERT INTO `type_users` (`id`, `name`) VALUES
+REPLACE `type_users` (`id`, `name`) VALUES
 (1, 'User'),
 (3, 'Administrator'),
 (4, 'Dyn_mentor'),
@@ -150,18 +150,18 @@ INSERT INTO `type_users` (`id`, `name`) VALUES
 -- Contenu de la table `universities`
 --
 
-INSERT INTO `universities` (`id`, `name`, `website`) VALUES
+REPLACE `universities` (`id`, `name`, `website`) VALUES
 (1, 'École de Technologie Supérieure', '');
 
-INSERT INTO `mll_site`.`mission_levels` (`id`, `name`) VALUES (NULL, '1'), (NULL, '2'), (NULL, '3'), (NULL, '4'), (NULL, 'Master');
-INSERT INTO `mll_site`.`type_missions` (`id`, `name`) VALUES (NULL, 'Intern'), (NULL, 'Volunteer'), (NULL, 'Master'), (NULL, 'Capstone'), (NULL, 'Professor');
-INSERT INTO `mll_site`.`hash_types` (`id`, `name`) VALUES (NULL, 'resetPassword');
+REPLACE `mll_site`.`mission_levels` (`id`, `name`) VALUES (NULL, '1'), (NULL, '2'), (NULL, '3'), (NULL, '4'), (NULL, 'Master');
+REPLACE `mll_site`.`type_missions` (`id`, `name`) VALUES (NULL, 'Intern'), (NULL, 'Volunteer'), (NULL, 'Master'), (NULL, 'Capstone'), (NULL, 'Professor');
+REPLACE `mll_site`.`hash_types` (`id`, `name`) VALUES (NULL, 'resetPassword');
 
 --
 -- Contenu de la table `svns`
 --
 
-INSERT INTO `svns` (`id`, `name`, `link`) VALUES
+REPLACE `svns` (`id`, `name`, `link`) VALUES
 (1, 'GitHub', 'https://github.com/');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
