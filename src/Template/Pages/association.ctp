@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-	<div class="panel col-sm-6 col-sm-offset-3 partner-panel partner-premium">
+	<div class="panel col-sm-6 col-sm-offset-3 partner-panel partner-sponsor">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -19,7 +19,7 @@
 					<h4><a href="https://facil.qc.ca/"> FACIL </a></h4>
 				</div>
 				<div class="col-sm-4">
-					<h5 class="partner-text-premium"><?= __('Premium sponsor') ?></h5>
+					<h5 class="partner-text-sponsor"><?= __('Sponsor') ?></h5>
 				</div>
 			</div>
 			<div class="row">	
