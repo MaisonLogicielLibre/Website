@@ -336,7 +336,7 @@ class PagesController extends AppController
                 $this->render('tv3');
                 break;
             case 4:
-                $this->render('tv1');
+                $this->render('tv4');
                 break;
             case 5:
                 $this->render('tv1');
