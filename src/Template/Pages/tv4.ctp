@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
-                    <h1><strong><?= __('Users per university') ?></strong></h1>
+                    <h1><strong>Maison du logiciel libre - Utilisateurs par université</strong></h1>
                 </div>
             </div>
             <div class="row">
@@ -43,6 +43,11 @@
                             'vAxis' => ['format' => '#']
                         ])
                     ?>
+                </div>
+            </div>
+            <div class="row" style="position:absolute;bottom:0;text-align:center;width:100%;">
+                <div class="col-xs-12">
+                    <h2>Inscrivez-vous à maisonlogiciellibre.org</h2>
                 </div>
             </div>
         </div>

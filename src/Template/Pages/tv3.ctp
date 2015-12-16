@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h1><strong>Statistiques</strong></h1>
+                    <h1><strong>Maison du logiciel libre - Statistiques</strong></h1>
                 </div>
             </div>
             <div class="row" style="margin-top:100px;">
@@ -209,6 +209,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row" style="position:absolute;bottom:0;text-align:center;width:100%;">
+                <div class="col-xs-12">
+                    <h2>Inscrivez-vous à maisonlogiciellibre.org</h2>
                 </div>
             </div>
         </div>
