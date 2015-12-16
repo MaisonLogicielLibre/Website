@@ -7,89 +7,212 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
 
     <?= $this->Html->meta('icon') ?>
-    <link rel="stylesheet" href="webroot/css/bootstrap.min.css"/>
+    <?= $this->Less->less('less/stylesTV.less'); ?>
     <link rel="stylesheet" href="webroot/css/font-awesome.min.css"/>
 
     <?= $this->fetch('meta') ?>
-    <style>
-        * {
-            font-family: "Source Sans Pro", sans-serif;
-            overflow: hidden;
-        }
-
-        body {
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
-<div class="row">
-    <div class="col-sm-4 col-sm-offset-1" style="margin-top:20px">
-        <div class="panel panel-warning">
-            <table class="table table-striped table-responsive">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Users'); ?></h3>
+<div class="wrapper">
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h1><strong>Statistiques</strong></h1>
                 </div>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Users:'); ?></strong></td>
-                    <td><?= $stats['users']['count']; ?></td>
-                </tr>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Students:'); ?></strong></td>
-                    <td><?= $stats['users']['students']; ?></td>
-                </tr>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Available for mentoring:'); ?></strong></td>
-                    <td><?= $stats['users']['mentors']; ?></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="col-sm-4 col-sm-offset-2" style="margin-top:20px">
-        <div class="panel panel-warning">
-            <table class="table table-striped table-responsive">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= __('Projects'); ?></h3>
+            </div>
+            <div class="row" style="margin-top:100px;">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Users'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-users fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['count']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Users'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-graduation-cap fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['students']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Students'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-child fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['mentors']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Available for mentoring'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Projects'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-suitcase fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['organizations']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Organizations'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-cubes fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['projects']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Projects'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-file-text-o fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['missions']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Missions'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Contributions'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['pullRequests']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Pull requests'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['issues']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Issues'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['commits']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Commits'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Organizations:'); ?></strong></td>
-                    <td><?= $stats['website']['organizations']; ?></td>
-                </tr>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Projects:'); ?></strong></td>
-                    <td><?= $stats['website']['projects']; ?></td>
-                </tr>
-                <tr>
-                    <td style="white-space:pre"><strong><?= __('Missions:'); ?></strong></td>
-                    <td><?= $stats['website']['missions']; ?></td>
-                </tr>
-            </table>
+            </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <?= $this->GoogleChart->create("ColumnChart", "chart3")
-            ->addColumns([[
-                'string',
-                'Name'
-            ],[
-                'number',
-                'Users'
-            ]])
-            ->addRows(
-                $stats['users']['universities']
-            )
-            ->setOptions([
-                'height' => 250,
-                'legend' => 'none',
-                'title' => __('Users per university'),
-                'vAxis' => ['format' => '#']
-            ])
-        ?>
-    </div>
-</div>
-
-<?=$this->fetch('scriptBottom'); ?>
 </body>
 </html>

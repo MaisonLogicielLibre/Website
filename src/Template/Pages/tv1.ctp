@@ -11,17 +11,16 @@
     <link rel="stylesheet" href="webroot/css/font-awesome.min.css"/>
 
     <?= $this->fetch('meta') ?>
+    <style>
+        body {
+            background: url(webroot/img/banner.png) no-repeat center center fixed;
+            -webkit-background-size: 95%;
+            -moz-background-size: 95%;
+            -o-background-size: 95%;
+            background-size: 95%;
+        }
+    </style>
 </head>
 <body>
-<div id="wrapper-tv1">
-    <div class="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div id="banner" class="col-xs-12">
-                    <img src="webroot/img/banner.png" class="img-responsive" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
