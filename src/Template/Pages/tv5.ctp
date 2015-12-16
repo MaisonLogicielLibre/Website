@@ -20,7 +20,7 @@
 <div class="wrapper">
     <div class="page-wrapper">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="margin-bottom:100px;">
                 <div class="col-xs-10 col-xs-offset-1">
                     <h1><strong>Maison du logiciel libre - Nos commanditaires</strong></h1>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="col-sm-12">
                     <table class="table table-responsive">
                         <tr>
-                            <td>
+                            <td style="padding-left: 60px">
                                 <img src="webroot/img/savoirfairelinux.svg" alt=""/>
                             </td>
                             <td>
