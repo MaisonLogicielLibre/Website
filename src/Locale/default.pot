@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-15 19:40+0000\n"
+"POT-Creation-Date: 2015-12-17 20:30+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -17,7 +17,7 @@ msgstr ""
 #: Controller/AppController.php:65
 #: Controller/UsersController.php:258
 #: Template/Layout/default.ctp:31
-#: Template/Pages/home.ctp:31;104
+#: Template/Pages/home.ctp:31;109
 #: Template/Users/login.ctp:25
 #: Template/Users/register.ctp:25
 msgid "ML2"
@@ -126,60 +126,60 @@ msgstr ""
 msgid "The mission could not be archived. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:392
+#: Controller/MissionsController.php:404
 msgid "You have applied on the mission"
 msgstr ""
 
-#: Controller/MissionsController.php:402
+#: Controller/MissionsController.php:414
 msgid "There was an error. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:406
+#: Controller/MissionsController.php:418
 msgid "You have already applied on this mission."
 msgstr ""
 
-#: Controller/MissionsController.php:410
+#: Controller/MissionsController.php:422
 msgid "You need to fill your profile before apply on this mission."
 msgstr ""
 
-#: Controller/MissionsController.php:414
-msgid "Only students can apply on missions. If you are a student, please fill your profile."
+#: Controller/MissionsController.php:426
+msgid "This mission is not seeking someone matching your profile"
 msgstr ""
 
-#: Controller/MissionsController.php:420
+#: Controller/MissionsController.php:432
 msgid "No more position available"
 msgstr ""
 
-#: Controller/MissionsController.php:426
+#: Controller/MissionsController.php:438
 msgid "You can't apply on your mission, you are the mentor"
 msgstr ""
 
-#: Controller/MissionsController.php:430
+#: Controller/MissionsController.php:442
 msgid "You don't have permission to access this page."
 msgstr ""
 
-#: Controller/MissionsController.php:465
+#: Controller/MissionsController.php:477
 msgid "The mentor have been modified."
 msgstr ""
 
-#: Controller/MissionsController.php:468
+#: Controller/MissionsController.php:480
 msgid "The mentor could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/MissionsController.php:471
+#: Controller/MissionsController.php:483
 #: Controller/ProjectsController.php:804
 msgid "There must be at least one mentor"
 msgstr ""
 
-#: Controller/MissionsController.php:507
+#: Controller/MissionsController.php:519
 msgid "The professor have been modified."
 msgstr ""
 
-#: Controller/MissionsController.php:510
+#: Controller/MissionsController.php:522
 msgid "The professor could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/MissionsController.php:513
+#: Controller/MissionsController.php:525
 msgid "There must be at least one professor"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgstr ""
 msgid "There was an error. Please,try again."
 msgstr ""
 
-#: Controller/PagesController.php:275;478
+#: Controller/PagesController.php:294;504
 #: Model/Entity/Mission.php:165;188
 #: Template/Element/Missions/addForm.ctp:35;43
 #: Template/Missions/edit.ctp:70;78
@@ -729,7 +729,7 @@ msgstr ""
 #: Template/Organizations/view.ctp:15
 #: Template/Pages/administration.ctp:59
 #: Template/Pages/statistics.ctp:136;169
-#: Template/Pages/tv2.ctp:52
+#: Template/Pages/tv3.ctp:90;123
 #: Template/Projects/admin_index.ctp:8
 #: Template/Projects/edit.ctp:10
 #: Template/Projects/edit_mentor.ctp:9
@@ -780,7 +780,7 @@ msgstr ""
 #: Template/Applications/accepted.ctp:55
 #: Template/Applications/rejected.ctp:38
 #: Template/Missions/add.ctp:30
-#: Template/Missions/apply.ctp:54
+#: Template/Missions/apply.ctp:64
 #: Template/Missions/edit.ctp:94
 #: Template/Missions/edit_mentor.ctp:46
 #: Template/Missions/edit_professor.ctp:46
@@ -823,6 +823,7 @@ msgstr ""
 #: Template/Cell/Sidebar/all.ctp:52
 #: Template/Missions/index.ctp:7
 #: Template/Pages/statistics.ctp:188
+#: Template/Pages/tv3.ctp:142
 #: Template/Projects/view.ctp:66
 msgid "Missions"
 msgstr ""
@@ -844,7 +845,7 @@ msgid "Type :"
 msgstr ""
 
 #: Template/Applications/view.ctp:35
-#: Template/Missions/apply.ctp:40
+#: Template/Missions/apply.ctp:50
 #: Template/Users/edit.ctp:72
 msgid "Extra information"
 msgstr ""
@@ -875,6 +876,7 @@ msgstr ""
 #: Template/Organizations/submit.ctp:7
 #: Template/Pages/administration.ctp:75
 #: Template/Pages/statistics.ctp:150
+#: Template/Pages/tv3.ctp:104
 #: Template/Projects/admin_index.ctp:27
 #: Template/Projects/index.ctp:33
 #: Template/Projects/my_projects.ctp:26
@@ -905,7 +907,6 @@ msgstr ""
 #: Template/Cell/Sidebar/all.ctp:44
 #: Template/Cell/Sidebar/project_action.ctp:58
 #: Template/Element/News/news-table.ctp:15
-#: Template/Pages/tv3.ctp:62
 #: Template/Projects/submit.ctp:4;8;26
 msgid "Submit a project"
 msgstr ""
@@ -949,7 +950,7 @@ msgid "Partners"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:107
-#: Template/Pages/home.ctp:117
+#: Template/Pages/home.ctp:122
 #: Template/Pages/industry.ctp:3;6
 msgid "Industry"
 msgstr ""
@@ -1106,7 +1107,7 @@ msgid "Add an projects"
 msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:10
-#: Template/Pages/home.ctp:91
+#: Template/Pages/home.ctp:96
 #: Template/Users/index.ctp:28
 #: Template/Users/view.ctp:23
 msgid "Student"
@@ -1474,7 +1475,7 @@ msgid "Describe your mission"
 msgstr ""
 
 #: Template/Element/Missions/addForm.ctp:12;25
-#: Template/Missions/apply.ctp:45
+#: Template/Missions/apply.ctp:55
 #: Template/Missions/edit.ctp:45;59
 #: Template/Organizations/add.ctp:29
 #: Template/Organizations/edit.ctp:33
@@ -1690,28 +1691,31 @@ msgid "Logout"
 msgstr ""
 
 #: Template/Layout/default.ctp:107
-#: Template/Pages/home.ctp:141
+#: Template/Pages/home.ctp:146
 #: Template/Users/login.ctp:47
 #: Template/Users/register.ctp:73
 msgid "Sign Up"
 msgstr ""
 
 #: Template/Layout/default.ctp:113
-#: Template/Pages/home.ctp:142
+#: Template/Pages/home.ctp:147
 #: Template/Users/register.ctp:80
 msgid "Sign In"
 msgstr ""
 
 #: Template/Layout/default.ctp:128
-#: Template/Pages/home.ctp:261;326
+#: Template/Missions/add.ctp:61
+#: Template/Missions/edit.ctp:117
+#: Template/Pages/home.ctp:274;339
 #: Template/Pages/meetup.ctp:23
 #: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
+#: Template/Projects/submit.ctp:112
 msgid "Contact us"
 msgstr ""
 
 #: Template/Layout/default.ctp:129
-#: Template/Pages/home.ctp:331
+#: Template/Pages/home.ctp:344
 msgid "About us"
 msgstr ""
 
@@ -1739,6 +1743,24 @@ msgstr ""
 msgid "Add Mission"
 msgstr ""
 
+#: Template/Missions/add.ctp:59
+#: Template/Missions/edit.ctp:115
+#: Template/Projects/submit.ctp:110
+msgid "By selecting an intern, you acknowledge that you will pay for your intern (typically $12000 to $14000 per semester). We will then forward your posting to the CO-OP department of all our university partners."
+msgstr ""
+
+#: Template/Missions/add.ctp:60
+#: Template/Missions/edit.ctp:116
+#: Template/Projects/submit.ctp:111
+msgid "This project type requires a professor and student(s) from the same university. Ensure the project is sufficiently complex for a graduate student (guidelines coming in 2016)."
+msgstr ""
+
+#: Template/Missions/add.ctp:61
+#: Template/Missions/edit.ctp:117
+#: Template/Projects/submit.ctp:112
+msgid "A PFE/Capstone project requires a professor and student(s) from the same university. The length is 1 to 2 sessions, depending on the university. For example guidelines see here: (guidelines coming in 2016). {0} for more information"
+msgstr ""
+
 #: Template/Missions/apply.ctp:8;14
 msgid "Apply on the mission"
 msgstr ""
@@ -1756,20 +1778,19 @@ msgid "Email"
 msgstr ""
 
 #: Template/Missions/apply.ctp:27
-#: Template/Missions/index.ctp:24
 #: Template/Projects/view.ctp:75
 msgid "Type"
 msgstr ""
 
-#: Template/Missions/apply.ctp:49
+#: Template/Missions/apply.ctp:59
 msgid "As always, should you encounter a bug, we will disavow any knowledge of your actions."
 msgstr ""
 
-#: Template/Missions/apply.ctp:51
+#: Template/Missions/apply.ctp:61
 msgid "This page will self-destruct on the press of a button. Good luck.."
 msgstr ""
 
-#: Template/Missions/apply.ctp:53
+#: Template/Missions/apply.ctp:63
 msgid "Apply"
 msgstr ""
 
@@ -1811,6 +1832,10 @@ msgstr ""
 #: Template/Universities/view.ctp:16
 #: Template/Users/view.ctp:193
 msgid "Name"
+msgstr ""
+
+#: Template/Missions/index.ctp:24
+msgid "Need"
 msgstr ""
 
 #: Template/Missions/index.ctp:25
@@ -1894,7 +1919,7 @@ msgstr ""
 
 #: Template/Notifications/index.ctp:8
 #: Template/Pages/statistics.ctp:74;88
-#: Template/Pages/tv2.ctp:31
+#: Template/Pages/tv3.ctp:28;42
 #: Template/Users/delete.ctp:9
 #: Template/Users/edit.ctp:10
 #: Template/Users/email.ctp:9
@@ -2067,12 +2092,22 @@ msgstr ""
 msgid "Organization"
 msgstr ""
 
+#: Template/Pages/academic.ctp:22
+#: Template/Pages/industry.ctp:22
+msgid "Founding partner"
+msgstr ""
+
 #: Template/Pages/administration.ctp:20;41
 msgid "Manage"
 msgstr ""
 
 #: Template/Pages/administration.ctp:83
 msgid "Add organization"
+msgstr ""
+
+#: Template/Pages/association.ctp:22
+#: Template/Pages/industry.ctp:44
+msgid "Sponsor"
 msgstr ""
 
 #: Template/Pages/contact.ctp:3;6
@@ -2083,23 +2118,31 @@ msgstr ""
 msgid "1100, rue Notre-Dame Ouest"
 msgstr ""
 
-#: Template/Pages/government.ctp:35
-#: Template/Pages/home.ctp:247
+#: Template/Pages/contact.ctp:32
+msgid "Request card access"
+msgstr ""
+
+#: Template/Pages/government.ctp:22
+msgid "Premium sponsor"
+msgstr ""
+
+#: Template/Pages/government.ctp:38
+#: Template/Pages/home.ctp:260
 msgid "Become a sponsor"
 msgstr ""
 
-#: Template/Pages/government.ctp:40
-#: Template/Pages/home.ctp:253
+#: Template/Pages/government.ctp:43
+#: Template/Pages/home.ctp:266
 msgid "Get visibility and access to over"
 msgstr ""
 
-#: Template/Pages/government.ctp:41
-#: Template/Pages/home.ctp:254
+#: Template/Pages/government.ctp:44
+#: Template/Pages/home.ctp:267
 msgid "5000 software engineering and computer science students."
 msgstr ""
 
-#: Template/Pages/government.ctp:42
-#: Template/Pages/home.ctp:255
+#: Template/Pages/government.ctp:45
+#: Template/Pages/home.ctp:268
 msgid "Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners."
 msgstr ""
 
@@ -2107,94 +2150,91 @@ msgstr ""
 msgid "Go to dashboard"
 msgstr ""
 
-#: Template/Pages/home.ctp:78
+#: Template/Pages/home.ctp:83
 msgid "Welcome to maison du logiciel libre (ML2)"
 msgstr ""
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:85
 msgid "Ici nous brassons du code !"
 msgstr ""
 
-#: Template/Pages/home.ctp:92
+#: Template/Pages/home.ctp:97
 msgid "Improve your skill and C.V. by working on open source industry projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:118
+#: Template/Pages/home.ctp:123
 msgid "Propose a project and find motivated students in our university ecosystem"
 msgstr ""
 
-#: Template/Pages/home.ctp:131
+#: Template/Pages/home.ctp:136
 msgid "We have"
 msgstr ""
 
-#: Template/Pages/home.ctp:136
+#: Template/Pages/home.ctp:141
 msgid "{0} and learn from our teaching assistants and collaborate with students."
 msgstr ""
 
-#: Template/Pages/home.ctp:136
+#: Template/Pages/home.ctp:141
 msgid "Register now"
 msgstr ""
 
-#: Template/Pages/home.ctp:154
+#: Template/Pages/home.ctp:161
 msgid "Registered students"
 msgstr ""
 
-#: Template/Pages/home.ctp:171
+#: Template/Pages/home.ctp:181
 msgid "Ongoing projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:188
+#: Template/Pages/home.ctp:200
 msgid "Available missions"
 msgstr ""
 
-#: Template/Pages/home.ctp:207
+#: Template/Pages/home.ctp:220
 msgid "Our founding partners"
 msgstr ""
 
-#: Template/Pages/home.ctp:226
+#: Template/Pages/home.ctp:239
 msgid "Our sponsors"
 msgstr ""
 
-#: Template/Pages/home.ctp:275
+#: Template/Pages/home.ctp:288
 msgid "Are you a university student?"
 msgstr ""
 
-#: Template/Pages/home.ctp:281
+#: Template/Pages/home.ctp:294
 msgid "Take our survey and help us serve you better"
 msgstr ""
 
-#: Template/Pages/home.ctp:283
+#: Template/Pages/home.ctp:296
 msgid "Take the survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:288
+#: Template/Pages/home.ctp:301
 msgid "Apply to work on an open source project"
 msgstr ""
 
-#: Template/Pages/home.ctp:290
+#: Template/Pages/home.ctp:303
 msgid "Our projects list"
 msgstr ""
 
-#: Template/Pages/home.ctp:298
-#: Template/Pages/tv3.ctp:43
+#: Template/Pages/home.ctp:311
 msgid "Hire interns, graduates, and capstone."
 msgstr ""
 
-#: Template/Pages/home.ctp:306
-#: Template/Pages/tv3.ctp:47
+#: Template/Pages/home.ctp:319
 msgid "Industry and Government: "
 msgstr ""
 
-#: Template/Pages/home.ctp:306
+#: Template/Pages/home.ctp:319
 msgid "Develop open source features in your products, tools and dependencies. Promote your company in our open source community"
 msgstr ""
 
-#: Template/Pages/home.ctp:310
-#: Template/Pages/tv3.ctp:53
+#: Template/Pages/home.ctp:323
 msgid "University professors: "
 msgstr ""
 
-#: Template/Pages/home.ctp:310
+#: Template/Pages/home.ctp:323
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and dev-ops infrastructure."
 msgstr ""
 
@@ -2339,31 +2379,36 @@ msgid "Send an email describing your organization and why you would like to join
 msgstr ""
 
 #: Template/Pages/statistics.ctp:12
+#: Template/Pages/tv3.ctp:152
 msgid "Contributions"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:26
+#: Template/Pages/tv3.ctp:166
 msgid "Pull requests"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:45
+#: Template/Pages/tv3.ctp:185
 msgid "Issues"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:64
+#: Template/Pages/tv3.ctp:204
 msgid "Commits"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:107
+#: Template/Pages/tv3.ctp:61
 msgid "Students"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:126
+#: Template/Pages/tv3.ctp:80
 msgid "Available for mentoring"
 msgstr ""
 
 #: Template/Pages/statistics.ctp:200
-#: Template/Pages/tv2.ctp:86
 msgid "Users per university"
 msgstr ""
 
@@ -2426,39 +2471,9 @@ msgstr ""
 #: Template/Pages/tv1.ctp:6
 #: Template/Pages/tv2.ctp:6
 #: Template/Pages/tv3.ctp:6
+#: Template/Pages/tv4.ctp:6
+#: Template/Pages/tv5.ctp:6
 msgid "The ML2 tv"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:34
-msgid "Users:"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:38
-msgid "Students:"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:42
-msgid "Available for mentoring:"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:55
-msgid "Organizations:"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:59
-msgid "Projects:"
-msgstr ""
-
-#: Template/Pages/tv2.ctp:63
-msgid "Missions:"
-msgstr ""
-
-#: Template/Pages/tv3.ctp:47
-msgid "Develop open source features in your products, tools and\n                    dependencies. Promote your company in our open source community"
-msgstr ""
-
-#: Template/Pages/tv3.ctp:53
-msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and\n                    dev-ops infrastructure."
 msgstr ""
 
 #: Template/Projects/add.ctp:8
