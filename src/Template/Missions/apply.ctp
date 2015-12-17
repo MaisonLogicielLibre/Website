@@ -27,9 +27,19 @@
 								<?= $this->Form->label('type', __('Type'), ['class' => 'control-label']); ?>
 								<select id="type_mission_id" name="type_mission_id" class="form-control">
 									<?php   foreach ($mission->getType() as $type) { ?>	
-												<option 
-													value=<?=$type->id?>><?= __($type->name) ?>
-												</option>
+											<?php if ($isProfessor) {
+													if ($type->name == 'Professor') { ?>
+														<option 
+															value=<?=$type->id?>><?= __($type->name) ?>
+														</option>
+											  <?php }
+												  } 
+												  if($isStudent) { 
+														if ($type->name != 'Professor') { ?>
+															<option 
+																value=<?=$type->id?>><?= __($type->name) ?>
+															</option>
+											<?php } }?>
 									  <?php } 
 									?>
 								</select>
