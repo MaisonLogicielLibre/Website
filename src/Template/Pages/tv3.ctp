@@ -7,72 +7,217 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
 
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('bootstrap.min'); ?>
-    <?= $this->Html->css('font-awesome.min.css'); ?>
+    <?= $this->Less->less('less/stylesTV.less'); ?>
+    <link rel="stylesheet" href="webroot/css/font-awesome.min.css"/>
 
     <?= $this->fetch('meta') ?>
-    <style>
-        * {
-            font-family: "Source Sans Pro", sans-serif;
-            overflow: hidden;
-        }
-
-        body {
-            height: 100%;
-        }
-
-        h1 {
-            font-weight: 700;
-            text-align: center;
-            font-size: 7em;
-            margin: 50px 0 0 0;
-        }
-        p {
-            font-size: 2em;
-            text-align: justify;
-        }
-        button {
-            font-size: 6em;
-        }
-    </style>
 </head>
 <body>
-<div id="wrapper">
-    <div class="row">
-        <div class="col-sm-12">
-            <h1><?= __("Hire interns, graduates, and capstone."); ?></h1>
-            <div class="row" style="margin:30px 0 0 0;">
-                <div class="col-sm-4 col-sm-offset-1">
-                    <p>
-                        <strong><?= __("Industry and Government: "); ?></strong><br /><?= __("Develop open source features in your products, tools and
-                    dependencies. Promote your company in our open source community"); ?>
-                    </p>
+<div class="wrapper">
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h1><strong>Maison du logiciel libre - Statistiques</strong></h1>
                 </div>
-                <div class="col-sm-4 col-sm-offset-2">
-                    <p>
-                        <strong><?= __("University professors: "); ?></strong><br /><?= __("Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and
-                    dev-ops infrastructure."); ?>
-                    </p>
+            </div>
+            <div class="row" style="margin-top:100px;">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Users'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-users fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['count']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Users'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-graduation-cap fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['students']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Students'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-child fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['users']['mentors']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Available for mentoring'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Projects'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-suitcase fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['organizations']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Organizations'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-cubes fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['projects']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Projects'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-file-text-o fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['website']['missions']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Missions'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"><?= __('Contributions'); ?></h1>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-blue">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['pullRequests']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Pull requests'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['issues']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Issues'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-code-fork fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <?= $stats['repository']['commits']; ?>
+                                            </div>
+                                            <div>
+                                                <?= __('Commits'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer">
+                <div class="col-xs-12">
+                    <h2>Inscrivez-vous à maisonlogiciellibre.org</h2>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <button class="btn btn-primary"><?= __('Submit a project'); ?></button>
-        </div>
-    </div>
 </div>
-
-<?= $this->Html->script('jquery-2.1.4.min'); ?>
-<script>
-    !function(n){n.fn.flowtype=function(i){var m=n.extend({maximum:9999,minimum:1,maxFont:9999,minFont:1,fontRatio:35},i),t=function(i){var t=n(i),o=t.width(),u=o>m.maximum?m.maximum:o<m.minimum?m.minimum:o,a=u/m.fontRatio,f=a>m.maxFont?m.maxFont:a<m.minFont?m.minFont:a;t.css("font-size",f+"px")};return this.each(function(){var i=this;n(window).resize(function(){t(i)}),t(this)})}}(jQuery);
-</script>
-<script>
-    $('h1').flowtype({
-        minFont : 64,
-        maxFont : 260
-    });
-</script>
 </body>
 </html>

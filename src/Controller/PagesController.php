@@ -149,6 +149,9 @@ class PagesController extends AppController
      */
     public function tv($id = null)
     {
+        $this->loadModel("Statistics");
+        $statistics = $this->Statistics->find('all')->toArray();
+
         $this->loadModel("Users");
         $users = $this->Users->find('all')->toArray();
 
@@ -161,7 +164,11 @@ class PagesController extends AppController
 
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
-        
+
+        $issues = 0;
+        $prs = 0;
+        $commits = 0;
+
         $projects = $this->Projects->find(
             'all',
             [
@@ -177,7 +184,7 @@ class PagesController extends AppController
             ]
         );
         $numberProjects = count($projects->toArray());
-        
+
         $missions = $this->Missions->find(
             'all',
             [
@@ -199,6 +206,22 @@ class PagesController extends AppController
             ]
         );
         $numberMissions = count($missions->toArray());
+
+
+        $contributions = [];
+
+        if ($statistics) {
+            foreach ($statistics as $statistic) {
+                $contributions[] = [
+                    $statistic->getContributionDate(),
+                    $statistic->getContribution()
+                ];
+
+                $issues += $statistic->getIssues();
+                $prs += $statistic->getPullRequests();
+                $commits += $statistic->getCommits();
+            }
+        }
 
         $countUni = [];
 
@@ -243,14 +266,10 @@ class PagesController extends AppController
                         $countUni[6] = $countUni[6] + 1;
                         break;
                     default:
-                        $countUni[7] = $countUni[7] + 1;
                         break;
                     // @codingStandardsIgnoreEnd
                 }
-            } else {
-                $countUni[7] = $countUni[7] + 1;
             }
-
 
             if ($user->isAvailableMentoring()) {
                 $mentors++;
@@ -276,6 +295,12 @@ class PagesController extends AppController
             $countUni[count($universities)]
         ];
 
+        $statsRepo = [
+            'issues' => $issues,
+            'pullRequests' => $prs,
+            'commits' => $commits
+        ];
+
         $statsUsers = [
             'universities' => $statsUni,
             'mentors' => $mentors,
@@ -291,11 +316,12 @@ class PagesController extends AppController
         ];
 
         $stats = [
+            'repository' => $statsRepo,
             'users' => $statsUsers,
             'website' => $statsWeb
         ];
-        
-        $this->set(compact('stats'));
+
+        $this->set(compact('contributions', 'stats'));
 
         $this->viewBuilder()->layout(false);
         // @codingStandardsIgnoreStart
@@ -307,13 +333,13 @@ class PagesController extends AppController
                 $this->render('tv2');
                 break;
             case 3:
-                $this->render('tv1');
+                $this->render('tv3');
                 break;
             case 4:
-                $this->render('tv1');
+                $this->render('tv4');
                 break;
             case 5:
-                $this->render('tv1');
+                $this->render('tv5');
                 break;
             default:
                 $this->render('tv1');

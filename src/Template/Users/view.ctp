@@ -83,7 +83,7 @@
                                         <td>
                                             <!-- Name of project -->
                                             <?php
-                                            if (!$project->isAccepted() || $project->isArhived()) {
+                                            if (!$project->isAccepted() || $project->isArchived()) {
                                                 if ($user && ($user->isMentorOf($project->id) || $user->hasRoleName(['Administrator']))) {
                                                     echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
                                                 } else {
@@ -111,7 +111,7 @@
                                                 </span>&nbsp;
                                             <?php
                                                 endif;
-                                                if (!$project->isArchived()):
+                                                if ($project->isArchived()):
                                             ?>
                                                 <span
                                                     class="label label-warning label-as-badge"><?= __('Archived'); ?>
