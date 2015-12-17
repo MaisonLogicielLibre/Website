@@ -377,13 +377,16 @@ class MissionsController extends AppController
                     $applications = TableRegistry::get('Applications');
                     
                     $professor = false;
+					$student = false;
                     foreach ($mission->getType() as $type) {
                         if ($type->name == 'Professor') {
                             $professor = true;
-                        }
+                        } else {
+							$student = true;
+						}
                     }
                     
-                    if ($user->isStudent() || ($user->isProfessor() && $professor)) {
+                    if (($user->isStudent() && $student) || ($user->isProfessor() && $professor)) {
                         if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
                             if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
                                 if ($this->request->is(['patch', 'post', 'put'])) {
@@ -420,7 +423,7 @@ class MissionsController extends AppController
                             return $this->redirect(['action' => 'view', $id]);
                         }
                     } else {
-                        $this->Flash->error(__("Only students and professors can apply on missions. If you are a professor, make sure the mission is seeking a professor"));
+                        $this->Flash->error(__("Only students and professors can apply on missions. Make sure the mission is seeking a type you can apply on"));
                         return $this->redirect(['action' => 'view', $id]);
                     }
                     $this->set(compact('mission'));
