@@ -367,22 +367,22 @@ class MissionsController extends AppController
         $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
         
         $userEmail = $user->getEmailPublic;
-		$isProfessor = $user->isProfessor();
-		$isStudent = $user->isStudent();
-		
+        $isProfessor = $user->isProfessor();
+        $isStudent = $user->isStudent();
+        
         
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($user->id != $mission->mentor_id) {
                 if ($mission->getRemainingPlaces() > 0) {
                     $applications = TableRegistry::get('Applications');
-					
-					$professor = false;
-					foreach($mission->getType() as $type) {
-						if ($type->name == 'Professor') {
-							$professor = true;
-						}
-					}
-					
+                    
+                    $professor = false;
+                    foreach ($mission->getType() as $type) {
+                        if ($type->name == 'Professor') {
+                            $professor = true;
+                        }
+                    }
+                    
                     if ($user->isStudent() || ($user->isProfessor() && $professor)) {
                         if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
                             if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
