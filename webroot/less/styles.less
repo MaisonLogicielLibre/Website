@@ -445,6 +445,10 @@ footer#footer {
   }
 }
 
+#carousel-mobile {
+  display: block;
+}
+
 #carousel {
   display: none;
   height: 100%;
@@ -481,7 +485,6 @@ footer#footer {
 
 #welcome-row {
   background: #fff;
-  padding: 100px 0;
   h1 {
     font-weight: 700;
     font-size: 50px;
@@ -494,6 +497,12 @@ footer#footer {
 }
 
 @media (min-width: 768px) {
+  #welcome-row {
+    padding: 100px 0;
+  }
+  #carousel-mobile {
+    display: none;
+  }
   #carousel {
     display: block;
   }
@@ -511,9 +520,17 @@ footer#footer {
   padding: 100px 0;
   background: @gray-dark;
   color: #fff;
+  .fa {
+    display: none;
+  }
   .stats-cell {
     margin: 20px 0;
     min-height: 250px;
+    position: relative;
+    .put-bottom {
+      position: absolute;
+      bottom: 0;
+    }
   }
   h1 {
     color: #fff;
@@ -530,11 +547,22 @@ footer#footer {
     font-size: 120px;
     line-height: 0;
     color: @brand-info;
+    &:hover {
+      color: #31b0d5;
+    }
   }
   .home-stats-info {
     text-transform: uppercase;
     font-size: 30px;
     word-spacing: 9999999px;
+  }
+}
+
+@media (min-width: 768px) {
+  #stats-row {
+    .fa {
+      display: block;
+    }
   }
 }
 

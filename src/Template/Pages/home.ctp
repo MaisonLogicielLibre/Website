@@ -58,6 +58,9 @@
         </ul>
     </nav>
     <div id="page-wrapper">
+        <header id="carousel-mobile">
+            <?= $this->Html->image('carousel/1-mobile.jpg', ['class' => 'img-responsive']); ?>
+        </header>
         <header id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -65,10 +68,12 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>');"></div>
+                    <div class="fill"
+                         style="background-image:url('<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>');"></div>
                 </div>
                 <div class="item">
-                    <div class="fill" style="background-image:url('<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>');"></div>
+                    <div class="fill"
+                         style="background-image:url('<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>');"></div>
                 </div>
             </div>
         </header>
@@ -144,53 +149,61 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats"><?= $numberStudents ?></span>
+                            <div class="put-bottom">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <?= $this->Html->link($numberStudents, ['controller' => 'Pages', 'action' => 'statistics'], ['class' => 'home-stats']); ?>
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats-info"><?= __('Registered students'); ?></span>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <span class="home-stats-info"><?= __('Registered students'); ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-graduation-cap fa-5x"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats"><?= $numberProjects ?></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats-info"><?= __('Ongoing projects'); ?></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-cubes fa-5x"></i>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <i class="fa fa-graduation-cap fa-5x"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats"><?= $numberMissions ?></span>
+                            <div class="put-bottom">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <?= $this->Html->link($numberProjects, ['controller' => 'Projects', 'action' => 'index'], ['class' => 'home-stats']); ?>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <span class="home-stats-info"><?= __('Ongoing projects'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <i class="fa fa-cubes fa-5x"></i>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <span class="home-stats-info"><?= __('Available missions'); ?></span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
+                            <div class="put-bottom">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <?= $this->Html->link($numberMissions, ['controller' => 'Missions', 'action' => 'index'], ['class' => 'home-stats']); ?>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-file-text-o fa-5x"></i>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <span class="home-stats-info"><?= __('Available missions'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <i class="fa fa-file-text-o fa-5x"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
