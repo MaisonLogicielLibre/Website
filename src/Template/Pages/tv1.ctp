@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <div class="row" style="position:absolute;bottom:0;text-align:center;width:100%;">
+    <div class="row footer">
         <div class="col-xs-12">
             <h2>Inscrivez-vous à maisonlogiciellibre.org</h2>
         </div>
