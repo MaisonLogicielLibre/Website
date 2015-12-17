@@ -366,15 +366,24 @@ class MissionsController extends AppController
         $userId = $this->request->session()->read('Auth.User.id');
         $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
         
-        $userEmail = $user->getEmailPublic();
+        $userEmail = $user->getEmailPublic;
+		$isProfessor = $user->isProfessor();
+		$isStudent = $user->isStudent();
+		
         
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($user->id != $mission->mentor_id) {
                 if ($mission->getRemainingPlaces() > 0) {
                     $applications = TableRegistry::get('Applications');
-
-
-                    if ($user->isStudent()) {
+					
+					$professor = false;
+					foreach($mission->getType() as $type) {
+						if ($type->name == 'Professor') {
+							$professor = true;
+						}
+					}
+					
+                    if ($user->isStudent() || ($user->isProfessor() && $professor)) {
                         if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
                             if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
                                 if ($this->request->is(['patch', 'post', 'put'])) {
@@ -411,7 +420,7 @@ class MissionsController extends AppController
                             return $this->redirect(['action' => 'view', $id]);
                         }
                     } else {
-                        $this->Flash->error(__("Only students can apply on missions. If you are a student, please fill your profile."));
+                        $this->Flash->error(__("Only students and professors can apply on missions. If you are a professor, make sure the mission is seeking a professor"));
                         return $this->redirect(['action' => 'view', $id]);
                     }
                     $this->set(compact('mission'));
@@ -420,7 +429,7 @@ class MissionsController extends AppController
                     $this->Flash->error(__('No more position available') . '.');
                     return $this->redirect(['action' => 'view', $id]);
                 }
-                $this->set(compact('mission', 'userEmail'));
+                $this->set(compact('mission', 'userEmail', 'isProfessor', 'isStudent'));
                 $this->set('_serialize', ['mission']);
             } else {
                 $this->Flash->error(__("You can't apply on your mission, you are the mentor") . '.');
