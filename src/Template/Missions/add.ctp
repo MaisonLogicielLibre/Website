@@ -49,8 +49,15 @@ echo $this->Html->script(
         'markdown/markdown',
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
+        'initial.min',
+        'missions/add'
     ],
     ['block' => 'scriptBottom']);
 if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script(['locale/bootstrap-markdown.fr', 'initial.min'], ['block' => 'scriptBottom']);
+    echo $this->Html->script(['locale/bootstrap-markdown.fr'], ['block' => 'scriptBottom']);
+$this->Html->scriptStart(['block' => 'scriptBottom']);
+echo 'var infoIntern="' . __('By selecting an intern, you acknowledge that you will pay for your intern (typically $12000 to $14000 per semester). We will then forward your posting to the CO-OP department of all our university partners.') . '";';
+echo 'var infoMaster="' . __('This project type requires a professor and student(s) from the same university. Ensure the project is sufficiently complex for a graduate student (guidelines coming in 2016).') . '";';
+echo 'var infoCapstone=\'' . __('A PFE/Capstone project requires a professor and student(s) from the same university. The length is 1 to 2 sessions, depending on the university. For example guidelines see here: (guidelines coming in 2016). {0} for more information', $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact'])) . '\';';
+$this->Html->scriptEnd();
 ?>
