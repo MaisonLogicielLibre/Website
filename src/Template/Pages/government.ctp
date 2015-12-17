@@ -9,14 +9,17 @@
     </div>
 </div>
 <div class="row">
-	<div class="panel panel-info col-sm-6 col-sm-offset-3">
+	<div class="panel panel-info col-sm-6 col-sm-offset-3 partner-panel partner-premium">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
 					<?php echo $this->Html->image('montreal.png', ['alt' => 'Montreal', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<h4><a href="http://ville.montreal.qc.ca"> Montréal </a></h4>
+				</div>
+				<div class="col-sm-4">
+					<h5 class="partner-text-premium"><?= __('Premium sponsor') ?></h5>
 				</div>
 			</div>
 			<div class="row">	

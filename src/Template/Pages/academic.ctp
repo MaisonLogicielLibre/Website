@@ -9,14 +9,17 @@
     </div>
 </div>
 <div class="row">
-	<div class="panel panel-warning col-sm-6 col-sm-offset-3">
+	<div class="panel col-sm-6 col-sm-offset-3 partner-panel partner-founder">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
 					<?php echo $this->Html->image('ets.png', ['alt' => 'ETS', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<h4><a href="http://www.etsmtl.ca"> École de technologie supérieure </a></h4>
+				</div>
+				<div class="col-sm-4">
+					<h5 class="partner-text-founder"><?= __('Founding partner') ?></h5>
 				</div>
 			</div>
 			<div class="row">	
@@ -28,7 +31,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -47,7 +50,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -66,7 +69,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -85,7 +88,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -104,7 +107,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
@@ -123,7 +126,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
 		<div class="panel-body">
 			<div class="row">
 				<div style="float:left">
