@@ -423,7 +423,7 @@ class MissionsController extends AppController
                             return $this->redirect(['action' => 'view', $id]);
                         }
                     } else {
-                        $this->Flash->error(__("Only students and professors can apply on missions. Make sure the mission is seeking a type you can apply on"));
+                        $this->Flash->error(__("This mission is not seeking someone matching your profile"));
                         return $this->redirect(['action' => 'view', $id]);
                     }
                     $this->set(compact('mission'));
