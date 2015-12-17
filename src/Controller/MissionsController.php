@@ -377,13 +377,13 @@ class MissionsController extends AppController
                     $applications = TableRegistry::get('Applications');
                     
                     $professor = false;
-					$student = false;
+                    $student = false;
                     foreach ($mission->getType() as $type) {
                         if ($type->name == 'Professor') {
                             $professor = true;
                         } else {
-							$student = true;
-						}
+                            $student = true;
+                        }
                     }
                     
                     if (($user->isStudent() && $student) || ($user->isProfessor() && $professor)) {
