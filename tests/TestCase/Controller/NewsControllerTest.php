@@ -197,7 +197,7 @@ class NewsControllerTest extends IntegrationTestCase
     {
         $this->session(['Auth.User.id' => 1]);
 
-        $this->get('/news/delete/1');
+		$this->post('/news/delete/1');
         $this->assertResponseSuccess();
     }
     
