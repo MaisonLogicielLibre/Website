@@ -22,7 +22,8 @@ Les contributions externes sont les bienvenues !
  - `phpcs /chemin/vers/code/monFichier.inc`
 7. Assurez-vous que le test suit la [convention test de CakePHP](http://book.cakephp.org/3.0/en/development/testing.html)
 8. Si votre travail nécessite des actions spécifiques lors du déploiement, précisez-les dans le fichier [update.md](update.md).
-9. Poussez votre travail et faites une _pull request_
+9. Vous pouvez regarder votre coverage avec phpunit avant de pousser votre travail avec cette commande : `phpunit -d zend.enable_gc=0 --coverage-html path`
+10. Poussez votre travail et faites une _pull request_
 
 # Quelques bonnes pratiques
 * Le code et les commentaires sont en anglais
@@ -88,6 +89,7 @@ External contributions are welcome!
  - `phpcs /path/to/code/myfile.inc`
 7. Make sure the test follow [CakePHP test convention](http://book.cakephp.org/3.0/en/development/testing.html)
 8. If your work need specific tasks for deployment, make sure to notify it in [update.md](update.md).
+9. You can check your coverage with phpunit before sending your work with this command: `phpunit -d zend.enable_gc=0 --coverage-html path`
 9. Push and create a _pull request_
 
 # Good practices
