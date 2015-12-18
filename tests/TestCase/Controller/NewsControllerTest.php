@@ -32,11 +32,11 @@ class NewsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.news',
-		'app.users',
-		'app.permissions',
+    'app.users',
+    'app.permissions',
         'app.permissions_type_users',
-		'app.type_users',
-		'app.type_users_users'
+    'app.type_users',
+    'app.type_users_users'
     ];
 
     /**
@@ -84,16 +84,16 @@ class NewsControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 1]);
-		
-		$data = [
+        
+        $data = [
             'name' => 'amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2015-11-26 16:23:46',
             'link' => 'Lorem ipsum dolor sit amet'
-		];
+        ];
 
         $this->get('/news/edit/1');
-		$this->post('/news/edit/1', $data);
+        $this->post('/news/edit/1', $data);
         $this->assertRedirect(['controller' => 'News', 'action' => 'index']);
     }
     
@@ -129,20 +129,20 @@ class NewsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 1]);
-		
-		$data = [
+        
+        $data = [
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2015-11-26 16:23:46',
             'link' => 'Lorem ipsum dolor sit amet'
-		];
-		
+        ];
+        
         $this->get('/news/add');
-		$this->post('/news/add', $data);
+        $this->post('/news/add', $data);
         $this->assertRedirect(['controller' => 'News', 'action' => 'index']);
     }
-	
-	/**
+    
+    /**
      * Test add - No
      *
      * @return void
@@ -150,16 +150,16 @@ class NewsControllerTest extends IntegrationTestCase
     public function testAddNo()
     {
         $this->session(['Auth.User.id' => 1]);
-		
-		$data = [
+        
+        $data = [
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2015-11-26 16:23:46',
             'link' => 'Lorem ipsum dolor sit amet'
-		];
-		
+        ];
+        
         $this->get('/news/add');
-		$this->post('/news/add', $data);
+        $this->post('/news/add', $data);
         $this->assertResponseSuccess();
     }
     
@@ -197,7 +197,7 @@ class NewsControllerTest extends IntegrationTestCase
     {
         $this->session(['Auth.User.id' => 1]);
 
-		$this->post('/news/delete/1');
+        $this->post('/news/delete/1');
         $this->assertResponseSuccess();
     }
     
