@@ -62,11 +62,11 @@ class NewsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
+     * Test buildRules method
      *
      * @return void
      */
-    public function testInitialize()
+    public function testBuildRules()
     {
         $rule = new RulesChecker();
 

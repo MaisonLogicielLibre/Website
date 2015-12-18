@@ -10,9 +10,11 @@
  */
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\NotificationsTable;
+use App\Model\Table\ApplicationsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for NotificationsTable
@@ -63,13 +65,19 @@ class NotificationsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
+     * Test buildRules method
      *
      * @return void
      */
-    public function testInitialize()
+    public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->Notifications->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
@@ -79,17 +87,13 @@ class NotificationsTableTest extends TestCase
      */
     public function testValidationDefault()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $validator = new Validator();
 
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $expected = $validator;
+
+        $result = $this->Notifications->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 
     /**
