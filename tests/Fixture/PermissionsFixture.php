@@ -178,7 +178,22 @@ class PermissionsFixture extends TestFixture
         [
             'id' => 36,
             'name' => 'apply_mission'
+        ],
+        [
+            'id' => 37,
+            'name' => 'list_meetups'
+        ],
+        [
+            'id' => 38,
+            'name' => 'add_meetups'
+        ],
+        [
+            'id' => 39,
+            'name' => 'edit_meetups'
+        ],
+        [
+            'id' => 40,
+            'name' => 'delete_meetups'
         ]
-
     ];
 }
