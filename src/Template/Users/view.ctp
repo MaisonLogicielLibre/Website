@@ -82,20 +82,42 @@
                                     <tr>
                                         <td>
                                             <!-- Name of project -->
-                                            <?php if ($project->isAccepted() && !$project->isArchived()) {
+                                            <?php
+                                            if (!$project->isAccepted() || $project->isArchived()) {
+                                                if ($user && ($user->isMentorOf($project->id) || $user->hasRoleName(['Administrator']))) {
+                                                    echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                                } else {
+                                                    echo $project->getName();
+                                                }
+                                            } else {
                                                 echo $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]);
-                                            } elseif (!$project->isAccepted() && !$project->isArchived()) {
-                                                echo $project->getName();
                                             }
                                             ?>
-                                            <!-- Badge pending-->
+                                            <!-- Badge mentor -->
                                             <?php
-                                            if (!$project->isAccepted() && !$project->isArchived()):
+                                            if ($userSelected->isMentorOf($project->id)):
                                                 ?>
-                                                <span
-                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?></span>
+                                                <span class="label label-info label-as-badge"><?= __('Mentor'); ?></span>&nbsp;
                                                 <?php
                                             endif;
+                                            ?>
+
+                                            <!-- Badge pending-->
+                                            <?php
+                                                if (!$project->isAccepted()):
+                                            ?>
+                                                <span
+                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
+                                                </span>&nbsp;
+                                            <?php
+                                                endif;
+                                                if ($project->isArchived()):
+                                            ?>
+                                                <span
+                                                    class="label label-warning label-as-badge"><?= __('Archived'); ?>
+                                                </span>&nbsp;
+                                            <?php
+                                                endif;
                                             ?>
                                         </td>
                                     </tr>
@@ -116,7 +138,8 @@
                                     <tr>
                                         <td>
                                             <!-- Name of organization -->
-                                            <?php if (!$organization->getIsValidated() || $organization->getIsRejected()) {
+                                            <?php
+                                            if (!$organization->getIsValidated() || $organization->getIsRejected()) {
                                                 if ($user && ($user->isMemberOf($organization->id) || $user->hasRoleName(['Administrator']))) {
                                                     echo $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]);
                                                 } else {
@@ -124,21 +147,31 @@
                                                 }
                                             } else {
                                                 echo $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]);
-                                            } ?>
+                                            }
+                                            ?>
                                             <!-- Badge owner -->
                                             <?php
                                             if ($userSelected->isOwnerOf($organization->id)):
                                                 ?>
-                                                <span class="label label-info label-as-badge"><?= __('Owner'); ?></span>
+                                                <span class="label label-info label-as-badge"><?= __('Owner'); ?></span>&nbsp;
                                                 <?php
                                             endif;
                                             ?>
-                                            <!-- Badge pending -->
+
+                                            <!-- Badge pending-->
                                             <?php
-                                            if (!$organization->getIsValidated() && !$organization->getIsRejected()):
-                                                ?>
+                                                if (!$organization->getIsValidated()):
+                                            ?>
                                                 <span
-                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?></span>
+                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
+                                                </span>&nbsp;
+                                            <?php
+                                                endif;
+                                                if ($organization->getIsRejected()):
+                                            ?>
+                                                <span
+                                                    class="label label-warning label-as-badge"><?= __('Archived'); ?>
+                                                </span>&nbsp;
                                                 <?php
                                             endif;
                                             ?>

@@ -295,13 +295,6 @@ footer#footer {
   }
 }
 
-.page-header {
-  font-size: 20px;
-  margin-bottom: 0;
-  margin-top: 7px;
-  font-weight: 600;
-}
-
 .breadcrumb {
   background: none;
   padding: 8px 0;
@@ -445,6 +438,10 @@ footer#footer {
   }
 }
 
+#carousel-mobile {
+  display: block;
+}
+
 #carousel {
   display: none;
   height: 100%;
@@ -481,7 +478,6 @@ footer#footer {
 
 #welcome-row {
   background: #fff;
-  padding: 100px 0;
   h1 {
     font-weight: 700;
     font-size: 50px;
@@ -494,6 +490,12 @@ footer#footer {
 }
 
 @media (min-width: 768px) {
+  #welcome-row {
+    padding: 100px 0;
+  }
+  #carousel-mobile {
+    display: none;
+  }
   #carousel {
     display: block;
   }
@@ -511,9 +513,17 @@ footer#footer {
   padding: 100px 0;
   background: @gray-dark;
   color: #fff;
+  .fa {
+    display: none;
+  }
   .stats-cell {
     margin: 20px 0;
     min-height: 250px;
+    position: relative;
+    .put-bottom {
+      position: absolute;
+      bottom: 0;
+    }
   }
   h1 {
     color: #fff;
@@ -530,11 +540,22 @@ footer#footer {
     font-size: 120px;
     line-height: 0;
     color: @brand-info;
+    &:hover {
+      color: #31b0d5;
+    }
   }
   .home-stats-info {
     text-transform: uppercase;
     font-size: 30px;
     word-spacing: 9999999px;
+  }
+}
+
+@media (min-width: 768px) {
+  #stats-row {
+    .fa {
+      display: block;
+    }
   }
 }
 
@@ -721,4 +742,39 @@ footer#footer {
 }
 .cake-debug-output {
   margin-left: 250px;
+}
+
+.partner-panel {
+	border-width: 3px;
+}
+
+.partner-founder {
+	border-color: darkorange;
+}
+
+.partner-premium {
+	border-color: green;
+}
+
+.partner-sponsor {
+	border-color: silver;
+}
+
+.partner-default {
+	border-color: white;
+}
+
+.partner-text-founder{
+	color: darkorange;
+	text-align: right;
+}
+
+.partner-text-premium{
+	color: green;
+	text-align: right;
+}
+
+.partner-text-sponsor{
+	color: silver;
+	text-align: right;
 }

@@ -100,10 +100,44 @@ class PagesController extends AppController
         $numberStudents = $this->Users->find('all')->where(['isStudent' => true])->count();
 
         $this->loadModel("Projects");
-        $numberProjects = $this->Projects->find('all')->count();
-
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+        
         $this->loadModel("Missions");
-        $numberMissions = $this->Missions->find('all')->count();
+        $missions = $this->Missions->find(
+            'all',
+            [
+                'contain' => [
+                    'Projects' => [
+                    ]
+                ],
+                'conditions' => [
+                    'AND' => [
+                        [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+        $numberMissions = count($missions->toArray());
 
         $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
     }
@@ -115,20 +149,79 @@ class PagesController extends AppController
      */
     public function tv($id = null)
     {
+        $this->loadModel("Statistics");
+        $statistics = $this->Statistics->find('all')->toArray();
+
         $this->loadModel("Users");
         $users = $this->Users->find('all')->toArray();
 
         $this->loadModel("Projects");
-        $projects = $this->Projects->find('all')->toArray();
 
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
 
         $this->loadModel("Missions");
-        $missions = $this->Missions->find('all')->toArray();
 
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
+
+        $issues = 0;
+        $prs = 0;
+        $commits = 0;
+
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+
+        $missions = $this->Missions->find(
+            'all',
+            [
+                'contain' => [
+                    'Projects' => [
+                    ]
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'AND' => [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+        $numberMissions = count($missions->toArray());
+
+
+        $contributions = [];
+
+        if ($statistics) {
+            foreach ($statistics as $statistic) {
+                $contributions[] = [
+                    $statistic->getContributionDate(),
+                    $statistic->getContribution()
+                ];
+
+                $issues += $statistic->getIssues();
+                $prs += $statistic->getPullRequests();
+                $commits += $statistic->getCommits();
+            }
+        }
 
         $countUni = [];
 
@@ -173,14 +266,10 @@ class PagesController extends AppController
                         $countUni[6] = $countUni[6] + 1;
                         break;
                     default:
-                        $countUni[7] = $countUni[7] + 1;
                         break;
                     // @codingStandardsIgnoreEnd
                 }
-            } else {
-                $countUni[7] = $countUni[7] + 1;
             }
-
 
             if ($user->isAvailableMentoring()) {
                 $mentors++;
@@ -206,6 +295,12 @@ class PagesController extends AppController
             $countUni[count($universities)]
         ];
 
+        $statsRepo = [
+            'issues' => $issues,
+            'pullRequests' => $prs,
+            'commits' => $commits
+        ];
+
         $statsUsers = [
             'universities' => $statsUni,
             'mentors' => $mentors,
@@ -215,17 +310,18 @@ class PagesController extends AppController
 
         $statsWeb = [
             'organizations' => count($organizations),
-            'projects' => count($projects),
-            'missions' => count($missions)
+            'projects' => $numberProjects,
+            'missions' => $numberMissions
 
         ];
 
         $stats = [
+            'repository' => $statsRepo,
             'users' => $statsUsers,
             'website' => $statsWeb
         ];
 
-        $this->set(compact('stats'));
+        $this->set(compact('contributions', 'stats'));
 
         $this->viewBuilder()->layout(false);
         // @codingStandardsIgnoreStart
@@ -237,13 +333,13 @@ class PagesController extends AppController
                 $this->render('tv2');
                 break;
             case 3:
-                $this->render('tv1');
+                $this->render('tv3');
                 break;
             case 4:
-                $this->render('tv1');
+                $this->render('tv4');
                 break;
             case 5:
-                $this->render('tv1');
+                $this->render('tv5');
                 break;
             default:
                 $this->render('tv1');
@@ -266,13 +362,11 @@ class PagesController extends AppController
         $users = $this->Users->find('all')->toArray();
         
         $this->loadModel("Projects");
-        $projects = $this->Projects->find('all')->toArray();
         
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
         
         $this->loadModel("Missions");
-        $missions = $this->Missions->find('all')->toArray();
         
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
@@ -280,6 +374,45 @@ class PagesController extends AppController
         $issues = 0;
         $prs = 0;
         $commits = 0;
+        
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'Projects.accepted' => true,
+                        'Projects.archived' => false
+                    ]
+                ]
+            ]
+        );
+        $numberProjects = count($projects->toArray());
+        
+        $missions = $this->Missions->find(
+            'all',
+            [
+                'contain' => [
+                    'Projects' => [
+                    ]
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'AND' => [
+                            'Projects.archived' => 0,
+                            'Projects.accepted' => 1
+                        ],
+                        [
+                            'Missions.archived' => 0
+                        ]
+                    ]
+                ],
+            ]
+        );
+        $numberMissions = count($missions->toArray());
+
         
         $contributions = [];
         
@@ -387,8 +520,8 @@ class PagesController extends AppController
         
         $statsWeb = [
             'organizations' => count($organizations),
-            'projects' => count($projects),
-            'missions' => count($missions)
+            'projects' => $numberProjects,
+            'missions' => $numberMissions
             
         ];
         

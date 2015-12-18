@@ -24,3 +24,13 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+		<div class="panel-body row">
+			<div class="col-sm-8 col-sm-offset-3">
+				<h3><i class="fa fa-file"></i><a href="<?= $this->request->webroot . "files/autorisation_acces.pdf"?>"><?=__('Request card access')?></a></h3>
+			</div>
+		</div>
+	</div>
+</div>
