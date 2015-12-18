@@ -174,7 +174,7 @@ class MeetupsControllerTest extends IntegrationTestCase
         $this->session(['Auth.User.id' => 1]);
 
         $data = [];
-        $this->post('/meetups/edit', $data);
+        $this->post('/meetups/edit/1', $data);
 
         $this->assertResponseSuccess();
     }
