@@ -11,8 +11,10 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\ProjectsMentorsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for ProjectsMentorsTable
@@ -73,32 +75,32 @@ class ProjectsMentorsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
+     * Test validation
      * @return void
      */
-    public function testInitialize()
+    public function testValidation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+
+        $expected = $validator;
+
+        $result = $this->ProjectsMentors->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 
     /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
+     * Test buildRules
      * @return void
      */
     public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->ProjectsMentors->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 }
