@@ -13,6 +13,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\HashesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for HashesTable
@@ -214,5 +215,20 @@ class HashesTableTest extends TestCase
         $result = $hash->setUsed($expected);
 
         $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test validation
+     * @return void
+     */
+    public function testValidation()
+    {
+        $validator = new Validator();
+
+        $expected = $validator;
+
+        $result = $this->Hashes->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 }
