@@ -10,9 +10,11 @@
  */
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\NewsTable;
+use App\Model\Table\ApplicationsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for MissionsTable
@@ -60,13 +62,19 @@ class NewsTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
+     * Test buildRules method
      *
      * @return void
      */
-    public function testInitialize()
+    public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->News->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
@@ -76,6 +84,12 @@ class NewsTableTest extends TestCase
      */
     public function testValidationDefault()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+
+        $expected = $validator;
+
+        $result = $this->News->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 }

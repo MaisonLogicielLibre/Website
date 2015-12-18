@@ -10,9 +10,11 @@
  */
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\PermissionsTypeUsersTable;
+use App\Model\Table\ApplicationsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for PermissionsTypeUsersTable
@@ -62,13 +64,19 @@ class PermissionsTypeUsersTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
+     * Test buildRules method
      *
      * @return void
      */
-    public function testInitialize()
+    public function testBuildRules()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rule = new RulesChecker();
+
+        $expected = $rule;
+
+        $result = $this->PermissionsTypeUsers->buildRules($rule);
+
+        $this->assertEquals($expected, $result);
     }
 
     /**
@@ -78,16 +86,12 @@ class PermissionsTypeUsersTableTest extends TestCase
      */
     public function testValidationDefault()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $validator = new Validator();
 
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $expected = $validator;
+
+        $result = $this->PermissionsTypeUsers->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 }
