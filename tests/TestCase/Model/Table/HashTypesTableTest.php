@@ -15,7 +15,6 @@ use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
-
 /**
  * Tests for HashTypesTable
  *
