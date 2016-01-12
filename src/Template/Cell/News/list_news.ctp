@@ -1,3 +1,4 @@
+<?php $Parsedown = new ParsedownNoImage(); ?>
 <?php
 $compteur = 0;
 foreach ($news as $new):
@@ -12,7 +13,7 @@ foreach ($news as $new):
 				</div>
 				<div class="row">	
 					<div class="col-sm-12">
-						<p> <?= $new->description ?> </p>
+						<p> <?= $Parsedown->text($new->description) ?> </p>
 					</div>
 				</div>
 			</div>
