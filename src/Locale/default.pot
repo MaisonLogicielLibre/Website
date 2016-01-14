@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-17 20:30+0000\n"
+"POT-Creation-Date: 2016-01-14 19:07+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -783,7 +783,7 @@ msgstr ""
 #: Template/Missions/apply.ctp:64
 #: Template/Missions/edit.ctp:94
 #: Template/Missions/edit_mentor.ctp:46
-#: Template/Missions/edit_professor.ctp:46
+#: Template/Missions/edit_professor.ctp:45
 #: Template/Organizations/add_member.ctp:48
 #: Template/Organizations/add_owner.ctp:46
 #: Template/Organizations/edit.ctp:39
@@ -1259,7 +1259,7 @@ msgstr ""
 #: Template/Missions/add.ctp:29
 #: Template/Missions/edit.ctp:92
 #: Template/Missions/edit_mentor.ctp:45
-#: Template/Missions/edit_professor.ctp:45
+#: Template/Missions/edit_professor.ctp:44
 #: Template/News/add.ctp:31
 #: Template/News/edit.ctp:31
 #: Template/Organizations/add.ctp:34
@@ -1816,6 +1816,10 @@ msgstr ""
 
 #: Template/Missions/edit_professor.ctp:24
 msgid "Professor of the mission : "
+msgstr ""
+
+#: Template/Missions/edit_professor.ctp:27;29
+msgid "No professor"
 msgstr ""
 
 #: Template/Missions/index.ctp:23
