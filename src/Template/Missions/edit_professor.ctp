@@ -23,21 +23,20 @@
                             <p>
                                 <?= __('Professor of the mission : ') ?>
                                 <select id="users" name="users[]" class="form-control">
-                                    <?php foreach ($professors as $professor) {
-                                        if ($professor->getId() == $currentProfessorId) {
-                                            $selected = true;
-                                        } else {
-                                            $selected = false;
-                                        }
-
-                                        if ($selected) { ?>
+                                    <?php if (is_null($mission->professor)): ?>
+                                        <option value="null" selected><?= __("No professor"); ?></option>
+                                    <?php else: ?>
+                                        <option value="null"><?= __("No professor"); ?></option>
+                                    <?php endif; ?>
+                                    <?php foreach ($professors as $professor):
+                                        if ($professor->getId() == $currentProfessorId): ?>
                                             <option value="<?= $professor->getId() ?>"
                                                     selected><?= '(' . $professor->getUsername() . ') ' . $professor->getName() ?></option>
-                                        <?php } else { ?>
+                                        <?php else: ?>
                                             <option
                                                 value="<?= $professor['id'] ?>"><?= '(' . $professor->getUsername() . ') ' . $professor->getName() ?></option>
-                                        <?php }
-                                    } ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </select>
                             </p>
                         </fieldset>

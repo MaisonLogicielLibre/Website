@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-12-17 15:31-0500\n"
-"PO-Revision-Date: 2015-12-18 09:02-0500\n"
+"POT-Creation-Date: 2016-01-14 14:12-0500\n"
+"PO-Revision-Date: 2016-01-14 14:22-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: Controller/AppController.php:65 Controller/UsersController.php:258
 #: Template/Layout/default.ctp:31 Template/Pages/home.ctp:31;109
@@ -59,8 +59,7 @@ msgstr "La candidature a été enregistrée."
 msgid "The application could not be saved. Please, try again."
 msgstr "La candidature n'a pas pu être enregistrée. Veuillez réessayer."
 
-#: Controller/ApplicationsController.php:152;215
-#: Model/Table/UsersTable.php:309
+#: Controller/ApplicationsController.php:152;215 Model/Table/UsersTable.php:309
 msgid " Old password isn't valid"
 msgstr "L'ancien mot de passe n'est pas valide."
 
@@ -299,11 +298,11 @@ msgid "There was an error. Please,try again."
 msgstr "Il y a eu une erreur. Veuillez réessayer."
 
 #: Controller/PagesController.php:294;504 Model/Entity/Mission.php:165;188
-#: Template/Element/Missions/addForm.ctp:35;43
-#: Template/Missions/edit.ctp:70;78 Template/Missions/index.ctp:69
-#: Template/Organizations/view.ctp:94;101 Template/Projects/view.ctp:113;120
-#: Template/Users/edit.ctp:26;39 Template/Users/index.ctp:136
-#: Template/Users/register.ctp:61 Template/Users/view.ctp:49
+#: Template/Element/Missions/addForm.ctp:35;43 Template/Missions/edit.ctp:70;78
+#: Template/Missions/index.ctp:69 Template/Organizations/view.ctp:94;101
+#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26;39
+#: Template/Users/index.ctp:136 Template/Users/register.ctp:61
+#: Template/Users/view.ctp:49
 msgid "Not specified"
 msgstr "Non spécifié"
 
@@ -731,7 +730,7 @@ msgstr "Veuillez saisir votre mot de passe pour finaliser votre choix"
 #: Template/Applications/accepted.ctp:55 Template/Applications/rejected.ctp:38
 #: Template/Missions/add.ctp:30 Template/Missions/apply.ctp:64
 #: Template/Missions/edit.ctp:94 Template/Missions/edit_mentor.ctp:46
-#: Template/Missions/edit_professor.ctp:46
+#: Template/Missions/edit_professor.ctp:45
 #: Template/Organizations/add_member.ctp:48
 #: Template/Organizations/add_owner.ctp:46 Template/Organizations/edit.ctp:39
 #: Template/Organizations/quit.ctp:30 Template/Projects/apply.ctp:17
@@ -826,14 +825,12 @@ msgstr "Liste des organisations"
 msgid "Submit an organization"
 msgstr "Soumettre une organisation"
 
-#: Template/Cell/Sidebar/all.ctp:38
-#: Template/Cell/Sidebar/project_action.ctp:22
+#: Template/Cell/Sidebar/all.ctp:38 Template/Cell/Sidebar/project_action.ctp:22
 #: Template/Projects/admin_index.ctp:5;9;18 Template/Projects/index.ctp:4;8;25
 msgid "List of projects"
 msgstr "Liste des projets"
 
-#: Template/Cell/Sidebar/all.ctp:44
-#: Template/Cell/Sidebar/project_action.ctp:58
+#: Template/Cell/Sidebar/all.ctp:44 Template/Cell/Sidebar/project_action.ctp:58
 #: Template/Element/News/news-table.ctp:15 Template/Projects/submit.ctp:4;8;26
 msgid "Submit a project"
 msgstr "Soumettre un projet"
@@ -888,8 +885,8 @@ msgstr "Gouvernemental"
 
 #: Template/Cell/Sidebar/all.ctp:133 Template/Meetups/add.ctp:10
 #: Template/Meetups/edit.ctp:10 Template/Meetups/index.ctp:10
-#: Template/News/add.ctp:10 Template/News/edit.ctp:10
-#: Template/News/index.ctp:9 Template/Pages/administration.ctp:3;6
+#: Template/News/add.ctp:10 Template/News/edit.ctp:10 Template/News/index.ctp:9
+#: Template/Pages/administration.ctp:3;6
 msgid "Administration"
 msgstr "Administration"
 
@@ -901,8 +898,7 @@ msgstr "Liste meetup"
 msgid "Add meetup"
 msgstr "Ajouter meetup"
 
-#: Template/Cell/Sidebar/mission.ctp:9
-#: Template/Cell/Sidebar/organization.ctp:9
+#: Template/Cell/Sidebar/mission.ctp:9 Template/Cell/Sidebar/organization.ctp:9
 #: Template/Cell/Sidebar/project.ctp:9 Template/Meetups/index.ctp:37
 #: Template/News/index.ctp:27;48 Template/Projects/index.ctp:32
 #: Template/Projects/my_projects.ctp:25
@@ -1118,10 +1114,9 @@ msgstr "Ajouter un commentaire"
 #: Template/Comments/add.ctp:22 Template/Comments/edit.ctp:29
 #: Template/Meetups/add.ctp:29 Template/Meetups/edit.ctp:29
 #: Template/Missions/add.ctp:29 Template/Missions/edit.ctp:92
-#: Template/Missions/edit_mentor.ctp:45
-#: Template/Missions/edit_professor.ctp:45 Template/News/add.ctp:31
-#: Template/News/edit.ctp:31 Template/Organizations/add.ctp:34
-#: Template/Organizations/add_member.ctp:47
+#: Template/Missions/edit_mentor.ctp:45 Template/Missions/edit_professor.ctp:44
+#: Template/News/add.ctp:31 Template/News/edit.ctp:31
+#: Template/Organizations/add.ctp:34 Template/Organizations/add_member.ctp:47
 #: Template/Organizations/add_owner.ctp:45 Template/Organizations/edit.ctp:38
 #: Template/Organizations/submit.ctp:43
 #: Template/OrganizationsProjects/add.ctp:21
@@ -1655,6 +1650,10 @@ msgstr "Modifier le professeur"
 msgid "Professor of the mission : "
 msgstr "Professeur de la mission : "
 
+#: Template/Missions/edit_professor.ctp:27;29
+msgid "No professor"
+msgstr "Aucun professeur"
+
 #: Template/Missions/index.ctp:23 Template/Missions/view.ctp:122
 #: Template/News/index.ctp:26 Template/Organizations/admin_index.ctp:24
 #: Template/Organizations/index.ctp:30
@@ -1677,8 +1676,7 @@ msgstr "Session"
 #: Template/Missions/index.ctp:34 Template/Organizations/admin_index.ctp:35;37
 #: Template/Organizations/index.ctp:38;40
 #: Template/Organizations/my_organizations.ctp:30;32
-#: Template/Projects/admin_index.ctp:37;39
-#: Template/Projects/index.ctp:41;43;45
+#: Template/Projects/admin_index.ctp:37;39 Template/Projects/index.ctp:41;43;45
 #: Template/Projects/my_projects.ctp:34;36 Template/Projects/view.ctp:84;89
 #: Template/Users/index.ctp:35;38;41
 msgid "Search ..."
