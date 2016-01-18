@@ -1,0 +1,38 @@
+@startuml
+class missions {
+    id
+    name
+    session
+    length
+    description
+    competence
+    internNbr
+    project_id
+    mentor_id
+    created
+    modified
+    archived
+    professor_id
+    type_id
+}
+class applications {
+    id
+    mission_id
+    user_id
+    professor_id
+    accepted
+    rejected
+    text
+    email
+}
+class propositions {
+    id
+    mission_id
+    to_user_id
+    from_user_id
+    description
+    accepted_by
+}
+missions "1" -- "many" applications : has
+missions "1" -- "many" propositions : has
+@enduml
