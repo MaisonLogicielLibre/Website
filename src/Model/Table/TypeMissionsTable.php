@@ -43,12 +43,10 @@ class TypeMissionsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsToMany(
+        $this->hasMany(
             'Missions',
             [
-            'foreignKey' => 'type_mission_id',
-            'targetForeignKey' => 'mission_id',
-            'joinTable' => 'missions_type_missions'
+                'foreignKey' => 'type_id'
             ]
         );
         $this->hasMany(

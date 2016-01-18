@@ -58,10 +58,7 @@
                                             </tr>
                                             <tr>
                                                 <td><?= __('Looking for:'); ?></td>
-                                                <td><?= implode(', ', array_map(function ($v) {
-                                                        return $v->getName();
-                                                    }, $mission->getType())) ?>
-                                                </td>
+                                                <td><?= $mission->getType(); ?></td>
                                             </tr>
                                             <tr>
                                                 <td><?= __('Mentor:'); ?></td>

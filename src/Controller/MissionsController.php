@@ -313,7 +313,9 @@ class MissionsController extends AppController
                     }
                 }
             } else {
-                $mission->internNbr = $this->request->data['internNbr'];
+                $data = $this->request->data;
+                $internNbr = (isset($data['internNbr']) ? $data['internNbr'] : null);
+                $mission->editInternNbr($internNbr);
             }
 
             if ($this->Missions->save($mission)) {

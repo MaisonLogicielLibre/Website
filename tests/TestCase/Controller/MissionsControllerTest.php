@@ -12,6 +12,7 @@ namespace App\Test\TestCase\Controller;
 
 use App\Controller\MissionsController;
 use Cake\TestSuite\IntegrationTestCase;
+use Cake\ORM\TableRegistry;
 
 /**
  * Tests for MissionsController
@@ -50,8 +51,31 @@ class MissionsControllerTest extends IntegrationTestCase
         'app.mission_levels',
         'app.missions_mission_levels',
         'app.type_missions',
-        'app.missions_type_missions'
     ];
+
+    /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('Missions') ? [] : ['className' => 'App\Model\Table\MissionsTable'];
+        $this->Missions = TableRegistry::get('Missions', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->Missions);
+
+        parent::tearDown();
+    }
 
     /**
      * Test view - Ok
@@ -105,7 +129,7 @@ class MissionsControllerTest extends IntegrationTestCase
 
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test add - Get
      *
@@ -221,6 +245,10 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->get('/missions/edit/1');
         $this->post('/missions/edit/1', $data);
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 1]);
+
+        $interNbr = $this->Missions->get(1)->getInternNbr();
+
+        $this->assertEquals(null, $interNbr);
     }
 
     /**
@@ -299,7 +327,7 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/editArchived/7');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 7]);
     }
-    
+
     /**
      * Test apply - Ok
      *
@@ -351,7 +379,7 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->post('/missions/apply/8');
         $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 8]);
     }
-    
+
     /**
      * Test apply - No Authentification
      *
@@ -371,14 +399,14 @@ class MissionsControllerTest extends IntegrationTestCase
     public function testEditMentorEmpty()
     {
         $data = [];
-        
+
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/missions/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit mentor of a mission - Get
      *

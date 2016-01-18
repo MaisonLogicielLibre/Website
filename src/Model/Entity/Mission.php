@@ -1,26 +1,33 @@
 <?php
-/**
- * Entity of MissionTable
- *
- * @category Entity
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
- */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
 /**
- * Entity of MissionTable
+ * Mission Entity.
  *
- * @category Entity
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @property int $id
+ * @property string $name
+ * @property int $session
+ * @property int $length
+ * @property string $description
+ * @property string $competence
+ * @property int $internNbr
+ * @property int $project_id
+ * @property \App\Model\Entity\Project $project
+ * @property int $mentor_id
+ * @property \App\Model\Entity\Mentor $mentor
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
+ * @property bool $archived
+ * @property int $professor_id
+ * @property \App\Model\Entity\Professor $professor
+ * @property int $type_id
+ * @property \App\Model\Entity\Type $type
+ * @property \App\Model\Entity\Application[] $applications
+ * @property \App\Model\Entity\Proposition[] $propositions
+ * @property \App\Model\Entity\MissionLevel[] $mission_levels
  */
 class Mission extends Entity
 {
@@ -34,7 +41,7 @@ class Mission extends Entity
      *
      * @var array
      */
-    protected $accessible = [
+    protected $_accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -77,6 +84,15 @@ class Mission extends Entity
     public function getProfessorId()
     {
         return $this->_properties['professor_id'];
+    }
+
+    /**
+     * Get the type_id
+     * @return int id
+     */
+    public function getTypeId()
+    {
+        return $this->_properties['type_id'];
     }
 
     /**
@@ -220,7 +236,7 @@ class Mission extends Entity
      */
     public function getType()
     {
-        return $this->_properties['type_missions'];
+        return $this->_properties['type_mission'];
     }
 
     /**
@@ -280,6 +296,12 @@ class Mission extends Entity
     {
         $this->set('professor_id', $professorId);
         return $professorId;
+    }
+
+    public function editInternNbr($internNbr)
+    {
+        $this->set('internNbr', $internNbr);
+        return $internNbr;
     }
 
     /**

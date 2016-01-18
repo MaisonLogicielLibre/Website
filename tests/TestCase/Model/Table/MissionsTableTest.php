@@ -1,29 +1,14 @@
 <?php
-/**
- * Tests for MissionsTable
- *
- * @category Test
- * @package  Website
- * @author   Simon Begin <ak36250@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Site
- */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTable;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
 
 /**
- * Tests for MissionsTable
- *
- * @category Test
- * @package  Website
- * @author   Simon Begin <ak36250@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Site
+ * App\Model\Table\MissionsTable Test Case
  */
 class MissionsTableTest extends TestCase
 {
@@ -50,8 +35,7 @@ class MissionsTableTest extends TestCase
         'app.type_users_users',
         'app.mission_levels',
         'app.missions_mission_levels',
-        'app.type_missions',
-        'app.missions_type_missions'
+        'app.type_missions'
     ];
 
     /**
@@ -94,7 +78,7 @@ class MissionsTableTest extends TestCase
     public function testGetName()
     {
         $id = 1;
-        $expected = 'Dev';
+        $expected = 'Intern';
 
         $mission = $this->Missions->get($id);
 
@@ -390,7 +374,7 @@ class MissionsTableTest extends TestCase
 
         $mission = $this->Missions->get($id, ['contain' => 'TypeMissions']);
 
-        $result = $mission->getType()[0]->getName();
+        $result = $mission->getType()->getName();
 
         $this->assertEquals($expected, $result);
     }
@@ -404,13 +388,13 @@ class MissionsTableTest extends TestCase
     {
         $id = 1;
 
-        $expected = $this->Users->get(1)->getId();
+        $expected_user = $this->Users->get(1);
 
         $mission = $this->Missions->get($id, ['contain' => 'Users']);
 
-        $result = $mission->getMentor()->getId();
+        $mentor = $mission->getMentor();
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($expected_user, $mentor);
     }
 
     /**
@@ -422,13 +406,13 @@ class MissionsTableTest extends TestCase
     {
         $id = 1;
 
-        $expected = 1;
+        $expected_user = $this->Users->get(1)->getName();
 
-        $mission = $this->Missions->get($id, ['contain' => ['Users', 'Professors']]);
+        $mission = $this->Missions->get($id, ['contain' => ['Professors']]);
 
-        $result = $mission->getProfessor()->getId();
+        $professor = $mission->getProfessor()->getName();
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($expected_user, $professor);
     }
 
     /**
@@ -578,6 +562,25 @@ class MissionsTableTest extends TestCase
         $mission = $this->Missions->get($id);
 
         $result = $mission->isArchived();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testSetArchived()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    public function testSetInternNbr()
+    {
+        $id = 1;
+        $expected = 3;
+
+        $mission = $this->Missions->get($id);
+
+        $mission->editInternNbr($expected);
+
+        $result = $mission->getInternNbr();
 
         $this->assertEquals($expected, $result);
     }
