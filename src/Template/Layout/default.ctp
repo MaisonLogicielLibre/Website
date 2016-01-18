@@ -137,8 +137,16 @@
         'main'
     ]
 ); ?>
-
 <?php //Do not move this line before a manual import of script! ?>
 <?= $this->fetch('scriptBottom'); ?>
+<script>
+    $(document).ready(function () {
+        $('.navbar-toggle').click(function () {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 600);
+        });
+    });
+</script>
 </body>
 </html>
