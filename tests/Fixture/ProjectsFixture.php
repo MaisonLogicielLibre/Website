@@ -44,7 +44,7 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 1,
-            'archived' => 1
+            'archived' => 0
         ],
         [
             'id' => 2,

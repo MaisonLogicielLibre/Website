@@ -380,7 +380,6 @@ class MissionsController extends AppController
         $isProfessor = $user->isProfessor();
         $isStudent = $user->isStudent();
 
-
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($user->id != $mission->mentor_id) {
                 if ($mission->getRemainingPlaces() > 0) {

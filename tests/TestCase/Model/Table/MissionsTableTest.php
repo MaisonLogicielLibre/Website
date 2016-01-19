@@ -422,8 +422,20 @@ class MissionsTableTest extends TestCase
      */
     public function testGetApplications()
     {
-        $id = 1;
-        $expected = 1;
+        $id = 8;
+        $expected = 3;
+
+        $mission = $this->Missions->get($id, ['contain' => 'Applications']);
+
+        $result = count($mission->getApplications());
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGetApplicationsNull()
+    {
+        $id = 2;
+        $expected = 0;
 
         $mission = $this->Missions->get($id, ['contain' => 'Applications']);
 
@@ -581,6 +593,28 @@ class MissionsTableTest extends TestCase
         $mission->editInternNbr($expected);
 
         $result = $mission->getInternNbr();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGetRemainingPlaces()
+    {
+        $id = 8;
+        $expected = 1;
+
+        $mission = $this->Missions->get($id, ['contain' => 'Applications']);
+        $result = $mission->getRemainingPlaces();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGetRemainingPlacesNoApplications()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $mission = $this->Missions->get($id, ['contain' => 'Applications']);
+        $result = $mission->getRemainingPlaces();
 
         $this->assertEquals($expected, $result);
     }
