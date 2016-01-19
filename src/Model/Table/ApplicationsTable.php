@@ -112,7 +112,6 @@ class ApplicationsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
