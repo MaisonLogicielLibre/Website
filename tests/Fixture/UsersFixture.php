@@ -105,7 +105,7 @@ class UsersFixture extends TestFixture
         [
             'id' => 3,
             'firstName' => 'Simon',
-            'lastName' => '',
+            'lastName' => 'Professeur',
             'biography' => 'Une petite bio.',
             'portfolio' => 'http://monportfolio.com',
             'email' => 'email@gmail.com',
@@ -123,7 +123,7 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 1
         ],
         [
             'id' => 4,

@@ -52,8 +52,7 @@ class ApplicationsTableTest extends TestCase
         'app.organizations_members',
         'app.mission_levels',
         'app.missions_mission_levels',
-        'app.type_missions',
-        'app.missions_type_missions'
+        'app.type_missions'
     ];
 
     /**
@@ -284,21 +283,28 @@ class ApplicationsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    /**
-     * Test editType
-     *
-     * @return void
-     */
-    public function testEditType()
+    public function testGetProfessorId()
     {
         $id = 1;
-        $expected = 1;
+        $expected = 3;
 
         $application = $this->Applications->get($id);
 
-        $result = $application->editType(1);
+        $result = $application->getProfessorId();
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($result, $expected);
+    }
+
+    public function testGetProfessor()
+    {
+        $id = 1;
+        $expected = true;
+
+        $application = $this->Applications->get($id, ['contain' => 'Professors']);
+
+        $result = $application->getProfessor()->isProfessor();
+
+        $this->assertEquals($result, $expected);
     }
 
     /**

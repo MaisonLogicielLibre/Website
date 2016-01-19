@@ -61,10 +61,11 @@ class ApplicationsTable extends Table
             ]
         );
         $this->belongsTo(
-            'TypeMissions',
+            'Professors',
             [
-            'foreignKey' => 'type_mission_id',
-            'joinType' => 'INNER'
+                'className' => 'Users',
+                'foreignKey' => 'professor_id',
+                'joinType' => 'INNER'
             ]
         );
     }
@@ -114,7 +115,7 @@ class ApplicationsTable extends Table
     {
         $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
+        $rules->add($rules->existsIn(['professor_id'], 'Users'));
         return $rules;
     }
 }

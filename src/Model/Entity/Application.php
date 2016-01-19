@@ -59,6 +59,16 @@ class Application extends Entity
         return $this->_properties['user'];
     }
 
+    public function getProfessorId()
+    {
+        return $this->_properties['professor_id'];
+    }
+
+    public function getProfessor()
+    {
+        return $this->_properties['professor'];
+    }
+
     /**
      * Get if accepted
      *
