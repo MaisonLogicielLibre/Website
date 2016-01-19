@@ -13,6 +13,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\HashTypesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 
 /**
  * Tests for HashTypesTable
@@ -60,22 +61,17 @@ class HashTypesTableTest extends TestCase
     }
 
     /**
-     * Test initialize method
-     *
+     * Test validation
      * @return void
      */
-    public function testInitialize()
+    public function testValidation()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $validator = new Validator();
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $expected = $validator;
+
+        $result = $this->HashTypes->validationDefault($validator);
+
+        $this->assertEquals($validator, $result);
     }
 }

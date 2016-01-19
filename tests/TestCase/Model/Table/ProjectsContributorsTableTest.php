@@ -10,7 +10,7 @@
  */
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ProjectsMentorsTable;
+use App\Model\Table\ProjectsContributorsTable;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
@@ -25,7 +25,7 @@ use Cake\Validation\Validator;
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Website
  */
-class ProjectsMentorsTableTest extends TestCase
+class ProjectsContributorsTableTest extends TestCase
 {
 
     /**
@@ -58,8 +58,8 @@ class ProjectsMentorsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('ProjectsMentors') ? [] : ['className' => 'App\Model\Table\ProjectsMentorsTable'];
-        $this->ProjectsMentors = TableRegistry::get('ProjectsMentors', $config);
+        $config = TableRegistry::exists('ProjectsContributors') ? [] : ['className' => 'App\Model\Table\ProjectsContributorsTable'];
+        $this->ProjectsContributors = TableRegistry::get('ProjectsContributors', $config);
     }
 
     /**
@@ -69,7 +69,7 @@ class ProjectsMentorsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->ProjectsMentors);
+        unset($this->ProjectsContributors);
 
         parent::tearDown();
     }
@@ -84,7 +84,7 @@ class ProjectsMentorsTableTest extends TestCase
 
         $expected = $validator;
 
-        $result = $this->ProjectsMentors->validationDefault($validator);
+        $result = $this->ProjectsContributors->validationDefault($validator);
 
         $this->assertEquals($validator, $result);
     }
@@ -99,7 +99,7 @@ class ProjectsMentorsTableTest extends TestCase
 
         $expected = $rule;
 
-        $result = $this->ProjectsMentors->buildRules($rule);
+        $result = $this->ProjectsContributors->buildRules($rule);
 
         $this->assertEquals($expected, $result);
     }

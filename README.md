@@ -1,7 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/MaisonLogicielLibre/Website.svg?label=ready&title=Ready)](http://waffle.io/MaisonLogicielLibre/Website)
 [![Licence GPL](http://img.shields.io/badge/license-GPL-green.svg)](http://www.gnu.org/licenses/quick-guide-gplv3.fr.html)
-[![Coverage Status](https://coveralls.io/repos/MaisonLogicielLibre/Website/badge.svg?branch=master&service=github)](https://coveralls.io/github/MaisonLogicielLibre/Website?branch=master)
-[![Build Status](https://travis-ci.org/MaisonLogicielLibre/Website.svg?branch=master)](https://travis-ci.org/MaisonLogicielLibre/Website)
+[![Coverage Status](https://coveralls.io/repos/MaisonLogicielLibre/Website/badge.svg?branch=develop&service=github)](https://coveralls.io/github/MaisonLogicielLibre/Website?branch=develop)
+[![Build Status](https://travis-ci.org/MaisonLogicielLibre/Website.svg?branch=develop)](https://travis-ci.org/MaisonLogicielLibre/Website)
 
 # Site
 Site internet de la Maison du Logiciel Libre (MLL) codé à l'aide du framework [CakePHP](http://cakephp.org/) 3.0.

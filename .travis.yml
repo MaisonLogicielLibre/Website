@@ -16,7 +16,7 @@ before_script:
   - cp phpunit.xml.dist phpunit.xml
 
 script:
-  - phpunit --coverage-clover build/logs/clover.xml -v
+  - phpunit -d zend.enable_gc=0 --coverage-clover build/logs/clover.xml -v
   - php vendor/bin/coveralls -c .coveralls.yml -v
   - sh -c "vendor/bin/phpcs -p --config-set show_warnings 0"
   - sh -c "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src/Model ./src/Controller ./tests/TestCase"

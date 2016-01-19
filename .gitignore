@@ -9,3 +9,6 @@ composer.lock
 *.phar
 /webroot/css/lessphp_*
 /webroot/assets/
+
+# Plantuml output
+doc/*.png
