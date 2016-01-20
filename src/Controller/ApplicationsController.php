@@ -236,23 +236,12 @@ class ApplicationsController extends AppController
      */
     public function view($id = null)
     {
-        $application = $this->Applications->get($id);
-
-        if ($application->getType() != 0) {
-            $application = $this->Applications->get(
-                $id,
-                [
-                'contain' => ['Users', 'Missions', 'TypeMissions']
-                ]
-            );
-        } else {
-            $application = $this->Applications->get(
-                $id,
-                [
-                'contain' => ['Users', 'Missions']
-                ]
-            );
-        }
+        $application = $this->Applications->get(
+            $id,
+            [
+            'contain' => ['Users', 'Missions']
+            ]
+        );
 
         $this->set(compact('application'));
         $this->set('_serialize', ['application']);

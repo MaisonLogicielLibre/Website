@@ -50,8 +50,7 @@ class ApplicationsControllerTest extends IntegrationTestCase
         'app.organizations_members',
         'app.mission_levels',
         'app.missions_mission_levels',
-        'app.type_missions',
-        'app.missions_type_missions'
+        'app.type_missions'
     ];
 
     /**
@@ -171,7 +170,7 @@ class ApplicationsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - Ok
      *
@@ -184,7 +183,7 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test view - No Auth
      *
@@ -195,7 +194,7 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test view - No Perm
      *
@@ -208,8 +207,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->get('/applications/view/1');
         $this->assertResponseSuccess();
     }
-    
-    
+
+
 
     /**
      * Test rejected - Ok
