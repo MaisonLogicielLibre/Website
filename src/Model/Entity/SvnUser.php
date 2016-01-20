@@ -39,6 +39,7 @@ class SvnUser extends Entity
 
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
@@ -48,6 +49,7 @@ class SvnUser extends Entity
 
     /**
      * Get the pseudo
+     *
      * @return string pseudo
      */
     public function getPseudo()
@@ -57,6 +59,7 @@ class SvnUser extends Entity
 
     /**
      * Get the svn_id
+     *
      * @return int svn_id
      */
     public function getSvnId()
@@ -66,16 +69,19 @@ class SvnUser extends Entity
 
     /**
      * Get the user_id
+     *
      * @return int user_id
      */
     public function getUserId()
     {
         return $this->_properties['user_id'];
     }
-    
+
     /**
      * Edit the pseudo
-     * @param  string $pseudo pseudo
+     *
+     * @param string $pseudo pseudo
+     *
      * @return string pseudo
      */
     public function editPseudo($pseudo)
@@ -86,7 +92,9 @@ class SvnUser extends Entity
 
     /**
      * Edit the svn_id
-     * @param  int $svnId svnId
+     *
+     * @param int $svnId svnId
+     *
      * @return int svn_id
      */
     public function editSvnId($svnId)
@@ -97,7 +105,9 @@ class SvnUser extends Entity
 
     /**
      * Edit the user_id
-     * @param  int $userId user_id
+     *
+     * @param int $userId user_id
+     *
      * @return int user_id
      */
     public function editUserId($userId)

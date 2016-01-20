@@ -98,6 +98,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -114,6 +115,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -130,6 +132,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test getUser
+     *
      * @return void
      */
     public function testGetUser()
@@ -146,6 +149,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test getLink
+     *
      * @return void
      */
     public function testGetLink()
@@ -162,6 +166,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -178,6 +183,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test editUser
+     *
      * @return void
      */
     public function testSetUser()
@@ -194,6 +200,7 @@ class NotificationsTableTest extends TestCase
 
     /**
      * Test editLink
+     *
      * @return void
      */
     public function testSetLink()

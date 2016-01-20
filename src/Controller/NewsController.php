@@ -34,7 +34,9 @@ class NewsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)

@@ -34,7 +34,9 @@ class CommentsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -61,7 +63,9 @@ class CommentsController extends AppController
 
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return void
      */
     public function view($id = null)
@@ -78,6 +82,7 @@ class CommentsController extends AppController
 
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -95,11 +100,13 @@ class CommentsController extends AppController
         $this->set(compact('comment'));
         $this->set('_serialize', ['comment']);
     }
-    
-    
+
+
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -122,10 +129,12 @@ class CommentsController extends AppController
         $this->set(compact('comment'));
         $this->set('_serialize', ['comment']);
     }
-    
+
     /**
      * Delete method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function delete($id = null)

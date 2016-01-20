@@ -33,7 +33,9 @@ class UniversitiesController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -60,7 +62,9 @@ class UniversitiesController extends AppController
 
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return void
      */
     public function view($id = null)
@@ -77,6 +81,7 @@ class UniversitiesController extends AppController
 
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -97,7 +102,9 @@ class UniversitiesController extends AppController
 
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -123,7 +130,9 @@ class UniversitiesController extends AppController
 
     /**
      * Delete method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function delete($id = null)

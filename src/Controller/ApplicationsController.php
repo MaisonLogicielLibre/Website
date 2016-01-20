@@ -36,7 +36,9 @@ class ApplicationsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -52,7 +54,9 @@ class ApplicationsController extends AppController
 
     /**
      * Filter preparation
+     *
      * @param Event $event event
+     *
      * @return void
      */
     public function beforeFilter(Event $event)
@@ -63,7 +67,9 @@ class ApplicationsController extends AppController
 
     /**
      * Accepted method
+     *
      * @param int|null $application application
+     *
      * @return \Cake\Network\Response|null
      */
     public function accepted($application = null)
@@ -158,7 +164,9 @@ class ApplicationsController extends AppController
 
     /**
      * Rejected method
+     *
      * @param int|null $application application
+     *
      * @return \Cake\Network\Response|null
      */
     public function rejected($application = null)
@@ -218,16 +226,18 @@ class ApplicationsController extends AppController
 
         $this->set(['mission' => $application->getMission(), 'application' => $application]);
     }
-    
+
     /**
      * View method
+     *
      * @param int|null $id id
+     *
      * @return \Cake\Network\Response|null
      */
     public function view($id = null)
     {
         $application = $this->Applications->get($id);
-        
+
         if ($application->getType() != 0) {
             $application = $this->Applications->get(
                 $id,
@@ -243,7 +253,7 @@ class ApplicationsController extends AppController
                 ]
             );
         }
-        
+
         $this->set(compact('application'));
         $this->set('_serialize', ['application']);
     }

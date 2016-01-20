@@ -36,27 +36,30 @@ class TypeUsersUser extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the type_user_id
+     *
      * @return int type_user_id
      */
     public function getTypeUserId()
     {
         return $this->_properties['type_user_id'];
     }
-    
+
     /**
      * Get the user_id
+     *
      * @return int user_id
      */
     public function getUserId()

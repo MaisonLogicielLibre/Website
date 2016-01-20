@@ -79,7 +79,7 @@ class AppController extends Controller
         );
         $this->loadComponent('DataTables.DataTables');
     }
-    
+
     /**
      * Check for browser language and set website language to it
      *
@@ -121,7 +121,7 @@ class AppController extends Controller
 
         $this->request->Session()->write('numberOfNotifications', $numberOfNotifications);
     }
-    
+
     /**
      * Keep last viewed paged
      *
@@ -132,22 +132,24 @@ class AppController extends Controller
         if ($this->request->action != "login") {
             $action = "";
             $this->request->Session()->write('controllerRef', $this->request->controller);
-            
+
             if ($this->request->action != "display") {
                 $action = $this->request->action . "/";
             }
-                                    
+
             if (count($this->request->pass)) {
                 $action = $action . $this->request->pass[0];
             }
-            
+
             $this->request->Session()->write('actionRef', $action);
         }
     }
-    
+
     /**
      * Filter preparation
+     *
      * @param Event $event event
+     *
      * @return void
      */
     public function beforeFilter(Event $event)

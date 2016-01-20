@@ -40,6 +40,7 @@ class TypeMission extends Entity
 
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()

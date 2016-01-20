@@ -36,37 +36,42 @@ class Svn extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
     {
         return $this->_properties['name'];
     }
-    
+
     /**
      * Get the link
+     *
      * @return string lnk
      */
     public function getLink()
     {
         return $this->_properties['link'];
     }
-    
+
     /**
      * Edit the name
-     * @param  string $name name
+     *
+     * @param string $name name
+     *
      * @return string name
      */
     public function editName($name)
@@ -74,10 +79,12 @@ class Svn extends Entity
         $this->set('name', $name);
         return $name;
     }
-    
+
     /**
      * Edit the link
-     * @param  string $link link
+     *
+     * @param string $link link
+     *
      * @return string link
      */
     public function editLink($link)

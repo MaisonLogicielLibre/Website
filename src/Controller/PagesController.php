@@ -30,7 +30,9 @@ class PagesController extends AppController
 {
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -55,9 +57,10 @@ class PagesController extends AppController
         $this->loadModel("Users");
         $this->Auth->allow(['display', 'home', 'tv', 'statistics']);
     }
-    
+
     /**
      * Display method
+     *
      * @return redirect
      */
     public function display()
@@ -90,6 +93,7 @@ class PagesController extends AppController
 
     /**
      * Home method
+     *
      * @return void
      */
     public function home()
@@ -115,7 +119,7 @@ class PagesController extends AppController
             ]
         );
         $numberProjects = count($projects->toArray());
-        
+
         $this->loadModel("Missions");
         $missions = $this->Missions->find(
             'all',
@@ -144,7 +148,9 @@ class PagesController extends AppController
 
     /**
      * TV Method
+     *
      * @param null $id tv page
+     *
      * @return redirect
      */
     public function tv($id = null)
@@ -348,33 +354,34 @@ class PagesController extends AppController
         // @codingStandardsIgnoreEnd
     }
 
-    
+
     /**
      * Statistics method
+     *
      * @return void
      */
     public function statistics()
     {
         $this->loadModel("Statistics");
         $statistics = $this->Statistics->find('all')->toArray();
-        
+
         $this->loadModel("Users");
         $users = $this->Users->find('all')->toArray();
-        
+
         $this->loadModel("Projects");
-        
+
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all')->toArray();
-        
+
         $this->loadModel("Missions");
-        
+
         $this->loadModel("Universities");
         $universities = $this->Universities->find('all')->toArray();
-    
+
         $issues = 0;
         $prs = 0;
         $commits = 0;
-        
+
         $projects = $this->Projects->find(
             'all',
             [
@@ -390,7 +397,7 @@ class PagesController extends AppController
             ]
         );
         $numberProjects = count($projects->toArray());
-        
+
         $missions = $this->Missions->find(
             'all',
             [
@@ -413,32 +420,32 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        
+
         $contributions = [];
-        
+
         if ($statistics) {
             foreach ($statistics as $statistic) {
                 $contributions[] = [
                 $statistic->getContributionDate(),
                 $statistic->getContribution()
                 ];
-                
+
                 $issues += $statistic->getIssues();
                 $prs += $statistic->getPullRequests();
                 $commits += $statistic->getCommits();
             }
         }
-        
+
         $countUni = [];
-        
+
         $loopCount = count($universities) + 1;
         for ($i = 0; $i < $loopCount; $i++) {
             $countUni[] = 0;
         }
-        
+
         $mentors = 0;
         $students = 0;
-        
+
         foreach ($users as $user) {
             $user = $this->Users->get(
                 $user->getId(),
@@ -446,11 +453,11 @@ class PagesController extends AppController
                 'contain' => ['Universities']
                 ]
             );
-            
+
             if ($user->getUniversity()) {
 				// @codingStandardsIgnoreStart
                 switch ($user->getUniversity()->getId()) {
-                    case 1: 
+                    case 1:
                         $countUni[0] = $countUni[0] + 1;
                         break;
                     case 2:
@@ -479,19 +486,19 @@ class PagesController extends AppController
             } else {
                 $countUni[7] = $countUni[7] + 1;
             }
-            
-            
+
+
             if ($user->isAvailableMentoring()) {
                 $mentors++;
             }
-            
+
             if ($user->isStudent()) {
                 $students++;
             }
         }
-       
+
         $statsUni = [];
-        
+
         $loopCount = count($universities);
         for ($i = 0; $i < $loopCount; $i++) {
             $statsUni[] = [
@@ -499,43 +506,44 @@ class PagesController extends AppController
                 $countUni[$i]
             ];
         }
-        
+
         $statsUni[] = [
             __('Not specified'),
             $countUni[count($universities)]
         ];
-        
+
         $statsRepo = [
             'issues' => $issues,
             'pullRequests' => $prs,
             'commits' => $commits
         ];
-        
+
         $statsUsers = [
             'universities' => $statsUni,
             'mentors' => $mentors,
             'students' => $students,
             'count' => count($users)
         ];
-        
+
         $statsWeb = [
             'organizations' => count($organizations),
             'projects' => $numberProjects,
             'missions' => $numberMissions
-            
+
         ];
-        
+
         $stats = [
             'repository' => $statsRepo,
             'users' => $statsUsers,
             'website' => $statsWeb
         ];
-        
+
         $this->set(compact('contributions', 'stats'));
     }
 
     /**
      * Administration method
+     *
      * @return void
      */
     public function administration()

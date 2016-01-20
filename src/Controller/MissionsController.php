@@ -46,7 +46,9 @@ class MissionsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -59,7 +61,7 @@ class MissionsController extends AppController
             }
         }
     }
-    
+
     /**
      * Add the RequestHandler component
      *
@@ -84,7 +86,7 @@ class MissionsController extends AppController
         $this->loadModel("Users");
         $this->Auth->allow(['view', 'index']);
     }
-    
+
     /**
      * Index method
      *
@@ -94,10 +96,10 @@ class MissionsController extends AppController
     {
         $types = $this->loadModel("TypeMissions")->find('list', ['limit' => 200]);
         $this->set(compact('types'));
-        
+
         $orgs = $this->loadModel("Organizations")->find('list', ['limit' => 200]);
         $this->set(compact('orgs'));
-        
+
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
         $data = $this->DataTables->find(
@@ -211,7 +213,7 @@ class MissionsController extends AppController
                 ]
             );
         }
-        
+
         $projectId = $mission->getProjectId();
         $this->set(compact('mission', 'projectId', 'user', 'isMentor'));
         $this->set(
@@ -221,7 +223,7 @@ class MissionsController extends AppController
             ]
         );
     }
-    
+
     /**
      * Add method
      *
@@ -271,7 +273,9 @@ class MissionsController extends AppController
 
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -282,9 +286,9 @@ class MissionsController extends AppController
                 'contain' => ['Projects', 'TypeMissions', 'MissionLevels', 'Applications']
             ]
         );
-        
+
         $applications = TableRegistry::get('Applications');
-        
+
         $isEditable = true;
         $minInternNbr = 0;
         foreach ($mission->applications as $application) {
@@ -328,7 +332,9 @@ class MissionsController extends AppController
 
     /**
      * Edit archived method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function editArchived($id)
@@ -348,10 +354,12 @@ class MissionsController extends AppController
             return $this->redirect(['action' => 'view', $id]);
         }
     }
-    
+
     /**
      * Apply method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function apply($id)
@@ -362,20 +370,20 @@ class MissionsController extends AppController
                 'contain' => ['Users', 'Applications', 'Projects', 'TypeMissions']
             ]
         );
-        
+
         $userId = $this->request->session()->read('Auth.User.id');
         $user = TableRegistry::get('Users')->get($userId, ['contain' => 'Universities']);
-        
+
         $userEmail = $user->getEmailPublic;
         $isProfessor = $user->isProfessor();
         $isStudent = $user->isStudent();
-        
-        
+
+
         if ($mission->project->isAccepted() && !$mission->project->isArchived()) {
             if ($user->id != $mission->mentor_id) {
                 if ($mission->getRemainingPlaces() > 0) {
                     $applications = TableRegistry::get('Applications');
-                    
+
                     $professor = false;
                     $student = false;
                     foreach ($mission->getType() as $type) {
@@ -385,7 +393,7 @@ class MissionsController extends AppController
                             $student = true;
                         }
                     }
-                    
+
                     if (($user->isStudent() && $student) || ($user->isProfessor() && $professor)) {
                         if ($user->getFirstname() && $user->getLastname() && $user->getUniversity() && !is_null($user->getGender()) && $user->getBiography()) {
                             if (!$applications->findByUserId($userId)->where('Applications.mission_id = ' . $mission->getId())->ToArray()) {
@@ -446,7 +454,9 @@ class MissionsController extends AppController
 
     /**
      * EditMentor method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function editMentor($id = null)
@@ -463,16 +473,16 @@ class MissionsController extends AppController
                 ]
             ]
         );
-        
+
         $mentors = $mission->getProject()->getMentors();
         $currentMentorId = $mission->getMentorId();
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (count($this->request->data)) {
                 $mentorId = $this->request->data['users'];
-                            
+
                 $mission->editMentorId($mentorId[0]);
-                
+
                 if ($this->Missions->save($mission)) {
                     $this->Flash->success(__('The mentor have been modified.'));
                     return $this->redirect(['action' => 'view', $mission->id]);
@@ -483,14 +493,16 @@ class MissionsController extends AppController
                 $this->Flash->error(__('There must be at least one mentor'));
             }
         }
-       
+
         $this->set(compact('currentMentorId', 'mentors', 'mission'));
         $this->set('_serialize', ['mission']);
     }
 
     /**
      * EditProfessor method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function editProfessor($id = null)

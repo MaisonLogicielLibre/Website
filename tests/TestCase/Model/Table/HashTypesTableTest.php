@@ -62,6 +62,7 @@ class HashTypesTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()

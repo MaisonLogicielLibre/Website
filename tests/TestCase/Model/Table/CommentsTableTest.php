@@ -8,7 +8,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Website
  */
- 
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\CommentsTable;
@@ -64,6 +64,7 @@ class CommentsTableTest extends TestCase
 
     /**
      * Teardown method
+     *
      * @return void
      */
     public function tearDown()
@@ -72,9 +73,10 @@ class CommentsTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -88,9 +90,10 @@ class CommentsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getText
+     *
      * @return void
      */
     public function testGetText()
@@ -104,9 +107,10 @@ class CommentsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getUserId
+     *
      * @return void
      */
     public function testGetUserId()
@@ -120,9 +124,10 @@ class CommentsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editText
+     *
      * @return void
      */
     public function testSetText()
@@ -136,34 +141,36 @@ class CommentsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Comments->validationDefault($validator);
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->Comments->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

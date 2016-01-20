@@ -43,7 +43,9 @@ class ProjectsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -172,6 +174,7 @@ class ProjectsController extends AppController
 
     /**
      * MyProjects method
+     *
      * @return redirect
      */
     public function myProjects()
@@ -235,6 +238,7 @@ class ProjectsController extends AppController
 
     /**
      * Submit method
+     *
      * @return redirect
      */
     public function submit()
@@ -331,7 +335,9 @@ class ProjectsController extends AppController
 
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return void
      */
     public function view($id = null)
@@ -410,6 +416,7 @@ class ProjectsController extends AppController
 
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -438,7 +445,9 @@ class ProjectsController extends AppController
 
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -449,7 +458,7 @@ class ProjectsController extends AppController
                 'contain' => ['Contributors', 'Mentors', 'Organizations']
             ]
         );
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -493,6 +502,7 @@ class ProjectsController extends AppController
 
     /**
      * Edit state method
+     *
      * @return void
      */
     public function editState()
@@ -551,7 +561,9 @@ class ProjectsController extends AppController
 
     /**
      * Edit accepted method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function editAccepted($id)
@@ -579,7 +591,9 @@ class ProjectsController extends AppController
 
     /**
      * Edit archived method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function editArchived($id)
@@ -619,7 +633,9 @@ class ProjectsController extends AppController
 
     /**
      * Delete method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function delete($id = null)
@@ -636,7 +652,9 @@ class ProjectsController extends AppController
 
     /**
      * Apply method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function apply($id = null)
@@ -671,9 +689,11 @@ class ProjectsController extends AppController
 
     /**
      * Build missions object from json post
+     *
      * @param int   $projectId projectId
      * @param int   $mentorId  mentorId
      * @param array $post      post
+     *
      * @return array|null
      */
     private function _constructMission($projectId, $mentorId, $post)
@@ -708,8 +728,10 @@ class ProjectsController extends AppController
 
     /**
      * Add backend error in missionpost for the view
+     *
      * @param array $post     post
      * @param array $missions missions
+     *
      * @return array
      */
     private function _addErrorsMissionPost($post, $missions)
@@ -733,7 +755,9 @@ class ProjectsController extends AppController
 
     /**
      * EditMentor method
+     *
      * @param int $id id
+     *
      * @return redirect
      */
     public function editMentor($id = null)

@@ -72,9 +72,10 @@ class TypeUsersUsersTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -88,9 +89,10 @@ class TypeUsersUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getTypeUserId
+     *
      * @return void
      */
     public function testGetTypeUserId()
@@ -104,9 +106,10 @@ class TypeUsersUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getUserId
+     *
      * @return void
      */
     public function testGetUserId()
@@ -120,34 +123,36 @@ class TypeUsersUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->TypeUsersUsers->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->TypeUsersUsers->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

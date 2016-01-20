@@ -38,9 +38,10 @@ class Mission extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
@@ -50,6 +51,7 @@ class Mission extends Entity
 
     /**
      * Get the project_id
+     *
      * @return int id
      */
     public function getProjectId()
@@ -59,6 +61,7 @@ class Mission extends Entity
 
     /**
      * Get the mentor_id
+     *
      * @return int id
      */
     public function getMentorId()
@@ -68,6 +71,7 @@ class Mission extends Entity
 
     /**
      * Get the professor_id
+     *
      * @return int id
      */
     public function getProfessorId()
@@ -77,6 +81,7 @@ class Mission extends Entity
 
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
@@ -86,6 +91,7 @@ class Mission extends Entity
 
     /**
      * Get the project
+     *
      * @return object project
      */
     public function getProject()
@@ -95,6 +101,7 @@ class Mission extends Entity
 
     /**
      * Get the description
+     *
      * @return string description
      */
     public function getDescription()
@@ -104,6 +111,7 @@ class Mission extends Entity
 
     /**
      * Get the competence
+     *
      * @return string competence
      */
     public function getCompetence()
@@ -113,6 +121,7 @@ class Mission extends Entity
 
     /**
      * Get the internNbr
+     *
      * @return int internNbr
      */
     public function getInternNbr()
@@ -122,6 +131,7 @@ class Mission extends Entity
 
     /**
      * Get the number of remaining places
+     *
      * @return int places
      */
     public function getRemainingPlaces()
@@ -137,6 +147,7 @@ class Mission extends Entity
 
     /**
      * Get the applications
+     *
      * @return array applications
      */
     public function getApplications()
@@ -146,6 +157,7 @@ class Mission extends Entity
 
     /**
      * Get the session
+     *
      * @return string session
      */
     public function getSession()
@@ -169,6 +181,7 @@ class Mission extends Entity
 
     /**
      * Get the length
+     *
      * @return string length
      */
     public function getLength()
@@ -192,6 +205,7 @@ class Mission extends Entity
 
     /**
      * Get the mission_levels
+     *
      * @return array mission_levels
      */
     public function getLevels()
@@ -201,6 +215,7 @@ class Mission extends Entity
 
     /**
      * Get the type_missions
+     *
      * @return array type_misssions
      */
     public function getType()
@@ -210,6 +225,7 @@ class Mission extends Entity
 
     /**
      * Get the mentor
+     *
      * @return object user
      */
     public function getMentor()
@@ -219,6 +235,7 @@ class Mission extends Entity
 
     /**
      * Get the professor
+     *
      * @return object user
      */
     public function getProfessor()
@@ -228,7 +245,9 @@ class Mission extends Entity
 
     /**
      * Set the projectId
+     *
      * @param int $projectId projectId
+     *
      * @return int projectId
      */
     public function editProjectId($projectId)
@@ -239,7 +258,9 @@ class Mission extends Entity
 
     /**
      * Set the mentorId
+     *
      * @param int $mentorId mentorId
+     *
      * @return int mentorId
      */
     public function editMentorId($mentorId)
@@ -250,7 +271,9 @@ class Mission extends Entity
 
     /**
      * Set the professorId
+     *
      * @param int $professorId professorId
+     *
      * @return int professorId
      */
     public function editProfessorId($professorId)
@@ -261,7 +284,9 @@ class Mission extends Entity
 
     /**
      * Set if the mission is archived
-     * @param  int $archived archived
+     *
+     * @param int $archived archived
+     *
      * @return int archived
      */
     public function editArchived($archived)
@@ -272,6 +297,7 @@ class Mission extends Entity
 
     /**
      * Get if the mission is archived
+     *
      * @return bool archived
      */
     public function isArchived()

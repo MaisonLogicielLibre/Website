@@ -59,9 +59,10 @@ class StatisticsTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getCommits
+     *
      * @return void
      */
     public function testGetCommits()
@@ -75,9 +76,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getPullRequests
+     *
      * @return void
      */
     public function testGetPullRequests()
@@ -91,9 +93,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getPullRequestsOpen
+     *
      * @return void
      */
     public function testGetPullRequestsOpen()
@@ -107,9 +110,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getPullRequestsClose
+     *
      * @return void
      */
     public function testGetPullRequestsClose()
@@ -123,9 +127,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getIssues
+     *
      * @return void
      */
     public function testGetIssues()
@@ -139,9 +144,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getIssuesOpen
+     *
      * @return void
      */
     public function testGetIssuesOpen()
@@ -155,9 +161,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getIssuesClose
+     *
      * @return void
      */
     public function testGetIssuesClose()
@@ -171,9 +178,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getContributions
+     *
      * @return void
      */
     public function testGetContribution()
@@ -187,9 +195,10 @@ class StatisticsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getContributionsDate
+     *
      * @return void
      */
     public function testGetContributionDate()
@@ -212,11 +221,11 @@ class StatisticsTableTest extends TestCase
     public function testValidationDefault()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Statistics->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
 }

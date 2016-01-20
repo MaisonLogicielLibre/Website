@@ -60,9 +60,10 @@ class TypeUsersTableTest extends TestCase
         $config = TableRegistry::exists('TypeUsers') ? [] : ['className' => 'App\Model\Table\TypeUsersTable'];
         $this->TypeUsers = TableRegistry::get('TypeUsers', $config);
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -76,9 +77,10 @@ class TypeUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -92,9 +94,10 @@ class TypeUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -108,34 +111,36 @@ class TypeUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->TypeUsers->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->TypeUsers->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

@@ -141,9 +141,10 @@ class SvnUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editPseudo
+     *
      * @return void
      */
     public function testSetPseudo()
@@ -157,9 +158,10 @@ class SvnUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editSvnId
+     *
      * @return void
      */
     public function testSetSvnId()
@@ -173,9 +175,10 @@ class SvnUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editUserId
+     *
      * @return void
      */
     public function testSetUserId()
@@ -189,34 +192,36 @@ class SvnUsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->SvnUsers->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->SvnUsers->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

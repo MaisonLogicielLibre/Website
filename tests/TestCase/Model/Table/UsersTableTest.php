@@ -78,6 +78,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -94,22 +95,24 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getFirstName
+     *
      * @return void
      */
     public function testGetFirstName()
     {
         $id = 1;
         $expected = 'Simon';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getFirstName();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getNameNUll
+     *
      * @return void
      */
     public function testGetNameNull()
@@ -123,41 +126,44 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getLastName
+     *
      * @return void
      */
     public function testGetLastName()
     {
         $id = 1;
         $expected = 'Begin';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getLastName();
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getBiography
+     *
      * @return void
      */
     public function testGetBiography()
     {
         $id = 1;
         $expected = 'Une petite bio.';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getBiography();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getInterest
+     *
      * @return void
      */
     public function testGetInterest()
@@ -174,22 +180,24 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getPortfolio
+     *
      * @return void
      */
     public function testGetPortfolio()
     {
         $id = 1;
         $expected = 'http://monportfolio.com';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getPortfolio();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getTwitter
+     *
      * @return void
      */
     public function testGetTwitter()
@@ -206,6 +214,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getFacebook
+     *
      * @return void
      */
     public function testGetFacebook()
@@ -222,6 +231,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getGooglePlus
+     *
      * @return void
      */
     public function testGetGooglePlus()
@@ -238,6 +248,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getLinkedIn
+     *
      * @return void
      */
     public function testGetLinkedIn()
@@ -254,22 +265,24 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getEmail
+     *
      * @return void
      */
     public function testGetEmail()
     {
         $id = 1;
         $expected = 'email@gmail.com';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getEmail();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getEmailPublic
+     *
      * @return void
      */
     public function testGetEmailPublic()
@@ -286,38 +299,41 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getPhone
+     *
      * @return void
      */
     public function testGetPhone()
     {
         $id = 1;
         $expected = '(514) 777-7777';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getPhone();
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getGender for true
+     *
      * @return void
      */
     public function testGetGenderTrue()
     {
         $id = 1;
         $expected = true;
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getGender();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getGender for false
+     *
      * @return void
      */
     public function testGetGenderFalse()
@@ -334,6 +350,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getGender for null
+     *
      * @return void
      */
     public function testGetGenderNull()
@@ -350,38 +367,41 @@ class UsersTableTest extends TestCase
 
     /**
      * Test getPassword
+     *
      * @return void
      */
     public function testGetPassword()
     {
         $id = 1;
         $expected = 'motdepasse';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getPassword();
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getUsername
+     *
      * @return void
      */
     public function testGetUsername()
     {
         $id = 1;
         $expected = 'tropHot';
-        
+
         $user = $this->Users->get($id);
-        
+
         $result = $user->getUsername();
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test IsAvailableMentoring
+     *
      * @return void
      */
     public function testIsAvailableMentoring()
@@ -398,6 +418,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test IsStudent
+     *
      * @return void
      */
     public function testIsStudent()
@@ -414,6 +435,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editFirstName
+     *
      * @return void
      */
     public function testSetFirstName()
@@ -430,6 +452,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editLastName
+     *
      * @return void
      */
     public function testSetLastName()
@@ -446,6 +469,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editBiography
+     *
      * @return void
      */
     public function testSetBiography()
@@ -462,6 +486,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editInterest
+     *
      * @return void
      */
     public function testSetInterest()
@@ -478,6 +503,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editPortfolio
+     *
      * @return void
      */
     public function testSetPortfolio()
@@ -494,6 +520,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editTwitter
+     *
      * @return void
      */
     public function testSetTwitter()
@@ -510,6 +537,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editFacebook
+     *
      * @return void
      */
     public function testSetFacebook()
@@ -526,6 +554,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editGooglePlus
+     *
      * @return void
      */
     public function testSetGooglePlus()
@@ -542,6 +571,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editLinkedin
+     *
      * @return void
      */
     public function testSetLinkedin()
@@ -558,6 +588,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editEmail
+     *
      * @return void
      */
     public function testSetEmail()
@@ -574,6 +605,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editEmailPublic
+     *
      * @return void
      */
     public function testSetEmailPublic()
@@ -590,6 +622,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editPhone
+     *
      * @return void
      */
     public function testSetPhone()
@@ -606,6 +639,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editGender
+     *
      * @return void
      */
     public function testSetGender()
@@ -622,6 +656,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editGender
+     *
      * @return void
      */
     public function testSetGenderNull()
@@ -638,6 +673,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editUsername
+     *
      * @return void
      */
     public function testSetUsername()
@@ -651,9 +687,10 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editpassword
+     *
      * @return void
      */
     public function testSetPassword()
@@ -671,6 +708,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editMailingList
+     *
      * @return void
      */
     public function testSetMailingList()
@@ -687,6 +725,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editIsAvailableMentoring
+     *
      * @return void
      */
     public function testSetIsAvailableMentoring()
@@ -703,6 +742,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editIsStudent
+     *
      * @return void
      */
     public function testSetIsStudent()
@@ -719,6 +759,7 @@ class UsersTableTest extends TestCase
 
     /**
      * Test editIsProfessor
+     *
      * @return void
      */
     public function testSetIsProfessor()
@@ -732,9 +773,10 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test hasRoleName
+     *
      * @return void
      */
     public function testHasRoleNameTrue()
@@ -745,15 +787,16 @@ class UsersTableTest extends TestCase
         ];
 
         $user = $this->Users->get($id);
-        
-        
+
+
         $result = $user->hasRoleName($perm);
 
         $this->assertTrue($result);
     }
-    
+
     /**
      * Test hasRoleName
+     *
      * @return void
      */
     public function testHasRoleNameFalse()
@@ -769,39 +812,42 @@ class UsersTableTest extends TestCase
 
         $this->assertFalse($result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Users->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->Users->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test fail validation
+     *
      * @return void
      */
     public function testValidationFail()
@@ -827,9 +873,10 @@ class UsersTableTest extends TestCase
 
             $this->assertFalse($result);
     }
-    
+
     /**
      * Test isOwner - True
+     *
      * @return void
      */
     public function testIsOwnerTrue()
@@ -839,14 +886,15 @@ class UsersTableTest extends TestCase
         $expected = true;
 
         $user = $this->Users->get($userId);
-        
+
         $result = $user->isOwnerOf($orgId);
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test isOwner - False
+     *
      * @return void
      */
     public function testIsOwnerFalse()
@@ -856,14 +904,15 @@ class UsersTableTest extends TestCase
         $expected = false;
 
         $user = $this->Users->get($userId);
-        
+
         $result = $user->isOwnerOf($orgId);
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test isMember - True
+     *
      * @return void
      */
     public function testIsMemberTrue()
@@ -873,14 +922,15 @@ class UsersTableTest extends TestCase
         $expected = true;
 
         $user = $this->Users->get($userId);
-        
+
         $result = $user->isMemberOf($orgId);
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test isMember - False
+     *
      * @return void
      */
     public function testIsMemberFalse()
@@ -890,14 +940,15 @@ class UsersTableTest extends TestCase
         $expected = false;
 
         $user = $this->Users->get($userId);
-        
+
         $result = $user->isMemberOf($orgId);
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test getSkills
+     *
      * @return void
      */
     public function testGetSkills()

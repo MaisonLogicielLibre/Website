@@ -71,9 +71,10 @@ class UniversitiesTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -87,9 +88,10 @@ class UniversitiesTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -106,6 +108,7 @@ class UniversitiesTableTest extends TestCase
 
     /**
      * Test getWebsite
+     *
      * @return void
      */
     public function testGetWebsite()
@@ -119,9 +122,10 @@ class UniversitiesTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -135,9 +139,10 @@ class UniversitiesTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editWebsite
+     *
      * @return void
      */
     public function testSetWebsite()
@@ -151,19 +156,20 @@ class UniversitiesTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Universities->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
 }

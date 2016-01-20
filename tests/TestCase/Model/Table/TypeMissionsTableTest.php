@@ -67,6 +67,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName1()
@@ -83,6 +84,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName2()
@@ -99,6 +101,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName3()
@@ -115,6 +118,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName4()
@@ -131,6 +135,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName5()
@@ -147,6 +152,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
@@ -160,6 +166,7 @@ class TypeMissionsTableTest extends TestCase
 
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()

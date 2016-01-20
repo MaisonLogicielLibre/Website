@@ -36,28 +36,32 @@ class TypeUser extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
     {
         return $this->_properties['name'];
     }
-    
+
     /**
      * Get the name
-     * @param  string $name name
+     *
+     * @param string $name name
+     *
      * @return string name
      */
     public function editName($name)

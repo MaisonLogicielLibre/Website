@@ -71,9 +71,10 @@ class SvnsTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -87,9 +88,10 @@ class SvnsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -103,9 +105,10 @@ class SvnsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getLink
+     *
      * @return void
      */
     public function testGetLink()
@@ -119,9 +122,10 @@ class SvnsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -135,9 +139,10 @@ class SvnsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editLink
+     *
      * @return void
      */
     public function testSetLink()
@@ -151,19 +156,20 @@ class SvnsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Svns->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
 }

@@ -8,7 +8,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
- 
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\OrganizationsTable;
@@ -62,9 +62,10 @@ class OrganizationsTableTest extends TestCase
         $config = TableRegistry::exists('Organizations') ? [] : ['className' => 'App\Model\Table\OrganizationsTable'];
         $this->Organizations = TableRegistry::get('Organizations', $config);
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -78,9 +79,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -94,9 +96,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getWebsite
+     *
      * @return void
      */
     public function testGetWebsite()
@@ -110,9 +113,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getKLogo
+     *
      * @return void
      */
     public function testGetLogo()
@@ -126,9 +130,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getDescription
+     *
      * @return void
      */
     public function testGetDescription()
@@ -145,6 +150,7 @@ class OrganizationsTableTest extends TestCase
 
     /**
      * Test getIsValidated
+     *
      * @return void
      */
     public function testGetIsValidated()
@@ -161,6 +167,7 @@ class OrganizationsTableTest extends TestCase
 
     /**
      * Test getIsRejected
+     *
      * @return void
      */
     public function testGetIsRejected()
@@ -174,9 +181,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -190,9 +198,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editWebsite
+     *
      * @return void
      */
     public function testSetWebsite()
@@ -206,9 +215,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editLogo
+     *
      * @return void
      */
     public function testSetlogo()
@@ -222,9 +232,10 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editDescription
+     *
      * @return void
      */
     public function testSetDescription()
@@ -241,6 +252,7 @@ class OrganizationsTableTest extends TestCase
 
     /**
      * Test editIsValidated
+     *
      * @return void
      */
     public function testSetIsValidated()
@@ -257,6 +269,7 @@ class OrganizationsTableTest extends TestCase
 
     /**
      * Test editIsRejected
+     *
      * @return void
      */
     public function testSetIsRejected()
@@ -270,24 +283,26 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Organizations->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
 
     /**
      * Test validation Website Rules
+     *
      * @return void
      */
     public function testValidationWebsite()

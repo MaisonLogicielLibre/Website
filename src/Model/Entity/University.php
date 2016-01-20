@@ -36,37 +36,42 @@ class University extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
     {
         return $this->_properties['name'];
     }
-    
+
     /**
      * Get the website
+     *
      * @return string website
      */
     public function getWebsite()
     {
         return $this->_properties['website'];
     }
-    
+
     /**
      * Set the name
-     * @param  string $name name
+     *
+     * @param string $name name
+     *
      * @return string name
      */
     public function editName($name)
@@ -74,10 +79,12 @@ class University extends Entity
         $this->set('name', $name);
         return $name;
     }
-    
+
     /**
      * Set the website
-     * @param  string $website website
+     *
+     * @param string $website website
+     *
      * @return string website
      */
     public function editWebsite($website)

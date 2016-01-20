@@ -49,7 +49,9 @@ class UsersController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -199,7 +201,7 @@ class UsersController extends AppController
                 ]
             ]
         );
-        
+
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
         $this->set(compact('userSelected', 'user'));
         $this->set('_serialize', ['user']);
@@ -569,10 +571,12 @@ class UsersController extends AppController
             }
         }
     }
-    
+
     /**
      * Svn method
-     * @param  int $id user id
+     *
+     * @param int $id user id
+     *
      * @return void
      */
     public function svn($id)
@@ -580,12 +584,12 @@ class UsersController extends AppController
         $user = $this->Users->get($id);
         $svnsUsers = TableRegistry::get('svn_users');
         $pseudos = $svnsUsers->findByUserId($id)->toArray();
-        
+
         $code = $this->request->query('code');
-        
+
         if ($code) {
             $http = new Client();
-            
+
             $result = $http->post(
                 'https://github.com/login/oauth/access_token',
                 [
@@ -594,10 +598,10 @@ class UsersController extends AppController
                     'code' => $code,
                 ]
             );
-            
+
             $tmp = explode('&', $result->body)[0];
             $token = explode('=', $tmp)[1];
-            
+
             if ($token != "bad_verification_code") {
                 $result = $http->get(
                     'https://api.github.com/user',
@@ -605,15 +609,15 @@ class UsersController extends AppController
                     'access_token' => $token
                        ]
                 );
-                         
+
                 $res = json_decode($result->body, true);
-                
+
                 if (!$svnsUsers->findByPseudo($res['login'])->toArray()) {
                     $svnUser = $svnsUsers->newEntity();
                     $svnUser->editPseudo($res['login']);
                     $svnUser->editSvnId(1);
                     $svnUser->edituserId($id);
-                    
+
                     if ($svnsUsers->save($svnUser)) {
                           $this->Flash->success(__('The account have been added'));
                           return $this->redirect(['controller' => 'Users', 'action' => 'svn', $id]);
@@ -625,11 +629,11 @@ class UsersController extends AppController
                 }
             }
         }
-        
+
         $this->set(compact('user', 'pseudos'));
         $this->set('_serialize', ['user']);
     }
-    
+
     /**
      * Svn method used for token callback
      *
@@ -639,28 +643,30 @@ class UsersController extends AppController
     {
         $userId = $this->Users->get($this->Auth->user('id'))->getId();
         $code = $this->request->query('code');
-        
+
         return $this->redirect(['controller' => 'Users', 'action' => 'svn', $userId, '?' => ['code' => $code]]);
     }
-    
+
     /**
      * Svn method used to remove account
+     *
      * @param int $id user_id
+     *
      * @return void
      */
     public function svnRemove($id)
     {
         $svnsUsers = TableRegistry::get('svn_users');
-        
+
         $pseudo = $this->request->query('pseudo');
         $account = $svnsUsers->findByPseudo($pseudo)->first();
-        
+
         if ($svnsUsers->delete($account)) {
             $this->Flash->success(__('The account has been deleted.'));
         } else {
             $this->Flash->error(__('The account could not be deleted. Please try again.'));
         }
-        
+
         return $this->redirect(['controller' => 'Users', 'action' => 'svn', $id]);
     }
 }

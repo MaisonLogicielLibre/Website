@@ -32,7 +32,9 @@ class TypeUsersController extends AppController
     ];
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -56,7 +58,9 @@ class TypeUsersController extends AppController
     }
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return void
      */
     public function view($id = null)
@@ -72,6 +76,7 @@ class TypeUsersController extends AppController
     }
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -91,7 +96,9 @@ class TypeUsersController extends AppController
     }
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -116,7 +123,9 @@ class TypeUsersController extends AppController
     }
     /**
      * Delete method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function delete($id = null)

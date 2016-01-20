@@ -88,6 +88,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -104,6 +105,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getProjectId
+     *
      * @return void
      */
     public function testGetProjectId()
@@ -120,6 +122,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getMentorId
+     *
      * @return void
      */
     public function testGetMentorId()
@@ -136,6 +139,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getProfessorId
+     *
      * @return void
      */
     public function testGetProfessorId()
@@ -152,6 +156,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getProject
+     *
      * @return void
      */
     public function testGetProject()
@@ -169,6 +174,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getDescription
+     *
      * @return void
      */
     public function testGetDescription()
@@ -185,6 +191,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getCompetence
+     *
      * @return void
      */
     public function testGetCompetence()
@@ -201,6 +208,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getInternNbr
+     *
      * @return void
      */
     public function testGetInternNbr()
@@ -217,6 +225,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getSession1
+     *
      * @return void
      */
     public function testGetSession1()
@@ -233,6 +242,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getSession2
+     *
      * @return void
      */
     public function testGetSession2()
@@ -249,6 +259,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getSession3
+     *
      * @return void
      */
     public function testGetSession3()
@@ -265,6 +276,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getSession4
+     *
      * @return void
      */
     public function testGetSession4()
@@ -281,6 +293,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getLength1
+     *
      * @return void
      */
     public function testGetLength1()
@@ -297,6 +310,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getLength2
+     *
      * @return void
      */
     public function testGetLength2()
@@ -313,6 +327,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getLength3
+     *
      * @return void
      */
     public function testGetLength3()
@@ -329,6 +344,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getLength4
+     *
      * @return void
      */
     public function testGetLength4()
@@ -345,6 +361,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getLevels
+     *
      * @return void
      */
     public function testGetLevels()
@@ -362,6 +379,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getType
+     *
      * @return void
      */
     public function testGetType()
@@ -379,6 +397,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getMentor
+     *
      * @return object user
      */
     public function testGetMentor()
@@ -396,6 +415,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getProfessor
+     *
      * @return object user
      */
     public function testGetProfessor()
@@ -413,6 +433,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test getApplications
+     *
      * @return void
      */
     public function testGetApplications()
@@ -429,6 +450,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test setProjectId
+     *
      * @return void
      */
     public function testSetProjectId()
@@ -445,6 +467,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test setMentorId
+     *
      * @return void
      */
     public function testSetMentorId()
@@ -461,6 +484,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test setProfessorId
+     *
      * @return void
      */
     public function testSetProfessorId()
@@ -477,6 +501,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
@@ -492,6 +517,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
@@ -507,6 +533,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test isArchived (bool of mission)
+     *
      * @return void
      */
     public function testIsArchived()
@@ -523,6 +550,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test isArchived (bool of project)
+     *
      * @return void
      */
     public function testIsArchivedByDefault()
@@ -539,6 +567,7 @@ class MissionsTableTest extends TestCase
 
     /**
      * Test isArchived (not archived)
+     *
      * @return void
      */
     public function testIsArchivedNo()

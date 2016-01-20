@@ -82,6 +82,7 @@ class ApplicationsTableTest extends TestCase
 
     /**
      * Test getUserId
+     *
      * @return void
      */
     public function testGetUserId()
@@ -95,9 +96,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getRejected
+     *
      * @return void
      */
     public function testGetRejected()
@@ -111,9 +113,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getText
+     *
      * @return void
      */
     public function testGetText()
@@ -127,9 +130,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getType
+     *
      * @return void
      */
     public function testGetType()
@@ -143,9 +147,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getEmail
+     *
      * @return void
      */
     public function testGetEmail()
@@ -159,9 +164,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getAccepted
+     *
      * @return void
      */
     public function testGetAccepted()
@@ -175,9 +181,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test edituserId
+     *
      * @return void
      */
     public function testEditUserId()
@@ -191,9 +198,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editMissionId
+     *
      * @return void
      */
     public function testEditMissionId()
@@ -207,9 +215,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editRejected
+     *
      * @return void
      */
     public function testEditRejected()
@@ -223,9 +232,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editAccepted
+     *
      * @return void
      */
     public function testEditAccepted()
@@ -239,9 +249,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editText
+     *
      * @return void
      */
     public function testEditText()
@@ -255,9 +266,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editEmail
+     *
      * @return void
      */
     public function testEditEmail()
@@ -271,9 +283,10 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editType
+     *
      * @return void
      */
     public function testEditType()
@@ -287,7 +300,7 @@ class ApplicationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validationDefault method
      *

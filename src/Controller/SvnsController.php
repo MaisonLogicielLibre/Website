@@ -34,7 +34,9 @@ class SvnsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -61,7 +63,9 @@ class SvnsController extends AppController
 
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return void
      */
     public function view($id = null)
@@ -78,6 +82,7 @@ class SvnsController extends AppController
 
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -98,7 +103,9 @@ class SvnsController extends AppController
 
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -124,7 +131,9 @@ class SvnsController extends AppController
 
     /**
      * Delete method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function delete($id = null)

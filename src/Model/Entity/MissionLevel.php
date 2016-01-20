@@ -40,6 +40,7 @@ class MissionLevel extends Entity
 
     /**
      * Get level name
+     *
      * @return string name
      */
     public function getName()

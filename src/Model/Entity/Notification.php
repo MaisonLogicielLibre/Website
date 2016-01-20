@@ -40,6 +40,7 @@ class Notification extends Entity
 
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
@@ -49,6 +50,7 @@ class Notification extends Entity
 
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
@@ -58,6 +60,7 @@ class Notification extends Entity
 
     /**
      * Get the user
+     *
      * @return objet user
      */
     public function getUser()
@@ -67,6 +70,7 @@ class Notification extends Entity
 
     /**
      * Get the link
+     *
      * @return string link
      */
     public function getLink()
@@ -76,7 +80,9 @@ class Notification extends Entity
 
     /**
      * Set the name
-     * @param  string $name name
+     *
+     * @param string $name name
+     *
      * @return string name
      */
     public function editName($name)
@@ -87,7 +93,9 @@ class Notification extends Entity
 
     /**
      * Set the user
-     * @param  object $user user
+     *
+     * @param object $user user
+     *
      * @return object user
      */
     public function editUser($user)
@@ -98,7 +106,9 @@ class Notification extends Entity
 
     /**
      * Set the link
-     * @param  string $link link
+     *
+     * @param string $link link
+     *
      * @return string link
      */
     public function editLink($link)

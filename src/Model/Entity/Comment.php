@@ -8,7 +8,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
- 
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -37,9 +37,10 @@ class Comment extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
@@ -50,25 +51,29 @@ class Comment extends Entity
 
     /**
      * Get the text
+     *
      * @return string text
      */
     public function getText()
     {
         return $this->_properties['text'];
     }
-    
+
     /**
      * Get the user_id
+     *
      * @return int user_id
      */
     public function getUserId()
     {
         return $this->_properties['user_id'];
     }
-    
+
     /**
      * Set the text
+     *
      * @param string $text text
+     *
      * @return string text
      */
     public function editText($text)

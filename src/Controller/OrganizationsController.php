@@ -39,7 +39,9 @@ class OrganizationsController extends AppController
 
     /**
      * Check if the user has the rights to see the page
+     *
      * @param array $user user's informations
+     *
      * @return bool
      */
     public function isAuthorized($user)
@@ -139,6 +141,7 @@ class OrganizationsController extends AppController
 
     /**
      * MyOrganizations method
+     *
      * @return void
      */
     public function myOrganizations()
@@ -234,7 +237,9 @@ class OrganizationsController extends AppController
 
     /**
      * View method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function view($id = null)
@@ -275,6 +280,7 @@ class OrganizationsController extends AppController
 
     /**
      * Add method
+     *
      * @return redirect
      */
     public function add()
@@ -302,6 +308,7 @@ class OrganizationsController extends AppController
 
     /**
      * Submit method
+     *
      * @return redirect
      */
     public function submit()
@@ -329,7 +336,9 @@ class OrganizationsController extends AppController
 
     /**
      * Edit method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function edit($id = null)
@@ -355,6 +364,7 @@ class OrganizationsController extends AppController
 
     /**
      * Edit state method
+     *
      * @return void
      */
     public function editStatus()
@@ -407,7 +417,9 @@ class OrganizationsController extends AppController
 
     /**
      * Edit approved method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function editValidated($id)
@@ -433,7 +445,9 @@ class OrganizationsController extends AppController
 
     /**
      * Edit rejected method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function editRejected($id)
@@ -459,7 +473,9 @@ class OrganizationsController extends AppController
 
     /**
      * Delete method
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function delete($id = null)
@@ -575,7 +591,9 @@ class OrganizationsController extends AppController
     /**
      * Quit method -- Allow member or owner to quit
      * If the owner is the last, it will archive the organization
+     *
      * @param string $id id
+     *
      * @return redirect
      */
     public function quit($id = null)

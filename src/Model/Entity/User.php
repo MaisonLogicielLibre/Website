@@ -40,27 +40,30 @@ class User extends Entity
         '*' => true,
         'id' => false
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the first name
+     *
      * @return string firstName
      */
     public function getFirstName()
     {
         return $this->_properties['firstName'];
     }
-    
+
     /**
      * Get the last name
+     *
      * @return string lastName
      */
     public function getLastName()
@@ -70,6 +73,7 @@ class User extends Entity
 
     /**
      * Get the full name
+     *
      * @return string fullName
      */
     public function getName()
@@ -83,6 +87,7 @@ class User extends Entity
 
     /**
      * Get the biography
+     *
      * @return string biography
      */
     public function getBiography()
@@ -92,6 +97,7 @@ class User extends Entity
 
     /**
      * Get the interest
+     *
      * @return string interest
      */
     public function getInterest()
@@ -101,6 +107,7 @@ class User extends Entity
 
     /**
      * Get the portfolio
+     *
      * @return string portfolio
      */
     public function getPortfolio()
@@ -110,6 +117,7 @@ class User extends Entity
 
     /**
      * Get the twitter
+     *
      * @return string twitter
      */
     public function getTwitter()
@@ -119,6 +127,7 @@ class User extends Entity
 
     /**
      * Get the facebook
+     *
      * @return string facebook
      */
     public function getFacebook()
@@ -128,6 +137,7 @@ class User extends Entity
 
     /**
      * Get the googlePlus
+     *
      * @return string googlePlus
      */
     public function getGooglePlus()
@@ -137,6 +147,7 @@ class User extends Entity
 
     /**
      * Get the linkedIn
+     *
      * @return string linkedIn
      */
     public function getLinkedIn()
@@ -146,6 +157,7 @@ class User extends Entity
 
     /**
      * Get the email
+     *
      * @return string email
      */
     public function getEmail()
@@ -155,6 +167,7 @@ class User extends Entity
 
     /**
      * Get the public email
+     *
      * @return string publicEmail
      */
     public function getEmailPublic()
@@ -164,6 +177,7 @@ class User extends Entity
 
     /**
      * Get the censored email
+     *
      * @return string email
      */
     public function getCensoredEmail()
@@ -188,6 +202,7 @@ class User extends Entity
 
     /**
      * Get the avatar
+     *
      * @return string link
      */
     public function getAvatar()
@@ -195,18 +210,20 @@ class User extends Entity
         $gravatarLink = 'http://www.gravatar.com/avatar/' . md5($this->getEmail()) . '?s=512';
         return $gravatarLink;
     }
-    
+
     /**
      * Get the first phone number
+     *
      * @return string phone
      */
     public function getPhone()
     {
         return $this->_properties['phone'];
     }
-    
+
     /**
      * Get the gender
+     *
      * @return int gender
      */
     public function getGender()
@@ -221,18 +238,20 @@ class User extends Entity
             return null;
         }
     }
-    
+
     /**
      * Get the password
+     *
      * @return string password
      */
     public function getPassword()
     {
         return $this->_properties['password'];
     }
-    
+
     /**
      * Get the username
+     *
      * @return string username
      */
     public function getUsername()
@@ -242,6 +261,7 @@ class User extends Entity
 
     /**
      * Get the university
+     *
      * @return object university
      */
     public function getUniversity()
@@ -251,6 +271,7 @@ class User extends Entity
 
     /**
      * Get isAvailableMentoring
+     *
      * @return bool isAvailableMentoring
      */
     public function isAvailableMentoring()
@@ -260,6 +281,7 @@ class User extends Entity
 
     /**
      * Get isStudent
+     *
      * @return bool isStudent
      */
     public function isStudent()
@@ -269,6 +291,7 @@ class User extends Entity
 
     /**
      * Get isProfessor
+     *
      * @return bool isProfessor
      */
     public function isProfessor()
@@ -278,7 +301,9 @@ class User extends Entity
 
     /**
      * Set the first name
-     * @param  string $firstName firstName
+     *
+     * @param string $firstName firstName
+     *
      * @return string firstName
      */
     public function editFirstName($firstName)
@@ -286,10 +311,12 @@ class User extends Entity
         $this->set('firstname', $firstName);
         return $firstName;
     }
-    
+
     /**
      * Set the last name
-     * @param  string $lastName lastName
+     *
+     * @param string $lastName lastName
+     *
      * @return string lastName
      */
     public function editLastName($lastName)
@@ -297,10 +324,12 @@ class User extends Entity
         $this->set('lastname', $lastName);
         return $lastName;
     }
-    
+
     /**
      * Set the biography
-     * @param  string $biography biography
+     *
+     * @param string $biography biography
+     *
      * @return string biography
      */
     public function editBiography($biography)
@@ -311,7 +340,9 @@ class User extends Entity
 
     /**
      * Set the interest
-     * @param  string $interest interest
+     *
+     * @param string $interest interest
+     *
      * @return string interest
      */
     public function editInterest($interest)
@@ -319,10 +350,12 @@ class User extends Entity
         $this->set('interest', $interest);
         return $interest;
     }
-    
+
     /**
      * Set the portfolio
-     * @param  string $portfolio portfolio
+     *
+     * @param string $portfolio portfolio
+     *
      * @return string protfolio
      */
     public function editPortfolio($portfolio)
@@ -333,7 +366,9 @@ class User extends Entity
 
     /**
      * Set the twitter
-     * @param  string $twitter twitter
+     *
+     * @param string $twitter twitter
+     *
      * @return string twitter
      */
     public function editTwitter($twitter)
@@ -344,7 +379,9 @@ class User extends Entity
 
     /**
      * Set the facebook
-     * @param  string $facebook facebook
+     *
+     * @param string $facebook facebook
+     *
      * @return string facebook
      */
     public function editFacebook($facebook)
@@ -355,7 +392,9 @@ class User extends Entity
 
     /**
      * Set the googlePlus
-     * @param  string $googlePlus googlePlus
+     *
+     * @param string $googlePlus googlePlus
+     *
      * @return string googlePlus
      */
     public function editGooglePlus($googlePlus)
@@ -366,7 +405,9 @@ class User extends Entity
 
     /**
      * Set the linkedIn
-     * @param  string $linkedIn linkedIn
+     *
+     * @param string $linkedIn linkedIn
+     *
      * @return string linkedIn
      */
     public function editLinkedIn($linkedIn)
@@ -377,7 +418,9 @@ class User extends Entity
 
     /**
      * Set the email
-     * @param  string $email email
+     *
+     * @param string $email email
+     *
      * @return string email
      */
     public function editEmail($email)
@@ -388,7 +431,9 @@ class User extends Entity
 
     /**
      * Set the public email
-     * @param  string $emailPublic emailPublic
+     *
+     * @param string $emailPublic emailPublic
+     *
      * @return string emailPublic
      */
     public function editEmailPublic($emailPublic)
@@ -399,7 +444,9 @@ class User extends Entity
 
     /**
      * Set the phone number
-     * @param  string $phone phone number
+     *
+     * @param string $phone phone number
+     *
      * @return string phone
      */
     public function editPhone($phone)
@@ -407,10 +454,12 @@ class User extends Entity
         $this->set('phone', $phone);
         return $phone;
     }
-    
+
     /**
      * Set the gender
-     * @param  int $gender gender
+     *
+     * @param int $gender gender
+     *
      * @return int gender
      */
     public function editGender($gender)
@@ -421,10 +470,12 @@ class User extends Entity
         $this->set('gender', $gender);
         return $gender;
     }
-    
+
     /**
      * Set the password
-     * @param  string $password password
+     *
+     * @param string $password password
+     *
      * @return string hashed password
      */
     public function editPassword($password)
@@ -436,7 +487,9 @@ class User extends Entity
 
     /**
      * Set the username
-     * @param  string $username username
+     *
+     * @param string $username username
+     *
      * @return string username
      */
     public function editUsername($username)
@@ -447,7 +500,9 @@ class User extends Entity
 
     /**
      * Set isAvailableMentoring
+     *
      * @param bool $isAvailableMentoring isAvailableMentoring
+     *
      * @return bool isAvailableMentoring
      */
     public function editisAvailableMentoring($isAvailableMentoring)
@@ -458,7 +513,9 @@ class User extends Entity
 
     /**
      * Set isStudent
+     *
      * @param bool $isStudent isStudent
+     *
      * @return bool isStudent
      */
     public function editIsStudent($isStudent)
@@ -469,7 +526,9 @@ class User extends Entity
 
     /**
      * Set mailingList
+     *
      * @param bool $mailingList mailingList
+     *
      * @return bool mailingList
      */
     public function editMailingList($mailingList)
@@ -480,7 +539,9 @@ class User extends Entity
 
     /**
      * Check if the user has the role specified
+     *
      * @param array $permission the permission required to open the page
+     *
      * @return bool
      */
     public function hasRoleName($permission)
@@ -488,7 +549,7 @@ class User extends Entity
         $roles = TableRegistry::get('TypeUsersUsers');
 
         $roles = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
-        
+
         foreach ($roles as $role) {
             if (in_array($role->type_user->name, $permission)) {
                 return true;
@@ -499,7 +560,9 @@ class User extends Entity
 
     /**
      * Check if the user has the permission specified
+     *
      * @param array $permission permissions required to open the page
+     *
      * @return bool
      */
     public function hasPermissionName($permission)
@@ -520,15 +583,16 @@ class User extends Entity
 
     /**
      * Get permissions of user
+     *
      * @return array
      */
     public function getPermissions()
     {
         $roles = TableRegistry::get('TypeUsersUsers');
         $permissions = TableRegistry::get('PermissionsTypeUsers');
-        
+
         $listRolesUser = $this->getRoles();
-    
+
         $listPermissions = [];
         foreach ($listRolesUser as $role) {
             $rolePermissions = $permissions->find('all')->where(['type_user_id' => $role->id])->contain(['Permissions'])->toArray();
@@ -536,12 +600,13 @@ class User extends Entity
                 $listPermissions[] = $permission->permission;
             }
         }
-    
+
         return $listPermissions;
     }
 
     /**
      * Get roles of user
+     *
      * @return array
      */
     public function getRoles()
@@ -551,12 +616,12 @@ class User extends Entity
         $rolesUser = $roles->find('all')->where(['user_id' => $this->getId()])->contain(['TypeUsers'])->toArray();
 
         $listRolesUser = [];
-    
+
         foreach ($rolesUser as $role) {
             $listRolesUser[] = $role->type_user;
         }
-        
-            
+
+
 
         // Role dynamic
         $roles = TableRegistry::get('TypeUsers');
@@ -564,20 +629,21 @@ class User extends Entity
         if (!empty($this->getProjectsMentored())) {
             $listRolesUser[] = $roles->findByName('Dyn_mentor')->first();
         }
-        
+
         if (!empty($this->getOrganizationsOwned())) {
             $listRolesUser[] = $roles->findByName('Dyn_OrganizationOwner')->first();
         }
-        
+
         if (!empty($this->getOrganizationsJoined())) {
             $listRolesUser[] = $roles->findByName('Dyn_OrganizationMember')->first();
         }
-        
+
         return $listRolesUser;
     }
 
     /**
      * Get skills of user
+     *
      * @return string
      */
     public function getSkills()
@@ -586,6 +652,7 @@ class User extends Entity
     }
     /**
      * Get projects where user is mentor
+     *
      * @return array
      */
     public function getProjectsMentored()
@@ -600,26 +667,28 @@ class User extends Entity
 
         return $listProject;
     }
-    
+
     /**
      * Get organizations where user is owner
+     *
      * @return array
      */
     public function getOrganizationsOwned()
     {
         $organizations = TableRegistry::get('OrganizationsOwners');
         $organizations = $organizations->find('all')->where(['user_id' => $this->getId()])->contain(['Organizations'])->toArray();
-        
+
         $listOrganization = [];
         foreach ($organizations as $organization) {
             $listOrganization[] = $organization->organization;
         }
-        
+
         return $listOrganization;
     }
-    
+
     /**
      * Get organizations where user is member
+     *
      * @return array
      */
     public function getOrganizationsJoined()
@@ -637,7 +706,9 @@ class User extends Entity
 
     /**
      * Get if the user is mentor on the project in argument
+     *
      * @param Project $projectId projectID
+     *
      * @return array
      */
     public function isMentorOf($projectId)
@@ -650,10 +721,12 @@ class User extends Entity
         }
         return false;
     }
-    
+
     /**
      * Get if the user is owner of the organization in argument
+     *
      * @param Project $orgId orgID
+     *
      * @return array
      */
     public function isOwnerOf($orgId)
@@ -666,10 +739,12 @@ class User extends Entity
         }
         return false;
     }
-    
+
     /**
      * Get if the user is member of the organization in argument
+     *
      * @param Project $orgId orgID
+     *
      * @return array
      */
     public function isMemberOf($orgId)

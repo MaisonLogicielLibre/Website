@@ -36,27 +36,30 @@ class OrganizationsProject extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the project_id
+     *
      * @return int project_id
      */
     public function getProjectId()
     {
         return $this->_properties['project_id'];
     }
-    
+
     /**
      * Get the organization
+     *
      * @return int organization
      */
     public function getOrganization()

@@ -67,6 +67,7 @@ class MissionsTypeMissionsTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
@@ -80,6 +81,7 @@ class MissionsTypeMissionsTableTest extends TestCase
 
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()

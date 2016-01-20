@@ -36,36 +36,40 @@ class Project extends Entity
         '*' => true,
         'id' => false,
     ];
-    
+
     /**
      * Get the id
+     *
      * @return int id
      */
     public function getId()
     {
         return $this->_properties['id'];
     }
-    
+
     /**
      * Get the name
+     *
      * @return string name
      */
     public function getName()
     {
         return $this->_properties['name'];
     }
-    
+
     /**
      * Get the link
+     *
      * @return string link
      */
     public function getLink()
     {
         return $this->_properties['link'];
     }
-    
+
     /**
      * Get the description
+     *
      * @return string description
      */
     public function getDescription()
@@ -75,15 +79,17 @@ class Project extends Entity
 
     /**
      * Get the mentors
+     *
      * @return array mentors
      */
     public function getMentors()
     {
         return $this->_properties['mentors'];
     }
-    
+
     /**
      * Get the missions
+     *
      * @return array missions
      */
     public function getMissions()
@@ -93,6 +99,7 @@ class Project extends Entity
 
     /**
      * Get the organizations
+     *
      * @return array organizations
      */
     public function getOrganizations()
@@ -102,6 +109,7 @@ class Project extends Entity
 
     /**
      * Get the contributors
+     *
      * @return array contributors
      */
     public function getContributors()
@@ -111,25 +119,29 @@ class Project extends Entity
 
     /**
      * Get if the project is accepted
+     *
      * @return int accepted
      */
     public function isAccepted()
     {
         return $this->_properties['accepted'];
     }
-    
+
     /**
      * Get if the project is archived
+     *
      * @return int archived
      */
     public function isArchived()
     {
         return $this->_properties['archived'];
     }
-    
+
     /**
      * Set the name
-     * @param  string $name name
+     *
+     * @param string $name name
+     *
      * @return string name
      */
     public function editName($name)
@@ -137,10 +149,12 @@ class Project extends Entity
         $this->set('name', $name);
         return $name;
     }
-    
+
     /**
      * Set the link
-     * @param  string $link link
+     *
+     * @param string $link link
+     *
      * @return string link
      */
     public function editLink($link)
@@ -148,10 +162,12 @@ class Project extends Entity
         $this->set('link', $link);
         return $link;
     }
-    
+
     /**
      * Set the description
-     * @param  string $description description
+     *
+     * @param string $description description
+     *
      * @return string description
      */
     public function editDescription($description)
@@ -159,10 +175,12 @@ class Project extends Entity
         $this->set('description', $description);
         return $description;
     }
-    
+
     /**
      * Set if the project is accepted
-     * @param  int $accepted accepted
+     *
+     * @param int $accepted accepted
+     *
      * @return int accepted
      */
     public function editAccepted($accepted)
@@ -170,10 +188,12 @@ class Project extends Entity
         $this->set('accepted', $accepted);
         return $accepted;
     }
-    
+
     /**
      * Set if the project is archived
-     * @param  int $archived archived
+     *
+     * @param int $archived archived
+     *
      * @return int archived
      */
     public function editArchived($archived)
@@ -184,7 +204,9 @@ class Project extends Entity
 
     /**
      * Set missions on a project
+     *
      * @param array $missions mission
+     *
      * @return array missions
      */
     public function editMissions($missions)
@@ -195,7 +217,9 @@ class Project extends Entity
 
     /**
      * Set the mentors
-     * @param  array $mentors mentors
+     *
+     * @param array $mentors mentors
+     *
      * @return array mentors
      */
     public function editMentors($mentors)
@@ -203,10 +227,12 @@ class Project extends Entity
         $this->set('mentors', $mentors);
         return $mentors;
     }
-    
+
     /**
      * Modify mentors
+     *
      * @param array $usersId usersId
+     *
      * @return null
      */
     public function modifyMentors($usersId)
@@ -218,18 +244,19 @@ class Project extends Entity
             $user = $users->get($id);
             array_push($usersSelected, $user);
         }
-        
+
         $this->editMentors($usersSelected);
     }
-    
+
     /**
      * Check if a mission become mentorless
+     *
      * @return null
      */
     public function checkMentorless()
     {
         $missions = $this->getMissions();
-        
+
         foreach ($this->getMissions() as $mission) {
             foreach ($this->getMentors() as $mentor) {
                 if ($mentor->getId() == $mission->getMentorId()) {
@@ -239,7 +266,7 @@ class Project extends Entity
                 }
             }
         }
-        
+
         return $missions;
     }
 }

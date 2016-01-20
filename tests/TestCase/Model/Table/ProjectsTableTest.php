@@ -76,9 +76,10 @@ class ProjectsTableTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -95,6 +96,7 @@ class ProjectsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -111,6 +113,7 @@ class ProjectsTableTest extends TestCase
 
     /**
      * Test getLink
+     *
      * @return void
      */
     public function testGetLink()
@@ -124,9 +127,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getDescription
+     *
      * @return void
      */
     public function testGetDescription()
@@ -140,9 +144,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test isAccepted
+     *
      * @return void
      */
     public function testIsAccepted()
@@ -156,9 +161,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test isArchived
+     *
      * @return void
      */
     public function testIsArchived()
@@ -175,6 +181,7 @@ class ProjectsTableTest extends TestCase
 
     /**
      * Test getMentors
+     *
      * @return void
      */
     public function testGetMentors()
@@ -192,6 +199,7 @@ class ProjectsTableTest extends TestCase
 
     /**
      * Test getMentors
+     *
      * @return void
      */
     public function testGetOrganizations()
@@ -206,9 +214,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editName
+     *
      * @return void
      */
     public function testSetName()
@@ -222,9 +231,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getMissions
+     *
      * @return void
      */
     public function testGetMissions()
@@ -243,9 +253,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editLink
+     *
      * @return void
      */
     public function testSetLink()
@@ -259,9 +270,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editDescription
+     *
      * @return void
      */
     public function testSetDescription()
@@ -275,9 +287,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editAccepted
+     *
      * @return void
      */
     public function testSetAccepted()
@@ -291,9 +304,10 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editArchived
+     *
      * @return void
      */
     public function testSetArchived()
@@ -307,32 +321,34 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test editMentors
+     *
      * @return void
      */
     public function testSetMentors()
     {
         $id = 1;
         $expected = [$this->Users->get($id)];
-        
+
         $project = $this->Projects->get($id);
 
         $result = $project->editMentors($expected);
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test modifyMentors
+     *
      * @return void
      */
     public function testModifyMentors()
     {
         $id = 1;
         $expected = 1;
-        
+
         $project = $this->Projects->get($id);
 
         $project->modifyMentors([$id]);
@@ -340,87 +356,92 @@ class ProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test checkMentorless
+     *
      * @return void
      */
     public function testCheckMentorless()
     {
         $id = 1;
         $expected = 4;
-        
+
         $project = $this->Projects->get(
             $id,
             [
                 'contain' => ['Missions']
             ]
         );
-        
+
         $mentor = $this->Users->get(2);
 
         $project->editMentors([$mentor]);
         $result = count($project->checkMentorless());
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test checkMentorless - No mentorless
+     *
      * @return void
      */
     public function testCheckMentorlessNo()
     {
         $id = 1;
         $expected = 0;
-        
+
         $project = $this->Projects->get(
             $id,
             [
                 'contain' => ['Missions']
             ]
         );
-        
+
         $mentor = $this->Users->get(1);
 
         $project->editMentors([$mentor]);
         $result = count($project->checkMentorless());
-        
+
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->Projects->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->Projects->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 
     /**
      * Test validation Link Rules
+     *
      * @return void
      */
     public function testValidationWebsite()

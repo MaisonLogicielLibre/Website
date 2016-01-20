@@ -76,6 +76,7 @@ class ProjectsContributorsTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
@@ -91,6 +92,7 @@ class ProjectsContributorsTableTest extends TestCase
 
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()

@@ -8,7 +8,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
- 
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\OrganizationsProjectsTable;
@@ -76,6 +76,7 @@ class OrganizationsProjectsTableTest extends TestCase
 
     /**
      * Test getId
+     *
      * @return void
      */
     public function testGetId()
@@ -89,9 +90,10 @@ class OrganizationsProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getProjectId
+     *
      * @return void
      */
     public function testGetProjectId()
@@ -105,9 +107,10 @@ class OrganizationsProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test getOrganization
+     *
      * @return void
      */
     public function testGetOrganization()
@@ -121,34 +124,36 @@ class OrganizationsProjectsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
-    
+
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->OrganizationsProjects->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
-    
+
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->OrganizationsProjects->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

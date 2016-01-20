@@ -78,6 +78,7 @@ class MissionLevelsTableTest extends TestCase
 
     /**
      * Test getName
+     *
      * @return void
      */
     public function testGetName()
@@ -94,6 +95,7 @@ class MissionLevelsTableTest extends TestCase
 
     /**
      * Test validation
+     *
      * @return void
      */
     public function testValidation()
@@ -107,6 +109,7 @@ class MissionLevelsTableTest extends TestCase
 
     /**
      * Test buildRules
+     *
      * @return void
      */
     public function testBuildRules()
