@@ -23,7 +23,7 @@ use Cake\ORM\TableRegistry;
  * @property bool $archived
  * @property int $professor_id
  * @property \App\Model\Entity\Professor $professor
- * @property int $type_id
+ * @property int $type_mission_id
  * @property \App\Model\Entity\Type $type
  * @property \App\Model\Entity\Application[] $applications
  * @property \App\Model\Entity\Proposition[] $propositions
@@ -92,7 +92,7 @@ class Mission extends Entity
      */
     public function getTypeId()
     {
-        return $this->_properties['type_id'];
+        return $this->_properties['type_mission_id'];
     }
 
     /**

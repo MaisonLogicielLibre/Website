@@ -54,7 +54,7 @@ class MissionsTable extends Table
             ]
         );
         $this->belongsTo('TypeMissions', [
-            'foreignKey' => 'type_id',
+            'foreignKey' => 'type_mission_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Applications', [
@@ -151,7 +151,7 @@ class MissionsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
-        $rules->add($rules->existsIn(['type_id'], 'TypeMissions'));
+        $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
         return $rules;
     }
 }

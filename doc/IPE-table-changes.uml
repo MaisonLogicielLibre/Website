@@ -13,7 +13,7 @@ class missions {
     modified
     archived
     professor_id
-    type_id
+    type_mission_id
 }
 class applications {
     id

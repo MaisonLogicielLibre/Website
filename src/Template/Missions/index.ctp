@@ -18,36 +18,37 @@
                 <div class="table-responsive">
                     <table id="missions" class="table table-striped table-bordered dataTable">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th><?= __('Name'); ?></th>
-							<th><?= __('Need'); ?></th>
-							<th><?= __('Session'); ?></th>
-							<th><?= __('Organizations'); ?></th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Need'); ?></th>
+                                <th><?= __('Session'); ?></th>
+                                <th><?= __('Organizations'); ?></th>
+                            </tr>
                         </thead>
                         <tbody>
                         </tbody>
                         <tfoot>
-							<tr class="table-search info">
-								<td></td>
-								<td><input type="text" placeholder="<?= __('Search ...'); ?>"
-										   class="form-control input-sm input-block-level"/></td>
-								<td>
-									<select class="form-control" id="typeDrop">
-										<option value="">-----</option>
-										<?php
-											foreach ($types as $type) {
-												echo '<option value="' . $type . '">' . __($type) . '</option>';
-											}
-										?>
-									</select>
-								</td>
-								<td>
-								</td>
-								 <td>
-								</td>
-							</tr>
+                            <tr class="table-search info">
+                                <td></td>
+                                <td>
+                                    <input type="text" placeholder="<?= __('Search ...'); ?>"
+                                         class="form-control input-sm input-block-level"/></td>
+                                <td>
+                                    <select class="form-control" id="typeDrop">
+                                      <option value="">-----</option>
+                                      <?php
+                                        foreach ($types as $type) {
+                                          echo '<option value="' . $type . '">' . __($type) . '</option>';
+                                        }
+                                      ?>
+                                    </select>
+                                </td>
+                                <td>
+                                </td>
+                                 <td>
+                                </td>
+                            </tr>
                         </tfoot>
                     </table>
                 </div>
@@ -66,17 +67,17 @@
 ?>
 <?php
 $sessionOptions = [
-	0 => __('Not specified'),
-	1 => __('Winter'),
-	2 => __('Summer'),
-	3 => __('Fall')
+    0 => __('Not specified'),
+    1 => __('Winter'),
+    2 => __('Summer'),
+    3 => __('Fall')
 ];
 $typeMissionsOption = [
-        0 => __('Intern'),
-        1 => __('Volunteer'),
-        2 => __('Master'),
-        3 => __('Capstone'),
-        4 => __('Professor')
+    0 => __('Intern'),
+    1 => __('Volunteer'),
+    2 => __('Master'),
+    3 => __('Capstone'),
+    4 => __('Professor')
 ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([
@@ -99,16 +100,16 @@ echo $this->DataTables->init([
             'data' => 'name',
             'searchable' => true
         ],
-		[
+        [
             'name' => 'TypeMissions.name',
-            'data' => 'type_missions',
+            'data' => 'type_mission',
             'searchable' => true
         ],
-		[
+        [
             'name' => 'Mission.session',
             'data' => 'session',
         ],
-		[
+        [
             'name' => 'Organization.name',
             'data' => 'project',
         ]

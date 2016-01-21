@@ -30,7 +30,7 @@ class MissionsFixture extends TestFixture
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'archived' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'professor_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'type_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'type_mission_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -61,7 +61,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 2,
@@ -77,7 +77,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 3,
@@ -93,7 +93,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 4,
@@ -109,7 +109,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 5,
@@ -125,7 +125,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 6,
@@ -141,7 +141,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 0,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 7,
@@ -157,7 +157,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 8,
@@ -173,7 +173,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 9,
@@ -189,7 +189,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
         [
             'id' => 10,
@@ -205,7 +205,7 @@ class MissionsFixture extends TestFixture
             'modified' => '2016-01-18 14:07:59',
             'archived' => 1,
             'professor_id' => 1,
-            'type_id' => 1
+            'type_mission_id' => 1
         ],
     ];
 }

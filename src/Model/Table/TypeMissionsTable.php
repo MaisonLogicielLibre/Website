@@ -46,12 +46,14 @@ class TypeMissionsTable extends Table
         $this->hasMany(
             'Missions',
             [
-                'foreignKey' => 'type_id'
+                'className' => 'Missions',
+                'foreignKey' => 'type_mission_id'
             ]
         );
         $this->hasMany(
             'Applications',
             [
+                'className' => 'Applications',
                 'foreignKey' => 'type_mission_id'
             ]
         );

@@ -119,7 +119,7 @@ class MissionsController extends AppController
                     'TypeMissions' => [
                         'fields' =>
                             [
-                                'id', 'name', 'MissionsTypeMissions.mission_id'
+                                'id', 'name'
                             ]
                     ],
                 ],
