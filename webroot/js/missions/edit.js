@@ -1,27 +1,22 @@
 $(document).ready(function () {
-    $('input[name*=type_missions]').change(function () {
-        var div = $(this).parents().closest('.checkbox');
-        if ($(this).attr('id') == 'type-missions-ids-1') {
-            if ($(this).is(':checked')) {
-                showInformation(div, infoIntern);
-            } else {
-                hideInformation(div);
-            }
-        }
-        if ($(this).attr('id') == 'type-missions-ids-3') {
-            if ($(this).is(':checked')) {
-                showInformation(div, infoMaster);
-            } else {
-                hideInformation(div);
-            }
-        }
-        if ($(this).attr('id') == 'type-missions-ids-4') {
-            if ($(this).is(':checked')) {
-                showInformation(div, infoCapstone);
-            } else {
-                hideInformation(div);
-            }
-        }
+    $('select[name=type_mission_id]').change(function() {
+      var index = $(this).find(':selected').val();
+      var div = $(this).parent();
+      hideInformation(div);
+      switch(index) {
+        case '1':
+            console.log('Called');
+            showInformation(div, infoIntern);
+            break;
+        case '3':
+            showInformation(div, infoMaster);
+            break;
+        case '4':
+            showInformation(div, infoCapstone);
+            break;
+        default:
+            break;
+      }
     });
 });
 
