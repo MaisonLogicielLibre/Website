@@ -58,7 +58,7 @@
                                             </tr>
                                             <tr>
                                                 <td><?= __('Looking for:'); ?></td>
-                                                <td><?= $mission->getType(); ?></td>
+                                                <td><?= $mission->getType()->getName(); ?></td>
                                             </tr>
                                             <tr>
                                                 <td><?= __('Mentor:'); ?></td>
