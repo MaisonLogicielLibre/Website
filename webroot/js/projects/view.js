@@ -23,13 +23,8 @@ $(document).ready(function () {
                 lengthTr[aData['length']]
             );
 
-            if (aData.type_missions != null) {
-                var type_missions = '';
-                $(aData.type_missions).each(function (i, v) {
-                    type_missions += typeMissionsTr[v.id - 1] + ', ';
-                });
-                $('td:eq(3)', nRow).html(type_missions.slice(0, -2));
-            }
+            type_mission_id = aData['type_mission'].id;
+            $('td:eq(3)', nRow).html(typeMissionsTr[type_mission_id]);
             if (aData.user != null) {
                 $('td:eq(4)', nRow).html(
                     aData.user['firstName'] + ' ' + aData.user['lastName']
