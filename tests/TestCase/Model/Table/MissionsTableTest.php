@@ -618,4 +618,17 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    public function testEditTypeId()
+    {
+        $id = 1;
+        $expected = 2;
+
+        $mission = $this->Missions->get($id);
+        $mission->editTypeId($expected);
+
+        $result = $mission->getTypeId();
+
+        $this->assertEquals($expected, $result);
+    }
 }

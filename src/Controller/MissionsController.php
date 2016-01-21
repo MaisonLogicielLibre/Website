@@ -252,6 +252,7 @@ class MissionsController extends AppController
 
                     $mission->editProjectId($projectId);
                     $mission->editMentorId($user->getId());
+                    $mission->editTypeId($this->request->data['type_mission']);
                     if ($this->Missions->save($mission)) {
                         $this->Flash->success(__('The mission has been saved.'));
                         return $this->redirect(['controller' => 'Projects', 'action' => 'view', $projectId]);

@@ -317,6 +317,12 @@ class Mission extends Entity
         return $archived;
     }
 
+    public function editTypeId($typeId)
+    {
+        $this->set('type_mission_id', $typeId);
+        return $typeId;
+    }
+
     /**
      * Get if the mission is archived
      *

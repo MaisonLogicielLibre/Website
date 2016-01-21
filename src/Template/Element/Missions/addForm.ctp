@@ -29,7 +29,7 @@ $typeOptions = [];
 foreach ($typeMissions as $type) {
     $typeOptions[$type->id] = $type->getName();
 }
-echo $this->Form->input('type_missions._ids', ['required' => true, 'label' => ['class' => 'control-label', 'text' => __('What type of student(s) are you looking for?')], 'options' => $typeOptions, 'multiple' => 'checkbox']);
+echo $this->Form->input('type_mission', ['required' => true, 'label' => __('What type of student(s) are you looking for?'), 'options' => $typeOptions, 'type' => 'select']);
 $sessionOptions =
     [
         0 => __('Not specified'),

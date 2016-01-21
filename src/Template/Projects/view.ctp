@@ -162,7 +162,7 @@ echo $this->DataTables->init([
         ],
         [
             'name' => 'TypeMissions.name',
-            'data' => 'type_missions',
+            'data' => 'type_mission',
             'searchable' => true
         ],
         [
