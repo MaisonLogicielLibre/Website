@@ -1,12 +1,20 @@
 <?php
-
+/**
+ * Entity of MissionsTable
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
- /**
-  * Entity of MissionTable
+/**
+  * Entity of MissionsTable
   *
   * @category Entity
   * @package  Website
