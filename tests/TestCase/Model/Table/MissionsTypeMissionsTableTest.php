@@ -37,8 +37,7 @@ class MissionsTypeMissionsTableTest extends TestCase
         'app.type_missions',
         'app.missions',
         'app.mission_levels',
-        'app.missions_mission_levels',
-        'app.missions_type_missions'
+        'app.missions_mission_levels'
     ];
 
     /**
