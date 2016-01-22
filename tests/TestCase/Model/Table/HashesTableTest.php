@@ -43,7 +43,6 @@ class HashesTableTest extends TestCase
         'app.mission_levels',
         'app.missions_mission_levels',
         'app.type_missions',
-        'app.missions_type_missions',
         'app.organizations',
         'app.organizations_projects',
         'app.projects_contributors',

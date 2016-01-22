@@ -169,7 +169,7 @@ class ProjectsTableTest extends TestCase
      */
     public function testIsArchived()
     {
-        $id = 1;
+        $id = 4;
         $expected = 1;
 
         $project = $this->Projects->get($id);
@@ -240,7 +240,7 @@ class ProjectsTableTest extends TestCase
     public function testGetMissions()
     {
         $id = 1;
-        $expected = 4;
+        $expected = 9;
 
         $project = $this->Projects->get(
             $id,
@@ -365,7 +365,7 @@ class ProjectsTableTest extends TestCase
     public function testCheckMentorless()
     {
         $id = 1;
-        $expected = 4;
+        $expected = 9;
 
         $project = $this->Projects->get(
             $id,
@@ -389,7 +389,7 @@ class ProjectsTableTest extends TestCase
      */
     public function testCheckMentorlessNo()
     {
-        $id = 1;
+        $id = 5;
         $expected = 0;
 
         $project = $this->Projects->get(
@@ -399,7 +399,7 @@ class ProjectsTableTest extends TestCase
             ]
         );
 
-        $mentor = $this->Users->get(1);
+        $mentor = $this->Users->get(5);
 
         $project->editMentors([$mentor]);
         $result = count($project->checkMentorless());

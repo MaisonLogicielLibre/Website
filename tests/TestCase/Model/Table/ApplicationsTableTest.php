@@ -131,23 +131,6 @@ class ApplicationsTableTest extends TestCase
     }
 
     /**
-     * Test getType
-     *
-     * @return void
-     */
-    public function testGetType()
-    {
-        $id = 1;
-        $expected = 1;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getType();
-
-        $this->assertEquals($expected, $result);
-    }
-
-    /**
      * Test getEmail
      *
      * @return void
@@ -281,30 +264,6 @@ class ApplicationsTableTest extends TestCase
         $result = $application->editEmail('test2@test.com');
 
         $this->assertEquals($expected, $result);
-    }
-
-    public function testGetProfessorId()
-    {
-        $id = 1;
-        $expected = 3;
-
-        $application = $this->Applications->get($id);
-
-        $result = $application->getProfessorId();
-
-        $this->assertEquals($result, $expected);
-    }
-
-    public function testGetProfessor()
-    {
-        $id = 1;
-        $expected = true;
-
-        $application = $this->Applications->get($id, ['contain' => 'Professors']);
-
-        $result = $application->getProfessor()->isProfessor();
-
-        $this->assertEquals($result, $expected);
     }
 
     /**
