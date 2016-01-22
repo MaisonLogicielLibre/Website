@@ -1,10 +1,19 @@
 <?php
+/**
+ * Tests for MissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTable;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
-use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
 
 /**
@@ -388,13 +397,13 @@ class MissionsTableTest extends TestCase
     {
         $id = 1;
 
-        $expected_user = $this->Users->get(1);
+        $expectedUser = $this->Users->get(1);
 
         $mission = $this->Missions->get($id, ['contain' => 'Users']);
 
         $mentor = $mission->getMentor();
 
-        $this->assertEquals($expected_user, $mentor);
+        $this->assertEquals($expectedUser, $mentor);
     }
 
     /**
@@ -406,13 +415,13 @@ class MissionsTableTest extends TestCase
     {
         $id = 1;
 
-        $expected_user = $this->Users->get(1)->getName();
+        $expectedUser = $this->Users->get(1)->getName();
 
         $mission = $this->Missions->get($id, ['contain' => ['Professors']]);
 
         $professor = $mission->getProfessor()->getName();
 
-        $this->assertEquals($expected_user, $professor);
+        $this->assertEquals($expectedUser, $professor);
     }
 
     /**
@@ -432,6 +441,11 @@ class MissionsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test getApplicationsNull
+     *
+     * @return void
+     */
     public function testGetApplicationsNull()
     {
         $id = 2;
@@ -578,11 +592,21 @@ class MissionsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test editArchived
+     *
+     * @return void
+     */
     public function testSetArchived()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
+    /**
+     * Test editInternNbr
+     *
+     * @return void
+     */
     public function testSetInternNbr()
     {
         $id = 1;
@@ -597,6 +621,11 @@ class MissionsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test getRemainingPlaces
+     *
+     * @return void
+     */
     public function testGetRemainingPlaces()
     {
         $id = 8;
@@ -608,6 +637,11 @@ class MissionsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test getRemainingPlaces with no applications
+     *
+     * @return void
+     */
     public function testGetRemainingPlacesNoApplications()
     {
         $id = 1;
@@ -619,6 +653,11 @@ class MissionsTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * Test editTypeId
+     *
+     * @return void
+     */
     public function testEditTypeId()
     {
         $id = 1;

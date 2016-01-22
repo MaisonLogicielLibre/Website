@@ -11,8 +11,8 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\MissionsController;
-use Cake\TestSuite\IntegrationTestCase;
 use Cake\ORM\TableRegistry;
+use Cake\TestSuite\IntegrationTestCase;
 
 /**
  * Tests for MissionsController

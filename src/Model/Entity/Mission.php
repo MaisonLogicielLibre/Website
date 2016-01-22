@@ -1,4 +1,13 @@
 <?php
+/**
+ * Entity of MissionTable
+ *
+ * @category Entity
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/site_mll
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -41,7 +50,7 @@ class Mission extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
@@ -88,6 +97,7 @@ class Mission extends Entity
 
     /**
      * Get the type_id
+     *
      * @return int id
      */
     public function getTypeId()
@@ -298,6 +308,13 @@ class Mission extends Entity
         return $professorId;
     }
 
+    /**
+    * Set the internNbr
+    *
+    * @param int $internNbr internNbr
+    *
+    * @return int $internNbr
+    */
     public function editInternNbr($internNbr)
     {
         $this->set('internNbr', $internNbr);
@@ -305,18 +322,25 @@ class Mission extends Entity
     }
 
     /**
-     * Set if the mission is archived
-     *
-     * @param int $archived archived
-     *
-     * @return int archived
-     */
+    * Set if the mission is archived
+    *
+    * @param int $archived archived
+    *
+    * @return int archived
+    */
     public function editArchived($archived)
     {
         $this->set('archived', $archived);
         return $archived;
     }
 
+    /**
+    * Set the typeId
+    *
+    * @param int $typepId typeId
+    *
+    * @return int typeId
+    */
     public function editTypeId($typeId)
     {
         $this->set('type_mission_id', $typeId);
