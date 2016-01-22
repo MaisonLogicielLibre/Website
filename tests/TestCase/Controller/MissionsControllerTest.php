@@ -277,6 +277,19 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 
+    public function testEditMissionHasNoApplication()
+    {
+      $this->session(['Auth.User.id' => 1]);
+
+      $data = [];
+      $this->post('/missions/edit/12', $data);
+      $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 12]);
+
+      $interNbr = $this->Missions->get(12)->getInternNbr();
+
+      $this->assertEquals(1, $interNbr);
+    }
+
     /**
      * Test archived a mission - No Permission
      *

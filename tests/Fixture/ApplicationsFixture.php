@@ -87,6 +87,6 @@ class ApplicationsFixture extends TestFixture
             'accepted' => 1,
             'rejected' => 0,
             'email' => 'test@test.com'
-        ],
+        ]
     ];
 }
