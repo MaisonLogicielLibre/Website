@@ -78,6 +78,19 @@ class MissionsControllerTest extends IntegrationTestCase
     }
 
     /**
+    * Test indexOk
+    *
+    * @return void
+    */
+    public function testIndexOk()
+    {
+      $this->session(['Auth.User.id' => 1]);
+
+      $this->get('/missions/index');
+      $this->assertResponseSuccess();
+    }
+
+    /**
      * Test view - Ok
      *
      * @return void
@@ -277,6 +290,11 @@ class MissionsControllerTest extends IntegrationTestCase
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 
+    /**
+     * Test edit - Mission has no application
+     *
+     * @return void
+     */
     public function testEditMissionHasNoApplication()
     {
       $this->session(['Auth.User.id' => 1]);
