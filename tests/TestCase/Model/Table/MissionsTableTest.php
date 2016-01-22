@@ -1,13 +1,5 @@
 <?php
-/**
- * Tests for MissionsTable
- *
- * @category Test
- * @package  Website
- * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Site
- */
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MissionsTable;
@@ -16,9 +8,15 @@ use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
-/**
- * App\Model\Table\MissionsTable Test Case
- */
+ /**
+  * Tests for MissionsTable
+  *
+  * @category Test
+  * @package  Website
+  * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+  * @link     https://github.com/MaisonLogicielLibre/Site
+  */
 class MissionsTableTest extends TestCase
 {
 

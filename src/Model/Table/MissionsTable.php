@@ -1,13 +1,5 @@
 <?php
-/**
- * Missions Model
- *
- * @category Table
- * @package  Website
- * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
- */
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Mission;
@@ -16,17 +8,15 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Missions Model
- *
- * @property \Cake\ORM\Association\BelongsTo $Projects
- * @property \Cake\ORM\Association\BelongsTo $Mentors
- * @property \Cake\ORM\Association\BelongsTo $Professors
- * @property \Cake\ORM\Association\BelongsTo $Types
- * @property \Cake\ORM\Association\HasMany $Applications
- * @property \Cake\ORM\Association\HasMany $Propositions
- * @property \Cake\ORM\Association\BelongsToMany $MissionLevels
- */
+ /**
+  * Missions Model
+  *
+  * @category Table
+  * @package  Website
+  * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
+  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+  * @link     https://github.com/MaisonLogicielLibre/Website
+  */
 class MissionsTable extends Table
 {
 
@@ -48,18 +38,18 @@ class MissionsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo(
-          'Projects',
-          [
-            'foreignKey' => 'project_id',
-            'joinType' => 'INNER'
-          ]
+            'Projects',
+            [
+              'foreignKey' => 'project_id',
+              'joinType' => 'INNER'
+            ]
         );
         $this->belongsTo(
-          'Users',
-          [
-            'foreignKey' => 'mentor_id',
-            'joinType' => 'LEFT'
-          ]
+            'Users',
+            [
+              'foreignKey' => 'mentor_id',
+              'joinType' => 'LEFT'
+            ]
         );
         $this->belongsTo(
             'Professors',
@@ -70,31 +60,31 @@ class MissionsTable extends Table
             ]
         );
         $this->belongsTo(
-          'TypeMissions',
-          [
-            'foreignKey' => 'type_mission_id',
-            'joinType' => 'INNER'
-          ]
+            'TypeMissions',
+            [
+              'foreignKey' => 'type_mission_id',
+              'joinType' => 'INNER'
+            ]
         );
         $this->hasMany(
-          'Applications',
-          [
-            'foreignKey' => 'mission_id'
-          ]
+            'Applications',
+            [
+              'foreignKey' => 'mission_id'
+            ]
         );
         $this->hasMany(
-          'Propositions',
-          [
-            'foreignKey' => 'mission_id'
-          ]
+            'Propositions',
+            [
+              'foreignKey' => 'mission_id'
+            ]
         );
         $this->belongsToMany(
-          'MissionLevels',
-          [
-            'foreignKey' => 'mission_id',
-            'targetForeignKey' => 'mission_level_id',
-            'joinTable' => 'missions_mission_levels'
-          ]
+            'MissionLevels',
+            [
+              'foreignKey' => 'mission_id',
+              'targetForeignKey' => 'mission_level_id',
+              'joinTable' => 'missions_mission_levels'
+            ]
         );
     }
 
@@ -151,19 +141,19 @@ class MissionsTable extends Table
             ->notEmpty('internNbr');
 
         $validator
-                    ->requirePresence('mission_levels', 'create', ['message' => __('You must select at least one item.')])
-                    ->add(
-                        'mission_levels',
-                        'custom',
-                        [
-                            'rule' => function ($value, $context) {
-                                if (empty($context['data']['mission_levels']['_ids'])) {
-                                    return false;
-                                }
-                                return true;
-                            },
-                            'message' => __('You must select at least one item.')]
-                    );
+            ->requirePresence('mission_levels', 'create', ['message' => __('You must select at least one item.')])
+            ->add(
+                'mission_levels',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                        if (empty($context['data']['mission_levels']['_ids'])) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => __('You must select at least one item.')]
+            );
         $validator
             ->notEmpty('archived');
 
