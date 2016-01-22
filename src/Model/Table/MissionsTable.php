@@ -17,14 +17,14 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
-  * Missions Model
-  *
-  * @category Table
-  * @package  Website
-  * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
-  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
-  * @link     https://github.com/MaisonLogicielLibre/Website
-  */
+ * Missions Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 class MissionsTable extends Table
 {
 

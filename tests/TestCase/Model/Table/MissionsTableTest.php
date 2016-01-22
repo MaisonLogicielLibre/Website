@@ -17,14 +17,14 @@ use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
-  * Tests for MissionsTable
-  *
-  * @category Test
-  * @package  Website
-  * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
-  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
-  * @link     https://github.com/MaisonLogicielLibre/Site
-  */
+ * Tests for MissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Site
+ */
 class MissionsTableTest extends TestCase
 {
 
