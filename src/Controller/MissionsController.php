@@ -124,7 +124,7 @@ class MissionsController extends AppController
                     ],
                 ],
                 'fields' => [
-                    'id', 'name', 'session'
+                    'id', 'name', 'session', 'type_mission_id'
                 ],
                 'conditions' => [
                     'AND' => [

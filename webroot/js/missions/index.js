@@ -35,8 +35,7 @@ $(document).ready(function () {
                 })[0].outerHTML
             );
             // Create mission type
-            console.log(aData);
-            var type_mission_id = aData['type_mission'].id;
+            var type_mission_id = aData['type_mission_id'];
             $('td:eq(1)', nRow).html(
                 typeMissionsTr[type_mission_id - 1]
             );
