@@ -117,7 +117,7 @@ class UsersTableTest extends TestCase
      */
     public function testGetNameNull()
     {
-        $id = 3;
+        $id = 6;
         $expected = null;
 
         $user = $this->Users->get($id);
