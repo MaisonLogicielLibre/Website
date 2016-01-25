@@ -41,16 +41,6 @@
                             <td>
                                 <select class="form-control">
                                     <option value="">-----</option>
-                                    <?php
-                                    foreach ($orgs as $org) {
-                                        echo '<option value="' . $org . '">' . $org . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control">
-                                    <option value="">-----</option>
                                     <option value="0"><?= __('No'); ?></option>
                                     <option value="1"><?= __('Yes'); ?></option>
                                 </select>

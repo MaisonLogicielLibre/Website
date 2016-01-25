@@ -57,11 +57,11 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testIndexOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/projects/index');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test index - No Authentification
      *
@@ -73,6 +73,15 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->assertResponseOk();
     }
 
+    public function testMyProjectsOk()
+    {
+        $this->session(['Auth.User.id' => 2]);
+
+        $this->get('/projects/myProjects');
+        $this->assertResponseOk();
+        $this->assertResponseContains('Projects');
+    }
+
     /**
      * Test view - Ok
      *
@@ -81,11 +90,11 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testViewOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/projects/view/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - No Authentification
      *
@@ -105,7 +114,7 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [
             'name' => 'projet1',
             'link' => 'http://website.com',
@@ -117,7 +126,7 @@ class ProjectsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - Fail
      *
@@ -126,13 +135,13 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testAddFail()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
         $this->post('/projects/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Permission
      *
@@ -141,13 +150,13 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testAddNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/projects/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Authentification
      *
@@ -169,14 +178,14 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
-        
+
         $this->get('/projects/edit/1');
         $this->post('/projects/edit/1', $data);
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'view', 1]);
     }
-       
+
     /**
      * Test edit - No Permission
      *
@@ -185,12 +194,12 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testEditNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/projects/edit/1', $data);
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit - No Authentification
      *
@@ -211,11 +220,11 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testDeleteOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/projects/delete/1');
         $this->assertRedirect(['controller' => 'Projects', 'action' => 'index']);
     }
-    
+
     /**
      * Test delete - No Permission
      *
@@ -224,11 +233,11 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testDeleteNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/projects/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Authentification
      *
@@ -400,7 +409,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         $q = $projects->findById(3)->first();
         $this->assertEquals($expected, $q->isArchived());
     }
-    
+
     /**
      * Test submit project - OK
      *
@@ -416,14 +425,14 @@ class ProjectsControllerTest extends IntegrationTestCase
             'archived' => 0,
             'mission-0' => '[{"name":"name","value":"1"},{"name":"description","value":"1"},{"name":"competence","value":"1"},{"name":"type_missions[_ids]","value":""},{"name":"type_missions[_ids][]","value":"1"},{"name":"session","value":"0"},{"name":"length","value":"0"},{"name":"mission_levels[_ids]","value":""},{"name":"mission_levels[_ids][]","value":"1"},{"name":"internNbr","value":"1"}]'
         ];
-        
+
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/projects/submit', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test submit project - Fail
      *
@@ -436,14 +445,14 @@ class ProjectsControllerTest extends IntegrationTestCase
             'link' => '',
             'description' => ''
         ];
-        
+
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/projects/submit', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test submit project - No authentification
      *
@@ -454,7 +463,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->post('/projects/submit');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test edit mentor - OK
      *
@@ -465,14 +474,14 @@ class ProjectsControllerTest extends IntegrationTestCase
         $data = [
             'users' => [1]
         ];
-        
+
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/projects/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit mentor - Mentorless
      *
@@ -483,14 +492,14 @@ class ProjectsControllerTest extends IntegrationTestCase
         $data = [
             'users' => [2]
         ];
-        
+
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/projects/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit mentor - Empty
      *
@@ -499,14 +508,14 @@ class ProjectsControllerTest extends IntegrationTestCase
     public function testEditMentorEmpty()
     {
         $data = [];
-        
+
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/projects/editMentor/1', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit mentor of a project - Get
      *
