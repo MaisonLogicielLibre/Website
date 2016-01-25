@@ -73,6 +73,11 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->assertResponseOk();
     }
 
+    /**
+     * Test myProjects - See your projects
+     *
+     * @return void
+     */
     public function testMyProjectsOk()
     {
         $this->session(['Auth.User.id' => 2]);
