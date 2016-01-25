@@ -388,7 +388,7 @@ class MissionsController extends AppController
 
                     $professor = false;
                     $student = false;
-                    if($mission->getType() == 'Professor') {
+                    if ($mission->getType() == 'Professor') {
                         $professor = true;
                     } else {
                         $student = true;
