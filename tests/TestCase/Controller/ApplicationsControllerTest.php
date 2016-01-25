@@ -67,6 +67,20 @@ class ApplicationsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test acceptedPost - Post empty data
+     *
+     * @return void
+     */
+    public function testAcceptedPost()
+    {
+        $this->session(['Auth.User.id' => 1]);
+
+        $data = [];
+        $this->post('/applications/accepted/1', $data);
+        $this->assertResponseSuccess();
+    }
+
+    /**
      * Test accepted - No Authentification
      *
      * @return void
