@@ -388,12 +388,10 @@ class MissionsController extends AppController
 
                     $professor = false;
                     $student = false;
-                    foreach ($mission->getType() as $type) {
-                        if ($type->name == 'Professor') {
-                            $professor = true;
-                        } else {
-                            $student = true;
-                        }
+                    if($mission->getType() == 'Professor') {
+                        $professor = true;
+                    } else {
+                        $student = true;
                     }
 
                     if (($user->isStudent() && $student) || ($user->isProfessor() && $professor)) {
