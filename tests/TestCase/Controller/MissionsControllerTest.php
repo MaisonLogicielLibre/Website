@@ -78,16 +78,16 @@ class MissionsControllerTest extends IntegrationTestCase
     }
 
     /**
-    * Test indexOk
-    *
-    * @return void
-    */
+     * Test indexOk
+     *
+     * @return void
+     */
     public function testIndexOk()
     {
-      $this->session(['Auth.User.id' => 1]);
+        $this->session(['Auth.User.id' => 1]);
 
-      $this->get('/missions/index');
-      $this->assertResponseSuccess();
+        $this->get('/missions/index');
+        $this->assertResponseSuccess();
     }
 
     /**
@@ -297,15 +297,15 @@ class MissionsControllerTest extends IntegrationTestCase
      */
     public function testEditMissionHasNoApplication()
     {
-      $this->session(['Auth.User.id' => 1]);
+        $this->session(['Auth.User.id' => 1]);
 
-      $data = [];
-      $this->post('/missions/edit/12', $data);
-      $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 12]);
+        $data = [];
+        $this->post('/missions/edit/12', $data);
+        $this->assertRedirect(['controller' => 'Missions', 'action' => 'view', 12]);
 
-      $interNbr = $this->Missions->get(12)->getInternNbr();
+        $interNbr = $this->Missions->get(12)->getInternNbr();
 
-      $this->assertEquals(1, $interNbr);
+        $this->assertEquals(1, $interNbr);
     }
 
     /**
