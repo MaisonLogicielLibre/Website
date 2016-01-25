@@ -24,7 +24,7 @@ $(document).ready(function () {
             );
 
             type_mission_id = aData['type_mission'].id;
-            $('td:eq(3)', nRow).html(typeMissionsTr[type_mission_id]);
+            $('td:eq(3)', nRow).html(typeMissionsTr[type_mission_id-1]);
             if (aData.user != null) {
                 $('td:eq(4)', nRow).html(
                     aData.user['firstName'] + ' ' + aData.user['lastName']
