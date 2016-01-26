@@ -22,7 +22,7 @@
 													<?php if($project->isArchived()) :
 															if($user && $user->isMemberOf($organization->getId())) : ?>
 																<td>
-																	<?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?> 
+																	<?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
 																	<span class="label label-warning label-as-badge"><?= __('Archived'); ?></span>
 																</td>
 															<?php else : ?>
@@ -115,7 +115,6 @@ echo $this->DataTables->init([
     'ajax' => [
         'url' => $this->Url->build(['action' => 'view', $project->id]),
     ],
-    'deferLoading' => $recordsTotal,
     'delay' => 600,
     "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
     'columns' => [
