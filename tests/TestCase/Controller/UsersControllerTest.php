@@ -43,7 +43,7 @@ class UsersControllerTest extends IntegrationTestCase
         'app.svn_users',
         'app.svns',
         'app.universities',
-        
+
         'app.projects',
         'app.projects_contributors',
         'app.projects_mentors',
@@ -105,13 +105,12 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testLoginOk()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
         $this->session(['controllerRef' => 'Pages']);
         $this->session(['actionRef' => 'home']);
 
         $data = [
-            'username' => 'admin2',
-            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
+            'username' => 'admin',
+            'password' => 'admin',
         ];
 
         $this->post('/users/login', $data);
@@ -664,7 +663,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/resetPassword/tata');
         $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
     }
-    
+
     /**
      * Test svn - OK
      *
@@ -673,11 +672,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testSvnOK()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->get('/users/svn/1');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test svn - Code
      *
@@ -686,11 +685,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testSvnCode()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->get('/users/svn/1?code=1323141412412');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test svn - No Auth
      *
@@ -701,7 +700,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/svn/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test svnCallBack - OK
      *
@@ -710,11 +709,11 @@ class UsersControllerTest extends IntegrationTestCase
     public function testSvnCallbackOK()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->get('/users/svnCallBack?code=1212312312');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test svnRemove - OK
      *
@@ -723,7 +722,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testSvnRemoveOK()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->get('/users/svnRemove/1?pseudo=pseudo');
         $this->assertResponseSuccess();
     }
