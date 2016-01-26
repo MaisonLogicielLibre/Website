@@ -42,7 +42,6 @@ class OrganizationsControllerTest extends IntegrationTestCase
     'app.svn_users',
     'app.svns',
     'app.universities',
-    'app.comments',
     'app.projects',
     'app.projects_contributors',
     'app.projects_mentors',
@@ -59,7 +58,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testIndexOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/organizations/index');
         $this->assertResponseSuccess();
     }
@@ -83,7 +82,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testViewOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/organizations/view/1');
         $this->assertResponseSuccess();
     }
@@ -100,7 +99,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/view/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - No Authentification
      *
@@ -120,7 +119,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [
             'name' => 'testOrg',
             'website' => 'http://website.com',
@@ -132,7 +131,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - Fail
      *
@@ -141,13 +140,13 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testAddFail()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
         $this->post('/organizations/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Permission
      *
@@ -156,13 +155,13 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testAddNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/organizations/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Authentification
      *
@@ -247,14 +246,14 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
-        
+
         $this->get('/organizations/edit/1');
         $this->post('/organizations/edit/1', $data);
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
-       
+
     /**
      * Test edit - No Permission
      *
@@ -263,12 +262,12 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testEditNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/organizations/edit/1', $data);
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit - No Authentification
      *
@@ -289,11 +288,11 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testDeleteOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/organizations/delete/1');
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'index']);
     }
-    
+
     /**
      * Test delete - No Permission
      *
@@ -302,11 +301,11 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testDeleteNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/organizations/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Authentification
      *
@@ -404,7 +403,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->post('/organizations/editStatus/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test addOwner - Get
      *
@@ -417,7 +416,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addOwner/1');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test addOwner - OK
      *
@@ -426,13 +425,13 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testAddOwnerOk()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = ['users' => [2]];
 
         $this->post('/organizations/addOwner/1', $data);
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test addOwner - No Authentification
      *
@@ -443,7 +442,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addOwner/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test addOwner - No Permission
      *
@@ -456,7 +455,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addOwner/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test addMember - Get
      *
@@ -469,7 +468,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addMember/1');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test addMember - OK
      *
@@ -478,13 +477,13 @@ class OrganizationsControllerTest extends IntegrationTestCase
     public function testAddMemberOk()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = ['users' => [2]];
 
         $this->post('/organizations/addMember/1', $data);
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test addMember - No Authentification
      *
@@ -495,7 +494,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addMember/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test addMember - No Permission
      *
@@ -508,7 +507,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/addMember/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test quit - Mentor
      *
@@ -521,7 +520,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/quit/1');
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test quit - OK
      *
@@ -534,7 +533,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->post('/organizations/quit/1');
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 1]);
     }
-    
+
     /**
      * Test quit - Single
      *
@@ -547,7 +546,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->post('/organizations/quit/2');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test quit - No Authentification
      *
@@ -558,7 +557,7 @@ class OrganizationsControllerTest extends IntegrationTestCase
         $this->get('/organizations/quit/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test quit - No Permission
      *

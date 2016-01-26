@@ -43,7 +43,6 @@ class PagesControllerTest extends IntegrationTestCase
         'app.svn_users',
         'app.svns',
         'app.universities',
-        'app.comments',
         'app.projects',
         'app.projects_contributors',
         'app.projects_mentors',
@@ -78,7 +77,7 @@ class PagesControllerTest extends IntegrationTestCase
         $this->get('/pages/statistics');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test statistics - No Perm
      *

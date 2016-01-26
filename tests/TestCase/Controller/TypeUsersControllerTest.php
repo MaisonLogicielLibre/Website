@@ -39,7 +39,7 @@ class TypeUsersControllerTest extends IntegrationTestCase
     'app.svn_users',
     'app.svns',
     'app.universities',
-    'app.comments',
+    
     'app.projects',
     'app.projects_contributors',
     'app.projects_mentors',

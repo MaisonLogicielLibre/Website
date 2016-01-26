@@ -42,7 +42,7 @@ class OrganizationsMembersTableTest extends TestCase
         'app.applications',
         'app.users',
         'app.universities',
-        'app.comments',
+        
         'app.projects_contributors',
         'app.organizations_projects',
         'app.projects_mentors',

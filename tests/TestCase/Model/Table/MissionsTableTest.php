@@ -39,7 +39,7 @@ class MissionsTableTest extends TestCase
         'app.applications',
         'app.users',
         'app.universities',
-        'app.comments',
+        
         'app.projects_contributors',
         'app.organizations',
         'app.organizations_projects',

@@ -37,7 +37,6 @@ class ApplicationsControllerTest extends IntegrationTestCase
         'app.organizations',
         'app.organizations_projects',
         'app.universities',
-        'app.comments',
         'app.users',
         'app.hashes',
         'app.projects_contributors',

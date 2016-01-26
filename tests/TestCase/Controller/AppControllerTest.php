@@ -40,7 +40,6 @@ class AppControllerTest extends IntegrationTestCase
         'app.svn_users',
         'app.svns',
         'app.universities',
-        'app.comments',
         'app.projects',
         'app.projects_contributors',
         'app.projects_mentors',
@@ -60,13 +59,13 @@ class AppControllerTest extends IntegrationTestCase
     public function testLangSet()
     {
         $expected = "fr_CA";
-        
+
         $this->get('/pages/home?lang=fr_CA');
         $actual = I18n::locale();
-        
+
         $this->assertEquals($expected, $actual);
     }
-    
+
     /**
      * Test language - empty
      *
@@ -75,10 +74,10 @@ class AppControllerTest extends IntegrationTestCase
     public function testLangEmpty()
     {
         $expected = I18n::locale();
-        
+
         $this->get('/pages/home');
         $actual = I18n::locale();
-        
+
         $this->assertEquals($expected, $actual);
     }
 }
