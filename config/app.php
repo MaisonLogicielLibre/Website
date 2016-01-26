@@ -250,7 +250,7 @@ return [
             //'port' => 'nonstandard_port_number',
             'username' => 'mllAdmin',
             'password' => 'toto',
-            'database' => 'mll_site',
+            'database' => 'test_mll_site',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
