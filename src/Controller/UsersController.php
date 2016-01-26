@@ -194,7 +194,6 @@ class UsersController extends AppController
                     'TypeUsers',
                     'Universities',
                     'Projects',
-                    'Comments',
                     'SvnUsers' => [
                         'Svns'
                     ]
