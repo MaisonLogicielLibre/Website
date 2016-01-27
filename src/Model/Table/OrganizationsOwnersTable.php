@@ -6,7 +6,7 @@
  * @package  Website
  * @author   Raphael St-Arnaud <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 namespace App\Model\Table;
 
@@ -23,7 +23,7 @@ use Cake\Validation\Validator;
  * @package  Website
  * @author   Raphael St-Arnaud <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class OrganizationsOwnersTable extends Table
 {

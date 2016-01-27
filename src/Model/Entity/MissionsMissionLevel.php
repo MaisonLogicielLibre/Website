@@ -6,7 +6,7 @@
  * @package  Website
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 namespace App\Model\Entity;
 
@@ -19,7 +19,7 @@ use Cake\ORM\Entity;
  * @package  Website
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class MissionsMissionLevel extends Entity
 {

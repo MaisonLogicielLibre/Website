@@ -8,7 +8,7 @@
  * @package  Website
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 
 namespace App\Controller;
@@ -28,7 +28,7 @@ use Cake\Utility\Hash;
  * @package  Website
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/site_mll
+ * @link     https://github.com/MaisonLogicielLibre/Website
  * @property \App\Model\Table\UsersTable $Users
  */
 class UsersController extends AppController
