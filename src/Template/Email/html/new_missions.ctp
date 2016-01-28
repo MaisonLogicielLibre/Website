@@ -19,7 +19,7 @@
 <ul>
 <?php
     foreach($missions as $mission) {
-        echo "<li><a href=https://maisonlogiciellibre.org/" . $mission['link'] . ">" . $mission['name'] . "</a></li>";
+        echo "<li><a href=\"https://maisonlogiciellibre.org" . $mission['link'] . "\">" . $mission['name'] . "</a></li>";
     }
 ?>
 </ul>

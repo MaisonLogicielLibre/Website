@@ -17,7 +17,7 @@ echo __('New missions added this week');
 echo "\n\n";
 
 foreach($missions as $mission) {
-    echo $mission['name'] . ": " . "https://maisonlogiciellibre.org/" . $mission['link'] . "\n";
+    echo $mission['name'] . ": " . "https://maisonlogiciellibre.org" . $mission['link'] . "\n";
 }
 
 ?>
