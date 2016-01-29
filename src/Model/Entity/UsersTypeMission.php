@@ -10,6 +10,8 @@
  */
 namespace App\Model\Entity;
 
+use Cake\ORM\Entity;
+
 /**
  * Entity of UsersTypeMission
  *
@@ -19,9 +21,6 @@ namespace App\Model\Entity;
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Website
  */
-use Cake\ORM\Entity;
-
-
 class UsersTypeMission extends Entity
 {
 

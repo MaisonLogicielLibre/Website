@@ -59,7 +59,7 @@ class UsersTypeMissionsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp setup the test case
      *
      * @return void
      */
@@ -71,7 +71,7 @@ class UsersTypeMissionsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown teardown the test case
      *
      * @return void
      */
