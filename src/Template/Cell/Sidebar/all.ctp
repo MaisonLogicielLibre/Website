@@ -27,7 +27,7 @@
         </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#projects-submenu">
-               <i class="fa fa-lg fa-cubes"></i>
+                <i class="fa fa-lg fa-cubes"></i>
                 <?= __('Projects'); ?>
                 <i class="fa submenu-arrow pull-right"></i>
             </a>
@@ -46,9 +46,9 @@
                 </li>
             </ul>
         </li>
-		<li>
+        <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#missions-submenu">
-               <i class="fa fa-lg fa-file-text"></i>
+                <i class="fa fa-lg fa-file-text"></i>
                 <?= __('Missions'); ?>
                 <i class="fa submenu-arrow pull-right"></i>
             </a>
@@ -68,28 +68,34 @@
                 <i class="fa submenu-arrow pull-right"></i>
             </a>
             <ul id="activities-submenu" class="collapse">
-				<li>
+                <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
-                    <i class="fa fa-newspaper-o"></i>
-                    <?= __('News'); ?>
+                        <i class="fa fa-newspaper-o"></i>
+                        <?= __('News'); ?>
                     </a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'statistics']); ?>">
-                    <i class="fa fa-pie-chart"></i>
-                    <?= __('Statistics'); ?>
+                        <i class="fa fa-pie-chart"></i>
+                        <?= __('Statistics'); ?>
                     </a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'meetup']); ?>">
-                    <i class="fa fa-comments-o"></i>
-                    <?= __('Meetup'); ?>
+                        <i class="fa fa-comments-o"></i>
+                        <?= __('Meetup'); ?>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'calendar']); ?>">
+                        <i class="fa fa-calendar"></i>
+                        <?= __('Calendar'); ?>
                     </a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'survey']); ?>">
-                    <i class="fa fa-pencil-square-o"></i>
-                       <?= __('Survey'); ?>
+                        <i class="fa fa-pencil-square-o"></i>
+                        <?= __('Survey'); ?>
                    </a>
                 </li>
             </ul>
@@ -119,7 +125,7 @@
                         <?= __('Association'); ?>
                     </a>
                 </li>
-				<li>
+                <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'government']); ?>">
                         <i class="fa fa-bank"></i>
                         <?= __('Government'); ?>
@@ -130,7 +136,8 @@
         <?php if ($user && $user->hasRoleName(['Administrator'])): ?>
         <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'administration') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'administration']); ?>">
-                <i class="fa fa-wrench  fa-lg"></i><?= __('Administration') ?></a>
+                <i class="fa fa-wrench  fa-lg"></i><?= __('Administration') ?>
+            </a>
         </li>
         <?php endif; ?>
     </ul>
