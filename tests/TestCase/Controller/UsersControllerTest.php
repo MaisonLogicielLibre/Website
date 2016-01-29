@@ -43,7 +43,6 @@ class UsersControllerTest extends IntegrationTestCase
         'app.svn_users',
         'app.svns',
         'app.universities',
-
         'app.projects',
         'app.projects_contributors',
         'app.projects_mentors',
@@ -51,8 +50,34 @@ class UsersControllerTest extends IntegrationTestCase
         'app.permissions',
         'app.permissions_type_users',
         'app.hashes',
-        'app.hash_types'
+        'app.hash_types',
+        'app.users_type_missions',
+        'app.type_missions'
     ];
+
+    /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('UsersTypeMissions') ? [] : ['className' => 'App\Model\Table\UsersTypeMissionsTable'];
+        $this->UsersTypeMissions = TableRegistry::get('UsersTypeMissions', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->UsersTypeMissions);
+
+        parent::tearDown();
+    }
 
     /**
      * Test index - Ok
@@ -439,6 +464,31 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/edit/2', $data);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 2]);
     }
+
+
+
+    function testEditNewTypeMission()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $data = [
+            'type_missions' => [
+                '_ids' => [1, 2]
+            ]
+        ];
+        $this->post('/users/edit/1', $data);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 1]);
+
+        $selectedTypeMissions = $this->UsersTypeMissions->findByUserId(1)->toArray();
+
+        //Get an array of ids
+        $returnIds = function($typeMission) {
+            return $typeMission['id'];
+        };
+        $ids = array_map($returnIds, $selectedTypeMissions);
+
+        $this->assertContains(2, $ids);
+    }
+
 
     /**
      * Test edit Skill - Not ok

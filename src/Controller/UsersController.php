@@ -265,6 +265,10 @@ class UsersController extends AppController
         $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
         if ($you || $hasPermission) {
+            $typeMissions = $this->Users->TypeMissions->find('all')->toArray();
+            $this->loadModel('UsersTypeMissions');
+            $selectedTypeMissions = $this->UsersTypeMissions->findByUserId($id)->toArray();
+
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
@@ -284,7 +288,7 @@ class UsersController extends AppController
                 }
             }
             $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-            $this->set(compact('user', 'universities', 'you'));
+            $this->set(compact('user', 'universities', 'you', 'typeMissions', 'selectedTypeMissions'));
             $this->set('_serialize', ['user']);
         } else {
             return $this->redirect(['action' => 'edit', $this->request->session()->read('Auth.User.id')]);
