@@ -4,11 +4,11 @@
     "homepage": "http://cakephp.org",
     "type": "project",
     "license": "MIT",
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/MaisonLogicielLibre/API_SVN"
-		},
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/MaisonLogicielLibre/API_SVN"
+        },
         {
             "type": "vcs",
             "url": "https://github.com/simon-begin/cakephp-datatables"
@@ -17,7 +17,7 @@
             "type": "vcs",
             "url": "https://github.com/simon-begin/parsedown-noImage"
         }
-	],
+    ],
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0",
@@ -25,7 +25,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
-		"mll/apisvn": "dev-master",
+        "mll/apisvn": "dev-master",
         "simon-begin/cakephp-datatables": "dev-master",
         "erusev/parsedown": "dev-master",
         "simon-begin/parsedown-noImage": "dev-master"
