@@ -31,6 +31,24 @@ class NotificationsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.missions',
+        'app.projects',
+        'app.applications',
+        'app.users',
+        'app.universities',
+        'app.projects_contributors',
+        'app.organizations',
+        'app.organizations_owners',
+        'app.organizations_members',
+        'app.organizations_projects',
+        'app.projects_mentors',
+        'app.type_users',
+        'app.permissions',
+        'app.permissions_type_users',
+        'app.type_users_users',
+        'app.mission_levels',
+        'app.missions_mission_levels',
+        'app.type_missions',
         'app.notifications'
     ];
 
@@ -39,9 +57,12 @@ class NotificationsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testIndex()
+    public function testIndexOk()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/notifications/index');
+        $this->assertResponseSuccess();
     }
 
     /**
