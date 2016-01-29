@@ -34,6 +34,23 @@
                                             ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td><?= __('Seeked mission type'); ?></td>
+                                        <td>
+                                            <?php
+                                            $types = '';
+                                            $selectedTypeMissions = $userSelected['type_missions'];
+                                            for($i = 0;$i < count($selectedTypeMissions);$i++) {
+                                                if($i == count($selectedTypeMissions) - 1) {
+                                                    $types = $types . $selectedTypeMissions[$i]->getName();
+                                                } else {
+                                                    $types = $types . $selectedTypeMissions[$i]->getName() . ', ';
+                                                }
+                                            }
+                                            echo $types;
+                                            ?>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -183,23 +200,23 @@
                     </div>
                 </div>
             <?php endif; ?>
-			<?php if (!empty($userSelected->svn_users)): ?>
+            <?php if (!empty($userSelected->svn_users)): ?>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <h3 class="header-title"><?= __('CVS added') ?> <?= $this->Wiki->addHelper('CVS'); ?></h3>
                             <table class="table borderless table-striped">
-								<thead>
-									<td> <?= __('Name') ?> </td>
-									<td> <?= __('Source') ?> </td>
-								</thead>
+                                <thead>
+                                    <td> <?= __('Name') ?> </td>
+                                    <td> <?= __('Source') ?> </td>
+                                </thead>
                                 <?php foreach ($userSelected->svn_users as $svnUser): ?>
                                     <tr>
                                         <td>
                                             <!-- Name of cvs -->
                                             <a href="<?=$svnUser->svn->getLink() . $svnUser->getPseudo() ?>"><?=$svnUser->getPseudo()?></a>
                                         </td>
-										<td>
+                                        <td>
                                             <!-- Source of cvs -->
                                             <?= $svnUser->svn->getName() ?>
                                         </td>

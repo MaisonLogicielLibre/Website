@@ -196,8 +196,13 @@ class UsersController extends AppController
                     'Projects',
                     'SvnUsers' => [
                         'Svns'
+                    ],
+                    'TypeMissions' => [
+                        'fields' => [
+                            'id', 'name', 'UsersTypeMissions.user_id'
+                        ]
                     ]
-                ]
+                ],
             ]
         );
 
