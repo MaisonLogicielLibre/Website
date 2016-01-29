@@ -1,4 +1,13 @@
 <?php
+/**
+ * Test for UsersTypeMissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Félix Leblanc <felix.leblanc1305@gmail.com>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\UsersTypeMissionsTable;
@@ -8,7 +17,13 @@ use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 
 /**
- * App\Model\Table\UsersTypeMissionsTable Test Case
+ * Test for UsersTypeMissionsTable
+ *
+ * @category Test
+ * @package  Website
+ * @author   Félix Leblanc <felix.leblanc1305@gmail.com>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class UsersTypeMissionsTableTest extends TestCase
 {

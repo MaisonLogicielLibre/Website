@@ -466,8 +466,12 @@ class UsersControllerTest extends IntegrationTestCase
     }
 
 
-
-    function testEditNewTypeMission()
+    /**
+     * Test edit - Add new typeMission
+     *
+     * @return void
+     */
+    public function testEditNewTypeMission()
     {
         $this->session(['Auth.User.id' => 1]);
         $data = [
@@ -481,7 +485,7 @@ class UsersControllerTest extends IntegrationTestCase
         $selectedTypeMissions = $this->UsersTypeMissions->findByUserId(1)->toArray();
 
         //Get an array of ids
-        $returnIds = function($typeMission) {
+        $returnIds = function ($typeMission) {
             return $typeMission['id'];
         };
         $ids = array_map($returnIds, $selectedTypeMissions);

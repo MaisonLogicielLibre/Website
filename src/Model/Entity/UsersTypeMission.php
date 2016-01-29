@@ -1,17 +1,27 @@
 <?php
+/**
+ * Entity of UsersTypeMission
+ *
+ * @category Table
+ * @package  Website
+ * @author   Félix Leblanc <felix.leblanc1305@gmail.com>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
+/**
+ * Entity of UsersTypeMission
+ *
+ * @category Table
+ * @package  Website
+ * @author   Félix Leblanc <felix.leblanc1305@gmail.com>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 use Cake\ORM\Entity;
 
-/**
- * UsersTypeMission Entity.
- *
- * @property int $id
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property int $type_mission_id
- * @property \App\Model\Entity\TypeMission $type_mission
- */
+
 class UsersTypeMission extends Entity
 {
 
@@ -24,7 +34,7 @@ class UsersTypeMission extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];
