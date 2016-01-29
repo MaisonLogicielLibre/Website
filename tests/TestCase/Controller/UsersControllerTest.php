@@ -52,7 +52,8 @@ class UsersControllerTest extends IntegrationTestCase
         'app.hashes',
         'app.hash_types',
         'app.users_type_missions',
-        'app.type_missions'
+        'app.type_missions',
+        'app.notifications'
     ];
 
     /**
@@ -110,17 +111,16 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testLoginFromRegister()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
         $this->session(['actionRef' => 'register/']);
 
         $data = [
-            'username' => 'admin2',
-            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.',
+            'username' => 'admin',
+            'password' => 'admin',
         ];
 
         $this->post('/users/login', $data);
 
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'view/3']);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view/2']);
     }
 
     /**
