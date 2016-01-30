@@ -7,7 +7,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/MaisonLogicielLibre/API_SVN"
+            "url": "https://github.com/fxleblanc/VCSStats"
         },
         {
             "type": "vcs",
@@ -25,7 +25,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "elboletaire/twbs-cake-plugin": "dev-master",
-        "mll/apisvn": "dev-master",
+        "vcsstats": "dev-master",
         "simon-begin/cakephp-datatables": "dev-master",
         "erusev/parsedown": "dev-master",
         "simon-begin/parsedown-noImage": "dev-master"
