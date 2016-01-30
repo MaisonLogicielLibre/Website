@@ -553,10 +553,19 @@ class ProjectsController extends AppController
                     }
                 }
             } else {
-                echo json_encode(['error', __('Cannot perform the change.')]);
+                $this->response->type('application/json');
+                $json = json_encode(['error', __('Cannot perform the change.')]);
+                $this->response->body($json);
+
+                return $this->response;
             }
-            echo json_encode(['success', __('Your change has been saved')]);
             $this->Projects->save($project);
+
+            $this->response->type('application/json');
+            $json = json_encode(['success', __('Your change has been saved')]);
+            $this->response->body($json);
+
+            return $this->response;
         } else {
             $this->Flash->error(__('Not an AJAX Query', true));
             $this->redirect(['action' => 'index']);

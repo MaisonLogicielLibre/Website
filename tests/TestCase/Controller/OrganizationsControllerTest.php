@@ -47,7 +47,8 @@ class OrganizationsControllerTest extends IntegrationTestCase
     'app.projects_mentors',
     'app.missions',
     'app.permissions',
-    'app.permissions_type_users'
+    'app.permissions_type_users',
+    'app.notifications'
     ];
 
     /**
@@ -628,20 +629,23 @@ class OrganizationsControllerTest extends IntegrationTestCase
 
         $q = $organizations->findById(1)->first();
         $this->assertEquals($expected, $q->getIsValidated());
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('success');
     }
 
     /**
-     * Test edit state accepted on an organization - Ok
+     * Test edit state rejected on an organization - Ok
      *
      * @return void
      */
     public function testStatusRejectedOk()
     {
-        $expected = true;
+        $expected = false;
 
         $data = [
             'id' => 1,
-            'state' => 3, // Rejected
+            'state' => 1, // Rejected
             'stateValue' => $expected
         ];
         $this->session(['Auth.User.id' => 2]);
@@ -655,6 +659,9 @@ class OrganizationsControllerTest extends IntegrationTestCase
 
         $q = $organizations->findById(1)->first();
         $this->assertEquals($expected, $q->getIsRejected());
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('error');
     }
 
     /**

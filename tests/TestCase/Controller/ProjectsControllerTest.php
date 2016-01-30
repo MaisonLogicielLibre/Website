@@ -45,7 +45,10 @@ class ProjectsControllerTest extends IntegrationTestCase
     'app.projects_mentors',
     'app.missions',
     'app.permissions',
-    'app.permissions_type_users'
+    'app.permissions_type_users',
+    'app.notifications',
+    'app.organizations_owners',
+    'app.organizations_members'
     ];
 
     /**
@@ -385,6 +388,39 @@ class ProjectsControllerTest extends IntegrationTestCase
 
         $q = $projects->findById(3)->first();
         $this->assertEquals($expected, $q->isAccepted());
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('success');
+    }
+
+    /**
+     * Test edit state archived on a project - Reject
+     *
+     * @return void
+     */
+    public function testStateRejectOk()
+    {
+        $expected = false;
+
+        $data = [
+            'id' => 3,
+            'state' => 2, // Rejected
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/projects/editState/3', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $projects = TableRegistry::get('Projects');
+
+        $q = $projects->findById(3)->first();
+        $this->assertEquals($expected, $q->isAccepted());
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('error');
     }
 
     /**
