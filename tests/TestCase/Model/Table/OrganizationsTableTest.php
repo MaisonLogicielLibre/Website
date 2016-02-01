@@ -44,7 +44,7 @@ class OrganizationsTableTest extends TestCase
     'app.svn_users',
     'app.svns',
     'app.universities',
-    
+
     'app.projects',
     'app.projects_contributors',
     'app.projects_mentors',
@@ -174,6 +174,23 @@ class OrganizationsTableTest extends TestCase
     {
         $id = 1;
         $expected = 0;
+
+        $org = $this->Organizations->get($id);
+
+        $result = $org->getIsRejected();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test getIsRejectedTrue
+     *
+     * @return void
+     */
+    public function testGetIsRejectedTrue()
+    {
+        $id = 3;
+        $expected = 1;
 
         $org = $this->Organizations->get($id);
 
