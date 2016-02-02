@@ -635,11 +635,41 @@ class OrganizationsControllerTest extends IntegrationTestCase
     }
 
     /**
-     * Test edit state rejected on an organization - Ok
+     * Test edit status approved on an organization - Ok
      *
      * @return void
      */
     public function testStatusRejectedOk()
+    {
+        $expected = true;
+
+        $data = [
+            'id' => 1,
+            'state' => 3, // Approved
+            'stateValue' => $expected
+        ];
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/organizations/editStatus/1', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $organizations = TableRegistry::get('Organizations');
+
+        $q = $organizations->findById(1)->first();
+        $this->assertEquals($expected, $q->getIsRejected());
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('success');
+    }
+
+    /**
+     * Test edit state rejected on an organization - Ok
+     *
+     * @return void
+     */
+    public function testStatusError()
     {
         $expected = false;
 
