@@ -228,5 +228,72 @@
                 </div>
             <?php endif; ?>
         </div>
+        <?php if ($user && (($user->hasPermissionName(['edit_user'])))): ?>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="header-title"><?= __('Applications'); ?> <?= $this->Wiki->addHelper('Applications'); ?></h3>
+                        <div class="table-responsive">
+                            <table id="applications" class="table table-striped table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th><?= __('Position'); ?></th>
+                                        <th><?= __('Remove your application'); ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
     </div>
 </div>
+<?= $this->Html->script(
+    [
+        'datatables/jquery.dataTables.min',
+        'datatables/dataTables.bootstrap.min',
+        'DataTables.cakephp.dataTables',
+        'markdown/markdown'
+    ],
+    ['block' => 'scriptBottom']);
+?>
+<?php
+$this->Html->scriptStart(['block' => 'scriptBottom']);
+echo $this->DataTables->init([
+    'ajax' => [
+        'url' => $this->Url->build(['action' => 'view', $user->id]),
+    ],
+    'delay' => 600,
+    "sDom" => "<'row'><'row'><'row'>",
+    'columns' => [
+        [
+            'name' => 'Applications.id',
+            'data' => 'id',
+            'searchable' => true,
+            'visible' => false
+        ],
+        [
+            'name' => 'Missions.id',
+            'data' => 'mission.id',
+            'searchable' => false,
+        ],
+        [
+            'name' => 'Missions.name',
+            'data' => 'mission.name',
+            'searchable' => false,
+        ]
+    ],
+    'lengthMenu' => '',
+    'pageLength' => 100
+])->draw('.dataTable');
+echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
+echo 'var applicationsUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'editArchived']) .'";';
+$this->Html->scriptEnd();
+?>
+<?= $this->Html->script(['initial.min', 'users/view.js'], ['block' => 'scriptBottom']); ?>

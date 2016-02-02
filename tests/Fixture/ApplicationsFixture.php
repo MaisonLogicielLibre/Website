@@ -22,9 +22,12 @@ class ApplicationsFixture extends TestFixture
         'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'accepted' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'rejected' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'archived' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'text' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-	      'email' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-	        '_constraints' => [
+          'email' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+            '_constraints' => [
           'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
         '_options' => [
@@ -46,7 +49,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'accepted' => 0,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ],
         [
             'id' => 2,
@@ -54,7 +60,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'accepted' => 1,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ],
         [
             'id' => 3,
@@ -62,7 +71,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'accepted' => 0,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ],
         [
             'id' => 4,
@@ -70,7 +82,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 4,
             'accepted' => 0,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ],
         [
             'id' => 5,
@@ -78,7 +93,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'accepted' => 0,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ],
         [
             'id' => 6,
@@ -86,7 +104,10 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'accepted' => 1,
             'rejected' => 0,
-            'email' => 'test@test.com'
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
         ]
     ];
 }

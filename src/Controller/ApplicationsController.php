@@ -31,7 +31,8 @@ class ApplicationsController extends AppController
     private $_permissions = [
         'accepted' => ['edit_mission', 'edit_missions'],
         'rejected' => ['edit_mission', 'edit_missions'],
-        'view' => ['edit_mission', 'edit_missions']
+        'view' => ['edit_mission', 'edit_missions'],
+        'editArchived' => ['edit_application', 'edit_applications']
     ];
 
     /**
@@ -245,5 +246,66 @@ class ApplicationsController extends AppController
 
         $this->set(compact('application'));
         $this->set('_serialize', ['application']);
+    }
+
+
+
+    /**
+     * EditArchived method
+     *
+     * @param int|null $id id
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function editArchived($id = null)
+    {
+        $application = $this->Applications->get(
+            $id,
+            [
+                'contain' => [
+                    'Missions'
+                ]
+            ]
+        );
+
+        $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+
+        //Check if the session user is archiving his own application
+        if ($user->getId() == $application->getUserId()) {
+            if ($this->request->is(['post'])) {
+                $this->_toggleArchived($application);
+                return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
+            }
+        } else {
+            $this->Flash->error(__('You cannot delete an application from another user'));
+            return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
+        }
+
+        $this->set(compact('application', 'user'));
+        $this->set('_serialize', ['application', 'user']);
+    }
+
+    /**
+     * ToggleArchived private method
+     * Toggles the archived flag
+     *
+     * @param array $application application
+     *
+     * @return \Cake\Network\Response|null
+     */
+    private function _toggleArchived($application)
+    {
+        $application->editArchived(!$application->isArchived());
+
+        if (!$application->errors()) {
+            if ($this->Applications->save($application)) {
+                $this->Flash->success(__('The application has been removed succesfully.'));
+            } else {
+                $this->Flash->error(__('An error has occurred while deleting your application. Please try again later and contact us if the error persists.'));
+            }
+        } else {
+            $this->Flash->error(__('An error occurred while trying to parse your request. Please try again later and contact us if the error persists.'));
+
+        }
     }
 }

@@ -171,7 +171,7 @@ class PermissionsFixture extends TestFixture
             'id' => 34,
             'name' => 'list_organizations_all'
         ],
-		[
+        [
             'id' => 35,
             'name' => 'quit_organization'
         ],
@@ -179,38 +179,37 @@ class PermissionsFixture extends TestFixture
             'id' => 36,
             'name' => 'apply_mission'
         ],
-		[
+        [
             'id' => 37,
             'name' => 'list_meetups'
         ],
-		[
+        [
             'id' => 38,
             'name' => 'add_meetups'
         ],
-		[
+        [
             'id' => 39,
             'name' => 'edit_meetups'
         ],
-		[
+        [
             'id' => 40,
             'name' => 'delete_meetups'
         ],
-		[
+        [
             'id' => 41,
             'name' => 'list_news'
         ],
-		[
+        [
             'id' => 42,
             'name' => 'add_news'
         ],
-		[
+        [
             'id' => 43,
             'name' => 'edit_news'
         ],
-		[
+        [
             'id' => 44,
             'name' => 'delete_meetups'
-        ],
-
+        ]
     ];
 }

@@ -11,6 +11,7 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ApplicationsController;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -49,8 +50,33 @@ class ApplicationsControllerTest extends IntegrationTestCase
         'app.organizations_members',
         'app.mission_levels',
         'app.missions_mission_levels',
-        'app.type_missions'
+        'app.type_missions',
+        'app.notifications'
     ];
+
+    /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('Applications') ? [] : ['className' => 'App\Model\Table\ApplicationsTable'];
+        $this->Applications = TableRegistry::get('Applications', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->Applications);
+
+        parent::tearDown();
+    }
 
     /**
      * Test accepted - Ok
@@ -325,5 +351,40 @@ class ApplicationsControllerTest extends IntegrationTestCase
         $this->post('/applications/rejected/4', $data);
 
         $this->assertResponseSuccess();
+    }
+
+    /**
+     * Test edit - Ok
+     *
+     * @return void
+     */
+    public function testEditArchivedOk()
+    {
+        $this->session(['Auth.User.id' => 1]);
+        $this->post('/applications/editArchived/1');
+
+        $this->assertResponseSuccess();
+
+        $isArchived = $this->Applications->get(1)->isArchived();
+
+        $this->assertEquals(true, $isArchived);
+    }
+
+    /**
+     * Test editArchivedNoPerm - No permissions while archiving
+     *
+     * @return void
+     */
+    public function testEditArchivedNoPerm()
+    {
+        $this->session(['Auth.User.id' => 2]);
+        $this->post('/applications/editArchived/1');
+
+        $this->assertResponseSuccess();
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 2]);
+
+        $isArchived = $this->Applications->get(1)->isArchived();
+
+        $this->assertEquals(false, $isArchived);
     }
 }

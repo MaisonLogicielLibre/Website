@@ -206,9 +206,34 @@ class UsersController extends AppController
             ]
         );
 
+        $data = $this->DataTables->find(
+            'Applications',
+            [
+                'contain' => [
+                    'Missions'
+                ],
+                'conditions' => [
+                    'AND' => [
+                        'user_id' => $id,
+                        'Applications.archived' => 0
+                    ]
+                ],
+                'fields' => [
+                    'Missions.id',
+                    'Missions.name',
+                    'Applications.id',
+                ]
+            ]
+        );
+
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
         $this->set(compact('userSelected', 'user'));
-        $this->set('_serialize', ['user']);
+        $this->set(
+            [
+                'data' => $data,
+                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
+            ]
+        );
     }
 
     /**

@@ -39,7 +39,7 @@ class ApplicationsTableTest extends TestCase
         'app.missions',
         'app.users',
         'app.universities',
-        
+
         'app.projects_contributors',
         'app.organizations',
         'app.organizations_projects',
@@ -296,5 +296,37 @@ class ApplicationsTableTest extends TestCase
         $result = $this->Applications->buildRules($rule);
 
         $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test IsArchived method
+     *
+     * @return void
+     */
+    public function testIsArchived()
+    {
+        $id = 1;
+        $expected = 0;
+
+        $actual = $this->Applications->get($id)->isArchived();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test EditArchived method
+     *
+     * @return void
+     */
+    public function testEditArchived()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $application = $this->Applications->get($id);
+        $application->editArchived($expected);
+        $actual = $application->isArchived();
+
+        $this->assertEquals($expected, $actual);
     }
 }

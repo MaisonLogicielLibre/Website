@@ -110,6 +110,16 @@ class Application extends Entity
     }
 
     /**
+     * Is archived
+     *
+     * @return bool
+     */
+    public function isArchived()
+    {
+        return $this->_properties['archived'];
+    }
+
+    /**
      * Set the missionId
      *
      * @param int $missionId missionId
@@ -198,5 +208,18 @@ class Application extends Entity
     {
         $this->set('type_mission_id', $type);
         return $type;
+    }
+
+    /**
+     * Set archived
+     *
+     * @param int $archived archived
+     *
+     * @return int archived
+     */
+    public function editArchived($archived)
+    {
+        $this->set('archived', $archived);
+        return $archived;
     }
 }

@@ -274,17 +274,17 @@ class PermissionsTypeUsersFixture extends TestFixture
             'type_user_id' => 4,
             'permission_id' => 12
         ],
-		[
+        [
             'id' => 49,
             'type_user_id' => 5,
             'permission_id' => 5
         ],
-		[
+        [
             'id' => 50,
             'type_user_id' => 7,
             'permission_id' => 35
         ],
-		[
+        [
             'id' => 51,
             'type_user_id' => 5,
             'permission_id' => 35
@@ -294,45 +294,55 @@ class PermissionsTypeUsersFixture extends TestFixture
             'type_user_id' => 1,
             'permission_id' => 36
         ],
-		[
+        [
             'id' => 53,
             'type_user_id' => 1,
             'permission_id' => 37
         ],
-		[
+        [
             'id' => 54,
             'type_user_id' => 1,
             'permission_id' => 38
         ],
-		[
+        [
             'id' => 55,
             'type_user_id' => 1,
             'permission_id' => 39
         ],
-		[
+        [
             'id' => 56,
             'type_user_id' => 1,
             'permission_id' => 40
         ],
-		[
+        [
             'id' => 57,
             'type_user_id' => 1,
             'permission_id' => 41
         ],
-		[
+        [
             'id' => 58,
             'type_user_id' => 1,
             'permission_id' => 42
         ],
-		[
+        [
             'id' => 59,
             'type_user_id' => 1,
             'permission_id' => 43
         ],
-		[
+        [
             'id' => 60,
             'type_user_id' => 1,
             'permission_id' => 44
+        ],
+        [
+            'id' => 61,
+            'type_user_id' => 1,
+            'permission_id' => 45
+        ],
+        [
+            'id' => 62,
+            'type_user_id' => 3,
+            'permission_id' => 46
         ],
     ];
 }
