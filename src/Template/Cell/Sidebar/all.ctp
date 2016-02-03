@@ -81,12 +81,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'meetup']); ?>">
-                        <i class="fa fa-comments-o"></i>
-                        <?= __('Meetup'); ?>
-                    </a>
-                </li>
-                <li>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'calendar']); ?>">
                         <i class="fa fa-calendar"></i>
                         <?= __('Calendar'); ?>

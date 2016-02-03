@@ -29,28 +29,6 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-blue">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-comments-o fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">
-                            <a class="btn btn-warning" href="<?= $this->Url->build(['controller' => 'Meetups', 'action' => 'index']);?>"><?= __('Manage');?></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <?= __('Meetups'); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
