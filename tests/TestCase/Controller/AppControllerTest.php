@@ -12,6 +12,7 @@ namespace App\Test\TestCase\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\I18n;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -47,8 +48,35 @@ class AppControllerTest extends IntegrationTestCase
         'app.permissions',
         'app.permissions_type_users',
         'app.news',
-        'app.notifications'
+        'app.notifications',
+        'app.type_missions',
+        'app.organizations_members',
+        'app.organizations_owners'
     ];
+
+    /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('Notifications') ? [] : ['className' => 'App\Model\Table\NotificationsTable'];
+        $this->Notifications = TableRegistry::get('Notifications', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->Notifications);
+
+        parent::tearDown();
+    }
 
     /**
      * Test language - Ok
@@ -94,5 +122,24 @@ class AppControllerTest extends IntegrationTestCase
         $actual = I18n::locale();
 
         $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test beforeFilter updateNotifications - empty
+     *
+     * @return void
+     */
+    public function testBeforeFilterUpdateNotificationsMarkAsRead()
+    {
+        $notificationId = 2;
+        $expected = true;
+
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('projects/view/1');
+
+        $isRead = $this->Notifications->get($notificationId)->isRead();
+
+        $this->assertEquals($expected, $isRead);
     }
 }
