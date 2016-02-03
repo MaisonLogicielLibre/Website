@@ -66,41 +66,21 @@ class NotificationsControllerTest extends IntegrationTestCase
     }
 
     /**
-     * Test view method
+     * Test MarkAsRead method
      *
      * @return void
      */
-    public function testView()
+    public function testMarkAsRead()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test add method
+     * Test MarkAllAsRead method
      *
      * @return void
      */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
+    public function testMarkAllAsRead()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
