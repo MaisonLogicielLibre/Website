@@ -79,4 +79,20 @@ class AppControllerTest extends IntegrationTestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * Test language - empty
+     *
+     * @return void
+     */
+    public function testLangGetNotEmpty()
+    {
+        $expected = "fr_CA";
+        $_GET['lang'] = $expected;
+
+        $this->get('/pages/home');
+        $actual = I18n::locale();
+
+        $this->assertEquals($expected, $actual);
+    }
 }
