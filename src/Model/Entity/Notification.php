@@ -116,4 +116,14 @@ class Notification extends Entity
         $this->set('link', $link);
         return $link;
     }
+
+    /**
+     * Get isRead
+     *
+     * @return bool isRead
+     */
+    public function isRead()
+    {
+        return $this->_properties['isRead'];
+    }
 }

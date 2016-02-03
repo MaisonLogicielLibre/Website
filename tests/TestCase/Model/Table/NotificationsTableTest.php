@@ -214,4 +214,21 @@ class NotificationsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test isRead
+     *
+     * @return void
+     */
+    public function testIsRead()
+    {
+        $id = 1;
+        $expected = 1;
+
+        $notification = $this->Notifications->get($id);
+
+        $result = $notification->isRead();
+
+        $this->assertEquals($expected, $result);
+    }
 }
