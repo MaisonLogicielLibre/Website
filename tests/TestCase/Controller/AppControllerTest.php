@@ -55,7 +55,7 @@ class AppControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testLangSet()
+    public function testCheckLanguageSet()
     {
         $expected = "fr_CA";
 
@@ -70,7 +70,7 @@ class AppControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testLangEmpty()
+    public function testCheckLanguageEmpty()
     {
         $expected = I18n::locale();
 
@@ -85,7 +85,7 @@ class AppControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testLangGetNotEmpty()
+    public function testCheckLanguageGetNotEmpty()
     {
         $expected = "fr_CA";
         $_GET['lang'] = $expected;
