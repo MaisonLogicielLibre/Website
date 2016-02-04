@@ -23,7 +23,7 @@
                         <?= $this->Form->input('firstName', ['label' => __('First name')]); ?>
                         <?= $this->Form->input('lastName', ['label' => __('Last name')]); ?>
                         <?php
-                        $options[0] = __('Not specified');
+                        $options[0] = __('Anytime');
                         foreach ($universities as $i => $university) {
                             $options[$i] = $university;
                         }
@@ -36,7 +36,7 @@
                             <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
                             <select class="form-control" name="gender">
                                 <option
-                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
+                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Anytime'); ?></option>
                                 <option
                                     value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
                                 <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>

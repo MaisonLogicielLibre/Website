@@ -32,7 +32,7 @@ foreach ($typeMissions as $type) {
 echo $this->Form->input('type_mission', ['required' => true, 'label' => __('What type of student(s) are you looking for?'), 'options' => $typeOptions, 'type' => 'select']);
 $sessionOptions =
     [
-        0 => __('Not specified'),
+        0 => __('Anytime'),
         1 => __('Winter'),
         2 => __('Summer'),
         3 => __('Fall')
@@ -40,7 +40,7 @@ $sessionOptions =
 echo $this->Form->input('session', ['required' => true, 'label' => __('Term'), 'options' => $sessionOptions, 'type' => 'select']);
 $lengthOptions =
     [
-        0 => __('Not specified'),
+        0 => __('Anytime'),
         1 => __('1 term'),
         2 => __('2 terms'),
         3 => __('3 terms')

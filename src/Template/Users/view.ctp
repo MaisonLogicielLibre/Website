@@ -63,7 +63,7 @@
                                     </tr>
                                     <tr>
                                         <td><?= __('University'); ?></td>
-                                        <td><?= ($userSelected->getUniversity()) ? $userSelected->getUniversity()->getName() : __('Not specified'); ?></td>
+                                        <td><?= ($userSelected->getUniversity()) ? $userSelected->getUniversity()->getName() : __('Anytime'); ?></td>
                                     </tr>
                                     <tr>
                                         <td><?= __('Phone number'); ?></td>

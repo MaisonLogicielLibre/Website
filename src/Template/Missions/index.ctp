@@ -67,7 +67,7 @@
 ?>
 <?php
 $sessionOptions = [
-    0 => __('Not specified'),
+    0 => __('Anytime'),
     1 => __('Winter'),
     2 => __('Summer'),
     3 => __('Fall')

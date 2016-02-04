@@ -91,14 +91,14 @@
 <?php
 $lengthOptions =
     [
-        0 => __('Not specified'),
+        0 => __('Anytime'),
         1 => __('1 term'),
         2 => __('2 terms'),
         3 => __('3 terms')
     ];
 $sessionOptions =
     [
-        0 => __('Not specified'),
+        0 => __('Anytime'),
         1 => __('Winter'),
         2 => __('Summer'),
         3 => __('Fall')

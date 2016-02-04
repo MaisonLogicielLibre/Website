@@ -133,7 +133,7 @@ echo $this->DataTables->init([
 echo 'var userUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 echo 'var universityUrl="' . $this->Url->Build(['controller' => 'Universities', 'action' => 'view']) . '";';
 echo 'var orgUrl="' . $this->Url->Build(['controller' => 'Organizations', 'action' => 'view']) . '";';
-echo 'var notSpecifiedTr="' . __('Not specified') . '";';
+echo 'var notSpecifiedTr="' . __('Anytime') . '";';
 echo 'var yesTr="' . __('Yes') . '";';
 echo 'var noTr="' . __('No') . '";';
 $this->Html->scriptEnd(); ?>
