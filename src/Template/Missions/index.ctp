@@ -21,7 +21,7 @@
                             <tr>
                                 <th></th>
                                 <th><?= __('Name'); ?></th>
-                                <th><?= __('Need'); ?></th>
+                                <th><?= __('Student'); ?></th>
                                 <th><?= __('Session'); ?></th>
                                 <th><?= __('Organizations'); ?></th>
                             </tr>
