@@ -18,7 +18,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="header-title"><?= __('Information') ?></h3>
-                        <?= $this->Form->create($user, ['type' => 'post', 'action' => 'delete']); ?>
+                        <?= $this->Form->create($user, ['type' => 'post', 'url' => ['action' => 'delete']]); ?>
                         <fieldset>
                             <p><?= __('You are about to unsubscribe from "Maison du Logiciel Libre". Here are the implications of this action who can not be undone:') ?></p>
 
