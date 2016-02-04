@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 20:36+0000\n"
+"POT-Creation-Date: 2016-02-04 21:58+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -280,15 +280,6 @@ msgstr ""
 
 #: Controller/PagesController.php:300;511
 #: Model/Entity/Mission.php:187;211
-#: Template/Element/Missions/addForm.ctp:35;43
-#: Template/Missions/edit.ctp:70;78
-#: Template/Missions/index.ctp:70
-#: Template/Organizations/view.ctp:94;101
-#: Template/Projects/view.ctp:113;120
-#: Template/Users/edit.ctp:26;39
-#: Template/Users/index.ctp:136
-#: Template/Users/register.ctp:61
-#: Template/Users/view.ctp:66
 msgid "Not specified"
 msgstr ""
 
@@ -1136,6 +1127,7 @@ msgid "Add an projects"
 msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:10
+#: Template/Missions/index.ctp:24
 #: Template/Pages/home.ctp:96
 #: Template/Users/index.ctp:28
 #: Template/Users/view.ctp:23
@@ -1263,6 +1255,18 @@ msgstr ""
 #: Template/Missions/edit.ctp:67
 #: Template/Pages/submit.ctp:25
 msgid "What type of student(s) are you looking for?"
+msgstr ""
+
+#: Template/Element/Missions/addForm.ctp:35;43
+#: Template/Missions/edit.ctp:70;78
+#: Template/Missions/index.ctp:70
+#: Template/Organizations/view.ctp:94;101
+#: Template/Projects/view.ctp:113;120
+#: Template/Users/edit.ctp:26;39
+#: Template/Users/index.ctp:136
+#: Template/Users/register.ctp:61
+#: Template/Users/view.ctp:66
+msgid "Anytime"
 msgstr ""
 
 #: Template/Element/Missions/addForm.ctp:40
@@ -1610,10 +1614,6 @@ msgstr ""
 #: Template/Universities/view.ctp:16
 #: Template/Users/view.ctp:210
 msgid "Name"
-msgstr ""
-
-#: Template/Missions/index.ctp:24
-msgid "Need"
 msgstr ""
 
 #: Template/Missions/index.ctp:25

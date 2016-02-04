@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 15:37-0500\n"
-"PO-Revision-Date: 2016-02-04 15:39-0500\n"
+"POT-Creation-Date: 2016-02-04 16:59-0500\n"
+"PO-Revision-Date: 2016-02-04 16:59-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -290,11 +290,6 @@ msgid "There was an error. Please,try again."
 msgstr "Il y a eu une erreur. Veuillez réessayer."
 
 #: Controller/PagesController.php:300;511 Model/Entity/Mission.php:187;211
-#: Template/Element/Missions/addForm.ctp:35;43 Template/Missions/edit.ctp:70;78
-#: Template/Missions/index.ctp:70 Template/Organizations/view.ctp:94;101
-#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26;39
-#: Template/Users/index.ctp:136 Template/Users/register.ctp:61
-#: Template/Users/view.ctp:66
 msgid "Not specified"
 msgstr "Non spécifié"
 
@@ -1041,8 +1036,9 @@ msgstr "Archiver le projet"
 msgid "Add an projects"
 msgstr "Ajouter un projet"
 
-#: Template/Cell/Sidebar/user.ctp:10 Template/Pages/home.ctp:96
-#: Template/Users/index.ctp:28 Template/Users/view.ctp:23
+#: Template/Cell/Sidebar/user.ctp:10 Template/Missions/index.ctp:24
+#: Template/Pages/home.ctp:96 Template/Users/index.ctp:28
+#: Template/Users/view.ctp:23
 msgid "Student"
 msgstr "Étudiant"
 
@@ -1177,6 +1173,14 @@ msgstr "exemple : \"une base en Python\" ou \"expérience limitée en C++\""
 #: Template/Pages/submit.ctp:25
 msgid "What type of student(s) are you looking for?"
 msgstr "Quels types de personnes recherchez-vous ?"
+
+#: Template/Element/Missions/addForm.ctp:35;43 Template/Missions/edit.ctp:70;78
+#: Template/Missions/index.ctp:70 Template/Organizations/view.ctp:94;101
+#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26;39
+#: Template/Users/index.ctp:136 Template/Users/register.ctp:61
+#: Template/Users/view.ctp:66
+msgid "Anytime"
+msgstr "En tout temps"
 
 #: Template/Element/Missions/addForm.ctp:40 Template/Missions/edit.ctp:75
 msgid "Term"
@@ -1525,10 +1529,6 @@ msgstr "Aucun professeur"
 #: Template/Users/view.ctp:210
 msgid "Name"
 msgstr "Nom"
-
-#: Template/Missions/index.ctp:24
-msgid "Need"
-msgstr "À besoin"
 
 #: Template/Missions/index.ctp:25 Template/Projects/view.ctp:73
 msgid "Session"
@@ -3012,6 +3012,9 @@ msgstr "Retirer votre application"
 #: View/Helper/WikiHelper.php:61
 msgid "Go to wiki"
 msgstr "Accéder au wiki"
+
+#~ msgid "Need"
+#~ msgstr "À besoin"
 
 #~ msgid "Edit CVS"
 #~ msgstr "Modifier CVS"
