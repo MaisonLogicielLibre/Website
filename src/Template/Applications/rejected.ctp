@@ -18,7 +18,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="header-title"><?= __('Reject the candidate for {0}', $mission->getName()); ?></h3>
-                        <?= $this->Form->create($application, ['type' => 'post', 'action' => 'rejected']); ?>
+                        <?= $this->Form->create($application, ['type' => 'post', 'url' => ['action' => 'rejected']]); ?>
                         <fieldset>
                             <p><?= __('You\'re about to reject the application of {0} for the mission {1}',
                                     $this->Html->link(
