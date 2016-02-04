@@ -204,7 +204,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h3 class="header-title"><?= __('CVS added') ?> <?= $this->Wiki->addHelper('CVS'); ?></h3>
+                            <h3 class="header-title"><?= __('VCS added') ?> <?= $this->Wiki->addHelper('VCS'); ?></h3>
                             <table class="table borderless table-striped">
                                 <thead>
                                     <td> <?= __('Name') ?> </td>
@@ -213,11 +213,11 @@
                                 <?php foreach ($userSelected->svn_users as $svnUser): ?>
                                     <tr>
                                         <td>
-                                            <!-- Name of cvs -->
+                                            <!-- Name of VCS -->
                                             <a href="<?=$svnUser->svn->getLink() . $svnUser->getPseudo() ?>"><?=$svnUser->getPseudo()?></a>
                                         </td>
                                         <td>
-                                            <!-- Source of cvs -->
+                                            <!-- Source of VCS -->
                                             <?= $svnUser->svn->getName() ?>
                                         </td>
                                     </tr>

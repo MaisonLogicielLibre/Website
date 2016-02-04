@@ -1,12 +1,12 @@
 <?= $this->Html->css('bootstrap-social', ['block' => 'cssTop']); ?>
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<h1 class="page-header"><?= __('Edit CVS'); ?></h1>
+		<h1 class="page-header"><?= __('Edit VCS'); ?></h1>
 		<?php
 		$this->Html->addCrumb(__('Home'), '/');
 		$this->Html->addCrumb(__('Users'), '/Users');
 		$this->Html->addCrumb(__('My profile'), '/users/view/'.$user->id);
-		$this->Html->addCrumb(__('Edit CVS'));
+		$this->Html->addCrumb(__('Edit VCS'));
 
 		echo $this->Html->getCrumbList(); ?>
 	</div>
@@ -27,7 +27,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h3 class="header-title"><?= __('CVS added') ?> <?= $this->Wiki->addHelper('CVS'); ?></h3>
+						<h3 class="header-title"><?= __('VCS added') ?> <?= $this->Wiki->addHelper('VCS'); ?></h3>
 						<table class="table borderless table-striped">
 							<thead>
 								<td></td>
@@ -36,7 +36,7 @@
 							<?php foreach($pseudos as $pseudo) { ?>
 								<tr>
 									<td>
-										<!-- Name of cvs -->
+										<!-- Name of VCS -->
 										<?= $pseudo['pseudo'] ?>
 									</td>
 									<td>

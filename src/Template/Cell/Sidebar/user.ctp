@@ -73,7 +73,7 @@
                                 $object->id
                             ]); ?>">
                             <i class="fa fa-code-fork"></i>
-                            <?= __('Edit CVS') ?>
+                            <?= __('Edit VCS') ?>
                         </a>
                     </li>
                     <!-- Modify phone link/form -->
