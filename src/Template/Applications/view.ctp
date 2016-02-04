@@ -27,16 +27,13 @@
 						<div class="row col-sm-12 top-buffer">
 							<?= __('Email :') ?> <a href="mailto:<?=$application->getEmail()?>"><?=$application->getEmail()?></a>
 						</div>
-						<div class="row col-sm-12 top-buffer">
-							<?= __('Type :') ?> <?php if (isset($application->type_mission)) { echo __($application->type_mission->name); } else { echo ''; } ?>
-						</div>
 						<?php if ($application->getText() != '') { ?>
 							<div class="row col-sm-12 top-buffer">
 								<h3 class="header-title"><?= __('Extra information') ?></h3>
 								<?= $Parsedown->text($application->getText()) ?>
 							</div>
 						<?php } ?>
-						
+
 						<?php if(!($application->accepted)) : ?>
 							<div class="row col-sm-12 top-buffer">
 								<input class="btn-success btn" type="button" onclick="location.href='<?=$this->url->build(['controller' => 'Applications','action' => 'accepted',$application->id])?>';" value="<?=__('Approved')?>"/>
