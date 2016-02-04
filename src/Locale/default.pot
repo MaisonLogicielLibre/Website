@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 20:21+0000\n"
+"POT-Creation-Date: 2016-02-04 20:36+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -1154,7 +1154,7 @@ msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:76
 #: Template/Users/svn.ctp:4;9
-msgid "Edit CVS"
+msgid "Edit VCS"
 msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:88
@@ -3019,7 +3019,7 @@ msgstr ""
 
 #: Template/Users/svn.ctp:30
 #: Template/Users/view.ctp:207
-msgid "CVS added"
+msgid "VCS added"
 msgstr ""
 
 #: Template/Users/view.ctp:9

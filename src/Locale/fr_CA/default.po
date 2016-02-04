@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 15:22-0500\n"
-"PO-Revision-Date: 2016-02-04 15:29-0500\n"
+"POT-Creation-Date: 2016-02-04 15:37-0500\n"
+"PO-Revision-Date: 2016-02-04 15:39-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -1055,8 +1055,8 @@ msgid "Change my password"
 msgstr "Modifier mon mot de passe"
 
 #: Template/Cell/Sidebar/user.ctp:76 Template/Users/svn.ctp:4;9
-msgid "Edit CVS"
-msgstr "Modifier CVS"
+msgid "Edit VCS"
+msgstr "Modifier le VCS"
 
 #: Template/Cell/Sidebar/user.ctp:88 Template/Users/edit.ctp:7;12
 msgid "Edit my profile"
@@ -2954,8 +2954,8 @@ msgid "Add GitHub account"
 msgstr "Ajouter un compte GitHub"
 
 #: Template/Users/svn.ctp:30 Template/Users/view.ctp:207
-msgid "CVS added"
-msgstr "CVS ajouté"
+msgid "VCS added"
+msgstr "Modifier le VCS"
 
 #: Template/Users/view.ctp:9
 msgid "Your biography"
@@ -3012,6 +3012,12 @@ msgstr "Retirer votre application"
 #: View/Helper/WikiHelper.php:61
 msgid "Go to wiki"
 msgstr "Accéder au wiki"
+
+#~ msgid "Edit CVS"
+#~ msgstr "Modifier CVS"
+
+#~ msgid "CVS added"
+#~ msgstr "CVS ajouté"
 
 #~ msgid "The comment has been saved."
 #~ msgstr "Le commentaire a été enregistré."
