@@ -55,5 +55,13 @@ class NotificationsFixture extends TestFixture
             'created' => '2015-11-27 01:19:31',
             'user_id' => 1
         ],
+        [
+            'id' => 3,
+            'name' => 'notification1',
+            'link' => 'projects/view/1',
+            'isRead' => 0,
+            'created' => '2015-11-27 01:19:31',
+            'user_id' => 1
+        ],
     ];
 }

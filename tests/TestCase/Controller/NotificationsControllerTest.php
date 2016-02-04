@@ -11,6 +11,7 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\NotificationsController;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -53,6 +54,30 @@ class NotificationsControllerTest extends IntegrationTestCase
     ];
 
     /**
+     * SetUp method
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $config = TableRegistry::exists('Notifications') ? [] : ['className' => 'App\Model\Table\NotificationsTable'];
+        $this->Notifications = TableRegistry::get('Notifications', $config);
+    }
+
+    /**
+     * TearDown method
+     *
+     * @return void
+     */
+    public function tearDown()
+    {
+        unset($this->Notifications);
+
+        parent::tearDown();
+    }
+
+    /**
      * Test index method
      *
      * @return void
@@ -72,7 +97,16 @@ class NotificationsControllerTest extends IntegrationTestCase
      */
     public function testMarkAsRead()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $id = 3;
+        $expected = true;
+
+        $this->session(['Auth.User.id' => 1]);
+
+        $this->get('/notifications/markAsRead/3');
+
+        $isRead = $this->Notifications->get($id)->isRead();
+
+        $this->assertEquals($expected, $isRead);
     }
 
     /**
