@@ -267,7 +267,7 @@
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo $this->DataTables->init([
     'ajax' => [
-        'url' => $this->Url->build(['action' => 'view', $user->id]),
+        'url' => $this->Url->build(['action' => 'view', $userSelected->id]),
     ],
     'delay' => 600,
     "sDom" => "<'row'><'row'><'row'>",
