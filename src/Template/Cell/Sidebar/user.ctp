@@ -54,7 +54,7 @@
                             <?= __('Change my email') ?>
                         </a>
                     </li>
-					<li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
+                    <li class="<?= ($this->request->action == 'password') ? 'active' : ''; ?>">
                         <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",
@@ -65,7 +65,7 @@
                             <?= __('Change my password') ?>
                         </a>
                     </li>
-					<li class="<?= ($this->request->action == 'svn') ? 'active' : ''; ?>">
+                    <li class="<?= ($this->request->action == 'svn') ? 'active' : ''; ?>">
                         <a href="<?= $this->Url->build(
                             [
                                 "controller" => "Users",

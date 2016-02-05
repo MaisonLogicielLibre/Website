@@ -455,7 +455,7 @@ class PagesController extends AppController
             );
 
             if ($user->getUniversity()) {
-				// @codingStandardsIgnoreStart
+                // @codingStandardsIgnoreStart
                 switch ($user->getUniversity()->getId()) {
                     case 1:
                         $countUni[0] = $countUni[0] + 1;
@@ -481,7 +481,7 @@ class PagesController extends AppController
                     default:
                         $countUni[7] = $countUni[7] + 1;
                         break;
-				// @codingStandardsIgnoreEnd
+                // @codingStandardsIgnoreEnd
                 }
             } else {
                 $countUni[7] = $countUni[7] + 1;
