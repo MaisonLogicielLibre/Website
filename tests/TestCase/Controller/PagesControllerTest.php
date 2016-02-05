@@ -88,4 +88,15 @@ class PagesControllerTest extends IntegrationTestCase
         $this->get('/pages/statistics');
         $this->assertResponseOk();
     }
+
+    /**
+     * Test tv - View television page
+     *
+     * @return void
+     */
+    public function testTv1()
+    {
+        $this->get('/pages/tv/1');
+        $this->assertResponseOk();
+    }
 }
