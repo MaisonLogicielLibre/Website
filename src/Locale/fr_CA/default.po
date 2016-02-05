@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 16:59-0500\n"
-"PO-Revision-Date: 2016-02-04 16:59-0500\n"
+"POT-Creation-Date: 2016-02-05 09:02-0500\n"
+"PO-Revision-Date: 2016-02-05 09:02-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -1520,15 +1520,8 @@ msgid "No professor"
 msgstr "Aucun professeur"
 
 #: Template/Missions/index.ctp:23 Template/Missions/view.ctp:119
-#: Template/News/index.ctp:26 Template/Organizations/admin_index.ctp:24
-#: Template/Organizations/index.ctp:30
-#: Template/Organizations/my_organizations.ctp:22
-#: Template/Projects/admin_index.ctp:25 Template/Projects/index.ctp:31
-#: Template/Projects/my_projects.ctp:24 Template/Svns/view.ctp:18
-#: Template/TypeUsers/view.ctp:16 Template/Universities/view.ctp:16
-#: Template/Users/view.ctp:210
-msgid "Name"
-msgstr "Nom"
+msgid "Title"
+msgstr "Titre"
 
 #: Template/Missions/index.ctp:25 Template/Projects/view.ctp:73
 msgid "Session"
@@ -1622,6 +1615,16 @@ msgstr "Modifier"
 #: Template/Universities/view.ctp:24
 msgid "Id"
 msgstr "Id"
+
+#: Template/News/index.ctp:26 Template/Organizations/admin_index.ctp:24
+#: Template/Organizations/index.ctp:30
+#: Template/Organizations/my_organizations.ctp:22
+#: Template/Projects/admin_index.ctp:25 Template/Projects/index.ctp:31
+#: Template/Projects/my_projects.ctp:24 Template/Svns/view.ctp:18
+#: Template/TypeUsers/view.ctp:16 Template/Universities/view.ctp:16
+#: Template/Users/view.ctp:210
+msgid "Name"
+msgstr "Nom"
 
 #: Template/News/index.ctp:29;57 Template/OrganizationsProjects/edit.ctp:6
 #: Template/OrganizationsProjects/index.ctp:34 Template/SvnUsers/edit.ctp:6

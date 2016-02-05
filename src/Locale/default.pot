@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-04 21:58+0000\n"
+"POT-Creation-Date: 2016-02-05 14:02+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -1602,18 +1602,7 @@ msgstr ""
 
 #: Template/Missions/index.ctp:23
 #: Template/Missions/view.ctp:119
-#: Template/News/index.ctp:26
-#: Template/Organizations/admin_index.ctp:24
-#: Template/Organizations/index.ctp:30
-#: Template/Organizations/my_organizations.ctp:22
-#: Template/Projects/admin_index.ctp:25
-#: Template/Projects/index.ctp:31
-#: Template/Projects/my_projects.ctp:24
-#: Template/Svns/view.ctp:18
-#: Template/TypeUsers/view.ctp:16
-#: Template/Universities/view.ctp:16
-#: Template/Users/view.ctp:210
-msgid "Name"
+msgid "Title"
 msgstr ""
 
 #: Template/Missions/index.ctp:25
@@ -1722,6 +1711,20 @@ msgstr ""
 #: Template/TypeUsersUsers/view.ctp:30
 #: Template/Universities/view.ctp:24
 msgid "Id"
+msgstr ""
+
+#: Template/News/index.ctp:26
+#: Template/Organizations/admin_index.ctp:24
+#: Template/Organizations/index.ctp:30
+#: Template/Organizations/my_organizations.ctp:22
+#: Template/Projects/admin_index.ctp:25
+#: Template/Projects/index.ctp:31
+#: Template/Projects/my_projects.ctp:24
+#: Template/Svns/view.ctp:18
+#: Template/TypeUsers/view.ctp:16
+#: Template/Universities/view.ctp:16
+#: Template/Users/view.ctp:210
+msgid "Name"
 msgstr ""
 
 #: Template/News/index.ctp:29;57
