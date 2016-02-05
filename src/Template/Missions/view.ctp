@@ -121,7 +121,7 @@
                                             if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
                                                 <th><?= __('Approved'); ?></th>
                                                 <th><?= __('Rejected'); ?></th>
-												<th><?= __('View details'); ?></th>
+                                                <th><?= __('View details'); ?></th>
                                                 <?php
                                             endif;
                                             ?>
@@ -179,7 +179,7 @@ if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user
                 'data' => 'rejected',
                 'searchable' => false
             ],
-			[
+            [
                 'name' => 'Applications.view',
                 'data' => 'rejected',
                 'searchable' => false
