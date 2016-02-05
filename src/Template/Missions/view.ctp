@@ -116,7 +116,7 @@
                                         <thead>
                                         <tr>
                                             <th></th>
-                                            <th><?= __('Name'); ?></th>
+                                            <th><?= __('Title'); ?></th>
                                             <?php
                                             if ($user && (($user->hasPermissionName(['edit_mission']) && $isMentor) || $user->hasPermissionName(['edit_missions']))) : ?>
                                                 <th><?= __('Approved'); ?></th>

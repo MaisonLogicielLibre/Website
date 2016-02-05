@@ -20,7 +20,7 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Title'); ?></th>
                                 <th><?= __('Student'); ?></th>
                                 <th><?= __('Session'); ?></th>
                                 <th><?= __('Organizations'); ?></th>
