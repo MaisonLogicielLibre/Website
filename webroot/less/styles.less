@@ -10,7 +10,7 @@ html, body {
 
 body {
   background: #ebeff2;
-  margin: 100px 0 0 0;
+  margin: 50px 0 0 0;
 }
 
 a {
@@ -31,12 +31,6 @@ a {
 
   &:hover {
     text-decoration: none;
-  }
-}
-
-@media (min-width: 768px) {
-  body {
-    margin-top: 50px;
   }
 }
 
@@ -127,11 +121,11 @@ h1, h2, h3, h4, h5, h6 {
         border-left: 3px solid @brand-success;
         color: @brand-success;
       }
-     .submenu-arrow {
-       &:before {
-         content: "\f0de";
-       }
-     }
+      .submenu-arrow {
+        &:before {
+          content: "\f0de";
+        }
+      }
     }
     a {
       color: @gray-light;
@@ -246,42 +240,6 @@ footer#footer {
   span.recover-password-info {
     display: block;
     margin: 5px 0;
-  }
-}
-
-@media (min-width: 768px) {
-
-  #wrapper {
-    padding-left: 250px;
-    #page-wrapper {
-      padding: 10px;
-    }
-    .side-nav {
-      position: fixed;
-      top: 51px;
-      left: 250px;
-      width: 250px;
-      margin-left: -250px;
-      border: none;
-      border-radius: 0;
-      overflow-y: auto;
-      background: #fff;
-      bottom: 0;
-      overflow-x: hidden;
-      padding-bottom: 40px;
-      & > li {
-        & > a {
-          width: 250px;
-          &:hover, &:focus {
-            outline: none;
-          }
-        }
-      }
-    }
-  }
-
-  #wrapper-home {
-    padding: 0;
   }
 }
 
@@ -440,14 +398,16 @@ footer#footer {
 
 #carousel-mobile {
   display: block;
+
 }
 
 #carousel {
   display: none;
-  height: 100%;
-  margin-top: -50px;
+  height: 500px;
+  margin-top: 10px;
   .item, .item.active {
     height: 100%;
+    width: 100%;
   }
 
   .carousel-inner {
@@ -466,7 +426,7 @@ footer#footer {
 
   .carousel-indicators li {
     background-color: #999;
-    background-color: rgba(70,70,70,.25);
+    background-color: rgba(70, 70, 70, .25);
     border: none;
   }
 
@@ -476,64 +436,38 @@ footer#footer {
   }
 }
 
-#welcome-row {
+.welcome-row {
   background: #fff;
   h1 {
     font-weight: 700;
-    font-size: 50px;
+    font-size: 250%;
   }
   h3 {
-    font-size: 50px;
+    font-size: 250%;
     color: @brand-info;
-    margin-bottom: 30px;
-  }
-}
-
-@media (min-width: 768px) {
-  #welcome-row {
-    padding: 100px 0;
-  }
-  #carousel-mobile {
-    display: none;
-  }
-  #carousel {
-    display: block;
-  }
-  #stats-row {
-    .stats-cell {
-      margin: 0;
-      &:not(:last-child) {
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
-      }
-    }
+    margin-bottom: 10px;
   }
 }
 
 #stats-row {
-  padding: 100px 0;
+  padding: 2px 0;
   background: @gray-dark;
   color: #fff;
   .fa {
     display: none;
   }
   .stats-cell {
-    margin: 20px 0;
-    min-height: 250px;
-    position: relative;
-    .put-bottom {
-      position: absolute;
-      bottom: 0;
-    }
+    padding: 10px;
   }
   h1 {
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   .home-stats-desc-title {
     line-height: 0;
   }
   .home-stats-desc {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .home-stats {
     font-weight: 700;
@@ -546,28 +480,20 @@ footer#footer {
   }
   .home-stats-info {
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 150%;
     word-spacing: 9999999px;
-  }
-}
-
-@media (min-width: 768px) {
-  #stats-row {
-    .fa {
-      display: block;
-    }
   }
 }
 
 #partners-row {
   background: #fff;
-  padding: 100px 0;
+  padding: 2px 0;
 }
 
 #carousel-sponsors {
   .carousel-indicators li {
     background-color: #999;
-    background-color: rgba(70,70,70,.25);
+    background-color: rgba(70, 70, 70, .25);
     border: none;
   }
 
@@ -582,7 +508,7 @@ footer#footer {
 }
 
 #universities-row {
-  padding: 50px 0;
+  padding: 2px 0;
   background: @gray-lighter;
   #universities-qi {
     max-height: 150px;
@@ -605,7 +531,7 @@ footer#footer {
 
 #sub-info-row {
   background: @brand-info;
-  padding: 100px 0;
+  padding: 10px 0;
   color: #fff;
   h1, h2, h3, h4, h5 {
     color: #fff;
@@ -620,7 +546,7 @@ footer#footer {
 
 #contact-row {
   background: @gray-dark;
-  padding: 50px 0;
+  padding: 2px 0;
   color: #fff;
 }
 
@@ -646,12 +572,6 @@ footer#footer {
       color: #fff;
     }
   }
-}
-
-@media (max-width: 1700px) {
-	.error-text {
-		text-align: center;
-	}
 }
 
 .cake-error {
@@ -701,9 +621,9 @@ footer#footer {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
 .tt-suggestion {
@@ -725,56 +645,220 @@ footer#footer {
 .tt-suggestion p {
   margin: 0;
 }
-#contact-map {
-	width: 100%;
-	height: 450px;
-}
 
-@media (max-width: 550px) {
-  #contact-map {
-		width: 100%;
-		height: 200px;
-	}
+#contact-map {
+  width: 100%;
+  height: 450px;
 }
 
 .top-buffer {
-	margin-top: 10px;
+  margin-top: 10px;
 }
+
 .cake-debug-output {
   margin-left: 250px;
 }
 
 .partner-panel {
-	border-width: 3px;
+  border-width: 3px;
 }
 
 .partner-founder {
-	border-color: darkorange;
+  border-color: darkorange;
 }
 
 .partner-premium {
-	border-color: green;
+  border-color: green;
 }
 
 .partner-sponsor {
-	border-color: silver;
+  border-color: silver;
 }
 
 .partner-default {
-	border-color: white;
+  border-color: white;
 }
 
-.partner-text-founder{
-	color: darkorange;
-	text-align: right;
+.partner-text-founder {
+  color: darkorange;
+  text-align: right;
 }
 
-.partner-text-premium{
-	color: green;
-	text-align: right;
+.partner-text-premium {
+  color: green;
+  text-align: right;
 }
 
-.partner-text-sponsor{
-	color: silver;
-	text-align: right;
+.partner-text-sponsor {
+  color: silver;
+  text-align: right;
+}
+
+/* Feb 4 , 2016 - new classes for the home page */
+.fillBackground {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: -1; /* Ensure div tag stays behind content; */
+}
+
+.alert {
+  h1 {
+    margin:0;
+  }
+}
+.stretch {
+  width: 100%;
+  height: 100%;
+}
+.hrmain { // sperator between welcome row divs
+  margin:4px;
+}
+.founder-image {
+  width:50%;
+  margin:0 auto;
+}
+.sponsor-image {
+  width:30%;
+  margin:0 auto;
+}
+
+@media (max-width: 550px) {
+    #contact-map {
+    width: 100%;
+    height: 200px;
+  }
+  .home-stats-info {
+    font-size: 10px;
+  }
+  #industry-student {
+    display: none;
+  }
+  .welcome-row {
+    h1 {
+      font-size: 150%;
+    }
+    h3 {
+      font-size: 150%;
+    }
+  }
+}
+/* Feb 4 , 2016 - grouped media actin together */
+@media (min-width: 992px) {
+  body {
+    margin-top: 50px;
+  }
+
+  #wrapper {
+    padding-left: 250px;
+    #page-wrapper {
+      padding: 10px;
+    }
+    .side-nav {
+      position: fixed;
+      top: 51px;
+      left: 250px;
+      width: 250px;
+      margin-left: -250px;
+      border: none;
+      border-radius: 0;
+      overflow-y: auto;
+      background: #fff;
+      bottom: 0;
+      overflow-x: hidden;
+      padding-bottom: 40px;
+      & > li {
+        & > a {
+          width: 250px;
+          &:hover, &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  #wrapper-home {
+    padding: 0;
+  }
+
+  #welcome-row {
+    padding: 2px 0;
+  }
+
+  #carousel-mobile {
+    display: none;
+  }
+  #industry-student {
+    display: block;
+  }
+
+  #carousel {
+    display: block;
+    height: 600px;
+  }
+
+  #stats-row {
+    .fa {
+      display: block;
+    }
+    .stats-cell {
+      margin: 0;
+      &:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+
+@media (max-width: 1700px) {
+  .error-text {
+    text-align: center;
+  }
+}
+
+// colllapse the nav before we hit the iPad portrait size
+@media (max-width: 991px) {
+  .side-nav {
+    padding-top: 70px;
+  }
+  .home-stats-info {
+    font-size: 10px;
+  }
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  .navbar-collapse.collapse.in {
+    display: block!important;
+  }
+  .collapsing {
+    overflow: hidden!important;
+  }
 }
