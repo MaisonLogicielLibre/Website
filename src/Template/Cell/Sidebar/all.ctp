@@ -1,5 +1,10 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
+        <li>
+            <div class="alert alert-info">
+                <strong>Mobile Challenge Feb 12-13!</strong>
+            </div>
+        </li>
         <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
                 <i class="fa fa-home fa-lg"></i><?= __('Home') ?></a>
@@ -134,5 +139,13 @@
             </a>
         </li>
         <?php endif; ?>
+        <li>
+            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'mission']); ?>">
+                <i class="fa fa-question-circle fa-lg"></i><?= __('About us') ?></a>
+        </li>
+        <li>
+            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'contact']); ?>">
+                <i class="fa fa-plug fa-lg"></i><?= __('Contact us') ?></a>
+        </li>
     </ul>
 </div>
