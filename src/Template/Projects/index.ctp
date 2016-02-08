@@ -91,7 +91,8 @@ echo $this->DataTables->init([
         [
             'name' => 'Organizations.name',
             'data' => 'organizations',
-            'searchable' => true
+            'searchable' => true,
+            'orderable' => false
         ]
     ],
     'pageLength' => 50

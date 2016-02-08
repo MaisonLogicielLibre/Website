@@ -108,6 +108,7 @@ echo $this->DataTables->init([
         [
             'name' => 'Mission.session',
             'data' => 'session',
+            'orderable' => false
         ],
         [
             'name' => 'Organization.name',
