@@ -7,7 +7,8 @@
         </li>
         <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>">
-                <i class="fa fa-home fa-lg"></i><?= __('Home') ?></a>
+                <i class="fa fa-home fa-lg"></i>
+                <span class="i-text"><?= __('Home') ?></span></a>
         </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
@@ -141,11 +142,13 @@
         <?php endif; ?>
         <li>
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'mission']); ?>">
-                <i class="fa fa-question-circle fa-lg"></i><?= __('About us') ?></a>
+                <i class="fa fa-question-circle fa-lg"></i>
+                <span class="i-text"><?= __('About us') ?></span></a>
         </li>
         <li>
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'contact']); ?>">
-                <i class="fa fa-plug fa-lg"></i><?= __('Contact us') ?></a>
+                <i class="fa fa-plug fa-lg"></i>
+                <span class="i-text"><?= __('Contact us') ?></span></a>
         </li>
     </ul>
 </div>
