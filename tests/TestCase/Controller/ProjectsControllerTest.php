@@ -32,23 +32,23 @@ class ProjectsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-    'app.type_users_users',
-    'app.organizations',
-    'app.organizations_Projects',
-    'app.users',
-    'app.type_users',
-    'app.svn_users',
-    'app.svns',
-    'app.universities',
-    'app.projects',
-    'app.projects_contributors',
-    'app.projects_mentors',
-    'app.missions',
-    'app.permissions',
-    'app.permissions_type_users',
-    'app.notifications',
-    'app.organizations_owners',
-    'app.organizations_members'
+        'app.type_users_users',
+        'app.organizations',
+        'app.organizations_Projects',
+        'app.users',
+        'app.type_users',
+        'app.svn_users',
+        'app.svns',
+        'app.universities',
+        'app.projects',
+        'app.projects_contributors',
+        'app.projects_mentors',
+        'app.missions',
+        'app.permissions',
+        'app.permissions_type_users',
+        'app.notifications',
+        'app.organizations_owners',
+        'app.organizations_members'
     ];
 
     /**

@@ -39,7 +39,6 @@ class ProjectsContributorsTableTest extends TestCase
         'app.applications',
         'app.users',
         'app.universities',
-        
         'app.projects_contributors',
         'app.projects_mentors',
         'app.organizations',
