@@ -25,7 +25,7 @@ class NewsCell extends Cell
     public function listNews()
     {
         $this->loadModel('News');
-        $news = $this->News->find('all');
+        $news = $this->News->find('all')->order(['id' => 'DESC']);
 
         $this->set(compact('news'));
     }
