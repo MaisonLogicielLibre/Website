@@ -8,7 +8,7 @@
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Site
  */
- 
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\OrganizationsProjectsTable;
@@ -42,7 +42,6 @@ class OrganizationsOwnersTableTest extends TestCase
         'app.applications',
         'app.users',
         'app.universities',
-        
         'app.projects_contributors',
         'app.organizations_projects',
         'app.projects_mentors',
@@ -85,11 +84,11 @@ class OrganizationsOwnersTableTest extends TestCase
     public function testValidationDefault()
     {
         $validator = new Validator();
-        
+
         $expected = $validator;
-        
+
         $result = $this->OrganizationsOwners->validationDefault($validator);
-        
+
         $this->assertEquals($validator, $result);
     }
 
@@ -101,11 +100,11 @@ class OrganizationsOwnersTableTest extends TestCase
     public function testBuildRules()
     {
         $rule = new RulesChecker();
-        
+
         $expected = $rule;
-        
+
         $result = $this->OrganizationsOwners->buildRules($rule);
-        
+
         $this->assertEquals($expected, $result);
     }
 }

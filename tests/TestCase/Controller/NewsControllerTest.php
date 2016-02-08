@@ -32,11 +32,11 @@ class NewsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.news',
-    'app.users',
-    'app.permissions',
+        'app.users',
+        'app.permissions',
         'app.permissions_type_users',
-    'app.type_users',
-    'app.type_users_users'
+        'app.type_users',
+        'app.type_users_users'
     ];
 
     /**
@@ -51,7 +51,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news');
         $this->assertResponseOk();
     }
-    
+
     /**
      * Test index - No Auth
      *
@@ -62,7 +62,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test index - No Perm
      *
@@ -84,7 +84,7 @@ class NewsControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [
             'name' => 'amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
@@ -96,7 +96,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->post('/news/edit/1', $data);
         $this->assertRedirect(['controller' => 'News', 'action' => 'index']);
     }
-    
+
     /**
      * Test edit - No Auth
      *
@@ -107,7 +107,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news/edit/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test edit - No Perm
      *
@@ -129,19 +129,19 @@ class NewsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2015-11-26 16:23:46',
             'link' => 'Lorem ipsum dolor sit amet'
         ];
-        
+
         $this->get('/news/add');
         $this->post('/news/add', $data);
         $this->assertRedirect(['controller' => 'News', 'action' => 'index']);
     }
-    
+
     /**
      * Test add - No
      *
@@ -150,19 +150,19 @@ class NewsControllerTest extends IntegrationTestCase
     public function testAddNo()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2015-11-26 16:23:46',
             'link' => 'Lorem ipsum dolor sit amet'
         ];
-        
+
         $this->get('/news/add');
         $this->post('/news/add', $data);
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Auth
      *
@@ -173,7 +173,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news/add');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test add - No Perm
      *
@@ -186,7 +186,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news/add');
         $this->assertResponseSuccess();
     }
-     
+
 
     /**
      * Test delete - Ok
@@ -200,7 +200,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->post('/news/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Auth
      *
@@ -211,7 +211,7 @@ class NewsControllerTest extends IntegrationTestCase
         $this->get('/news/delete/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
-    
+
     /**
      * Test delete - No Perm
      *

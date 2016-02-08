@@ -36,7 +36,6 @@ class HashesTableTest extends TestCase
         'app.hashes',
         'app.users',
         'app.universities',
-        
         'app.applications',
         'app.projects',
         'app.missions',

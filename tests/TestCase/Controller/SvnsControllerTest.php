@@ -31,21 +31,20 @@ class SvnsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-    'app.type_users_users',
-    'app.organizations',
-    'app.organizations_Projects',
-    'app.users',
-    'app.type_users',
-    'app.svn_users',
-    'app.svns',
-    'app.universities',
-    
-    'app.projects',
-    'app.projects_contributors',
-    'app.projects_mentors',
-    'app.missions',
-    'app.permissions',
-    'app.permissions_type_users'
+        'app.type_users_users',
+        'app.organizations',
+        'app.organizations_Projects',
+        'app.users',
+        'app.type_users',
+        'app.svn_users',
+        'app.svns',
+        'app.universities',
+        'app.projects',
+        'app.projects_contributors',
+        'app.projects_mentors',
+        'app.missions',
+        'app.permissions',
+        'app.permissions_type_users'
     ];
 
     /**
@@ -56,11 +55,11 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testIndexOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/svns/index');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test index - No Authentification
      *
@@ -80,11 +79,11 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testViewOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->get('/svns/view/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test view - No Authentification
      *
@@ -104,7 +103,7 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testAddOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [
             'name' => 'BitBucket'
         ];
@@ -112,7 +111,7 @@ class SvnsControllerTest extends IntegrationTestCase
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - Fail
      *
@@ -121,13 +120,13 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testAddFail()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
         $this->post('/svns/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Permission
      *
@@ -136,13 +135,13 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testAddNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/svns/add', $data);
 
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test add - No Authentification
      *
@@ -164,14 +163,14 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testEditOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $data = [];
-        
+
         $this->get('/svns/edit/1');
         $this->post('/svns/edit/1', $data);
         $this->assertResponseSuccess();
     }
-       
+
     /**
      * Test edit - No Permission
      *
@@ -180,12 +179,12 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testEditNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $data = [];
         $this->post('/svns/edit/1', $data);
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test edit - No Authentification
      *
@@ -206,11 +205,11 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testDeleteOk()
     {
         $this->session(['Auth.User.id' => 2]);
-        
+
         $this->post('/svns/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Permission
      *
@@ -219,11 +218,11 @@ class SvnsControllerTest extends IntegrationTestCase
     public function testDeleteNoPerm()
     {
         $this->session(['Auth.User.id' => 1]);
-        
+
         $this->post('/svns/delete/1');
         $this->assertResponseSuccess();
     }
-    
+
     /**
      * Test delete - No Authentification
      *
