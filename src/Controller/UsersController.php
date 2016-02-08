@@ -302,9 +302,6 @@ class UsersController extends AppController
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
-                // Force to put null on gender if its not specified
-                $user->editGender($this->request->data['gender']);
-
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('Your profile has been updated successfully'));
                     return $this->redirect(['action' => 'view', $user->id]);

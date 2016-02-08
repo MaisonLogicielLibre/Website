@@ -67,6 +67,9 @@ class UsersControllerTest extends IntegrationTestCase
         parent::setUp();
         $config = TableRegistry::exists('UsersTypeMissions') ? [] : ['className' => 'App\Model\Table\UsersTypeMissionsTable'];
         $this->UsersTypeMissions = TableRegistry::get('UsersTypeMissions', $config);
+
+        $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
+        $this->Users = TableRegistry::get('Users', $config);
     }
 
     /**
@@ -77,6 +80,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function tearDown()
     {
         unset($this->UsersTypeMissions);
+        unset($this->Users);
 
         parent::tearDown();
     }
@@ -456,14 +460,20 @@ class UsersControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEditOk()
+    public function testEditNullGender()
     {
         $this->session(['Auth.User.id' => 2]);
-        $data = [
-        ];
-        $this->get('/users/edit/1');
+        $expectedGender = null;
+
+        $data = [];
+
         $this->post('/users/edit/2', $data);
+
         $this->assertRedirect(['controller' => 'Users', 'action' => 'view', 2]);
+
+        $user = $this->Users->get(2);
+
+        $this->assertEquals($expectedGender, $user->getGender);
     }
 
 
