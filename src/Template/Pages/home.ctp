@@ -49,7 +49,7 @@
                     'alt' => 'Maison Logiciel Libre', 'width' => '60', 'style' => 'padding-bottom:5px']); ?>
             </div>
             <div class ="col-lg-1 col-md-2 col-sg-2 col-xs-2">
-                <i class="fa fa-industry  fa-5x"
+                <i class="fa fa-industry  fa-5x" id="industrial-icon"
                    title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
                 <h4><strong><?= __('Industry'); ?></strong></h4>
             </div>
