@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="row welcome-row">
-    <div class=" col-lg-offset-2  col-lg-8 col-md-12 col-sm-12 col-xs-12 text-center">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center" id="carousel-container">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
