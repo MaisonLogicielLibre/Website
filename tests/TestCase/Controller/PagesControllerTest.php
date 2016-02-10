@@ -51,7 +51,8 @@ class PagesControllerTest extends IntegrationTestCase
         'app.permissions_type_users',
         'app.hashes',
         'app.hash_types',
-        'app.statistics'
+        'app.statistics',
+        'app.notifications'
     ];
 
     /**
@@ -90,13 +91,57 @@ class PagesControllerTest extends IntegrationTestCase
     }
 
     /**
-     * Test tv - View television page
+     * Test tv 1 - View television page
      *
      * @return void
      */
     public function testTv1()
     {
         $this->get('/pages/tv/1');
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test tv 2 - View television page
+     *
+     * @return void
+     */
+    public function testTv2()
+    {
+        $this->get('/pages/tv/2');
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test tv 3 - View television page
+     *
+     * @return void
+     */
+    public function testTv3()
+    {
+        $this->get('/pages/tv/3');
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test tv 2 - View television page
+     *
+     * @return void
+     */
+    public function testTv4()
+    {
+        $this->get('/pages/tv/4');
+        $this->assertResponseOk();
+    }
+
+    /**
+     * Test tv 2 - View television page
+     *
+     * @return void
+     */
+    public function testTv5()
+    {
+        $this->get('/pages/tv/5');
         $this->assertResponseOk();
     }
 }
