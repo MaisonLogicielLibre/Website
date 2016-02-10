@@ -1,6 +1,6 @@
 <div class="row welcome-row">
     <div class=" col-sm-12 col-xs-12 text-center">
-        <h1 style="margin:1px"><?= __("maison du logiciel libre"); ?></h1>
+        <h1 style="margin:1px"><?= __("La Maison du Logiciel Libre"); ?></h1>
         <h3 style="margin:1px"><?= __('Ici nous brassons du code !') ?></h3>
     </div>
 </div>
