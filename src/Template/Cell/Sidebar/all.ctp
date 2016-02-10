@@ -159,5 +159,10 @@
                 <i class="fa fa-github fa-lg"></i>
                 <span class="i-text"><?= __('Contribute') ?></span></a>
         </li>
+        <li>
+            <a href="https://twitter.com/ml2_ets">
+                <i class="fa fa-twitter fa-lg"></i>
+                <span class="i-text"><?= __('Follow us') ?></span></a>
+        </li>
     </ul>
 </div>
