@@ -277,17 +277,22 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testRegisterOk()
     {
+        $expectedEmail = 'bla@bla.com';
         $data = [
             'username' => 'mrregister',
             'password' => 'allo',
             'confirm_password' => 'allo',
-            'email' => 'bla@bla.com',
+            'email' => $expectedEmail,
             'confirm_email' => 'bla@bla.com',
             'universitie_id' => 1
         ];
         $this->post('/users/register', $data);
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+
+        $user = $this->Users->find()->select(['emailPublic'])->order(['id' => 'DESC'])->first();
+
+        $this->assertEquals($expectedEmail, $user->getEmailPublic());
     }
 
 
@@ -304,6 +309,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/register', $data);
 
         $this->assertResponseSuccess();
+        $this->assertResponseContains('Your informations are invalid. Please try again later or contact us if the problem persists');
     }
 
     /**
