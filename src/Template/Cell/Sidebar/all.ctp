@@ -2,7 +2,11 @@
     <ul class="nav navbar-nav side-nav">
         <li>
             <div class="alert alert-info">
-                <strong>Mobile Challenge Feb 12-13!</strong>
+                <strong>
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
+                        <?= $news->name ?>
+                    </a>
+                </strong>
             </div>
         </li>
         <li class="<?= ($this->request->controller == 'Pages' && $this->request->action == 'home') ? 'active' : ''; ?>">

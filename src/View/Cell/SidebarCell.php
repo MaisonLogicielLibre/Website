@@ -27,7 +27,10 @@ class SidebarCell extends Cell
         $this->loadModel('Users');
         $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        $this->set(compact('user'));
+        $this->loadModel('News');
+        $news = $this->News->find('all')->select(['id', 'name'])->order(['id' => 'DESC'])->first();
+
+        $this->set(compact('user', 'news'));
     }
 
     /**
