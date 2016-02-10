@@ -252,20 +252,25 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
 
-            $user->editPassword($this->request->data['password']);
-            $user->editEmailPublic($this->request->data['email']);
-            $user->editMailingList(true);
-
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('Welcome to {0}', __('ML2')));
-                return $this->redirect(['action' => 'login']);
+            if ($user->errors()) {
+                $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
             } else {
-                $this->Flash->error(
-                    __(
-                        'The user could not be saved. Please,
-                 try again.'
-                    )
-                );
+                $user->editPassword($this->request->data['password']);
+                $user->editEmailPublic($this->request->data['email']);
+                $user->editMailingList(true);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('Welcome to {0}', __('ML2')));
+
+                    return $this->redirect(['action' => 'login']);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
             }
         }
 
