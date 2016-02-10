@@ -22,7 +22,7 @@
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/1trimmed.jpg'; ?>" class="stretch" alt=""/>
+                        <img src="<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
                 <div class="item">
