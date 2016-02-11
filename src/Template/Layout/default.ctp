@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $this->fetch('title') ?>
+        La Maison du Logiciel Libre
     </title>
     <?= $this->Html->meta('icon') ?>
 
