@@ -113,6 +113,7 @@ echo $this->DataTables->init([
         [
             'name' => 'Organization.name',
             'data' => 'project',
+            'orderable' => false
         ]
     ],
     'pageLength' => 50
