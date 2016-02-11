@@ -675,7 +675,8 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testRecoverPasswordSendMail()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/users/recoverPassword/1');
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'recoverPassword']);
     }
 
     /**
