@@ -48,7 +48,8 @@ class ProjectsControllerTest extends IntegrationTestCase
         'app.permissions_type_users',
         'app.notifications',
         'app.organizations_owners',
-        'app.organizations_members'
+        'app.organizations_members',
+        'app.news'
     ];
 
     /**

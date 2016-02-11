@@ -50,6 +50,7 @@ class MissionsControllerTest extends IntegrationTestCase
         'app.mission_levels',
         'app.missions_mission_levels',
         'app.type_missions',
+        'app.news'
     ];
 
     /**

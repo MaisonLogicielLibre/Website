@@ -51,7 +51,8 @@ class ApplicationsControllerTest extends IntegrationTestCase
         'app.mission_levels',
         'app.missions_mission_levels',
         'app.type_missions',
-        'app.notifications'
+        'app.notifications',
+        'app.news'
     ];
 
     /**

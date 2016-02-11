@@ -48,7 +48,8 @@ class OrganizationsControllerTest extends IntegrationTestCase
         'app.missions',
         'app.permissions',
         'app.permissions_type_users',
-        'app.notifications'
+        'app.notifications',
+        'app.news'
     ];
 
     /**

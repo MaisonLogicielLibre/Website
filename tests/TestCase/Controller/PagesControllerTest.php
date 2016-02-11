@@ -52,7 +52,8 @@ class PagesControllerTest extends IntegrationTestCase
         'app.hashes',
         'app.hash_types',
         'app.statistics',
-        'app.notifications'
+        'app.notifications',
+        'app.news'
     ];
 
     /**
