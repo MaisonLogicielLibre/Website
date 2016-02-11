@@ -44,7 +44,8 @@ class TypeUsersControllerTest extends IntegrationTestCase
         'app.projects_mentors',
         'app.missions',
         'app.permissions',
-        'app.permissions_type_users'
+        'app.permissions_type_users',
+        'app.news'
     ];
 
     /**

@@ -54,7 +54,8 @@ class UsersControllerTest extends IntegrationTestCase
         'app.users_type_missions',
         'app.type_missions',
         'app.notifications',
-        'app.applications'
+        'app.applications',
+        'app.news'
     ];
 
     /**
