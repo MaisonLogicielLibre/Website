@@ -961,7 +961,13 @@ class UsersTableTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testPendingApplication() {
+    /**
+     * Test pendingApplication
+     *
+     * @return void
+     */
+    public function testPendingApplication()
+    {
         $expectedApplicationId = 7;
         $missionId = 13;
         $userId = 7;
@@ -973,7 +979,14 @@ class UsersTableTest extends TestCase
         $this->assertEquals($expectedApplicationId, $application->id);
     }
 
-    public function testPendingApplicationTwoUsersOnMission() {
+    /**
+     * Test testPendingApplicationTwoUsersOnMission
+     * If two users have two application associated with same mission
+     *
+     * @return void
+     */
+    public function testPendingApplicationTwoUsersOnMission()
+    {
         // Application 9 linked to user 9
         $expectedApplicationId = 9;
         $userId = 9;
@@ -997,7 +1010,14 @@ class UsersTableTest extends TestCase
         $this->assertEquals($expectedApplicationId, $application->id);
     }
 
-    public function testPendingApplicationIsNotArchived() {
+    /**
+     * Test testPendingApplicationIsNotArchived
+     * If application is not archived
+     *
+     * @return void
+     */
+    public function testPendingApplicationIsNotArchived()
+    {
         $expectedApplicationId = 11;
         $userId = 10;
         $missionId = 15;
@@ -1010,7 +1030,14 @@ class UsersTableTest extends TestCase
         $this->assertEquals(false, $application->isArchived());
     }
 
-    public function testPendingApplicationIsNotAccepted() {
+    /**
+     * Test testPendingApplicationIsNotAccepted
+     * If application is not accepted
+     *
+     * @return void
+     */
+    public function testPendingApplicationIsNotAccepted()
+    {
         $expectedApplicationId = 13;
         $userId = 11;
         $missionId = 16;
@@ -1023,7 +1050,14 @@ class UsersTableTest extends TestCase
         $this->assertEquals(false, $application->accepted);
     }
 
-    public function testPendingApplicationIsNotRejected() {
+    /**
+     * Test testPendingApplicationIsNotAccepted
+     * If application is not rejected
+     *
+     * @return void
+     */
+    public function testPendingApplicationIsNotRejected()
+    {
         $expectedApplicationId = 15;
         $userId = 12;
         $missionId = 17;

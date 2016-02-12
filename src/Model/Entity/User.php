@@ -758,6 +758,13 @@ class User extends Entity
         return false;
     }
 
+    /**
+     * Get the pending application associated with the current user and mission
+     *
+     * @param Mission $missionId the mission id
+     *
+     * @return application
+     */
     public function pendingApplication($missionId)
     {
         $applications = TableRegistry::get('Applications');
