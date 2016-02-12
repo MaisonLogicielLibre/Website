@@ -757,4 +757,12 @@ class User extends Entity
         }
         return false;
     }
+
+    public function pendingApplication($missionId)
+    {
+        $applications = TableRegistry::get('Applications');
+        $application = $applications->find('all')->where(['mission_id' => $missionId])->first();
+
+        return $application;
+    }
 }

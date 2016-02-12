@@ -48,7 +48,8 @@ class UsersTableTest extends TestCase
         'app.projects',
         'app.projects_contributors',
         'app.projects_mentors',
-        'app.missions'
+        'app.missions',
+        'app.applications'
     ];
 
     /**
@@ -958,5 +959,17 @@ class UsersTableTest extends TestCase
         $result = $user->getSkills();
 
         $this->assertEquals($expected, $result);
+    }
+
+    public function testPendingApplication() {
+        $expectedApplicationId = 7;
+        $missionId = 13;
+        $userId = 7;
+
+        $user = $this->Users->get($userId);
+
+        $application = $user->pendingApplication($missionId);
+
+        $this->assertEquals($expectedApplicationId, $application->id);
     }
 }
