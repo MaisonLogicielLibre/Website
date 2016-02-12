@@ -1009,4 +1009,17 @@ class UsersTableTest extends TestCase
         $this->assertEquals($expectedApplicationId, $application->id);
         $this->assertEquals(false, $application->isArchived());
     }
+
+    public function testPendingApplicationIsNotAccepted() {
+        $expectedApplicationId = 13;
+        $userId = 11;
+        $missionId = 16;
+
+        $user = $this->Users->get($userId);
+
+        $application = $user->pendingApplication($missionId);
+
+        $this->assertEquals($expectedApplicationId, $application->id);
+        $this->assertEquals(false, $application->accepted);
+    }
 }
