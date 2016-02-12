@@ -120,5 +120,27 @@ class ApplicationsFixture extends TestFixture
             'email' => 'test@test.com',
             'archived' => 0
         ],
+        [
+            'id' => 8,
+            'mission_id' => 14,
+            'user_id' => 8,
+            'accepted' => 0,
+            'rejected' => 0,
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
+        ],
+        [
+            'id' => 9,
+            'mission_id' => 14,
+            'user_id' => 9,
+            'accepted' => 0,
+            'rejected' => 0,
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'email' => 'test@test.com',
+            'archived' => 0
+        ],
     ];
 }

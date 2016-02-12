@@ -761,7 +761,7 @@ class User extends Entity
     public function pendingApplication($missionId)
     {
         $applications = TableRegistry::get('Applications');
-        $application = $applications->find('all')->where(['mission_id' => $missionId])->first();
+        $application = $applications->find('all')->where(['mission_id' => $missionId, 'user_id' => $this->_properties['id']])->first();
 
         return $application;
     }

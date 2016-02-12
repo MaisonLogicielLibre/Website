@@ -972,4 +972,28 @@ class UsersTableTest extends TestCase
 
         $this->assertEquals($expectedApplicationId, $application->id);
     }
+
+    public function testPendingApplicationTwoUsersOnMission() {
+        // Application 9 linked to user 9
+        $expectedApplicationId = 9;
+        $userId = 9;
+        $missionId = 14;
+
+        $user = $this->Users->get($userId);
+
+        $application = $user->pendingApplication($missionId);
+
+        $this->assertEquals($expectedApplicationId, $application->id);
+
+        // Application 8 linked to user 8
+        $expectedApplicationId = 8;
+        $userId = 8;
+        $missionId = 14;
+
+        $user = $this->Users->get($userId);
+
+        $application = $user->pendingApplication($missionId);
+
+        $this->assertEquals($expectedApplicationId, $application->id);
+    }
 }

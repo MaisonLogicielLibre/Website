@@ -255,5 +255,21 @@ class MissionsFixture extends TestFixture
             'professor_id' => 1,
             'type_mission_id' => 1
         ],
+        [
+            'id' => 14,
+            'name' => 'Mission with no applications',
+            'session' => 1,
+            'length' => 1,
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'competence' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'internNbr' => 1,
+            'project_id' => 5,
+            'mentor_id' => 5,
+            'created' => '2016-01-18 14:07:59',
+            'modified' => '2016-01-18 14:07:59',
+            'archived' => 1,
+            'professor_id' => 1,
+            'type_mission_id' => 1
+        ],
     ];
 }
