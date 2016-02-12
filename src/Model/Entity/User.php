@@ -766,7 +766,8 @@ class User extends Entity
                 'mission_id' => $missionId,
                 'user_id' => $this->_properties['id'],
                 'archived' => false,
-                'accepted' => false
+                'accepted' => false,
+                'rejected' => false
             ]
         )->first();
 
