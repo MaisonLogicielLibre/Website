@@ -512,6 +512,45 @@ class UsersController extends AppController
     }
 
     /**
+     * SendResetPasswordEmail method
+     *
+     * @param int $id idOfUser
+     *
+     * @return \Cake\Network\Response|void
+     */
+    private function _sendResetPasswordEmail($id)
+    {
+        try {
+            $user = $this->Users->get($id);
+
+            //Generate the url to reset password
+            $url = $this->Hash->generateRandomString();
+
+            //Create the hash to reset password
+            $hash = TableRegistry::get('hashes')->newEntity();
+            $hash->setHash($this->Hash->hash($url));
+            $hash->setUser($user);
+            $hash->time = 86400;
+
+            $type = TableRegistry::get('hashTypes');
+            $type = $type->findByName("resetPassword")->first();
+            $hash->setType($type);
+
+            $this->Users->Hashes->save($hash);
+            $link = Router::url(['controller' => 'Users', 'action' => 'resetPassword', $url, '_full' => true]);
+
+            //Send the mail
+            $this->getMailer('User')->send('resetPassword', [$user, $link]);
+
+             $this->Flash->success(__("The email has been send."));
+        } catch (Exception $e) {
+            $this->Flash->error(__("Error in sending email, please try again."));
+        }
+
+        return $this->redirect(['action' => 'recoverPassword']);
+    }
+
+    /**
      * RecoverPassword method
      *
      * @param int $id idOfUser
@@ -522,33 +561,7 @@ class UsersController extends AppController
     {
         $this->viewBuilder()->layout(false);
         if ($id) { //Send mail to the user to reset password
-            try {
-                $user = $this->Users->get($id);
-
-                //Generate the url to reset password
-                $url = $this->Hash->generateRandomString();
-
-                //Create the hash to reset password
-                $hash = TableRegistry::get('hashes')->newEntity();
-                $hash->setHash($this->Hash->hash($url));
-                $hash->setUser($user);
-                $hash->time = 86400;
-
-                $type = TableRegistry::get('hashTypes');
-                $type = $type->findByName("resetPassword")->first();
-                $hash->setType($type);
-
-                $this->Users->Hashes->save($hash);
-                $link = Router::url(['controller' => 'Users', 'action' => 'resetPassword', $url, '_full' => true]);
-
-                //Send the mail
-                $this->getMailer('User')->send('resetPassword', [$user, $link]);
-
-                 $this->Flash->success(__("The email has been send."));
-            } catch (Exception $e) {
-                $this->Flash->error(__("Error in sending email, please try again."));
-            }
-            return $this->redirect(['action' => 'recoverPassword']);
+            return $this->_sendResetPasswordEmail($id);
         } elseif ($this->request->is('post')) { //Search account
             $user = null;
 
