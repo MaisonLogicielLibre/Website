@@ -161,14 +161,16 @@ class MissionsController extends AppController
         $mission = $this->Missions->get(
             $id,
             [
-            'contain' => [
-            'Projects' => ['Organizations'],
-            'MissionLevels',
-            'TypeMissions',
-            'Users',
-            'Professors',
-            'Applications'
-            ]
+                'contain' => [
+                    'Projects' => [
+                        'Organizations'
+                    ],
+                    'MissionLevels',
+                    'TypeMissions',
+                    'Users',
+                    'Professors',
+                    'Applications'
+                ]
             ]
         );
 
