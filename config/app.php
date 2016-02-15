@@ -242,13 +242,11 @@ return [
          */
         'test' => [
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
+            'driver' => 'Cake\Database\Driver\Sqlite',
             'persistent' => false,
             'host' => 'localhost',
             //'port' => 'nonstandard_port_number',
-            'username' => 'mllAdmin',
-            'password' => 'toto',
-            'database' => 'test_mll_site',
+            'database' => ':memory:',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
