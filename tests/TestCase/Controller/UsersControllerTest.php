@@ -55,7 +55,8 @@ class UsersControllerTest extends IntegrationTestCase
         'app.type_missions',
         'app.notifications',
         'app.applications',
-        'app.news'
+        'app.news',
+        'app.visits'
     ];
 
     /**
@@ -71,6 +72,9 @@ class UsersControllerTest extends IntegrationTestCase
 
         $config = TableRegistry::exists('Users') ? [] : ['className' => 'App\Model\Table\UsersTable'];
         $this->Users = TableRegistry::get('Users', $config);
+
+        $config = TableRegistry::exists('Visits') ? [] : ['className' => 'App\Model\Table\VisitsTable'];
+        $this->Visits = TableRegistry::get('Visits', $config);
     }
 
     /**
@@ -82,6 +86,7 @@ class UsersControllerTest extends IntegrationTestCase
     {
         unset($this->UsersTypeMissions);
         unset($this->Users);
+        unset($this->Visits);
 
         parent::tearDown();
     }
@@ -147,6 +152,10 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/login', $data);
 
         $this->assertRedirect(['controller' => 'Pages', 'action' => 'home']);
+
+        $visits = $this->Visits->find('all')->where(['user_id' => 2])->count();
+
+        $this->assertEquals(1, $visits);
     }
 
     /**

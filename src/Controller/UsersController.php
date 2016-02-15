@@ -141,6 +141,23 @@ class UsersController extends AppController
     }
 
     /**
+     * RecordVisit record the visit of a user
+     *
+     * @param $user user
+     *
+     * @return \Cake\Network\Response|void
+     */
+    protected function _recordVisit($user)
+    {
+        $this->Visits = $this->loadModel('Visits');
+        $visit = $this->Visits->newEntity();
+
+        $visit->user_id = $user['id'];
+
+        $res = $this->Visits->save($visit);
+    }
+
+    /**
      * Login method
      *
      * @return \Cake\Network\Response|void
@@ -152,6 +169,8 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
+
+                $this->_recordVisit($user);
 
                 if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/'])) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
