@@ -15,8 +15,8 @@
         body {
             background-color: #70CCD6;
         }
-        html {            
-	    background: url(webroot/img/banner2.png) #70CCD6 no-repeat fixed;
+        html {
+	    background: url(webroot/img/banner2.jpg) #70CCD6 no-repeat fixed;
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
