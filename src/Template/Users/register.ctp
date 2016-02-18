@@ -11,6 +11,7 @@
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->Html->css('font-awesome.min') ?>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600' rel='stylesheet' type='text/css'>
 
     <?= $this->Less->less('less/styles.less'); ?>
@@ -20,58 +21,36 @@
 <div id="register-wrapper">
     <div class="panel panel-default">
         <div class="panel-body">
-            <?= $this->Form->create($user, ['class' => 'form-horizontal']) ?>
             <div class="col-sm-12 col-xs-12">
-                <h2><?= __("Sign Up to {0}", '<strong>' . __('ML2') . '</strong>') ?></h2>
+                <h2><?= __("Qui êtes-vous?") ?></h2>
             </div>
             <div id="register-alert" class="col-sm-12"><?= $this->Flash->render() ?></div>
-            <div class="col-sm-5 col-xs-12">
-                <fieldset>
-                    <legend><?= __('Personal info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
-                    <?= $this->Form->input('firstName', ['label' => false, 'placeholder' => __('Enter your firstname'), 'autocomplete' => 'off']); ?>
-                    <?= $this->Form->input('lastName', ['label' => false, 'placeholder' => __('Enter your lastname'), 'autocomplete' => 'off']); ?>
-                </fieldset>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
+                    <a href="<?= $this->Url->build(["controller" => "Users", "action" => "registerIndustry"]); ?>"
+                        class=" text-center btn btn-primary register-button" id="industry-button">
+                        <i class="fa fa-industry"
+                           title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
+                        <h4><strong><?= __('Industry'); ?></strong></h4>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
+                    <a href="<?= $this->Url->build(["controller" => "User", "action" => "registerStudent"]); ?>"
+                        class=" text-center btn btn-primary register-button" id="student-button">
+                        <i class="fa fa-graduation-cap"
+                           title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
+                        <h4><strong><?= __('Student'); ?></strong></h4>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
+                    <a href="<?= $this->Url->build(["controller" => "User", "action" => "registerProfessor"]); ?>"
+                        class=" text-center btn btn-primary register-button" id="professor-button">
+                        <i class="fa fa-user"
+                           title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
+                        <h4><strong><?= __('Professor'); ?></strong></h4>
+                    </a>
+                </div>
             </div>
-            <div class="col-sm-offset-1 col-sm-6 col-xs-12">
-                <fieldset>
-                    <legend><?= __('Account info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
-                    <?= $this->Form->input('username', ['pattern' => '[a-zA-Z0-9_.-]{3,16}', 'title' => __('Letters (a-z), numbers, periods, underscore, and between 3 and 16 characters'), 'label' => false, 'placeholder' => __('Choose your username'), 'autocomplete' => 'off']); ?>
-                    <?= $this->Form->input('password', ['label' => false, 'placeholder' => __('Choose a password'), 'autocomplete' => 'off']); ?>
-                    <?= $this->Form->input('confirm_password', ['label' => false, 'type' => 'password', 'placeholder' => __('Confirm password'), 'autocomplete' => 'off']); ?>
-                </fieldset>
-            </div>
-            <div class="col-sm-5 col-xs-12">
-                <fieldset>
-                    <legend><?= __('Contact info') ?> <span class="sub"><?= __('(required)'); ?></span></legend>
-                    <?= $this->Form->input('email', ['label' => false, 'placeholder' => __('Email adress'), 'autocomplete' => 'off']); ?>
-                    <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Confirm email adress'), 'autocomplete' => 'off']); ?>
-                </fieldset>
-            </div>
-            <div class="col-sm-offset-1 col-sm-6 col-xs-12">
-                <fieldset>
-                    <legend><?= __('University info'); ?> </legend>
-                    <p class="register-university-info"><?= __('If you\'re a student please select yes and then select your university. If not, let the case be.'); ?></p>
-                    <?= $this->Form->input('isStudent', ['label' => false, 'class' => 'form-control']); ?>
-                    <p class="register-university-info"><?= __('P.S.: Only university students will be able to apply to projects.'); ?></p>
-                    <?php
-                    $options[] = ['value' => '', 'text' => __('Please select your university'), 'disabled' => true, 'selected' => true];
-                    foreach ($universities as $i => $university) {
-                        $options[] = ['value' => $i, 'text' => $university];
-                    }
-                    $options[] = ['value' => '0', 'text' => __('Anytime')];
-                    ?>
-                    <?= $this->Form->input('universitie_id', [
-                        'type' => 'select',
-                        'label' => false,
-                        'options' => $options,
-                        'required' => true,
-                        'class' => 'form-control',
-                    ]); ?>
-                </fieldset>
-            </div>
-            
-            <?= $this->Form->button(__('Sign Up'), ['class' => 'btn btn-info']); ?>
-            <?= $this->Form->end() ?>
         </div>
     </div>
     <div id="register-login-link" class="col-sm-12 col-xs-12">
