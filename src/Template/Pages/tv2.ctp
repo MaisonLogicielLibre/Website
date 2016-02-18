@@ -20,7 +20,7 @@
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
-            background-size: 95%;
+            background-size: 98% 100%;
         }
     </style>
 </head>
