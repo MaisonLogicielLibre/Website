@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="row welcome-row">
-    <div class="col-md-12 col-sm-12 col-xs-12 text-center" id="carousel-container">
+    <div id="carousel-container">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -27,64 +27,13 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill"
-                         style="background-image:url('<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>');"></div>
-                </div>
-                <div class="item">
-                    <div class="fill"
-                         style="background-image:url('<?= $this->request->webroot . 'img/carousel/3.jpg'; ?>');"></div>
-                </div>
-            </div>
-        </header>
-        <div class="container-fluid">
-            <div class="row" id="welcome-row">
-                <div class="col-sm-offset-2 col-sm-8 col-xs-12 text-center">
-                    <h1><?= __("Welcome to maison du logiciel libre (ML2)"); ?></h1>
-
-                    <h3><?= __('Ici nous brassons du code !') ?></h3>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-user fa-5x"></i>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong><?= __('Student'); ?></strong></h4>
-                                    <p><?= __('Improve your skill and C.V. by working on open source industry projects'); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-exchange fa-5x"></i>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong><?= __('ML2'); ?></strong></h4>
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="fa fa-user-md  fa-5x"></i>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4><strong><?= __('Industry'); ?></strong></h4>
-                                    <p><?= __('Propose a project and find motivated students in our university ecosystem'); ?></p>
-                                </div>
-                            </div>
-                        </div>
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/3.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
             </div>
