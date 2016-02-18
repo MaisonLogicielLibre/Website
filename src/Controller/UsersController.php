@@ -278,39 +278,6 @@ class UsersController extends AppController
     public function register()
     {
         $this->viewBuilder()->layout(false);
-        $user = $this->Users->newEntity();
-
-        $typeUser = $this->Users->TypeUsers->findByName('User')->first();
-        $user->type_users = [$typeUser];
-
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
-
-            if ($user->errors()) {
-                $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
-            } else {
-                $user->editPassword($this->request->data['password']);
-                $user->editEmailPublic($this->request->data['email']);
-                $user->editMailingList(true);
-
-                if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Welcome to {0}', __('ML2')));
-
-                    return $this->redirect(['action' => 'login']);
-                } else {
-                    $this->Flash->error(
-                        __(
-                            'The user could not be saved. Please,
-                     try again.'
-                        )
-                    );
-                }
-            }
-        }
-
-        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'universities'));
-        $this->set('_serialize', ['user']);
     }
 
     public function registerStudent()
