@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
-                    <a href="<?= $this->Url->build(["controller" => "User", "action" => "registerStudent"]); ?>"
+                    <a href="<?= $this->Url->build(["controller" => "Users", "action" => "registerStudent"]); ?>"
                         class=" text-center btn btn-primary register-button" id="student-button">
                         <i class="fa fa-graduation-cap"
                            title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
@@ -43,7 +43,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
-                    <a href="<?= $this->Url->build(["controller" => "User", "action" => "registerProfessor"]); ?>"
+                    <a href="<?= $this->Url->build(["controller" => "Users", "action" => "registerProfessor"]); ?>"
                         class=" text-center btn btn-primary register-button" id="professor-button">
                         <i class="fa fa-user"
                            title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
