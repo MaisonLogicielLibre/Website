@@ -402,9 +402,8 @@ footer#footer {
 }
 
 #carousel {
-  display: none;
-  height: 500px;
-  margin-top: 10px;
+  height: 630px;
+
   .item, .item.active {
     height: 100%;
     width: 100%;
@@ -412,6 +411,9 @@ footer#footer {
 
   .carousel-inner {
     height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .fill {
@@ -819,6 +821,12 @@ footer#footer {
   }
 }
 
+@media (max-width: 1700px) {
+  .error-text {
+    text-align: center;
+  }
+}
+
 // colllapse the nav before we hit the iPad portrait size
 @media (max-width: 991px) {
   .side-nav {
@@ -864,10 +872,6 @@ footer#footer {
   .collapsing {
     overflow: hidden!important;
   }
-}
-
-#carousel-container {
-    padding-bottom: 10px;
 }
 
 #industrial-icon {

@@ -143,11 +143,11 @@ class UsersController extends AppController
     /**
      * RecordVisit record the visit of a user
      *
-     * @param $user user
+     * @param object $user user
      *
      * @return \Cake\Network\Response|void
      */
-    protected function _recordVisit($user)
+    private function _recordVisit($user)
     {
         $this->Visits = $this->loadModel('Visits');
         $visit = $this->Visits->newEntity();

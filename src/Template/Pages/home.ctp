@@ -13,11 +13,12 @@
     </div>
 </div>
 <div class="row welcome-row">
-    <div class="col-md-12 col-sm-12 col-xs-12 text-center" id="carousel-container">
+    <div id="carousel-container">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -28,6 +29,11 @@
                 <div class="item">
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/3.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
             </div>
@@ -57,6 +63,10 @@
     </div>
 </div>
 
+<?php //Do not move this line before a manual import of script! ?>
+<?= $this->fetch('scriptBottom'); ?>
+</body>
+</html>
 <hr class="hrmain">
 <div class="row" id="stats-row">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
