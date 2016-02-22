@@ -160,4 +160,4 @@
         </ul>
     </div>
 </div>
-<? $this->Html->script(['carousel']); ?>
+<?= $this->Html->script(['carousel']); ?>
