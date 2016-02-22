@@ -244,7 +244,7 @@ class UsersControllerTest extends IntegrationTestCase
         $this->post('/users/register', $data);
 
         $this->assertResponseSuccess();
-        $this->assertResponseContains('Your informations are invalid. Please try again later or contact us if the problem persists');
+        $this->assertResponseContains('Vos informations sont invalides. Veuillez recommencer plus tard et nous contacter si le problème persiste.');
     }
 
     /**
