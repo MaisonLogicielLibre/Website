@@ -234,7 +234,9 @@ class UsersController extends AppController
                 'conditions' => [
                     'AND' => [
                         'user_id' => $id,
-                        'Applications.archived' => 0
+                        'Applications.archived' => 0,
+                        'Applications.accepted' => 0,
+                        'Applications.rejected' => 0
                     ]
                 ],
                 'fields' => [
