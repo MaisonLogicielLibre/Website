@@ -43,7 +43,7 @@
 <hr class="hrmain">
 <div class="row welcome-row" id="industry-student">
     <div class="col-lg-12 col-xs-12 text-center">
-        <div class="row">
+        <div class="row" style="margin-top: 5px;">
             <div class ="col-lg-offset-4 col-md-offset-3 col-sg-offset-3 col-xs-offset-3 col-lg-1 col-md-2 col-sg-2 col-xs-2">
                 <i class="fa fa-user fa-5x"
                    title="<?= __('Improve your skill and C.V. by working on open source industry projects'); ?>"></i>
