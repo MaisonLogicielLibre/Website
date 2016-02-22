@@ -280,6 +280,11 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
     }
 
+    /**
+     * RegisterStudent method
+     *
+     * @return redirect
+     */
     public function registerStudent()
     {
         $this->viewBuilder()->layout(false);
