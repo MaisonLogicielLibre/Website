@@ -50,7 +50,7 @@ class UsersTable extends Table
         $this->belongsTo(
             'Universities',
             [
-                'foreignKey' => 'universitie_id',
+                'foreignKey' => 'university_id',
                 'joinType' => 'LEFT'
             ]
         );
