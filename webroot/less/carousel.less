@@ -1,0 +1,69 @@
+/*
+* Home page carousel style
+*/
+
+#carousel-mobile {
+  display: block;
+
+}
+
+#carousel {
+  height: 630px;
+
+  .item, .item.active {
+    height: 100%;
+    width: 100%;
+  }
+
+  .carousel-inner {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70, 70, 70, .25);
+    border: none;
+  }
+
+  .carousel-indicators .active {
+    background-color: @gray-dark;
+    border: none;
+  }
+}
+
+/*
+* Screen sizes configuration
+*/
+
+@media (min-width: 992px) {
+  #carousel {
+    display: block;
+    height: 600px;
+  }
+  #carousel-mobile {
+    display: none;
+  }
+}
+@media(max-width: 550px) {
+  #carousel-container {
+    display: none;
+  }
+}
+@media(max-width: 991px) {
+  #carousel-container {
+    display: none;
+  }
+}

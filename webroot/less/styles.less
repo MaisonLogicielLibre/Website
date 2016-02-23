@@ -5,6 +5,7 @@
 @import 'bootstrap-tokenfield.less';
 @import 'colors.less';
 @import 'register-button.less';
+@import 'carousel.less';
 
 html, body {
   height: 100%;
@@ -394,51 +395,6 @@ footer#footer {
   }
 }
 
-#carousel-mobile {
-  display: block;
-
-}
-
-#carousel {
-  height: 630px;
-  width: 1066px;
-  margin-left: auto;
-  margin-right: auto;
-
-  .item, .item.active {
-    height: 100%;
-    width: 100%;
-  }
-
-  .carousel-inner {
-    height: 100%;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .fill {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-  }
-
-  .carousel-indicators li {
-    background-color: #999;
-    background-color: rgba(70, 70, 70, .25);
-    border: none;
-  }
-
-  .carousel-indicators .active {
-    background-color: @gray-dark;
-    border: none;
-  }
-}
-
 .welcome-row {
   background: #fff;
   h1 {
@@ -746,10 +702,6 @@ footer#footer {
       font-size: 150%;
     }
   }
-
-  #carousel-container {
-    display: none;
-  }
 }
 /* Feb 4 , 2016 - grouped media actin together */
 @media (min-width: 992px) {
@@ -793,17 +745,8 @@ footer#footer {
   #welcome-row {
     padding: 2px 0;
   }
-
-  #carousel-mobile {
-    display: none;
-  }
   #industry-student {
     display: block;
-  }
-
-  #carousel {
-    display: block;
-    height: 600px;
   }
 
   #stats-row {
@@ -875,9 +818,6 @@ footer#footer {
   }
   .collapsing {
     overflow: hidden!important;
-  }
-  #carousel-container {
-      display: none;
   }
 }
 
