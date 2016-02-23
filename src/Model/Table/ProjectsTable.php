@@ -24,7 +24,6 @@ use Cake\Validation\Validator;
  * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
  * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
  * @link     https://github.com/MaisonLogicielLibre/Website
- * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\HasMany $Missions
  * @property \Cake\ORM\Association\BelongsToMany $Organizations
  * @property \Cake\ORM\Association\BelongsToMany $Users

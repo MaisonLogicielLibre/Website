@@ -53,6 +53,7 @@ class MissionsController extends AppController
      */
     public function isAuthorized($user)
     {
+        return true;
         $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
@@ -92,60 +93,103 @@ class MissionsController extends AppController
      *
      * @return void
      */
+
+    private function setFilter($key, $value)
+    {
+        if (!empty($value)) {
+            $this->request->session()->write('filter.mission.' . $key, $value);
+        } else {
+            $this->request->session()->delete('filter.mission.' . $key);
+        }
+    }
+
     public function index()
     {
-        $types = $this->loadModel("TypeMissions")->find('list', ['limit' => 200]);
-        $this->set(compact('types'));
+        $session = $this->request->session();
+        if ($this->request->is(['patch', 'post', 'put'])) { // is there a filter?
+            //$this->setFilter('startDate');
+            //$this->setFilter('endDate');
+            $this->setFilter('mission_select', $this->request->data['mission_select']);
+            $this->setFilter('org_select', $this->request->data['org_select']);
+            $this->setFilter('applicationState', $this->request->data['applicationState']);
+            $this->setFilter('studentUniversity', $this->request->data['studentUniversity']);
+            $this->setFilter('profFilter', $this->request->data['profFilter']);
+            $this->setFilter('session_select', $this->request->data['session_select']);
+            $this->setFilter('studentUniversity', $this->request->data['studentUniversity']);
+            $this->setFilter('professorUniversity', $this->request->data['professorUniversity']);
+        }
+        // query builder
+        $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Applications', 'TypeMissions', 'Users', 'Professors']);
+        if (!empty($tmp = $this->request->session()->read('filter.mission.mission_select'))) {
+            $query->where(['TypeMissions.id' => $tmp]);
+        }
+        if (!empty($tmp = $session->read('filter.mission.org_select'))) {
+            $filterView['org_select'] = $tmp;
+            $query->matching('Projects.Organizations', function ($q) use ($tmp) {
+                return $q->where(['Organizations.id' => $tmp]);
+            });
+        }
+        if (!empty($tmp = $this->request->session()->read('filter.mission.session_select'))) {
+            $query->where(['Missions.session' => $tmp]);
+        }
+        $chooseStudentUniversity = false;
+        if (!empty($tmp = $this->request->session()->read('filter.mission.applicationState'))) {
+            switch ($tmp) {
+                case 1: // accepted
+                    $query->matching('Applications', function ($q) {
+                        return $q->where(['Applications.accepted' => true]);
+                    });
+                    $chooseStudentUniversity = true;
+                    break;
+                case 2: // rejected
+                    $query->matching('Applications', function ($q) {
+                        return $q->where(['Applications.rejected' => true]);
+                    });
+                    $chooseStudentUniversity = true;
+                    break;
+                case 3: // unprocessed
+                    $query->matching('Applications', function ($q) {
+                        return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
+                    });
+                    $chooseStudentUniversity = true;
+                    break;
+            }
+        }
+        if ($chooseStudentUniversity && !empty($tmp = $this->request->session()->read('filter.mission.studentUniversity'))) {
+            $query->matching('Applications.Students.Universities', function ($q) use ($tmp) {
+                return $q->where(['Universities.id' => $tmp]);
+            });
+        }
+        $chooseProfUniversity = false;
+        if (!empty($tmp = $this->request->session()->read('filter.mission.profFilter'))) {
+            switch ($tmp) {
+                case "hasProfessor":
+                    $query->where(['Missions.professor_id !=' => 0]);
+                    $chooseProfUniversity = true;
+                    break;
+                case "needsProfessor":
+                    $query->where(['Missions.professor_id' => 0, 'OR' => [['TypeMissions.id' => 3], ['TypeMissions.id' => 4]]]);
+                    $chooseProfUniversity = true;
+                    break;
+            }
+        }
+        if ($chooseProfUniversity && !empty($tmp = $this->request->session()->read('filter.mission.professorUniversity'))) {
+            $query->matching('Professors.Universities', function ($q) use ($tmp) {
+                return $q->where(['Universities.id' => $tmp]);
+            });
+        }
+        $query->order(['Missions.modified' => 'DESC']);
 
-        $orgs = $this->loadModel("Organizations")->find('list', ['limit' => 200]);
-        $this->set(compact('orgs'));
+        $organizations = $this->Missions->Projects->Organizations->find('list')->orderAsc('name')->toArray();
+        $universities = $this->Missions->Users->Universities->find('list')->orderAsc('name')->toArray();
+        $professors = $this->Missions->Professors->find('list')->orderAsc('lastName')->toArray();
+        $typeMissions = $this->Missions->TypeMissions->find('list')->orderAsc('name')->toArray();
+        $missionLevels = $this->Missions->MissionLevels->find('list')->orderAsc('name')->toArray();
 
-        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
+        $missions = $this->paginate($query);
 
-        $data = $this->DataTables->find(
-            'Missions',
-            [
-                'contain' => [
-                    'Projects' => [
-                        'Organizations' => [
-                            'fields' => [
-                                'id', 'name', 'OrganizationsProjects.project_id'
-                            ]
-                        ],
-                        'fields' => [
-                                'id', 'name'
-                        ]
-                    ],
-                    'TypeMissions' => [
-                        'fields' =>
-                            [
-                                'id', 'name'
-                            ]
-                    ],
-                ],
-                'fields' => [
-                    'id', 'name', 'session', 'type_mission_id'
-                ],
-                'conditions' => [
-                    'AND' => [
-                        [
-                            'Projects.archived' => 0,
-                            'Projects.accepted' => 1
-                        ],
-                        [
-                            'Missions.archived' => 0
-                        ]
-                    ]
-                ],
-            ]
-        );
-
-        $this->set(
-            [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-            ]
-        );
+        $this->set(compact('missions', 'filterView', 'organizations', 'universities', 'professors', 'typeMissions', 'missionLevels'));
+        $this->set('_serialize', ['missions']);
     }
 
     /**
@@ -156,7 +200,8 @@ class MissionsController extends AppController
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function view($id = null)
+    public
+    function view($id = null)
     {
         $mission = $this->Missions->get(
             $id,
@@ -233,7 +278,8 @@ class MissionsController extends AppController
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add($projectId = null)
+    public
+    function add($projectId = null)
     {
         if (!is_null($projectId)) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
@@ -242,7 +288,7 @@ class MissionsController extends AppController
             $project = $this->Projects->get(
                 $projectId,
                 [
-                'contain' => ['Mentors']
+                    'contain' => ['Mentors']
                 ]
             );
 
@@ -281,7 +327,8 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public function edit($id = null)
+    public
+    function edit($id = null)
     {
         $mission = $this->Missions->get(
             $id,
@@ -342,7 +389,8 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public function editArchived($id)
+    public
+    function editArchived($id)
     {
         $this->autoRender = false;
         $mission = $this->Missions->get($id);
@@ -367,7 +415,8 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public function apply($id)
+    public
+    function apply($id)
     {
         $mission = $this->Missions->get(
             $id,
@@ -461,18 +510,19 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public function editMentor($id = null)
+    public
+    function editMentor($id = null)
     {
         $mission = $this->Missions->get(
             $id,
             [
-            'contain' =>
-                [
-                    'Projects' =>
-                        [
-                            'Mentors'
-                        ]
-                ]
+                'contain' =>
+                    [
+                        'Projects' =>
+                            [
+                                'Mentors'
+                            ]
+                    ]
             ]
         );
 
@@ -507,7 +557,8 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public function editProfessor($id = null)
+    public
+    function editProfessor($id = null)
     {
         $mission = $this->Missions->get(
             $id,

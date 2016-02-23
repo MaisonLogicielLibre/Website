@@ -1,14 +1,4 @@
 <?php
-/**
- * Universities Model
- *
- * @category Table
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
- */
-
 namespace App\Model\Table;
 
 use App\Model\Entity\University;
@@ -20,11 +10,6 @@ use Cake\Validation\Validator;
 /**
  * Universities Model
  *
- * @category Table
- * @package  Website
- * @author   Simon Bégin <simon.begin.1@ens.etsmtl.ca>
- * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
- * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class UniversitiesTable extends Table
 {
@@ -33,7 +18,6 @@ class UniversitiesTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
-     *
      * @return void
      */
     public function initialize(array $config)
@@ -43,19 +27,24 @@ class UniversitiesTable extends Table
         $this->table('universities');
         $this->displayField('name');
         $this->primaryKey('id');
+        $this->hasMany(
+            'Users',
+            [
+                'foreignKey' => 'universitie_id'
+            ]
+        );
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
-     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator

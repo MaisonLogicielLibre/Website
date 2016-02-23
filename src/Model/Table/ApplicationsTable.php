@@ -56,10 +56,18 @@ class ApplicationsTable extends Table
             ]
         );
         $this->belongsTo(
+            'Students',
+            [
+                'className' => 'Users',
+                'foreignKey' => 'user_id',
+                'joinType' => 'INNER'
+            ]
+        );
+        $this->belongsTo(
             'Users',
             [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+                'foreignKey' => 'user_id',
+                'joinType' => 'INNER'
             ]
         );
     }
