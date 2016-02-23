@@ -29,6 +29,12 @@ Autorisation : <br/>
 `setfacl -R -m u:${HTTPDUSER}:rwx logs` <br/>
 `setfacl -R -d -m u:${HTTPDUSER}:rwx logs` <br/>
 
+## i18n
+1. Extraire les locales: `bin/cake i18n extract`
+2. Ouvrir le fichier des locales fr_CA: `poedit src/Locale/fr_CA/default.po`
+3. Dans [Poedit](https://poedit.net/), choisir l'option Catalog,Update from POT file...
+4. Traduire les chaînes de caractères
+5. Sauvegarder le fichier de locale
 
 #ENGLISH VERSION
 
@@ -61,3 +67,10 @@ Autorisation : <br/>
 `setfacl -R -d -m u:${HTTPDUSER}:rwx tmp` <br/>
 `setfacl -R -m u:${HTTPDUSER}:rwx logs` <br/>
 `setfacl -R -d -m u:${HTTPDUSER}:rwx logs` <br/>
+
+## i18n
+1. Extract the locales: `bin/cake i18n extract`
+2. Open the fr_CA locales with [Poedit](https://poedit.net/): `poedit src/Locale/fr_CA/default.po`
+3. In [Poedit](https://poedit.net/), choose the option Catalog,Update from POT file...
+4. Translate the strings
+5. Save the locale file
