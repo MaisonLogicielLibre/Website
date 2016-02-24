@@ -780,4 +780,14 @@ class User extends Entity
 
         return $application;
     }
+
+    public function getLanguage()
+    {
+        $lang = $this->_properties['language'];
+        if($lang) {
+            return 'fr_CA';
+        } else {
+            return 'en_CA';
+        }
+    }
 }

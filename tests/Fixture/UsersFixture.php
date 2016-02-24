@@ -30,6 +30,7 @@ class UsersFixture extends TestFixture
         'university_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'language' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'mailingList' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'skills' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'twitter' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -77,7 +78,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 2,
@@ -100,7 +102,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 3,
@@ -123,7 +126,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 1
+            'isProfessor' => 1,
+            'language' => 1
         ],
         [
             'id' => 4,
@@ -146,7 +150,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 5,
@@ -169,7 +174,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 6,
@@ -192,7 +198,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 7,
@@ -215,7 +222,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 8,
@@ -238,7 +246,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 9,
@@ -261,7 +270,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 10,
@@ -284,7 +294,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 11,
@@ -307,7 +318,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ],
         [
             'id' => 12,
@@ -330,7 +342,8 @@ class UsersFixture extends TestFixture
             'linkedIn' => 'http://monlinkedin.com',
             'emailPublic' => 'email@gmail.com',
             'interest' => 'Un petit interet.',
-            'isProfessor' => 0
+            'isProfessor' => 0,
+            'language' => 1
         ]
     ];
 }

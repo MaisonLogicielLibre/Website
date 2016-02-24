@@ -11,6 +11,10 @@ $(document).ready(function () {
         'onText': yesTr,
         'offText': noTr
     });
+    $('#language').bootstrapSwitch({
+        'onText': 'Français',
+        'offText': 'English'
+    });
 
     var usersSkills = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,

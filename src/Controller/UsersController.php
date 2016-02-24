@@ -329,6 +329,9 @@ class UsersController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->data);
 
                 if ($this->Users->save($user)) {
+                    //Update the language
+                    $this->request->session()->write('lang', $user->getLanguage());
+                    $this->checkLanguage();
                     $this->Flash->success(__('Your profile has been updated successfully'));
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {

@@ -76,6 +76,10 @@
                             <?= $this->Form->label('isAvailableMentoring', __('Would you like to be a mentor?'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
                             <?= $this->Form->input('isAvailableMentoring', ['label' => false, 'class' => 'form-control']); ?>
                         </div>
+                        <div class="form-group">
+                            <?= $this->Form->label('language', __('Toggle Language'), ['class' => 'control-label', 'style' => 'width:100%;']); ?>
+                            <?= $this->Form->input('language', ['label' => false, 'class' => 'form-control']); ?>
+                        </div>
                     </div>
                 </div>
             </div>
