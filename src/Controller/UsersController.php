@@ -440,8 +440,6 @@ class UsersController extends AppController
             } else {
 
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Welcome to {0}', __('ML2')));
-
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
