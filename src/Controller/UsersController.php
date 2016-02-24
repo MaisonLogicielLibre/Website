@@ -186,7 +186,7 @@ class UsersController extends AppController
                 $this->request->session()->write('lang', $lang);
                 $this->_recordVisit($user);
 
-                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/', 'registerStudentOptional/', 'registerStudent/', 'registerIndustry/'])) {
+                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/', 'registerStudentOptional/', 'registerStudent/', 'registerIndustry/', 'registerProfessor/'])) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
                 } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
                     return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
@@ -281,6 +281,49 @@ class UsersController extends AppController
     public function register()
     {
         $this->viewBuilder()->layout(false);
+    }
+
+    /**
+     * RegisterStudent method
+     *
+     * @return redirect
+     */
+    public function registerProfessor()
+    {
+        $this->viewBuilder()->layout(false);
+        $user = $this->Users->newEntity();
+
+        $typeUser = $this->Users->TypeUsers->findByName('User')->first();
+        $user->type_users = [$typeUser];
+
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+
+            if ($user->errors()) {
+                $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
+            } else {
+                $user->editPassword($this->request->data['password']);
+                $user->editEmailPublic($this->request->data['email']);
+                $user->editMailingList(true);
+
+                if ($this->Users->save($user)) {
+                    // Redirect to optional information page
+                    $this->request->session()->write('user', $user);
+                    return $this->redirect(['action' => 'login']);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+        }
+
+        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'universities'));
+        $this->set('_serialize', ['user']);
     }
 
     /**
