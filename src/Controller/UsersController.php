@@ -186,9 +186,10 @@ class UsersController extends AppController
                 $this->request->session()->write('lang', $lang);
                 $this->_recordVisit($user);
 
-
-                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/', 'registerStudentOptional/', 'registerStudent/'])) {
+                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/', 'registerStudentOptional/', 'registerStudent/', 'registerIndustry/'])) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
+                } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
+                    return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
                 } else {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
                 }
@@ -297,6 +298,7 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $user->university_id = 0;
 
             if ($user->errors()) {
                 $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
@@ -308,7 +310,7 @@ class UsersController extends AppController
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
                     $this->request->session()->write('user', $user);
-                    return $this->redirect(['action' => 'registerStudentOptional']);
+                    return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
                         __(
@@ -320,8 +322,7 @@ class UsersController extends AppController
             }
         }
 
-        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'universities'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 
