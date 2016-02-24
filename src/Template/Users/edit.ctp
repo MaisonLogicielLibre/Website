@@ -29,8 +29,8 @@
                         }
                         ?>
                         <div class="form-group">
-                            <?= $this->Form->label('universitie_id', __('University'), ['class' => 'control-label']); ?>
-                            <?= $this->Form->select('universitie_id', $options, ['class' => 'form-control']); ?>
+                            <?= $this->Form->label('university_id', __('University'), ['class' => 'control-label']); ?>
+                            <?= $this->Form->select('university_id', $options, ['class' => 'form-control']); ?>
                         </div>
                         <div class="form-group">
                             <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>

@@ -83,6 +83,7 @@ class UsersController extends AppController
                 'recoverPassword',
                 'resetPassword',
                 'registerStudent',
+                'registerStudentOptional',
                 'registerIndustry',
                 'registerProfessor'
             ]
@@ -185,7 +186,8 @@ class UsersController extends AppController
                 $this->request->session()->write('lang', $lang);
                 $this->_recordVisit($user);
 
-                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/'])) {
+
+                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/', 'registerStudentOptional/', 'registerStudent/'])) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
                 } else {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
@@ -304,6 +306,43 @@ class UsersController extends AppController
                 $user->editMailingList(true);
 
                 if ($this->Users->save($user)) {
+                    // Redirect to optional information page
+                    $this->request->session()->write('user', $user);
+                    return $this->redirect(['action' => 'registerStudentOptional']);
+                } else {
+                    $this->Flash->error(
+                        __(
+                            'The user could not be saved. Please,
+                     try again.'
+                        )
+                    );
+                }
+            }
+        }
+
+        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'universities'));
+        $this->set('_serialize', ['user']);
+    }
+
+    public function registerStudentOptional()
+    {
+        $this->viewBuilder()->layout(false);
+        $userId = $this->request->session()->read('user')['id'];
+        $user = $this->Users->get($userId);
+
+        $this->loadModel('UsersTypeMissions');
+        $typeMissions = $this->Users->TypeMissions->find('all')->toArray();
+        $selectedTypeMissions = $this->UsersTypeMissions->findByUserId($user['id'])->toArray();
+
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+
+            if ($user->errors()) {
+                $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
+            } else {
+
+                if ($this->Users->save($user)) {
                     $this->Flash->success(__('Welcome to {0}', __('ML2')));
 
                     return $this->redirect(['action' => 'login']);
@@ -318,8 +357,7 @@ class UsersController extends AppController
             }
         }
 
-        $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'universities'));
+        $this->set(compact('user', 'typeMissions', 'selectedTypeMissions'));
         $this->set('_serialize', ['user']);
     }
 

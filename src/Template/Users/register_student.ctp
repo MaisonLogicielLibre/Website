@@ -57,7 +57,7 @@
                     }
                     $options[] = ['value' => '0', 'text' => __('Anytime')];
                     ?>
-                    <?= $this->Form->input('universitie_id', [
+                    <?= $this->Form->input('university_id', [
                         'type' => 'select',
                         'label' => false,
                         'options' => $options,
