@@ -29,11 +29,6 @@
                 </div>
                 <div class="item active">
                     <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/3.jpg'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/4.png'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
