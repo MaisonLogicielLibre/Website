@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-02-22 14:11+0000\n"
+"POT-Creation-Date: 2016-02-25 14:52+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: Controller/AppController.php:65
-#: Controller/UsersController.php:282
+#: Controller/UsersController.php:284
 #: Template/Users/login.ctp:25
 #: Template/Users/register.ctp:25
 msgid "ML2"
@@ -388,91 +388,91 @@ msgstr ""
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:275
+#: Controller/UsersController.php:277
 msgid "Your informations are invalid. Please try again later or contact us if the problem persists"
 msgstr ""
 
-#: Controller/UsersController.php:282
+#: Controller/UsersController.php:284
 msgid "Welcome to {0}"
 msgstr ""
 
-#: Controller/UsersController.php:287;334;373
+#: Controller/UsersController.php:289;336;375
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:330
+#: Controller/UsersController.php:332
 msgid "Your profile has been updated successfully"
 msgstr ""
 
-#: Controller/UsersController.php:369;408
+#: Controller/UsersController.php:371;410
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:412
+#: Controller/UsersController.php:414
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:445
+#: Controller/UsersController.php:447
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:448
+#: Controller/UsersController.php:450
 msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:480;526
+#: Controller/UsersController.php:482;528
 msgid "This link seems corrupted. Please contact the administration team."
 msgstr ""
 
-#: Controller/UsersController.php:494
+#: Controller/UsersController.php:496
 msgid "Your password was modified."
 msgstr ""
 
-#: Controller/UsersController.php:498
+#: Controller/UsersController.php:500
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
-#: Controller/UsersController.php:514
+#: Controller/UsersController.php:516
 msgid "This link is expired. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:520
+#: Controller/UsersController.php:522
 msgid "This link was already used. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:564
+#: Controller/UsersController.php:566
 msgid "The email has been send."
 msgstr ""
 
-#: Controller/UsersController.php:566
+#: Controller/UsersController.php:568
 msgid "Error in sending email, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:603
+#: Controller/UsersController.php:605
 msgid "No account associated with this information, try again."
 msgstr ""
 
-#: Controller/UsersController.php:607
+#: Controller/UsersController.php:609
 msgid "An account was found!"
 msgstr ""
 
-#: Controller/UsersController.php:660
+#: Controller/UsersController.php:662
 msgid "The account have been added"
 msgstr ""
 
-#: Controller/UsersController.php:663
+#: Controller/UsersController.php:665
 msgid "Error in adding the account, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:666
+#: Controller/UsersController.php:668
 msgid "This account have already been added"
 msgstr ""
 
-#: Controller/UsersController.php:703
+#: Controller/UsersController.php:705
 msgid "The account has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:705
+#: Controller/UsersController.php:707
 msgid "The account could not be deleted. Please try again."
 msgstr ""
 
@@ -978,7 +978,7 @@ msgid "Partners"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:117
-#: Template/Pages/home.ctp:60
+#: Template/Pages/home.ctp:66
 #: Template/Pages/industry.ctp:3;6
 msgid "Industry"
 msgstr ""
@@ -1015,7 +1015,7 @@ msgstr ""
 #: Template/Layout/default.ctp:145
 #: Template/Missions/add.ctp:61
 #: Template/Missions/edit.ctp:117
-#: Template/Pages/home.ctp:125
+#: Template/Pages/home.ctp:131
 #: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 #: Template/Projects/submit.ctp:112
@@ -1152,7 +1152,7 @@ msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:10
 #: Template/Missions/index.ctp:24
-#: Template/Pages/home.ctp:50
+#: Template/Pages/home.ctp:56
 #: Template/Users/index.ctp:28
 #: Template/Users/view.ctp:23
 msgid "Student"
@@ -1404,14 +1404,14 @@ msgid "Logout"
 msgstr ""
 
 #: Template/Layout/default.ctp:120
-#: Template/Pages/home.ctp:77
+#: Template/Pages/home.ctp:83
 #: Template/Users/login.ctp:47
 #: Template/Users/register.ctp:73
 msgid "Sign Up"
 msgstr ""
 
 #: Template/Layout/default.ctp:126
-#: Template/Pages/home.ctp:79
+#: Template/Pages/home.ctp:85
 #: Template/Users/register.ctp:80
 msgid "Sign In"
 msgstr ""
@@ -1957,22 +1957,22 @@ msgid "Premium sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:38
-#: Template/Pages/home.ctp:119
+#: Template/Pages/home.ctp:125
 msgid "Become a sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:43
-#: Template/Pages/home.ctp:121
+#: Template/Pages/home.ctp:127
 msgid "Get visibility and access to over"
 msgstr ""
 
 #: Template/Pages/government.ctp:44
-#: Template/Pages/home.ctp:122
+#: Template/Pages/home.ctp:128
 msgid "5000 software engineering and computer science students."
 msgstr ""
 
 #: Template/Pages/government.ctp:45
-#: Template/Pages/home.ctp:123
+#: Template/Pages/home.ctp:129
 msgid "Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners."
 msgstr ""
 
@@ -1984,79 +1984,79 @@ msgstr ""
 msgid "Ici nous brassons du code !"
 msgstr ""
 
-#: Template/Pages/home.ctp:49
+#: Template/Pages/home.ctp:55
 msgid "Improve your skill and C.V. by working on open source industry projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:59
+#: Template/Pages/home.ctp:65
 msgid "Propose a project and find motivated students in our university ecosystem"
 msgstr ""
 
-#: Template/Pages/home.ctp:74
+#: Template/Pages/home.ctp:80
 msgid "{0} and learn from our teaching assistants and collaborate with students."
 msgstr ""
 
-#: Template/Pages/home.ctp:75
+#: Template/Pages/home.ctp:81
 msgid "Register now"
 msgstr ""
 
-#: Template/Pages/home.ctp:84
+#: Template/Pages/home.ctp:90
 msgid "Registered students"
 msgstr ""
 
-#: Template/Pages/home.ctp:91
+#: Template/Pages/home.ctp:97
 msgid "Ongoing projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:97
+#: Template/Pages/home.ctp:103
 msgid "Available missions"
 msgstr ""
 
-#: Template/Pages/home.ctp:105
+#: Template/Pages/home.ctp:111
 msgid "Our founding partners"
 msgstr ""
 
-#: Template/Pages/home.ctp:112
+#: Template/Pages/home.ctp:118
 msgid "Our sponsors"
 msgstr ""
 
-#: Template/Pages/home.ctp:132
+#: Template/Pages/home.ctp:138
 msgid "Are you a university student?"
 msgstr ""
 
-#: Template/Pages/home.ctp:134
+#: Template/Pages/home.ctp:140
 msgid "Take our survey and help us serve you better"
 msgstr ""
 
-#: Template/Pages/home.ctp:136
+#: Template/Pages/home.ctp:142
 msgid "Take the survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:137
+#: Template/Pages/home.ctp:143
 msgid "Apply to work on an open source project"
 msgstr ""
 
-#: Template/Pages/home.ctp:139
+#: Template/Pages/home.ctp:145
 msgid "Our projects list"
 msgstr ""
 
-#: Template/Pages/home.ctp:143
+#: Template/Pages/home.ctp:149
 msgid "Hire interns, graduates, and capstone."
 msgstr ""
 
-#: Template/Pages/home.ctp:148
+#: Template/Pages/home.ctp:154
 msgid "Industry and Government: "
 msgstr ""
 
-#: Template/Pages/home.ctp:148
+#: Template/Pages/home.ctp:154
 msgid "Develop open source features in your products, tools and dependencies. Promote your company in our open source community"
 msgstr ""
 
-#: Template/Pages/home.ctp:152
+#: Template/Pages/home.ctp:158
 msgid "University professors: "
 msgstr ""
 
-#: Template/Pages/home.ctp:152
+#: Template/Pages/home.ctp:158
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and dev-ops infrastructure."
 msgstr ""
 
@@ -2163,7 +2163,7 @@ msgid "Access to ML2 academic and industry conferences and seminars"
 msgstr ""
 
 #: Template/Pages/mission.ctp:81
-msgid "24/7 access to ML2 location on the RC of ETS Pavilion A"
+msgid "access from 9:00 to 12:00 and 1:30PM to 5:30PM to ML2 location on the RC of ETS Pavilion A"
 msgstr ""
 
 #: Template/Pages/sponsor.ctp:2
