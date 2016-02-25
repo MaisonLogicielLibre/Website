@@ -34,6 +34,11 @@
                 </div>
                 <div class="item">
                     <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/4.png'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/5.png'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
