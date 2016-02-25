@@ -308,6 +308,7 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $user->isProfessor = true;
 
             if ($user->errors()) {
                 $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
@@ -401,6 +402,7 @@ class UsersController extends AppController
                 $user->editPassword($this->request->data['password']);
                 $user->editEmailPublic($this->request->data['email']);
                 $user->editMailingList(true);
+                $user->isStudent = true;
 
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
