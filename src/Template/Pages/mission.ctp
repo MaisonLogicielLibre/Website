@@ -78,7 +78,7 @@
                 <li class="list-group-item"><?php echo __('CV Portfolio testimonial plugin (testimonials from TAs & mentors)') ?></li>
                 <li class="list-group-item"><?php echo __('CV Portfolio open source code summary plugin (key performance indicators on open source repo contributions)') ?></li>
                 <li class="list-group-item"><?php echo __('Access to ML2 academic and industry conferences and seminars') ?></li>
-                <li class="list-group-item"><?php echo __('24/7 access to ML2 location on the RC of ETS Pavilion A') ?></li>
+                <li class="list-group-item"><?php echo __('access from 9:00 to 12:00 and 1:30PM to 5:30PM to ML2 location on the RC of ETS Pavilion A') ?></li>
             </ul>
         </div>
     </div>
