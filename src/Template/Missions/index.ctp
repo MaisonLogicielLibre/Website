@@ -1,4 +1,3 @@
-<?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <?php
 $typeApplications = [
     1 => __('Accepted Applications'),
@@ -147,20 +146,9 @@ $paginatorParams = $this->Paginator->params();
 </div>
 <?= $this->Html->script(
     [
-        'datatables/jquery.dataTables.min',
-        'datatables/dataTables.bootstrap.min',
         'jquery-ui-1.11.4.custom/jquery-ui.min.js',
     ],
     ['block' => 'scriptBottom']);
-?>
-<?php
-$this->Html->scriptStart(['block' => 'scriptBottom']);
-
-echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
-echo 'var missionUrl="' . $this->Url->Build(['controller' => 'missions', 'action' => 'view']) . '";';
-echo 'var sessionTr=' . json_encode($sessionOptions) . ';';
-echo 'var typeMissionsTr=' . json_encode($typeMissionsOption) . ';';
-$this->Html->scriptEnd();
 ?>
 <script src="/js/jquery-2.1.4.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
