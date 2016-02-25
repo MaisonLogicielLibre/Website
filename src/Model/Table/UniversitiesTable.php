@@ -30,7 +30,7 @@ class UniversitiesTable extends Table
         $this->hasMany(
             'Users',
             [
-                'foreignKey' => 'universitie_id'
+                'foreignKey' => 'university_id'
             ]
         );
     }

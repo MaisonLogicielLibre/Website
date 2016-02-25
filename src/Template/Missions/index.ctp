@@ -1,5 +1,5 @@
 <?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
-<?
+<?php
 $typeApplications = [
     1 => __('Accepted Applications'),
     2 => __('Rejected Applications'),
@@ -68,7 +68,7 @@ $paginatorParams = $this->Paginator->params();
             </div>
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
                 <h4>Filter Missions by professor</h4>
-                <? echo $this->Form->radio(
+                <?= $this->Form->radio(
                     'profFilter',
                     [
                         ['value' => 'none', 'text' => 'no filter'],
@@ -117,8 +117,8 @@ $paginatorParams = $this->Paginator->params();
                                 <tr>
                                     <td>
                                         <?php foreach ($mission->project->organizations as $org): ?>
-                                            <? if ($org !== reset($mission->project->organizations)) echo ','; ?>
-                                            <? echo $org['name']; ?>
+                                            <?php if ($org !== reset($mission->project->organizations)) echo ','; ?>
+                                            <?php echo $org['name']; ?>
                                         <?php endforeach; ?>
                                     </td>
                                     <td><?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?></td>
@@ -126,7 +126,7 @@ $paginatorParams = $this->Paginator->params();
                                     <td><?= $mission->has('user') ? $this->Html->link($mission->user->lastName, ['controller' => 'Users', 'action' => 'view', $mission->user->id]) : '' ?></td>
                                     <td><?= __($mission->type_mission['name']) ?></td>
                                     <td><?= $sessionOptions[$mission->session] ?></td>
-                                    <td><? echo date('Y-m-d', strtotime($mission->modified)); ?></td>
+                                    <td><?= date('Y-m-d', strtotime($mission->modified)); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
