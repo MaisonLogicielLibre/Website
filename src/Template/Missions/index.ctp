@@ -31,15 +31,15 @@ $paginatorParams = $this->Paginator->params();
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-3">
                 <?php echo $this->Form->input('mission_select',
-                    array('empty' => '<All Missions Types>', 'label' => false, 'options' => $typeMissions)); ?>
+                    array('empty' => __('<All Missions Types>'), 'label' => false, 'options' => $typeMissions)); ?>
             </div>
             <div class="col-sm-3">
                 <?php echo $this->Form->input('org_select',
-                    array('empty' => '<All Organizations>', 'label' => false, 'options' => $organizations)); ?>
+                    array('empty' => __('<All Organizations>'), 'label' => false, 'options' => $organizations)); ?>
             </div>
             <div class="col-sm-3">
                 <?php echo $this->Form->input('session_select',
-                    array('empty' => '<All Sessions>', 'label' => false, 'options' => $sessionOptions)); ?>
+                    array('empty' => __('<All Sessions>'), 'label' => false, 'options' => $sessionOptions)); ?>
             </div>
         </div>
         <!--<div style="padding-left: 10px;" class="row">
@@ -58,12 +58,12 @@ $paginatorParams = $this->Paginator->params();
         </div>-->
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
-                <h4>Filter Missions by student applications</h4>
+                <h4><?= __('Filter Missions by student applications'); ?></h4>
                 <?php echo $this->Form->input('applicationState',
-                    array('empty' => '<All>', 'label' => false, 'options' => $typeApplications)); ?>
+                    array('empty' => __('<All>'), 'label' => false, 'options' => $typeApplications)); ?>
                 <div id="studentByU" style="display: none;">
                     <?php echo $this->Form->input('studentUniversity',
-                        array('empty' => '<Any>', 'label' => 'Students by Univeristy', 'options' => $universities)); ?>
+                        array('empty' => __('<Any>'), 'label' => 'Students by Univeristy', 'options' => $universities)); ?>
                 </div>
             </div>
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
@@ -71,14 +71,14 @@ $paginatorParams = $this->Paginator->params();
                 <?= $this->Form->radio(
                     'profFilter',
                     [
-                        ['value' => 'none', 'text' => 'no filter'],
-                        ['value' => 'hasProfessor', 'text' => 'has a Professor?'],
-                        ['value' => 'needsProfessor', 'text' => 'needs a Professor?'],
+                        ['value' => 'none', 'text' => __('no filter')],
+                        ['value' => 'hasProfessor', 'text' => __('has a Professor?')],
+                        ['value' => 'needsProfessor', 'text' => __('needs a Professor?')],
                     ]
                 ); ?>
                 <div id="profByU" style="display: none;">
                     <?php echo $this->Form->input('professorUniversity',
-                        array('empty' => '<Any>', 'label' => 'Professors by Univeristy', 'options' => $universities)); ?>
+                        array('empty' => __('<Any>'), 'label' => __('Professors by Univeristy'), 'options' => $universities)); ?>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@ $paginatorParams = $this->Paginator->params();
                         <table id="missions" class="table table-striped table-bordered dataTable">
                             <thead>
                             <tr>
-                                <th>Organization</th>
+                                <th><?= __('Organization'); ?></th>
                                 <th><?= $this->Paginator->sort('project_id') ?></th>
                                 <th><?= $this->Paginator->sort('name', 'Mission') ?></th>
                                 <th><?= $this->Paginator->sort('mentor_id') ?></th>
