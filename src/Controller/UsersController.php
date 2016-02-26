@@ -169,7 +169,8 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-
+                $lang = $this->Users->get($user['id'])->getLanguage();
+                $this->request->session()->write('lang', $lang);
                 $this->_recordVisit($user);
 
                 if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') && !in_array($this->request->Session()->read('actionRef'), ['register/', 'recoverPassword/'])) {

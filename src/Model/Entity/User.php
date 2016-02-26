@@ -781,10 +781,15 @@ class User extends Entity
         return $application;
     }
 
+    /**
+     * Get the current language of the user
+     *
+     * @return language
+     */
     public function getLanguage()
     {
         $lang = $this->_properties['language'];
-        if($lang) {
+        if ($lang) {
             return 'fr_CA';
         } else {
             return 'en_CA';
