@@ -27,7 +27,7 @@ class UsersFixture extends TestFixture
         'gender' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'username' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'universitie_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'university_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'isAvailableMentoring' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'isStudent' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'mailingList' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
@@ -66,7 +66,7 @@ class UsersFixture extends TestFixture
             'gender' => 1,
             'password' => 'motdepasse',
             'username' => 'tropHot',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 0,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -90,7 +90,7 @@ class UsersFixture extends TestFixture
             'gender' => 0,
             'password' => '$2y$10$fTukyN1X3G7nwp3Ea72p/eAuTdqjD6Xhft4tW8d/3pR46UBkCVKzO',
             'username' => 'admin',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 0,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -113,7 +113,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin2',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
             'mailingList' => 0,
@@ -136,7 +136,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
             'mailingList' => 0,
@@ -159,7 +159,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
             'mailingList' => 0,
@@ -182,7 +182,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 0,
             'mailingList' => 0,
@@ -205,7 +205,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -228,7 +228,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -251,7 +251,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -274,7 +274,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -297,7 +297,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
@@ -320,7 +320,7 @@ class UsersFixture extends TestFixture
             'gender' => null,
             'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
             'username' => 'admin3',
-            'universitie_id' => 1,
+            'university_id' => 1,
             'isAvailableMentoring' => 1,
             'isStudent' => 1,
             'mailingList' => 0,
