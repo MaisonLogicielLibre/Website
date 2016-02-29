@@ -199,8 +199,7 @@ class MissionsController extends AppController
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public
-    function view($id = null)
+    public function view($id = null)
     {
         $mission = $this->Missions->get(
             $id,
@@ -277,8 +276,7 @@ class MissionsController extends AppController
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
-    public
-    function add($projectId = null)
+    public function add($projectId = null)
     {
         if (!is_null($projectId)) {
             $user = $this->Users->findById($this->request->session()->read('Auth.User.id'))->first();
@@ -326,8 +324,7 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public
-    function edit($id = null)
+    public function edit($id = null)
     {
         $mission = $this->Missions->get(
             $id,
@@ -388,8 +385,7 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public
-    function editArchived($id)
+    public function editArchived($id)
     {
         $this->autoRender = false;
         $mission = $this->Missions->get($id);
@@ -414,8 +410,7 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public
-    function apply($id)
+    public function apply($id)
     {
         $mission = $this->Missions->get(
             $id,
@@ -509,8 +504,7 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public
-    function editMentor($id = null)
+    public function editMentor($id = null)
     {
         $mission = $this->Missions->get(
             $id,
@@ -556,8 +550,7 @@ class MissionsController extends AppController
      *
      * @return redirect
      */
-    public
-    function editProfessor($id = null)
+    public function editProfessor($id = null)
     {
         $mission = $this->Missions->get(
             $id,
