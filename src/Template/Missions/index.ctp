@@ -41,20 +41,6 @@ $paginatorParams = $this->Paginator->params();
                     array('empty' => __('<All Sessions>'), 'label' => false, 'options' => $sessionOptions)); ?>
             </div>
         </div>
-        <!--<div style="padding-left: 10px;" class="row">
-            <div class="col-sm-offset-1 col-sm-1">
-                <h4>From:</h4>
-            </div>
-            <div class="col-sm-3">
-                <? /* echo $this->Form->input('missionstart', array('label' => false, 'value' => '2015-11-11', 'type' => 'text', 'placeholder' => '<no start date>')); */ ?>
-            </div>
-            <div class="col-sm-offset-1 col-sm-1">
-                <h4>To:</h4>
-            </div>
-            <div class="col-sm-3">
-                <? /* echo $this->Form->input('missionend', array('label' => false, 'value' => '2015-11-11', 'type' => 'text', 'placeholder' => '<no end date>')); */ ?>
-            </div>
-        </div>-->
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
                 <h4><?= __('Filter Missions by student applications'); ?></h4>
@@ -152,57 +138,29 @@ $paginatorParams = $this->Paginator->params();
     ]);
 ?>
 <script>
-    $(document).ready(function () {
-        if ($('input[type=radio][name=profFilter]:checked').val() == "hasProfessor") {
+$(document).ready(function () {
+    if ($('input[type=radio][name=profFilter]:checked').val() == "hasProfessor") {
+        $('#profByU').show();
+    }
+    $('input[type=radio][name=profFilter]').change(function () {
+         if (this.value == 'hasProfessor') {
             $('#profByU').show();
         }
-        $('input[type=radio][name=profFilter]').change(function () {
-             if (this.value == 'hasProfessor') {
-                $('#profByU').show();
-            }
-            else {
-                $('#profByU').hide();
-            }
-        });
-        applicationVal = $('#applicationstate').val();
-        if (applicationVal >= 1 && applicationVal <= 3) {
+        else {
+            $('#profByU').hide();
+        }
+    });
+    applicationVal = $('#applicationstate').val();
+    if (applicationVal >= 1 && applicationVal <= 3) {
+        $('#studentByU').show();
+    }
+    $('#applicationstate').on('change', function () {
+        if (this.value >= 1 && this.value <= 3) {
             $('#studentByU').show();
         }
-        $('#applicationstate').on('change', function () {
-            if (this.value >= 1 && this.value <= 3) {
-                $('#studentByU').show();
-            }
-            else {
-                $('#studentByU').hide();
-            }
-        });
-        /*  $(function () { //todo not needed, but good example . needs jqueryUI
-         $("#missionstart").datepicker({
-         selectOtherMonths: true,
-         dateFormat: 'MM d, yy',
-         maxDate: 0,
-         onSelect: function (startDateText) {
-         var startDateTime = Date.parse(startDateText);
-         if (Date.parse($('#missionend').val()) <= startDateTime) {
-         $('#missionend').val(startDateText);
-         }
-         }
-         });
-         });
-         $(function () {
-         $("#missionend").datepicker({
-         changeMonth: true,
-         changeYear: true,
-         dateFormat: 'MM d, yy',
-         maxDate: 0,
-         onSelect: function (endDateText) {
-         var endDateTime = Date.parse(endDateText);
-         if (Date.parse($('#missionstart').val()) > endDateTime) {
-         $('#missionstart').val(endDateText);
-         }
-         }
-         });
-         });*/
-    })
-    ;
+        else {
+            $('#studentByU').hide();
+        }
+    });
+});
 </script>
