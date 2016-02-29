@@ -88,7 +88,7 @@ class MissionsController extends AppController
     }
 
     /**
-     * Index method
+     * SetFilter method
      *
      * @return void
      */
