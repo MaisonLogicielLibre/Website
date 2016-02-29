@@ -344,6 +344,30 @@ class UsersFixture extends TestFixture
             'interest' => 'Un petit interet.',
             'isProfessor' => 0,
             'language' => 1
+        ],
+        [
+            'id' => 13,
+            'firstName' => 'User',
+            'lastName' => 'Student',
+            'biography' => 'Une petite bio.',
+            'portfolio' => 'http://monportfolio.com',
+            'email' => 'email@gmail.com',
+            'phone' => '(514) 777-7777',
+            'gender' => null,
+            'password' => '$2y$10$6DYQvHVFPlT06jcE7UbRfeFSkBt2zdMjnk8nMDnVQDUI32819Y5O.', //toto
+            'username' => 'admin3',
+            'university_id' => 1,
+            'isAvailableMentoring' => 1,
+            'isStudent' => 1,
+            'mailingList' => 0,
+            'twitter' => 'http://montwitter.com',
+            'facebook' => 'http://monfacebook.com',
+            'googlePlus' => 'http://mongoogleplus.com',
+            'linkedIn' => 'http://monlinkedin.com',
+            'emailPublic' => 'email@gmail.com',
+            'interest' => 'Un petit interet.',
+            'isProfessor' => 0,
+            'language' => 0
         ]
     ];
 }

@@ -1069,4 +1069,34 @@ class UsersTableTest extends TestCase
         $this->assertEquals($expectedApplicationId, $application->id);
         $this->assertEquals(false, $application->rejected);
     }
+
+    /**
+     * Test getLanguage
+     *
+     * @return void
+     */
+    public function testGetLanguage()
+    {
+        $id = 1;
+        $user = $this->Users->get($id);
+
+        $language = $user->getLanguage();
+
+        $this->assertEquals('fr_CA', $language);
+    }
+
+    /**
+     * Test getLanguage en_CA
+     *
+     * @return void
+     */
+    public function testGetLanguageEnglish()
+    {
+        $id = 13;
+        $user = $this->Users->get($id);
+
+        $language = $user->getLanguage();
+
+        $this->assertEquals('en_CA', $language);
+    }
 }
