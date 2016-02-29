@@ -101,6 +101,11 @@ class MissionsController extends AppController
         }
     }
 
+    /**
+     * Index method
+     *
+     * @return void
+     */
     public function index()
     {
         $session = $this->request->session();
