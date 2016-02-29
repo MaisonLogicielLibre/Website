@@ -92,7 +92,6 @@ class MissionsController extends AppController
      *
      * @return void
      */
-
     private function setFilter($key, $value)
     {
         if (!empty($value)) {
