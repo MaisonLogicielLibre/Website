@@ -146,12 +146,11 @@ $paginatorParams = $this->Paginator->params();
 </div>
 <?= $this->Html->script(
     [
-        'jquery-ui-1.11.4.custom/jquery-ui.min.js',
-    ],
-    ['block' => 'scriptBottom']);
+        'jquery-2.1.4.min.js',
+        'bootstrap.min.js',
+        'jquery-ui-1.14.1.min.js'
+    ]);
 ?>
-<script src="/js/jquery-2.1.4.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         if ($('input[type=radio][name=profFilter]:checked').val() == "hasProfessor") {
