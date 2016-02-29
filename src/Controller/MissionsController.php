@@ -53,7 +53,6 @@ class MissionsController extends AppController
      */
     public function isAuthorized($user)
     {
-        return true;
         $user = $this->Users->findById($user['id'])->first();
 
         if (isset($this->_permissions[$this->request->action])) {
