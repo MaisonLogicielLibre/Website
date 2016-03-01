@@ -145,8 +145,8 @@ class MissionsController extends AppController
             case 1: // accepted
                 $query->matching(
                     'Applications',
-                        function ($q) {
-                            return $q->where(['Applications.accepted' => true]);
+                    function ($q) {
+                        return $q->where(['Applications.accepted' => true]);
                     }
                 );
                     $chooseStudentUniversity = true;
