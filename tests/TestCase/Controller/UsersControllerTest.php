@@ -236,12 +236,12 @@ class UsersControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testRegisterFail()
+    public function testRegisterStudentFail()
     {
         $data = [
             'password' => 'allo'
         ];
-        $this->post('/users/register', $data);
+        $this->post('/users/registerStudent', $data);
 
         $this->assertResponseSuccess();
         $this->assertResponseContains('Vos informations sont invalides. Veuillez recommencer plus tard et nous contacter si le problème persiste.');
