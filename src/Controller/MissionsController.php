@@ -142,34 +142,34 @@ class MissionsController extends AppController
         $chooseStudentUniversity = false;
         if (!empty($tmp = $this->request->session()->read('filter.mission.applicationState'))) {
             switch ($tmp) {
-                case 1: // accepted
-                    $query->matching(
-                        'Applications',
-                            function ($q) {
-                                return $q->where(['Applications.accepted' => true]);
-                        }
-                    );
-                        $chooseStudentUniversity = true;
-                    break;
-                case 2: // rejected
-                    $query->matching(
-                        'Applications',
+            case 1: // accepted
+                $query->matching(
+                    'Applications',
                         function ($q) {
-                                return $q->where(['Applications.rejected' => true]);
-                        }
-                    );
-                        $chooseStudentUniversity = true;
-                    break;
-                case 3: // unprocessed
-                    $query->matching(
-                        'Applications',
-                        function ($q) {
-                                return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
-                        }
-                    );
-                        $chooseStudentUniversity = true;
-                    break;
-                }
+                            return $q->where(['Applications.accepted' => true]);
+                    }
+                );
+                    $chooseStudentUniversity = true;
+                break;
+            case 2: // rejected
+                $query->matching(
+                    'Applications',
+                    function ($q) {
+                            return $q->where(['Applications.rejected' => true]);
+                    }
+                );
+                    $chooseStudentUniversity = true;
+                break;
+            case 3: // unprocessed
+                $query->matching(
+                    'Applications',
+                    function ($q) {
+                            return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
+                    }
+                );
+                    $chooseStudentUniversity = true;
+                break;
+            }
         }
         if ($chooseStudentUniversity && !empty($tmp = $this->request->session()->read('filter.mission.studentUniversity'))) {
             $query->matching(
