@@ -210,7 +210,7 @@ class UsersControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testRegisterOk()
+    public function testRegisterStudentOk()
     {
         $expectedEmail = 'bla@bla.com';
         $data = [
@@ -221,7 +221,7 @@ class UsersControllerTest extends IntegrationTestCase
             'confirm_email' => 'bla@bla.com',
             'university_id' => 1
         ];
-        $this->post('/users/register', $data);
+        $this->post('/users/registerStudent', $data);
 
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
 
