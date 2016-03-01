@@ -717,7 +717,7 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->session(['Auth.User.id' => 1]);
 
-        $this->get('/users/svnCallBack?code=1212312312');
+        $this->get('/users/svnCallback?code=1212312312');
         $this->assertResponseSuccess();
         $this->assertRedirect('/users/svn/1?code=1212312312');
     }
