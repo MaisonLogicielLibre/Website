@@ -195,9 +195,9 @@ class UsersController extends AppController
                     'registerProfessor/'
                 ];
 
-                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef') &&
-                    !in_array($this->request->Session()->read('actionRef'), $actionRefs)
-                    ) {
+                if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef')
+                    && !in_array($this->request->Session()->read('actionRef'), $actionRefs)
+                ) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
                 } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
                     return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
