@@ -142,7 +142,7 @@ class MissionsController extends AppController
         $chooseStudentUniversity = false;
         if (!empty($tmp = $this->request->session()->read('filter.mission.applicationState'))) {
             switch ($tmp) {
-            case 1: // accepted
+                case 1: // accepted
                 $query->matching(
                     'Applications',
                     function ($q) {
@@ -151,7 +151,7 @@ class MissionsController extends AppController
                 );
                     $chooseStudentUniversity = true;
                 break;
-            case 2: // rejected
+                case 2: // rejected
                 $query->matching(
                     'Applications',
                     function ($q) {
@@ -160,7 +160,7 @@ class MissionsController extends AppController
                 );
                     $chooseStudentUniversity = true;
                 break;
-            case 3: // unprocessed
+                case 3: // unprocessed
                 $query->matching(
                     'Applications',
                     function ($q) {
