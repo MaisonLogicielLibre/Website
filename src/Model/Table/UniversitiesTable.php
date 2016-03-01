@@ -1,4 +1,13 @@
 <?php
+/**
+ * Universities Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\University;
@@ -9,6 +18,12 @@ use Cake\Validation\Validator;
 
 /**
  * Universities Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class UniversitiesTable extends Table
 {
