@@ -90,6 +90,9 @@ class MissionsController extends AppController
     /**
      * SetFilter method
      *
+     * @param string $key key
+     * @param string $value value
+     *
      * @return void
      */
     private function setFilter($key, $value)
