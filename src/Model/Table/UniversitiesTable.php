@@ -32,6 +32,7 @@ class UniversitiesTable extends Table
      * Initialize method
      *
      * @param  array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -53,6 +54,7 @@ class UniversitiesTable extends Table
      * Default validation rules.
      *
      * @param  \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
