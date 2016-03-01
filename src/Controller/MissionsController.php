@@ -90,7 +90,7 @@ class MissionsController extends AppController
     /**
      * SetFilter method
      *
-     * @param string $key key
+     * @param string $key   key
      * @param string $value value
      *
      * @return void
@@ -129,9 +129,12 @@ class MissionsController extends AppController
         }
         if (!empty($tmp = $session->read('filter.mission.org_select'))) {
             $filterView['org_select'] = $tmp;
-            $query->matching('Projects.Organizations', function ($q) use ($tmp) {
-                return $q->where(['Organizations.id' => $tmp]);
-            });
+            $query->matching(
+                'Projects.Organizations',
+                function ($q) use ($tmp) {
+                    return $q->where(['Organizations.id' => $tmp]);
+                }
+            );
         }
         if (!empty($tmp = $this->request->session()->read('filter.mission.session_select'))) {
             $query->where(['Missions.session' => $tmp]);
@@ -140,47 +143,60 @@ class MissionsController extends AppController
         if (!empty($tmp = $this->request->session()->read('filter.mission.applicationState'))) {
             switch ($tmp) {
                 case 1: // accepted
-                    $query->matching('Applications', function ($q) {
-                        return $q->where(['Applications.accepted' => true]);
-                    });
-                    $chooseStudentUniversity = true;
+                    $query->matching(
+                        'Applications',
+                            function ($q) {
+                                return $q->where(['Applications.accepted' => true]);
+                        }
+                    );
+                        $chooseStudentUniversity = true;
                     break;
                 case 2: // rejected
-                    $query->matching('Applications', function ($q) {
-                        return $q->where(['Applications.rejected' => true]);
-                    });
-                    $chooseStudentUniversity = true;
+                    $query->matching(
+                        'Applications',
+                        function ($q) {
+                                return $q->where(['Applications.rejected' => true]);
+                        }
+                    );
+                        $chooseStudentUniversity = true;
                     break;
                 case 3: // unprocessed
-                    $query->matching('Applications', function ($q) {
-                        return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
-                    });
-                    $chooseStudentUniversity = true;
+                    $query->matching(
+                        'Applications',
+                        function ($q) {
+                                return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
+                        }
+                    );
+                        $chooseStudentUniversity = true;
                     break;
-            }
+                }
         }
         if ($chooseStudentUniversity && !empty($tmp = $this->request->session()->read('filter.mission.studentUniversity'))) {
-            $query->matching('Applications.Students.Universities', function ($q) use ($tmp) {
-                return $q->where(['Universities.id' => $tmp]);
-            });
+            $query->matching(
+                'Applications.Students.Universities', function ($q) use ($tmp) {
+                    return $q->where(['Universities.id' => $tmp]);
+                }
+            );
         }
         $chooseProfUniversity = false;
         if (!empty($tmp = $this->request->session()->read('filter.mission.profFilter'))) {
             switch ($tmp) {
-                case "hasProfessor":
-                    $query->where(['Missions.professor_id !=' => 0]);
-                    $chooseProfUniversity = true;
-                    break;
-                case "needsProfessor":
-                    $query->where(['Missions.professor_id' => 0, 'OR' => [['TypeMissions.id' => 3], ['TypeMissions.id' => 4]]]);
-                    $chooseProfUniversity = true;
-                    break;
+            case "hasProfessor":
+                $query->where(['Missions.professor_id !=' => 0]);
+                $chooseProfUniversity = true;
+                break;
+            case "needsProfessor":
+                $query->where(['Missions.professor_id' => 0, 'OR' => [['TypeMissions.id' => 3], ['TypeMissions.id' => 4]]]);
+                $chooseProfUniversity = true;
+                break;
             }
         }
         if ($chooseProfUniversity && !empty($tmp = $this->request->session()->read('filter.mission.professorUniversity'))) {
-            $query->matching('Professors.Universities', function ($q) use ($tmp) {
-                return $q->where(['Universities.id' => $tmp]);
-            });
+            $query->matching(
+                'Professors.Universities', function ($q) use ($tmp) {
+                    return $q->where(['Universities.id' => $tmp]);
+                }
+            );
         }
         $query->order(['Missions.modified' => 'DESC']);
 
