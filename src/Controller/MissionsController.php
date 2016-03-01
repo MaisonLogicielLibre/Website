@@ -112,9 +112,7 @@ class MissionsController extends AppController
     public function index()
     {
         $session = $this->request->session();
-        if ($this->request->is(['patch', 'post', 'put'])) { // is there a filter?
-            //$this->setFilter('startDate');
-            //$this->setFilter('endDate');
+        if ($this->request->is(['patch', 'post', 'put'])) {
             $this->setFilter('mission_select', $this->request->data['mission_select']);
             $this->setFilter('org_select', $this->request->data['org_select']);
             $this->setFilter('applicationState', $this->request->data['applicationState']);
