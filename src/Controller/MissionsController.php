@@ -95,7 +95,7 @@ class MissionsController extends AppController
      *
      * @return void
      */
-    private function setFilter($key, $value)
+    private function _setFilter($key, $value)
     {
         if (!empty($value)) {
             $this->request->session()->write('filter.mission.' . $key, $value);
