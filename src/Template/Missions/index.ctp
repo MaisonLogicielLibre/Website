@@ -11,6 +11,10 @@ $sessionOptions = [
     2 => __('Summer'),
     3 => __('Fall')
 ];
+$typeOptions = [];
+foreach ($typeMissions as $typeMissionId=>$typeMission) {
+    $typeOptions[$typeMissionId] = $typeMission->getName();
+}
 $paginatorParams = $this->Paginator->params();
 ?>
 <div class="row">
@@ -30,7 +34,7 @@ $paginatorParams = $this->Paginator->params();
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-3">
                 <?php echo $this->Form->input('mission_select',
-                    array('empty' => __('<All Missions Types>'), 'label' => false, 'options' => $typeMissions)); ?>
+                    array('empty' => __('<All Missions Types>'), 'label' => false, 'options' => $typeOptions)); ?>
             </div>
             <div class="col-sm-3">
                 <?php echo $this->Form->input('org_select',
