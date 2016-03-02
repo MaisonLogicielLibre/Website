@@ -22,7 +22,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-sm-12 col-xs-12">
-                <h2><?= __("Qui êtes-vous?") ?></h2>
+                <h2><?= __("Who are you?") ?></h2>
             </div>
             <div id="register-alert" class="col-sm-12"><?= $this->Flash->render() ?></div>
             <div class="row">
