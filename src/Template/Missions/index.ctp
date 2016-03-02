@@ -93,12 +93,12 @@ $paginatorParams = $this->Paginator->params();
                             <thead>
                             <tr>
                                 <th><?= __('Organization'); ?></th>
-                                <th><?= $this->Paginator->sort('project_id') ?></th>
-                                <th><?= $this->Paginator->sort('name', 'Mission') ?></th>
-                                <th><?= $this->Paginator->sort('mentor_id') ?></th>
-                                <th><?= $this->Paginator->sort('type_mission') ?></th>
-                                <th><?= $this->Paginator->sort('session') ?></th>
-                                <th><?= $this->Paginator->sort('modified', 'Last Modified') ?></th>
+                                <th><?= $this->Paginator->sort('project_id', __('Project')) ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Mission')) ?></th>
+                                <th><?= $this->Paginator->sort('mentor_id', __('Mentor')) ?></th>
+                                <th><?= $this->Paginator->sort('type_mission', __('Mission type')) ?></th>
+                                <th><?= $this->Paginator->sort('session', __('Session')) ?></th>
+                                <th><?= $this->Paginator->sort('modified', __('Last Modified')) ?></th>
                             </tr>
                             </thead>
                             <tbody>

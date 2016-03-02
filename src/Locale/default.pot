@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-03-02 17:10+0000\n"
+"POT-Creation-Date: 2016-03-02 20:04+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -640,7 +640,7 @@ msgstr ""
 #: Template/Missions/edit.ctp:9
 #: Template/Missions/edit_mentor.ctp:8
 #: Template/Missions/edit_professor.ctp:8
-#: Template/Missions/index.ctp:20
+#: Template/Missions/index.ctp:24
 #: Template/Missions/view.ctp:10
 #: Template/News/add.ctp:10
 #: Template/News/edit.ctp:10
@@ -845,7 +845,7 @@ msgstr ""
 
 #: Template/Applications/view.ctp:10
 #: Template/Cell/Sidebar/all.ctp:62
-#: Template/Missions/index.ctp:21
+#: Template/Missions/index.ctp:25
 #: Template/Pages/statistics.ctp:188
 #: Template/Pages/tv3.ctp:142
 #: Template/Projects/view.ctp:66
@@ -934,7 +934,7 @@ msgid "Submit a project"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:69
-#: Template/Missions/index.ctp:22;83
+#: Template/Missions/index.ctp:26;87
 msgid "List of missions"
 msgstr ""
 
@@ -1425,7 +1425,7 @@ msgstr ""
 #: Template/Missions/edit.ctp:92
 #: Template/Missions/edit_mentor.ctp:45
 #: Template/Missions/edit_professor.ctp:44
-#: Template/Missions/index.ctp:73
+#: Template/Missions/index.ctp:77
 #: Template/News/add.ctp:41
 #: Template/News/edit.ctp:41
 #: Template/Organizations/add.ctp:34
@@ -1547,56 +1547,86 @@ msgstr ""
 msgid "No Student has applied yet"
 msgstr ""
 
-#: Template/Missions/index.ctp:18
+#: Template/Missions/index.ctp:22
 msgid "Software enginnering missions"
 msgstr ""
 
-#: Template/Missions/index.ctp:33
+#: Template/Missions/index.ctp:37
 msgid "<All Missions Types>"
 msgstr ""
 
-#: Template/Missions/index.ctp:37
+#: Template/Missions/index.ctp:41
 msgid "<All Organizations>"
 msgstr ""
 
-#: Template/Missions/index.ctp:41
+#: Template/Missions/index.ctp:45
 msgid "<All Sessions>"
 msgstr ""
 
-#: Template/Missions/index.ctp:46
+#: Template/Missions/index.ctp:50
 msgid "Filter Missions by student applications"
 msgstr ""
 
-#: Template/Missions/index.ctp:48
+#: Template/Missions/index.ctp:52
 msgid "<All>"
 msgstr ""
 
-#: Template/Missions/index.ctp:51;66
+#: Template/Missions/index.ctp:55;70
 msgid "<Any>"
 msgstr ""
 
-#: Template/Missions/index.ctp:59
+#: Template/Missions/index.ctp:63
 msgid "no filter"
 msgstr ""
 
-#: Template/Missions/index.ctp:60
+#: Template/Missions/index.ctp:64
 msgid "has a Professor?"
 msgstr ""
 
-#: Template/Missions/index.ctp:61
+#: Template/Missions/index.ctp:65
 msgid "needs a Professor?"
 msgstr ""
 
-#: Template/Missions/index.ctp:66
+#: Template/Missions/index.ctp:70
 msgid "Professors by Univeristy"
 msgstr ""
 
-#: Template/Missions/index.ctp:91
+#: Template/Missions/index.ctp:95
 #: Template/OrganizationsProjects/view.ctp:30
 msgid "Organization"
 msgstr ""
 
-#: Template/Missions/index.ctp:126
+#: Template/Missions/index.ctp:96
+#: Template/OrganizationsProjects/view.ctp:20
+#: Template/Projects/submit.ctp:28
+msgid "Project"
+msgstr ""
+
+#: Template/Missions/index.ctp:97
+#: Template/Pages/mission.ctp:6
+msgid "Mission"
+msgstr ""
+
+#: Template/Missions/index.ctp:98
+#: Template/Projects/view.ctp:76
+#: Template/Users/view.ctp:117
+msgid "Mentor"
+msgstr ""
+
+#: Template/Missions/index.ctp:99
+msgid "Mission type"
+msgstr ""
+
+#: Template/Missions/index.ctp:100
+#: Template/Projects/view.ctp:73
+msgid "Session"
+msgstr ""
+
+#: Template/Missions/index.ctp:101
+msgid "Last Modified"
+msgstr ""
+
+#: Template/Missions/index.ctp:130
 #: Template/OrganizationsProjects/index.ctp:44
 #: Template/SvnUsers/index.ctp:48
 #: Template/Svns/index.ctp:38
@@ -1606,7 +1636,7 @@ msgstr ""
 msgid "previous"
 msgstr ""
 
-#: Template/Missions/index.ctp:128
+#: Template/Missions/index.ctp:132
 #: Template/OrganizationsProjects/index.ctp:46
 #: Template/SvnUsers/index.ctp:50
 #: Template/Svns/index.ctp:40
@@ -1975,11 +2005,6 @@ msgstr ""
 msgid "Delete Organizations Project"
 msgstr ""
 
-#: Template/OrganizationsProjects/view.ctp:20
-#: Template/Projects/submit.ctp:28
-msgid "Project"
-msgstr ""
-
 #: Template/Pages/academic.ctp:22
 #: Template/Pages/industry.ctp:22
 msgid "Founding partner"
@@ -2121,10 +2146,6 @@ msgstr ""
 
 #: Template/Pages/mission.ctp:3
 msgid "Associations"
-msgstr ""
-
-#: Template/Pages/mission.ctp:6
-msgid "Mission"
 msgstr ""
 
 #: Template/Pages/mission.ctp:15
@@ -2467,17 +2488,8 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#: Template/Projects/view.ctp:73
-msgid "Session"
-msgstr ""
-
 #: Template/Projects/view.ctp:75
 msgid "Type"
-msgstr ""
-
-#: Template/Projects/view.ctp:76
-#: Template/Users/view.ctp:117
-msgid "Mentor"
 msgstr ""
 
 #: Template/SvnUsers/add.ctp:4
