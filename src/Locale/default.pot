@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-03-02 16:46+0000\n"
+"POT-Creation-Date: 2016-03-02 17:10+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -279,6 +279,7 @@ msgstr ""
 
 #: Controller/PagesController.php:300;511
 #: Model/Entity/Mission.php:187;211
+#: Template/Users/edit.ctp:39
 msgid "Not specified"
 msgstr ""
 
@@ -1228,7 +1229,7 @@ msgstr ""
 #: Template/Missions/index.ctp:9
 #: Template/Organizations/view.ctp:94;101
 #: Template/Projects/view.ctp:113;120
-#: Template/Users/edit.ctp:26;39
+#: Template/Users/edit.ctp:26
 #: Template/Users/index.ctp:136
 #: Template/Users/register_professor.ctp:58
 #: Template/Users/register_student.ctp:58

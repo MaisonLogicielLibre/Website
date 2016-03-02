@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-03-02 11:47-0500\n"
-"PO-Revision-Date: 2016-03-02 11:47-0500\n"
+"POT-Creation-Date: 2016-03-02 12:10-0500\n"
+"PO-Revision-Date: 2016-03-02 12:11-0500\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -291,6 +291,7 @@ msgid "There was an error. Please,try again."
 msgstr "Il y a eu une erreur. Veuillez réessayer."
 
 #: Controller/PagesController.php:300;511 Model/Entity/Mission.php:187;211
+#: Template/Users/edit.ctp:39
 msgid "Not specified"
 msgstr "Non spécifié"
 
@@ -1126,7 +1127,7 @@ msgstr "Quels types de personnes recherchez-vous ?"
 
 #: Template/Element/Missions/addForm.ctp:35;43 Template/Missions/edit.ctp:70;78
 #: Template/Missions/index.ctp:9 Template/Organizations/view.ctp:94;101
-#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26;39
+#: Template/Projects/view.ctp:113;120 Template/Users/edit.ctp:26
 #: Template/Users/index.ctp:136 Template/Users/register_professor.ctp:58
 #: Template/Users/register_student.ctp:58 Template/Users/view.ctp:66
 msgid "Anytime"
