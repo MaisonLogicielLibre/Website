@@ -16,11 +16,6 @@
 
     <?= $this->Less->less('less/styles.less'); ?>
     <?= $this->fetch('cssTop'); ?>
-    <style>
-        .navbar-brand{
-            padding: 2px;
-        }
-    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -45,6 +40,12 @@
                 <ul class="nav navbar-nav">
                 </ul>
                 <ul class="nav navbar-nav navbar-right top-nav">
+                    <a href="https://www.facebook.com/maisonlogiciellibre/" class="navbar-brand navbar-facebook">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x icon-facebook"></i>
+                        </span>
+                    </a>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-lg fa-globe"></i>
