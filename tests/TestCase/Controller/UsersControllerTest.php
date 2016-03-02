@@ -223,7 +223,7 @@ class UsersControllerTest extends IntegrationTestCase
         ];
         $this->post('/users/registerStudent', $data);
 
-        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'registerStudentOptional']);
 
         $user = $this->Users->find()->select(['emailPublic'])->order(['id' => 'DESC'])->first();
 
