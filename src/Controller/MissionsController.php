@@ -113,14 +113,14 @@ class MissionsController extends AppController
     {
         $session = $this->request->session();
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $this->setFilter('mission_select', $this->request->data['mission_select']);
-            $this->setFilter('org_select', $this->request->data['org_select']);
-            $this->setFilter('applicationState', $this->request->data['applicationState']);
-            $this->setFilter('studentUniversity', $this->request->data['studentUniversity']);
-            $this->setFilter('profFilter', $this->request->data['profFilter']);
-            $this->setFilter('session_select', $this->request->data['session_select']);
-            $this->setFilter('studentUniversity', $this->request->data['studentUniversity']);
-            $this->setFilter('professorUniversity', $this->request->data['professorUniversity']);
+            $this->_setFilter('mission_select', $this->request->data['mission_select']);
+            $this->_setFilter('org_select', $this->request->data['org_select']);
+            $this->_setFilter('applicationState', $this->request->data['applicationState']);
+            $this->_setFilter('studentUniversity', $this->request->data['studentUniversity']);
+            $this->_setFilter('profFilter', $this->request->data['profFilter']);
+            $this->_setFilter('session_select', $this->request->data['session_select']);
+            $this->_setFilter('studentUniversity', $this->request->data['studentUniversity']);
+            $this->_setFilter('professorUniversity', $this->request->data['professorUniversity']);
         }
         // query builder
         $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Applications', 'TypeMissions', 'Users', 'Professors']);
