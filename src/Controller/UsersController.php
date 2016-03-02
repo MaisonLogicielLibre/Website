@@ -139,7 +139,7 @@ class UsersController extends AppController
                         'firstName',
                         'lastName',
                         'isStudent',
-                        'universitie_id'
+                        'university_id'
                     ]
             ]
         );

@@ -27,7 +27,7 @@
             echo $this->Form->input('gender');
             echo $this->Form->input('password');
             echo $this->Form->input('username');
-            echo $this->Form->input('universitie_id', ['options' => $universities]);
+            echo $this->Form->input('university_id', ['options' => $universities]);
             echo $this->Form->input('projects._ids', ['options' => $projects]);
             echo $this->Form->input('type_users._ids', ['options' => $typeUsers]);
         ?>
