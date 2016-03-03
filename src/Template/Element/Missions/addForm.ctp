@@ -25,10 +25,6 @@ echo $this->Form->input('competence',
         'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
     ]
 );
-$typeOptions = [];
-foreach ($typeMissions as $type) {
-    $typeOptions[$type->id] = $type->getName();
-}
 echo $this->Form->input('type_mission', ['required' => true, 'label' => __('What type of student(s) are you looking for?'), 'options' => $typeOptions, 'type' => 'select']);
 $sessionOptions =
     [
