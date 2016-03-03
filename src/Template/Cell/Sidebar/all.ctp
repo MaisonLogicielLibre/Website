@@ -15,6 +15,12 @@
                 <span class="i-text"><?= __('Home') ?></span></a>
         </li>
         <li>
+            <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'index']); ?>">
+                <i class="fa fa-lg fa-file-text"></i>
+                <?= __('Missions'); ?>
+            </a>
+        </li>
+        <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#organizations-submenu">
                 <i class="fa fa-lg fa-suitcase"></i>
                 <?= __('Organizations'); ?>
@@ -52,21 +58,6 @@
                     <a href="<?= $this->Url->build(['controller' => 'Projects', 'action' => 'submit']); ?>">
                         <i class="fa fa-cube"></i>
                         <?= __('Submit a project'); ?>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#missions-submenu">
-                <i class="fa fa-lg fa-file-text"></i>
-                <?= __('Missions'); ?>
-                <i class="fa submenu-arrow pull-right"></i>
-            </a>
-            <ul id="missions-submenu" class="collapse">
-                <li>
-                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'index']); ?>">
-                        <i class="fa fa-list-ul"></i>
-                        <?= __('List of missions'); ?>
                     </a>
                 </li>
             </ul>
