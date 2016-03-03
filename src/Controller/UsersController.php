@@ -485,7 +485,7 @@ class UsersController extends AppController
         $hasPermission = $this->Users->get($this->request->session()->read('Auth.User.id'))->hasPermissionName(['edit_users']);
 
         if ($you || $hasPermission) {
-            $typeMissions = $this->Users->TypeMissions->find('all')->toArray();
+            $typeOptions = $this->Users->find('typeOptions');
             $this->loadModel('UsersTypeMissions');
             $selectedTypeMissions = $this->UsersTypeMissions->findByUserId($id)->toArray();
 
@@ -508,7 +508,7 @@ class UsersController extends AppController
                 }
             }
             $universities = $this->Users->Universities->find('list', ['limit' => 200]);
-            $this->set(compact('user', 'universities', 'you', 'typeMissions', 'selectedTypeMissions'));
+            $this->set(compact('user', 'universities', 'you', 'typeOptions', 'selectedTypeMissions'));
             $this->set('_serialize', ['user']);
         } else {
             return $this->redirect(['action' => 'edit', $this->request->session()->read('Auth.User.id')]);

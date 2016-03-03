@@ -44,12 +44,6 @@
                         </div>
                         <div class="form-group">
                             <?php
-                            $typeOptions = [];
-                            foreach($typeMissions as $typeMission) {
-                                $typeOptions[$typeMission['id']] = [
-                                    $typeMission->getName()
-                                ];
-                            }
                             $selected = [];
                             foreach($selectedTypeMissions as $selectedTypeMission) {
                                 array_push($selected, $selectedTypeMission['type_mission_id']);

@@ -16,6 +16,7 @@ use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -367,5 +368,11 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['username']));
         return $rules;
+    }
+
+    public function findTypeOptions(Query $query)
+    {
+        $typeMissions = TableRegistry::get('TypeMissions');
+        return $typeMissions->find('options');
     }
 }

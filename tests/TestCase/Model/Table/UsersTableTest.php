@@ -49,6 +49,7 @@ class UsersTableTest extends TestCase
         'app.projects_contributors',
         'app.projects_mentors',
         'app.missions',
+        'app.type_missions',
         'app.applications'
     ];
 
@@ -1098,5 +1099,12 @@ class UsersTableTest extends TestCase
         $language = $user->getLanguage();
 
         $this->assertEquals('en_CA', $language);
+    }
+
+    public function testGetTypeOptions()
+    {
+        $typeOptions = $this->Users->find('typeOptions');
+
+        $this->assertEquals($typeOptions[1], 'Stagiaire');
     }
 }
