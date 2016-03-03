@@ -26,12 +26,6 @@
             <h3 class="header-title"><?= __('Additional informations'); ?></h3>
             <div class="col-md-12 col-xs-12">
                 <?php
-                $typeOptions = [];
-                foreach($typeMissions as $typeMission) {
-                    $typeOptions[$typeMission['id']] = [
-                        $typeMission->getName()
-                    ];
-                }
                 $selected = [];
                 foreach($selectedTypeMissions as $selectedTypeMission) {
                     array_push($selected, $selectedTypeMission['type_mission_id']);

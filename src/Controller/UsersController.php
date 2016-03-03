@@ -437,7 +437,7 @@ class UsersController extends AppController
         $user = $this->Users->get($userId);
 
         $this->loadModel('UsersTypeMissions');
-        $typeMissions = $this->Users->TypeMissions->find('all')->toArray();
+        $typeOptions = $this->Users->find('typeOptions');
         $selectedTypeMissions = $this->UsersTypeMissions->findByUserId($user['id'])->toArray();
 
         if ($this->request->is('post')) {
@@ -460,7 +460,7 @@ class UsersController extends AppController
             }
         }
 
-        $this->set(compact('user', 'typeMissions', 'selectedTypeMissions'));
+        $this->set(compact('user', 'typeOptions', 'selectedTypeMissions'));
         $this->set('_serialize', ['user']);
     }
 
