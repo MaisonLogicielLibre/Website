@@ -143,7 +143,6 @@
         <div class="text-center">
         Copyright © Maison du Logiciel Libre 2015
         - <?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']); ?>
-        - <?= $this->Html->link(__('About us'), ['controller' => 'Pages', 'action' => 'mission']); ?>
         </div>
     </footer>
 </div>
