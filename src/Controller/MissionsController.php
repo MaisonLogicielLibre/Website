@@ -400,8 +400,8 @@ class MissionsController extends AppController
 
         }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
-        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-        $this->set(compact('mission', 'typeMissions', 'missionLevels', 'isEditable', 'minInternNbr'));
+        $typeOptions = $this->Missions->find('typeOptions');
+        $this->set(compact('mission', 'typeOptions', 'missionLevels', 'isEditable', 'minInternNbr'));
         $this->set('_serialize', ['mission']);
     }
 

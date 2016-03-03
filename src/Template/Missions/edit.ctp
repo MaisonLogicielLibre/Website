@@ -60,10 +60,6 @@
                                         'disabled' => !$isEditable
                                     ]
                                 );
-                                $typeOptions = [];
-                                foreach ($typeMissions as $type) {
-                                    $typeOptions[$type->id] = $type->getName();
-                                }
                                 echo $this->Form->input('type_mission_id', ['label' => __('What type of student(s) are you looking for?'), 'options' => $typeOptions, 'type' => 'select', 'disabled' => !$isEditable]);
                                 $sessionOptions =
                                     [
