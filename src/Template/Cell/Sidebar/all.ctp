@@ -141,11 +141,6 @@
                 <span class="i-text"><?= __('Contact us') ?></span></a>
         </li>
         <li>
-            <a href="https://twitter.com/ml2_ets">
-                <i class="fa fa-twitter fa-lg"></i>
-                <span class="i-text"><?= __('Follow us') ?></span></a>
-        </li>
-        <li>
             <a href="http://wiki.maisonlogiciellibre.org/doku.php?id=en:start">
                 <i class="fa fa-file-word-o fa-lg"></i>
                 <span class="i-text"><?= __('Our Wiki') ?></span></a>
