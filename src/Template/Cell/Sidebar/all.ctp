@@ -136,11 +136,6 @@
         </li>
         <?php endif; ?>
         <li>
-            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'mission']); ?>">
-                <i class="fa fa-question-circle fa-lg"></i>
-                <span class="i-text"><?= __('About us') ?></span></a>
-        </li>
-        <li>
             <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'contact']); ?>">
                 <i class="fa fa-plug fa-lg"></i>
                 <span class="i-text"><?= __('Contact us') ?></span></a>
