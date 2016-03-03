@@ -675,4 +675,11 @@ class MissionsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    public function testGetTypeOptions()
+    {
+        $typeOptions = $this->Missions->find('typeOptions');
+
+        $this->assertEquals($typeOptions[1], 'Stagiaire');
+    }
 }

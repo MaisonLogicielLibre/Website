@@ -11,10 +11,6 @@ $sessionOptions = [
     2 => __('Summer'),
     3 => __('Fall')
 ];
-$typeOptions = [];
-foreach ($typeMissions as $typeMissionId=>$typeMission) {
-    $typeOptions[$typeMissionId] = $typeMission->getName();
-}
 $paginatorParams = $this->Paginator->params();
 ?>
 <div class="row">

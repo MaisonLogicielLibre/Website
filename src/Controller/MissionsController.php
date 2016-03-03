@@ -209,12 +209,12 @@ class MissionsController extends AppController
         $organizations = $this->Missions->Projects->Organizations->find('list')->orderAsc('name')->toArray();
         $universities = $this->Missions->Users->Universities->find('list')->orderAsc('name')->toArray();
         $professors = $this->Missions->Professors->find('list')->orderAsc('lastName')->toArray();
-        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
+        $typeOptions = $this->Missions->find('typeOptions');
         $missionLevels = $this->Missions->MissionLevels->find('list')->orderAsc('name')->toArray();
 
         $missions = $this->paginate($query);
 
-        $this->set(compact('missions', 'filterView', 'organizations', 'universities', 'professors', 'typeMissions', 'missionLevels'));
+        $this->set(compact('missions', 'filterView', 'organizations', 'universities', 'professors', 'missionLevels', 'typeOptions'));
         $this->set('_serialize', ['missions']);
     }
 

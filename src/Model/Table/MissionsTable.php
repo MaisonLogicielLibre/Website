@@ -14,6 +14,7 @@ use App\Model\Entity\Mission;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -181,5 +182,11 @@ class MissionsTable extends Table
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
         $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
         return $rules;
+    }
+
+    public function findTypeOptions(Query $query)
+    {
+        $typeMissions = TableRegistry::get('TypeMissions');
+        return $typeMissions->find('options');
     }
 }
