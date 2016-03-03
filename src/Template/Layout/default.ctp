@@ -46,6 +46,12 @@
                             <i class="fa fa-facebook fa-stack-1x icon-facebook"></i>
                         </span>
                     </a>
+                    <a href="https://twitter.com/ml2_ets" class="navbar-brand navbar-twitter">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x icon-twitter"></i>
+                        </span>
+                    </a>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-lg fa-globe"></i>
