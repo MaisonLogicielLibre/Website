@@ -305,8 +305,8 @@ class ProjectsController extends AppController
             );
 
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
-        $typeMissions = $this->Missions->TypeMissions->find('all')->toArray();
-        $this->set(compact('mission', 'missionLevels', 'typeMissions', 'project', 'organizations'));
+        $typeOptions = $this->Missions->find('typeOptions');
+        $this->set(compact('mission', 'missionLevels', 'typeOptions', 'project', 'organizations'));
         $this->set('_serialize', ['project', 'mission']);
     }
 
