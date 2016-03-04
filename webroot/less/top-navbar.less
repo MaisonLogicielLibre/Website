@@ -1,3 +1,78 @@
+/*
+* Top navbar
+*/
+.top-nav {
+  padding: 0 15px;
+  & > li {
+    display: inline-block;
+    float: left;
+    & > a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      line-height: 20px;
+      color: #ccc;
+      &:hover, &:focus {
+        background: darken(@bgDefault, 6.5%);
+        color: #fff;
+      }
+    }
+  }
+  #nav-avatar {
+    margin-top: -8px;
+  }
+  #badge-notif {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    background: @brand-danger;
+    padding: 3px 5px;
+  }
+  #badge-lang {
+    position: absolute;
+    top: 12px;
+    right: 3px;
+    background: @brand-primary;
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+  #quebec-flag, #canada-flag {
+    img {
+      width: 32px;
+      height: auto;
+    }
+    span {
+      margin: 0 0 0 5px;
+    }
+  }
+  .open > a, .open > a:hover, .open > a:focus {
+    background: darken(@bgDefault, 6.5%);
+    color: #fff;
+  }
+  .btn-register {
+    left: 1px;
+  }
+  .btn-login, .btn-register {
+    border-radius: 0;
+    border: none;
+    padding: 15px;
+    position: relative;
+    bottom: -1px;
+    &:hover {
+      border: none;
+    }
+  }
+  & > .open {
+    & > .dropdown-menu {
+      float: left;
+      margin-top: 0;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+  }
+}
 .navbar-brand {
   padding: 4px;
 }
