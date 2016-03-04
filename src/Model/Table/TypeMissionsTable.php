@@ -79,11 +79,19 @@ class TypeMissionsTable extends Table
         return $validator;
     }
 
+    /**
+     * FindOptions method
+     *
+     * @param Query $query   query
+     * @param array $options options
+     *
+     * @return array
+     */
     public function findOptions(Query $query, array $options)
     {
         $typeMissions = $query->find('all')->toArray();
         $typeOptions = [];
-        foreach($typeMissions as $typeMission) {
+        foreach ($typeMissions as $typeMission) {
             $typeOptions[$typeMission->id] = $typeMission->getName();
         }
         return $typeOptions;

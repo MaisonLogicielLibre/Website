@@ -1101,6 +1101,11 @@ class UsersTableTest extends TestCase
         $this->assertEquals('en_CA', $language);
     }
 
+    /**
+     * Test getTypeOptions
+     *
+     * @return void
+     */
     public function testGetTypeOptions()
     {
         $typeOptions = $this->Users->find('typeOptions');

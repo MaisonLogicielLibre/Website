@@ -370,6 +370,13 @@ class UsersTable extends Table
         return $rules;
     }
 
+    /**
+     * FindTypeOptions method
+     *
+     * @param Query $query query
+     *
+     * @return array
+     */
     public function findTypeOptions(Query $query)
     {
         $typeMissions = TableRegistry::get('TypeMissions');
