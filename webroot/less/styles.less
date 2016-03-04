@@ -6,6 +6,7 @@
 @import 'colors.less';
 @import 'register-button.less';
 @import 'carousel.less';
+@import 'side-nav.less';
 
 html, body {
   height: 100%;
@@ -110,46 +111,6 @@ h1, h2, h3, h4, h5, h6 {
       border-top-right-radius: 0;
       -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
       box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    }
-  }
-}
-
-.side-nav {
-  padding: 30px 0 0 0;
-  & > li {
-    &.active {
-      background: rgba(0, 0, 0, 0.1);
-      > a, > a:hover {
-        border-left: 3px solid @brand-success;
-        color: @brand-success;
-      }
-      .submenu-arrow {
-        &:before {
-          content: "\f0de";
-        }
-      }
-    }
-    a {
-      color: @gray-light;
-      &:hover, &:focus {
-        background: none;
-        color: @brand-success;
-      }
-      .submenu-arrow {
-        &:before {
-          content: "\f0dd";
-        }
-      }
-    }
-    & > ul {
-      padding: 0;
-      & > li {
-        & > a {
-          display: block;
-          padding: 10px 15px 10px 38px;
-          text-decoration: none;
-        }
-      }
     }
   }
 }
