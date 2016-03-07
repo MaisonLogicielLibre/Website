@@ -56,9 +56,9 @@ $paginatorParams = $this->Paginator->params();
                 <?= $this->Form->radio(
                     'profFilter',
                     [
-                        ['value' => 'none', 'text' => __('no filter')],
-                        ['value' => 'hasProfessor', 'text' => __('has a Professor?')],
-                        ['value' => 'needsProfessor', 'text' => __('needs a Professor?')],
+                        ['value' => 'none', 'text' => __('no filter'), 'class' => 'professor-radio'],
+                        ['value' => 'hasProfessor', 'text' => __('has a Professor?'), 'class' => 'professor-radio'],
+                        ['value' => 'needsProfessor', 'text' => __('needs a Professor?'), 'class' => 'professor-radio'],
                     ]
                 ); ?>
                 <div id="profByU" style="display: none;">
