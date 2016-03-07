@@ -38,61 +38,6 @@
 @import 'home-stats-info.less';
 @import 'industry-student.less';
 
-/* Feb 4 , 2016 - grouped media actin together */
-@media (min-width: 992px) {
-  #wrapper {
-    padding-left: 250px;
-    #page-wrapper {
-      padding: 10px;
-    }
-    .side-nav {
-      position: fixed;
-      top: 51px;
-      left: 250px;
-      width: 250px;
-      margin-left: -250px;
-      border: none;
-      border-radius: 0;
-      overflow-y: auto;
-      background: #fff;
-      bottom: 0;
-      overflow-x: hidden;
-      padding-bottom: 40px;
-      & > li {
-        & > a {
-          width: 250px;
-          &:hover, &:focus {
-            outline: none;
-          }
-        }
-      }
-    }
-  }
-
-  #wrapper-home {
-    padding: 0;
-  }
-
-  #welcome-row {
-    padding: 2px 0;
-  }
-  #industry-student {
-    display: block;
-  }
-
-  #stats-row {
-    .fa {
-      display: block;
-    }
-    .stats-cell {
-      margin: 0;
-      &:not(:last-child) {
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
-      }
-    }
-  }
-}
-
 @media (max-width: 1700px) {
   .error-text {
     text-align: center;

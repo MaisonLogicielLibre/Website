@@ -40,3 +40,27 @@
     }
   }
 }
+@media(min-width: 992px) {
+  .side-nav {
+    position: fixed;
+    top: 51px;
+    left: 250px;
+    width: 250px;
+    margin-left: -250px;
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+    background: #fff;
+    bottom: 0;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    & > li {
+      & > a {
+        width: 250px;
+        &:hover, &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

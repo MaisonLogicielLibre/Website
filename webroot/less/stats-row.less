@@ -36,3 +36,16 @@
     word-spacing: 9999999px;
   }
 }
+@media(min-width: 992px) {
+  #stats-row {
+    .fa {
+      display: block;
+    }
+    .stats-cell {
+      margin: 0;
+      &:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
