@@ -1,0 +1,59 @@
+/*
+* Panels styles
+*/
+.panel {
+  .header-title {
+    font-size: 1em;
+    margin-top: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.special-panel {
+  &.profile-panel {
+    margin-top: 6px;
+  }
+  .panel-heading {
+    background: #1abc9c;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    min-height: 100px;
+    a {
+      text-decoration: underline;
+      color: #fff;
+    }
+  }
+  .panel-body {
+    .profile-table {
+      width: 100%;
+      tr {
+        width: 100%;
+      }
+      td {
+        width: 100%;
+        &:first-child {
+          width: 40%;
+        }
+        &:last-child {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+.panel-blue {
+  background: @brand-info;
+  color: #fff;
+}
+
+.panel-red {
+  background: @brand-danger;
+  color: #fff;
+}
+
+.panel-green {
+  background: @brand-success;
+  color: #fff;
+}
