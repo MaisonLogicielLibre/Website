@@ -42,46 +42,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #505458;
 }
 
-.side-nav {
-  padding: 30px 0 0 0;
-  & > li {
-    &.active {
-      background: rgba(0, 0, 0, 0.1);
-      > a, > a:hover {
-        border-left: 3px solid @brand-success;
-        color: @brand-success;
-      }
-      .submenu-arrow {
-        &:before {
-          content: "\f0de";
-        }
-      }
-    }
-    a {
-      color: @gray-light;
-      &:hover, &:focus {
-        background: none;
-        color: @brand-success;
-      }
-      .submenu-arrow {
-        &:before {
-          content: "\f0dd";
-        }
-      }
-    }
-    & > ul {
-      padding: 0;
-      & > li {
-        & > a {
-          display: block;
-          padding: 10px 15px 10px 38px;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-}
-
 #wrapper {
   padding-left: 0;
   height: 100%;
