@@ -11,6 +11,7 @@
 @import 'page-action.less';
 @import 'badge.less';
 @import 'top-navbar.less';
+@import 'register-wrapper.less';
 
 html, body {
   height: 100%;
@@ -60,59 +61,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 420px;
   position: relative;
   margin: 5% auto;
-}
-
-#register-wrapper, #login-wrapper, #recover-password-wrapper, #reset-password-wrapper {
-  .panel {
-    padding-bottom: 20px;
-    h2 {
-      text-align: center;
-      font-size: 1.8em;
-    }
-    input {
-      &[placeholder]:first-letter {
-        text-transform: capitalize;
-      }
-    }
-    button[type="submit"], a.btn {
-      width: 100%;
-      margin: 20px 0;
-      text-transform: uppercase;
-    }
-  }
-  #register-login-link, #login-register-link, #recover-password-search-link {
-    text-align: center;
-  }
-  #login-alert, #register-alert, #recover-password-alert, #reset-password-alert {
-    &:empty {
-      padding-bottom: 40px;
-    }
-    padding-bottom: 0;
-    margin: 10px 0;
-
-  }
-}
-
-#register-wrapper {
-  max-width: 840px;
-  width: 100%;
-  position: relative;
-  margin: 5% auto;
-  .panel {
-    legend {
-      font-size: 1.2em;
-      .sub {
-        font-size: 0.6em;
-      }
-    }
-    p {
-      margin: 0 !important;
-    }
-    .register-university-info {
-      font-size: 0.8em;
-      color: lighten(@text-color, 13.5%)
-    }
-  }
 }
 
 #recover-password-wrapper {
