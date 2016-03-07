@@ -8,6 +8,7 @@
 @import 'carousel.less';
 @import 'side-nav.less';
 @import 'footer.less';
+@import 'page-action.less';
 
 html, body {
   height: 100%;
@@ -221,85 +222,6 @@ h1, h2, h3, h4, h5, h6 {
   -ms-transform: translate(0, -2px);
   -o-transform: translate(0, -2px);
   transform: translate(0, -2px);
-}
-
-.page-action {
-  background: #fff;
-  border-radius: 5px;
-  .page-header {
-    text-align: center;
-    background: @brand-success;
-    padding: 20px 0 10px 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    .user-status {
-      display: inline-block;
-      font-size: 1em;
-      &:not(:first-child):before {
-        content: "| ";
-      }
-    }
-    &.page-header-student {
-      background: @brand-info;
-      &:hover {
-        background: darken(@brand-info, 6.5%);
-      }
-    }
-    &.page-header-professor {
-      background: @brand-danger;
-      &:hover {
-        background: darken(@brand-danger, 6.5%);
-      }
-    }
-    &:hover {
-      background: darken(@brand-success, 15%);
-    }
-    img.img-circle {
-      margin: 0px auto;
-      border: 10px solid rgba(255, 255, 255, 0.3)
-    }
-    span {
-      display: block;
-      color: #fff;
-      font-size: 1.4em;
-    }
-    a {
-      display: inline;
-      color: #fff;
-      font-size: 0.9em;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  ul {
-    //border: 1px solid #ddd;
-    border-top: none;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    li {
-      &.active {
-        background: rgba(0, 0, 0, 0.1);
-        a {
-          border-left: 3px solid @brand-info;
-          color: @brand-info;
-          &:hover {
-            color: @brand-info;
-          }
-        }
-      }
-      a {
-        color: #777;
-        &:hover {
-          color: @brand-info;
-        }
-      }
-    }
-  }
 }
 
 .panel {
