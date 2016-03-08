@@ -3,4 +3,5 @@ $(document).ready(function () {
         'onText': yesTr,
         'offText': noTr
     });
+    $('.terms-and-conditions-container').hide();
 });
