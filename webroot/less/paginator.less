@@ -15,3 +15,11 @@ li.next a {
 div.panel.panel-default {
   margin-bottom: 0px;
 }
+/*
+* Display only previous and next in mobile version
+*/
+@media(max-width: 550px) {
+  ul.pagination ul.pagination {
+    display: none;
+  }
+}
