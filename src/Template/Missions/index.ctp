@@ -78,7 +78,7 @@ $paginatorParams = $this->Paginator->params();
 </div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-missions">
             <div class="panel-body">
                 <h3 class="header-title"><?= __('List of missions'); ?></h3>
                 <?php if ($paginatorParams['count'] == 0): ?>
