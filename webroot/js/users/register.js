@@ -7,16 +7,14 @@ $(document).ready(function () {
     termsCheckBox = $('.terms-and-conditions-container :checkbox');
     termsCheckBox.change(function() {
       termsCheckBox.attr('checked', !termsCheckBox.attr('checked'));
-      checked = $('.terms-and-conditions-container :checkbox').attr("checked");
-      if(checked == "checked") {
+      if(isTermsChecked()) {
         $('.form-horizontal button').show();
       } else {
         $('.form-horizontal button').hide();
       }
     });
     $('.form-horizontal').submit(function(e) {
-      checked = $('.terms-and-conditions-container :checkbox').attr("checked");
-      if(checked == "checked") {
+      if(isTermsChecked()) {
         $(this).unbind('submit').submit();
       } else {
         e.preventDefault();
@@ -27,3 +25,7 @@ $(document).ready(function () {
       return true;
     });
 });
+function isTermsChecked() {
+  var checked = $('.terms-and-conditions-container :checkbox').attr("checked");
+  return checked == "checked";
+}
