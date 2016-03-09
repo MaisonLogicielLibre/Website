@@ -122,12 +122,11 @@ $paginatorParams = $this->Paginator->params();
         </div>
     </div>
     <div class="paginator">
-        <ul class="pagination">
+        <ul class="pagination col-lg-12 col-md-12 col-xs-12">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
             <?= $this->Paginator->next(__('next') . ' >') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
 <?= $this->Html->script(
