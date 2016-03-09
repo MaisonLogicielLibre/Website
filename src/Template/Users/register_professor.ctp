@@ -20,6 +20,12 @@
 <div id="register-wrapper">
     <div class="panel panel-default">
         <div class="panel-body">
+            <div class="terms-and-conditions-container">
+                <?= $this->element('Users/terms'); ?>
+                <hr>
+                <?= $this->Form->checkbox('accepted'); ?>
+                <?= $this->Form->label('accepted', ['text' => __('I accept the terms and conditions')]); ?>
+            </div>
             <?= $this->Form->create($user, ['class' => 'form-horizontal']) ?>
             <div class="col-sm-12 col-xs-12">
                 <h2><?= __("Sign Up to {0}", '<strong>' . __('ML2') . '</strong>') ?></h2>
