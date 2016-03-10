@@ -1,7 +1,7 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li>
-            <div class="alert alert-info">
+            <div class="alert alert-info first-news">
                 <strong>
                     <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'news']); ?>">
                         <?= $news->name ?>
