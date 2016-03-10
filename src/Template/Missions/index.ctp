@@ -51,7 +51,7 @@ $paginatorParams = $this->Paginator->params();
                         array('empty' => __('<Any>'), 'label' => 'Students by Univeristy', 'options' => $universities)); ?>
                 </div>
             </div>
-            <div class="col-sm-offset-1 col-sm-4 shadegrey">
+            <div class="col-sm-offset-1 col-sm-4 shadegrey filter-professors">
                 <h4>Filter Missions by professor</h4>
                 <?= $this->Form->radio(
                     'profFilter',
