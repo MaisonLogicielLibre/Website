@@ -88,30 +88,30 @@ $paginatorParams = $this->Paginator->params();
                         <table id="missions" class="table table-striped table-bordered dataTable">
                             <thead>
                             <tr>
-                                <th><?= __('Organization'); ?></th>
-                                <th><?= $this->Paginator->sort('project_id', __('Project')) ?></th>
+                                <th class="hide-mobile"><?= __('Organization'); ?></th>
+                                <th class="hide-mobile"><?= $this->Paginator->sort('project_id', __('Project')) ?></th>
                                 <th><?= $this->Paginator->sort('name', __('Mission')) ?></th>
-                                <th><?= $this->Paginator->sort('mentor_id', __('Mentor')) ?></th>
-                                <th><?= $this->Paginator->sort('type_mission', __('Mission type')) ?></th>
-                                <th><?= $this->Paginator->sort('session', __('Session')) ?></th>
-                                <th><?= $this->Paginator->sort('modified', __('Last Modified')) ?></th>
+                                <th class="hide-mobile"><?= $this->Paginator->sort('mentor_id', __('Mentor')) ?></th>
+                                <th class="hide-mobile"><?= $this->Paginator->sort('type_mission', __('Mission type')) ?></th>
+                                <th class="hide-mobile"><?= $this->Paginator->sort('session', __('Session')) ?></th>
+                                <th class="hide-mobile"><?= $this->Paginator->sort('modified', __('Last Modified')) ?></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($missions as $mission): ?>
                                 <tr>
-                                    <td>
+                                    <td class="hide-mobile">
                                         <?php foreach ($mission->project->organizations as $org): ?>
                                             <?php if ($org !== reset($mission->project->organizations)) echo ','; ?>
                                             <?php echo $org['name']; ?>
                                         <?php endforeach; ?>
                                     </td>
                                     <td><?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?></td>
-                                    <td><?= $this->Html->link($mission->name, ['controller' => 'Missions', 'action' => 'view', $mission->id]); ?></td>
-                                    <td><?= $mission->has('user') ? $this->Html->link($mission->user->lastName, ['controller' => 'Users', 'action' => 'view', $mission->user->id]) : '' ?></td>
-                                    <td><?= __($mission->type_mission['name']) ?></td>
-                                    <td><?= $sessionOptions[$mission->session] ?></td>
-                                    <td><?= date('Y-m-d', strtotime($mission->modified)); ?></td>
+                                    <td class="hide-mobile"><?= $this->Html->link($mission->name, ['controller' => 'Missions', 'action' => 'view', $mission->id]); ?></td>
+                                    <td class="hide-mobile"><?= $mission->has('user') ? $this->Html->link($mission->user->lastName, ['controller' => 'Users', 'action' => 'view', $mission->user->id]) : '' ?></td>
+                                    <td class="hide-mobile"><?= __($mission->type_mission['name']) ?></td>
+                                    <td class="hide-mobile"><?= $sessionOptions[$mission->session] ?></td>
+                                    <td class="hide-mobile"><?= date('Y-m-d', strtotime($mission->modified)); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
