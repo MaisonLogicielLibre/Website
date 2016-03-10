@@ -41,7 +41,7 @@ $paginatorParams = $this->Paginator->params();
                     array('empty' => __('<All Sessions>'), 'label' => false, 'options' => $sessionOptions)); ?>
             </div>
         </div>
-        <div style="padding-left: 10px;" class="row">
+        <div class="row filter-box">
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
                 <h4><?= __('Filter Missions by student applications'); ?></h4>
                 <?php echo $this->Form->input('applicationState',
