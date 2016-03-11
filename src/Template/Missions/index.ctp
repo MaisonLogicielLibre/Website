@@ -52,7 +52,7 @@ $paginatorParams = $this->Paginator->params();
                 </div>
             </div>
             <div class="col-sm-offset-1 col-sm-4 shadegrey filter-professors">
-                <h4>Filter Missions by professor</h4>
+                <h4><?= __('Filter Missions by professor'); ?></h4>
                 <?= $this->Form->radio(
                     'profFilter',
                     [
