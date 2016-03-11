@@ -31,7 +31,7 @@
                         class=" text-center btn btn-primary register-button" id="industry-button">
                         <i class="fa fa-industry"
                            title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
-                        <h4><strong><?= __('Industry'); ?></strong></h4>
+                        <h6><strong><?= __('Industry'); ?></strong></h6>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
@@ -39,7 +39,7 @@
                         class=" text-center btn btn-primary register-button" id="student-button">
                         <i class="fa fa-graduation-cap"
                            title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
-                        <h4><strong><?= __('Student'); ?></strong></h4>
+                        <h6><strong><?= __('Student'); ?></strong></h6>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sg-4 col-xs-4">
@@ -47,7 +47,7 @@
                         class=" text-center btn btn-primary register-button" id="professor-button">
                         <i class="fa fa-user"
                            title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
-                        <h4><strong><?= __('Professor'); ?></strong></h4>
+                        <h6><strong><?= __('Professor'); ?></strong></h6>
                     </a>
                 </div>
             </div>
