@@ -106,22 +106,21 @@
 </div>
 <hr class="hrmain">
 <div class="row" id="partners-row">
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center sponsors-cell">
+    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 text-center sponsors-cell">
         <h1>
             <?= __("Our founding partners"); ?>
         </h1>
         <a href="http://www.google.com"><?php echo $this->Html->image('google.svg', ['alt' => 'Google', 'id' => 'google-logo', 'class' => 'img-responsive founder-image']) ?></a>
         <a href="http://www.etsmtl.ca"><?php echo $this->Html->image('ets.svg', ['class' => 'img-responsive founder-image']) ?></a>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center sponsors-cell">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center sponsors-cell">
         <h1>
             <?= __("Our sponsors"); ?>
         </h1>
         <?= $this->Html->image('montreal.svg', ['class' => 'img-responsive sponsor-image']); ?>
         <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive sponsor sponsor-image']); ?>
-        <?= $this->Html->image('facil.png', ['class' => 'img-responsive sponsor sponsor-image']); ?>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center sponsors-cell">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center sponsors-cell">
         <h1><?= __('Become a sponsor'); ?></h1>
         <p>
             <?= __("Get visibility and access to over") ?>
