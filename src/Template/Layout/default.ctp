@@ -52,7 +52,7 @@
                             <i class="fa fa-twitter fa-stack-1x icon-twitter"></i>
                         </span>
                     </a>
-                    <a href="https://github.com/MaisonLogicielLibre/Website" class="navbar-brand navbar-github">
+                    <a href="https://maisonlogiciellibre.github.io/" class="navbar-brand navbar-github">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-github fa-lg fa-stack-1x icon-github"></i>
