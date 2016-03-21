@@ -24,6 +24,10 @@ $(document).ready(function () {
       }
       return true;
     });
+    isMemberCheckBox = $(':checkbox[name=isMember]');
+    isMemberCheckBox.change(function() {
+        isMemberCheckBox.attr('checked', !isMemberCheckBox.attr('checked'));
+    });
 });
 function isTermsChecked() {
   var checked = $('.terms-and-conditions-container :checkbox').attr("checked");

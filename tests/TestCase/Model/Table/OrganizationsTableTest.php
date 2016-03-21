@@ -335,4 +335,26 @@ class OrganizationsTableTest extends TestCase
 
         $this->assertFalse($result);
     }
+
+    public function testAddMember()
+    {
+        $id = 2;
+        $org = $this->Organizations->get($id, ['contain' => ['Members', 'Owners']]);
+        $this->assertEquals(1, count($org['members']));
+
+        $org->addMember(3);
+        $this->assertEquals(2, count($org['members']));
+        $this->assertEquals(3, $org['members'][1]['id']);
+    }
+
+    public function testGetMembersId()
+    {
+        $id = 2;
+        $expected = [$id];
+        $org = $this->Organizations->get($id, ['contain' => ['Members', 'Owners']]);
+
+        $membersId = $org->getMembersId();
+
+        $this->assertEquals($expected, $membersId);
+    }
 }

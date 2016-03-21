@@ -53,6 +53,13 @@
                     <?= $this->Form->input('confirm_email', ['label' => false, 'placeholder' => __('Confirm email adress'), 'autocomplete' => 'off']); ?>
                 </fieldset>
             </div>
+            <div class="col-sm-offset-1 col-sm-6 col-xs-12">
+                <fieldset>
+                    <legend><?= __('Organization info'); ?></legend>
+                    <?= $this->Form->checkbox('isMember'); ?>
+                    <?= $this->Form->label('isMember', ['text' => __('Are you member of an organization?')]); ?>
+                </fieldset>
+            </div>
 
             <?= $this->Form->button(__('Sign Up'), ['class' => 'btn btn-info']); ?>
             <?= $this->Form->end() ?>

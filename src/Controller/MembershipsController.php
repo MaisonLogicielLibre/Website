@@ -67,6 +67,22 @@ class MembershipsController extends AppController
         $this->loadComponent('Hash');
     }
 
+    public function accept($id)
+    {
+        $user = $this->Memberships->Users->findById($this->request->session()->read('Auth.User.id'))->first();
+        $membership = $this->Memberships->get($id);
+        $organization = $this->Memberships->Organizations->get($membership['organization_id'], ['contain' => ['Owners', 'Members']]);
+        if($this->request->is('post')) {
+            $memberId = $membership->user_id;
+            $organization->addMember($memberId);
+            $this->Memberships->Organizations->save($organization);
+
+            $this->redirect(['controller' => 'Organizations', 'action' => 'view', $membership['organization_id']]);
+        }
+        $this->set(compact(['organization', 'user', 'membership']));
+        $this->set('_serialize', ['organization', 'user', 'membership']);
+    }
+
     /**
      * Add method
      *
@@ -78,20 +94,20 @@ class MembershipsController extends AppController
         $userId = $this->request->session()->read('user')['id'];
         $this->loadModel('Users');
         $user = $this->Users->get($userId);
-        $organization_id = $this->request->data['organization_id'];
-        $organizations = $this->loadModel("Organizations");
-        $organization = $organizations->get($organization_id, ['contain' => ['Owners', 'Members']]);
+        $organizations = $this->Memberships->Organizations->find('all')->toArray();
 
         if ($this->request->is('post')) {
+            $organization_id = $this->request->data['organization_id'];
+            $organization = $this->Memberships->Organizations->get($organization_id, ['contain' => ['Owners', 'Members']]);
             $this->createMembership($userId, $organization);
-            return $this->redirect(['action' => 'login']);
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
 
         $this->set(compact(['user', 'organizations']));
         $this->set('_serialize', ['user', 'organizations']);
-   }
+    }
 
-   private function createMembership($userId, $organization)
+    private function createMembership($userId, $organization)
     {
         $data = [
             'user_id' => $userId,
@@ -102,17 +118,17 @@ class MembershipsController extends AppController
         $membership = $memberships->newEntity($data);
         $memberships->save($membership);
 
-        $this->sendNotificationToOwners($userId, $organization);
+        $this->sendNotificationToOwners($userId, $organization, $membership);
     }
 
-    private function sendNotificationToOwners($requesterId, $organization)
+    private function sendNotificationToOwners($requesterId, $organization, $membership)
     {
         $owners = $organization['owners'];
         foreach($owners as $owner) {
             $notifications = $this->loadModel("Notifications");
             $notification = $notifications->newEntity();
             $notification->editName(__("A user has asked to be part of your organization"));
-            $notification->editLink('memberships/accept/' . $requesterId);
+            $notification->editLink('memberships/accept/' . $membership['id']);
             $notification->editUser($owner);
             $notifications->save($notification);
         }

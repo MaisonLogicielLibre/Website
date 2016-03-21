@@ -40,9 +40,22 @@ class MembershipsControllerTest extends IntegrationTestCase
         'app.organizations_members',
         'app.mission_levels',
         'app.missions_mission_levels',
-        'app.notifications'
+        'app.notifications',
+        'app.news'
     ];
 
+    public function testAddGet()
+    {
+        $id = 3;
+        $this->session(['user' => ['id' => $id]]);
+
+        $data = [
+            'organization_id' => 2
+        ];
+
+        $this->get('/memberships/add');
+        $this->assertResponseSuccess();
+    }
     /**
      * Test add method
      *
@@ -59,13 +72,6 @@ class MembershipsControllerTest extends IntegrationTestCase
 
         $this->post('/memberships/add', $data);
 
-        $this->assertResponseSuccess();
-
-        //$organizations = TableRegistry::get("Organizations");
-        //$organization = $organizations->get(2, ['contain' => 'Members']);
-        //$members = $organization->getMembers();
-        //$this->assertEquals(2, count($members));
-
         $memberships = TableRegistry::get('Memberships');
         $membership = $memberships->findByUserId($id)->toArray();
         $this->assertEquals(2, $membership[0]['organization_id']);
@@ -75,7 +81,8 @@ class MembershipsControllerTest extends IntegrationTestCase
         $notification = $notifications->findByUserId(2)->toArray();
 
         $this->assertEquals(2, $notification[0]['user_id']);
-        $this->assertEquals('memberships/accept/3', $notification[0]['link']);
+        $this->assertEquals('memberships/accept/2', $notification[0]['link']);
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
 
     }
 
@@ -88,11 +95,20 @@ class MembershipsControllerTest extends IntegrationTestCase
             'organization_id' => 2
         ];
 
-        $this->post('/users/requestMember', $data);
+        $this->post('/memberships/add', $data);
 
-        $this->get('/users/acceptMember/3');
+        $notifications = TableRegistry::get('Notifications');
+        $notification = $notifications->findByUserId(2)->toArray();
+        $link = $notification[0]['link'];
 
-        $this->assertTemplate('accept_member');
-        //$this->assertResponseOk();
+        $this->session(['Auth.User.id' => 1]);
+        $this->post($link);
+
+        $organizations = TableRegistry::get('Organizations');
+        $organization = $organizations->get(2, ['contain' => 'Members']);
+        $members = $organization->getMembers();
+
+        $this->assertEquals(2, count($members));
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 2]);
     }
 }

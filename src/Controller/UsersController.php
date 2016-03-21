@@ -192,11 +192,15 @@ class UsersController extends AppController
                     'registerStudentOptional/',
                     'registerStudent/',
                     'registerIndustry/',
-                    'registerProfessor/'
+                    'registerProfessor/',
+                ];
+                $controllerRefs = [
+                    'Memberships'
                 ];
 
                 if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef')
                     && !in_array($this->request->Session()->read('actionRef'), $actionRefs)
+                    && !in_array($this->request->Session()->read('controllerRef'), $controllerRefs)
                 ) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
                 } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
@@ -352,8 +356,8 @@ class UsersController extends AppController
         $user->type_users = [$typeUser];
 
         if ($this->request->is('post')) {
+            $this->request->data['university_id'] = 0;
             $user = $this->Users->patchEntity($user, $this->request->data);
-            $user->university_id = 0;
 
             if ($user->errors()) {
                 $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
@@ -365,6 +369,9 @@ class UsersController extends AppController
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
                     $this->request->session()->write('user', $user);
+                    if($this->request->data['isMember'] == "1") {
+                        return $this->redirect(['controller' => 'Memberships', 'action' => 'add']);
+                    }
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
