@@ -19,7 +19,6 @@
                 <li data-target="#carousel" data-slide-to="0"></li>
                 <li data-target="#carousel" data-slide-to="1" class="active"></li>
                 <li data-target="#carousel" data-slide-to="2"></li>
-                <li data-target="#carousel" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item">
@@ -30,11 +29,6 @@
                 <div class="item active">
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/4.jpg'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/5.png'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
                 <div class="item">
