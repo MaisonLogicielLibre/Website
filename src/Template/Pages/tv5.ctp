@@ -12,61 +12,18 @@
 
     <?= $this->fetch('meta') ?>
     <style>
-        img {height: auto;vertical-align: middle;}
-        td {border:0!important;}
+     body {
+         background-color: #70CCD6;
+     }
+     html {
+         background: url(webroot/img/sponsors.png) #70CCD6 no-repeat fixed;
+         -webkit-background-size: contain;
+         -moz-background-size: contain;
+         -o-background-size: contain;
+         background-size: 98% 100%;
+     }
     </style>
 </head>
 <body>
-<div class="wrapper">
-    <div class="page-wrapper">
-        <div class="container-fluid">
-            <div class="row" style="margin-bottom:100px;">
-                <div class="col-xs-10 col-xs-offset-1">
-                    <h1><strong>Maison du logiciel libre - Nos commanditaires</strong></h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table class="table table-responsive text-center">
-                        <tr>
-                            <td>
-                                <img src="webroot/img/ets.svg" alt="" style="width:300px;" />
-                            </td>
-                            <td>
-                                <img src="webroot/img/google.svg" alt="" style="width:500px;"/>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table class="table table-responsive text-center">
-                        <tr>
-                            <td>
-                                <img src="webroot/img/montreal.svg" alt="" style="width:500px;" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table class="table table-responsive">
-                        <tr>
-                            <td style="padding-left: 60px">
-                                <img src="webroot/img/savoirfairelinux.svg" alt=""/>
-                            </td>
-                            <td>
-                                <img src="webroot/img/facil.png" style="width:200px;" alt="" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <body>
-        </div>
-    </div>
-</div>
 </body>
 </html>
