@@ -1,19 +1,25 @@
 <?php
+/**
+ * Entity of MembershipTable
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Membership Entity.
+ * Entity of MembershipTable
  *
- * @property int $id
- * @property int $organization_id
- * @property \App\Model\Entity\Organization $organization
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property bool $archived
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class Membership extends Entity
 {
@@ -27,7 +33,7 @@ class Membership extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected $accessible = [
         '*' => true,
         'id' => false,
     ];

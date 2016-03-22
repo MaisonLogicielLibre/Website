@@ -1,15 +1,28 @@
 <?php
+/**
+ * Memberships Controller
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Mailer\MailerAwareTrait;
 use Cake\Event\Event;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\TableRegistry;
 
 /**
  * Memberships Controller
  *
- * @property \App\Model\Table\MembershipsTable $Memberships
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class MembershipsController extends AppController
 {
@@ -67,12 +80,19 @@ class MembershipsController extends AppController
         $this->loadComponent('Hash');
     }
 
+    /**
+     * Accept a user as a member
+     *
+     * @param int $id id
+     *
+     * @return void
+     */
     public function accept($id)
     {
         $user = $this->Memberships->Users->findById($this->request->session()->read('Auth.User.id'))->first();
         $membership = $this->Memberships->get($id);
         $organization = $this->Memberships->Organizations->get($membership['organization_id'], ['contain' => ['Owners', 'Members']]);
-        if($this->request->is('post')) {
+        if ($this->request->is('post')) {
             $memberId = $membership->user_id;
             $organization->addMember($memberId);
             $this->Memberships->Organizations->save($organization);
@@ -97,9 +117,9 @@ class MembershipsController extends AppController
         $organizations = $this->Memberships->Organizations->find('all')->toArray();
 
         if ($this->request->is('post')) {
-            $organization_id = $this->request->data['organization_id'];
-            $organization = $this->Memberships->Organizations->get($organization_id, ['contain' => ['Owners', 'Members']]);
-            $this->createMembership($userId, $organization);
+            $organizationId = $this->request->data['organization_id'];
+            $organization = $this->Memberships->Organizations->get($organizationId, ['contain' => ['Owners', 'Members']]);
+            $this->_createMembership($userId, $organization);
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
 
@@ -107,7 +127,15 @@ class MembershipsController extends AppController
         $this->set('_serialize', ['user', 'organizations']);
     }
 
-    private function createMembership($userId, $organization)
+    /**
+     * Create membership
+     *
+     * @param int    $userId       user
+     * @param object $organization organization
+     *
+     * @return void
+     */
+    private function _createMembership($userId, $organization)
     {
         $data = [
             'user_id' => $userId,
@@ -118,13 +146,22 @@ class MembershipsController extends AppController
         $membership = $memberships->newEntity($data);
         $memberships->save($membership);
 
-        $this->sendNotificationToOwners($userId, $organization, $membership);
+        $this->_sendNotificationToOwners($userId, $organization, $membership);
     }
 
-    private function sendNotificationToOwners($requesterId, $organization, $membership)
+    /**
+     * Create membership
+     *
+     * @param int    $requesterId  the user requesting to be a member
+     * @param object $organization organization
+     * @param object $membership   membership
+     *
+     * @return void
+     */
+    private function _sendNotificationToOwners($requesterId, $organization, $membership)
     {
         $owners = $organization['owners'];
-        foreach($owners as $owner) {
+        foreach ($owners as $owner) {
             $notifications = $this->loadModel("Notifications");
             $notification = $notifications->newEntity();
             $notification->editName(__("A user has asked to be part of your organization"));

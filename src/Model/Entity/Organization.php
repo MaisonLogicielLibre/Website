@@ -337,16 +337,28 @@ class Organization extends Entity
         $this->editMembers($members);
     }
 
+    /**
+     * Get Members id
+     *
+     * @return array members id
+     */
     public function getMembersId()
     {
         $members = $this->getMembers();
         $membersId = [];
-        foreach($members as $member) {
+        foreach ($members as $member) {
             array_push($membersId, $member['id']);
         }
         return $membersId;
     }
 
+    /**
+     * Add Member
+     *
+     * @param array $userId userId
+     *
+     * @return null
+     */
     public function addMember($userId)
     {
         $membersId = $this->getMembersId();

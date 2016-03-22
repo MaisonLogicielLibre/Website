@@ -1,12 +1,27 @@
 <?php
+/**
+ * Memberships Controller
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\MembershipsController;
-use Cake\TestSuite\IntegrationTestCase;
 use Cake\ORM\TableRegistry;
+use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\MembershipsController Test Case
+ * Memberships Controller
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
 class MembershipsControllerTest extends IntegrationTestCase
 {
@@ -44,6 +59,11 @@ class MembershipsControllerTest extends IntegrationTestCase
         'app.news'
     ];
 
+    /**
+     * Test add method
+     *
+     * @return void
+     */
     public function testAddGet()
     {
         $id = 3;
@@ -56,6 +76,7 @@ class MembershipsControllerTest extends IntegrationTestCase
         $this->get('/memberships/add');
         $this->assertResponseSuccess();
     }
+
     /**
      * Test add method
      *
@@ -83,9 +104,13 @@ class MembershipsControllerTest extends IntegrationTestCase
         $this->assertEquals(2, $notification[0]['user_id']);
         $this->assertEquals('memberships/accept/2', $notification[0]['link']);
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
-
     }
 
+    /**
+     * Test add method
+     *
+     * @return void
+     */
     public function testAcceptMember()
     {
         $id = 3;

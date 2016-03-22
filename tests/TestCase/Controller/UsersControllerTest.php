@@ -158,6 +158,11 @@ class UsersControllerTest extends IntegrationTestCase
         $this->assertEquals(1, $visits);
     }
 
+    /**
+     * Test login - Fail
+     *
+     * @return void
+     */
     public function testLoginMembershipController()
     {
         $this->session(['controllerRef' => 'Memberships']);

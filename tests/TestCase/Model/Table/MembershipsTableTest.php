@@ -1,4 +1,14 @@
 <?php
+/**
+ * Tests for UsersController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
+
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\MembershipsTable;
@@ -6,8 +16,15 @@ use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MembershipsTable Test Case
+ * Tests for UsersController
+ *
+ * @category Test
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
+
 class MembershipsTableTest extends TestCase
 {
 
@@ -50,7 +67,7 @@ class MembershipsTableTest extends TestCase
     ];
 
     /**
-     * setUp method
+     * SetUp method
      *
      * @return void
      */
@@ -62,7 +79,7 @@ class MembershipsTableTest extends TestCase
     }
 
     /**
-     * tearDown method
+     * TearDown method
      *
      * @return void
      */

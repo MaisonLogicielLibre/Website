@@ -369,7 +369,7 @@ class UsersController extends AppController
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
                     $this->request->session()->write('user', $user);
-                    if($this->request->data['isMember'] == "1") {
+                    if ($this->request->data['isMember'] == "1") {
                         return $this->redirect(['controller' => 'Memberships', 'action' => 'add']);
                     }
                     return $this->redirect(['action' => 'login']);

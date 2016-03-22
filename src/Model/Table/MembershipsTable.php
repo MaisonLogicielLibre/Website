@@ -1,4 +1,13 @@
 <?php
+/**
+ * Memberships Model
+ *
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <am21830@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
+ */
 namespace App\Model\Table;
 
 use App\Model\Entity\Membership;
@@ -10,9 +19,13 @@ use Cake\Validation\Validator;
 /**
  * Memberships Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Organizations
- * @property \Cake\ORM\Association\BelongsTo $Users
+ * @category Table
+ * @package  Website
+ * @author   Raphael St-Arnaud <r@ens.etsmtl.ca>
+ * @license  http://www.gnu.org/licenses/gpl-3.0.en.html GPL v3
+ * @link     https://github.com/MaisonLogicielLibre/Website
  */
+
 class MembershipsTable extends Table
 {
 
@@ -20,6 +33,7 @@ class MembershipsTable extends Table
      * Initialize method
      *
      * @param array $config The configuration for the Table.
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -32,20 +46,27 @@ class MembershipsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Organizations', [
-            'foreignKey' => 'organization_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
-        ]);
+        $this->belongsTo(
+            'Organizations',
+            [
+                'foreignKey' => 'organization_id',
+                'joinType' => 'INNER'
+            ]
+        );
+        $this->belongsTo(
+            'Users',
+            [
+                'foreignKey' => 'user_id',
+                'joinType' => 'INNER'
+            ]
+        );
     }
 
     /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -67,6 +88,7 @@ class MembershipsTable extends Table
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)

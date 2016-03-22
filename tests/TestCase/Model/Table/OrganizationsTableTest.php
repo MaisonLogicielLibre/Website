@@ -336,6 +336,12 @@ class OrganizationsTableTest extends TestCase
         $this->assertFalse($result);
     }
 
+
+    /**
+     * Test validation Website Rules
+     *
+     * @return void
+     */
     public function testAddMember()
     {
         $id = 2;
@@ -347,6 +353,11 @@ class OrganizationsTableTest extends TestCase
         $this->assertEquals(3, $org['members'][1]['id']);
     }
 
+    /**
+     * Test validation Website Rules
+     *
+     * @return void
+     */
     public function testGetMembersId()
     {
         $id = 2;
