@@ -93,7 +93,22 @@ class ProjectsController extends AppController
     {
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        $projects = $this->Projects->find('all', ['contain' => 'Organizations'])->toArray();
+        $projects = $this->Projects->find(
+            'all',
+            [
+                'contain' => 'Organizations',
+                'conditions' =>
+                [
+                    'OR' =>
+                    [
+                        [
+                            'archived' => 0,
+                            'accepted' => 1,
+                        ],
+                    ]
+                ]
+            ]
+        )->toArray();
 
         $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);
