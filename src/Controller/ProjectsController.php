@@ -93,83 +93,10 @@ class ProjectsController extends AppController
     {
         $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
 
-        $orgUser = (!is_null($user) ? array_map(
-            function ($o) {
-                return $o->getId();
-            },
-            $user->getOrganizationsJoined()
-        ) : []);
+        $projects = $this->Projects->find('all', ['contain' => 'Organizations'])->toArray();
 
-        if (!is_null($user) && $user->hasPermissionName(['list_projects_all'])) {
-            $this->adminIndex();
-        } else {
-            $data = $this->DataTables
-                ->find(
-                    'Projects',
-                    [
-                        'contain' => [
-                            'Organizations' =>
-                                [
-                                    'fields' =>
-                                        [
-                                            'id', 'name', 'OrganizationsProjects.project_id'
-                                        ]
-                                ]
-                        ],
-                        'fields' =>
-                            [
-                                'id', 'name', 'link', 'accepted'
-                            ],
-                            'join' =>
-                            [
-                                [
-                                    'table' => 'projects_mentors',
-                                    'alias' => 'm',
-                                    'type' => 'LEFT',
-                                    'conditions' => 'm.project_id = Projects.id'
-                                ],
-                                [
-                                    'table' => 'projects_contributors',
-                                    'alias' => 'c',
-                                    'type' => 'LEFT',
-                                    'conditions' => 'c.project_id = Projects.id'
-                                ],
-                                [
-                                    'table' => 'organizations_projects',
-                                    'alias' => 'o',
-                                    'type' => 'LEFT',
-                                    'conditions' => 'o.project_id = Projects.id'
-                                ]
-                            ],
-                            'conditions' =>
-                            [
-                                'OR' =>
-                                    [
-                                        [
-                                            'archived' => 0,
-                                            'accepted' => 1,
-                                        ],
-                                        [
-                                            'archived' => 0,
-                                            'm.user_id' => (!is_null($user) ? $user->getId() : ' '),
-                                        ],
-                                        [
-                                            'archived' => 0,
-                                            'o.organization_id IN' => (!empty($orgUser) ? $orgUser : ' ')
-                                        ]
-                                    ]
-                            ],
-                            'group' => 'Projects.id'
-                    ]
-                );
-
-            $this->set(
-                [
-                    'data' => $data,
-                    '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-                ]
-            );
-        }
+        $this->set(compact('projects'));
+        $this->set('_serialize', ['projects']);
     }
 
     /**

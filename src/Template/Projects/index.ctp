@@ -1,4 +1,3 @@
-<?= $this->Html->css('dataTables.bootstrap.min', ['block' => 'cssTop']); ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h1 class="page-header"><?= __('List of projects'); ?> <?= $this->Wiki->addHelper('Projects'); ?></h1>
@@ -26,80 +25,42 @@
                 <div class="table-responsive">
                     <table id="projects" class="table table-striped table-bordered dataTable">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th><?= __('Name'); ?></th>
-                            <th><?= __('Link'); ?></th>
-                            <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></th>
-                        </tr>
+                            <tr>
+                                <th><?= __('Name'); ?></th>
+                                <th><?= __('Link'); ?></th>
+                                <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></th>
+                            </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($projects as $project): ?>
+                                <tr>
+                                    <td><?= $this->Html->link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]); ?></td>
+                                    <td><?= $this->Html->link($project->link, $project->link); ?></td>
+                                    <td class="hide-mobile">
+                                        <?php foreach ($project->organizations as $org): ?>
+                                            <?php if ($org !== reset($project->organizations)) echo ','; ?>
+                                            <?php echo $org['name']; ?>
+                                        <?php endforeach; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
-                        <tfoot>
-                        <tr class="table-search info">
-                            <td></td>
-                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                       class="form-control input-sm input-block-level"/></td>
-                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                       class="form-control input-sm input-block-level"/></td>
-                            <td><input type="text" placeholder="<?= __('Search ...'); ?>"
-                                       class="form-control input-sm input-block-level"/></td>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <div class="paginator">
+        <ul class="pagination col-lg-12 col-md-12 col-xs-12">
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+        </ul>
+    </div>
 </div>
-<!-- Add DataTables scripts -->
 <?= $this->Html->script(
     [
-        'datatables/jquery.dataTables.min',
-        'datatables/dataTables.bootstrap.min',
-        'DataTables.cakephp.dataTables',
-    ],
-    ['block' => 'scriptBottom']);
+        'jquery-2.1.4.min.js',
+        'bootstrap.min.js',
+        'jquery-ui-1.14.1.min.js'
+    ]);
 ?>
-<?php
-$this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
-    'ajax' => [
-        'url' => $this->Url->build(['action' => 'index']),
-    ],
-    'deferLoading' => $recordsTotal,
-    'delay' => 600,
-    "sDom" => "<'row'<'col-xs-6'l>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
-    "autoWidth" => false,
-    'columns' => [
-        [
-            'name' => 'Projects.id',
-            'data' => 'id',
-            'searchable' => false,
-            'visible' => false
-        ],
-        [
-            'name' => 'Projects.name',
-            'data' => 'name',
-            'searchable' => true
-        ],
-        [
-            'name' => 'Projects.link',
-            'data' => 'link',
-            'searchable' => true
-        ],
-        [
-            'name' => 'Organizations.name',
-            'data' => 'organizations',
-            'searchable' => true,
-            'orderable' => false
-        ]
-    ],
-    'pageLength' => 50
-])->draw('.dataTable');
-echo 'var orgUrl="' . $this->Url->Build(['controller' => 'organizations', 'action' => 'view']) . '";';
-echo 'var projectUrl="' . $this->Url->Build(['action' => 'view']) . '";';
-echo 'var validationTxt="' . __('Pending Validation') . '";';
-$this->Html->scriptEnd();
-?>
-<?= $this->Html->script('projects/index.js', ['block' => 'scriptBottom']); ?>
