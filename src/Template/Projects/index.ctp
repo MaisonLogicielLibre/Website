@@ -52,7 +52,6 @@
 <?= $this->Html->script(
     [
         'jquery-2.1.4.min.js',
-        'bootstrap.min.js',
-        'jquery-ui-1.14.1.min.js'
+        'bootstrap.min.js'
     ]);
 ?>
