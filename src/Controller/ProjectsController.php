@@ -91,8 +91,6 @@ class ProjectsController extends AppController
      */
     public function index()
     {
-        $user = $this->loadModel("Users")->findById($this->request->session()->read('Auth.User.id'))->first();
-
         $projects = $this->Projects->find(
             'all',
             [
