@@ -85,28 +85,44 @@ class ProjectsController extends AppController
     }
 
     /**
+     * SetFilter method
+     *
+     * @param string $key   key
+     * @param string $value value
+     *
+     * @return void
+     */
+    private function _setFilter($key, $value)
+    {
+        if (!empty($value)) {
+            $this->request->session()->write('filter.project.' . $key, $value);
+        } else {
+            $this->request->session()->delete('filter.project.' . $key);
+        }
+    }
+
+    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $projects = $this->Projects->find(
-            'all',
-            [
-                'contain' => 'Organizations',
-                'conditions' =>
-                [
-                    'OR' =>
-                    [
-                        [
-                            'archived' => 0,
-                            'accepted' => 1,
-                        ],
-                    ]
-                ]
-            ]
-        )->toArray();
+        $session = $this->request->session();
+        if ($this->request->is(['post', 'put', 'patch'])) {
+            $this->_setFilter('name', $this->request->data['name']);
+        }
+
+        $name = $session->read('filter.project.name');
+        $query = $this->Projects->find();
+        $query->contain(['Organizations']);
+        $query->where(['archived' => 0]);
+        $query->where(['accepted' => 1]);
+        if ($name) {
+            $query->where(['name' => $name]);
+        }
+
+        $projects = $this->paginate($query);
 
         $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);

@@ -9,6 +9,18 @@
         echo $this->Html->getCrumbList(); ?>
     </div>
 </div>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <?= $this->Form->create($projects); ?>
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <?= $this->Form->input('name', ['required' => false]); ?>
+        </div>
+        <div class="col-xs-12">
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>
+        </div>
+        <?= $this->Form->end(); ?>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
