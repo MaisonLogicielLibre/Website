@@ -64,7 +64,7 @@ class ProjectsFixture extends TestFixture
         ],
         [
             'id' => 4,
-            'name' => 'projet3',
+            'name' => 'projet4',
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 0,
@@ -72,7 +72,7 @@ class ProjectsFixture extends TestFixture
         ],
         [
             'id' => 5,
-            'name' => 'projet3',
+            'name' => 'projet5',
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 0,

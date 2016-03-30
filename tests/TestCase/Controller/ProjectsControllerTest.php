@@ -66,6 +66,24 @@ class ProjectsControllerTest extends IntegrationTestCase
     }
 
     /**
+     *
+     * Test index - With name in request
+     *
+     * @return void
+     */
+    public function testIndexWithName()
+    {
+        $data = [
+            'name' => 'projet5'
+        ];
+
+        $this->post('/projects/index', $data);
+
+        $this->assertResponseSuccess();
+        $this->assertResponseContains('projet5');
+    }
+
+    /**
      * Test index - No Authentification
      *
      * @return void
