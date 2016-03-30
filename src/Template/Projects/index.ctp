@@ -16,7 +16,7 @@
             <?= $this->Form->input('name', ['required' => false]); ?>
         </div>
         <div class="col-xs-12">
-            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>
+            <?= $this->Form->button(__('Search for a project'), ['class' => 'btn btn-info']) ?>
         </div>
         <?= $this->Form->end(); ?>
     </div>
