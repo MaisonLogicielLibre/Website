@@ -55,6 +55,11 @@ class OrganizationsOwnersFixture extends TestFixture
             'id' => 4,
             'organization_id' => 1,
             'user_id' => 4
+        ],
+		[
+            'id' => 5,
+            'organization_id' => 4,
+            'user_id' => 14
         ]
     ];
 }

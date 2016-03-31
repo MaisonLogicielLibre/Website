@@ -41,5 +41,10 @@ class OrganizationsProjectsFixture extends TestFixture
             'project_id' => 1,
             'organization_id' => 1
         ],
+        [
+            'id' => 2,
+            'project_id' => 6,
+            'organization_id' => 4
+        ]
     ];
 }

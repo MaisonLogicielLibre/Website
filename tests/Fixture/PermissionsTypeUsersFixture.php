@@ -344,5 +344,10 @@ class PermissionsTypeUsersFixture extends TestFixture
             'type_user_id' => 3,
             'permission_id' => 46
         ],
+        [
+            'id' => 63,
+            'type_user_id' => 5,
+            'permission_id' => 11
+        ]
     ];
 }

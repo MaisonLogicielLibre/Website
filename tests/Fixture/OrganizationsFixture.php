@@ -67,5 +67,14 @@ class OrganizationsFixture extends TestFixture
             'isValidated' => 1,
             'isRejected' => 1
         ],
+        [
+            'id' => 4,
+            'name' => 'Org4',
+            'website' => 'www.website.com',
+            'logo' => '/img/logo.jpg',
+            'description' => 'Awesome',
+            'isValidated' => 1,
+            'isRejected' => 0
+        ],
     ];
 }

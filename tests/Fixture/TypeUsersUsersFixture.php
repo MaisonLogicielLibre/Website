@@ -61,5 +61,10 @@ class TypeUsersUsersFixture extends TestFixture
             'type_user_id' => 4,
             'user_id' => 4
         ],
+        [
+            'id' => 6,
+            'type_user_id' => 5,
+            'user_id' => 14
+        ],
     ];
 }

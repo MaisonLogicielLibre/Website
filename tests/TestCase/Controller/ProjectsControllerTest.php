@@ -37,6 +37,7 @@ class ProjectsControllerTest extends IntegrationTestCase
         'app.organizations_Projects',
         'app.users',
         'app.type_users',
+        'app.type_missions',
         'app.svn_users',
         'app.svns',
         'app.universities',
@@ -625,5 +626,22 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->assertResponseSuccess();
 
         $this->assertRedirect(['action' => 'index']);
+    }
+
+    /**
+     * Test edit when not administrator
+     *
+     * @return void
+     */
+    public function testEditNotAdmin()
+    {
+        $userId = 14;
+        $projectId = 6;
+
+        $this->session(['Auth.User.id' => $userId]);
+
+        $this->get('/projects/edit/' . $projectId);
+
+        $this->assertResponseSuccess();
     }
 }
