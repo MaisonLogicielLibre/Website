@@ -212,7 +212,9 @@ class MissionsController extends AppController
         }
         $query->order(['Missions.modified' => 'DESC']);
 
-        $organizations = $this->Missions->Projects->Organizations->find('list')->orderAsc('name')->toArray();
+        $organizations = $this->Missions->Projects->Organizations->find('list')
+                       ->where(['Organizations.isValidated' => 1, 'Organizations.isRejected' => 0])
+                       ->orderAsc('name')->toArray();
         $universities = $this->Missions->Users->Universities->find('list')->orderAsc('name')->toArray();
         $professors = $this->Missions->Professors->find('list')->orderAsc('lastName')->toArray();
         $typeOptions = $this->Missions->find('typeOptions');
