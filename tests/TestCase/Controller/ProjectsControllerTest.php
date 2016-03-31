@@ -610,4 +610,20 @@ class ProjectsControllerTest extends IntegrationTestCase
         $this->post('/projects/editMentor/1');
         $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
+
+    /**
+     * Test view when a project is not accepted
+     *
+     * @return void
+     */
+    public function testViewNotAccepted()
+    {
+        $id = 3;
+
+        $this->get('/projects/view/' . $id);
+
+        $this->assertResponseSuccess();
+
+        $this->assertRedirect(['action' => 'index']);
+    }
 }
