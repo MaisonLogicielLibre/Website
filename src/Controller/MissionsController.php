@@ -124,6 +124,7 @@ class MissionsController extends AppController
         }
         // query builder
         $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Applications', 'TypeMissions', 'Users', 'Professors']);
+        $query->where(['Missions.archived' => 0]);
         if (!empty($tmp = $this->request->session()->read('filter.mission.mission_select'))) {
             $query->where(['TypeMissions.id' => $tmp]);
         }
