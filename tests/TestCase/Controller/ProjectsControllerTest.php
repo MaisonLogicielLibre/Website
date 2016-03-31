@@ -66,7 +66,6 @@ class ProjectsControllerTest extends IntegrationTestCase
     }
 
     /**
-     *
      * Test index - With name in request
      *
      * @return void
