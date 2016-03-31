@@ -267,29 +267,6 @@ class ProjectsController extends AppController
     }
 
     /**
-     * Admin index method
-     *
-     * @return void
-     */
-    protected function adminIndex()
-    {
-        $data = $this->DataTables->find(
-            'Projects',
-            [
-                'contain' => ['Organizations']
-            ]
-        );
-
-        $this->set(
-            [
-                'data' => $data,
-                '_serialize' => array_merge($this->viewVars['_serialize'], ['data'])
-            ]
-        );
-        $this->render('adminIndex');
-    }
-
-    /**
      * View method
      *
      * @param string $id id
