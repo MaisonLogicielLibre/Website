@@ -125,10 +125,11 @@ class MissionsController extends AppController
         // query builder
         $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Applications', 'TypeMissions', 'Users', 'Professors']);
         $query->where(['Missions.archived' => 0, 'Projects.archived' => 0]);
-        $query->matching('Projects.Organizations',
-                         function($q) {
-                             return $q->where(['Organizations.isValidated' => 1, 'Organizations.isRejected' => 0]);
-                         }
+        $query->matching(
+            'Projects.Organizations',
+            function ($q) {
+                return $q->where(['Organizations.isValidated' => 1, 'Organizations.isRejected' => 0]);
+            }
         );
         if (!empty($tmp = $this->request->session()->read('filter.mission.mission_select'))) {
             $query->where(['TypeMissions.id' => $tmp]);
@@ -212,9 +213,10 @@ class MissionsController extends AppController
         }
         $query->order(['Missions.modified' => 'DESC']);
 
-        $organizations = $this->Missions->Projects->Organizations->find('list')
-                       ->where(['Organizations.isValidated' => 1, 'Organizations.isRejected' => 0])
-                       ->orderAsc('name')->toArray();
+        $organizations = $this->Missions->Projects->Organizations
+            ->find('list')
+            ->where(['Organizations.isValidated' => 1, 'Organizations.isRejected' => 0])
+            ->orderAsc('name')->toArray();
         $universities = $this->Missions->Users->Universities->find('list')->orderAsc('name')->toArray();
         $professors = $this->Missions->Professors->find('list')->orderAsc('lastName')->toArray();
         $typeOptions = $this->Missions->find('typeOptions');
