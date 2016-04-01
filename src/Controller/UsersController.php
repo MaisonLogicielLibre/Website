@@ -198,6 +198,9 @@ class UsersController extends AppController
                     'Memberships'
                 ];
 
+                if ($this->request->Session()->read('create_organization_redirect')) {
+                    return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
+                }
                 if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef')
                     && !in_array($this->request->Session()->read('actionRef'), $actionRefs)
                     && !in_array($this->request->Session()->read('controllerRef'), $controllerRefs)
@@ -372,6 +375,7 @@ class UsersController extends AppController
                     if ($this->request->data['isMember'] == "1") {
                         return $this->redirect(['controller' => 'Memberships', 'action' => 'add']);
                     }
+                    $this->request->session()->write('create_organization_redirect', true);
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
