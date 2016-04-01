@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-03-11 20:50+0000\n"
+"POT-Creation-Date: 2016-04-01 15:00+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -51,12 +51,12 @@ msgid "Your application has been accepted"
 msgstr ""
 
 #: Controller/ApplicationsController.php:153;218
-#: Controller/ProjectsController.php:691
+#: Controller/ProjectsController.php:624
 msgid "The application has been saved."
 msgstr ""
 
 #: Controller/ApplicationsController.php:156;221
-#: Controller/ProjectsController.php:694
+#: Controller/ProjectsController.php:627
 msgid "The application could not be saved. Please, try again."
 msgstr ""
 
@@ -81,88 +81,92 @@ msgstr ""
 msgid "An error occurred while trying to parse your request. Please try again later and contact us if the error persists."
 msgstr ""
 
-#: Controller/MissionsController.php:329
+#: Controller/MembershipsController.php:167
+msgid "A user has asked to be part of your organization"
+msgstr ""
+
+#: Controller/MissionsController.php:339
 msgid "The mission has been saved."
 msgstr ""
 
-#: Controller/MissionsController.php:332
+#: Controller/MissionsController.php:342
 msgid "The mission could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:395
+#: Controller/MissionsController.php:405
 msgid "The mission has been edited."
 msgstr ""
 
-#: Controller/MissionsController.php:398
+#: Controller/MissionsController.php:408
 msgid "The mission could not be edited. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:422
+#: Controller/MissionsController.php:432
 msgid "The mission has been archived."
 msgstr ""
 
-#: Controller/MissionsController.php:424
+#: Controller/MissionsController.php:434
 msgid "The mission has been restored."
 msgstr ""
 
-#: Controller/MissionsController.php:428
+#: Controller/MissionsController.php:438
 msgid "The mission could not be archived. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:484
+#: Controller/MissionsController.php:494
 msgid "You have applied on the mission"
 msgstr ""
 
-#: Controller/MissionsController.php:494
+#: Controller/MissionsController.php:504
 msgid "There was an error. Please, try again."
 msgstr ""
 
-#: Controller/MissionsController.php:498
+#: Controller/MissionsController.php:508
 msgid "You have already applied on this mission."
 msgstr ""
 
-#: Controller/MissionsController.php:502
+#: Controller/MissionsController.php:512
 msgid "You need to fill your profile before apply on this mission."
 msgstr ""
 
-#: Controller/MissionsController.php:506
+#: Controller/MissionsController.php:516
 msgid "This mission is not seeking someone matching your profile"
 msgstr ""
 
-#: Controller/MissionsController.php:512
+#: Controller/MissionsController.php:522
 msgid "No more position available"
 msgstr ""
 
-#: Controller/MissionsController.php:518
+#: Controller/MissionsController.php:528
 msgid "You can't apply on your mission, you are the mentor"
 msgstr ""
 
-#: Controller/MissionsController.php:522
+#: Controller/MissionsController.php:532
 msgid "You don't have permission to access this page."
 msgstr ""
 
-#: Controller/MissionsController.php:559
+#: Controller/MissionsController.php:569
 msgid "The mentor have been modified."
 msgstr ""
 
-#: Controller/MissionsController.php:562
+#: Controller/MissionsController.php:572
 msgid "The mentor could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/MissionsController.php:565
-#: Controller/ProjectsController.php:841
+#: Controller/MissionsController.php:575
+#: Controller/ProjectsController.php:774
 msgid "There must be at least one mentor"
 msgstr ""
 
-#: Controller/MissionsController.php:603
+#: Controller/MissionsController.php:613
 msgid "The professor have been modified."
 msgstr ""
 
-#: Controller/MissionsController.php:606
+#: Controller/MissionsController.php:616
 msgid "The professor could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/MissionsController.php:609
+#: Controller/MissionsController.php:619
 msgid "There must be at least one professor"
 msgstr ""
 
@@ -215,17 +219,17 @@ msgid "Your organization has been approved"
 msgstr ""
 
 #: Controller/OrganizationsController.php:409
-#: Controller/ProjectsController.php:557
+#: Controller/ProjectsController.php:490
 msgid "Cannot perform the change."
 msgstr ""
 
 #: Controller/OrganizationsController.php:417
-#: Controller/ProjectsController.php:565
+#: Controller/ProjectsController.php:498
 msgid "Your change has been saved"
 msgstr ""
 
 #: Controller/OrganizationsController.php:422
-#: Controller/ProjectsController.php:570
+#: Controller/ProjectsController.php:503
 msgid "Not an AJAX Query"
 msgstr ""
 
@@ -283,58 +287,58 @@ msgstr ""
 msgid "Not specified"
 msgstr ""
 
-#: Controller/ProjectsController.php:286;438;469;639
+#: Controller/ProjectsController.php:242;371;402;572
 msgid "The project has been saved."
 msgstr ""
 
-#: Controller/ProjectsController.php:289;441;472;600;642
+#: Controller/ProjectsController.php:245;374;405;533;575
 msgid "The project could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:526;624
+#: Controller/ProjectsController.php:459;557
 #: Mailer/ProjectMailer.php:38
 msgid "Your project has been archived"
 msgstr ""
 
-#: Controller/ProjectsController.php:535;633
+#: Controller/ProjectsController.php:468;566
 #: Mailer/ProjectMailer.php:49
 msgid "Your project has been unarchived"
 msgstr ""
 
-#: Controller/ProjectsController.php:549
+#: Controller/ProjectsController.php:482
 #: Mailer/ProjectMailer.php:27
 msgid "Your project has been approved"
 msgstr ""
 
-#: Controller/ProjectsController.php:592
+#: Controller/ProjectsController.php:525
 msgid "Your project has been accepted"
 msgstr ""
 
-#: Controller/ProjectsController.php:597
+#: Controller/ProjectsController.php:530
 msgid "The project has been accepted."
 msgstr ""
 
-#: Controller/ProjectsController.php:659
+#: Controller/ProjectsController.php:592
 msgid "The project has been deleted."
 msgstr ""
 
-#: Controller/ProjectsController.php:661
+#: Controller/ProjectsController.php:594
 msgid "The project could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:816
+#: Controller/ProjectsController.php:749
 msgid "The mentors have been modified."
 msgstr ""
 
-#: Controller/ProjectsController.php:819
+#: Controller/ProjectsController.php:752
 msgid "The mentors could not be modified. Please,try again."
 msgstr ""
 
-#: Controller/ProjectsController.php:838
+#: Controller/ProjectsController.php:771
 msgid "would cause"
 msgstr ""
 
-#: Controller/ProjectsController.php:838
+#: Controller/ProjectsController.php:771
 msgid "to become mentorless"
 msgstr ""
 
@@ -386,91 +390,91 @@ msgstr ""
 msgid "The university could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:209
+#: Controller/UsersController.php:213
 msgid "Username or password incorrect, try again."
 msgstr ""
 
-#: Controller/UsersController.php:315;359;401;447
+#: Controller/UsersController.php:319;363;408;454
 msgid "Your informations are invalid. Please try again later or contact us if the problem persists"
 msgstr ""
 
-#: Controller/UsersController.php:327;371;414;454;503;542
+#: Controller/UsersController.php:331;378;421;461;510;549
 msgid "The user could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:499
+#: Controller/UsersController.php:506
 msgid "Your profile has been updated successfully"
 msgstr ""
 
-#: Controller/UsersController.php:538;577
+#: Controller/UsersController.php:545;584
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:581
+#: Controller/UsersController.php:588
 msgid "The password could not be saved. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:614
+#: Controller/UsersController.php:621
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:617
+#: Controller/UsersController.php:624
 msgid "The user could not be deleted. Please,\n                     try again."
 msgstr ""
 
-#: Controller/UsersController.php:649;695
+#: Controller/UsersController.php:656;702
 msgid "This link seems corrupted. Please contact the administration team."
 msgstr ""
 
-#: Controller/UsersController.php:663
+#: Controller/UsersController.php:670
 msgid "Your password was modified."
 msgstr ""
 
-#: Controller/UsersController.php:667
+#: Controller/UsersController.php:674
 msgid "The user could not be saved. Please,\n                 try again."
 msgstr ""
 
-#: Controller/UsersController.php:683
+#: Controller/UsersController.php:690
 msgid "This link is expired. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:689
+#: Controller/UsersController.php:696
 msgid "This link was already used. Please request a new link."
 msgstr ""
 
-#: Controller/UsersController.php:733
+#: Controller/UsersController.php:740
 msgid "The email has been send."
 msgstr ""
 
-#: Controller/UsersController.php:735
+#: Controller/UsersController.php:742
 msgid "Error in sending email, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:772
+#: Controller/UsersController.php:779
 msgid "No account associated with this information, try again."
 msgstr ""
 
-#: Controller/UsersController.php:776
+#: Controller/UsersController.php:783
 msgid "An account was found!"
 msgstr ""
 
-#: Controller/UsersController.php:829
+#: Controller/UsersController.php:836
 msgid "The account have been added"
 msgstr ""
 
-#: Controller/UsersController.php:832
+#: Controller/UsersController.php:839
 msgid "Error in adding the account, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:835
+#: Controller/UsersController.php:842
 msgid "This account have already been added"
 msgstr ""
 
-#: Controller/UsersController.php:872
+#: Controller/UsersController.php:879
 msgid "The account has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:874
+#: Controller/UsersController.php:881
 msgid "The account could not be deleted. Please try again."
 msgstr ""
 
@@ -635,6 +639,7 @@ msgstr ""
 #: Template/Applications/view.ctp:9
 #: Template/Cell/Sidebar/all.ctp:15
 #: Template/Error/error400.ctp:39;54
+#: Template/Memberships/accept.ctp:7
 #: Template/Missions/add.ctp:9
 #: Template/Missions/apply.ctp:10
 #: Template/Missions/edit.ctp:9
@@ -665,10 +670,9 @@ msgstr ""
 #: Template/Pages/news.ctp:5
 #: Template/Pages/statistics.ctp:5
 #: Template/Pages/survey.ctp:5
-#: Template/Projects/admin_index.ctp:7
 #: Template/Projects/edit.ctp:9
 #: Template/Projects/edit_mentor.ctp:8
-#: Template/Projects/index.ctp:6
+#: Template/Projects/index.ctp:5
 #: Template/Projects/my_projects.ctp:6
 #: Template/Projects/submit.ctp:6
 #: Template/Users/delete.ctp:8
@@ -693,10 +697,9 @@ msgstr ""
 #: Template/Pages/administration.ctp:37
 #: Template/Pages/statistics.ctp:136;169
 #: Template/Pages/tv3.ctp:90;123
-#: Template/Projects/admin_index.ctp:8
 #: Template/Projects/edit.ctp:10
 #: Template/Projects/edit_mentor.ctp:9
-#: Template/Projects/index.ctp:7
+#: Template/Projects/index.ctp:6
 #: Template/Projects/my_projects.ctp:7
 #: Template/Projects/submit.ctp:7
 #: Template/Users/index.ctp:7
@@ -743,6 +746,7 @@ msgstr ""
 #: Template/Applications/accepted.ctp:55
 #: Template/Applications/edit_archived.ctp:31
 #: Template/Applications/rejected.ctp:38
+#: Template/Memberships/accept.ctp:22
 #: Template/Missions/add.ctp:30
 #: Template/Missions/apply.ctp:43
 #: Template/Missions/edit.ctp:90
@@ -767,6 +771,7 @@ msgid "Delete application"
 msgstr ""
 
 #: Template/Applications/edit_archived.ctp:8
+#: Template/Memberships/accept.ctp:8
 #: Template/Notifications/index.ctp:8
 #: Template/Pages/statistics.ctp:74;88
 #: Template/Pages/tv3.ctp:28;42
@@ -876,7 +881,6 @@ msgstr ""
 #: Template/Applications/view.ctp:42
 #: Template/Missions/view.ctp:131
 #: Template/Organizations/admin_index.ctp:26;43
-#: Template/Projects/admin_index.ctp:28
 msgid "Approved"
 msgstr ""
 
@@ -899,8 +903,7 @@ msgstr ""
 #: Template/Pages/administration.ctp:53
 #: Template/Pages/statistics.ctp:150
 #: Template/Pages/tv3.ctp:104
-#: Template/Projects/admin_index.ctp:27
-#: Template/Projects/index.ctp:33
+#: Template/Projects/index.ctp:35
 #: Template/Projects/my_projects.ctp:26
 #: Template/Projects/view.ctp:15
 #: Template/Users/index.ctp:27
@@ -921,8 +924,7 @@ msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:54
 #: Template/Cell/Sidebar/project_action.ctp:22
-#: Template/Projects/admin_index.ctp:5;9;18
-#: Template/Projects/index.ctp:4;8;25
+#: Template/Projects/index.ctp:3;7;28
 msgid "List of projects"
 msgstr ""
 
@@ -965,7 +967,7 @@ msgid "Partners"
 msgstr ""
 
 #: Template/Cell/Sidebar/all.ctp:108
-#: Template/Pages/home.ctp:66
+#: Template/Pages/home.ctp:60
 #: Template/Pages/industry.ctp:3;6
 #: Template/Users/register.ctp:34
 msgid "Industry"
@@ -998,7 +1000,7 @@ msgstr ""
 #: Template/Layout/default.ctp:158
 #: Template/Missions/add.ctp:61
 #: Template/Missions/edit.ctp:113
-#: Template/Pages/home.ctp:131
+#: Template/Pages/home.ctp:124
 #: Template/Pages/sponsor.ctp:23
 #: Template/Pages/submit.ctp:38
 #: Template/Projects/submit.ctp:112
@@ -1013,7 +1015,7 @@ msgstr ""
 #: Template/Cell/Sidebar/organization.ctp:9
 #: Template/Cell/Sidebar/project.ctp:9
 #: Template/News/index.ctp:27;48
-#: Template/Projects/index.ctp:32
+#: Template/Projects/index.ctp:34
 #: Template/Projects/my_projects.ctp:25
 msgid "Link"
 msgstr ""
@@ -1126,7 +1128,7 @@ msgid "Add an projects"
 msgstr ""
 
 #: Template/Cell/Sidebar/user.ctp:10
-#: Template/Pages/home.ctp:56
+#: Template/Pages/home.ctp:50
 #: Template/Users/index.ctp:28
 #: Template/Users/register.ctp:42
 #: Template/Users/view.ctp:23
@@ -1381,21 +1383,64 @@ msgid "Logout"
 msgstr ""
 
 #: Template/Layout/default.ctp:133
-#: Template/Pages/home.ctp:83
+#: Template/Pages/home.ctp:77
 #: Template/Users/login.ctp:47
-#: Template/Users/register_industry.ctp:57
+#: Template/Users/register_industry.ctp:64
 #: Template/Users/register_professor.ctp:77
 #: Template/Users/register_student.ctp:77
 msgid "Sign Up"
 msgstr ""
 
 #: Template/Layout/default.ctp:139
-#: Template/Pages/home.ctp:85
+#: Template/Pages/home.ctp:79
 #: Template/Users/register.ctp:59
-#: Template/Users/register_industry.ctp:64
+#: Template/Users/register_industry.ctp:71
 #: Template/Users/register_professor.ctp:84
 #: Template/Users/register_student.ctp:84
 msgid "Sign In"
+msgstr ""
+
+#: Template/Memberships/accept.ctp:5
+msgid "Accept the member"
+msgstr ""
+
+#: Template/Memberships/accept.ctp:10;21
+msgid "Accept as member"
+msgstr ""
+
+#: Template/Memberships/accept.ctp:19
+msgid "Accept as member for organization {0}"
+msgstr ""
+
+#: Template/Memberships/add.ctp:26
+msgid "Request to be a member of an organization"
+msgstr ""
+
+#: Template/Memberships/add.ctp:29
+#: Template/Users/register_industry.ctp:58
+msgid "Organization info"
+msgstr ""
+
+#: Template/Memberships/add.ctp:31
+msgid "Please select your organization"
+msgstr ""
+
+#: Template/Memberships/add.ctp:35
+msgid "None"
+msgstr ""
+
+#: Template/Memberships/add.ctp:46
+msgid "Make the request"
+msgstr ""
+
+#: Template/Memberships/add.ctp:51
+#: Template/Users/register_student_optional.ctp:56
+msgid "Don't have time?"
+msgstr ""
+
+#: Template/Memberships/add.ctp:53
+#: Template/Users/register_student_optional.ctp:58
+msgid "Go to login directly"
 msgstr ""
 
 #: Template/Missions/add.ctp:7;12;21
@@ -1616,6 +1661,7 @@ msgstr ""
 
 #: Template/Missions/index.ctp:126
 #: Template/OrganizationsProjects/index.ctp:44
+#: Template/Projects/index.ctp:59
 #: Template/SvnUsers/index.ctp:48
 #: Template/Svns/index.ctp:38
 #: Template/TypeUsers/index.ctp:36
@@ -1626,6 +1672,7 @@ msgstr ""
 
 #: Template/Missions/index.ctp:128
 #: Template/OrganizationsProjects/index.ctp:46
+#: Template/Projects/index.ctp:60
 #: Template/SvnUsers/index.ctp:50
 #: Template/Svns/index.ctp:40
 #: Template/TypeUsers/index.ctp:38
@@ -1741,8 +1788,7 @@ msgstr ""
 #: Template/Organizations/admin_index.ctp:24
 #: Template/Organizations/index.ctp:30
 #: Template/Organizations/my_organizations.ctp:22
-#: Template/Projects/admin_index.ctp:25
-#: Template/Projects/index.ctp:31
+#: Template/Projects/index.ctp:33
 #: Template/Projects/my_projects.ctp:24
 #: Template/Svns/view.ctp:18
 #: Template/TypeUsers/view.ctp:16
@@ -1822,7 +1868,6 @@ msgstr ""
 #: Template/Organizations/admin_index.ctp:25
 #: Template/Organizations/index.ctp:31
 #: Template/Organizations/my_organizations.ctp:23
-#: Template/Projects/admin_index.ctp:26
 #: Template/Universities/view.ctp:34
 msgid "Website"
 msgstr ""
@@ -1830,8 +1875,6 @@ msgstr ""
 #: Template/Organizations/admin_index.ctp:35;37
 #: Template/Organizations/index.ctp:38;40
 #: Template/Organizations/my_organizations.ctp:30;32
-#: Template/Projects/admin_index.ctp:37;39
-#: Template/Projects/index.ctp:41;43;45
 #: Template/Projects/my_projects.ctp:34;36
 #: Template/Projects/view.ctp:84;89
 #: Template/Users/index.ctp:35;38;41
@@ -1852,7 +1895,6 @@ msgstr ""
 
 #: Template/Organizations/index.ctp:85
 #: Template/Organizations/my_organizations.ctp:76
-#: Template/Projects/index.ctp:102
 #: Template/Projects/my_projects.ctp:101
 #: Template/Users/view.ctp:127;183
 msgid "Pending Validation"
@@ -1884,7 +1926,6 @@ msgid "You will be redirected to your organization page to create projects once 
 msgstr ""
 
 #: Template/Organizations/view.ctp:26;31;160
-#: Template/Projects/admin_index.ctp:29
 #: Template/Projects/view.ctp:181
 #: Template/Users/view.ctp:134;190
 msgid "Archived"
@@ -2006,11 +2047,6 @@ msgstr ""
 msgid "Add organization"
 msgstr ""
 
-#: Template/Pages/association.ctp:22
-#: Template/Pages/industry.ctp:44
-msgid "Sponsor"
-msgstr ""
-
 #: Template/Pages/contact.ctp:3;6
 msgid "Contact"
 msgstr ""
@@ -2028,22 +2064,22 @@ msgid "Premium sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:38
-#: Template/Pages/home.ctp:125
+#: Template/Pages/home.ctp:118
 msgid "Become a sponsor"
 msgstr ""
 
 #: Template/Pages/government.ctp:43
-#: Template/Pages/home.ctp:127
+#: Template/Pages/home.ctp:120
 msgid "Get visibility and access to over"
 msgstr ""
 
 #: Template/Pages/government.ctp:44
-#: Template/Pages/home.ctp:128
+#: Template/Pages/home.ctp:121
 msgid "5000 software engineering and computer science students."
 msgstr ""
 
 #: Template/Pages/government.ctp:45
-#: Template/Pages/home.ctp:129
+#: Template/Pages/home.ctp:122
 msgid "Create partnerships with professors in our university network. Form strategic alliances with our industry and government partners."
 msgstr ""
 
@@ -2055,81 +2091,85 @@ msgstr ""
 msgid "Ici nous brassons du code !"
 msgstr ""
 
-#: Template/Pages/home.ctp:55
+#: Template/Pages/home.ctp:49
 msgid "Improve your skill and C.V. by working on open source industry projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:65
+#: Template/Pages/home.ctp:59
 #: Template/Users/register.ctp:33;41;49
 msgid "Propose a project and find motivated students in our university ecosystem"
 msgstr ""
 
-#: Template/Pages/home.ctp:80
+#: Template/Pages/home.ctp:74
 msgid "{0} and learn from our teaching assistants and collaborate with students."
 msgstr ""
 
-#: Template/Pages/home.ctp:81
+#: Template/Pages/home.ctp:75
 msgid "Register now"
 msgstr ""
 
-#: Template/Pages/home.ctp:90
+#: Template/Pages/home.ctp:84
 msgid "Registered students"
 msgstr ""
 
-#: Template/Pages/home.ctp:97
+#: Template/Pages/home.ctp:91
 msgid "Ongoing projects"
 msgstr ""
 
-#: Template/Pages/home.ctp:103
+#: Template/Pages/home.ctp:97
 msgid "Available missions"
 msgstr ""
 
-#: Template/Pages/home.ctp:111
+#: Template/Pages/home.ctp:105
 msgid "Our founding partners"
 msgstr ""
 
-#: Template/Pages/home.ctp:118
+#: Template/Pages/home.ctp:112
 msgid "Our sponsors"
 msgstr ""
 
-#: Template/Pages/home.ctp:138
+#: Template/Pages/home.ctp:131
 msgid "Are you a university student?"
 msgstr ""
 
-#: Template/Pages/home.ctp:140
+#: Template/Pages/home.ctp:133
 msgid "Take our survey and help us serve you better"
 msgstr ""
 
-#: Template/Pages/home.ctp:142
+#: Template/Pages/home.ctp:135
 msgid "Take the survey"
 msgstr ""
 
-#: Template/Pages/home.ctp:143
+#: Template/Pages/home.ctp:136
 msgid "Apply to work on an open source project"
 msgstr ""
 
-#: Template/Pages/home.ctp:145
+#: Template/Pages/home.ctp:138
 msgid "Our projects list"
 msgstr ""
 
-#: Template/Pages/home.ctp:149
+#: Template/Pages/home.ctp:142
 msgid "Hire interns, graduates, and capstone."
 msgstr ""
 
-#: Template/Pages/home.ctp:154
+#: Template/Pages/home.ctp:147
 msgid "Industry and Government: "
 msgstr ""
 
-#: Template/Pages/home.ctp:154
+#: Template/Pages/home.ctp:147
 msgid "Develop open source features in your products, tools and dependencies. Promote your company in our open source community"
 msgstr ""
 
-#: Template/Pages/home.ctp:158
+#: Template/Pages/home.ctp:151
 msgid "University professors: "
 msgstr ""
 
-#: Template/Pages/home.ctp:158
+#: Template/Pages/home.ctp:151
 msgid "Lighten the work load of posting & finding projects and monitoring student progress. Leverage our teaching assistants and dev-ops infrastructure."
+msgstr ""
+
+#: Template/Pages/industry.ctp:44
+msgid "Sponsor"
 msgstr ""
 
 #: Template/Pages/sponsor.ctp:2
@@ -2298,28 +2338,6 @@ msgstr ""
 msgid "Select organizations associated with the project. Leave blank if no organizations"
 msgstr ""
 
-#: Template/Projects/admin_index.ctp:44;51
-#: Template/Users/edit.ctp:141
-#: Template/Users/index.ctp:68;138
-#: Template/Users/register.ctp:73
-#: Template/Users/register_industry.ctp:78
-#: Template/Users/register_professor.ctp:98
-#: Template/Users/register_student.ctp:98
-#: Template/Users/view.ctp:24
-msgid "No"
-msgstr ""
-
-#: Template/Projects/admin_index.ctp:45;52
-#: Template/Users/edit.ctp:140
-#: Template/Users/index.ctp:67;137
-#: Template/Users/register.ctp:72
-#: Template/Users/register_industry.ctp:77
-#: Template/Users/register_professor.ctp:97
-#: Template/Users/register_student.ctp:97
-#: Template/Users/view.ctp:24
-msgid "Yes"
-msgstr ""
-
 #: Template/Projects/apply.ctp:7
 msgid "Apply on this project"
 msgstr ""
@@ -2332,8 +2350,8 @@ msgstr ""
 msgid "Edit mentors"
 msgstr ""
 
-#: Template/Projects/index.ctp:17
-msgid "A project can be of development or system administration and it can be owned by zero, one or more organizations. It may provide mission to students."
+#: Template/Projects/index.ctp:19
+msgid "Search for a project"
 msgstr ""
 
 #: Template/Projects/submit.ctp:18
@@ -2774,6 +2792,26 @@ msgstr ""
 msgid "LinkedIn"
 msgstr ""
 
+#: Template/Users/edit.ctp:140
+#: Template/Users/index.ctp:67;137
+#: Template/Users/register.ctp:72
+#: Template/Users/register_industry.ctp:84
+#: Template/Users/register_professor.ctp:97
+#: Template/Users/register_student.ctp:97
+#: Template/Users/view.ctp:24
+msgid "Yes"
+msgstr ""
+
+#: Template/Users/edit.ctp:141
+#: Template/Users/index.ctp:68;138
+#: Template/Users/register.ctp:73
+#: Template/Users/register_industry.ctp:85
+#: Template/Users/register_professor.ctp:98
+#: Template/Users/register_student.ctp:98
+#: Template/Users/view.ctp:24
+msgid "No"
+msgstr ""
+
 #: Template/Users/email.ctp:23
 msgid "Enter your new email"
 msgstr ""
@@ -2863,7 +2901,7 @@ msgid "Who are you?"
 msgstr ""
 
 #: Template/Users/register.ctp:57
-#: Template/Users/register_industry.ctp:62
+#: Template/Users/register_industry.ctp:69
 #: Template/Users/register_professor.ctp:82
 #: Template/Users/register_student.ctp:82
 msgid "Already have account?"
@@ -2953,6 +2991,10 @@ msgstr ""
 msgid "Confirm email adress"
 msgstr ""
 
+#: Template/Users/register_industry.ctp:60
+msgid "Are you member of an organization?"
+msgstr ""
+
 #: Template/Users/register_professor.ctp:58
 #: Template/Users/register_student.ctp:58
 msgid "University info"
@@ -2974,14 +3016,6 @@ msgstr ""
 
 #: Template/Users/register_student_optional.ctp:51
 msgid "Update the informations"
-msgstr ""
-
-#: Template/Users/register_student_optional.ctp:56
-msgid "Don't have time?"
-msgstr ""
-
-#: Template/Users/register_student_optional.ctp:58
-msgid "Go to login directly"
 msgstr ""
 
 #: Template/Users/reset_password.ctp:25
