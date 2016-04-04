@@ -407,7 +407,6 @@ class MissionsController extends AppController
             } else {
                 $this->Flash->error(__('The mission could not be edited. Please, try again.'));
             }
-
         }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
         $typeOptions = $this->Missions->find('typeOptions');
@@ -499,7 +498,6 @@ class MissionsController extends AppController
                                         $this->getMailer('Application')->send('newApplication', [$user, $mentor, $mission, $linkMission, $linkUser]);
 
                                         return $this->redirect(['action' => 'view', $id]);
-
                                     } else {
                                         $this->Flash->error(__('There was an error. Please, try again.'));
                                     }

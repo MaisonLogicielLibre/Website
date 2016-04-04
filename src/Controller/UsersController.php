@@ -453,7 +453,6 @@ class UsersController extends AppController
             if ($user->errors()) {
                 $this->Flash->error(__('Your informations are invalid. Please try again later or contact us if the problem persists'));
             } else {
-
                 if ($this->Users->save($user)) {
                     return $this->redirect(['action' => 'login']);
                 } else {

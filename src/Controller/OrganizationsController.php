@@ -547,7 +547,6 @@ class OrganizationsController extends AppController
             } else {
                 $this->Flash->error(__('There must be at least one owner and one member'));
             }
-
         }
 
         $this->set(compact('organization', 'users', 'members', 'you'));
@@ -663,7 +662,6 @@ class OrganizationsController extends AppController
             } else {
                 $this->Flash->error(__('There was an error. Please,try again.'));
             }
-
         }
 
         $this->set(compact('organization', 'you', 'user'));

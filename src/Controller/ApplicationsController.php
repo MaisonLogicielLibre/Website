@@ -305,7 +305,6 @@ class ApplicationsController extends AppController
             }
         } else {
             $this->Flash->error(__('An error occurred while trying to parse your request. Please try again later and contact us if the error persists.'));
-
         }
     }
 }
