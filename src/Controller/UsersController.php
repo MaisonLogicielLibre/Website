@@ -206,8 +206,6 @@ class UsersController extends AppController
                     && !in_array($this->request->Session()->read('controllerRef'), $controllerRefs)
                 ) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
-                } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
-                    return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
                 } else {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
                 }
