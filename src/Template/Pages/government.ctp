@@ -15,16 +15,19 @@
                 <div style="float:left">
                     <?php echo $this->Html->image('montreal.png', ['alt' => 'Montreal', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h4><a href="http://ville.montreal.qc.ca"> Montréal </a></h4>
                 </div>
-                <div class="col-sm-4">
-                    <h5 class="partner-text-premium"><?= __('Premium sponsor') ?></h5>
+                <div class="col-sm-7">
+                    <h5 class="partner-text-premium"><?= __('Sponsor') ?></h5>
+                    <div class="partner-text-premium-bottom">
+                      Ce projet bénéficie du soutien financier de la Ville de Montréal
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-11 col-sm-offset-1">
-                    <p> Montréal est la deuxième plus grande ville du Canada et se situe dans le Sud de la province du Québec, dont elle est la principale métropole. Elle est la ville francophone la plus peuplée d'Amérique et aussi l'une des plus grandes villes francophones du monde. </p>
+                    <p>« La Ville de Montréal est fière de s'associer à titre de partenaire fondateur, à l'instar de Google et de Savoir-faire Linux, à la création de ML2, la première Maison du logiciel libre. Inaugurée en décembre dernier à l'ÉTS, au cœur du Quartier de l'innovation (QI), ML2 vise à proposer un lieu de rencontre et de partage. En plus de soutenir le plan stratégique de la Ville intelligente et numérique, le soutien financier accordé accordera une visibilité internationale à la Ville, tout en soulignant l'importance que celle-ci accorde à sa stratégie Montréal, Ville Intelligente et Numérique » - M. Chtilian</p>
                 </div>
             </div>
         </div>
