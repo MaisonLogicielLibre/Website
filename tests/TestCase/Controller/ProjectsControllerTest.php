@@ -84,6 +84,24 @@ class ProjectsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test index - Delete the name
+     *
+     * @return void
+     */
+    public function testIndexWithNameDelete()
+    {
+        $data = [
+            'name' => 'projet5'
+        ];
+
+        $this->post('/projects/index', $data);
+        $this->post('/projects/index');
+
+        $this->assertResponseSuccess();
+        $this->assertResponseNotContains("project5");
+    }
+
+    /**
      * Test index - No Authentification
      *
      * @return void
