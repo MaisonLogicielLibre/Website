@@ -654,8 +654,8 @@ class ProjectsController extends AppController
             $mission = $this->Missions->newEntity();
             $temp = [];
             foreach ($missionPost as $m) {
-                if ($m['name'] == 'type_missions[_ids][]') {
-                    $temp['type_missions']['_ids'][] = $m['value'];
+                if ($m['name'] == 'type_mission') {
+                    $temp['type_mission_id'] = $m['value'];
                 } elseif ($m['name'] == 'mission_levels[_ids][]') {
                     $temp['mission_levels']['_ids'][] = $m['value'];
                 } else {
