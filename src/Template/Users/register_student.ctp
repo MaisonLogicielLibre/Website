@@ -61,7 +61,7 @@
                     foreach ($universities as $i => $university) {
                         $options[] = ['value' => $i, 'text' => $university];
                     }
-                    $options[] = ['value' => '0', 'text' => __('Anytime')];
+                    $options[] = ['value' => '0', 'text' => __('Not specified')];
                     ?>
                     <?= $this->Form->input('university_id', [
                         'type' => 'select',
