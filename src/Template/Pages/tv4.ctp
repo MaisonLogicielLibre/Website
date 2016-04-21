@@ -16,11 +16,11 @@
             background-color: #70CCD6;
         }
         html {
-	    background: url(/img/tv/tv4.png) #70CCD6 no-repeat center center fixed;
+	    background: url(webroot/img/tv/tv4.png) #70CCD6 no-repeat center center fixed;
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
-            background-size: 100%;
+            background-size: 98% 100%;
         }
     </style>
 </head>
