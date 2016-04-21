@@ -11,17 +11,13 @@
     <link rel="stylesheet" href="webroot/css/font-awesome.min.css"/>
 
     <?= $this->fetch('meta') ?>
-
     <style>
             body {
-                background-color: #70CCD6;
-            }
-            html {
-            background: url(webroot/img/tv/tv3.png) #70CCD6 no-repeat fixed;
-                -webkit-background-size: contain;
-                -moz-background-size: contain;
-                -o-background-size: contain;
-                background-size: 98% 100%;
+                background: url(webroot/img/tv/tv3.png) #70CCD6 no-repeat center center fixed;
+                -webkit-background-size: 100%;
+                -moz-background-size: 100%;
+                -o-background-size: 100%;
+                background-size: 100%;
             }
         </style>
 </head>
