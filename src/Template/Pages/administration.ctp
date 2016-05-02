@@ -29,6 +29,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -59,6 +60,53 @@
                     <?php endforeach; ?>
                 </table>
                 <a class="btn btn-info pull-right" href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'add']);?>"><?= __('Add organization');?></a>
+            </div>
+        </div>
+    </div>
+	
+	<div class="col-lg-6 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="header-title">Carousel</h3>   
+
+				<div class="row">
+					<div class="row">
+						
+						<?php foreach ($fichiers as $fichier):?>
+							<div class="col-md-4 thumb">
+								<a class="thumbnail" href="<?= "/webroot/img/carousel/". $fichier ?>">
+									<img class="img-responsive" src="<?= "/webroot/img/carousel/". $fichier ?>" alt="">
+								</a>
+								<div class="controller">
+									<a href="<?= "/pages/administration/".$fichier ?>" class="" >
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</div>
+							</div>
+						<?php endforeach; ?>
+			
+					</div>
+
+					<div class="row">
+						<div class='col-lg-5 col-lg-offset-2'>
+							<h4>Enregistrer une image</h4>
+							
+							<?= $this->Flash->render() ?>
+							<?= $this->Form->create('image', array('type'=>'file')); ?>
+							<ul>
+										<li>format png</li>
+										<li>taille (1920 x 1080)</li>
+									</ul>
+							<?= $this->Form->input('avatar_file', array('label' => 'Envoyer votre image',
+									'type' => 'file')); ?>
+									
+							<?= $this->Form->button('Envoyé'); ?>
+							<?= $this->Form->end(); ?>
+						</div>
+						
+					</div>
+				</div>
+
             </div>
         </div>
     </div>

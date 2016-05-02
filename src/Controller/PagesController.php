@@ -16,6 +16,9 @@ use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use GithubApi;
+use Cake\Routing;
+use Cake\I18n\Time;
+
 
 /**
  * Pages controller
@@ -28,6 +31,8 @@ use GithubApi;
  */
 class PagesController extends AppController
 {
+    const PATH_CAROUSEL = "../webroot/img/carousel/";
+
     /**
      * Check if the user has the rights to see the page
      *
@@ -39,7 +44,9 @@ class PagesController extends AppController
     {
         $user = $this->Users->findById($user['id'])->first();
 
-        if ($user && $this->request->action == "administration" && $user->hasRoleName(['Administrator'])) {
+        if ($user &&
+            ($this->request->action == "administration" || $this->request->action == "galleriesManager" || $this->request->action == "deleteImg") &&
+            $user->hasRoleName(['Administrator'])) {
             return true;
         }
     }
@@ -143,7 +150,9 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
+        $fichiers = $this->getImgCarousel();
+
+        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents', 'fichiers'));
     }
 
     /**
@@ -542,11 +551,9 @@ class PagesController extends AppController
     }
 
     /**
-     * Administration method
-     *
-     * @return void
+     * @param null $img
      */
-    public function administration()
+    public function administration($img = null)
     {
         $this->loadModel("Projects");
         $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
@@ -554,6 +561,55 @@ class PagesController extends AppController
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
 
-        $this->set(compact('projects', 'organizations'));
+        //gestion des images du carousel
+        $path = self::PATH_CAROUSEL;
+        $request = $this->request;
+
+        if(is_file($path.$img)){
+            unlink($path.$img);
+            //A FAIRE
+            //Rediriger vers la page dadmin pour empecher de fausse suppression
+        }
+
+
+        if($request->is('post')){
+            if(!empty($request->data)){
+                $image = $this->request->data['avatar_file'];
+                $dim = null;
+
+                if(!empty($image['tmp_name']) && $image['type'] == 'image/png'){
+                    $dim = getimagesize($image['tmp_name']);
+                    if($dim[0] >= 1920 && $dim[1] >= 1080)
+                        move_uploaded_file($image['tmp_name'], $path.$image['name']);
+                    else
+                        $this->Flash->error('Erreur: fichier trop petit');
+
+                } else
+                    $this->Flash->error('Erreur: vérifier les conditions de tranfert de fichier');
+
+            }
+        }
+        //fin gestion du carousel
+
+        $fichiers = $this->getImgCarousel();
+
+        $this->set(compact('projects', 'organizations', 'fichiers'));
     }
+
+    private function getImgCarousel(){
+        $nb_fichier = 0;
+        $fichiers = array();
+
+        if(false !== ($dossier = opendir(self::PATH_CAROUSEL))){
+            while(false !== ($fichier = readdir($dossier))) {
+                if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
+                    $nb_fichier++;
+                    array_push($fichiers, $fichier);
+                }
+            }
+        }
+
+        return $fichiers;
+    }
+
 }
