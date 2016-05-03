@@ -16,8 +16,6 @@ use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use GithubApi;
-use Cake\Routing;
-
 
 /**
  * Pages controller
@@ -30,8 +28,6 @@ use Cake\Routing;
  */
 class PagesController extends AppController
 {
-    const PATH_CAROUSEL = "../webroot/img/carousel/";
-
     /**
      * Check if the user has the rights to see the page
      *
@@ -43,9 +39,9 @@ class PagesController extends AppController
     {
         $user = $this->Users->findById($user['id'])->first();
 
-        if ($user &&
-            ($this->request->action == "administration" || $this->request->action == "galleriesManager" || $this->request->action == "deleteImg") &&
-            $user->hasRoleName(['Administrator'])) {
+        if ($user && ($this->request->action == "administration" || $this->request->action == "galleriesManager" || $this->request->action == "deleteImg")
+            && $user->hasRoleName(['Administrator'])
+        ) {
             return true;
         }
     }
@@ -149,7 +145,7 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        $fichiers = $this->getImgCarousel();
+        $fichiers = $this->_getImgCarousel();
 
         $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents', 'fichiers'));
     }
@@ -550,7 +546,11 @@ class PagesController extends AppController
     }
 
     /**
-     * @param null $img
+     * Administration method
+     *
+     * @param null $img administration page
+     *
+     * @return void
      */
     public function administration($img = null)
     {
@@ -561,51 +561,49 @@ class PagesController extends AppController
         $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
 
         //gestion des images du carousel
-        $path = self::PATH_CAROUSEL;
+        $path = WWW_ROOT . "img/carousel/";
         $request = $this->request;
 
-        if(is_file($path.$img))
-            unlink($path.$img);
+        if (is_file($path . $img)) {
+            unlink($path . $img);
+        }
+        if ($request->is('post') && !empty($request->data)) {
+            $image = $this->request->data['avatar_file'];
+            $dim = null;
 
+            if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
+                $dim = getimagesize($image['tmp_name']);
 
-        if($request->is('post')){
-            if(!empty($request->data)){
-                $image = $this->request->data['avatar_file'];
-                $dim = null;
-
-                if(!empty($image['tmp_name']) && $image['type'] == 'image/png'){
-                    $dim = getimagesize($image['tmp_name']);
-                    if($dim[0] >= 1920 && $dim[1] >= 1080)
-                        move_uploaded_file($image['tmp_name'], $path.$image['name']);
-                    else
-                        $this->Flash->error('Erreur: fichier trop petit');
-
-                } else
-                    $this->Flash->error('Erreur: vérifier les conditions de tranfert de fichier');
-
+                if ($dim[0] >= 1920 && $dim[1] >= 1080) {
+                    move_uploaded_file($image['tmp_name'], $path . $image['name']);
+                } else {
+                    $this->Flash->error('Erreur: fichier trop petit');
+                }
+            } else {
+                $this->Flash->error('Erreur: vérifier les conditions de tranfert de fichier');
             }
         }
         //fin gestion du carousel
-
-        $fichiers = $this->getImgCarousel();
-
+        $fichiers = $this->_getImgCarousel();
         $this->set(compact('projects', 'organizations', 'fichiers'));
     }
 
-    private function getImgCarousel(){
-        $nb_fichier = 0;
-        $fichiers = array();
+    /**
+     * GetImgCarousel method
+     *
+     * @return array
+     */
+    private function _getImgCarousel()
+    {
+        $fichiers = [];
 
-        if(false !== ($dossier = opendir(self::PATH_CAROUSEL))){
-            while(false !== ($fichier = readdir($dossier))) {
-                if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
-                    $nb_fichier++;
+        if (false !== ($dossier = opendir(WWW_ROOT . "img/carousel/"))) {
+            while (false !== ($fichier = readdir($dossier))) {
+                if ($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
                     array_push($fichiers, $fichier);
                 }
             }
         }
-
         return $fichiers;
     }
-
 }

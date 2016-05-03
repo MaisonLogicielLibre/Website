@@ -75,7 +75,7 @@
 						<?php foreach ($fichiers as $fichier):?>
 							<div class="col-md-4 thumb">
 								<a class="thumbnail" href="<?= "/webroot/img/carousel/". $fichier ?>">
-									<img class="img-responsive" src="<?= "webroot/img/carousel/". $fichier ?>" alt="">
+									<img class="img-responsive" src="<?= "/webroot/img/carousel/". $fichier ?>" alt="">
 								</a>
 								<div class="controller">
 									<a href="<?= "/pages/administration/".$fichier ?>" class="" >
@@ -90,8 +90,8 @@
 					<div class="row">
 						<div class='col-lg-5 col-lg-offset-2'>
 							<h4>Enregistrer une image</h4>
-							
-							<?= $this->Flash->render() ?>
+
+							<?= $this->Flash->render(); ?>
 							<?= $this->Form->create('image', array('type'=>'file')); ?>
 							<ul>
 										<li>format png</li>
