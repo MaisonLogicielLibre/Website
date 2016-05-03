@@ -17,7 +17,6 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use GithubApi;
 use Cake\Routing;
-use Cake\I18n\Time;
 
 
 /**
@@ -565,11 +564,8 @@ class PagesController extends AppController
         $path = self::PATH_CAROUSEL;
         $request = $this->request;
 
-        if(is_file($path.$img)){
+        if(is_file($path.$img))
             unlink($path.$img);
-            //A FAIRE
-            //Rediriger vers la page dadmin pour empecher de fausse suppression
-        }
 
 
         if($request->is('post')){

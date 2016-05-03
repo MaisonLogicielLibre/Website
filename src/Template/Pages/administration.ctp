@@ -75,7 +75,7 @@
 						<?php foreach ($fichiers as $fichier):?>
 							<div class="col-md-4 thumb">
 								<a class="thumbnail" href="<?= "/webroot/img/carousel/". $fichier ?>">
-									<img class="img-responsive" src="<?= "/webroot/img/carousel/". $fichier ?>" alt="">
+									<img class="img-responsive" src="<?= "webroot/img/carousel/". $fichier ?>" alt="">
 								</a>
 								<div class="controller">
 									<a href="<?= "/pages/administration/".$fichier ?>" class="" >
@@ -95,7 +95,7 @@
 							<?= $this->Form->create('image', array('type'=>'file')); ?>
 							<ul>
 										<li>format png</li>
-										<li>taille (1920 x 1080)</li>
+										<li>taille minimale (1920 x 1080)</li>
 									</ul>
 							<?= $this->Form->input('avatar_file', array('label' => 'Envoyer votre image',
 									'type' => 'file')); ?>
