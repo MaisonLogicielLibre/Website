@@ -16,7 +16,7 @@
             background-color: #70CCD6;
         }
         html {
-	    background: url(webroot/img/developpeur-entrez.png) #70CCD6 no-repeat fixed;
+	    background: url(webroot/img/tv/tv4.png) #70CCD6 no-repeat center center fixed;
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
