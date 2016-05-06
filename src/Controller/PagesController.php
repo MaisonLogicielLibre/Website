@@ -607,3 +607,4 @@ class PagesController extends AppController
         return $fichiers;
     }
 }
+
