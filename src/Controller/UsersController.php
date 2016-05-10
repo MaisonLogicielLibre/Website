@@ -515,6 +515,7 @@ class UsersController extends AppController
                     );
                 }
             }
+
             $universities = $this->Users->Universities->find('list', ['limit' => 200]);
             $this->set(compact('user', 'universities', 'you', 'typeOptions', 'selectedTypeMissions'));
             $this->set('_serialize', ['user']);
