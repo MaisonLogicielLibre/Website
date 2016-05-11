@@ -36,7 +36,7 @@
                             <?= $this->Form->label('gender', __('Gender'), ['class' => 'control-label']); ?>
                             <select class="form-control" name="gender">
                                 <option
-                                    value="null" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
+                                    value="2" <?= (is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Not specified'); ?></option>
                                 <option
                                     value="0" <?= (!$user->getGender() && !is_null($user->getGender()) ? "selected" : ""); ?>><?= __('Female'); ?></option>
                                 <option value="1" <?= ($user->getGender() ? "selected" : ""); ?>><?= __('Male'); ?></option>

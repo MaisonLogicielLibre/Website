@@ -35,9 +35,5 @@ class ModifyUsersToInteger extends AbstractMigration
             'limit' => 2,
             'null' => false
         ]);
-
-
     }
-
-
 }
