@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2016-04-01 11:02-0400\n"
-"PO-Revision-Date: 2016-04-01 11:05-0400\n"
+"PO-Revision-Date: 2016-05-11 18:25-0400\n"
 "Last-Translator: RignonNoel <rignon.noel@openmailbox.org>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_CA\n"
@@ -1943,7 +1943,7 @@ msgstr ""
 
 #: Template/Pages/home.ctp:3
 msgid "La Maison du Logiciel Libre"
-msgstr "La Maison du Logiciel Libre"
+msgstr "La maison du logiciel libre"
 
 #: Template/Pages/home.ctp:4
 msgid "Ici nous brassons du code !"
