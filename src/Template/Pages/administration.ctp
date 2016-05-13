@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -62,41 +61,95 @@
                 <a class="btn btn-info pull-right" href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'add']);?>"><?= __('Add organization');?></a>
             </div>
         </div>
+		
+		
     </div>
 	
-	<div class="col-lg-6 col-xs-12">
+	<div class="col-lg-6 col-xs-12 hidden-xs">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3 class="header-title">Carousel</h3>   
 
 				<div class="row">
-					<div class="row">
+					<div class="col-lg-12 col-md-12">
 						
-						<?php foreach ($fichiers as $fichier):?>
-							<div class="col-md-4 thumb">
-								<a class="thumbnail" href="<?= "/webroot/img/carousel/". $fichier ?>">
-									<img class="img-responsive" src="<?= "/webroot/img/carousel/". $fichier ?>" alt="">
-								</a>
-								<div class="controller">
-									<a href="<?= "/pages/administration/".$fichier ?>" class="" >
-										<i class="glyphicon glyphicon-trash"></i>
-									</a>
+						<?php foreach ($filesCar as $fichier):?>
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img src="<?= $this->request->webroot . "img/carousel/". $fichier ?>" />
+									<div class="caption">
+										<p><a href="<?= "/pages/administration/".$fichier ?>" class="" ><i class="glyphicon glyphicon-trash"></i></a></p>
+									</div>
 								</div>
-							</div>
+						    </div>
 						<?php endforeach; ?>
 			
 					</div>
 
-					<div class="row">
+					<div class="col-lg-12 col-md-12">
 						<div class='col-lg-5 col-lg-offset-2'>
 							<h4>Enregistrer une image</h4>
 
-							<?= $this->Flash->render(); ?>
+							<?= $this->Flash->render('er_gene'); ?>
 							<?= $this->Form->create('image', array('type'=>'file')); ?>
-							<ul>
-										<li>format png</li>
-										<li>taille minimale (1920 x 1080)</li>
-									</ul>
+								<ul>
+									<li>format png</li>
+									<li>taille minimale (1920 x 1080)</li>
+								</ul>
+							
+							<?= $this->Form->hidden('hidden', ['value' => 'car']); ?>
+							<?= $this->Form->input('avatar_file', array('label' => 'Envoyer votre image',
+									'type' => 'file')); ?>
+									
+							<?= $this->Form->button('Envoyé'); ?>
+							<?= $this->Form->end(); ?>
+						</div>
+						
+					</div>
+				</div>
+
+            </div>
+        </div>
+    </div>
+	<div class="col-lg-6 col-xs-12 hidden-xs">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="header-title">TV</h3>   
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						
+						<?php 
+							$i = 0;
+							foreach ($filesTV as $fichier):
+								$i++;
+						?>
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail">
+									<img src="<?= $this->request->webroot . "img/tv/". $fichier ?>" />
+									<div class="caption">
+										<p><?= "tv".$i ?></p>
+									</div>
+								</div>
+						    </div>
+						<?php endforeach; ?>
+			
+					</div>
+
+					<div class="col-lg-12 col-md-12">
+						<div class='col-lg-5 col-lg-offset-2'>
+							<h4>Enregistrer une image</h4>
+
+							<?= $this->Flash->render('er_tv'); ?>
+							<?= $this->Flash->render('er_gene'); ?>
+							<?= $this->Form->create('image', array('type'=>'file')); ?>
+								<ul>
+									<li>Format png</li>
+									<li>Exemple de nom de fichier: tv1.png</li>
+									<li>Taille minimale (1920 x 1080)</li>
+								</ul>
+							
+							<?= $this->Form->hidden('hidden', ['value' => 'tv']); ?>
 							<?= $this->Form->input('avatar_file', array('label' => 'Envoyer votre image',
 									'type' => 'file')); ?>
 									

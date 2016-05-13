@@ -39,7 +39,7 @@ class PagesController extends AppController
     {
         $user = $this->Users->findById($user['id'])->first();
 
-        if ($user && ($this->request->action == "administration" || $this->request->action == "galleriesManager" || $this->request->action == "deleteImg")
+        if ($user && ($this->request->action == "administration" || $this->request->action == "deleteImg")
             && $user->hasRoleName(['Administrator'])
         ) {
             return true;
@@ -145,7 +145,8 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        $fichiers = $this->_getImgCarousel();
+        $path = WWW_ROOT . "img/carousel/";
+        $fichiers = $this->_getImgagesDir($path);
 
         $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents', 'fichiers'));
     }
@@ -561,43 +562,59 @@ class PagesController extends AppController
         $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
 
         //gestion des images du carousel
-        $path = WWW_ROOT . "img/carousel/";
+        $pathCar = WWW_ROOT . "img/carousel/";
+        $pathTV = WWW_ROOT . "img/tv/";
+
         $request = $this->request;
 
-        if (is_file($path . $img)) {
-            unlink($path . $img);
+        if (is_file($pathCar . $img)) {
+            unlink($pathCar . $img);
         }
         if ($request->is('post') && !empty($request->data)) {
             $image = $this->request->data['avatar_file'];
+            $hidden = $this->request->data('hidden');
+            $fileName = $image['name'];
             $dim = null;
 
             if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
                 $dim = getimagesize($image['tmp_name']);
 
                 if ($dim[0] >= 1920 && $dim[1] >= 1080) {
-                    move_uploaded_file($image['tmp_name'], $path . $image['name']);
+                    if ($hidden == 'car') {
+                        move_uploaded_file($image['tmp_name'], $pathCar . $fileName);
+                    }
+                    if ($hidden == 'tv') {
+                        if (preg_match("#tv[1-5]#", $fileName)) {
+                            move_uploaded_file($image['tmp_name'], $pathTV . $fileName);
+                        } else {
+                            $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
+                        }
+                    }
                 } else {
-                    $this->Flash->error('Erreur: fichier trop petit');
+                    $this->Flash->error(__('image file size incorrect'), 'er_gene');
                 }
             } else {
-                $this->Flash->error('Erreur: vérifier les conditions de tranfert de fichier');
+                $this->Flash->error(__('Error'), 'er_gene');
             }
         }
         //fin gestion du carousel
-        $fichiers = $this->_getImgCarousel();
-        $this->set(compact('projects', 'organizations', 'fichiers'));
+        $filesCar = $this->_getImgagesDir($pathCar);
+        $filesTV = $this->_getImgagesDir($pathTV);
+        $this->set(compact('projects', 'organizations', 'filesCar', 'filesTV'));
     }
 
     /**
-     * GetImgCarousel method
+     * _getImgagesDir method
+     *
+     * @param string $path _getImgagesDir page
      *
      * @return array
      */
-    private function _getImgCarousel()
+    private function _getImgagesDir($path)
     {
         $fichiers = [];
 
-        if (false !== ($dossier = opendir(WWW_ROOT . "img/carousel/"))) {
+        if (false !== ($dossier = opendir($path))) {
             while (false !== ($fichier = readdir($dossier))) {
                 if ($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
                     array_push($fichiers, $fichier);
