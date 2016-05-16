@@ -39,7 +39,9 @@ class PagesController extends AppController
     {
         $user = $this->Users->findById($user['id'])->first();
 
-        if ($user && $this->request->action == "administration" && $user->hasRoleName(['Administrator'])) {
+        if ($user && ($this->request->action == "administration" || $this->request->action == "deleteImg")
+            && $user->hasRoleName(['Administrator'])
+        ) {
             return true;
         }
     }
@@ -143,7 +145,10 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
+        $path = WWW_ROOT . "img/carousel/";
+        $fichiers = $this->_getImgagesDir($path);
+
+        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents', 'fichiers'));
     }
 
     /**
@@ -544,9 +549,11 @@ class PagesController extends AppController
     /**
      * Administration method
      *
+     * @param null $img administration page
+     *
      * @return void
      */
-    public function administration()
+    public function administration($img = null)
     {
         $this->loadModel("Projects");
         $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
@@ -554,6 +561,66 @@ class PagesController extends AppController
         $this->loadModel("Organizations");
         $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
 
-        $this->set(compact('projects', 'organizations'));
+        //gestion des images du carousel
+        $pathCar = WWW_ROOT . "img/carousel/";
+        $pathTV = WWW_ROOT . "img/tv/";
+
+        $request = $this->request;
+
+        if (is_file($pathCar . $img)) {
+            unlink($pathCar . $img);
+        }
+        if ($request->is('post') && !empty($request->data)) {
+            $image = $this->request->data['avatar_file'];
+            $hidden = $this->request->data('hidden');
+            $fileName = $image['name'];
+            $dim = null;
+
+            if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
+                $dim = getimagesize($image['tmp_name']);
+
+                if ($dim[0] >= 1920 && $dim[1] >= 1080) {
+                    if ($hidden == 'car') {
+                        move_uploaded_file($image['tmp_name'], $pathCar . $fileName);
+                    }
+                    if ($hidden == 'tv') {
+                        if (preg_match("#tv[1-5]#", $fileName)) {
+                            move_uploaded_file($image['tmp_name'], $pathTV . $fileName);
+                        } else {
+                            $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
+                        }
+                    }
+                } else {
+                    $this->Flash->error(__('image file size incorrect'), 'er_gene');
+                }
+            } else {
+                $this->Flash->error(__('Error'), 'er_gene');
+            }
+        }
+        //fin gestion du carousel
+        $filesCar = $this->_getImgagesDir($pathCar);
+        $filesTV = $this->_getImgagesDir($pathTV);
+        $this->set(compact('projects', 'organizations', 'filesCar', 'filesTV'));
+    }
+
+    /**
+     * _getImgagesDir method
+     *
+     * @param string $path _getImgagesDir page
+     *
+     * @return array
+     */
+    private function _getImgagesDir($path)
+    {
+        $fichiers = [];
+
+        if (false !== ($dossier = opendir($path))) {
+            while (false !== ($fichier = readdir($dossier))) {
+                if ($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
+                    array_push($fichiers, $fichier);
+                }
+            }
+        }
+        return $fichiers;
     }
 }

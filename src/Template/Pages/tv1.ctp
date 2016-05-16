@@ -13,7 +13,7 @@
     <?= $this->fetch('meta') ?>
     <style>
         body {
-            background: url(webroot/img/banner.png) no-repeat center center fixed;
+            background: url(webroot/img/tv/tv1.png) no-repeat center center fixed;
             -webkit-background-size: 95%;
             -moz-background-size: 95%;
             -o-background-size: 95%;

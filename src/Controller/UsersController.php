@@ -198,13 +198,14 @@ class UsersController extends AppController
                     'Memberships'
                 ];
 
+                if ($this->request->Session()->read('create_organization_redirect')) {
+                    return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
+                }
                 if ($this->request->Session()->read('actionRef') && $this->request->Session()->read('controllerRef')
                     && !in_array($this->request->Session()->read('actionRef'), $actionRefs)
                     && !in_array($this->request->Session()->read('controllerRef'), $controllerRefs)
                 ) {
                     return $this->redirect(['controller' => $this->request->Session()->read('controllerRef'), 'action' => $this->request->Session()->read('actionRef')]);
-                } elseif ($this->request->Session()->read('actionRef') == 'registerIndustry/') {
-                    return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
                 } else {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view/' . $user['id']]);
                 }
@@ -372,6 +373,7 @@ class UsersController extends AppController
                     if ($this->request->data['isMember'] == "1") {
                         return $this->redirect(['controller' => 'Memberships', 'action' => 'add']);
                     }
+                    $this->request->session()->write('create_organization_redirect', true);
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
@@ -497,7 +499,6 @@ class UsersController extends AppController
 
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
-
                 if ($this->Users->save($user)) {
                     //Update the language
                     $this->request->session()->write('lang', $user->getLanguage());
@@ -513,6 +514,7 @@ class UsersController extends AppController
                     );
                 }
             }
+
             $universities = $this->Users->Universities->find('list', ['limit' => 200]);
             $this->set(compact('user', 'universities', 'you', 'typeOptions', 'selectedTypeMissions'));
             $this->set('_serialize', ['user']);

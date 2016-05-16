@@ -16,32 +16,32 @@
     <div id="carousel-container">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0"></li>
-                <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
-                <li data-target="#carousel" data-slide-to="3" class="active"></li>
+				<?php 
+					$i = 0;
+					foreach ($fichiers as $fichier):
+				?>
+					<li data-target="#carousel" data-slide-to="<?= $i ?>" class="active"></li>
+				<?php 
+					$i++;
+					endforeach; 
+				?>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/1.jpg'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/tv/tv3.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/tv/tv4.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item active">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/financement-montreal.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
+               
+				
+				<?php 
+					$i = 0;
+					foreach ($fichiers as $fichier):
+				?>
+					<div class="item <?= ($i==0)?'active': ''; ?>">
+						<div class="fillBackground">
+							<img src="<?= $this->request->webroot . 'img/carousel/'.$fichier; ?>" class="stretch" alt=""/>
+						</div>
+					</div>
+				<?php 
+					$i++;
+					endforeach; 
+				?>
             </div>
         </div>
     </div>

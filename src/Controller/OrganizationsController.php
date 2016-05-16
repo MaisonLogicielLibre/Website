@@ -313,6 +313,10 @@ class OrganizationsController extends AppController
      */
     public function submit()
     {
+        if ($this->request->Session()->read('create_organization_redirect')) {
+            $this->request->Session()->delete('create_organization_redirect');
+        }
+
         $organization = $this->Organizations->newEntity();
 
         $organization->editIsValidated(false);

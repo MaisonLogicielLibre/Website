@@ -636,6 +636,34 @@ class OrganizationsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test edit status with null value
+     *
+     * @return void
+     */
+    public function testEditStatusNullValue()
+    {
+        $data = [
+            'id' => 1,
+            'state' => 3,
+            'stateValue' => false,
+        ];
+
+        $this->session(['Auth.User.id' => 2]);
+
+        $_ENV['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+        $this->post('/organizations/editStatus/1', $data);
+        $this->assertResponseSuccess();
+        unset($_ENV['HTTP_X_REQUESTED_WITH']);
+        $organizations = TableRegistry::get('Organizations');
+
+        $q = $organizations->findById(1)->first();
+
+        $this->assertContentType('application/json');
+        $this->assertResponseContains('success');
+    }
+
+    /**
      * Test edit status approved on an organization - Ok
      *
      * @return void
