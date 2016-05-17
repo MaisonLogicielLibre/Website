@@ -564,18 +564,17 @@ class PagesController extends AppController
         //gestion des images du carousel
         $pathCar = WWW_ROOT . "img/carousel/";
         $pathTV = WWW_ROOT . "img/tv/";
-
         $request = $this->request;
 
         if (is_file($pathCar . $img)) {
             unlink($pathCar . $img);
         }
         if ($request->is('post') && !empty($request->data)) {
-            $image = $this->request->data['avatar_file'];
-            $hidden = $this->request->data('hidden');
+            $image = $request->data['avatar_file'];
+            $hidden = $request->data('hidden');
             $fileName = $image['name'];
             $dim = null;
-
+            print_r($image);
             if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
                 $dim = getimagesize($image['tmp_name']);
 
@@ -584,7 +583,7 @@ class PagesController extends AppController
                         move_uploaded_file($image['tmp_name'], $pathCar . $fileName);
                     }
                     if ($hidden == 'tv') {
-                        if (preg_match("#tv[1-5]#", $fileName)) {
+                        if (preg_match("#^tv[1-5]$#", $fileName)) {
                             move_uploaded_file($image['tmp_name'], $pathTV . $fileName);
                         } else {
                             $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
