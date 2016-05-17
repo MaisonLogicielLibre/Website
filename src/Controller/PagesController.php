@@ -574,7 +574,7 @@ class PagesController extends AppController
             $hidden = $request->data('hidden');
             $fileName = $image['name'];
             $dim = null;
-            print_r($image);
+
             if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
                 $dim = getimagesize($image['tmp_name']);
 
