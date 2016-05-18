@@ -754,4 +754,23 @@ class UsersControllerTest extends IntegrationTestCase
         $this->get('/users/svnRemove/1?pseudo=pseudo');
         $this->assertResponseSuccess();
     }
+
+    /**
+     * Test login with create_organization flag
+     *
+     * @return void
+     */
+    public function testLoginCreateOrganizationRedirect()
+    {
+        $this->session(['create_organization_redirect' => true]);
+
+        $data = [
+            'username' => 'admin',
+            'password' => 'admin',
+        ];
+
+        $this->post('/users/login', $data);
+
+        $this->assertRedirect(['controller' => 'Organizations', 'action' => 'submit']);
+    }
 }

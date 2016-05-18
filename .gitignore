@@ -1,6 +1,7 @@
 tmp/*
 logs/*
 .idea/*
+*.iml
 *~
 composer.lock
 ./vendor/*
