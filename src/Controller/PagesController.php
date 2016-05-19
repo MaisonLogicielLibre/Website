@@ -596,13 +596,13 @@ class PagesController extends AppController
                                 $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
                             }
                         }
-
                         if ($flag && !empty($path)) {
                             if (!move_uploaded_file($image['tmp_name'], $path . $fileName)) {
                                 $this->Flash->error(__('no file transfer'), 'er_gene');
                             }
                         } else {
                             $this->Flash->error(__('path specified not valid'), 'er_gene');
+
                         }
                     } else {
                         $this->Flash->error(__('image file size incorrect'), 'er_gene');
