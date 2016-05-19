@@ -569,9 +569,9 @@ class PagesController extends AppController
 
         if (is_file($pathCar . $img)) {
             if (unlink($pathCar . $img)) {
-                $this->Flash->success(__('file delete'), 'er_gene');
+                $this->Flash->success(__('file deleted'), 'er_gene');
             } else {
-                $this->Flash->error(__('no file delete'), 'er_gene');
+                $this->Flash->error(__('no file deleted'), 'er_gene');
             }
         }
         if ($request->is('post') && !empty($request->data)) {
