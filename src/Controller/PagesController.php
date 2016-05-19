@@ -575,6 +575,8 @@ class PagesController extends AppController
             $hidden = $request->data('hidden');
             $fileName = $image['name'];
             $dim = null;
+            $path = null;
+            $flag = false;
 
             print_r($image);
             if (!empty($image['tmp_name'])) {
@@ -583,18 +585,24 @@ class PagesController extends AppController
 
                     if ($dim[0] >= 1920 && $dim[1] >= 1080) {
                         if ($hidden == 'car') {
-                            if (!move_uploaded_file($image['tmp_name'], $pathCar . $fileName)) {
-                                $this->Flash->error(__('no file transfer'), 'er_gene');
-                            }
+                            $flag = true;
+                            $path = $pathCar;
                         }
                         if ($hidden == 'tv') {
                             if (preg_match("#^tv[1-5]$#", $fileName)) {
-                                if (!move_uploaded_file($image['tmp_name'], $pathTV . $fileName)) {
-                                    $this->Flash->error(__('no file transfer'), 'er_gene');
-                                }
+                                $flag = true;
+                                $path = $pathTV;
                             } else {
                                 $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
                             }
+                        }
+
+                        if ($flag && !empty($path)) {
+                            if (!move_uploaded_file($image['tmp_name'], $path . $fileName)) {
+                                $this->Flash->error(__('no file transfer'), 'er_gene');
+                            }
+                        } else {
+                            $this->Flash->error(__('path specified not valid'), 'er_gene');
                         }
                     } else {
                         $this->Flash->error(__('image file size incorrect'), 'er_gene');
