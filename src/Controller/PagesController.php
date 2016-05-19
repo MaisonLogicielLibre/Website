@@ -565,6 +565,7 @@ class PagesController extends AppController
         $pathCar = WWW_ROOT . "img/carousel/";
         $pathTV = WWW_ROOT . "img/tv/";
         $request = $this->request;
+        print_r($img);
 
         if (is_file($pathCar . $img)) {
             unlink($pathCar . $img);
@@ -575,25 +576,34 @@ class PagesController extends AppController
             $fileName = $image['name'];
             $dim = null;
 
-            if (!empty($image['tmp_name']) && $image['type'] == 'image/png') {
-                $dim = getimagesize($image['tmp_name']);
+            print_r($image);
+            if (!empty($image['tmp_name'])) {
+                if ($image['type'] == 'image/png') {
+                    $dim = getimagesize($image['tmp_name']);
 
-                if ($dim[0] >= 1920 && $dim[1] >= 1080) {
-                    if ($hidden == 'car') {
-                        move_uploaded_file($image['tmp_name'], $pathCar . $fileName);
-                    }
-                    if ($hidden == 'tv') {
-                        if (preg_match("#^tv[1-5]$#", $fileName)) {
-                            move_uploaded_file($image['tmp_name'], $pathTV . $fileName);
-                        } else {
-                            $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
+                    if ($dim[0] >= 1920 && $dim[1] >= 1080) {
+                        if ($hidden == 'car') {
+                            if (!move_uploaded_file($image['tmp_name'], $pathCar . $fileName)) {
+                                $this->Flash->error(__('no file transfer'), 'er_gene');
+                            }
                         }
+                        if ($hidden == 'tv') {
+                            if (preg_match("#^tv[1-5]$#", $fileName)) {
+                                if (!move_uploaded_file($image['tmp_name'], $pathTV . $fileName)) {
+                                    $this->Flash->error(__('no file transfer'), 'er_gene');
+                                }
+                            } else {
+                                $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
+                            }
+                        }
+                    } else {
+                        $this->Flash->error(__('image file size incorrect'), 'er_gene');
                     }
                 } else {
-                    $this->Flash->error(__('image file size incorrect'), 'er_gene');
+                    $this->Flash->error(__('the format is not good'), 'er_gene');
                 }
             } else {
-                $this->Flash->error(__('Error'), 'er_gene');
+                $this->Flash->error(__('no file transfer'), 'er_gene');
             }
         }
         //fin gestion du carousel
