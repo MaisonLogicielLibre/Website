@@ -606,7 +606,6 @@ class PagesController extends AppController
                             }
                         } else {
                             $this->Flash->error(__('path specified not valid'), 'er_gene');
-
                         }
                     } else {
                         $this->Flash->error(__('image file size incorrect'), 'er_gene');
