@@ -78,7 +78,7 @@
 								<div class="thumbnail">
 									<img src="<?= $this->request->webroot . "img/carousel/". $fichier ?>" />
 									<div class="caption">
-										<p><a href="<?= "/pages/administration/".$fichier ?>" class="" ><i class="glyphicon glyphicon-trash"></i></a></p>
+										<p><a href="<?= "/pages/administration/".$fichier ?>" class="" ><?= __('Delete') ?></a></p>
 									</div>
 								</div>
 						    </div>
