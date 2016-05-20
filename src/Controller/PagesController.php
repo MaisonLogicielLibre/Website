@@ -565,6 +565,7 @@ class PagesController extends AppController
         $pathCar = WWW_ROOT . "img/carousel/";
         $pathTV = WWW_ROOT . "img/tv/";
         $request = $this->request;
+        print_r($img);
 
         if (is_file($pathCar . $img)) {
             if (unlink($pathCar . $img)) {
@@ -607,7 +608,6 @@ class PagesController extends AppController
                         } else {
                             $this->Flash->error(__('path specified not valid'), 'er_gene');
                         }
-
                     } else {
                         $this->Flash->error(__('image file size incorrect'), 'er_gene');
                     }
