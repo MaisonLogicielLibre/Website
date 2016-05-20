@@ -565,7 +565,6 @@ class PagesController extends AppController
         $pathCar = WWW_ROOT . "img/carousel/";
         $pathTV = WWW_ROOT . "img/tv/";
         $request = $this->request;
-        print_r($img);
 
         if (is_file($pathCar . $img)) {
             if (unlink($pathCar . $img)) {
