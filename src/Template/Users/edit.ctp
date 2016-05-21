@@ -104,7 +104,11 @@
                             ]
                         ); ?>
                         <div id="bloodhound">
-                        <?= $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]); ?>
+                        <?php
+                            if ($user->isStudent && !$user->isProfessor && !$user->isAvailableMentoring) {
+                                echo $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]);
+                            }
+                        ?>
                         </div>
                         <br />
                         <h3 class="header-title"><?= __('Contact information'); ?></h3>
