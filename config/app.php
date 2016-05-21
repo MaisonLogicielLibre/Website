@@ -212,8 +212,8 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'nonstandard_port_number',
-            'username' => 'root',       //mllAdmin
-            'password' => '',     //toto
+            'username' => 'mllAdmin',
+            'password' => 'toto',
             'database' => 'mll_site',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
