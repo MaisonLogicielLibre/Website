@@ -57,7 +57,7 @@
             </div>
             <div class ="col-lg-2 col-md-2 col-sg-2 col-xs-2">
                 <i class="fa fa-exchange fa-5x"></i><br>
-                <?= $this->Html->image('carousel/ml2-cropped.jpg', [
+                <?= $this->Html->image('ml2-cropped.jpg', [
                     'alt' => 'Maison Logiciel Libre', 'width' => '60', 'style' => 'padding-bottom:5px']); ?>
             </div>
             <div class ="col-lg-1 col-md-2 col-sg-2 col-xs-2">

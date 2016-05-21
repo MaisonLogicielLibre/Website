@@ -568,7 +568,11 @@ class PagesController extends AppController
         print_r($img);
 
         if (is_file($pathCar . $img)) {
-            unlink($pathCar . $img);
+            if (unlink($pathCar . $img)) {
+                $this->Flash->success(__('file deleted'), 'er_gene');
+            } else {
+                $this->Flash->error(__('no file deleted'), 'er_gene');
+            }
         }
         if ($request->is('post') && !empty($request->data)) {
             $image = $request->data['avatar_file'];
@@ -578,7 +582,6 @@ class PagesController extends AppController
             $path = null;
             $flag = false;
 
-            print_r($image);
             if (!empty($image['tmp_name'])) {
                 if ($image['type'] == 'image/png') {
                     $dim = getimagesize($image['tmp_name']);
@@ -596,9 +599,10 @@ class PagesController extends AppController
                                 $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
                             }
                         }
-
                         if ($flag && !empty($path)) {
-                            if (!move_uploaded_file($image['tmp_name'], $path . $fileName)) {
+                            if (move_uploaded_file($image['tmp_name'], $path . $fileName)) {
+                                $this->Flash->success(__('file transfer'), 'er_gene');
+                            } else {
                                 $this->Flash->error(__('no file transfer'), 'er_gene');
                             }
                         } else {
