@@ -65,7 +65,7 @@
 		
     </div>
 	
-	<div class="col-lg-6 col-xs-12 hidden-xs">
+	<div class="col-lg-6 col-xs-12 hidden-xs hide">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3 class="header-title">Carousel</h3>   
@@ -111,7 +111,7 @@
             </div>
         </div>
     </div>
-	<div class="col-lg-6 col-xs-12 hidden-xs">
+	<div class="col-lg-6 col-xs-12 hidden-xs hide">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3 class="header-title">TV</h3>   

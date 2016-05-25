@@ -574,8 +574,6 @@ class PagesController extends AppController
             } else {
                 $this->Flash->error(__('no file deleted'), 'er_gene');
             }
-        }else {
-            $this->Flash->error(__('This file does not exist'), 'er_gene');
         }
         if ($request->is('post') && !empty($request->data)) {
             $image = $request->data['avatar_file'];
