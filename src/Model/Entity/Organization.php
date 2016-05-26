@@ -99,6 +99,26 @@ class Organization extends Entity
     }
 
     /**
+     * Get the created
+     *
+     * @return array created
+     */
+    public function getCreated()
+    {
+        return $this->_properties['created'];
+    }
+
+    /**
+     * Get the modified
+     *
+     * @return array modified
+     */
+    public function getModified()
+    {
+        return $this->_properties['modified'];
+    }
+
+    /**
      * Get the members
      *
      * @return array members
@@ -249,6 +269,32 @@ class Organization extends Entity
     {
         $this->set('owners', $owners);
         return $owners;
+    }
+
+    /**
+     * Set the created
+     *
+     * @param string $created created
+     *
+     * @return string $created
+     */
+    public function editCreated($created)
+    {
+        $this->set('created', $created);
+        return $created;
+    }
+
+    /**
+     * Set the modified
+     *
+     * @param string $modified modified
+     *
+     * @return string $modified
+     */
+    public function editModified($modified)
+    {
+        $this->set('modified', $modified);
+        return $modified;
     }
 
     /**
