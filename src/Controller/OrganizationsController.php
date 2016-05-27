@@ -327,6 +327,7 @@ class OrganizationsController extends AppController
 
         if ($this->request->is('post')) {
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
+
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
                 return $this->redirect(['action' => 'submit', 'controller' => 'Projects']);
