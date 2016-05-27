@@ -559,7 +559,14 @@ class PagesController extends AppController
         $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
 
         $this->loadModel("Organizations");
-        $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
+        $organizations = $this->Organizations
+            ->find()
+            ->select(['id', 'name', 'created'])
+            ->where(['isValidated' => 0, 'isRejected' => 0])
+            ->order(['created' => 'DESC'])
+            ->limit(10)
+            ->toArray();
+
 
         //gestion des images du carousel
         $pathCar = WWW_ROOT . "img/carousel/";
