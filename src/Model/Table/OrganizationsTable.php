@@ -70,6 +70,8 @@ class OrganizationsTable extends Table
             'joinTable' => 'organizations_members'
             ]
         );
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -119,6 +121,12 @@ class OrganizationsTable extends Table
 
         $validator
             ->allowEmpty('description');
+
+        $validator
+            ->allowEmpty('created', 'create', ['message' => __('date created not define.')]);
+
+        $validator
+            ->allowEmpty('modified', 'update', ['message' => __('date modified not define.')]);
 
         $validator
             ->notEmpty('isValidated');
