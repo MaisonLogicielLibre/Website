@@ -49,12 +49,16 @@
     </div>
     <div class="col-lg-6 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body table-responsive">
                 <h3 class="header-title"><?= __('Organizations') ?></h3>
                 <table class="table">
-                    <?php foreach ($organizations as $organization):?>
+                    <?php foreach ($organizations as $organization): ?>
                         <tr>
-                            <td><?= $this->Html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]); ?></td>
+                            <td>
+                                <?= $this->Html->link($organization['name'], ['controller' => 'Organizations', 'action' => 'view', $organization['id']]); ?>
+                                <span class='label label-success' title='projets'><?= $organization['pj']; ?></span>
+                            </td>
+                            <td><em class="small"><?= ($organization['created'] != null) ?  date("d-m-Y", strtotime($organization['created'])) : __("not define"); ?> </em></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
