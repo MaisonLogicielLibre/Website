@@ -12,10 +12,12 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use GithubApi;
+use Migrations\CakeManager;
 
 /**
  * Pages controller
@@ -555,11 +557,26 @@ class PagesController extends AppController
      */
     public function administration($img = null)
     {
+        $conn = ConnectionManager::get('default');
+
         $this->loadModel("Projects");
         $projects = $this->Projects->find('all', ['conditions' => ['accepted' => 0, 'archived' => 0]])->toArray();
 
         $this->loadModel("Organizations");
-        $organizations = $this->Organizations->find('all', ['conditions' => ['isValidated' => 0, 'isRejected' => 0]])->toArray();
+        $organizations = $conn->execute(
+            'SELECT id, name, created,
+              (
+                SELECT
+                COUNT(id)
+                FROM organizations_projects p
+                WHERE p.organization_id = o.id
+              ) pj
+              FROM organizations o
+              WHERE o.isValidated = 0 AND o.isRejected = 0
+              ORDER BY o.created DESC
+              LIMIT 10'
+        )
+            ->fetchAll('assoc');
 
         //gestion des images du carousel
         $pathCar = WWW_ROOT . "img/carousel/";
