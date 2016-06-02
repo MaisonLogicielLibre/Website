@@ -84,6 +84,7 @@ class ProjectsTable extends Table
             'joinTable' => 'projects_mentors'
             ]
         );
+        $this->addBehavior('Timestamp');
     }
 
     /**
