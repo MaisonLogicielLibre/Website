@@ -229,6 +229,32 @@ class Project extends Entity
     }
 
     /**
+     * Set the created
+     *
+     * @param string $created created
+     *
+     * @return string $created
+     */
+    public function editCreated($created)
+    {
+        $this->set('created', $created);
+        return $created;
+    }
+
+    /**
+     * Set the modified
+     *
+     * @param string $modified modified
+     *
+     * @return string $modified
+     */
+    public function editModified($modified)
+    {
+        $this->set('modified', $modified);
+        return $modified;
+    }
+
+    /**
      * Modify mentors
      *
      * @param array $usersId usersId
