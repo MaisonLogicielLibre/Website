@@ -8,7 +8,7 @@
 <div id="carousel-mobile">
     <div class="row welcome-row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <?= $this->Html->image('carousel/1-mobile.jpg', ['class' => 'img-responsive stretch']); ?>
+            <?= $this->Html->image('1-mobile.jpg', ['class' => 'img-responsive stretch']); ?>
         </div>
     </div>
 </div>
