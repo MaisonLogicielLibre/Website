@@ -40,24 +40,31 @@
                 <ul class="nav navbar-nav">
                 </ul>
                 <ul class="nav navbar-nav navbar-right top-nav">
-                    <a href="https://www.facebook.com/maisonlogiciellibre/" class="navbar-brand navbar-facebook">
+                    <a href="https://www.facebook.com/maisonlogiciellibre/" target=_blank class="navbar-brand navbar-facebook">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-facebook fa-stack-1x icon-facebook"></i>
                         </span>
                     </a>
-                    <a href="https://twitter.com/ml2_ets" class="navbar-brand navbar-twitter">
+                    <a href="https://www.youtube.com/channel/UCI65aeAJA9jf6AmUNQ6UayQ" target=_blank class="navbar-brand navbar-facebook">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-youtube fa-stack-1x icon-youtube text-danger"></i>
+                        </span>
+                    </a>
+                    <a href="https://twitter.com/ml2_ets" target=_blank class="navbar-brand navbar-twitter">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-twitter fa-stack-1x icon-twitter"></i>
                         </span>
                     </a>
-                    <a href="https://maisonlogiciellibre.github.io/" class="navbar-brand navbar-github">
+                    <a href="https://maisonlogiciellibre.github.io/" target=_blank class="navbar-brand navbar-github">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-github fa-lg fa-stack-1x icon-github"></i>
                         </span>
                     </a>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-lg fa-globe"></i>
