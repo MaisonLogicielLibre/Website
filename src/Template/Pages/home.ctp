@@ -117,8 +117,12 @@
         <h1>
             <?= __("Our sponsors"); ?>
         </h1>
-        <?= $this->Html->image('montreal.svg', ['class' => 'img-responsive sponsor-image']); ?>
-        <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive sponsor sponsor-image']); ?>
+        <a href="http://ville.montreal.qc.ca/portal/page?_pageid=5798,85041649&_dad=portal&_schema=PORTAL">
+            <?= $this->Html->image('montreal.svg', ['class' => 'img-responsive sponsor-image']); ?>
+        </a>
+        <a href="https://www.savoirfairelinux.com/">
+            <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive sponsor sponsor-image']); ?>
+        </a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center sponsors-cell">
         <h1><?= __('Become a sponsor'); ?></h1>
