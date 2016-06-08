@@ -47,27 +47,6 @@
     </div>
 </div>
 <hr class="hrmain">
-<div class="row welcome-row" id="industry-student">
-    <div class="col-lg-12 col-xs-12 text-center">
-        <div class="row" style="margin-top: 5px;">
-            <div class ="col-lg-offset-4 col-md-offset-3 col-sg-offset-3 col-xs-offset-3 col-lg-1 col-md-2 col-sg-2 col-xs-2">
-                <i class="fa fa-user fa-5x"
-                   title="<?= __('Improve your skill and C.V. by working on open source industry projects'); ?>"></i>
-                <h4><strong><?= __('Student'); ?></strong></h4>
-            </div>
-            <div class ="col-lg-2 col-md-2 col-sg-2 col-xs-2">
-                <i class="fa fa-exchange fa-5x"></i><br>
-                <?= $this->Html->image('ml2-cropped.jpg', [
-                    'alt' => 'Maison Logiciel Libre', 'width' => '60', 'style' => 'padding-bottom:5px']); ?>
-            </div>
-            <div class ="col-lg-1 col-md-2 col-sg-2 col-xs-2">
-                <i class="fa fa-industry  fa-5x" id="industrial-icon"
-                   title="<?= __('Propose a project and find motivated students in our university ecosystem'); ?>"></i>
-                <h4><strong><?= __('Industry'); ?></strong></h4>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php //Do not move this line before a manual import of script! ?>
 <?= $this->fetch('scriptBottom'); ?>
