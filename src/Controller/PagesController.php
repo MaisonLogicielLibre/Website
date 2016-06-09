@@ -103,6 +103,7 @@ class PagesController extends AppController
     public function home()
     {
         //$this->viewBuilder()->layout(false);
+        set_time_limit(1000);
         $this->loadModel("Users");
         $numberUsers = $this->Users->find('all')->count();
         $numberStudents = $this->Users->find('all')->where(['isStudent' => true])->count();
