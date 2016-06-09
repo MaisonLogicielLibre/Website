@@ -16,33 +16,46 @@
     <div id="carousel-container">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-				<?php 
-					$i = 0;
-					foreach ($fichiers as $fichier):
-				?>
-					<li data-target="#carousel" data-slide-to="<?= $i ?>" class="active"></li>
-				<?php 
-					$i++;
-					endforeach; 
-				?>
+				<li data-target="#carousel" data-slide-to="1" class="active"></li>
+				<li data-target="#carousel" data-slide-to="2"></li>
+				<li data-target="#carousel" data-slide-to="3"></li>
+				<li data-target="#carousel" data-slide-to="4"></li>
+				<li data-target="#carousel" data-slide-to="5"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-               
-				
-				<?php 
-					$i = 0;
-					foreach ($fichiers as $fichier):
-				?>
-					<div class="item <?= ($i==0)?'active': ''; ?>">
-						<div class="fillBackground">
-							<img src="<?= $this->request->webroot . 'img/carousel/'.$fichier; ?>" class="stretch" alt=""/>
-						</div>
-					</div>
-				<?php 
-					$i++;
-					endforeach; 
-				?>
+				<div class="item active">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/banner.png'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/financement-montreal.png'; ?>" class="stretch" alt=""/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="fillBackground">
+                        <img src="<?= $this->request->webroot . 'img/carousel/tv4.png'; ?>" class="stretch" alt=""/>
+                    </div>
+                    <div class="bloc-link-event pull-right">
+                        <a href="https://www.youtube.com/channel/UCI65aeAJA9jf6AmUNQ6UayQ" class="btn btn-primary"><?= __('more'); ?></a>
+                    </div>
+                </div>
             </div>
+            <!-- Controls -->
+              <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only"><?= __('previous'); ?></span>
+              </a>
+              <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only"><?= __('next'); ?></span>
+              </a>
         </div>
     </div>
 </div>
