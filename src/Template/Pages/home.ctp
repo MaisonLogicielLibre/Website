@@ -154,5 +154,8 @@
             </li>
         </ul>
     </div>
+    <div class="text-center">
+        <?= $this->Html->link(__("Add project"), ['controller' => 'Projects', 'action' => 'submit'], ['class' => 'btn btn-default']); ?>
+    </div>
 </div>
 <?= $this->Html->script(['carousel']); ?>
