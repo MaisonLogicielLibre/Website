@@ -227,6 +227,12 @@ echo 'var acceptUrl="' . $this->Url->Build(['controller' => 'Applications', 'act
 echo 'var detailsUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'view']) . '";';
 echo 'var rejectCandidateTr="' . __('Reject the candidate') . '";';
 echo 'var acceptCandidateTr="' . __('Accept the candidate') . '";';
+echo 'var warning="' . __('WARNING') . '";';
+if($mission->getTypeId() == 4){
+    echo 'var attentionTXT="' . __('The validation of this candidate requires that there is an associate professor at mission') . '";';
+}else if($mission->getTypeId() == 1){
+    echo 'var attentionTXT="' . __('The validation of this candidate requires that it be paid for the work he provides') . '";';
+}
 echo 'var detailsTr="' . __('View details') . '";';
 $this->Html->scriptEnd();
 if ($user && $user->hasPermissionName(['edit_mission', 'edit_missions'])) {

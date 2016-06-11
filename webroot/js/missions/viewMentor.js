@@ -20,8 +20,13 @@ $(document).ready(function () {
                 $('<a />', {
                     href: acceptUrl + '/' + aData.id,
                     text: acceptCandidateTr,
-                    class: 'btn ' + (aData.accepted || aData.rejected ? 'btn-default disabled' : 'btn-success')
-                })
+                    class: 'btn ' + (aData.accepted || aData.rejected ? 'btn-default disabled' : 'btn-success'),
+                    "data-toggle": "popover",
+                    title: warning,
+                    "data-content": attentionTXT,
+                    "data-trigger": "hover",
+                    "data-placement": "top"
+                }).popover('show')
             );
             $('td:eq(2)', nRow).html(
                 $('<a />', {
