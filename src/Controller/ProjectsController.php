@@ -119,7 +119,7 @@ class ProjectsController extends AppController
         $query->where(['archived' => 0]);
         $query->where(['accepted' => 1]);
         if ($name) {
-            $query->where(['name' => $name]);
+            $query->where(['name LIKE' => '%'.$name.'%']);
         }
 
         $projects = $this->paginate($query);
