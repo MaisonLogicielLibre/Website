@@ -11,7 +11,6 @@
                     $this->Html->addCrumb(__('Projects'), '/Projects');
                     $this->Html->addCrumb($mission->project->getName(), '/projects/view/' . $mission->project->id);
                     $this->Html->addCrumb($mission->getName());
-
                     echo $this->Html->getCrumbList(); ?>
                 </div>
             </div>
@@ -79,27 +78,27 @@
                             </br>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h3 class="header-title"><?= __('Skills'); ?></h3>
-                                        <div>
-                                            <?= $Parsedown->text($mission->getCompetence()); ?>
-                                        </div>
+                                    <h3 class="header-title"><?= __('Skills'); ?></h3>
+                                    <div>
+                                        <?= $Parsedown->text($mission->getCompetence()); ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <?php if($user): ?>
-                                <?php $pendingApplication = $user->pendingApplication($mission->id); ?>
-                                <?php if ($pendingApplication != null): ?>
-                                    <a href="<?= $this->Url->build(['controller' => 'Applications', 'action' => 'editArchived', $pendingApplication->id]); ?>">
-                                        <h2 class="btn btn-danger pull-right"><?= __('I quit this mission!'); ?></h2></a>
-                                <?php else: ?>
-                                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
-                                        <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
-                                <?php endif; ?>
-                                <?php elseif(!$isMentor && $mission->getRemainingPlaces() > 0): ?>
-                                    <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
-                                        <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
-                                <?php endif; ?>
+                                    <?php if($user): ?>
+                                        <?php $pendingApplication = $user->pendingApplication($mission->id); ?>
+                                        <?php if ($pendingApplication != null): ?>
+                                            <a href="<?= $this->Url->build(['controller' => 'Applications', 'action' => 'editArchived', $pendingApplication->id]); ?>">
+                                                <h2 class="btn btn-danger pull-right"><?= __('I quit this mission!'); ?></h2></a>
+                                        <?php else: ?>
+                                            <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
+                                                <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+                                        <?php endif; ?>
+                                    <?php elseif(!$isMentor && $mission->getRemainingPlaces() > 0): ?>
+                                        <a href="<?= $this->Url->build(['controller' => 'Missions', 'action' => 'apply', $mission->getId()]); ?>">
+                                            <h2 class="btn btn-danger pull-right"><?= __('I accept the mission!'); ?></h2></a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

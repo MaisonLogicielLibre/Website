@@ -324,7 +324,7 @@ class ProjectsController extends AppController
                         'Users'
                     ],
 
-                    'conditions' => ['project_id' => $id],
+                    'conditions' => ['project_id' => $id, 'archived' => false],
                     'fields' => [
                       'Missions.id', 'Missions.name', 'Missions.session',
                       'Missions.length', 'Users.firstName', 'Users.lastName',
