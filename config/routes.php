@@ -52,7 +52,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/tv/*', ['controller' => 'Pages', 'action' => 'tv']);
     $routes->connect('/pages/tv/*', ['controller' => 'Pages', 'action' => 'tv']);
     $routes->connect('/pages/statistics', ['controller' => 'Pages', 'action' => 'statistics']);
-    $routes->connect('/pages/administration/*', ['controller' => 'Pages', 'action' => 'administration']);
+    $routes->connect('/pages/administration', ['controller' => 'Pages', 'action' => 'administration']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

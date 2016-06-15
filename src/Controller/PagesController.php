@@ -41,8 +41,7 @@ class PagesController extends AppController
     {
         $user = $this->Users->findById($user['id'])->first();
 
-        if ($user && ($this->request->action == "administration" || $this->request->action == "deleteImg")
-            && $user->hasRoleName(['Administrator'])
+        if ($user && ($this->request->action == "administration") && $user->hasRoleName(['Administrator'])
         ) {
             return true;
         }
@@ -103,7 +102,6 @@ class PagesController extends AppController
     public function home()
     {
         //$this->viewBuilder()->layout(false);
-        set_time_limit(1000);
         $this->loadModel("Users");
         $numberUsers = $this->Users->find('all')->count();
         $numberStudents = $this->Users->find('all')->where(['isStudent' => true])->count();
@@ -148,10 +146,7 @@ class PagesController extends AppController
         );
         $numberMissions = count($missions->toArray());
 
-        $path = WWW_ROOT . "img/carousel/";
-        $fichiers = $this->_getImgagesDir($path);
-
-        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents', 'fichiers'));
+        $this->set(compact('numberUsers', 'numberProjects', 'numberMissions', 'numberStudents'));
     }
 
     /**
@@ -579,88 +574,6 @@ class PagesController extends AppController
         )
             ->fetchAll('assoc');
 
-        //gestion des images du carousel
-        $pathCar = WWW_ROOT . "img/carousel/";
-        $pathTV = WWW_ROOT . "img/tv/";
-        chmod($pathCar, 777);
-        chmod($pathTV, 777);
-        $request = $this->request;
-
-        if (is_file($pathCar . $img)) {
-            if (unlink($pathCar . $img)) {
-                $this->Flash->success(__('file deleted'), 'er_gene');
-            } else {
-                $this->Flash->error(__('no file deleted'), 'er_gene');
-            }
-        }
-        if ($request->is('post') && !empty($request->data)) {
-            $image = $request->data['avatar_file'];
-            $hidden = $request->data('hidden');
-            $fileName = $image['name'];
-            $dim = null;
-            $path = null;
-            $flag = false;
-
-            if (!empty($image['tmp_name'])) {
-                if ($image['type'] == 'image/png') {
-                    $dim = getimagesize($image['tmp_name']);
-
-                    if ($dim[0] >= 1920 && $dim[1] >= 1080) {
-                        if ($hidden == 'car') {
-                            $flag = true;
-                            $path = $pathCar;
-                        }
-                        if ($hidden == 'tv') {
-                            if (preg_match("#^tv[1-5]$#", $fileName)) {
-                                $flag = true;
-                                $path = $pathTV;
-                            } else {
-                                $this->Flash->error(__('rename image file (tv[1,2,3,4 or 5])'), ['key' => 'er_tv']);
-                            }
-                        }
-                        if ($flag && !empty($path)) {
-                            if (move_uploaded_file($image['tmp_name'], $path . $fileName)) {
-                                $this->Flash->success(__('file transfer'), 'er_gene');
-                            } else {
-                                $this->Flash->error(__('no file transfer'), 'er_gene');
-                            }
-                        } else {
-                            $this->Flash->error(__('path specified not valid'), 'er_gene');
-                        }
-                    } else {
-                        $this->Flash->error(__('image file size incorrect'), 'er_gene');
-                    }
-                } else {
-                    $this->Flash->error(__('the format is not good'), 'er_gene');
-                }
-            } else {
-                $this->Flash->error(__('no file transfer'), 'er_gene');
-            }
-        }
-        //fin gestion du carousel
-        $filesCar = $this->_getImgagesDir($pathCar);
-        $filesTV = $this->_getImgagesDir($pathTV);
-        $this->set(compact('projects', 'organizations', 'filesCar', 'filesTV'));
-    }
-
-    /**
-     * _getImgagesDir method
-     *
-     * @param string $path _getImgagesDir page
-     *
-     * @return array
-     */
-    private function _getImgagesDir($path)
-    {
-        $fichiers = [];
-
-        if (false !== ($dossier = opendir($path))) {
-            while (false !== ($fichier = readdir($dossier))) {
-                if ($fichier != '.' && $fichier != '..' && $fichier != 'index.php') {
-                    array_push($fichiers, $fichier);
-                }
-            }
-        }
-        return $fichiers;
+        $this->set(compact('projects', 'organizations'));
     }
 }
