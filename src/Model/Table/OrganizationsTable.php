@@ -70,7 +70,7 @@ class OrganizationsTable extends Table
             'joinTable' => 'organizations_members'
             ]
         );
-
+        $this->hasMany('Projects');
         $this->addBehavior('Timestamp');
     }
 

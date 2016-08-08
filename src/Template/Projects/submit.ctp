@@ -51,19 +51,16 @@
                                     'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
                                     'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                                 ]
-                            );
-                            if (empty($organizations->toArray())) : ?>
-                                <p>
-                                    <?= $this->Html->link(__('You\'re not part of an organization. Add yours now!'), ['controller' => 'Organizations', 'action' => 'submit']); ?>
-                                </p>
-                            <?php else : ?>
-                                <?= $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]); ?>
-                                <p>
-                                    <?= __('Or you can add a new organizations ') . $this->Html->link(__('here.'), ['controller' => 'Organizations', 'action' => 'submit']) ?>
-                                </p>
+                            ); ?>
+
+                                <?= $this->Form->input('organization_id',
+                                    ['options' => $organizations,
+                                        'type' => 'select',
+                                        'multiple'=> false,
+                                        'empty' => false,
+                                        'label' => __('Select the organization associated with the project.')]); ?>
                                 <?php
-                            endif;
-                            $projectArray = $project->toArray();
+                                $projectArray = $project->toArray();
                             $missionsPost = array_intersect_key($projectArray, array_flip(preg_grep('/^mission-/', array_keys($projectArray))));
                             if (!is_null($missionsPost)) :
                                 foreach ($missionsPost as $i => $mission) :

@@ -114,15 +114,27 @@ class ProjectsController extends AppController
         }
 
         $name = $session->read('filter.project.name');
-        $query = $this->Projects->find();
+/*        $query = $this->Projects->find();
         $query->contain(['Organizations']);
         $query->where(['archived' => 0]);
         $query->where(['accepted' => 1]);
         if ($name) {
             $query->where(['name LIKE' => '%' . $name . '%']);
+        }*/
+        $conditions['archived'] = 0;
+        //$conditions['accepted'] = 1;
+        if ($name) {
+            $conditions['Projects.name LIKE'] = '%' . $name . '%';
         }
+        $this->paginate = [
+            'limit' => 1000,
+            'order' => ['Organizations' => 'asc'],
+            'conditions' => $conditions,
+            'contain' => ['Organizations'],
+            'sortWhitelist'=>['Organizations.name']
+        ];
 
-        $projects = $this->paginate($query);
+        $projects = $this->paginate($this->Projects);
 
         $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);
@@ -259,7 +271,11 @@ class ProjectsController extends AppController
                     'm.user_id' => $mentor->getId()
                 ]
             );
-
+        $data = $organizations->toArray();
+        if (!$data) {
+            $this->Flash->error(__('You must be a member of an Organization to submit a project. Please create or join an organization'));
+            return $this->redirect(['controller'=> 'Organizations','action' => 'submit']);
+        }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
         $typeOptions = $this->Missions->find('typeOptions');
         $this->set(compact('mission', 'missionLevels', 'typeOptions', 'project', 'organizations'));
@@ -291,12 +307,8 @@ class ProjectsController extends AppController
                 },
                 $user->getOrganizationsJoined()
             );
-            $projectOrgs = array_map(
-                function ($o) {
-                    return $o->getId();
-                },
-                $project->getOrganizations()
-            );
+            $projectOrgs = array($project->getOrganizations())
+            ;
             $projectContrib = array_map(
                 function ($o) {
                     return $o->getId();
@@ -311,7 +323,10 @@ class ProjectsController extends AppController
             );
         }
 
-        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors)) || ($user && $user->hasRoleName(['Administrator']))) {
+
+        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0
+                || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors))
+                || ($user && $user->hasRoleName(['Administrator']))) {
             $data = $this->DataTables->find(
                 'Missions',
                 [

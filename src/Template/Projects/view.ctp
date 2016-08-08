@@ -12,18 +12,12 @@
                         <div class="panel-body">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="table-responsive">
-                                    <h3 class="header-title"><?= __('Organizations') ?> <a
+                                    <h3 class="header-title"><?= __('Organization') ?>: <a
                                             href="<?= $this->Wiki->buildLink(''); ?>"><i
-                                                class="fa fa-question-circle"></i></a></h3>
-                                    <?php if (!empty($project->organizations)): ?>
-                                        <table class="table borderless table-striped">
-                                            <?php foreach ($project->organizations as $organization): ?>
-                                                <tr>
-                                                    <td><?= $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]) ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </table>
-                                    <?php endif; ?>
+                                                class="fa fa-question-circle"></i></a>
+                                        <?=$this->Html->link($project->organization['name'],
+                                            ['controller' => 'Organizations', 'action' => 'view',
+                                                $project->organization['id']]);?></h3>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

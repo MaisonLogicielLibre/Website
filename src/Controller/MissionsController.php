@@ -54,7 +54,10 @@ class MissionsController extends AppController
     public function isAuthorized($user)
     {
         $user = $this->Users->findById($user['id'])->first();
-
+        if ($user && ($user->hasRoleName(['Administrator']))
+        ) {
+            return true;
+        }
         if (isset($this->_permissions[$this->request->action])) {
             if ($user->hasPermissionName($this->_permissions[$this->request->action])) {
                 return true;
@@ -121,6 +124,7 @@ class MissionsController extends AppController
             $this->_setFilter('session_select', $this->request->data['session_select']);
             $this->_setFilter('studentUniversity', $this->request->data['studentUniversity']);
             $this->_setFilter('professorUniversity', $this->request->data['professorUniversity']);
+            $this->_setFilter('date', $this->request->data['modifiedDate']);
         }
         // query builder
         $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Applications', 'TypeMissions', 'Users', 'Professors']);
@@ -620,5 +624,19 @@ class MissionsController extends AppController
 
         $this->set(compact('currentProfessorId', 'professors', 'mission'));
         $this->set('_serialize', ['mission']);
+    }
+
+    /* for admin view to delete...*/
+    public function projectindex($id = null)
+    {
+        $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations','Users', 'Professors', 'TypeMissions']);
+        $query->where(['Projects.id' => $id]);
+        $missions = $this->paginate($query);
+/*        $this->paginate = [
+            'contain' => ['Projects', 'Users', 'Professors', 'TypeMissions']
+        ];
+        $missions = $this->paginate($this->Missions);*/
+        $this->set(compact('missions'));
+        $this->set('_serialize', ['missions']);
     }
 }

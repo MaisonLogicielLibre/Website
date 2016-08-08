@@ -67,6 +67,15 @@ $paginatorParams = $this->Paginator->params();
                 </div>
             </div>
         </div>
+        <div class="row filter-box">
+            <div class="col-sm-offset-1 col-sm-4 shadegrey">
+                <h4><?= __('Filter by date'); ?></h4>
+                <?php $this->Form->templates(
+                    ['dateWidget' => '{{day}}{{month}}{{year}}']
+                );
+                echo $this->Form->input('modifiedDate', ['type'=>'date','label'=>false]); ?>
+            </div>
+        </div>
         <br>
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-1">
@@ -101,11 +110,12 @@ $paginatorParams = $this->Paginator->params();
                             <?php foreach ($missions as $mission): ?>
                                 <tr>
                                     <td class="hide-mobile">
-                                        <?php foreach ($mission->project->organizations as $org): ?>
-                                            <?php if ($org !== reset($mission->project->organizations)) echo ','; ?>
-                                            <?php echo $org['name']; ?>
-                                        <?php endforeach; ?>
-                                    </td>
+                                        <?php if (isset($mission->project->organization['name'])) {
+                                            echo $this->Html->link($mission->project->organization['name'],
+                                                ['controller' => 'Organizations', 'action' => 'view', $mission->organization['id']]);
+                                        } else {
+                                            echo 'no org';
+                                        } ?>  </td>
                                     <td><?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?></td>
                                     <td class="hide-mobile"><?= $this->Html->link($mission->name, ['controller' => 'Missions', 'action' => 'view', $mission->id]); ?></td>
                                     <td class="hide-mobile"><?= $mission->has('user') ? $this->Html->link($mission->user->lastName, ['controller' => 'Users', 'action' => 'view', $mission->user->id]) : '' ?></td>

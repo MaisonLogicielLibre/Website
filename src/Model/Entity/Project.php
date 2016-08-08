@@ -104,7 +104,7 @@ class Project extends Entity
      */
     public function getOrganizations()
     {
-        return $this->_properties['organizations'];
+        return $this->organizations;
     }
 
     /**
