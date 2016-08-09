@@ -35,7 +35,6 @@ class UsersControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.type_users_users',
         'app.organizations',
-        'app.organizations_Projects',
         'app.organizations_owners',
         'app.organizations_members',
         'app.users',
@@ -234,6 +233,8 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $expectedEmail = 'bla@bla.com';
         $data = [
+            'firstName'=> 'joe',
+            'lastName'=> 'who',
             'username' => 'mrregister',
             'password' => 'allo',
             'confirm_password' => 'allo',
@@ -242,7 +243,16 @@ class UsersControllerTest extends IntegrationTestCase
             'university_id' => 1
         ];
         $this->post('/users/registerStudent', $data);
-
+        $data = [
+            'accepted'=> 'joe',
+            'lastName'=> 'who',
+            'username' => 'mrregister',
+            'password' => 'allo',
+            'confirm_password' => 'allo',
+            'email' => $expectedEmail,
+            'confirm_email' => 'bla@bla.com',
+            'university_id' => 1
+        ];
         $this->assertRedirect(['controller' => 'Users', 'action' => 'registerStudentOptional']);
 
         $user = $this->Users->find()->select(['emailPublic'])->order(['id' => 'DESC'])->first();

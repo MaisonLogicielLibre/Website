@@ -236,17 +236,9 @@ class Organization extends Entity
         $ORMprojects = TableRegistry::get('Projects');
         $projects = $ORMprojects
             ->find()
-            ->join(
-                [
-                    'table' => 'organizations_projects',
-                    'alias' => 'o',
-                    'type' => 'INNER',
-                    'conditions' => 'o.project_id = Projects.id'
-                ]
-            )
             ->where(
                 [
-                    'o.organization_id' => $this->id
+                    'organization_id' => $this->id
                     ]
             );
 

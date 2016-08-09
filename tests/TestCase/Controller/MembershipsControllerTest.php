@@ -43,7 +43,6 @@ class MembershipsControllerTest extends IntegrationTestCase
         'app.svn_users',
         'app.svns',
         'app.projects_contributors',
-        'app.organizations_projects',
         'app.projects_mentors',
         'app.type_users',
         'app.permissions',

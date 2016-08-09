@@ -18,12 +18,14 @@ class OrganizationsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'website' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'logo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'description' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'website' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'logo' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'description' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
         'isValidated' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'isRejected' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -47,7 +49,9 @@ class OrganizationsFixture extends TestFixture
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome',
             'isValidated' => 0,
-            'isRejected' => 0
+            'isRejected' => 0,
+            'created' => '2016-08-09 18:06:48',
+            'modified' => '2016-08-09 18:06:48'
         ],
         [
             'id' => 2,
@@ -56,7 +60,9 @@ class OrganizationsFixture extends TestFixture
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome',
             'isValidated' => 1,
-            'isRejected' => 0
+            'isRejected' => 0,
+            'created' => '2016-08-09 18:06:48',
+            'modified' => '2016-08-09 18:06:48'
         ],
         [
             'id' => 3,
@@ -65,7 +71,9 @@ class OrganizationsFixture extends TestFixture
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome',
             'isValidated' => 1,
-            'isRejected' => 1
+            'isRejected' => 1,
+            'created' => '2016-08-09 18:06:48',
+            'modified' => '2016-08-09 18:06:48'
         ],
         [
             'id' => 4,
@@ -74,7 +82,9 @@ class OrganizationsFixture extends TestFixture
             'logo' => '/img/logo.jpg',
             'description' => 'Awesome',
             'isValidated' => 1,
-            'isRejected' => 0
+            'isRejected' => 0,
+            'created' => '2016-08-09 18:06:48',
+            'modified' => '2016-08-09 18:06:48'
         ],
     ];
 }

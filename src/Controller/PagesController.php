@@ -487,6 +487,9 @@ class PagesController extends AppController
                 // @codingStandardsIgnoreEnd
                 }
             } else {
+                if (! isset($countUni[7])) {
+                    $countUni[7] = 0;
+                }
                 $countUni[7] = $countUni[7] + 1;
             }
 
@@ -564,7 +567,7 @@ class PagesController extends AppController
               (
                 SELECT
                 COUNT(id)
-                FROM organizations_projects p
+                FROM projects p
                 WHERE p.organization_id = o.id
               ) pj
               FROM organizations o

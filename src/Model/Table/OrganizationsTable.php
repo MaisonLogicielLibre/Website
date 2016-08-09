@@ -44,14 +44,7 @@ class OrganizationsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsToMany(
-            'Projects',
-            [
-            'foreignKey' => 'organization_id',
-            'targetForeignKey' => 'project_id',
-            'joinTable' => 'organizations_projects'
-            ]
-        );
+        $this->belongsToMany('Projects');
         $this->belongsToMany(
             'Owners',
             [

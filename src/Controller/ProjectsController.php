@@ -110,7 +110,9 @@ class ProjectsController extends AppController
     {
         $session = $this->request->session();
         if ($this->request->is(['post', 'put', 'patch'])) {
-            $this->_setFilter('name', $this->request->data['name']);
+            if (isset ($this->request->data['name'])) {
+                $this->_setFilter('name', $this->request->data['name']);
+            }
         }
 
         $name = $session->read('filter.project.name');
@@ -158,8 +160,7 @@ class ProjectsController extends AppController
                     'contain' => [
                         'Organizations' => [
                             'fields' => [
-                                'id', 'name', 'OrganizationsProjects.project_id'
-                            ]
+                                'id', 'name']
                         ]
                     ],
                     'fields' => [

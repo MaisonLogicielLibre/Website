@@ -36,7 +36,6 @@ class OrganizationsTableTest extends TestCase
     public $fixtures = [
     'app.type_users_users',
     'app.organizations',
-    'app.organizations_Projects',
     'app.organizations_Owners',
     'app.organizations_Members',
     'app.users',

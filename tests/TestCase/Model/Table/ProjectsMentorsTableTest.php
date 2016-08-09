@@ -42,7 +42,6 @@ class ProjectsMentorsTableTest extends TestCase
         'app.projects_contributors',
         'app.projects_mentors',
         'app.organizations',
-        'app.organizations_projects',
         'app.type_users',
         'app.permissions',
         'app.permissions_type_users',
