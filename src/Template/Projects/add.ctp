@@ -10,7 +10,8 @@
             <?php
             echo $this->Form->input('name', ['label' => __('Name of the project')]);
             echo $this->Form->input('link', ['label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
-            echo $this->Form->input('description',
+            echo $this->Form->input(
+                'description',
                 [
                     'label' => __('Description of the project'),
                     'data-provide' => 'markdown',
@@ -34,7 +35,9 @@ echo $this->Html->script(
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']); 
+}
 ?>

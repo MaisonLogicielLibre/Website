@@ -167,7 +167,7 @@ class MissionsController extends AppController
                     $query->matching(
                         'Applications',
                         function ($q) {
-                                return $q->where(['Applications.rejected' => true]);
+                            return $q->where(['Applications.rejected' => true]);
                         }
                     );
                     $chooseStudentUniversity = true;
@@ -176,7 +176,7 @@ class MissionsController extends AppController
                     $query->matching(
                         'Applications',
                         function ($q) {
-                                return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
+                            return $q->where(['Applications.accepted' => false, 'Applications.rejected' => false]);
                         }
                     );
                     $chooseStudentUniversity = true;
@@ -626,16 +626,22 @@ class MissionsController extends AppController
         $this->set('_serialize', ['mission']);
     }
 
-    /* for admin view to delete...*/
+    /**
+     * For admin view to delete...
+     *
+     * @param int $id id
+     *
+     * @return null
+     */
     public function projectindex($id = null)
     {
-        $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations','Users', 'Professors', 'TypeMissions']);
+        $query = $this->Missions->find()->contain(['Projects', 'Projects.Organizations', 'Users', 'Professors', 'TypeMissions']);
         $query->where(['Projects.id' => $id]);
         $missions = $this->paginate($query);
-/*        $this->paginate = [
-            'contain' => ['Projects', 'Users', 'Professors', 'TypeMissions']
-        ];
-        $missions = $this->paginate($this->Missions);*/
+        /*        $this->paginate = [
+                    'contain' => ['Projects', 'Users', 'Professors', 'TypeMissions']
+                ];
+                $missions = $this->paginate($this->Missions);*/
         $this->set(compact('missions'));
         $this->set('_serialize', ['missions']);
     }

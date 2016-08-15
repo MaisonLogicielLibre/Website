@@ -33,7 +33,7 @@
 <div class="related row">
     <div class="column col-lg-12">
     <h4 class="subheader"><?= __('Related SvnUsers') ?></h4>
-    <?php if (!empty($svn->svn_users)): ?>
+    <?php if (!empty($svn->svn_users)) : ?>
     <div class="table-responsive">
         <table class="table">
             <tr>

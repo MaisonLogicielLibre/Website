@@ -60,18 +60,20 @@
 </div>
     <!-- Add DataTables scripts -->
     <?= $this->Html->script(
-        [
-            'datatables/jquery.dataTables.min',
-            'datatables/dataTables.bootstrap.min',
-            'DataTables.cakephp.dataTables',
-            'bootstrap/bootstrap-switch.min'
-        ],
-        ['block' => 'scriptBottom']);
+                                        [
+                                        'datatables/jquery.dataTables.min',
+                                        'datatables/dataTables.bootstrap.min',
+                                        'DataTables.cakephp.dataTables',
+                                        'bootstrap/bootstrap-switch.min'
+                                        ],
+                                        ['block' => 'scriptBottom']
+                                    );
     ?>
 
     <?php
     $this->Html->scriptStart(['block' => 'scriptBottom']);
-    echo $this->DataTables->init([
+    echo $this->DataTables->init(
+        [
         'ajax' => [
             'url' => $this->Url->build(['action' => 'index']),
         ],
@@ -108,7 +110,8 @@
         ],
         'lengthMenu' => '',
         'pageLength' => 50
-    ])->draw('.dataTable');
+        ]
+    )->draw('.dataTable');
     echo 'var ajaxUrl="' . $this->Url->Build(['action' => 'editStatus']) . '";';
     echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
     $this->Html->scriptEnd();

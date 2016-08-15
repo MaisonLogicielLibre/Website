@@ -11,7 +11,8 @@
                         [
                             'controller' => 'News',
                             'action' => 'index'
-                        ]) ?>">
+                        ]
+                    ) ?>">
                         <i class="fa fa-info"></i>
                         <?= __('List news') ?>
                     </a>
@@ -22,7 +23,8 @@
                         [
                             'controller' => 'News',
                             'action' => 'add'
-                        ]) ?>">
+                        ]
+                    ) ?>">
                         <i class="fa fa-plus"></i>
                         <?= __('Add new') ?>
                     </a>

@@ -23,13 +23,13 @@
                             <p>
                                 <?= __('Professor of the mission : ') ?>
                                 <select id="users" name="users[]" class="form-control">
-                                    <?php if (is_null($mission->professor)): ?>
+                                    <?php if (is_null($mission->professor)) : ?>
                                         <option value="null" selected><?= __("No professor"); ?></option>
                                     <?php else: ?>
                                         <option value="null"><?= __("No professor"); ?></option>
                                     <?php endif; ?>
                                     <?php foreach ($professors as $professor):
-                                        if ($professor->getId() == $currentProfessorId): ?>
+                                        if ($professor->getId() == $currentProfessorId) : ?>
                                             <option value="<?= $professor->getId() ?>"
                                                     selected><?= '(' . $professor->getUsername() . ') ' . $professor->getName() ?></option>
                                         <?php else: ?>
@@ -42,15 +42,19 @@
                         </fieldset>
                         <br>
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Missions',
                                     'action' => 'view',
                                     $mission->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>

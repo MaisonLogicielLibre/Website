@@ -15,12 +15,12 @@
                                     <h3 class="header-title"><?= __('Projects') ?> <a
                                             href="<?= $this->Wiki->buildLink('Projects'); ?>"><i
                                                 class="fa fa-question-circle"></i></a></h3>
-                                    <?php if (!empty($organization->projects)): ?>
+                                    <?php if (!empty($organization->projects)) : ?>
                                         <table class="table borderless table-striped">
                                             <?php foreach ($organization->projects as $project): ?>
                                                 <tr>
                                                     <?php if($project->isArchived()) :
-                                                            if($user && $user->isMemberOf($organization->getId())) : ?>
+                                                        if($user && $user->isMemberOf($organization->getId())) : ?>
                                                                 <td>
                                                                     <?= $this->html->link($project->getName(), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
                                                                     <span class="label label-warning label-as-badge"><?= __('Archived'); ?></span>
@@ -45,7 +45,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="table-responsive">
                                     <h3 class="header-title"><?= __('Owners') ?></h3>
-                                    <?php if (!empty($organization->owners)): ?>
+                                    <?php if (!empty($organization->owners)) : ?>
                                         <table class="table borderless table-striped">
                                             <?php foreach ($organization->owners as $owner): ?>
                                                 <tr>
@@ -60,14 +60,14 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="table-responsive">
                                     <h3 class="header-title"><?= __('Members') ?></h3>
-                                    <?php if (!empty($organization->members)): ?>
+                                    <?php if (!empty($organization->members)) : ?>
                                         <table class="table borderless table-striped">
                                             <?php foreach ($organization->members as $member):
-                                                if (!$member->isOwnerOf($organization->id)): ?>
+                                                if (!$member->isOwnerOf($organization->id)) : ?>
                                                 <tr>
                                                     <td><?= $this->html->link($member->getName(), ['controller' => 'Users', 'action' => 'view', $member->id]) ?></td>
                                                 </tr>
-                                            <?php endif;
+                                                <?php endif;
                                             endforeach; ?>
                                         </table>
                                     <?php endif; ?>
@@ -80,13 +80,14 @@
         </div>
     </div>
 <?= $this->Html->script(
-    [
-        'datatables/jquery.dataTables.min',
-        'datatables/dataTables.bootstrap.min',
-        'DataTables.cakephp.dataTables',
-        'markdown/markdown'
-    ],
-    ['block' => 'scriptBottom']);
+                                    [
+                                    'datatables/jquery.dataTables.min',
+                                    'datatables/dataTables.bootstrap.min',
+                                    'DataTables.cakephp.dataTables',
+                                    'markdown/markdown'
+                                    ],
+                                    ['block' => 'scriptBottom']
+                                );
 ?>
 <?php
 $lengthOptions =
@@ -111,7 +112,8 @@ $typeMissionsOption =
         3 => __('Capstone')
     ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
+echo $this->DataTables->init(
+    [
     'ajax' => [
         'url' => $this->Url->build(['action' => 'view', $project->id]),
     ],
@@ -152,7 +154,8 @@ echo $this->DataTables->init([
     ],
     'lengthMenu' => '',
     'pageLength' => 25
-])->draw('.dataTable');
+    ]
+)->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
 echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
 echo 'var sessionTr=' . json_encode($sessionOptions) . ';';

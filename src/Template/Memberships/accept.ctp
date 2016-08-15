@@ -19,15 +19,19 @@
                         <h3 class="header-title"><?= __('Accept as member for organization {0}', $organization->getName()); ?></h3>
                         <?= $this->Form->create($membership, ['type' => 'post', 'url' => ['action' => 'accept']]); ?>
                         <?= $this->Form->button(__('Accept as member'), ['class' => 'btn-info']); ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Organizations',
                                     'action' => 'view',
                                     $organization->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end(); ?>
                     </div>
                 </div>

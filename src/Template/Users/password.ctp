@@ -27,15 +27,19 @@
                             <?= $this->Form->input('old_password', ['value' => '', 'type' => 'password', 'label' => __('Confirm your current password to confirm the change'), 'placeholder' => __('Password')]); ?>
                         </fieldset>
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Users',
                                     'action' => 'view',
                                     $user->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>

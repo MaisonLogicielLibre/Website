@@ -58,7 +58,7 @@ class ProjectsTable extends Table
                 'foreignKey' => 'application_id'
             ]
         );
-/*        $this->belongsToMany(
+        /* $this->belongsToMany(
             'Organizations',
             [
             'foreignKey' => 'project_id',

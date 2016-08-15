@@ -40,11 +40,13 @@
                                 <tr>
                                     <td class="hide-mobile">
                                         <?php if (isset($project->organization['name'])) {
-                                            echo $this->Html->link($project->organization['name'],
-                                                ['controller' => 'Organizations', 'action' => 'view',$project->organization['id']]);
+                                            echo $this->Html->link(
+                                                $project->organization['name'],
+                                                ['controller' => 'Organizations', 'action' => 'view',$project->organization['id']]
+                                            );
                                         } else {
-                                            echo 'not specified';
-                                        } ?>
+    echo 'not specified';
+} ?>
                                     </td>
                                     <td><?= $this->Html->link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]); ?></td>
                                     <td><?= $this->Html->link($project->link, $project->link); ?></td>
@@ -64,8 +66,9 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min.js',
-        'bootstrap.min.js'
-    ]);
+            [
+            'jquery-2.1.4.min.js',
+            'bootstrap.min.js'
+            ]
+        );
 ?>

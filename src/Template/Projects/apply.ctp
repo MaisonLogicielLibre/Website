@@ -14,15 +14,19 @@
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn-success']) ?>
-        <?= $this->Form->button(__('Cancel'), [
+        <?= $this->Form->button(
+            __('Cancel'), [
             'type' => 'button',
             'class' => 'btn btn-default',
-            'onclick' => 'location.href=\'' . $this->url->build([
+            'onclick' => 'location.href=\'' . $this->url->build(
+                [
                     'controller' => 'Projects',
                     'action' => 'view',
                     $project->id
-                ]) . '\''
-        ]); ?>
+                ]
+            ) . '\''
+            ]
+        ); ?>
         <?= $this->Form->end() ?>
     </div>
 </div>

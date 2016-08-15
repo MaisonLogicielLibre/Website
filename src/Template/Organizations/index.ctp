@@ -49,17 +49,19 @@
 </div>
 <!-- Add DataTables scripts -->
 <?= $this->Html->script(
-    [
-        'datatables/jquery.dataTables.min',
-        'datatables/dataTables.bootstrap.min',
-        'DataTables.cakephp.dataTables',
-    ],
-    ['block' => 'scriptBottom']);
+                                [
+                                'datatables/jquery.dataTables.min',
+                                'datatables/dataTables.bootstrap.min',
+                                'DataTables.cakephp.dataTables',
+                                ],
+                                ['block' => 'scriptBottom']
+                            );
 ?>
 
 <?php
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
+echo $this->DataTables->init(
+    [
     'ajax' => [
         'url' => $this->Url->build(['action' => 'index']),
     ],
@@ -80,7 +82,8 @@ echo $this->DataTables->init([
     ],
     'lengthMenu' => '',
     'pageLength' => 50
-])->draw('.dataTable');
+    ]
+)->draw('.dataTable');
 echo 'var orgUrl="' . $this->Url->Build(['action' => 'view']) . '";';
 echo 'var validationTxt="' . __('Pending Validation') . '";';
 $this->Html->scriptEnd(); ?>

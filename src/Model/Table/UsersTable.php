@@ -224,13 +224,13 @@ class UsersTable extends Table
                 'confirm_email',
                 'custom',
                 [
-                'rule' => function ($value, $context) {
-                    if ($value !== $context['data']['email']) {
-                        return false;
-                    }
-                    return true;
-                },
-                'message' => 'The email are not equal']
+                    'rule' => function ($value, $context) {
+                        if ($value !== $context['data']['email']) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => 'The email are not equal']
             )
             ->requirePresence('confirm_email', 'create')
             ->notEmpty('confirm_email');
@@ -260,13 +260,13 @@ class UsersTable extends Table
                 'confirm_password',
                 'custom',
                 [
-                'rule' => function ($value, $context) {
-                    if ($value !== $context['data']['password']) {
-                        return false;
-                    }
-                    return true;
-                },
-                'message' => 'The passwords are not equal']
+                    'rule' => function ($value, $context) {
+                        if ($value !== $context['data']['password']) {
+                            return false;
+                        }
+                        return true;
+                    },
+                    'message' => 'The passwords are not equal']
             )
             ->requirePresence('password', 'create')
             ->notEmpty('password')
@@ -290,7 +290,7 @@ class UsersTable extends Table
                             }
                             return true;
                         },
-                        'message' => __('Please use only letters (a-z), numbers, periods, and underscore.')
+                        'message' => __('Please use only letters (a-z), numbers,periods, and underscore.')
                     ],
                     'between' => [
                         'rule' => ['lengthBetween', 3, 16],
@@ -309,7 +309,7 @@ class UsersTable extends Table
                             ->where(
                                 [
                                     'id' => $context['data']['id']
-                                    ]
+                                ]
                             )
                             ->first();
                         $data = $query->toArray();
@@ -355,6 +355,7 @@ class UsersTable extends Table
 
         return $validator;
     }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

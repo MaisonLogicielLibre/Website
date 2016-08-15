@@ -1,7 +1,8 @@
 <?php
 $this->start('form');
 echo $this->Form->input('name', ['required' => true, 'label' => __('Position title')]);
-echo $this->Form->input('description',
+echo $this->Form->input(
+    'description',
     ['type' => 'textarea',
         'required' => true,
         'label' => __('Describe your mission'),
@@ -12,7 +13,8 @@ echo $this->Form->input('description',
         'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
     ]
 );
-echo $this->Form->input('competence',
+echo $this->Form->input(
+    'competence',
     [
         'type' => 'textarea',
         'required' => true,
