@@ -103,6 +103,7 @@ class OrganizationsTable extends Table
                     if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                         return false;
                     }
+
                     return true;
                 },
                 'message' => __('Is not an url (Ex : http://website.ca).')
@@ -126,6 +127,7 @@ class OrganizationsTable extends Table
 
         $validator
             ->notEmpty('isRejected');
+
         return $validator;
     }
 }

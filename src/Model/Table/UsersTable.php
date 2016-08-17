@@ -163,6 +163,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -185,6 +186,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -201,6 +203,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -228,6 +231,7 @@ class UsersTable extends Table
                         if ($value !== $context['data']['email']) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => 'The email are not equal']
@@ -245,6 +249,7 @@ class UsersTable extends Table
                         if (!preg_match('/^([0-9]{1}(\.|\s|-)?){10}$/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not a valid number.')
@@ -264,6 +269,7 @@ class UsersTable extends Table
                         if ($value !== $context['data']['password']) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => 'The passwords are not equal']
@@ -288,6 +294,7 @@ class UsersTable extends Table
                             if (!preg_match('/^([a-z0-9A-Z_\-.])*$/', $value)) {
                                 return false;
                             }
+
                             return true;
                         },
                         'message' => __('Please use only letters (a-z), numbers,periods, and underscore.')
@@ -338,14 +345,15 @@ class UsersTable extends Table
                         $json = json_decode(file_get_contents(WWW_ROOT . '/json/UsersSkills.json'), true);
                         $valueArray = array_map(
                             function ($o) {
-                                return ltrim($o, ' ');
 
+                                return ltrim($o, ' ');
                             },
                             explode(',', $value)
                         );
                         if (count(array_diff($valueArray, $json)) > 0) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('One or more skills are not recognized')
@@ -368,6 +376,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['username']));
+
         return $rules;
     }
 
@@ -381,6 +390,7 @@ class UsersTable extends Table
     public function findTypeOptions(Query $query)
     {
         $typeMissions = TableRegistry::get('TypeMissions');
+
         return $typeMissions->find('options');
     }
 }

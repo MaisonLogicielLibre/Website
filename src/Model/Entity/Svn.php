@@ -77,6 +77,7 @@ class Svn extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 
@@ -90,6 +91,7 @@ class Svn extends Entity
     public function editLink($link)
     {
         $this->set('link', $link);
+
         return $link;
     }
 }

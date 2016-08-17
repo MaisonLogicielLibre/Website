@@ -120,6 +120,7 @@ class MembershipsController extends AppController
             $organizationId = $this->request->data['organization_id'];
             $organization = $this->Memberships->Organizations->get($organizationId, ['contain' => ['Owners', 'Members']]);
             $this->_createMembership($userId, $organization);
+
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
 

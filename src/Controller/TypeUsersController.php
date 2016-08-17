@@ -86,6 +86,7 @@ class TypeUsersController extends AppController
             $typeUser = $this->TypeUsers->patchEntity($typeUser, $this->request->data);
             if ($this->TypeUsers->save($typeUser)) {
                 $this->Flash->success(__('The type user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The type user could not be saved. Please, try again.'));
@@ -113,6 +114,7 @@ class TypeUsersController extends AppController
             $typeUser = $this->TypeUsers->patchEntity($typeUser, $this->request->data);
             if ($this->TypeUsers->save($typeUser)) {
                 $this->Flash->success(__('The type user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The type user could not be saved. Please, try again.'));
@@ -137,6 +139,7 @@ class TypeUsersController extends AppController
         } else {
             $this->Flash->error(__('The type user could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }

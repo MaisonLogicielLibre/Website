@@ -145,7 +145,7 @@ class ProjectsController extends AppController
     /**
      * MyProjects method
      *
-     * @return redirect
+     * @return void
      */
     public function myProjects()
     {
@@ -253,6 +253,7 @@ class ProjectsController extends AppController
             )
             ) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -275,6 +276,7 @@ class ProjectsController extends AppController
         $data = $organizations->toArray();
         if (!$data) {
             $this->Flash->error(__('You must be a member of an Organization to submit a project. Please create or join an organization'));
+
             return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
         }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
@@ -288,7 +290,7 @@ class ProjectsController extends AppController
      *
      * @param string $id id
      *
-     * @return void
+     * @return int
      */
     public function view($id = null)
     {
@@ -304,19 +306,22 @@ class ProjectsController extends AppController
         if ($user) {
             $userOrgs = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $user->getOrganizationsJoined()
             );
-            $projectOrgs = array($project->getOrganizations());
+            $projectOrgs = [$project->getOrganizations()];
             $projectContrib = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $project->getContributors()
             );
             $projectMentors = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $project->getMentors()
@@ -386,6 +391,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -417,6 +423,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -457,7 +464,7 @@ class ProjectsController extends AppController
     /**
      * Edit state method
      *
-     * @return void
+     * @return int
      */
     public function editState()
     {
@@ -545,9 +552,11 @@ class ProjectsController extends AppController
                 $notifications->save($notification);
             }
             $this->Flash->success(__('The project has been accepted.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
+
             return $this->redirect(['action' => 'view', $id]);
         }
     }
@@ -587,9 +596,11 @@ class ProjectsController extends AppController
                 }
             }
             $this->Flash->success(__('The project has been saved.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
+
             return $this->redirect(['action' => 'view', $id]);
         }
     }
@@ -610,6 +621,7 @@ class ProjectsController extends AppController
         } else {
             $this->Flash->error(__('The project could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 
@@ -639,6 +651,7 @@ class ProjectsController extends AppController
             $application = TableRegistry::get('Applications')->patchEntity($application, $this->request->data);
             if (TableRegistry::get('Applications')->save($application)) {
                 $this->Flash->success(__('The application has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The application could not be saved. Please, try again.'));
@@ -713,6 +726,7 @@ class ProjectsController extends AppController
                 $post['mission-' . $key] = json_encode($temp);
             }
         }
+
         return $post;
     }
 
@@ -764,6 +778,7 @@ class ProjectsController extends AppController
 
                     if ($this->Projects->save($project)) {
                         $this->Flash->success(__('The mentors have been modified.'));
+
                         return $this->redirect(['action' => 'view', $project->id]);
                     } else {
                         $this->Flash->error(__('The mentors could not be modified. Please,try again.'));

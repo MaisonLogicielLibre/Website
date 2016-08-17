@@ -152,6 +152,7 @@ class Mission extends Entity
                 $count += 1;
             }
         }
+
         return $this->getInternNbr() - $count;
     }
 
@@ -263,6 +264,7 @@ class Mission extends Entity
     public function editProjectId($projectId)
     {
         $this->set('project_id', $projectId);
+
         return $projectId;
     }
 
@@ -276,6 +278,7 @@ class Mission extends Entity
     public function editMentorId($mentorId)
     {
         $this->set('mentor_id', $mentorId);
+
         return $mentorId;
     }
 
@@ -289,6 +292,7 @@ class Mission extends Entity
     public function editProfessorId($professorId)
     {
         $this->set('professor_id', $professorId);
+
         return $professorId;
     }
 
@@ -302,6 +306,7 @@ class Mission extends Entity
     public function editInternNbr($internNbr)
     {
         $this->set('internNbr', $internNbr);
+
         return $internNbr;
     }
 
@@ -315,6 +320,7 @@ class Mission extends Entity
     public function editArchived($archived)
     {
         $this->set('archived', $archived);
+
         return $archived;
     }
 
@@ -328,6 +334,7 @@ class Mission extends Entity
     public function editTypeId($typeId)
     {
         $this->set('type_mission_id', $typeId);
+
         return $typeId;
     }
 

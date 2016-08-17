@@ -132,6 +132,7 @@ class MembershipsControllerTest extends IntegrationTestCase
         $organization = $organizations->get(2, ['contain' => 'Members']);
         $members = $organization->getMembers();
 
+        //var_dump(count($members));
         $this->assertEquals(2, count($members));
         $this->assertRedirect(['controller' => 'Organizations', 'action' => 'view', 2]);
     }

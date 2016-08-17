@@ -94,6 +94,7 @@ class TypeMissionsTable extends Table
         foreach ($typeMissions as $typeMission) {
             $typeOptions[$typeMission->id] = $typeMission->getName();
         }
+
         return $typeOptions;
     }
 }

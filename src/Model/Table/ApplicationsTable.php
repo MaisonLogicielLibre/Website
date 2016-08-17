@@ -117,6 +117,7 @@ class ApplicationsTable extends Table
     {
         $rules->add($rules->existsIn(['mission_id'], 'Missions'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+
         return $rules;
     }
 }

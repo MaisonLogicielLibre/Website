@@ -297,6 +297,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
+
                 return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
@@ -330,6 +331,7 @@ class OrganizationsController extends AppController
 
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
+
                 return $this->redirect(['action' => 'submit', 'controller' => 'Projects']);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
@@ -358,6 +360,7 @@ class OrganizationsController extends AppController
             $organization = $this->Organizations->patchEntity($organization, $this->request->data);
             if ($this->Organizations->save($organization)) {
                 $this->Flash->success(__('The organization has been saved.'));
+
                 return $this->redirect(['action' => 'view', $organization->id]);
             } else {
                 $this->Flash->error(__('The organization could not be saved. Please, try again.'));
@@ -370,7 +373,7 @@ class OrganizationsController extends AppController
     /**
      * Edit state method
      *
-     * @return void
+     * @return int
      */
     public function editStatus()
     {
@@ -451,6 +454,7 @@ class OrganizationsController extends AppController
                 $notifications->save($notification);
             }
             $this->Flash->success(__('The organization has been approved.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
@@ -479,6 +483,7 @@ class OrganizationsController extends AppController
                 $notifications->save($notification);
             }
             $this->Flash->success(__('The organization has been saved.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The organization could not be saved. Please, try again.'));
@@ -501,6 +506,7 @@ class OrganizationsController extends AppController
         } else {
             $this->Flash->error(__('The organization could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 
@@ -509,7 +515,7 @@ class OrganizationsController extends AppController
      *
      * @param int $id organization id
      *
-     * @return void
+     * @return redirect
      */
     public function addMember($id = null)
     {
@@ -545,6 +551,7 @@ class OrganizationsController extends AppController
             if ($haveOwner) {
                 if ($this->Organizations->save($organization)) {
                     $this->Flash->success(__('The organization has been updated.'));
+
                     return $this->redirect(['action' => 'view', $organization->id]);
                 } else {
                     $this->Flash->error(__('The organization could not be updated. Please,try again.'));
@@ -563,7 +570,7 @@ class OrganizationsController extends AppController
      *
      * @param int $id organization id
      *
-     * @return void
+     * @return redirect
      */
     public function addOwner($id = null)
     {
@@ -588,6 +595,7 @@ class OrganizationsController extends AppController
 
                 if ($this->Organizations->save($organization)) {
                     $this->Flash->success(__('The user has been added.'));
+
                     return $this->redirect(['action' => 'view', $organization->id]);
                 } else {
                     $this->Flash->error(__('The user could not be added. Please,try again.'));
@@ -631,6 +639,7 @@ class OrganizationsController extends AppController
             foreach ($project->getMentors() as $mentor) {
                 if ($mentor->getId() == $you) {
                     $this->Flash->error(__('You are a mentor of a project, you cannot leave the organization. You must remove yourself from the mentor list of the project to quit'));
+
                     return $this->redirect(['action' => 'view', $organization->id]);
                 }
             }

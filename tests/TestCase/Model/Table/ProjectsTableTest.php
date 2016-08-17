@@ -202,7 +202,7 @@ class ProjectsTableTest extends TestCase
      */
     public function testGetOrganizations()
     {
-        var_dump(php_ini_loaded_file());
+        //var_dump(php_ini_loaded_file());
         $id = 1;
 
         $expected = $this->Users->get(1)->getId();

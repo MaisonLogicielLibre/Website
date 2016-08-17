@@ -159,6 +159,7 @@ class MissionsTable extends Table
                         if (empty($context['data']['mission_levels']['_ids'])) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('You must select at least one item.')]
@@ -181,6 +182,7 @@ class MissionsTable extends Table
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
         $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
+
         return $rules;
     }
 
@@ -194,6 +196,7 @@ class MissionsTable extends Table
     public function findTypeOptions(Query $query)
     {
         $typeMissions = TableRegistry::get('TypeMissions');
+
         return $typeMissions->find('options');
     }
 }

@@ -341,6 +341,7 @@ class MissionsController extends AppController
                     $mission->editTypeId($this->request->data['type_mission']);
                     if ($this->Missions->save($mission)) {
                         $this->Flash->success(__('The mission has been saved.'));
+
                         return $this->redirect(['controller' => 'Projects', 'action' => 'view', $projectId]);
                     } else {
                         $this->Flash->error(__('The mission could not be saved. Please, try again.'));
@@ -407,6 +408,7 @@ class MissionsController extends AppController
 
             if ($this->Missions->save($mission)) {
                 $this->Flash->success(__('The mission has been edited.'));
+
                 return $this->redirect(['action' => 'view', $mission->id]);
             } else {
                 $this->Flash->error(__('The mission could not be edited. Please, try again.'));
@@ -436,9 +438,11 @@ class MissionsController extends AppController
             } else {
                 $this->Flash->success(__('The mission has been restored.'));
             }
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The mission could not be archived. Please, try again.'));
+
             return $this->redirect(['action' => 'view', $id]);
         }
     }
@@ -508,30 +512,36 @@ class MissionsController extends AppController
                                 }
                             } else {
                                 $this->Flash->error(__('You have already applied on this mission.'));
+
                                 return $this->redirect(['action' => 'view', $id]);
                             }
                         } else {
                             $this->Flash->error(__('You need to fill your profile before apply on this mission.'));
+
                             return $this->redirect(['action' => 'view', $id]);
                         }
                     } else {
                         $this->Flash->error(__("This mission is not seeking someone matching your profile"));
+
                         return $this->redirect(['action' => 'view', $id]);
                     }
                     $this->set(compact('mission'));
                     $this->set('_serialize', ['mission']);
                 } else {
                     $this->Flash->error(__('No more position available') . '.');
+
                     return $this->redirect(['action' => 'view', $id]);
                 }
                 $this->set(compact('mission', 'userEmail', 'isProfessor', 'isStudent'));
                 $this->set('_serialize', ['mission']);
             } else {
                 $this->Flash->error(__("You can't apply on your mission, you are the mentor") . '.');
+
                 return $this->redirect(['action' => 'view', $id]);
             }
         } else {
             $this->Flash->error(__("You don't have permission to access this page."));
+
             return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
         }
     }
@@ -569,6 +579,7 @@ class MissionsController extends AppController
 
                 if ($this->Missions->save($mission)) {
                     $this->Flash->success(__('The mentor have been modified.'));
+
                     return $this->redirect(['action' => 'view', $mission->id]);
                 } else {
                     $this->Flash->error(__('The mentor could not be modified. Please,try again.'));
@@ -613,6 +624,7 @@ class MissionsController extends AppController
 
                 if ($this->Missions->save($mission)) {
                     $this->Flash->success(__('The professor have been modified.'));
+
                     return $this->redirect(['action' => 'view', $mission->id]);
                 } else {
                     $this->Flash->error(__('The professor could not be modified. Please,try again.'));
@@ -631,7 +643,7 @@ class MissionsController extends AppController
      *
      * @param int $id id
      *
-     * @return null
+     * @return void
      */
     public function projectindex($id = null)
     {

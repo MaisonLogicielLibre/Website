@@ -102,9 +102,11 @@ class NotificationsController extends AppController
             $notification->isRead = true;
             if ($this->Notifications->save($notification)) {
                 $this->Flash->success(__('The notification has been mark as read.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The notification could not be mark as read. Please, try again.'));
+
                 return $this->redirect(['action' => 'index']);
             }
         }
@@ -125,11 +127,13 @@ class NotificationsController extends AppController
             $notification->isRead = true;
             if (!$this->Notifications->save($notification)) {
                 $this->Flash->error(__('The notification could not be mark as read. Please, try again.'));
+
                 return $this->redirect(['action' => 'index']);
             }
         }
 
         $this->Flash->success(__('All notifications has been mark as read.'));
+
         return $this->redirect(['action' => 'index']);
     }
 }

@@ -154,7 +154,7 @@ class PagesController extends AppController
      *
      * @param null $id tv page
      *
-     * @return redirect
+     * @return void
      */
     public function tv($id = null)
     {

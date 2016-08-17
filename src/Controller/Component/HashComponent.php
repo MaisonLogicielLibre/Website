@@ -42,6 +42,7 @@ class HashComponent extends Component
     public function hash($data)
     {
         $hash = hash("sha256", $data);
+
         return $hash;
     }
 
