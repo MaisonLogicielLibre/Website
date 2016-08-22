@@ -21,7 +21,7 @@
                             <h3 class="header-title"><?= __('Edit Mission'); ?></h3>
                             <?= $this->Form->create($mission) ?>
                             <?php
-                            if (!$isEditable):
+                            if (!$isEditable) :
                                 ?>
                                 <div class="alert alert-warning alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -34,7 +34,8 @@
                             <fieldset>
                                 <?php
                                 echo $this->Form->input('name', ['label' => __('Position title'), 'disabled' => !$isEditable]);
-                                echo $this->Form->input('description',
+                                echo $this->Form->input(
+                                    'description',
                                     ['type' => 'textarea',
                                         'required' => true,
                                         'label' => __('Describe your mission'),
@@ -46,7 +47,8 @@
                                         'disabled' => !$isEditable
                                     ]
                                 );
-                                echo $this->Form->input('competence',
+                                echo $this->Form->input(
+                                    'competence',
                                     [
                                         'type' => 'textarea',
                                         'required' => true,
@@ -104,9 +106,11 @@ echo $this->Html->script(
         'initial.min',
         'missions/edit'
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']); 
+}
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var infoIntern="' . __('By selecting an intern, you acknowledge that you will pay for your intern (typically $12000 to $14000 per semester). We will then forward your posting to the CO-OP department of all our university partners.') . '";';
 echo 'var infoMaster="' . __('This project type requires a professor and student(s) from the same university. Ensure the project is sufficiently complex for a graduate student (guidelines coming in 2016).') . '";';

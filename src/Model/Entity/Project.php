@@ -104,7 +104,7 @@ class Project extends Entity
      */
     public function getOrganizations()
     {
-        return $this->_properties['organizations'];
+        return $this->organization;
     }
 
     /**
@@ -147,6 +147,7 @@ class Project extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 
@@ -160,6 +161,7 @@ class Project extends Entity
     public function editLink($link)
     {
         $this->set('link', $link);
+
         return $link;
     }
 
@@ -173,6 +175,7 @@ class Project extends Entity
     public function editDescription($description)
     {
         $this->set('description', $description);
+
         return $description;
     }
 
@@ -186,6 +189,7 @@ class Project extends Entity
     public function editAccepted($accepted)
     {
         $this->set('accepted', $accepted);
+
         return $accepted;
     }
 
@@ -199,6 +203,7 @@ class Project extends Entity
     public function editArchived($archived)
     {
         $this->set('archived', $archived);
+
         return $archived;
     }
 
@@ -212,6 +217,7 @@ class Project extends Entity
     public function editMissions($missions)
     {
         $this->set('missions', $missions);
+
         return $missions;
     }
 
@@ -225,6 +231,7 @@ class Project extends Entity
     public function editMentors($mentors)
     {
         $this->set('mentors', $mentors);
+
         return $mentors;
     }
 
@@ -238,6 +245,7 @@ class Project extends Entity
     public function editCreated($created)
     {
         $this->set('created', $created);
+
         return $created;
     }
 
@@ -251,6 +259,7 @@ class Project extends Entity
     public function editModified($modified)
     {
         $this->set('modified', $modified);
+
         return $modified;
     }
 
@@ -259,7 +268,7 @@ class Project extends Entity
      *
      * @param array $usersId usersId
      *
-     * @return null
+     * @return void
      */
     public function modifyMentors($usersId)
     {

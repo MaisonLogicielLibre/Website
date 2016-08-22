@@ -87,6 +87,7 @@ class UsersTypeMissionsTable extends Table
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['type_mission_id'], 'TypeMissions'));
+
         return $rules;
     }
 }

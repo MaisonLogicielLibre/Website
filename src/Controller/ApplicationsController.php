@@ -106,12 +106,14 @@ class ApplicationsController extends AppController
         // Check if the application has already been accepted or rejected
         if ($application->getAccepted() || $application->getRejected()) {
             $this->Flash->error(__('This application has already been {0}', ($application->getAccepted() ? __('accepted') : __('rejected'))) . '.');
+
             return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
         }
 
         // Check if the logged user is the mission mentor
         if ($application->getMission()->getMentorId() != $user->getId()) {
             $this->Flash->error(__('You\'re not the mentor on this mission.'));
+
             return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
         }
 
@@ -151,6 +153,7 @@ class ApplicationsController extends AppController
                     $notifications->save($notification);
 
                     $this->Flash->success(__('The application has been saved.'));
+
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
                     $this->Flash->error(__('The application could not be saved. Please, try again.'));
@@ -191,12 +194,14 @@ class ApplicationsController extends AppController
         // Check if the application has already been accepted or rejected
         if ($application->getAccepted() || $application->getRejected()) {
             $this->Flash->error(__('This application has already been {0}', ($application->getAccepted() ? __('accepted') : __('rejected'))) . '.');
+
             return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
         }
 
         // Check if the logged user is the mission mentor
         if ($application->getMission()->getMentorId() != $user->getId()) {
             $this->Flash->error(__('You\'re not the mentor on this mission.'));
+
             return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
         }
 
@@ -216,6 +221,7 @@ class ApplicationsController extends AppController
                     $notifications->save($notification);
 
                     $this->Flash->success(__('The application has been saved.'));
+
                     return $this->redirect(['controller' => 'Missions', 'action' => 'view', $application->getMission()->id]);
                 } else {
                     $this->Flash->error(__('The application could not be saved. Please, try again.'));
@@ -274,10 +280,12 @@ class ApplicationsController extends AppController
         if ($user->getId() == $application->getUserId()) {
             if ($this->request->is(['post'])) {
                 $this->_toggleArchived($application);
+
                 return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
             }
         } else {
             $this->Flash->error(__('You cannot delete an application from another user'));
+
             return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
         }
 

@@ -3,10 +3,10 @@
     <ul class="nav nav-stacked nav-pills">
         <li class="active disabled"><?= $this->Html->link(__('Edit Type Users User'), ['action' => 'edit', $typeUsersUser->id]) ?> </li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $typeUsersUser->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $typeUsersUser->id), 'class' => 'btn-danger']
-            )
+            __('Delete'),
+            ['action' => 'delete', $typeUsersUser->id],
+            ['confirm' => __('Are you sure you want to delete # {0}?', $typeUsersUser->id), 'class' => 'btn-danger']
+        )
         ?></li>
         <li><?= $this->Html->link(__('New Type Users User'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Type Users Users'), ['action' => 'index']) ?></li>

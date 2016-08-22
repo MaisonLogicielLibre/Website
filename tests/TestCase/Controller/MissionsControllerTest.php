@@ -41,7 +41,6 @@ class MissionsControllerTest extends IntegrationTestCase
         'app.organizations',
         'app.organizations_owners',
         'app.organizations_members',
-        'app.organizations_projects',
         'app.projects_mentors',
         'app.type_users',
         'app.permissions',

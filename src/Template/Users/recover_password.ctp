@@ -21,7 +21,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <?php
-            if (isset($user) and $user):
+            if (isset($user) and $user) :
             ?>
             <div class="col-sm-12 col-xs-12">
                 <h2><?= __("Reset my account"); ?></h2>
@@ -61,7 +61,7 @@
             <?php endif; ?>
         </div>
     </div>
-    <?php if (isset($user) and $user): ?>
+    <?php if (isset($user) and $user) : ?>
     <div id="recover-password-search-link" class="col-sm-12">
         <?= __('Not your account?'); ?>
         <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recoverPassword']); ?>">

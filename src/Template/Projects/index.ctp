@@ -30,22 +30,26 @@
                     <table id="projects" class="table table-striped table-bordered dataTable">
                         <thead>
                             <tr>
-                                <th><?= __('Name'); ?></th>
+                                <th><?= $this->Paginator->sort('Organizations.name', __('Organization')) ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Project')) ?></th>
                                 <th><?= __('Link'); ?></th>
-                                <th><?= __('Organizations'); ?> <?= $this->Wiki->addHelper('Organizations'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($projects as $project): ?>
                                 <tr>
+                                    <td class="hide-mobile">
+                                        <?php if (isset($project->organization['name'])) {
+                                            echo $this->Html->link(
+                                                $project->organization['name'],
+                                                ['controller' => 'Organizations', 'action' => 'view',$project->organization['id']]
+                                            );
+                                        } else {
+    echo 'not specified';
+} ?>
+                                    </td>
                                     <td><?= $this->Html->link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]); ?></td>
                                     <td><?= $this->Html->link($project->link, $project->link); ?></td>
-                                    <td class="hide-mobile">
-                                        <?php foreach ($project->organizations as $org): ?>
-                                            <?php if ($org !== reset($project->organizations)) echo ','; ?>
-                                            <?php echo $org['name']; ?>
-                                        <?php endforeach; ?>
-                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -62,8 +66,9 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min.js',
-        'bootstrap.min.js'
-    ]);
+            [
+            'jquery-2.1.4.min.js',
+            'bootstrap.min.js'
+            ]
+        );
 ?>

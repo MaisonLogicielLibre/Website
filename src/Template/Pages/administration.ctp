@@ -65,52 +65,54 @@
                 <a class="btn btn-info pull-right" href="<?= $this->Url->build(['controller' => 'Organizations', 'action' => 'add']);?>"><?= __('Add organization');?></a>
             </div>
         </div>
-		
-		
+        
+        
     </div>
-	
-	<div class="col-lg-6 col-xs-12 hidden-xs hide">
+    
+    <div class="col-lg-6 col-xs-12 hidden-xs hide">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3 class="header-title">Carousel</h3>   
 
-				<div class="row">
-					<div class="col-lg-12 col-md-12">
-						
-						<?php foreach ($filesCar as $fichier):?>
-							<div class="col-sm-6 col-md-4">
-								<div class="thumbnail">
-									<img src="<?= $this->request->webroot . "img/carousel/". $fichier ?>" />
-									<div class="caption">
-										<p><a href="<?= "/pages/administration/".$fichier ?>" class="" ><?= __('Delete') ?></a></p>
-									</div>
-								</div>
-						    </div>
-						<?php endforeach; ?>
-			
-					</div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        
+        <?php foreach ($filesCar as $fichier):?>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="<?= $this->request->webroot . "img/carousel/". $fichier ?>" />
+                                    <div class="caption">
+                                        <p><a href="<?= "/pages/administration/".$fichier ?>" class="" ><?= __('Delete') ?></a></p>
+                                    </div>
+                                </div>
+                            </div>
+        <?php endforeach; ?>
+            
+                    </div>
 
-					<div class="col-lg-12 col-md-12">
-						<div class='col-lg-5 col-lg-offset-2'>
-							<h4>Enregistrer une image</h4>
+                    <div class="col-lg-12 col-md-12">
+                        <div class='col-lg-5 col-lg-offset-2'>
+                            <h4>Enregistrer une image</h4>
 
-							<?= $this->Flash->render('er_gene'); ?>
-							<?= $this->Form->create('image', array('type'=>'file')); ?>
-								<ul>
-									<li>format png</li>
-									<li>taille minimale (1920 x 1080)</li>
-								</ul>
-							
-							<?= $this->Form->hidden('hidden', ['value' => 'car']); ?>
-							<?= $this->Form->input('avatar_file', array('label' => 'Envoyer votre image',
-									'type' => 'file')); ?>
-									
-							<?= $this->Form->button('Envoyé'); ?>
-							<?= $this->Form->end(); ?>
-						</div>
-						
-					</div>
-				</div>
+        <?= $this->Flash->render('er_gene'); ?>
+        <?= $this->Form->create('image', array('type'=>'file')); ?>
+                                <ul>
+                                    <li>format png</li>
+                                    <li>taille minimale (1920 x 1080)</li>
+                                </ul>
+                            
+        <?= $this->Form->hidden('hidden', ['value' => 'car']); ?>
+        <?= $this->Form->input(
+            'avatar_file', array('label' => 'Envoyer votre image',
+                                    'type' => 'file')
+        ); ?>
+                                    
+        <?= $this->Form->button('Envoyé'); ?>
+        <?= $this->Form->end(); ?>
+                        </div>
+                        
+                    </div>
+                </div>
 
             </div>
         </div>

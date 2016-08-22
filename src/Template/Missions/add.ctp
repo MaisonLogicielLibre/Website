@@ -9,7 +9,7 @@
                     $this->Html->addCrumb(__('Home'), '/');
                     $this->Html->addCrumb(__('Projects'), '/Projects');
                     $this->Html->addCrumb($project->getName(), '/projects/view/' . $project->id);
-                    $this->Html->addCrumb( __('Add Mission'));
+                    $this->Html->addCrumb(__('Add Mission'));
 
                     echo $this->Html->getCrumbList(); ?>
                 </div>
@@ -27,15 +27,19 @@
                                 ?>
                             </fieldset>
                             <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                            <?= $this->Form->button(__('Cancel'), [
+                            <?= $this->Form->button(
+                                __('Cancel'), [
                                 'type' => 'button',
                                 'class' => 'btn btn-default',
-                                'onclick' => 'location.href=\'' . $this->url->build([
+                                'onclick' => 'location.href=\'' . $this->url->build(
+                                    [
                                         'controller' => 'Projects',
                                         'action' => 'view',
                                         $project->id
-                                    ]) . '\''
-                            ]); ?>
+                                    ]
+                                ) . '\''
+                                ]
+                            ); ?>
                             <?= $this->Form->end() ?>
                         </div>
                     </div>
@@ -52,9 +56,11 @@ echo $this->Html->script(
         'initial.min',
         'missions/add'
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script(['locale/bootstrap-markdown.fr'], ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script(['locale/bootstrap-markdown.fr'], ['block' => 'scriptBottom']); 
+}
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var infoIntern="' . __('By selecting an intern, you acknowledge that you will pay for your intern (typically $12000 to $14000 per semester). We will then forward your posting to the CO-OP department of all our university partners.') . '";';
 echo 'var infoMaster="' . __('This project type requires a professor and student(s) from the same university. Ensure the project is sufficiently complex for a graduate student (guidelines coming in 2016).') . '";';

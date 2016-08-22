@@ -87,6 +87,7 @@ class PermissionsTypeUsersTable extends Table
     {
         $rules->add($rules->existsIn(['type_user_id'], 'TypeUsers'));
         $rules->add($rules->existsIn(['permission_id'], 'Permissions'));
+
         return $rules;
     }
 }

@@ -89,6 +89,7 @@ class TypeUsersUsersTable extends Table
     {
         $rules->add($rules->existsIn(['type_user_id'], 'TypeUsers'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+
         return $rules;
     }
 }

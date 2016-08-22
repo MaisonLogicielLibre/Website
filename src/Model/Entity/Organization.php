@@ -168,6 +168,7 @@ class Organization extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 
@@ -181,6 +182,7 @@ class Organization extends Entity
     public function editWebsite($website)
     {
         $this->set('website', $website);
+
         return $website;
     }
 
@@ -194,6 +196,7 @@ class Organization extends Entity
     public function editLogo($logo)
     {
         $this->set('logo', $logo);
+
         return $logo;
     }
 
@@ -207,6 +210,7 @@ class Organization extends Entity
     public function editDescription($description)
     {
         $this->set('description', $description);
+
         return $description;
     }
 
@@ -220,6 +224,7 @@ class Organization extends Entity
     public function editIsValidated($isValidated)
     {
         $this->set('isValidated', $isValidated);
+
         return $isValidated;
     }
 
@@ -236,17 +241,9 @@ class Organization extends Entity
         $ORMprojects = TableRegistry::get('Projects');
         $projects = $ORMprojects
             ->find()
-            ->join(
-                [
-                    'table' => 'organizations_projects',
-                    'alias' => 'o',
-                    'type' => 'INNER',
-                    'conditions' => 'o.project_id = Projects.id'
-                ]
-            )
             ->where(
                 [
-                    'o.organization_id' => $this->id
+                    'organization_id' => $this->id
                     ]
             );
 
@@ -268,6 +265,7 @@ class Organization extends Entity
     public function editOwners($owners)
     {
         $this->set('owners', $owners);
+
         return $owners;
     }
 
@@ -281,6 +279,7 @@ class Organization extends Entity
     public function editCreated($created)
     {
         $this->set('created', $created);
+
         return $created;
     }
 
@@ -294,6 +293,7 @@ class Organization extends Entity
     public function editModified($modified)
     {
         $this->set('modified', $modified);
+
         return $modified;
     }
 
@@ -307,6 +307,7 @@ class Organization extends Entity
     public function editMembers($members)
     {
         $this->set('members', $members);
+
         return $members;
     }
 
@@ -315,7 +316,7 @@ class Organization extends Entity
      *
      * @param int $usersId usersId
      *
-     * @return null
+     * @return void
      */
     public function removeMembers($usersId)
     {
@@ -339,7 +340,7 @@ class Organization extends Entity
      *
      * @param array $usersId usersId
      *
-     * @return null
+     * @return void
      */
     public function removeOwners($usersId)
     {
@@ -362,7 +363,7 @@ class Organization extends Entity
      *
      * @param array $usersId usersId
      *
-     * @return null
+     * @return void
      */
     public function modifyOwners($usersId)
     {
@@ -395,6 +396,7 @@ class Organization extends Entity
         foreach ($members as $member) {
             array_push($membersId, $member['id']);
         }
+
         return $membersId;
     }
 
@@ -403,7 +405,7 @@ class Organization extends Entity
      *
      * @param array $userId userId
      *
-     * @return null
+     * @return void
      */
     public function addMember($userId)
     {
@@ -433,6 +435,7 @@ class Organization extends Entity
 
         if ($this->_synchronize($usersSelected)) {
             $this->editMembers($usersSelected);
+
             return true;
         } else {
             return false;
@@ -462,6 +465,7 @@ class Organization extends Entity
 
         if (count($owners) > 0) {
             $this->editOwners($owners);
+
             return true;
         } else {
             return false;

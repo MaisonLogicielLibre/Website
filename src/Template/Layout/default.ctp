@@ -30,8 +30,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>" class="navbar-brand">
-                    <?= $this->Html->image('favicon.ico', [
-                        'alt' => 'Maison Logiciel Libre', 'width' => '40','style'=>'padding-top:0;margin-top:0' ]); ?>
+                    <?= $this->Html->image(
+                        'favicon.ico', [
+                        'alt' => 'Maison Logiciel Libre', 'width' => '40','style'=>'padding-top:0;margin-top:0' ]
+                    ); ?>
                 </a>
             </div>
 
@@ -91,7 +93,7 @@
                         <li class="dropdown">
                             <a href="<?= $this->Url->build(['controller' => 'Notifications', 'action' => 'index']) ?>">
                                 <i class="fa fa-bell-o fa-lg"></i>
-                                <?php if ($this->request->session()->read('numberOfNotifications')): ?>
+                                <?php if ($this->request->session()->read('numberOfNotifications')) : ?>
                                     <span id="badge-notif" class="badge badge-xs"><?= $this->request->session()->read('numberOfNotifications') ?></span>
                                 <?php endif; ?>
                             </a>
@@ -167,12 +169,12 @@
     </footer>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min',
-        'bootstrap.min',
-        'googleAnalytics',
-        'main'
-    ]
+            [
+            'jquery-2.1.4.min',
+            'bootstrap.min',
+            'googleAnalytics',
+            'main'
+            ]
 ); ?>
 <?php //Do not move this line before a manual import of script! ?>
 <?= $this->fetch('scriptBottom'); ?>

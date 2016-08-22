@@ -91,6 +91,7 @@ class UniversitiesController extends AppController
             $university = $this->Universities->patchEntity($university, $this->request->data);
             if ($this->Universities->save($university)) {
                 $this->Flash->success(__('The university has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The university could not be saved. Please, try again.'));
@@ -119,6 +120,7 @@ class UniversitiesController extends AppController
             $university = $this->Universities->patchEntity($university, $this->request->data);
             if ($this->Universities->save($university)) {
                 $this->Flash->success(__('The university has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The university could not be saved. Please, try again.'));
@@ -144,6 +146,7 @@ class UniversitiesController extends AppController
         } else {
             $this->Flash->error(__('The university could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }

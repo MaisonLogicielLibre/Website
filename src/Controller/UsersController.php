@@ -292,7 +292,7 @@ class UsersController extends AppController
     /**
      * Register method
      *
-     * @return redirect
+     * @return void
      */
     public function register()
     {
@@ -326,6 +326,7 @@ class UsersController extends AppController
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
                     $this->request->session()->write('user', $user);
+
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
@@ -374,6 +375,7 @@ class UsersController extends AppController
                         return $this->redirect(['controller' => 'Memberships', 'action' => 'add']);
                     }
                     $this->request->session()->write('create_organization_redirect', true);
+
                     return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(
@@ -417,6 +419,7 @@ class UsersController extends AppController
                 if ($this->Users->save($user)) {
                     // Redirect to optional information page
                     $this->request->session()->write('user', $user);
+
                     return $this->redirect(['action' => 'registerStudentOptional']);
                 } else {
                     $this->Flash->error(
@@ -504,6 +507,7 @@ class UsersController extends AppController
                     $this->request->session()->write('lang', $user->getLanguage());
                     $this->checkLanguage();
                     $this->Flash->success(__('Your profile has been updated successfully'));
+
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {
                     $this->Flash->error(
@@ -544,6 +548,7 @@ class UsersController extends AppController
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
+
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {
                     $this->Flash->error(
@@ -583,6 +588,7 @@ class UsersController extends AppController
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
+
                     return $this->redirect(['action' => 'view', $user->id]);
                 } else {
                     $this->Flash->error(
@@ -628,6 +634,7 @@ class UsersController extends AppController
                         )
                     );
                 }
+
                 return $this->redirect($this->Auth->logout());
             }
             $this->set(compact('user', 'you'));
@@ -656,6 +663,7 @@ class UsersController extends AppController
             $this->Flash->error(
                 __("This link seems corrupted. Please contact the administration team.")
             );
+
             return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
         }
 
@@ -669,6 +677,7 @@ class UsersController extends AppController
                 $this->loadModel("Hashes");
                 $this->Hashes->save($hash);
                 $this->Flash->success(__('Your password was modified.'));
+
                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             } else {
                 $this->Flash->error(
@@ -690,18 +699,21 @@ class UsersController extends AppController
                         $this->Flash->error(
                             __("This link is expired. Please request a new link.")
                         );
+
                         return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
                     }
                 } else {
                     $this->Flash->error(
                         __("This link was already used. Please request a new link.")
                     );
+
                     return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
                 }
             } else {
                 $this->Flash->error(
                     __("This link seems corrupted. Please contact the administration team.")
                 );
+
                 return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
             }
         }
@@ -757,6 +769,7 @@ class UsersController extends AppController
     {
         $this->viewBuilder()->layout(false);
         if ($id) { //Send mail to the user to reset password
+
             return $this->_sendResetPasswordEmail($id);
         } elseif ($this->request->is('post')) { //Search account
             $user = null;
@@ -792,7 +805,7 @@ class UsersController extends AppController
      *
      * @param int $id user id
      *
-     * @return void
+     * @return redirect
      */
     public function svn($id)
     {
@@ -835,6 +848,7 @@ class UsersController extends AppController
 
                     if ($svnsUsers->save($svnUser)) {
                           $this->Flash->success(__('The account have been added'));
+
                           return $this->redirect(['controller' => 'Users', 'action' => 'svn', $id]);
                     } else {
                         $this->Flash->error(__('Error in adding the account, please try again.'));
@@ -852,7 +866,7 @@ class UsersController extends AppController
     /**
      * Svn method used for token callback
      *
-     * @return void
+     * @return redirect
      */
     public function svnCallback()
     {
@@ -867,7 +881,7 @@ class UsersController extends AppController
      *
      * @param int $id user_id
      *
-     * @return void
+     * @return redirect
      */
     public function svnRemove($id)
     {

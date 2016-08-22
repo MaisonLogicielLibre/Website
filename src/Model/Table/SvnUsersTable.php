@@ -93,6 +93,7 @@ class SvnUsersTable extends Table
     {
         $rules->add($rules->existsIn(['svn_id'], 'Svns'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+
         return $rules;
     }
 }

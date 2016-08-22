@@ -27,15 +27,19 @@
                             echo $this->Form->create($organization); ?>
                         </fieldset>
                         <?= $this->Form->button(__('Quit the organization'), ['class' => 'btn-danger']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Organizations',
                                     'action' => 'view',
                                     $organization->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                     </div>
                 </div>
             </div>

@@ -87,6 +87,7 @@ class SvnUser extends Entity
     public function editPseudo($pseudo)
     {
         $this->set('pseudo', $pseudo);
+
         return $pseudo;
     }
 
@@ -100,6 +101,7 @@ class SvnUser extends Entity
     public function editSvnId($svnId)
     {
         $this->set('svn_id', $svnId);
+
         return $svnId;
     }
 
@@ -113,6 +115,7 @@ class SvnUser extends Entity
     public function editUserId($userId)
     {
         $this->set('user_id', $userId);
+
         return $userId;
     }
 }

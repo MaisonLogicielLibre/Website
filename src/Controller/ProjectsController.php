@@ -110,19 +110,33 @@ class ProjectsController extends AppController
     {
         $session = $this->request->session();
         if ($this->request->is(['post', 'put', 'patch'])) {
-            $this->_setFilter('name', $this->request->data['name']);
+            if (isset($this->request->data['name'])) {
+                $this->_setFilter('name', $this->request->data['name']);
+            }
         }
 
         $name = $session->read('filter.project.name');
-        $query = $this->Projects->find();
-        $query->contain(['Organizations']);
-        $query->where(['archived' => 0]);
-        $query->where(['accepted' => 1]);
+        /*        $query = $this->Projects->find();
+                $query->contain(['Organizations']);
+                $query->where(['archived' => 0]);
+                $query->where(['accepted' => 1]);
+                if ($name) {
+                    $query->where(['name LIKE' => '%' . $name . '%']);
+                }*/
+        $conditions['archived'] = 0;
+        //$conditions['accepted'] = 1;
         if ($name) {
-            $query->where(['name LIKE' => '%' . $name . '%']);
+            $conditions['Projects.name LIKE'] = '%' . $name . '%';
         }
+        $this->paginate = [
+            'limit' => 1000,
+            'order' => ['Organizations' => 'asc'],
+            'conditions' => $conditions,
+            'contain' => ['Organizations'],
+            'sortWhitelist' => ['Organizations.name']
+        ];
 
-        $projects = $this->paginate($query);
+        $projects = $this->paginate($this->Projects);
 
         $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);
@@ -131,7 +145,7 @@ class ProjectsController extends AppController
     /**
      * MyProjects method
      *
-     * @return redirect
+     * @return void
      */
     public function myProjects()
     {
@@ -146,8 +160,7 @@ class ProjectsController extends AppController
                     'contain' => [
                         'Organizations' => [
                             'fields' => [
-                                'id', 'name', 'OrganizationsProjects.project_id'
-                            ]
+                                'id', 'name']
                         ]
                     ],
                     'fields' => [
@@ -168,7 +181,7 @@ class ProjectsController extends AppController
                                 'conditions' => 'c.project_id = Projects.id'
                             ]
                         ],
-                        'conditions' =>
+                    'conditions' =>
                         [
                             'OR' => [
                                 [
@@ -179,7 +192,7 @@ class ProjectsController extends AppController
                                 ]
                             ]
                         ],
-                        'group' => 'Projects.id'
+                    'group' => 'Projects.id'
                 ]
             );
 
@@ -240,6 +253,7 @@ class ProjectsController extends AppController
             )
             ) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -259,7 +273,12 @@ class ProjectsController extends AppController
                     'm.user_id' => $mentor->getId()
                 ]
             );
+        $data = $organizations->toArray();
+        if (!$data) {
+            $this->Flash->error(__('You must be a member of an Organization to submit a project. Please create or join an organization'));
 
+            return $this->redirect(['controller' => 'Organizations', 'action' => 'submit']);
+        }
         $missionLevels = $this->Missions->MissionLevels->find('all')->toArray();
         $typeOptions = $this->Missions->find('typeOptions');
         $this->set(compact('mission', 'missionLevels', 'typeOptions', 'project', 'organizations'));
@@ -271,7 +290,7 @@ class ProjectsController extends AppController
      *
      * @param string $id id
      *
-     * @return void
+     * @return int
      */
     public function view($id = null)
     {
@@ -287,31 +306,34 @@ class ProjectsController extends AppController
         if ($user) {
             $userOrgs = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $user->getOrganizationsJoined()
             );
-            $projectOrgs = array_map(
-                function ($o) {
-                    return $o->getId();
-                },
-                $project->getOrganizations()
-            );
+            $projectOrgs = [$project->getOrganizations()];
             $projectContrib = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $project->getContributors()
             );
             $projectMentors = array_map(
                 function ($o) {
+
                     return $o->getId();
                 },
                 $project->getMentors()
             );
         }
 
-        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0 || in_array($user->getId(), $projectContrib) || in_array($user->getId(), $projectMentors)) || ($user && $user->hasRoleName(['Administrator']))) {
+
+        if ($project->isAccepted() || $user && (count(array_intersect($projectOrgs, $userOrgs)) > 0
+            || in_array($user->getId(), $projectContrib)
+            || in_array($user->getId(), $projectMentors))
+            || ($user && $user->hasRoleName(['Administrator']))
+        ) {
             $data = $this->DataTables->find(
                 'Missions',
                 [
@@ -326,9 +348,9 @@ class ProjectsController extends AppController
 
                     'conditions' => ['project_id' => $id, 'archived' => false],
                     'fields' => [
-                      'Missions.id', 'Missions.name', 'Missions.session',
-                      'Missions.length', 'Users.firstName', 'Users.lastName',
-                      'Missions.archived'
+                        'Missions.id', 'Missions.name', 'Missions.session',
+                        'Missions.length', 'Users.firstName', 'Users.lastName',
+                        'Missions.archived'
                     ]
                 ]
             );
@@ -369,6 +391,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -400,6 +423,7 @@ class ProjectsController extends AppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The project could not be saved. Please, try again.'));
@@ -440,7 +464,7 @@ class ProjectsController extends AppController
     /**
      * Edit state method
      *
-     * @return void
+     * @return int
      */
     public function editState()
     {
@@ -528,9 +552,11 @@ class ProjectsController extends AppController
                 $notifications->save($notification);
             }
             $this->Flash->success(__('The project has been accepted.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
+
             return $this->redirect(['action' => 'view', $id]);
         }
     }
@@ -570,9 +596,11 @@ class ProjectsController extends AppController
                 }
             }
             $this->Flash->success(__('The project has been saved.'));
+
             return $this->redirect(['action' => 'view', $id]);
         } else {
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
+
             return $this->redirect(['action' => 'view', $id]);
         }
     }
@@ -593,6 +621,7 @@ class ProjectsController extends AppController
         } else {
             $this->Flash->error(__('The project could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 
@@ -622,6 +651,7 @@ class ProjectsController extends AppController
             $application = TableRegistry::get('Applications')->patchEntity($application, $this->request->data);
             if (TableRegistry::get('Applications')->save($application)) {
                 $this->Flash->success(__('The application has been saved.'));
+
                 return $this->redirect(['action' => 'view', $project->id]);
             } else {
                 $this->Flash->error(__('The application could not be saved. Please, try again.'));
@@ -696,6 +726,7 @@ class ProjectsController extends AppController
                 $post['mission-' . $key] = json_encode($temp);
             }
         }
+
         return $post;
     }
 
@@ -711,7 +742,7 @@ class ProjectsController extends AppController
         $project = $this->Projects->get(
             $id,
             [
-            'contain' => ['Organizations', 'Mentors', 'Missions']
+                'contain' => ['Organizations', 'Mentors', 'Missions']
             ]
         );
 
@@ -747,6 +778,7 @@ class ProjectsController extends AppController
 
                     if ($this->Projects->save($project)) {
                         $this->Flash->success(__('The mentors have been modified.'));
+
                         return $this->redirect(['action' => 'view', $project->id]);
                     } else {
                         $this->Flash->error(__('The mentors could not be modified. Please,try again.'));

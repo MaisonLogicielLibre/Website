@@ -42,7 +42,6 @@ class UsersTypeMissionsTableTest extends TestCase
         'app.missions',
         'app.projects',
         'app.organizations',
-        'app.organizations_projects',
         'app.svn_users',
         'app.svns',
         'app.projects_contributors',

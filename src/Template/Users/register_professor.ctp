@@ -63,13 +63,15 @@
                     }
                     $options[] = ['value' => '0', 'text' => __('Anytime')];
                     ?>
-                    <?= $this->Form->input('university_id', [
+                    <?= $this->Form->input(
+                        'university_id', [
                         'type' => 'select',
                         'label' => false,
                         'options' => $options,
                         'required' => true,
                         'class' => 'form-control',
-                    ]); ?>
+                        ]
+                    ); ?>
                     <p class="register-university-info"><?= __('P.S.: Only university students will be able to apply to projects.'); ?></p>
                 </fieldset>
             </div>
@@ -86,12 +88,12 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min',
-        'bootstrap.min',
-        'googleAnalytics',
-        'bootstrap/bootstrap-switch.min'
-    ]
+                [
+                'jquery-2.1.4.min',
+                'bootstrap.min',
+                'googleAnalytics',
+                'bootstrap/bootstrap-switch.min'
+                ]
 ); ?>
 <script>
     <?= 'var yesTr="' . __('Yes') . '";'; ?>

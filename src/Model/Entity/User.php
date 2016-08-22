@@ -197,6 +197,7 @@ class User extends Entity
                 $emailCensored = $emailCensored . $letter;
             }
         }
+
         return $emailCensored;
     }
 
@@ -208,6 +209,7 @@ class User extends Entity
     public function getAvatar()
     {
         $gravatarLink = 'http://www.gravatar.com/avatar/' . md5($this->getEmail()) . '?s=512';
+
         return $gravatarLink;
     }
 
@@ -309,6 +311,7 @@ class User extends Entity
     public function editFirstName($firstName)
     {
         $this->set('firstname', $firstName);
+
         return $firstName;
     }
 
@@ -322,6 +325,7 @@ class User extends Entity
     public function editLastName($lastName)
     {
         $this->set('lastname', $lastName);
+
         return $lastName;
     }
 
@@ -335,6 +339,7 @@ class User extends Entity
     public function editBiography($biography)
     {
         $this->set('biography', $biography);
+
         return $biography;
     }
 
@@ -348,6 +353,7 @@ class User extends Entity
     public function editInterest($interest)
     {
         $this->set('interest', $interest);
+
         return $interest;
     }
 
@@ -361,6 +367,7 @@ class User extends Entity
     public function editPortfolio($portfolio)
     {
         $this->set('portfolio', $portfolio);
+
         return $portfolio;
     }
 
@@ -374,6 +381,7 @@ class User extends Entity
     public function editTwitter($twitter)
     {
         $this->set('twitter', $twitter);
+
         return $twitter;
     }
 
@@ -387,6 +395,7 @@ class User extends Entity
     public function editFacebook($facebook)
     {
         $this->set('facebook', $facebook);
+
         return $facebook;
     }
 
@@ -400,6 +409,7 @@ class User extends Entity
     public function editGooglePlus($googlePlus)
     {
         $this->set('googlePlus', $googlePlus);
+
         return $googlePlus;
     }
 
@@ -413,6 +423,7 @@ class User extends Entity
     public function editLinkedIn($linkedIn)
     {
         $this->set('linkedIn', $linkedIn);
+
         return $linkedIn;
     }
 
@@ -426,6 +437,7 @@ class User extends Entity
     public function editEmail($email)
     {
         $this->set('email', $email);
+
         return $email;
     }
 
@@ -439,6 +451,7 @@ class User extends Entity
     public function editEmailPublic($emailPublic)
     {
         $this->set('emailPublic', $emailPublic);
+
         return $emailPublic;
     }
 
@@ -452,6 +465,7 @@ class User extends Entity
     public function editPhone($phone)
     {
         $this->set('phone', $phone);
+
         return $phone;
     }
 
@@ -468,6 +482,7 @@ class User extends Entity
             $gender = null;
         }
         $this->set('gender', $gender);
+
         return $gender;
     }
 
@@ -482,6 +497,7 @@ class User extends Entity
     {
         $pass = (new DefaultPasswordHasher)->hash($password);
         $this->set('password', $pass);
+
         return $pass;
     }
 
@@ -495,6 +511,7 @@ class User extends Entity
     public function editUsername($username)
     {
         $this->set('username', $username);
+
         return $username;
     }
 
@@ -508,6 +525,7 @@ class User extends Entity
     public function editisAvailableMentoring($isAvailableMentoring)
     {
         $this->set('isAvailableMentoring', $isAvailableMentoring);
+
         return $isAvailableMentoring;
     }
 
@@ -521,6 +539,7 @@ class User extends Entity
     public function editIsStudent($isStudent)
     {
         $this->set('isStudent', $isStudent);
+
         return $isStudent;
     }
 
@@ -534,6 +553,7 @@ class User extends Entity
     public function editMailingList($mailingList)
     {
         $this->set('mailingList', $mailingList);
+
         return $mailingList;
     }
 
@@ -555,6 +575,7 @@ class User extends Entity
                 return true;
             }
         }
+
         return false;
     }
 
@@ -578,6 +599,7 @@ class User extends Entity
                 return true;
             }
         }
+
         return false;
     }
 
@@ -719,6 +741,7 @@ class User extends Entity
                 return true;
             }
         }
+
         return false;
     }
 
@@ -737,6 +760,7 @@ class User extends Entity
                 return true;
             }
         }
+
         return false;
     }
 
@@ -755,6 +779,7 @@ class User extends Entity
                 return true;
             }
         }
+
         return false;
     }
 

@@ -87,6 +87,7 @@ class MissionsMissionLevelsTable extends Table
     {
         $rules->add($rules->existsIn(['mission_level_id'], 'MissionLevels'));
         $rules->add($rules->existsIn(['mission_id'], 'Missions'));
+
         return $rules;
     }
 }

@@ -36,7 +36,6 @@ class ProjectsTableTest extends TestCase
     public $fixtures = [
         'app.type_users_users',
         'app.organizations',
-        'app.organizations_Projects',
         'app.users',
         'app.type_users',
         'app.svn_users',
@@ -203,13 +202,14 @@ class ProjectsTableTest extends TestCase
      */
     public function testGetOrganizations()
     {
+        //var_dump(php_ini_loaded_file());
         $id = 1;
 
         $expected = $this->Users->get(1)->getId();
 
         $org = $this->Projects->get($id, ['contain' => 'Organizations']);
 
-        $result = $org->getOrganizations()[0]->getId();
+        $result = $org->getOrganizations()->getId();
 
         $this->assertEquals($expected, $result);
     }

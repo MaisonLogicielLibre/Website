@@ -28,15 +28,19 @@
                             <p><?= __('If you wish to confirm your deletion, press the Remove button below.') ?></p>
                         </fieldset>
                         <?= $this->Form->button(__('Remove'), ['class' => 'btn-danger']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Users',
                                     'action' => 'view',
                                     $user->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>
