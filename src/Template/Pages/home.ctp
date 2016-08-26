@@ -18,9 +18,7 @@
             <ol class="carousel-indicators">
 				<li data-target="#carousel" data-slide-to="1" class="active"></li>
 				<li data-target="#carousel" data-slide-to="2"></li>
-				<li data-target="#carousel" data-slide-to="3"></li>
-				<li data-target="#carousel" data-slide-to="4"></li>
-				<li data-target="#carousel" data-slide-to="5"></li>
+				
             </ol>
             <div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -28,16 +26,7 @@
                         <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/banner.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/financement-montreal.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
+               
                 <div class="item">
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/tv4.png'; ?>" class="stretch" alt=""/>
