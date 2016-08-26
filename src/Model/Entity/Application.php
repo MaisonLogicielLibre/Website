@@ -129,6 +129,7 @@ class Application extends Entity
     public function editMissionId($missionId)
     {
         $this->set('mission_id', $missionId);
+
         return $missionId;
     }
 
@@ -142,6 +143,7 @@ class Application extends Entity
     public function editUserId($userId)
     {
         $this->set('user_id', $userId);
+
         return $userId;
     }
 
@@ -155,6 +157,7 @@ class Application extends Entity
     public function editAccepted($isAccepted)
     {
         $this->set('accepted', $isAccepted);
+
         return $isAccepted;
     }
 
@@ -168,6 +171,7 @@ class Application extends Entity
     public function editRejected($isRejected)
     {
         $this->set('rejected', $isRejected);
+
         return $isRejected;
     }
 
@@ -181,6 +185,7 @@ class Application extends Entity
     public function editText($text)
     {
         $this->set('text', $text);
+
         return $text;
     }
 
@@ -194,6 +199,7 @@ class Application extends Entity
     public function editEmail($email)
     {
         $this->set('email', $email);
+
         return $email;
     }
 
@@ -207,6 +213,7 @@ class Application extends Entity
     public function editType($type)
     {
         $this->set('type_mission_id', $type);
+
         return $type;
     }
 
@@ -220,6 +227,7 @@ class Application extends Entity
     public function editArchived($archived)
     {
         $this->set('archived', $archived);
+
         return $archived;
     }
 }

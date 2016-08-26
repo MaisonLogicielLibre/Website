@@ -77,6 +77,7 @@ class University extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 
@@ -90,6 +91,7 @@ class University extends Entity
     public function editWebsite($website)
     {
         $this->set('website', $website);
+
         return $website;
     }
 }

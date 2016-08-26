@@ -44,14 +44,7 @@ class OrganizationsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
-        $this->belongsToMany(
-            'Projects',
-            [
-            'foreignKey' => 'organization_id',
-            'targetForeignKey' => 'project_id',
-            'joinTable' => 'organizations_projects'
-            ]
-        );
+        $this->belongsToMany('Projects');
         $this->belongsToMany(
             'Owners',
             [
@@ -70,7 +63,7 @@ class OrganizationsTable extends Table
             'joinTable' => 'organizations_members'
             ]
         );
-
+        $this->hasMany('Projects');
         $this->addBehavior('Timestamp');
     }
 
@@ -110,6 +103,7 @@ class OrganizationsTable extends Table
                     if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                         return false;
                     }
+
                     return true;
                 },
                 'message' => __('Is not an url (Ex : http://website.ca).')
@@ -133,6 +127,7 @@ class OrganizationsTable extends Table
 
         $validator
             ->notEmpty('isRejected');
+
         return $validator;
     }
 }

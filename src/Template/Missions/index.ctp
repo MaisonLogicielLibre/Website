@@ -29,26 +29,36 @@ $paginatorParams = $this->Paginator->params();
         <?= $this->Form->create($missions) ?>
         <div style="padding-left: 10px;" class="row">
             <div class="col-sm-offset-1 col-sm-3">
-                <?php echo $this->Form->input('mission_select',
-                    array('empty' => __('<All Missions Types>'), 'label' => false, 'options' => $typeOptions)); ?>
+                <?php echo $this->Form->input(
+                    'mission_select',
+                    array('empty' => __('<All Missions Types>'), 'label' => false, 'options' => $typeOptions)
+                ); ?>
             </div>
             <div class="col-sm-3">
-                <?php echo $this->Form->input('org_select',
-                    array('empty' => __('<All Organizations>'), 'label' => false, 'options' => $organizations)); ?>
+                <?php echo $this->Form->input(
+                    'org_select',
+                    array('empty' => __('<All Organizations>'), 'label' => false, 'options' => $organizations)
+                ); ?>
             </div>
             <div class="col-sm-3">
-                <?php echo $this->Form->input('session_select',
-                    array('empty' => __('<All Sessions>'), 'label' => false, 'options' => $sessionOptions)); ?>
+                <?php echo $this->Form->input(
+                    'session_select',
+                    array('empty' => __('<All Sessions>'), 'label' => false, 'options' => $sessionOptions)
+                ); ?>
             </div>
         </div>
         <div class="row filter-box">
             <div class="col-sm-offset-1 col-sm-4 shadegrey">
                 <h4><?= __('Filter Missions by student applications'); ?></h4>
-                <?php echo $this->Form->input('applicationState',
-                    array('empty' => __('<All>'), 'label' => false, 'options' => $typeApplications)); ?>
+                <?php echo $this->Form->input(
+                    'applicationState',
+                    array('empty' => __('<All>'), 'label' => false, 'options' => $typeApplications)
+                ); ?>
                 <div id="studentByU" style="display: none;">
-                    <?php echo $this->Form->input('studentUniversity',
-                        array('empty' => __('<Any>'), 'label' => 'Students by Univeristy', 'options' => $universities)); ?>
+                    <?php echo $this->Form->input(
+                        'studentUniversity',
+                        array('empty' => __('<Any>'), 'label' => 'Students by Univeristy', 'options' => $universities)
+                    ); ?>
                 </div>
             </div>
             <div class="col-sm-offset-1 col-sm-4 shadegrey filter-professors">
@@ -62,9 +72,20 @@ $paginatorParams = $this->Paginator->params();
                     ]
                 ); ?>
                 <div id="profByU" style="display: none;">
-                    <?php echo $this->Form->input('professorUniversity',
-                        array('empty' => __('<Any>'), 'label' => __('Professors by Univeristy'), 'options' => $universities)); ?>
+                    <?php echo $this->Form->input(
+                        'professorUniversity',
+                        array('empty' => __('<Any>'), 'label' => __('Professors by Univeristy'), 'options' => $universities)
+                    ); ?>
                 </div>
+            </div>
+        </div>
+        <div class="row filter-box">
+            <div class="col-sm-offset-1 col-sm-4 shadegrey">
+                <h4><?= __('Filter by date'); ?></h4>
+                <?php $this->Form->templates(
+                    ['dateWidget' => '{{day}}{{month}}{{year}}']
+                );
+                echo $this->Form->input('modifiedDate', ['type'=>'date','label'=>false]); ?>
             </div>
         </div>
         <br>
@@ -81,7 +102,7 @@ $paginatorParams = $this->Paginator->params();
         <div class="panel panel-default panel-missions">
             <div class="panel-body">
                 <h3 class="header-title"><?= __('List of missions'); ?></h3>
-                <?php if ($paginatorParams['count'] == 0): ?>
+                <?php if ($paginatorParams['count'] == 0) : ?>
                     <span style="color:red">There are no missions that match your filter selection. Try again</span>
                 <?php else : ?>
                     <div class="table-responsive">
@@ -101,11 +122,14 @@ $paginatorParams = $this->Paginator->params();
                             <?php foreach ($missions as $mission): ?>
                                 <tr>
                                     <td class="hide-mobile">
-                                        <?php foreach ($mission->project->organizations as $org): ?>
-                                            <?php if ($org !== reset($mission->project->organizations)) echo ','; ?>
-                                            <?php echo $org['name']; ?>
-                                        <?php endforeach; ?>
-                                    </td>
+                                        <?php if (isset($mission->project->organization['name'])) {
+                                            echo $this->Html->link(
+                                                $mission->project->organization['name'],
+                                                ['controller' => 'Organizations', 'action' => 'view', $mission->organization['id']]
+                                            );
+                                        } else {
+    echo 'no org';
+} ?>  </td>
                                     <td><?= $mission->has('project') ? $this->Html->link($mission->project->name, ['controller' => 'Projects', 'action' => 'view', $mission->project->id]) : '' ?></td>
                                     <td class="hide-mobile"><?= $this->Html->link($mission->name, ['controller' => 'Missions', 'action' => 'view', $mission->id]); ?></td>
                                     <td class="hide-mobile"><?= $mission->has('user') ? $this->Html->link($mission->user->lastName, ['controller' => 'Users', 'action' => 'view', $mission->user->id]) : '' ?></td>
@@ -130,11 +154,12 @@ $paginatorParams = $this->Paginator->params();
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min.js',
-        'bootstrap.min.js',
-        'jquery-ui-1.14.1.min.js'
-    ]);
+            [
+            'jquery-2.1.4.min.js',
+            'bootstrap.min.js',
+            'jquery-ui-1.14.1.min.js'
+            ]
+        );
 ?>
 <script>
 $(document).ready(function () {

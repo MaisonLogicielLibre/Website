@@ -35,15 +35,19 @@
                             <p><?= __('If you wish to continue your unsubscribe, click the button "Unsubscribe" below. Otherwise it is not yet too late ...') ?></p>
                         </fieldset>
                         <?= $this->Form->button(__('Unsubscribe'), ['class' => 'btn-danger']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Users',
                                     'action' => 'view',
                                     $user->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>

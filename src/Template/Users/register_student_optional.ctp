@@ -37,7 +37,8 @@
                 <?= $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]); ?>
             </div>
             <div class="col-md-12 col-xs-12">
-                <?= $this->Form->input('interest',
+                <?= $this->Form->input(
+                    'interest',
                     [
                         'label' => __('What are your interests'),
                         'data-provide' => 'markdown',

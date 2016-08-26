@@ -92,6 +92,7 @@ class SvnsController extends AppController
             $svn = $this->Svns->patchEntity($svn, $this->request->data);
             if ($this->Svns->save($svn)) {
                 $this->Flash->success(__('The svn has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The svn could not be saved. Please, try again.'));
@@ -120,6 +121,7 @@ class SvnsController extends AppController
             $svn = $this->Svns->patchEntity($svn, $this->request->data);
             if ($this->Svns->save($svn)) {
                 $this->Flash->success(__('The svn has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The svn could not be saved. Please, try again.'));
@@ -145,6 +147,7 @@ class SvnsController extends AppController
         } else {
             $this->Flash->error(__('The svn could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }

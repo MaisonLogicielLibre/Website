@@ -83,7 +83,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="header-title"><?= __('Extra information'); ?></h3>
-                        <?= $this->Form->input('biography',
+                        <?= $this->Form->input(
+                            'biography',
                             [
                                 'label' => __('Biography'),
                                 'data-provide' => 'markdown',
@@ -93,7 +94,8 @@
                                 'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                             ]
                         ); ?>
-                        <?= $this->Form->input('interest',
+                        <?= $this->Form->input(
+                            'interest',
                             [
                                 'label' => __('What are your interests'),
                                 'data-provide' => 'markdown',
@@ -105,9 +107,9 @@
                         ); ?>
                         <div id="bloodhound">
                         <?php
-                            if ($user->isStudent && !$user->isProfessor && !$user->isAvailableMentoring) {
-                                echo $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]);
-                            }
+                        if ($user->isStudent && !$user->isProfessor && !$user->isAvailableMentoring) {
+                            echo $this->Form->input('skills', ['type' => 'text', 'disabled' => true, 'placeholder' => __('Enter and select your skills')]);
+                        }
                         ?>
                         </div>
                         <br />
@@ -124,15 +126,19 @@
                         <?= $this->Form->input('linkedIn', ['type' => 'text', 'label' => __('LinkedIn'), 'placeholder' => __("http(s)://website.com")]); ?>
 
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Users',
                                     'action' => 'view',
                                     $user->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                     </div>
                 </div>
         <?= $this->Form->end() ?>
@@ -145,7 +151,8 @@
     echo 'var noTr="' . __('No') . '";';
     $this->Html->scriptEnd();
 ?>
-<?= $this->Html->script([
+<?= $this->Html->script(
+    [
     'bootstrap/bootstrap-switch.min',
     'bootstrap-tokenfield',
     'typeahead.min',
@@ -153,7 +160,9 @@
     'markdown/markdown',
     'markdown/to-markdown',
     'bootstrap/bootstrap-markdown',
-], ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+    ], ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']); 
+}
 ?>

@@ -89,7 +89,7 @@ class NewsController extends AppController
     /**
      * Add method
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return redirect
      */
     public function add()
     {
@@ -98,6 +98,7 @@ class NewsController extends AppController
             $news = $this->News->patchEntity($news, $this->request->data);
             if ($this->News->save($news)) {
                 $this->Flash->success(__('The news has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The news could not be saved. Please, try again.'));
@@ -112,7 +113,7 @@ class NewsController extends AppController
      *
      * @param string|null $id News id.
      *
-     * @return void Redirects on successful edit, renders view otherwise.
+     * @return redirect
      *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
@@ -128,6 +129,7 @@ class NewsController extends AppController
             $news = $this->News->patchEntity($news, $this->request->data);
             if ($this->News->save($news)) {
                 $this->Flash->success(__('The news has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The news could not be saved. Please, try again.'));
@@ -155,6 +157,7 @@ class NewsController extends AppController
         } else {
             $this->Flash->error(__('The news could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }

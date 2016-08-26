@@ -88,6 +88,7 @@ class Notification extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 
@@ -101,6 +102,7 @@ class Notification extends Entity
     public function editUser($user)
     {
         $this->set('user', $user);
+
         return $user;
     }
 
@@ -114,6 +116,7 @@ class Notification extends Entity
     public function editLink($link)
     {
         $this->set('link', $link);
+
         return $link;
     }
 

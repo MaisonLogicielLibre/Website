@@ -3,10 +3,10 @@
     <ul class="nav nav-stacked nav-pills">
         <li class="active disabled"><?= $this->Html->link(__('Edit Svn'), ['action' => 'edit', $svn->id]) ?> </li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $svn->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $svn->id), 'class' => 'btn-danger']
-            )
+            __('Delete'),
+            ['action' => 'delete', $svn->id],
+            ['confirm' => __('Are you sure you want to delete # {0}?', $svn->id), 'class' => 'btn-danger']
+        )
         ?></li>
         <li><?= $this->Html->link(__('New Svn'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Svns'), ['action' => 'index']) ?></li>

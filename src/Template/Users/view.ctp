@@ -26,10 +26,10 @@
                                     <tr>
                                         <td><?= __('Email'); ?></td>
                                         <td>
-                                            <?php if ($userSelected->getEmailPublic()):
-                                            echo $userSelected->getEmailPublic();
+                                            <?php if ($userSelected->getEmailPublic()) :
+                                                echo $userSelected->getEmailPublic();
                                             else:
-                                            echo $userSelected->getCensoredEmail();
+                                                echo $userSelected->getCensoredEmail();
                                             endif;
                                             ?>
                                         </td>
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="row">
-            <?php if (!empty($userSelected->getProjectsMentored())): ?>
+            <?php if (!empty($userSelected->getProjectsMentored())) : ?>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -112,7 +112,7 @@
                                             ?>
                                             <!-- Badge mentor -->
                                             <?php
-                                            if ($userSelected->isMentorOf($project->id)):
+                                            if ($userSelected->isMentorOf($project->id)) :
                                                 ?>
                                                 <span class="label label-info label-as-badge"><?= __('Mentor'); ?></span>&nbsp;
                                                 <?php
@@ -121,20 +121,20 @@
 
                                             <!-- Badge pending-->
                                             <?php
-                                                if (!$project->isAccepted()):
+                                            if (!$project->isAccepted()) :
                                             ?>
-                                                <span
-                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
-                                                </span>&nbsp;
+                                            <span
+                                            class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
+                                            </span>&nbsp;
                                             <?php
-                                                endif;
-                                                if ($project->isArchived()):
+                                            endif;
+                                            if ($project->isArchived()) :
                                             ?>
-                                                <span
-                                                    class="label label-warning label-as-badge"><?= __('Archived'); ?>
-                                                </span>&nbsp;
+                                            <span
+                                            class="label label-warning label-as-badge"><?= __('Archived'); ?>
+                                            </span>&nbsp;
                                             <?php
-                                                endif;
+                                            endif;
                                             ?>
                                         </td>
                                     </tr>
@@ -145,7 +145,7 @@
                 </div>
             <?php endif; ?>
 
-            <?php if (!empty($userSelected->getOrganizationsJoined())): ?>
+            <?php if (!empty($userSelected->getOrganizationsJoined())) : ?>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -168,7 +168,7 @@
                                             ?>
                                             <!-- Badge owner -->
                                             <?php
-                                            if ($userSelected->isOwnerOf($organization->id)):
+                                            if ($userSelected->isOwnerOf($organization->id)) :
                                                 ?>
                                                 <span class="label label-info label-as-badge"><?= __('Owner'); ?></span>&nbsp;
                                                 <?php
@@ -177,19 +177,19 @@
 
                                             <!-- Badge pending-->
                                             <?php
-                                                if (!$organization->getIsValidated()):
+                                            if (!$organization->getIsValidated()) :
                                             ?>
-                                                <span
-                                                    class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
-                                                </span>&nbsp;
+                                            <span
+                                            class="label label-warning label-as-badge"><?= __('Pending Validation'); ?>
+                                            </span>&nbsp;
                                             <?php
-                                                endif;
-                                                if ($organization->getIsRejected()):
+                                            endif;
+                                            if ($organization->getIsRejected()) :
                                             ?>
-                                                <span
-                                                    class="label label-warning label-as-badge"><?= __('Archived'); ?>
-                                                </span>&nbsp;
-                                                <?php
+                                            <span
+                                            class="label label-warning label-as-badge"><?= __('Archived'); ?>
+                                            </span>&nbsp;
+                                            <?php
                                             endif;
                                             ?>
                                         </td>
@@ -200,7 +200,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <?php if (!empty($userSelected->svn_users)): ?>
+            <?php if (!empty($userSelected->svn_users)) : ?>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -228,7 +228,7 @@
                 </div>
             <?php endif; ?>
         </div>
-        <?php if ($user && (($user->hasPermissionName(['edit_user'])))): ?>
+        <?php if ($user && (($user->hasPermissionName(['edit_user'])))) : ?>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
@@ -255,17 +255,19 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
+        [
         'datatables/jquery.dataTables.min',
         'datatables/dataTables.bootstrap.min',
         'DataTables.cakephp.dataTables',
         'markdown/markdown'
-    ],
-    ['block' => 'scriptBottom']);
+        ],
+        ['block' => 'scriptBottom']
+    );
 ?>
 <?php
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
+echo $this->DataTables->init(
+    [
     'ajax' => [
         'url' => $this->Url->build(['action' => 'view', $userSelected->id]),
     ],
@@ -291,7 +293,8 @@ echo $this->DataTables->init([
     ],
     'lengthMenu' => '',
     'pageLength' => 100
-])->draw('.dataTable');
+    ]
+)->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
 echo 'var applicationsUrl="' . $this->Url->Build(['controller' => 'Applications', 'action' => 'editArchived']) .'";';
 $this->Html->scriptEnd();

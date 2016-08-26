@@ -18,9 +18,7 @@
             <ol class="carousel-indicators">
 				<li data-target="#carousel" data-slide-to="1" class="active"></li>
 				<li data-target="#carousel" data-slide-to="2"></li>
-				<li data-target="#carousel" data-slide-to="3"></li>
-				<li data-target="#carousel" data-slide-to="4"></li>
-				<li data-target="#carousel" data-slide-to="5"></li>
+				
             </ol>
             <div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -28,16 +26,7 @@
                         <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/banner.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fillBackground">
-                        <img src="<?= $this->request->webroot . 'img/carousel/financement-montreal.png'; ?>" class="stretch" alt=""/>
-                    </div>
-                </div>
+               
                 <div class="item">
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/tv4.png'; ?>" class="stretch" alt=""/>
@@ -69,29 +58,37 @@
 <div class="row" id="stats-row">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
         <div class="home-stats-desc">
-            <?= __('{0} and learn from our teaching assistants and collaborate with students.',
-                '<strong class="text-info">' . __('Register now') . '</strong>'); ?>
+            <?= __(
+                '{0} and learn from our teaching assistants and collaborate with students.',
+                '<strong class="text-info">' . __('Register now') . '</strong>'
+            ); ?>
         </div>
         <?= $this->Html->link(__('Sign Up'), ['controller' => 'Users', 'action' => 'register'], ['class' => 'btn btn-info']); ?>
         <br><br>
         <?= $this->Html->link(__('Sign In'), ['controller' => 'Users', 'action' => 'login'], ['class' => 'btn btn-default']); ?>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-        <h2 style="margin:1px"><b><?= $this->Html->link($numberStudents, ['controller' => 'Pages',
-                    'action' => 'statistics']); ?></b></h2>
+        <h2 style="margin:1px"><b><?= $this->Html->link(
+            $numberStudents, ['controller' => 'Pages',
+            'action' => 'statistics']
+        ); ?></b></h2>
         <span class="home-stats-info"><?= __('Registered students'); ?></span>
         <i class="fa fa-graduation-cap fa-5x"></i>
 
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-        <h2 style="margin:1px"><b><?= $this->Html->link($numberProjects, ['controller' => 'Projects',
-                    'action' => 'index']); ?></b></h2>
+        <h2 style="margin:1px"><b><?= $this->Html->link(
+            $numberProjects, ['controller' => 'Projects',
+            'action' => 'index']
+        ); ?></b></h2>
         <span class="home-stats-info"><?= __('Ongoing projects'); ?></span>
         <i class="fa fa-cubes fa-5x"></i>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center stats-cell">
-        <h2 style="margin:1px"><b><?= $this->Html->link($numberMissions, ['controller' => 'Missions',
-                    'action' => 'index']); ?></b></h2>
+        <h2 style="margin:1px"><b><?= $this->Html->link(
+            $numberMissions, ['controller' => 'Missions',
+            'action' => 'index']
+        ); ?></b></h2>
         <span class="home-stats-info"><?= __('Available missions'); ?></span>
         <i class="fa fa-file-text-o fa-5x"></i>
     </div>

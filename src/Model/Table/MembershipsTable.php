@@ -95,6 +95,7 @@ class MembershipsTable extends Table
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+
         return $rules;
     }
 }

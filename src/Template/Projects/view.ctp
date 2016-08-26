@@ -12,24 +12,20 @@
                         <div class="panel-body">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="table-responsive">
-                                    <h3 class="header-title"><?= __('Organizations') ?> <a
+                                    <h3 class="header-title"><?= __('Organization') ?>: <a
                                             href="<?= $this->Wiki->buildLink(''); ?>"><i
-                                                class="fa fa-question-circle"></i></a></h3>
-                                    <?php if (!empty($project->organizations)): ?>
-                                        <table class="table borderless table-striped">
-                                            <?php foreach ($project->organizations as $organization): ?>
-                                                <tr>
-                                                    <td><?= $this->html->link($organization->getName(), ['controller' => 'Organizations', 'action' => 'view', $organization->id]) ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </table>
-                                    <?php endif; ?>
+                                                class="fa fa-question-circle"></i></a>
+                                        <?=$this->Html->link(
+                                                $project->organization['name'],
+                                                ['controller' => 'Organizations', 'action' => 'view',
+                                                $project->organization['id']]
+                                            );?></h3>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="table-responsive">
                                     <h3 class="header-title"><?= __('Contributors') ?></h3>
-                                    <?php if (!empty($project->contributors)): ?>
+                                    <?php if (!empty($project->contributors)) : ?>
                                         <table class="table borderless table-striped">
                                             <?php foreach ($project->contributors as $contributor): ?>
                                                 <tr>
@@ -44,7 +40,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="table-responsive">
                                     <h3 class="header-title"><?= __('Mentors') ?></h3>
-                                    <?php if (!empty($project->mentors)): ?>
+                                    <?php if (!empty($project->mentors)) : ?>
                                         <table class="table borderless table-striped">
                                             <?php foreach ($project->mentors as $mentor): ?>
                                                 <tr>
@@ -99,13 +95,14 @@
         </div>
     </div>
 <?= $this->Html->script(
-    [
-        'datatables/jquery.dataTables.min',
-        'datatables/dataTables.bootstrap.min',
-        'DataTables.cakephp.dataTables',
-        'markdown/markdown'
-    ],
-    ['block' => 'scriptBottom']);
+                                            [
+                                            'datatables/jquery.dataTables.min',
+                                            'datatables/dataTables.bootstrap.min',
+                                            'DataTables.cakephp.dataTables',
+                                            'markdown/markdown'
+                                            ],
+                                            ['block' => 'scriptBottom']
+                                        );
 ?>
 <?php
 $lengthOptions =
@@ -131,7 +128,8 @@ $typeMissionsOption =
         4 => __('Professor')
     ];
 $this->Html->scriptStart(['block' => 'scriptBottom']);
-echo $this->DataTables->init([
+echo $this->DataTables->init(
+    [
     'ajax' => [
         'url' => $this->Url->build(['action' => 'view', $project->id]),
     ],
@@ -173,7 +171,8 @@ echo $this->DataTables->init([
     ],
     'lengthMenu' => '',
     'pageLength' => 25
-])->draw('.dataTable');
+    ]
+)->draw('.dataTable');
 echo 'var missionsUrl="' . $this->Url->Build(['controller' => 'Missions', 'action' => 'view']) . '";';
 echo 'var lengthTr=' . json_encode($lengthOptions) . ';';
 echo 'var sessionTr=' . json_encode($sessionOptions) . ';';

@@ -67,6 +67,7 @@ class TypeUser extends Entity
     public function editName($name)
     {
         $this->set('name', $name);
+
         return $name;
     }
 }

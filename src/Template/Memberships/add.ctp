@@ -34,13 +34,15 @@
                     }
                     $options[] = ['value' => '0', 'text' => __('None')];
                     ?>
-                    <?= $this->Form->input('organization_id', [
+                    <?= $this->Form->input(
+                        'organization_id', [
                         'type' => 'select',
                         'label' => false,
                         'options' => $options,
                         'required' => true,
                         'class' => 'form-control',
-                    ]); ?>
+                        ]
+                    ); ?>
                 </fieldset>
             </div>
             <?= $this->Form->button(__('Make the request'), ['class' => 'btn btn-info']); ?>
@@ -55,16 +57,16 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min',
-        'bootstrap.min',
-        'googleAnalytics',
-        'bootstrap-tokenfield',
-        'typeahead.min',
-        'markdown/markdown',
-        'markdown/to-markdown',
-        'bootstrap/bootstrap-markdown',
-    ]
+                [
+                'jquery-2.1.4.min',
+                'bootstrap.min',
+                'googleAnalytics',
+                'bootstrap-tokenfield',
+                'typeahead.min',
+                'markdown/markdown',
+                'markdown/to-markdown',
+                'bootstrap/bootstrap-markdown',
+                ]
 ); ?>
 <?php
 if ($this->request->session()->read('lang') == 'fr_CA') {

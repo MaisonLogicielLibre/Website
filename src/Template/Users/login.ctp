@@ -49,11 +49,11 @@
     </div>
 </div>
 <?= $this->Html->script(
-    [
-        'jquery-2.1.4.min',
-        'bootstrap.min',
-        'googleAnalytics',
-    ]
+                [
+                'jquery-2.1.4.min',
+                'bootstrap.min',
+                'googleAnalytics',
+                ]
 ); ?>
 </body>
 </html>

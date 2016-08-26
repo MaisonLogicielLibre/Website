@@ -42,7 +42,6 @@ class MissionLevelsTableTest extends TestCase
         'app.universities',
         'app.projects_contributors',
         'app.organizations',
-        'app.organizations_projects',
         'app.projects_mentors',
         'app.type_users',
         'app.type_users_users',

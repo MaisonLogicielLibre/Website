@@ -29,7 +29,8 @@
                 <?php
                     echo $this->Form->input('name');
                     echo $this->Form->input('website', ['placeholder' => __("http(s)://website.com")]);
-                    echo $this->Form->input('description',
+                    echo $this->Form->input(
+                        'description',
                         [
                             'data-provide' => 'markdown',
                             'data-iconlibrary' => 'fa',
@@ -53,7 +54,9 @@ echo $this->Html->script(
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']); 
+}
 ?>

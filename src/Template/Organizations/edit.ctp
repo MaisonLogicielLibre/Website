@@ -24,7 +24,8 @@
                             <?php
                             echo $this->Form->input('name');
                             echo $this->Form->input('website', ['placeholder' => __("http(s)://website.com")]);
-                            echo $this->Form->input('description',
+                            echo $this->Form->input(
+                                'description',
                                 [
                                     'data-provide' => 'markdown',
                                     'data-iconlibrary' => 'fa',
@@ -36,15 +37,19 @@
                             ?>
                         </fieldset>
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Organizations',
                                     'action' => 'view',
                                     $organization->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>
@@ -59,7 +64,9 @@ echo $this->Html->script(
         'markdown/to-markdown',
         'bootstrap/bootstrap-markdown',
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script(['locale/bootstrap-markdown.fr', 'initial.min'], ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script(['locale/bootstrap-markdown.fr', 'initial.min'], ['block' => 'scriptBottom']); 
+}
 ?>

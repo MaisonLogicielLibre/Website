@@ -5,6 +5,7 @@ use Cake\TestSuite\Fixture\TestFixture;
 
 /**
  * ProjectsFixture
+ *
  */
 class ProjectsFixture extends TestFixture
 {
@@ -17,11 +18,15 @@ class ProjectsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'link' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'description' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'link' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'description' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
         'accepted' => ['type' => 'integer', 'length' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'archived' => ['type' => 'integer', 'length' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'repository_link' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'organization_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -44,7 +49,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 1,
-            'archived' => 0
+            'archived' => 0,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ],
         [
             'id' => 2,
@@ -52,7 +60,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 1,
-            'archived' => 0
+            'archived' => 0,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ],
         [
             'id' => 3,
@@ -60,7 +71,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 0,
-            'archived' => 0
+            'archived' => 0,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ],
         [
             'id' => 4,
@@ -68,7 +82,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 0,
-            'archived' => 1
+            'archived' => 1,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ],
         [
             'id' => 5,
@@ -76,7 +93,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 0,
-            'archived' => 1
+            'archived' => 1,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ],
         [
             'id' => 6,
@@ -84,7 +104,10 @@ class ProjectsFixture extends TestFixture
             'link' => 'www.website.com',
             'description' => 'bla bla',
             'accepted' => 1,
-            'archived' => 0
+            'archived' => 0,
+            'created' => '2016-08-09 17:16:35',
+            'modified' => '2016-08-09 17:16:35',
+            'organization_id' => 1
         ]
     ];
 }

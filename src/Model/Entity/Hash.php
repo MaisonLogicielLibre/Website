@@ -98,6 +98,7 @@ class Hash extends Entity
     public function setHash($hash)
     {
         $this->set('hash', $hash);
+
         return $hash;
     }
 
@@ -111,6 +112,7 @@ class Hash extends Entity
     public function setUser($user)
     {
         $this->set('user_id', $user->id);
+
         return $user;
     }
 
@@ -124,6 +126,7 @@ class Hash extends Entity
     public function setType($type)
     {
         $this->set('hash_type_id', $type->id);
+
         return $type;
     }
 
@@ -137,6 +140,7 @@ class Hash extends Entity
     public function setUsed($used)
     {
         $this->set('used', $used);
+
         return $used;
     }
 }

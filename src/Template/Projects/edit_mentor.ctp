@@ -26,8 +26,9 @@
                                         if ($mentor->getId() === $member->getId()) {
                                             $selected = true;
                                             break;
-                                        } else
-                                            $selected = false;
+                                        } else {
+                                            $selected = false; 
+                                        }
                                     }
 
                                     if ($selected) { ?>
@@ -37,20 +38,24 @@
                                         <option
                                             value="<?= $member['id'] ?>"><?= '(' . $member['username'] . ') ' . $member['firstName'] . ' ' . $member['lastName'] ?></option>
                                     <?php }
-                                } ?>
+} ?>
                             </select>
                         </fieldset>
                         <br>
                         <?= $this->Form->button(__('Submit'), ['class' => 'btn-info']) ?>
-                        <?= $this->Form->button(__('Cancel'), [
+                        <?= $this->Form->button(
+                            __('Cancel'), [
                             'type' => 'button',
                             'class' => 'btn btn-default',
-                            'onclick' => 'location.href=\'' . $this->url->build([
+                            'onclick' => 'location.href=\'' . $this->url->build(
+                                [
                                     'controller' => 'Projects',
                                     'action' => 'view',
                                     $project->id
-                                ]) . '\''
-                        ]); ?>
+                                ]
+                            ) . '\''
+                            ]
+                        ); ?>
                         <?= $this->Form->end() ?>
                     </div>
                 </div>

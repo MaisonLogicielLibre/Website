@@ -28,7 +28,9 @@
                             <?= __('Email :') ?> <a href="mailto:<?=$application->getEmail()?>"><?=$application->getEmail()?></a>
                         </div>
                         <div class="row col-sm-12 top-buffer">
-                            <?= __('Type :') ?> <?php if (isset($application->type_mission)) { echo __($application->type_mission->name); } else { echo ''; } ?>
+                            <?= __('Type :') ?> <?php if (isset($application->type_mission)) { echo __($application->type_mission->name); 
+                            } else { echo ''; 
+} ?>
                         </div>
                         <?php if ($application->getText() != '') { ?>
                             <div class="row col-sm-12 top-buffer">

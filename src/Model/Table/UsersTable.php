@@ -163,6 +163,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -185,6 +186,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -201,6 +203,7 @@ class UsersTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -224,13 +227,14 @@ class UsersTable extends Table
                 'confirm_email',
                 'custom',
                 [
-                'rule' => function ($value, $context) {
-                    if ($value !== $context['data']['email']) {
-                        return false;
-                    }
-                    return true;
-                },
-                'message' => 'The email are not equal']
+                    'rule' => function ($value, $context) {
+                        if ($value !== $context['data']['email']) {
+                            return false;
+                        }
+
+                        return true;
+                    },
+                    'message' => 'The email are not equal']
             )
             ->requirePresence('confirm_email', 'create')
             ->notEmpty('confirm_email');
@@ -245,6 +249,7 @@ class UsersTable extends Table
                         if (!preg_match('/^([0-9]{1}(\.|\s|-)?){10}$/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not a valid number.')
@@ -260,13 +265,14 @@ class UsersTable extends Table
                 'confirm_password',
                 'custom',
                 [
-                'rule' => function ($value, $context) {
-                    if ($value !== $context['data']['password']) {
-                        return false;
-                    }
-                    return true;
-                },
-                'message' => 'The passwords are not equal']
+                    'rule' => function ($value, $context) {
+                        if ($value !== $context['data']['password']) {
+                            return false;
+                        }
+
+                        return true;
+                    },
+                    'message' => 'The passwords are not equal']
             )
             ->requirePresence('password', 'create')
             ->notEmpty('password')
@@ -288,9 +294,10 @@ class UsersTable extends Table
                             if (!preg_match('/^([a-z0-9A-Z_\-.])*$/', $value)) {
                                 return false;
                             }
+
                             return true;
                         },
-                        'message' => __('Please use only letters (a-z), numbers, periods, and underscore.')
+                        'message' => __('Please use only letters (a-z), numbers,periods, and underscore.')
                     ],
                     'between' => [
                         'rule' => ['lengthBetween', 3, 16],
@@ -309,7 +316,7 @@ class UsersTable extends Table
                             ->where(
                                 [
                                     'id' => $context['data']['id']
-                                    ]
+                                ]
                             )
                             ->first();
                         $data = $query->toArray();
@@ -338,14 +345,15 @@ class UsersTable extends Table
                         $json = json_decode(file_get_contents(WWW_ROOT . '/json/UsersSkills.json'), true);
                         $valueArray = array_map(
                             function ($o) {
-                                return ltrim($o, ' ');
 
+                                return ltrim($o, ' ');
                             },
                             explode(',', $value)
                         );
                         if (count(array_diff($valueArray, $json)) > 0) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('One or more skills are not recognized')
@@ -355,6 +363,7 @@ class UsersTable extends Table
 
         return $validator;
     }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
@@ -367,6 +376,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['username']));
+
         return $rules;
     }
 
@@ -380,6 +390,7 @@ class UsersTable extends Table
     public function findTypeOptions(Query $query)
     {
         $typeMissions = TableRegistry::get('TypeMissions');
+
         return $typeMissions->find('options');
     }
 }

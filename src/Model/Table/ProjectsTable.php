@@ -58,14 +58,14 @@ class ProjectsTable extends Table
                 'foreignKey' => 'application_id'
             ]
         );
-        $this->belongsToMany(
+        /* $this->belongsToMany(
             'Organizations',
             [
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'organization_id',
             'joinTable' => 'organizations_projects'
             ]
-        );
+        );*/
         $this->belongsToMany(
             'Contributors',
             [
@@ -84,6 +84,7 @@ class ProjectsTable extends Table
             'joinTable' => 'projects_mentors'
             ]
         );
+        $this->belongsTo('Organizations');
         $this->addBehavior('Timestamp');
     }
 
@@ -114,6 +115,7 @@ class ProjectsTable extends Table
                         if (!preg_match('/^(https?):\/\/(.*)\.(.+)/', $value)) {
                             return false;
                         }
+
                         return true;
                     },
                     'message' => __('Is not an url (Ex : http://website.ca).')
@@ -123,6 +125,10 @@ class ProjectsTable extends Table
         $validator
             ->requirePresence('description', 'create')
             ->notEmpty('description');
+
+        $validator
+            ->requirePresence('organization_id', 'create')
+            ->notEmpty('organization_id');
 
         $validator
             ->notEmpty('accepted');

@@ -35,7 +35,6 @@ class PagesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.type_users_users',
         'app.organizations',
-        'app.organizations_Projects',
         'app.organizations_owners',
         'app.organizations_members',
         'app.users',

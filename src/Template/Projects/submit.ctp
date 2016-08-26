@@ -42,7 +42,8 @@
                             <?php
                             echo $this->Form->input('name', ['label' => __('Name of the project ')]);
                             echo $this->Form->input('link', ['pattern' => '^(https?):\/\/(.*)\.(.+)', 'title' => 'http://website.ca', 'label' => __('Website of the project'), 'placeholder' => __("http(s)://website.com")]);
-                            echo $this->Form->input('description',
+                            echo $this->Form->input(
+                                'description',
                                 [
                                     'label' => __('Description of the project'),
                                     'data-provide' => 'markdown',
@@ -51,27 +52,26 @@
                                     'data-language' => ($this->request->session()->read('lang') == 'fr_CA' ? 'fr' : ''),
                                     'data-footer' => '<a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">' . __('Markdown Cheatsheet') . '</a>'
                                 ]
-                            );
-                            if (empty($organizations->toArray())) : ?>
-                                <p>
-                                    <?= $this->Html->link(__('You\'re not part of an organization. Add yours now!'), ['controller' => 'Organizations', 'action' => 'submit']); ?>
-                                </p>
-                            <?php else : ?>
-                                <?= $this->Form->input('organizations._ids', ['options' => $organizations, 'label' => __('Select organizations associated with the project. Leave blank if no organizations')]); ?>
-                                <p>
-                                    <?= __('Or you can add a new organizations ') . $this->Html->link(__('here.'), ['controller' => 'Organizations', 'action' => 'submit']) ?>
-                                </p>
+                            ); ?>
+
+                                <?= $this->Form->input(
+                                    'organization_id',
+                                    ['options' => $organizations,
+                                        'type' => 'select',
+                                        'multiple'=> false,
+                                        'empty' => false,
+                                    'label' => __('Select the organization associated with the project.')]
+                                ); ?>
                                 <?php
-                            endif;
-                            $projectArray = $project->toArray();
-                            $missionsPost = array_intersect_key($projectArray, array_flip(preg_grep('/^mission-/', array_keys($projectArray))));
-                            if (!is_null($missionsPost)) :
-                                foreach ($missionsPost as $i => $mission) :
-                                    ?>
-                                    <input type='hidden' name='<?= $i ?>' value='<?= $mission ?>'/>
-                                <?php endforeach;
-                            endif;
-                            echo $this->Form->end()
+                                $projectArray = $project->toArray();
+                                $missionsPost = array_intersect_key($projectArray, array_flip(preg_grep('/^mission-/', array_keys($projectArray))));
+                                if (!is_null($missionsPost)) :
+                                    foreach ($missionsPost as $i => $mission) :
+                                        ?>
+                                        <input type='hidden' name='<?= $i ?>' value='<?= $mission ?>'/>
+                                    <?php endforeach;
+                                endif;
+                                echo $this->Form->end()
                             ?>
                         </div>
                         <div class="tab-pane" id="mission-tab-0">
@@ -100,9 +100,11 @@
         'bootstrap.min',
         'projects/submit'
     ],
-    ['block' => 'scriptBottom']);
-if ($this->request->session()->read('lang') == 'fr_CA')
-    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']);
+    ['block' => 'scriptBottom']
+);
+if ($this->request->session()->read('lang') == 'fr_CA') {
+    echo $this->Html->script('locale/bootstrap-markdown.fr', ['block' => 'scriptBottom']); 
+}
 $this->Html->scriptStart(['block' => 'scriptBottom']);
 echo 'var btnSubmitTxt="' . __('Submit the project') . '";';
 echo 'var errorMsg="' . __('All tabs must be valid before submitting the project.') . '";';
