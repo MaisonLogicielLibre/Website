@@ -32,7 +32,7 @@
                 <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'home']); ?>" class="navbar-brand">
                     <?= $this->Html->image(
                         'favicon.ico', [
-                        'alt' => 'Maison Logiciel Libre', 'width' => '40','style'=>'padding-top:0;margin-top:0' ]
+                        'alt' => 'Maison Logiciel Libre', 'width' => '100','style'=>'padding-top:0;margin-top:0' ]
                     ); ?>
                 </a>
             </div>
