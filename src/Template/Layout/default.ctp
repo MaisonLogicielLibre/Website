@@ -163,7 +163,7 @@
     </div>
     <footer id="footer" >
         <div class="text-center">
-        Copyright © Maison du Logiciel Libre 2015
+        Copyright © Maison du Logiciel Libre 2016
         - <?= $this->Html->link(__('Contact us'), ['controller' => 'Pages', 'action' => 'contact']); ?>
         </div>
     </footer>
