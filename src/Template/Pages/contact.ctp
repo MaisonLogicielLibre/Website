@@ -17,7 +17,7 @@
         <div class="panel-body row">
             <div class="col-sm-8 col-sm-offset-3">
                 <h3> <i class="fa fa-user"></i> Ted Hill
-                <h3> <i class="fa fa-home"></i> <?= __('1100, rue Notre-Dame Ouest') ?>
+                <h3> <i class="fa fa-home"></i> <?= __('1100, rue Notre-Dame Ouest local: A-0130') ?>
                 <h3> <i class="fa fa-phone"></i><a href="tel:15143968799"> (514) 396-8799</a></h3>
                 <h3> <i class="fa fa-envelope"></i><a href="mailto:maisonlogiciellibre@etsmtl.net"> maisonlogiciellibre@etsmtl.net</a></h3>
             </div>
