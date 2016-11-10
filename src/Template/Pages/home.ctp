@@ -18,7 +18,7 @@
             <ol class="carousel-indicators">
 				<li data-target="#carousel" data-slide-to="1" class="active"></li>
 				<li data-target="#carousel" data-slide-to="2"></li>
-				
+
             </ol>
             <div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -26,7 +26,7 @@
                         <img src="<?= $this->request->webroot . 'img/carousel/2.jpg'; ?>" class="stretch" alt=""/>
                     </div>
                 </div>
-               
+
                 <div class="item">
                     <div class="fillBackground">
                         <img src="<?= $this->request->webroot . 'img/carousel/tv4.png'; ?>" class="stretch" alt=""/>
@@ -111,6 +111,9 @@
         </a>
         <a href="https://www.savoirfairelinux.com/">
             <?= $this->Html->image('savoirfairelinux.svg', ['class' => 'img-responsive sponsor sponsor-image']); ?>
+        </a>
+        <a href="https://www.redhat.com/">
+            <?= $this->Html->image('RedHat.png', ['class' => 'img-responsive sponsor sponsor-image']); ?>
         </a>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center sponsors-cell">
