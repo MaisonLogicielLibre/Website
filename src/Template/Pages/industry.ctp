@@ -53,6 +53,29 @@
     </div>
 </div>
 <div class="row">
+    <div class="panel panel-info col-sm-6 col-sm-offset-3 partner-panel partner-sponsor">
+        <div class="panel-body">
+            <div class="row">
+                <div style="float:left">
+                    <?php echo $this->Html->image('RedHat.png', ['alt' => 'RedHat', 'width' => '64px', 'height' => '64px', 'class' => 'img-responsive']) ?>
+                </div>
+                <div class="col-sm-6">
+                    <h4><a href="http://www.redhat.com"> RedHat </a></h4>
+                </div>
+                <div class="col-sm-4">
+                    <h5 class="partner-text-sponsor"><?= __('Sponsor') ?></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <p> Red Hat is the world's leading provider of open source software solutions, using a community-powered approach to provide reliable and
+high-performing cloud, Linux, middleware, storage and virtualization technologies. Red Hat also offers award-winning support, training, and consulting services. As a connective hub in a global network of enterprises, partners, and open source communities, Red Hat helps create relevant, innovative technologies that liberate resources for growth and prepare customers for the future of IT. Learn more at <a href="http://http://www.redhat.com"> http://www.redhat.com </a>. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="panel panel-default col-sm-6 col-sm-offset-3 partner-panel partner-default">
         <div class="panel-body">
             <div class="row">
